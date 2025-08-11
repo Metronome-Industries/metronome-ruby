@@ -91,7 +91,7 @@ module MetronomeSDK
               {
                 amount: Float,
                 amount_remaining: Float,
-                credit_type: MetronomeSDK::CreditTypeData
+                credit_type: MetronomeSDK::Models::V1::Customers::PlanListResponse::TrialInfo::SpendingCap::CreditType
               }
 
             class SpendingCap < MetronomeSDK::Internal::Type::BaseModel
@@ -99,19 +99,31 @@ module MetronomeSDK
 
               attr_accessor amount_remaining: Float
 
-              attr_accessor credit_type: MetronomeSDK::CreditTypeData
+              attr_accessor credit_type: MetronomeSDK::Models::V1::Customers::PlanListResponse::TrialInfo::SpendingCap::CreditType
 
               def initialize: (
                 amount: Float,
                 amount_remaining: Float,
-                credit_type: MetronomeSDK::CreditTypeData
+                credit_type: MetronomeSDK::Models::V1::Customers::PlanListResponse::TrialInfo::SpendingCap::CreditType
               ) -> void
 
               def to_hash: -> {
                 amount: Float,
                 amount_remaining: Float,
-                credit_type: MetronomeSDK::CreditTypeData
+                credit_type: MetronomeSDK::Models::V1::Customers::PlanListResponse::TrialInfo::SpendingCap::CreditType
               }
+
+              type credit_type = { id: String, name: String }
+
+              class CreditType < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor id: String
+
+                attr_accessor name: String
+
+                def initialize: (id: String, name: String) -> void
+
+                def to_hash: -> { id: String, name: String }
+              end
             end
           end
         end

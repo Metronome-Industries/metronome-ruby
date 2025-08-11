@@ -61,7 +61,10 @@ module MetronomeSDK
                 price: Float,
                 pricing_group_values: T::Hash[Symbol, String],
                 quantity: Float,
-                tiers: T::Array[MetronomeSDK::Tier::OrHash],
+                tiers:
+                  T::Array[
+                    MetronomeSDK::V1::Contracts::RateCards::RateAddParams::Tier::OrHash
+                  ],
                 use_list_prices: T::Boolean,
                 request_options: MetronomeSDK::RequestOptions::OrHash
               ).returns(
