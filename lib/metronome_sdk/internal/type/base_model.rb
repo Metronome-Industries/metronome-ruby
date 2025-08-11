@@ -445,9 +445,11 @@ module MetronomeSDK
         # @return [Hash{Symbol=>Object}]
         #
         # @example
-        #   # `contract_retrieve_response` is a `MetronomeSDK::Models::V2::ContractRetrieveResponse`
-        #   contract_retrieve_response => {
-        #     data: data
+        #   # `base_usage_filter` is a `MetronomeSDK::BaseUsageFilter`
+        #   base_usage_filter => {
+        #     group_key: group_key,
+        #     group_values: group_values,
+        #     starting_at: starting_at
         #   }
         def deconstruct_keys(keys)
           (keys || self.class.known_fields.keys)

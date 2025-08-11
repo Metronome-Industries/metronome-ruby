@@ -80,7 +80,7 @@ module MetronomeSDK
         #
         # @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a record is made wit
         #
-        # @param usage_filter [MetronomeSDK::Models::V1::ContractCreateParams::UsageFilter]
+        # @param usage_filter [MetronomeSDK::Models::BaseUsageFilter]
         #
         # @param usage_statement_schedule [MetronomeSDK::Models::V1::ContractCreateParams::UsageStatementSchedule]
         #
