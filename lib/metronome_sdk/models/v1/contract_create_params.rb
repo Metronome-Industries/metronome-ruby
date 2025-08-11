@@ -1033,7 +1033,20 @@ module MetronomeSDK
               #   @return [Hash{Symbol=>String}, nil]
               optional :invoice_metadata, MetronomeSDK::Internal::Type::HashOf[String]
 
-              # @!method initialize(payment_type:, invoice_metadata: nil)
+              # @!attribute on_session_payment
+              #   If true, the payment will be made assuming the customer is present (i.e. on
+              #   session).
+              #
+              #   If false, the payment will be made assuming the customer is not present (i.e.
+              #   off session). For cardholders from a country with an e-mandate requirement (e.g.
+              #   India), the payment may be declined.
+              #
+              #   If left blank, will default to false.
+              #
+              #   @return [Boolean, nil]
+              optional :on_session_payment, MetronomeSDK::Internal::Type::Boolean
+
+              # @!method initialize(payment_type:, invoice_metadata: nil, on_session_payment: nil)
               #   Some parameter documentations has been truncated, see
               #   {MetronomeSDK::Models::V1::ContractCreateParams::Commit::PaymentGateConfig::StripeConfig}
               #   for more details.
@@ -1043,6 +1056,8 @@ module MetronomeSDK
               #   @param payment_type [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::Commit::PaymentGateConfig::StripeConfig::PaymentType] If left blank, will default to INVOICE
               #
               #   @param invoice_metadata [Hash{Symbol=>String}] Metadata to be added to the Stripe invoice. Only applicable if using INVOICE as
+              #
+              #   @param on_session_payment [Boolean] If true, the payment will be made assuming the customer is present (i.e. on sess
 
               # If left blank, will default to INVOICE
               #

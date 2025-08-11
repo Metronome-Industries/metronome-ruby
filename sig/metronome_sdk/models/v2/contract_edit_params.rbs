@@ -813,7 +813,8 @@ module MetronomeSDK
             type stripe_config =
               {
                 payment_type: MetronomeSDK::Models::V2::ContractEditParams::AddCommit::PaymentGateConfig::StripeConfig::payment_type,
-                invoice_metadata: ::Hash[Symbol, String]
+                invoice_metadata: ::Hash[Symbol, String],
+                on_session_payment: bool
               }
 
             class StripeConfig < MetronomeSDK::Internal::Type::BaseModel
@@ -825,14 +826,20 @@ module MetronomeSDK
                 ::Hash[Symbol, String]
               ) -> ::Hash[Symbol, String]
 
+              attr_reader on_session_payment: bool?
+
+              def on_session_payment=: (bool) -> bool
+
               def initialize: (
                 payment_type: MetronomeSDK::Models::V2::ContractEditParams::AddCommit::PaymentGateConfig::StripeConfig::payment_type,
-                ?invoice_metadata: ::Hash[Symbol, String]
+                ?invoice_metadata: ::Hash[Symbol, String],
+                ?on_session_payment: bool
               ) -> void
 
               def to_hash: -> {
                 payment_type: MetronomeSDK::Models::V2::ContractEditParams::AddCommit::PaymentGateConfig::StripeConfig::payment_type,
-                invoice_metadata: ::Hash[Symbol, String]
+                invoice_metadata: ::Hash[Symbol, String],
+                on_session_payment: bool
               }
 
               type payment_type = :INVOICE | :PAYMENT_INTENT
