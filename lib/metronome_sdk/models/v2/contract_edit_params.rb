@@ -3569,6 +3569,11 @@ module MetronomeSDK
           #   @return [MetronomeSDK::Models::V2::ContractEditParams::AddScheduledCharge::Schedule]
           required :schedule, -> { MetronomeSDK::V2::ContractEditParams::AddScheduledCharge::Schedule }
 
+          # @!attribute custom_fields
+          #
+          #   @return [Hash{Symbol=>String}, nil]
+          optional :custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
+
           # @!attribute name
           #   displayed on invoices
           #
@@ -3581,10 +3586,12 @@ module MetronomeSDK
           #   @return [String, nil]
           optional :netsuite_sales_order_id, String
 
-          # @!method initialize(product_id:, schedule:, name: nil, netsuite_sales_order_id: nil)
+          # @!method initialize(product_id:, schedule:, custom_fields: nil, name: nil, netsuite_sales_order_id: nil)
           #   @param product_id [String]
           #
           #   @param schedule [MetronomeSDK::Models::V2::ContractEditParams::AddScheduledCharge::Schedule] Must provide either schedule_items or recurring_schedule.
+          #
+          #   @param custom_fields [Hash{Symbol=>String}]
           #
           #   @param name [String] displayed on invoices
           #

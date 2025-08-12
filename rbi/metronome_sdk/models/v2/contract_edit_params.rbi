@@ -7606,6 +7606,12 @@ module MetronomeSDK
           end
           attr_writer :schedule
 
+          sig { returns(T.nilable(T::Hash[Symbol, String])) }
+          attr_reader :custom_fields
+
+          sig { params(custom_fields: T::Hash[Symbol, String]).void }
+          attr_writer :custom_fields
+
           # displayed on invoices
           sig { returns(T.nilable(String)) }
           attr_reader :name
@@ -7625,6 +7631,7 @@ module MetronomeSDK
               product_id: String,
               schedule:
                 MetronomeSDK::V2::ContractEditParams::AddScheduledCharge::Schedule::OrHash,
+              custom_fields: T::Hash[Symbol, String],
               name: String,
               netsuite_sales_order_id: String
             ).returns(T.attached_class)
@@ -7633,6 +7640,7 @@ module MetronomeSDK
             product_id:,
             # Must provide either schedule_items or recurring_schedule.
             schedule:,
+            custom_fields: nil,
             # displayed on invoices
             name: nil,
             # This field's availability is dependent on your client's configuration.
@@ -7646,6 +7654,7 @@ module MetronomeSDK
                 product_id: String,
                 schedule:
                   MetronomeSDK::V2::ContractEditParams::AddScheduledCharge::Schedule,
+                custom_fields: T::Hash[Symbol, String],
                 name: String,
                 netsuite_sales_order_id: String
               }
