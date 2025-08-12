@@ -3161,6 +3161,7 @@ module MetronomeSDK
           {
             product_id: String,
             schedule: MetronomeSDK::V2::ContractEditParams::AddScheduledCharge::Schedule,
+            custom_fields: ::Hash[Symbol, String],
             name: String,
             netsuite_sales_order_id: String
           }
@@ -3169,6 +3170,10 @@ module MetronomeSDK
           attr_accessor product_id: String
 
           attr_accessor schedule: MetronomeSDK::V2::ContractEditParams::AddScheduledCharge::Schedule
+
+          attr_reader custom_fields: ::Hash[Symbol, String]?
+
+          def custom_fields=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
 
           attr_reader name: String?
 
@@ -3181,6 +3186,7 @@ module MetronomeSDK
           def initialize: (
             product_id: String,
             schedule: MetronomeSDK::V2::ContractEditParams::AddScheduledCharge::Schedule,
+            ?custom_fields: ::Hash[Symbol, String],
             ?name: String,
             ?netsuite_sales_order_id: String
           ) -> void
@@ -3188,6 +3194,7 @@ module MetronomeSDK
           def to_hash: -> {
             product_id: String,
             schedule: MetronomeSDK::V2::ContractEditParams::AddScheduledCharge::Schedule,
+            custom_fields: ::Hash[Symbol, String],
             name: String,
             netsuite_sales_order_id: String
           }
