@@ -237,6 +237,16 @@ module MetronomeSDK
             #   @return [Float]
             required :total, Float
 
+            # @!attribute type
+            #   The type of line item. Possible values are 'aws_royalty',
+            #   'applied_commit_or_credit', 'scheduled', 'commit_purchase', 'cpu_conversion',
+            #   'discount', 'gcp_royalty', 'postpaid_trueup', 'professional_services',
+            #   'subscription', 'usage', 'legacy', 'minimum', 'product_charge',
+            #   'trial_discount', 'rollover', 'seat', 'grouped_charge'.
+            #
+            #   @return [String]
+            required :type, String
+
             # @!attribute applied_commit_or_credit
             #   Details about the credit or commit that was applied to this line item. Only
             #   present on line items with product of `USAGE`, `SUBSCRIPTION` or `COMPOSITE`
@@ -460,7 +470,7 @@ module MetronomeSDK
             #   @return [Float, nil]
             optional :unit_price, Float
 
-            # @!method initialize(credit_type:, name:, total:, applied_commit_or_credit: nil, commit_custom_fields: nil, commit_id: nil, commit_netsuite_item_id: nil, commit_netsuite_sales_order_id: nil, commit_segment_id: nil, commit_type: nil, custom_fields: nil, discount_custom_fields: nil, discount_id: nil, ending_before: nil, group_key: nil, group_value: nil, is_prorated: nil, list_price: nil, metadata: nil, netsuite_invoice_billing_end: nil, netsuite_invoice_billing_start: nil, netsuite_item_id: nil, postpaid_commit: nil, presentation_group_values: nil, pricing_group_values: nil, product_custom_fields: nil, product_id: nil, product_tags: nil, product_type: nil, professional_service_custom_fields: nil, professional_service_id: nil, quantity: nil, reseller_type: nil, scheduled_charge_custom_fields: nil, scheduled_charge_id: nil, starting_at: nil, sub_line_items: nil, subscription_custom_fields: nil, tier: nil, unit_price: nil)
+            # @!method initialize(credit_type:, name:, total:, type:, applied_commit_or_credit: nil, commit_custom_fields: nil, commit_id: nil, commit_netsuite_item_id: nil, commit_netsuite_sales_order_id: nil, commit_segment_id: nil, commit_type: nil, custom_fields: nil, discount_custom_fields: nil, discount_id: nil, ending_before: nil, group_key: nil, group_value: nil, is_prorated: nil, list_price: nil, metadata: nil, netsuite_invoice_billing_end: nil, netsuite_invoice_billing_start: nil, netsuite_item_id: nil, postpaid_commit: nil, presentation_group_values: nil, pricing_group_values: nil, product_custom_fields: nil, product_id: nil, product_tags: nil, product_type: nil, professional_service_custom_fields: nil, professional_service_id: nil, quantity: nil, reseller_type: nil, scheduled_charge_custom_fields: nil, scheduled_charge_id: nil, starting_at: nil, sub_line_items: nil, subscription_custom_fields: nil, tier: nil, unit_price: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V1::Customers::Invoice::LineItem} for more details.
             #
@@ -469,6 +479,8 @@ module MetronomeSDK
             #   @param name [String]
             #
             #   @param total [Float]
+            #
+            #   @param type [String] The type of line item. Possible values are 'aws_royalty', 'applied_commit_or_cre
             #
             #   @param applied_commit_or_credit [MetronomeSDK::Models::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit] Details about the credit or commit that was applied to this line item. Only pres
             #
