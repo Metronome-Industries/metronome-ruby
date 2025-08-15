@@ -1,5 +1,30 @@
 # Changelog
 
+## 0.3.0 (2025-08-15)
+
+Full Changelog: [v0.2.0...v0.3.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v0.2.0...v0.3.0)
+
+### Features
+
+* **api:** api update ([dc85d2b](https://github.com/Metronome-Industries/metronome-ruby/commit/dc85d2b1e840bb8a99500a34d4560c635d023776))
+* **api:** api update ([b2fe3ed](https://github.com/Metronome-Industries/metronome-ruby/commit/b2fe3edfa51151ff1c6a9f15da363591b46202b7))
+* **api:** api update ([361462c](https://github.com/Metronome-Industries/metronome-ruby/commit/361462c038856e72c4e889b7365b204bb3a914c6))
+* **api:** api update ([acc5999](https://github.com/Metronome-Industries/metronome-ruby/commit/acc599977b528e8d916ee99d9fd9ec2a35a91b65))
+* **api:** api update ([f8ffd7b](https://github.com/Metronome-Industries/metronome-ruby/commit/f8ffd7bb950eef4563012f0b96bda2f9f4a9d160))
+* **api:** api update ([760744e](https://github.com/Metronome-Industries/metronome-ruby/commit/760744ef3f5155ca5202810537943a80efaa1e0f))
+* **api:** api update ([6a16947](https://github.com/Metronome-Industries/metronome-ruby/commit/6a169473afa8d1d1793304afb2cd742b9c1c1b7e))
+* **api:** api update ([2b47d83](https://github.com/Metronome-Industries/metronome-ruby/commit/2b47d832c06878b9725cae05f887117ad98c73d8))
+* **api:** api update ([1f496c7](https://github.com/Metronome-Industries/metronome-ruby/commit/1f496c72f3c73542350c357219ff2ec6b528d2f3))
+* **api:** api update ([ff4d847](https://github.com/Metronome-Industries/metronome-ruby/commit/ff4d8478d49d587bdaf70a7b52fb18fb6662d7e3))
+* **api:** api update ([49702e6](https://github.com/Metronome-Industries/metronome-ruby/commit/49702e67db92e2b7495ec88e127c8a60e862a685))
+
+
+### Chores
+
+* collect metadata from type DSL ([45d8eb1](https://github.com/Metronome-Industries/metronome-ruby/commit/45d8eb1c1ea599b68e3fcd6571d27390e52a09db))
+* **internal:** update comment in script ([de52ac2](https://github.com/Metronome-Industries/metronome-ruby/commit/de52ac2965601808912f1e55952d731641132361))
+* update @stainless-api/prism-cli to v5.15.0 ([6ad9705](https://github.com/Metronome-Industries/metronome-ruby/commit/6ad9705b1a25dfb037e3625e669f8d1cdc144b7a))
+
 ## 0.2.0 (2025-07-31)
 
 Full Changelog: [v0.1.0...v0.2.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v0.1.0...v0.2.0)
