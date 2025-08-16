@@ -649,6 +649,13 @@ module MetronomeSDK
             #   @return [String, nil]
             optional :credit_type_id, String
 
+            # @!attribute do_not_invoice
+            #   This field is only applicable to commit invoice schedules. If true, this
+            #   schedule will not generate an invoice.
+            #
+            #   @return [Boolean, nil]
+            optional :do_not_invoice, MetronomeSDK::Internal::Type::Boolean
+
             # @!attribute recurring_schedule
             #   Enter the unit price and quantity for the charge or instead only send the
             #   amount. If amount is sent, the unit price is assumed to be the amount and
@@ -669,7 +676,7 @@ module MetronomeSDK
                        MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V2::ContractEditParams::AddCommit::InvoiceSchedule::ScheduleItem]
                      }
 
-            # @!method initialize(credit_type_id: nil, recurring_schedule: nil, schedule_items: nil)
+            # @!method initialize(credit_type_id: nil, do_not_invoice: nil, recurring_schedule: nil, schedule_items: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractEditParams::AddCommit::InvoiceSchedule} for
             #   more details.
@@ -680,6 +687,8 @@ module MetronomeSDK
             #   "complimentary" commit with no invoice.
             #
             #   @param credit_type_id [String] Defaults to USD (cents) if not passed.
+            #
+            #   @param do_not_invoice [Boolean] This field is only applicable to commit invoice schedules. If true, this schedul
             #
             #   @param recurring_schedule [MetronomeSDK::Models::V2::ContractEditParams::AddCommit::InvoiceSchedule::RecurringSchedule] Enter the unit price and quantity for the charge or instead only send the amount
             #
@@ -952,7 +961,20 @@ module MetronomeSDK
               #   @return [Hash{Symbol=>String}, nil]
               optional :invoice_metadata, MetronomeSDK::Internal::Type::HashOf[String]
 
-              # @!method initialize(payment_type:, invoice_metadata: nil)
+              # @!attribute on_session_payment
+              #   If true, the payment will be made assuming the customer is present (i.e. on
+              #   session).
+              #
+              #   If false, the payment will be made assuming the customer is not present (i.e.
+              #   off session). For cardholders from a country with an e-mandate requirement (e.g.
+              #   India), the payment may be declined.
+              #
+              #   If left blank, will default to false.
+              #
+              #   @return [Boolean, nil]
+              optional :on_session_payment, MetronomeSDK::Internal::Type::Boolean
+
+              # @!method initialize(payment_type:, invoice_metadata: nil, on_session_payment: nil)
               #   Some parameter documentations has been truncated, see
               #   {MetronomeSDK::Models::V2::ContractEditParams::AddCommit::PaymentGateConfig::StripeConfig}
               #   for more details.
@@ -962,6 +984,8 @@ module MetronomeSDK
               #   @param payment_type [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddCommit::PaymentGateConfig::StripeConfig::PaymentType] If left blank, will default to INVOICE
               #
               #   @param invoice_metadata [Hash{Symbol=>String}] Metadata to be added to the Stripe invoice. Only applicable if using INVOICE as
+              #
+              #   @param on_session_payment [Boolean] If true, the payment will be made assuming the customer is present (i.e. on sess
 
               # If left blank, will default to INVOICE
               #
@@ -1412,6 +1436,13 @@ module MetronomeSDK
             #   @return [String, nil]
             optional :credit_type_id, String
 
+            # @!attribute do_not_invoice
+            #   This field is only applicable to commit invoice schedules. If true, this
+            #   schedule will not generate an invoice.
+            #
+            #   @return [Boolean, nil]
+            optional :do_not_invoice, MetronomeSDK::Internal::Type::Boolean
+
             # @!attribute recurring_schedule
             #   Enter the unit price and quantity for the charge or instead only send the
             #   amount. If amount is sent, the unit price is assumed to be the amount and
@@ -1430,7 +1461,7 @@ module MetronomeSDK
                        MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V2::ContractEditParams::AddDiscount::Schedule::ScheduleItem]
                      }
 
-            # @!method initialize(credit_type_id: nil, recurring_schedule: nil, schedule_items: nil)
+            # @!method initialize(credit_type_id: nil, do_not_invoice: nil, recurring_schedule: nil, schedule_items: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractEditParams::AddDiscount::Schedule} for more
             #   details.
@@ -1438,6 +1469,8 @@ module MetronomeSDK
             #   Must provide either schedule_items or recurring_schedule.
             #
             #   @param credit_type_id [String] Defaults to USD (cents) if not passed.
+            #
+            #   @param do_not_invoice [Boolean] This field is only applicable to commit invoice schedules. If true, this schedul
             #
             #   @param recurring_schedule [MetronomeSDK::Models::V2::ContractEditParams::AddDiscount::Schedule::RecurringSchedule] Enter the unit price and quantity for the charge or instead only send the amount
             #
@@ -2547,8 +2580,8 @@ module MetronomeSDK
             required :unit_price, Float
 
             # @!attribute quantity
-            #   This field is currently required. Upcoming recurring commit/credit configuration
-            #   options will allow it to be optional.
+            #   This field is required unless a subscription is attached via
+            #   `subscription_config`.
             #
             #   @return [Float, nil]
             optional :quantity, Float
@@ -2564,7 +2597,7 @@ module MetronomeSDK
             #
             #   @param unit_price [Float]
             #
-            #   @param quantity [Float] This field is currently required. Upcoming recurring commit/credit configuration
+            #   @param quantity [Float] This field is required unless a subscription is attached via `subscription_confi
           end
 
           # @see MetronomeSDK::Models::V2::ContractEditParams::AddRecurringCommit#commit_duration
@@ -3083,8 +3116,8 @@ module MetronomeSDK
             required :unit_price, Float
 
             # @!attribute quantity
-            #   This field is currently required. Upcoming recurring commit/credit configuration
-            #   options will allow it to be optional.
+            #   This field is required unless a subscription is attached via
+            #   `subscription_config`.
             #
             #   @return [Float, nil]
             optional :quantity, Float
@@ -3100,7 +3133,7 @@ module MetronomeSDK
             #
             #   @param unit_price [Float]
             #
-            #   @param quantity [Float] This field is currently required. Upcoming recurring commit/credit configuration
+            #   @param quantity [Float] This field is required unless a subscription is attached via `subscription_confi
           end
 
           # @see MetronomeSDK::Models::V2::ContractEditParams::AddRecurringCredit#commit_duration
@@ -3536,6 +3569,11 @@ module MetronomeSDK
           #   @return [MetronomeSDK::Models::V2::ContractEditParams::AddScheduledCharge::Schedule]
           required :schedule, -> { MetronomeSDK::V2::ContractEditParams::AddScheduledCharge::Schedule }
 
+          # @!attribute custom_fields
+          #
+          #   @return [Hash{Symbol=>String}, nil]
+          optional :custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
+
           # @!attribute name
           #   displayed on invoices
           #
@@ -3548,10 +3586,12 @@ module MetronomeSDK
           #   @return [String, nil]
           optional :netsuite_sales_order_id, String
 
-          # @!method initialize(product_id:, schedule:, name: nil, netsuite_sales_order_id: nil)
+          # @!method initialize(product_id:, schedule:, custom_fields: nil, name: nil, netsuite_sales_order_id: nil)
           #   @param product_id [String]
           #
           #   @param schedule [MetronomeSDK::Models::V2::ContractEditParams::AddScheduledCharge::Schedule] Must provide either schedule_items or recurring_schedule.
+          #
+          #   @param custom_fields [Hash{Symbol=>String}]
           #
           #   @param name [String] displayed on invoices
           #
@@ -3564,6 +3604,13 @@ module MetronomeSDK
             #
             #   @return [String, nil]
             optional :credit_type_id, String
+
+            # @!attribute do_not_invoice
+            #   This field is only applicable to commit invoice schedules. If true, this
+            #   schedule will not generate an invoice.
+            #
+            #   @return [Boolean, nil]
+            optional :do_not_invoice, MetronomeSDK::Internal::Type::Boolean
 
             # @!attribute recurring_schedule
             #   Enter the unit price and quantity for the charge or instead only send the
@@ -3585,7 +3632,7 @@ module MetronomeSDK
                        MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V2::ContractEditParams::AddScheduledCharge::Schedule::ScheduleItem]
                      }
 
-            # @!method initialize(credit_type_id: nil, recurring_schedule: nil, schedule_items: nil)
+            # @!method initialize(credit_type_id: nil, do_not_invoice: nil, recurring_schedule: nil, schedule_items: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractEditParams::AddScheduledCharge::Schedule} for
             #   more details.
@@ -3593,6 +3640,8 @@ module MetronomeSDK
             #   Must provide either schedule_items or recurring_schedule.
             #
             #   @param credit_type_id [String] Defaults to USD (cents) if not passed.
+            #
+            #   @param do_not_invoice [Boolean] This field is only applicable to commit invoice schedules. If true, this schedul
             #
             #   @param recurring_schedule [MetronomeSDK::Models::V2::ContractEditParams::AddScheduledCharge::Schedule::RecurringSchedule] Enter the unit price and quantity for the charge or instead only send the amount
             #
@@ -4265,6 +4314,11 @@ module MetronomeSDK
           #   @return [String, nil]
           optional :netsuite_sales_order_id, String, nil?: true
 
+          # @!attribute priority
+          #
+          #   @return [Float, nil]
+          optional :priority, Float, nil?: true
+
           # @!attribute product_id
           #
           #   @return [String, nil]
@@ -4275,7 +4329,7 @@ module MetronomeSDK
           #   @return [Float, nil]
           optional :rollover_fraction, Float, nil?: true
 
-          # @!method initialize(commit_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, hierarchy_configuration: nil, invoice_schedule: nil, netsuite_sales_order_id: nil, product_id: nil, rollover_fraction: nil)
+          # @!method initialize(commit_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, hierarchy_configuration: nil, invoice_schedule: nil, netsuite_sales_order_id: nil, priority: nil, product_id: nil, rollover_fraction: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit} for more details.
           #
@@ -4292,6 +4346,8 @@ module MetronomeSDK
           #   @param invoice_schedule [MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit::InvoiceSchedule]
           #
           #   @param netsuite_sales_order_id [String, nil]
+          #
+          #   @param priority [Float, nil]
           #
           #   @param product_id [String]
           #
@@ -4644,12 +4700,17 @@ module MetronomeSDK
           #   @return [String, nil]
           optional :netsuite_sales_order_id, String, nil?: true
 
+          # @!attribute priority
+          #
+          #   @return [Float, nil]
+          optional :priority, Float, nil?: true
+
           # @!attribute product_id
           #
           #   @return [String, nil]
           optional :product_id, String
 
-          # @!method initialize(credit_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, hierarchy_configuration: nil, netsuite_sales_order_id: nil, product_id: nil)
+          # @!method initialize(credit_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, hierarchy_configuration: nil, netsuite_sales_order_id: nil, priority: nil, product_id: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit} for more details.
           #
@@ -4664,6 +4725,8 @@ module MetronomeSDK
           #   @param hierarchy_configuration [MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit::HierarchyConfiguration] Optional configuration for commit hierarchy access control
           #
           #   @param netsuite_sales_order_id [String, nil]
+          #
+          #   @param priority [Float, nil]
           #
           #   @param product_id [String]
 

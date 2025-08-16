@@ -76,6 +76,11 @@ module MetronomeSDK
         end
         attr_writer :invoice_schedule
 
+        # If multiple commits are applicable, the one with the lower priority will apply
+        # first.
+        sig { returns(T.nilable(Float)) }
+        attr_accessor :priority
+
         sig { returns(T.nilable(String)) }
         attr_reader :product_id
 
@@ -108,6 +113,7 @@ module MetronomeSDK
             invoice_contract_id: String,
             invoice_schedule:
               MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule::OrHash,
+            priority: T.nilable(Float),
             product_id: String,
             specifiers:
               T.nilable(
@@ -135,6 +141,9 @@ module MetronomeSDK
           # ID of contract to use for invoicing
           invoice_contract_id: nil,
           invoice_schedule: nil,
+          # If multiple commits are applicable, the one with the lower priority will apply
+          # first.
+          priority: nil,
           product_id: nil,
           # List of filters that determine what kind of customer usage draws down a commit
           # or credit. A customer's usage needs to meet the condition of at least one of the
@@ -159,6 +168,7 @@ module MetronomeSDK
               invoice_contract_id: String,
               invoice_schedule:
                 MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule,
+              priority: T.nilable(Float),
               product_id: String,
               specifiers:
                 T.nilable(

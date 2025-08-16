@@ -212,6 +212,7 @@ module MetronomeSDK
               credit_type: MetronomeSDK::CreditTypeData,
               name: String,
               total: Float,
+              type: String,
               applied_commit_or_credit: MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit,
               commit_custom_fields: ::Hash[Symbol, String],
               commit_id: String,
@@ -257,6 +258,8 @@ module MetronomeSDK
             attr_accessor name: String
 
             attr_accessor total: Float
+
+            attr_accessor type: String
 
             attr_reader applied_commit_or_credit: MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit?
 
@@ -436,6 +439,7 @@ module MetronomeSDK
               credit_type: MetronomeSDK::CreditTypeData,
               name: String,
               total: Float,
+              type: String,
               ?applied_commit_or_credit: MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit,
               ?commit_custom_fields: ::Hash[Symbol, String],
               ?commit_id: String,
@@ -479,6 +483,7 @@ module MetronomeSDK
               credit_type: MetronomeSDK::CreditTypeData,
               name: String,
               total: Float,
+              type: String,
               applied_commit_or_credit: MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit,
               commit_custom_fields: ::Hash[Symbol, String],
               commit_id: String,

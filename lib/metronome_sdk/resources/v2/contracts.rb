@@ -161,7 +161,7 @@ module MetronomeSDK
         # Edit a customer or contract commit. Contract commits can only be edited using
         # this endpoint if contract editing is enabled.
         #
-        # @overload edit_commit(commit_id:, customer_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, invoice_contract_id: nil, invoice_schedule: nil, product_id: nil, specifiers: nil, request_options: {})
+        # @overload edit_commit(commit_id:, customer_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, invoice_contract_id: nil, invoice_schedule: nil, priority: nil, product_id: nil, specifiers: nil, request_options: {})
         #
         # @param commit_id [String] ID of the commit to edit
         #
@@ -176,6 +176,8 @@ module MetronomeSDK
         # @param invoice_contract_id [String] ID of contract to use for invoicing
         #
         # @param invoice_schedule [MetronomeSDK::Models::V2::ContractEditCommitParams::InvoiceSchedule]
+        #
+        # @param priority [Float, nil] If multiple commits are applicable, the one with the lower priority will apply f
         #
         # @param product_id [String]
         #
@@ -203,7 +205,7 @@ module MetronomeSDK
         # Edit a customer or contract credit. Contract credits can only be edited using
         # this endpoint if contract editing is enabled.
         #
-        # @overload edit_credit(credit_id:, customer_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, product_id: nil, specifiers: nil, request_options: {})
+        # @overload edit_credit(credit_id:, customer_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, priority: nil, product_id: nil, specifiers: nil, request_options: {})
         #
         # @param credit_id [String] ID of the credit to edit
         #
@@ -214,6 +216,8 @@ module MetronomeSDK
         # @param applicable_product_ids [Array<String>, nil] Which products the credit applies to. If both applicable_product_ids and applica
         #
         # @param applicable_product_tags [Array<String>, nil] Which tags the credit applies to. If both applicable*product_ids and applicable*
+        #
+        # @param priority [Float, nil] If multiple commits are applicable, the one with the lower priority will apply f
         #
         # @param product_id [String]
         #

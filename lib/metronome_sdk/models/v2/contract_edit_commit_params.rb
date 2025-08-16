@@ -52,6 +52,13 @@ module MetronomeSDK
         #   @return [MetronomeSDK::Models::V2::ContractEditCommitParams::InvoiceSchedule, nil]
         optional :invoice_schedule, -> { MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule }
 
+        # @!attribute priority
+        #   If multiple commits are applicable, the one with the lower priority will apply
+        #   first.
+        #
+        #   @return [Float, nil]
+        optional :priority, Float, nil?: true
+
         # @!attribute product_id
         #
         #   @return [String, nil]
@@ -72,7 +79,7 @@ module MetronomeSDK
                  },
                  nil?: true
 
-        # @!method initialize(commit_id:, customer_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, invoice_contract_id: nil, invoice_schedule: nil, product_id: nil, specifiers: nil, request_options: {})
+        # @!method initialize(commit_id:, customer_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, invoice_contract_id: nil, invoice_schedule: nil, priority: nil, product_id: nil, specifiers: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::V2::ContractEditCommitParams} for more details.
         #
@@ -89,6 +96,8 @@ module MetronomeSDK
         #   @param invoice_contract_id [String] ID of contract to use for invoicing
         #
         #   @param invoice_schedule [MetronomeSDK::Models::V2::ContractEditCommitParams::InvoiceSchedule]
+        #
+        #   @param priority [Float, nil] If multiple commits are applicable, the one with the lower priority will apply f
         #
         #   @param product_id [String]
         #
