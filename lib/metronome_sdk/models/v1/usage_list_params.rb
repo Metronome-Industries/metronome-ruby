@@ -38,9 +38,7 @@ module MetronomeSDK
         #
         #   @return [Array<MetronomeSDK::Models::V1::UsageListParams::BillableMetric>, nil]
         optional :billable_metrics,
-                 -> {
-                   MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::UsageListParams::BillableMetric]
-                 }
+                 -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::UsageListParams::BillableMetric] }
 
         # @!attribute customer_ids
         #   A list of Metronome customer IDs to fetch usage for. If absent, usage for all

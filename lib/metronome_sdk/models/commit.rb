@@ -273,26 +273,18 @@ module MetronomeSDK
         module ChildAccess
           extend MetronomeSDK::Internal::Type::Union
 
-          variant -> {
-            MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll
-          }
+          variant -> { MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll }
 
-          variant -> {
-            MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone
-          }
+          variant -> { MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone }
 
-          variant -> {
-            MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs
-          }
+          variant -> { MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs }
 
           class CommitHierarchyChildAccessAll < MetronomeSDK::Internal::Type::BaseModel
             # @!attribute type
             #
             #   @return [Symbol, MetronomeSDK::Models::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type]
             required :type,
-                     enum: -> {
-                       MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type
-                     }
+                     enum: -> { MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type }
 
             # @!method initialize(type:)
             #   @param type [Symbol, MetronomeSDK::Models::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type]
@@ -313,9 +305,7 @@ module MetronomeSDK
             #
             #   @return [Symbol, MetronomeSDK::Models::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type]
             required :type,
-                     enum: -> {
-                       MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type
-                     }
+                     enum: -> { MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type }
 
             # @!method initialize(type:)
             #   @param type [Symbol, MetronomeSDK::Models::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type]
@@ -341,9 +331,7 @@ module MetronomeSDK
             #
             #   @return [Symbol, MetronomeSDK::Models::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type]
             required :type,
-                     enum: -> {
-                       MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type
-                     }
+                     enum: -> { MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type }
 
             # @!method initialize(contract_ids:, type:)
             #   @param contract_ids [Array<String>]
@@ -428,10 +416,7 @@ module MetronomeSDK
           # @!attribute type
           #
           #   @return [Symbol, MetronomeSDK::Models::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::Type]
-          required :type,
-                   enum: -> {
-                     MetronomeSDK::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::Type
-                   }
+          required :type, enum: -> { MetronomeSDK::Commit::Ledger::PrepaidCommitSegmentStartLedgerEntry::Type }
 
           # @!method initialize(amount:, segment_id:, timestamp:, type:)
           #   @param amount [Float]
@@ -475,9 +460,7 @@ module MetronomeSDK
           #
           #   @return [Symbol, MetronomeSDK::Models::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::Type]
           required :type,
-                   enum: -> {
-                     MetronomeSDK::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::Type
-                   }
+                   enum: -> { MetronomeSDK::Commit::Ledger::PrepaidCommitAutomatedInvoiceDeductionLedgerEntry::Type }
 
           # @!attribute contract_id
           #
@@ -705,9 +688,7 @@ module MetronomeSDK
           #
           #   @return [Symbol, MetronomeSDK::Models::Commit::Ledger::PrepaidCommitSeatBasedAdjustmentLedgerEntry::Type]
           required :type,
-                   enum: -> {
-                     MetronomeSDK::Commit::Ledger::PrepaidCommitSeatBasedAdjustmentLedgerEntry::Type
-                   }
+                   enum: -> { MetronomeSDK::Commit::Ledger::PrepaidCommitSeatBasedAdjustmentLedgerEntry::Type }
 
           # @!method initialize(amount:, segment_id:, timestamp:, type:)
           #   @param amount [Float]
@@ -740,10 +721,7 @@ module MetronomeSDK
           # @!attribute type
           #
           #   @return [Symbol, MetronomeSDK::Models::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::Type]
-          required :type,
-                   enum: -> {
-                     MetronomeSDK::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::Type
-                   }
+          required :type, enum: -> { MetronomeSDK::Commit::Ledger::PostpaidCommitInitialBalanceLedgerEntry::Type }
 
           # @!method initialize(amount:, timestamp:, type:)
           #   @param amount [Float]
@@ -786,9 +764,7 @@ module MetronomeSDK
           #
           #   @return [Symbol, MetronomeSDK::Models::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::Type]
           required :type,
-                   enum: -> {
-                     MetronomeSDK::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::Type
-                   }
+                   enum: -> { MetronomeSDK::Commit::Ledger::PostpaidCommitAutomatedInvoiceDeductionLedgerEntry::Type }
 
           # @!attribute contract_id
           #

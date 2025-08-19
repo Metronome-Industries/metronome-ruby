@@ -187,9 +187,7 @@ module MetronomeSDK
               #
               #   @return [Symbol, MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::CommitRate::RateType]
               required :rate_type,
-                       enum: -> {
-                         MetronomeSDK::V1::Contracts::RateCards::RateAddParams::CommitRate::RateType
-                       }
+                       enum: -> { MetronomeSDK::V1::Contracts::RateCards::RateAddParams::CommitRate::RateType }
 
               # @!attribute price
               #   Commit rate price. For FLAT rate_type, this must be >=0.
