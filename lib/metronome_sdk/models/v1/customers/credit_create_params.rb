@@ -95,9 +95,7 @@ module MetronomeSDK
           #
           #   @return [Array<MetronomeSDK::Models::V1::Customers::CreditCreateParams::Specifier>, nil]
           optional :specifiers,
-                   -> {
-                     MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::CreditCreateParams::Specifier]
-                   }
+                   -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::CreditCreateParams::Specifier] }
 
           # @!attribute uniqueness_key
           #   Prevents the creation of duplicates. If a request to create a commit or credit
@@ -149,9 +147,7 @@ module MetronomeSDK
             #
             #   @return [Array<MetronomeSDK::Models::V1::Customers::CreditCreateParams::AccessSchedule::ScheduleItem>]
             required :schedule_items,
-                     -> {
-                       MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::CreditCreateParams::AccessSchedule::ScheduleItem]
-                     }
+                     -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::CreditCreateParams::AccessSchedule::ScheduleItem] }
 
             # @!attribute credit_type_id
             #   Defaults to USD (cents) if not passed

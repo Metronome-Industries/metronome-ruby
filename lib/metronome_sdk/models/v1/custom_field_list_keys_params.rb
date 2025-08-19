@@ -19,9 +19,7 @@ module MetronomeSDK
         #
         #   @return [Array<Symbol, MetronomeSDK::Models::V1::CustomFieldListKeysParams::Entity>, nil]
         optional :entities,
-                 -> {
-                   MetronomeSDK::Internal::Type::ArrayOf[enum: MetronomeSDK::V1::CustomFieldListKeysParams::Entity]
-                 }
+                 -> { MetronomeSDK::Internal::Type::ArrayOf[enum: MetronomeSDK::V1::CustomFieldListKeysParams::Entity] }
 
         # @!method initialize(next_page: nil, entities: nil, request_options: {})
         #   @param next_page [String] Cursor that indicates where the next page of results should start.

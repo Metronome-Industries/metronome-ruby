@@ -55,8 +55,7 @@ module MetronomeSDK
         #   represents a set of properties used to slice events into distinct buckets.
         #
         #   @return [Array<Array<String>>, nil]
-        optional :group_keys,
-                 MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Internal::Type::ArrayOf[String]]
+        optional :group_keys, MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Internal::Type::ArrayOf[String]]
 
         # @!attribute property_filters
         #   A list of filters to match events to this billable metric. Each filter defines a

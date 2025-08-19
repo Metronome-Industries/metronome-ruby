@@ -9,10 +9,7 @@ module MetronomeSDK
           # @!attribute data
           #
           #   @return [Array<MetronomeSDK::Models::V1::Customers::CustomerAlert>]
-          required :data,
-                   -> {
-                     MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::CustomerAlert]
-                   }
+          required :data, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::CustomerAlert] }
 
           # @!attribute next_page
           #

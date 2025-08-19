@@ -52,10 +52,7 @@ module MetronomeSDK
             # @!attribute entries
             #
             #   @return [Array<MetronomeSDK::Models::V1::CreditLedgerEntry>]
-            required :entries,
-                     -> {
-                       MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::CreditLedgerEntry]
-                     }
+            required :entries, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::CreditLedgerEntry] }
 
             # @!attribute pending_entries
             #

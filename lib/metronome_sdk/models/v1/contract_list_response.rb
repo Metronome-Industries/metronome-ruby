@@ -165,10 +165,7 @@ module MetronomeSDK
             # @!attribute scheduled_charges
             #
             #   @return [Array<MetronomeSDK::Models::ScheduledCharge>]
-            required :scheduled_charges,
-                     -> {
-                       MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::ScheduledCharge]
-                     }
+            required :scheduled_charges, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::ScheduledCharge] }
 
             # @!attribute starting_at
             #
@@ -196,10 +193,7 @@ module MetronomeSDK
             #   This field's availability is dependent on your client's configuration.
             #
             #   @return [Array<MetronomeSDK::Models::ProService>, nil]
-            optional :professional_services,
-                     -> {
-                       MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::ProService]
-                     }
+            optional :professional_services, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::ProService] }
 
             # @!attribute reseller_royalties
             #   This field's availability is dependent on your client's configuration.
@@ -350,8 +344,7 @@ module MetronomeSDK
             #   to the billing provider.
             #
             #   @return [Hash{Symbol=>Object}, nil]
-            optional :configuration,
-                     MetronomeSDK::Internal::Type::HashOf[MetronomeSDK::Internal::Type::Unknown]
+            optional :configuration, MetronomeSDK::Internal::Type::HashOf[MetronomeSDK::Internal::Type::Unknown]
 
             # @!method initialize(billing_provider:, delivery_method:, id: nil, configuration: nil)
             #   Some parameter documentations has been truncated, see

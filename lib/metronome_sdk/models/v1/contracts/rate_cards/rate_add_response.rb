@@ -41,8 +41,7 @@ module MetronomeSDK
               #   processors.
               #
               #   @return [Hash{Symbol=>Object}, nil]
-              optional :custom_rate,
-                       MetronomeSDK::Internal::Type::HashOf[MetronomeSDK::Internal::Type::Unknown]
+              optional :custom_rate, MetronomeSDK::Internal::Type::HashOf[MetronomeSDK::Internal::Type::Unknown]
 
               # @!attribute is_prorated
               #   Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be

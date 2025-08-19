@@ -224,26 +224,18 @@ module MetronomeSDK
         module ChildAccess
           extend MetronomeSDK::Internal::Type::Union
 
-          variant -> {
-            MetronomeSDK::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll
-          }
+          variant -> { MetronomeSDK::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll }
 
-          variant -> {
-            MetronomeSDK::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone
-          }
+          variant -> { MetronomeSDK::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone }
 
-          variant -> {
-            MetronomeSDK::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs
-          }
+          variant -> { MetronomeSDK::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs }
 
           class CommitHierarchyChildAccessAll < MetronomeSDK::Internal::Type::BaseModel
             # @!attribute type
             #
             #   @return [Symbol, MetronomeSDK::Models::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type]
             required :type,
-                     enum: -> {
-                       MetronomeSDK::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type
-                     }
+                     enum: -> { MetronomeSDK::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type }
 
             # @!method initialize(type:)
             #   @param type [Symbol, MetronomeSDK::Models::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type]
@@ -264,9 +256,7 @@ module MetronomeSDK
             #
             #   @return [Symbol, MetronomeSDK::Models::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type]
             required :type,
-                     enum: -> {
-                       MetronomeSDK::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type
-                     }
+                     enum: -> { MetronomeSDK::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type }
 
             # @!method initialize(type:)
             #   @param type [Symbol, MetronomeSDK::Models::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type]
@@ -292,9 +282,7 @@ module MetronomeSDK
             #
             #   @return [Symbol, MetronomeSDK::Models::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type]
             required :type,
-                     enum: -> {
-                       MetronomeSDK::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type
-                     }
+                     enum: -> { MetronomeSDK::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type }
 
             # @!method initialize(contract_ids:, type:)
             #   @param contract_ids [Array<String>]
@@ -617,10 +605,7 @@ module MetronomeSDK
           # @!attribute type
           #
           #   @return [Symbol, MetronomeSDK::Models::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry::Type]
-          required :type,
-                   enum: -> {
-                     MetronomeSDK::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry::Type
-                   }
+          required :type, enum: -> { MetronomeSDK::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry::Type }
 
           # @!method initialize(amount:, segment_id:, timestamp:, type:)
           #   @param amount [Float]

@@ -33,10 +33,7 @@ module MetronomeSDK
         # @!attribute deductions
         #
         #   @return [Array<MetronomeSDK::Models::V1::CreditLedgerEntry>]
-        required :deductions,
-                 -> {
-                   MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::CreditLedgerEntry]
-                 }
+        required :deductions, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::CreditLedgerEntry] }
 
         # @!attribute effective_at
         #

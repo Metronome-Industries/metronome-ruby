@@ -40,9 +40,7 @@ module MetronomeSDK
             #
             #   @return [Array<MetronomeSDK::Models::V1::Contracts::RateCards::RateListParams::Selector>, nil]
             optional :selectors,
-                     -> {
-                       MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Contracts::RateCards::RateListParams::Selector]
-                     }
+                     -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Contracts::RateCards::RateListParams::Selector] }
 
             # @!method initialize(at:, rate_card_id:, limit: nil, next_page: nil, selectors: nil, request_options: {})
             #   Some parameter documentations has been truncated, see
@@ -68,9 +66,7 @@ module MetronomeSDK
               #
               #   @return [Symbol, MetronomeSDK::Models::V1::Contracts::RateCards::RateListParams::Selector::BillingFrequency, nil]
               optional :billing_frequency,
-                       enum: -> {
-                         MetronomeSDK::V1::Contracts::RateCards::RateListParams::Selector::BillingFrequency
-                       }
+                       enum: -> { MetronomeSDK::V1::Contracts::RateCards::RateListParams::Selector::BillingFrequency }
 
               # @!attribute partial_pricing_group_values
               #   List of pricing group key value pairs, rates containing the matching key / value

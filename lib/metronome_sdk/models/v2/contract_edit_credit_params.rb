@@ -93,25 +93,19 @@ module MetronomeSDK
           #
           #   @return [Array<MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule::AddScheduleItem>, nil]
           optional :add_schedule_items,
-                   -> {
-                     MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V2::ContractEditCreditParams::AccessSchedule::AddScheduleItem]
-                   }
+                   -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V2::ContractEditCreditParams::AccessSchedule::AddScheduleItem] }
 
           # @!attribute remove_schedule_items
           #
           #   @return [Array<MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule::RemoveScheduleItem>, nil]
           optional :remove_schedule_items,
-                   -> {
-                     MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V2::ContractEditCreditParams::AccessSchedule::RemoveScheduleItem]
-                   }
+                   -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V2::ContractEditCreditParams::AccessSchedule::RemoveScheduleItem] }
 
           # @!attribute update_schedule_items
           #
           #   @return [Array<MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule::UpdateScheduleItem>, nil]
           optional :update_schedule_items,
-                   -> {
-                     MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V2::ContractEditCreditParams::AccessSchedule::UpdateScheduleItem]
-                   }
+                   -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V2::ContractEditCreditParams::AccessSchedule::UpdateScheduleItem] }
 
           # @!method initialize(add_schedule_items: nil, remove_schedule_items: nil, update_schedule_items: nil)
           #   @param add_schedule_items [Array<MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule::AddScheduleItem>]
