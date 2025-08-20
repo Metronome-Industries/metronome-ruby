@@ -203,8 +203,8 @@ module MetronomeSDK
 
         # @!attribute usage_filter
         #
-        #   @return [MetronomeSDK::Models::BaseUsageFilter, nil]
-        optional :usage_filter, -> { MetronomeSDK::BaseUsageFilter }
+        #   @return [MetronomeSDK::Models::V1::ContractCreateParams::UsageFilter, nil]
+        optional :usage_filter, -> { MetronomeSDK::V1::ContractCreateParams::UsageFilter }
 
         # @!attribute usage_statement_schedule
         #
@@ -275,7 +275,7 @@ module MetronomeSDK
         #
         #   @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a record is made wit
         #
-        #   @param usage_filter [MetronomeSDK::Models::BaseUsageFilter]
+        #   @param usage_filter [MetronomeSDK::Models::V1::ContractCreateParams::UsageFilter]
         #
         #   @param usage_statement_schedule [MetronomeSDK::Models::V1::ContractCreateParams::UsageStatementSchedule]
         #
@@ -576,36 +576,36 @@ module MetronomeSDK
           class HierarchyConfiguration < MetronomeSDK::Internal::Type::BaseModel
             # @!attribute child_access
             #
-            #   @return [MetronomeSDK::Models::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs]
+            #   @return [MetronomeSDK::Models::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::Type, MetronomeSDK::Models::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::UnionMember2]
             required :child_access,
                      union: -> { MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess }
 
             # @!method initialize(child_access:)
             #   Optional configuration for commit hierarchy access control
             #
-            #   @param child_access [MetronomeSDK::Models::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs]
+            #   @param child_access [MetronomeSDK::Models::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::Type, MetronomeSDK::Models::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::UnionMember2]
 
             # @see MetronomeSDK::Models::V1::ContractCreateParams::Commit::HierarchyConfiguration#child_access
             module ChildAccess
               extend MetronomeSDK::Internal::Type::Union
 
-              variant -> { MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll }
+              variant -> { MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::Type }
 
-              variant -> { MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone }
+              variant -> { MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::Type }
 
-              variant -> { MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs }
+              variant -> { MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::UnionMember2 }
 
-              class CommitHierarchyChildAccessAll < MetronomeSDK::Internal::Type::BaseModel
+              class Type < MetronomeSDK::Internal::Type::BaseModel
                 # @!attribute type
                 #
-                #   @return [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type]
+                #   @return [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::Type::Type]
                 required :type,
-                         enum: -> { MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type }
+                         enum: -> { MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::Type::Type }
 
                 # @!method initialize(type:)
-                #   @param type [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type]
+                #   @param type [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::Type::Type]
 
-                # @see MetronomeSDK::Models::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll#type
+                # @see MetronomeSDK::Models::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::Type#type
                 module Type
                   extend MetronomeSDK::Internal::Type::Enum
 
@@ -616,28 +616,7 @@ module MetronomeSDK
                 end
               end
 
-              class CommitHierarchyChildAccessNone < MetronomeSDK::Internal::Type::BaseModel
-                # @!attribute type
-                #
-                #   @return [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type]
-                required :type,
-                         enum: -> { MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type }
-
-                # @!method initialize(type:)
-                #   @param type [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type]
-
-                # @see MetronomeSDK::Models::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone#type
-                module Type
-                  extend MetronomeSDK::Internal::Type::Enum
-
-                  NONE = :NONE
-
-                  # @!method self.values
-                  #   @return [Array<Symbol>]
-                end
-              end
-
-              class CommitHierarchyChildAccessContractIDs < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember2 < MetronomeSDK::Internal::Type::BaseModel
                 # @!attribute contract_ids
                 #
                 #   @return [Array<String>]
@@ -645,15 +624,15 @@ module MetronomeSDK
 
                 # @!attribute type
                 #
-                #   @return [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type]
+                #   @return [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::UnionMember2::Type]
                 required :type,
-                         enum: -> { MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type }
+                         enum: -> { MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::UnionMember2::Type }
 
                 # @!method initialize(contract_ids:, type:)
                 #   @param contract_ids [Array<String>]
-                #   @param type [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type]
+                #   @param type [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::UnionMember2::Type]
 
-                # @see MetronomeSDK::Models::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs#type
+                # @see MetronomeSDK::Models::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::UnionMember2#type
                 module Type
                   extend MetronomeSDK::Internal::Type::Enum
 
@@ -665,7 +644,7 @@ module MetronomeSDK
               end
 
               # @!method self.variants
-              #   @return [Array(MetronomeSDK::Models::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs)]
+              #   @return [Array(MetronomeSDK::Models::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::Type, MetronomeSDK::Models::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::Type, MetronomeSDK::Models::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::UnionMember2)]
             end
           end
 
@@ -1240,36 +1219,36 @@ module MetronomeSDK
           class HierarchyConfiguration < MetronomeSDK::Internal::Type::BaseModel
             # @!attribute child_access
             #
-            #   @return [MetronomeSDK::Models::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs]
+            #   @return [MetronomeSDK::Models::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::Type, MetronomeSDK::Models::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::UnionMember2]
             required :child_access,
                      union: -> { MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess }
 
             # @!method initialize(child_access:)
             #   Optional configuration for credit hierarchy access control
             #
-            #   @param child_access [MetronomeSDK::Models::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs]
+            #   @param child_access [MetronomeSDK::Models::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::Type, MetronomeSDK::Models::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::UnionMember2]
 
             # @see MetronomeSDK::Models::V1::ContractCreateParams::Credit::HierarchyConfiguration#child_access
             module ChildAccess
               extend MetronomeSDK::Internal::Type::Union
 
-              variant -> { MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll }
+              variant -> { MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::Type }
 
-              variant -> { MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone }
+              variant -> { MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::Type }
 
-              variant -> { MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs }
+              variant -> { MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::UnionMember2 }
 
-              class CommitHierarchyChildAccessAll < MetronomeSDK::Internal::Type::BaseModel
+              class Type < MetronomeSDK::Internal::Type::BaseModel
                 # @!attribute type
                 #
-                #   @return [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type]
+                #   @return [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::Type::Type]
                 required :type,
-                         enum: -> { MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type }
+                         enum: -> { MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::Type::Type }
 
                 # @!method initialize(type:)
-                #   @param type [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type]
+                #   @param type [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::Type::Type]
 
-                # @see MetronomeSDK::Models::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll#type
+                # @see MetronomeSDK::Models::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::Type#type
                 module Type
                   extend MetronomeSDK::Internal::Type::Enum
 
@@ -1280,28 +1259,7 @@ module MetronomeSDK
                 end
               end
 
-              class CommitHierarchyChildAccessNone < MetronomeSDK::Internal::Type::BaseModel
-                # @!attribute type
-                #
-                #   @return [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type]
-                required :type,
-                         enum: -> { MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type }
-
-                # @!method initialize(type:)
-                #   @param type [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type]
-
-                # @see MetronomeSDK::Models::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone#type
-                module Type
-                  extend MetronomeSDK::Internal::Type::Enum
-
-                  NONE = :NONE
-
-                  # @!method self.values
-                  #   @return [Array<Symbol>]
-                end
-              end
-
-              class CommitHierarchyChildAccessContractIDs < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember2 < MetronomeSDK::Internal::Type::BaseModel
                 # @!attribute contract_ids
                 #
                 #   @return [Array<String>]
@@ -1309,15 +1267,15 @@ module MetronomeSDK
 
                 # @!attribute type
                 #
-                #   @return [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type]
+                #   @return [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::UnionMember2::Type]
                 required :type,
-                         enum: -> { MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type }
+                         enum: -> { MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::UnionMember2::Type }
 
                 # @!method initialize(contract_ids:, type:)
                 #   @param contract_ids [Array<String>]
-                #   @param type [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type]
+                #   @param type [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::UnionMember2::Type]
 
-                # @see MetronomeSDK::Models::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs#type
+                # @see MetronomeSDK::Models::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::UnionMember2#type
                 module Type
                   extend MetronomeSDK::Internal::Type::Enum
 
@@ -1329,7 +1287,7 @@ module MetronomeSDK
               end
 
               # @!method self.variants
-              #   @return [Array(MetronomeSDK::Models::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs)]
+              #   @return [Array(MetronomeSDK::Models::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::Type, MetronomeSDK::Models::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::Type, MetronomeSDK::Models::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::UnionMember2)]
             end
           end
 
@@ -1916,8 +1874,9 @@ module MetronomeSDK
             # @!attribute tiers
             #   Only set for TIERED rate_type.
             #
-            #   @return [Array<MetronomeSDK::Models::Tier>, nil]
-            optional :tiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Tier] }
+            #   @return [Array<MetronomeSDK::Models::V1::ContractCreateParams::Override::OverwriteRate::Tier>, nil]
+            optional :tiers,
+                     -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractCreateParams::Override::OverwriteRate::Tier] }
 
             # @!method initialize(rate_type:, credit_type_id: nil, custom_rate: nil, is_prorated: nil, price: nil, quantity: nil, tiers: nil)
             #   Some parameter documentations has been truncated, see
@@ -1938,7 +1897,7 @@ module MetronomeSDK
             #
             #   @param quantity [Float] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
             #
-            #   @param tiers [Array<MetronomeSDK::Models::Tier>] Only set for TIERED rate_type.
+            #   @param tiers [Array<MetronomeSDK::Models::V1::ContractCreateParams::Override::OverwriteRate::Tier>] Only set for TIERED rate_type.
 
             # @see MetronomeSDK::Models::V1::ContractCreateParams::Override::OverwriteRate#rate_type
             module RateType
@@ -1952,6 +1911,22 @@ module MetronomeSDK
 
               # @!method self.values
               #   @return [Array<Symbol>]
+            end
+
+            class Tier < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute price
+              #
+              #   @return [Float]
+              required :price, Float
+
+              # @!attribute size
+              #
+              #   @return [Float, nil]
+              optional :size, Float
+
+              # @!method initialize(price:, size: nil)
+              #   @param price [Float]
+              #   @param size [Float]
             end
           end
 
@@ -2627,36 +2602,36 @@ module MetronomeSDK
           class HierarchyConfiguration < MetronomeSDK::Internal::Type::BaseModel
             # @!attribute child_access
             #
-            #   @return [MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs]
+            #   @return [MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::Type, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::UnionMember2]
             required :child_access,
                      union: -> { MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess }
 
             # @!method initialize(child_access:)
             #   Optional configuration for recurring commit/credit hierarchy access control
             #
-            #   @param child_access [MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs]
+            #   @param child_access [MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::Type, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::UnionMember2]
 
             # @see MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration#child_access
             module ChildAccess
               extend MetronomeSDK::Internal::Type::Union
 
-              variant -> { MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll }
+              variant -> { MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::Type }
 
-              variant -> { MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone }
+              variant -> { MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::Type }
 
-              variant -> { MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs }
+              variant -> { MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::UnionMember2 }
 
-              class CommitHierarchyChildAccessAll < MetronomeSDK::Internal::Type::BaseModel
+              class Type < MetronomeSDK::Internal::Type::BaseModel
                 # @!attribute type
                 #
-                #   @return [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type]
+                #   @return [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::Type::Type]
                 required :type,
-                         enum: -> { MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type }
+                         enum: -> { MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::Type::Type }
 
                 # @!method initialize(type:)
-                #   @param type [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type]
+                #   @param type [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::Type::Type]
 
-                # @see MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll#type
+                # @see MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::Type#type
                 module Type
                   extend MetronomeSDK::Internal::Type::Enum
 
@@ -2667,28 +2642,7 @@ module MetronomeSDK
                 end
               end
 
-              class CommitHierarchyChildAccessNone < MetronomeSDK::Internal::Type::BaseModel
-                # @!attribute type
-                #
-                #   @return [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type]
-                required :type,
-                         enum: -> { MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type }
-
-                # @!method initialize(type:)
-                #   @param type [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type]
-
-                # @see MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone#type
-                module Type
-                  extend MetronomeSDK::Internal::Type::Enum
-
-                  NONE = :NONE
-
-                  # @!method self.values
-                  #   @return [Array<Symbol>]
-                end
-              end
-
-              class CommitHierarchyChildAccessContractIDs < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember2 < MetronomeSDK::Internal::Type::BaseModel
                 # @!attribute contract_ids
                 #
                 #   @return [Array<String>]
@@ -2696,15 +2650,15 @@ module MetronomeSDK
 
                 # @!attribute type
                 #
-                #   @return [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type]
+                #   @return [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::UnionMember2::Type]
                 required :type,
-                         enum: -> { MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type }
+                         enum: -> { MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::UnionMember2::Type }
 
                 # @!method initialize(contract_ids:, type:)
                 #   @param contract_ids [Array<String>]
-                #   @param type [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type]
+                #   @param type [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::UnionMember2::Type]
 
-                # @see MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs#type
+                # @see MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::UnionMember2#type
                 module Type
                   extend MetronomeSDK::Internal::Type::Enum
 
@@ -2716,7 +2670,7 @@ module MetronomeSDK
               end
 
               # @!method self.variants
-              #   @return [Array(MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs)]
+              #   @return [Array(MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::Type, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::Type, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::UnionMember2)]
             end
           end
 
@@ -3129,36 +3083,36 @@ module MetronomeSDK
           class HierarchyConfiguration < MetronomeSDK::Internal::Type::BaseModel
             # @!attribute child_access
             #
-            #   @return [MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs]
+            #   @return [MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::Type, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::UnionMember2]
             required :child_access,
                      union: -> { MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess }
 
             # @!method initialize(child_access:)
             #   Optional configuration for recurring commit/credit hierarchy access control
             #
-            #   @param child_access [MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs]
+            #   @param child_access [MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::Type, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::UnionMember2]
 
             # @see MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration#child_access
             module ChildAccess
               extend MetronomeSDK::Internal::Type::Union
 
-              variant -> { MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll }
+              variant -> { MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::Type }
 
-              variant -> { MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone }
+              variant -> { MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::Type }
 
-              variant -> { MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs }
+              variant -> { MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::UnionMember2 }
 
-              class CommitHierarchyChildAccessAll < MetronomeSDK::Internal::Type::BaseModel
+              class Type < MetronomeSDK::Internal::Type::BaseModel
                 # @!attribute type
                 #
-                #   @return [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type]
+                #   @return [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::Type::Type]
                 required :type,
-                         enum: -> { MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type }
+                         enum: -> { MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::Type::Type }
 
                 # @!method initialize(type:)
-                #   @param type [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type]
+                #   @param type [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::Type::Type]
 
-                # @see MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll#type
+                # @see MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::Type#type
                 module Type
                   extend MetronomeSDK::Internal::Type::Enum
 
@@ -3169,28 +3123,7 @@ module MetronomeSDK
                 end
               end
 
-              class CommitHierarchyChildAccessNone < MetronomeSDK::Internal::Type::BaseModel
-                # @!attribute type
-                #
-                #   @return [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type]
-                required :type,
-                         enum: -> { MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type }
-
-                # @!method initialize(type:)
-                #   @param type [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type]
-
-                # @see MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone#type
-                module Type
-                  extend MetronomeSDK::Internal::Type::Enum
-
-                  NONE = :NONE
-
-                  # @!method self.values
-                  #   @return [Array<Symbol>]
-                end
-              end
-
-              class CommitHierarchyChildAccessContractIDs < MetronomeSDK::Internal::Type::BaseModel
+              class UnionMember2 < MetronomeSDK::Internal::Type::BaseModel
                 # @!attribute contract_ids
                 #
                 #   @return [Array<String>]
@@ -3198,15 +3131,15 @@ module MetronomeSDK
 
                 # @!attribute type
                 #
-                #   @return [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type]
+                #   @return [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::UnionMember2::Type]
                 required :type,
-                         enum: -> { MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type }
+                         enum: -> { MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::UnionMember2::Type }
 
                 # @!method initialize(contract_ids:, type:)
                 #   @param contract_ids [Array<String>]
-                #   @param type [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type]
+                #   @param type [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::UnionMember2::Type]
 
-                # @see MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs#type
+                # @see MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::UnionMember2#type
                 module Type
                   extend MetronomeSDK::Internal::Type::Enum
 
@@ -3218,7 +3151,7 @@ module MetronomeSDK
               end
 
               # @!method self.variants
-              #   @return [Array(MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs)]
+              #   @return [Array(MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::Type, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::Type, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::UnionMember2)]
             end
           end
 
@@ -4220,6 +4153,28 @@ module MetronomeSDK
               #   @return [Array<Symbol>]
             end
           end
+        end
+
+        class UsageFilter < MetronomeSDK::Internal::Type::BaseModel
+          # @!attribute group_key
+          #
+          #   @return [String]
+          required :group_key, String
+
+          # @!attribute group_values
+          #
+          #   @return [Array<String>]
+          required :group_values, MetronomeSDK::Internal::Type::ArrayOf[String]
+
+          # @!attribute starting_at
+          #
+          #   @return [Time, nil]
+          optional :starting_at, Time
+
+          # @!method initialize(group_key:, group_values:, starting_at: nil)
+          #   @param group_key [String]
+          #   @param group_values [Array<String>]
+          #   @param starting_at [Time]
         end
 
         class UsageStatementSchedule < MetronomeSDK::Internal::Type::BaseModel

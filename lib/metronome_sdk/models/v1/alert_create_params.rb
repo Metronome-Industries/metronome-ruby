@@ -202,10 +202,10 @@ module MetronomeSDK
 
           # @!attribute value
           #
-          #   @return [String]
-          required :value, String
+          #   @return [String, nil]
+          optional :value, String
 
-          # @!method initialize(key:, value:)
+          # @!method initialize(key:, value: nil)
           #   @param key [String]
           #   @param value [String]
         end
