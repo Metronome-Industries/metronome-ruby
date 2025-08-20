@@ -1,0 +1,52 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type credit_ledger_entry =
+        {
+          amount: Float,
+          created_by: String,
+          credit_grant_id: String,
+          effective_at: Time,
+          reason: String,
+          running_balance: Float,
+          invoice_id: String?
+        }
+
+      class CreditLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor amount: Float
+
+        attr_accessor created_by: String
+
+        attr_accessor credit_grant_id: String
+
+        attr_accessor effective_at: Time
+
+        attr_accessor reason: String
+
+        attr_accessor running_balance: Float
+
+        attr_accessor invoice_id: String?
+
+        def initialize: (
+          amount: Float,
+          created_by: String,
+          credit_grant_id: String,
+          effective_at: Time,
+          reason: String,
+          running_balance: Float,
+          ?invoice_id: String?
+        ) -> void
+
+        def to_hash: -> {
+          amount: Float,
+          created_by: String,
+          credit_grant_id: String,
+          effective_at: Time,
+          reason: String,
+          running_balance: Float,
+          invoice_id: String?
+        }
+      end
+    end
+  end
+end

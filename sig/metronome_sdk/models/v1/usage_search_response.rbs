@@ -86,11 +86,11 @@ module MetronomeSDK
             aggregation_type: MetronomeSDK::Models::V1::UsageSearchResponseItem::MatchedBillableMetric::aggregation_type,
             archived_at: Time,
             custom_fields: ::Hash[Symbol, String],
-            event_type_filter: MetronomeSDK::Models::V1::UsageSearchResponseItem::MatchedBillableMetric::EventTypeFilter,
+            event_type_filter: MetronomeSDK::EventTypeFilter,
             filter: ::Hash[Symbol, top],
             group_by: ::Array[String],
             group_keys: ::Array[::Array[String]],
-            property_filters: ::Array[MetronomeSDK::Models::V1::UsageSearchResponseItem::MatchedBillableMetric::PropertyFilter],
+            property_filters: ::Array[MetronomeSDK::PropertyFilter],
             sql: String
           }
 
@@ -125,11 +125,11 @@ module MetronomeSDK
 
           def custom_fields=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
 
-          attr_reader event_type_filter: MetronomeSDK::Models::V1::UsageSearchResponseItem::MatchedBillableMetric::EventTypeFilter?
+          attr_reader event_type_filter: MetronomeSDK::EventTypeFilter?
 
           def event_type_filter=: (
-            MetronomeSDK::Models::V1::UsageSearchResponseItem::MatchedBillableMetric::EventTypeFilter
-          ) -> MetronomeSDK::Models::V1::UsageSearchResponseItem::MatchedBillableMetric::EventTypeFilter
+            MetronomeSDK::EventTypeFilter
+          ) -> MetronomeSDK::EventTypeFilter
 
           attr_reader filter: ::Hash[Symbol, top]?
 
@@ -145,11 +145,11 @@ module MetronomeSDK
             ::Array[::Array[String]]
           ) -> ::Array[::Array[String]]
 
-          attr_reader property_filters: ::Array[MetronomeSDK::Models::V1::UsageSearchResponseItem::MatchedBillableMetric::PropertyFilter]?
+          attr_reader property_filters: ::Array[MetronomeSDK::PropertyFilter]?
 
           def property_filters=: (
-            ::Array[MetronomeSDK::Models::V1::UsageSearchResponseItem::MatchedBillableMetric::PropertyFilter]
-          ) -> ::Array[MetronomeSDK::Models::V1::UsageSearchResponseItem::MatchedBillableMetric::PropertyFilter]
+            ::Array[MetronomeSDK::PropertyFilter]
+          ) -> ::Array[MetronomeSDK::PropertyFilter]
 
           attr_reader sql: String?
 
@@ -164,11 +164,11 @@ module MetronomeSDK
             ?aggregation_type: MetronomeSDK::Models::V1::UsageSearchResponseItem::MatchedBillableMetric::aggregation_type,
             ?archived_at: Time,
             ?custom_fields: ::Hash[Symbol, String],
-            ?event_type_filter: MetronomeSDK::Models::V1::UsageSearchResponseItem::MatchedBillableMetric::EventTypeFilter,
+            ?event_type_filter: MetronomeSDK::EventTypeFilter,
             ?filter: ::Hash[Symbol, top],
             ?group_by: ::Array[String],
             ?group_keys: ::Array[::Array[String]],
-            ?property_filters: ::Array[MetronomeSDK::Models::V1::UsageSearchResponseItem::MatchedBillableMetric::PropertyFilter],
+            ?property_filters: ::Array[MetronomeSDK::PropertyFilter],
             ?sql: String
           ) -> void
 
@@ -181,11 +181,11 @@ module MetronomeSDK
             aggregation_type: MetronomeSDK::Models::V1::UsageSearchResponseItem::MatchedBillableMetric::aggregation_type,
             archived_at: Time,
             custom_fields: ::Hash[Symbol, String],
-            event_type_filter: MetronomeSDK::Models::V1::UsageSearchResponseItem::MatchedBillableMetric::EventTypeFilter,
+            event_type_filter: MetronomeSDK::EventTypeFilter,
             filter: ::Hash[Symbol, top],
             group_by: ::Array[String],
             group_keys: ::Array[::Array[String]],
-            property_filters: ::Array[MetronomeSDK::Models::V1::UsageSearchResponseItem::MatchedBillableMetric::PropertyFilter],
+            property_filters: ::Array[MetronomeSDK::PropertyFilter],
             sql: String
           }
 
@@ -201,67 +201,6 @@ module MetronomeSDK
             UNIQUE: :UNIQUE
 
             def self?.values: -> ::Array[MetronomeSDK::Models::V1::UsageSearchResponseItem::MatchedBillableMetric::aggregation_type]
-          end
-
-          type event_type_filter =
-            { in_values: ::Array[String], not_in_values: ::Array[String] }
-
-          class EventTypeFilter < MetronomeSDK::Internal::Type::BaseModel
-            attr_reader in_values: ::Array[String]?
-
-            def in_values=: (::Array[String]) -> ::Array[String]
-
-            attr_reader not_in_values: ::Array[String]?
-
-            def not_in_values=: (::Array[String]) -> ::Array[String]
-
-            def initialize: (
-              ?in_values: ::Array[String],
-              ?not_in_values: ::Array[String]
-            ) -> void
-
-            def to_hash: -> {
-              in_values: ::Array[String],
-              not_in_values: ::Array[String]
-            }
-          end
-
-          type property_filter =
-            {
-              name: String,
-              exists: bool,
-              in_values: ::Array[String],
-              not_in_values: ::Array[String]
-            }
-
-          class PropertyFilter < MetronomeSDK::Internal::Type::BaseModel
-            attr_accessor name: String
-
-            attr_reader exists: bool?
-
-            def exists=: (bool) -> bool
-
-            attr_reader in_values: ::Array[String]?
-
-            def in_values=: (::Array[String]) -> ::Array[String]
-
-            attr_reader not_in_values: ::Array[String]?
-
-            def not_in_values=: (::Array[String]) -> ::Array[String]
-
-            def initialize: (
-              name: String,
-              ?exists: bool,
-              ?in_values: ::Array[String],
-              ?not_in_values: ::Array[String]
-            ) -> void
-
-            def to_hash: -> {
-              name: String,
-              exists: bool,
-              in_values: ::Array[String],
-              not_in_values: ::Array[String]
-            }
           end
         end
 

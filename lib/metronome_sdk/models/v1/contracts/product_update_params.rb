@@ -104,10 +104,8 @@ module MetronomeSDK
           #   GB. In this case, the conversion factor would be 1024 and the operation would be
           #   "divide".
           #
-          #   @return [MetronomeSDK::Models::V1::Contracts::ProductUpdateParams::QuantityConversion, nil]
-          optional :quantity_conversion,
-                   -> { MetronomeSDK::V1::Contracts::ProductUpdateParams::QuantityConversion },
-                   nil?: true
+          #   @return [MetronomeSDK::Models::V1::Contracts::QuantityConversion, nil]
+          optional :quantity_conversion, -> { MetronomeSDK::V1::Contracts::QuantityConversion }, nil?: true
 
           # @!attribute quantity_rounding
           #   Optional. Only valid for USAGE products. If provided, the quantity will be
@@ -115,10 +113,8 @@ module MetronomeSDK
           #   the method is "round up" and the decimal places is 0, then the quantity will be
           #   rounded up to the nearest integer.
           #
-          #   @return [MetronomeSDK::Models::V1::Contracts::ProductUpdateParams::QuantityRounding, nil]
-          optional :quantity_rounding,
-                   -> { MetronomeSDK::V1::Contracts::ProductUpdateParams::QuantityRounding },
-                   nil?: true
+          #   @return [MetronomeSDK::Models::V1::Contracts::QuantityRounding, nil]
+          optional :quantity_rounding, -> { MetronomeSDK::V1::Contracts::QuantityRounding }, nil?: true
 
           # @!attribute tags
           #   If not provided, defaults to product's current tags
@@ -154,96 +150,13 @@ module MetronomeSDK
           #
           #   @param pricing_group_key [Array<String>] For USAGE products only. If set, pricing for this product will be determined for
           #
-          #   @param quantity_conversion [MetronomeSDK::Models::V1::Contracts::ProductUpdateParams::QuantityConversion, nil] Optional. Only valid for USAGE products. If provided, the quantity will be conve
+          #   @param quantity_conversion [MetronomeSDK::Models::V1::Contracts::QuantityConversion, nil] Optional. Only valid for USAGE products. If provided, the quantity will be conve
           #
-          #   @param quantity_rounding [MetronomeSDK::Models::V1::Contracts::ProductUpdateParams::QuantityRounding, nil] Optional. Only valid for USAGE products. If provided, the quantity will be round
+          #   @param quantity_rounding [MetronomeSDK::Models::V1::Contracts::QuantityRounding, nil] Optional. Only valid for USAGE products. If provided, the quantity will be round
           #
           #   @param tags [Array<String>] If not provided, defaults to product's current tags
           #
           #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
-
-          class QuantityConversion < MetronomeSDK::Internal::Type::BaseModel
-            # @!attribute conversion_factor
-            #   The factor to multiply or divide the quantity by.
-            #
-            #   @return [Float]
-            required :conversion_factor, Float
-
-            # @!attribute operation
-            #   The operation to perform on the quantity
-            #
-            #   @return [Symbol, MetronomeSDK::Models::V1::Contracts::ProductUpdateParams::QuantityConversion::Operation]
-            required :operation,
-                     enum: -> { MetronomeSDK::V1::Contracts::ProductUpdateParams::QuantityConversion::Operation }
-
-            # @!attribute name
-            #   Optional name for this conversion.
-            #
-            #   @return [String, nil]
-            optional :name, String
-
-            # @!method initialize(conversion_factor:, operation:, name: nil)
-            #   Optional. Only valid for USAGE products. If provided, the quantity will be
-            #   converted using the provided conversion factor and operation. For example, if
-            #   the operation is "multiply" and the conversion factor is 100, then the quantity
-            #   will be multiplied by 100. This can be used in cases where data is sent in one
-            #   unit and priced in another. For example, data could be sent in MB and priced in
-            #   GB. In this case, the conversion factor would be 1024 and the operation would be
-            #   "divide".
-            #
-            #   @param conversion_factor [Float] The factor to multiply or divide the quantity by.
-            #
-            #   @param operation [Symbol, MetronomeSDK::Models::V1::Contracts::ProductUpdateParams::QuantityConversion::Operation] The operation to perform on the quantity
-            #
-            #   @param name [String] Optional name for this conversion.
-
-            # The operation to perform on the quantity
-            #
-            # @see MetronomeSDK::Models::V1::Contracts::ProductUpdateParams::QuantityConversion#operation
-            module Operation
-              extend MetronomeSDK::Internal::Type::Enum
-
-              MULTIPLY = :MULTIPLY
-              DIVIDE = :DIVIDE
-
-              # @!method self.values
-              #   @return [Array<Symbol>]
-            end
-          end
-
-          class QuantityRounding < MetronomeSDK::Internal::Type::BaseModel
-            # @!attribute decimal_places
-            #
-            #   @return [Float]
-            required :decimal_places, Float
-
-            # @!attribute rounding_method
-            #
-            #   @return [Symbol, MetronomeSDK::Models::V1::Contracts::ProductUpdateParams::QuantityRounding::RoundingMethod]
-            required :rounding_method,
-                     enum: -> { MetronomeSDK::V1::Contracts::ProductUpdateParams::QuantityRounding::RoundingMethod }
-
-            # @!method initialize(decimal_places:, rounding_method:)
-            #   Optional. Only valid for USAGE products. If provided, the quantity will be
-            #   rounded using the provided rounding method and decimal places. For example, if
-            #   the method is "round up" and the decimal places is 0, then the quantity will be
-            #   rounded up to the nearest integer.
-            #
-            #   @param decimal_places [Float]
-            #   @param rounding_method [Symbol, MetronomeSDK::Models::V1::Contracts::ProductUpdateParams::QuantityRounding::RoundingMethod]
-
-            # @see MetronomeSDK::Models::V1::Contracts::ProductUpdateParams::QuantityRounding#rounding_method
-            module RoundingMethod
-              extend MetronomeSDK::Internal::Type::Enum
-
-              ROUND_UP = :ROUND_UP
-              ROUND_DOWN = :ROUND_DOWN
-              ROUND_HALF_UP = :ROUND_HALF_UP
-
-              # @!method self.values
-              #   @return [Array<Symbol>]
-            end
-          end
         end
       end
     end

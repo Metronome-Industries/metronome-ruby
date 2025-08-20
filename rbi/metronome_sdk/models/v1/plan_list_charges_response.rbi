@@ -22,17 +22,10 @@ module MetronomeSDK
         end
         attr_accessor :charge_type
 
-        sig do
-          returns(MetronomeSDK::Models::V1::PlanListChargesResponse::CreditType)
-        end
+        sig { returns(MetronomeSDK::CreditTypeData) }
         attr_reader :credit_type
 
-        sig do
-          params(
-            credit_type:
-              MetronomeSDK::Models::V1::PlanListChargesResponse::CreditType::OrHash
-          ).void
-        end
+        sig { params(credit_type: MetronomeSDK::CreditTypeData::OrHash).void }
         attr_writer :credit_type
 
         sig { returns(T::Hash[Symbol, String]) }
@@ -99,8 +92,7 @@ module MetronomeSDK
             id: String,
             charge_type:
               MetronomeSDK::Models::V1::PlanListChargesResponse::ChargeType::OrSymbol,
-            credit_type:
-              MetronomeSDK::Models::V1::PlanListChargesResponse::CreditType::OrHash,
+            credit_type: MetronomeSDK::CreditTypeData::OrHash,
             custom_fields: T::Hash[Symbol, String],
             name: String,
             prices:
@@ -143,8 +135,7 @@ module MetronomeSDK
               id: String,
               charge_type:
                 MetronomeSDK::Models::V1::PlanListChargesResponse::ChargeType::TaggedSymbol,
-              credit_type:
-                MetronomeSDK::Models::V1::PlanListChargesResponse::CreditType,
+              credit_type: MetronomeSDK::CreditTypeData,
               custom_fields: T::Hash[Symbol, String],
               name: String,
               prices:
@@ -210,30 +201,6 @@ module MetronomeSDK
             )
           end
           def self.values
-          end
-        end
-
-        class CreditType < MetronomeSDK::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                MetronomeSDK::Models::V1::PlanListChargesResponse::CreditType,
-                MetronomeSDK::Internal::AnyHash
-              )
-            end
-
-          sig { returns(String) }
-          attr_accessor :id
-
-          sig { returns(String) }
-          attr_accessor :name
-
-          sig { params(id: String, name: String).returns(T.attached_class) }
-          def self.new(id:, name:)
-          end
-
-          sig { override.returns({ id: String, name: String }) }
-          def to_hash
           end
         end
 

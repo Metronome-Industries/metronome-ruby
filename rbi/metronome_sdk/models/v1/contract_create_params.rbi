@@ -410,19 +410,10 @@ module MetronomeSDK
         sig { params(uniqueness_key: String).void }
         attr_writer :uniqueness_key
 
-        sig do
-          returns(
-            T.nilable(MetronomeSDK::V1::ContractCreateParams::UsageFilter)
-          )
-        end
+        sig { returns(T.nilable(MetronomeSDK::BaseUsageFilter)) }
         attr_reader :usage_filter
 
-        sig do
-          params(
-            usage_filter:
-              MetronomeSDK::V1::ContractCreateParams::UsageFilter::OrHash
-          ).void
-        end
+        sig { params(usage_filter: MetronomeSDK::BaseUsageFilter::OrHash).void }
         attr_writer :usage_filter
 
         sig do
@@ -507,8 +498,7 @@ module MetronomeSDK
             transition:
               MetronomeSDK::V1::ContractCreateParams::Transition::OrHash,
             uniqueness_key: String,
-            usage_filter:
-              MetronomeSDK::V1::ContractCreateParams::UsageFilter::OrHash,
+            usage_filter: MetronomeSDK::BaseUsageFilter::OrHash,
             usage_statement_schedule:
               MetronomeSDK::V1::ContractCreateParams::UsageStatementSchedule::OrHash,
             request_options: MetronomeSDK::RequestOptions::OrHash
@@ -636,7 +626,7 @@ module MetronomeSDK
               total_contract_value: Float,
               transition: MetronomeSDK::V1::ContractCreateParams::Transition,
               uniqueness_key: String,
-              usage_filter: MetronomeSDK::V1::ContractCreateParams::UsageFilter,
+              usage_filter: MetronomeSDK::BaseUsageFilter,
               usage_statement_schedule:
                 MetronomeSDK::V1::ContractCreateParams::UsageStatementSchedule,
               request_options: MetronomeSDK::RequestOptions
@@ -1313,8 +1303,9 @@ module MetronomeSDK
             sig do
               returns(
                 T.any(
-                  MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::Type,
-                  MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::UnionMember2
+                  MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll,
+                  MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone,
+                  MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs
                 )
               )
             end
@@ -1325,8 +1316,9 @@ module MetronomeSDK
               params(
                 child_access:
                   T.any(
-                    MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::Type::OrHash,
-                    MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::UnionMember2::OrHash
+                    MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::OrHash,
+                    MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::OrHash,
+                    MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::OrHash
                   )
               ).returns(T.attached_class)
             end
@@ -1338,8 +1330,9 @@ module MetronomeSDK
                 {
                   child_access:
                     T.any(
-                      MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::Type,
-                      MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::UnionMember2
+                      MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll,
+                      MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone,
+                      MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs
                     )
                 }
               )
@@ -1353,23 +1346,24 @@ module MetronomeSDK
               Variants =
                 T.type_alias do
                   T.any(
-                    MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::Type,
-                    MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::UnionMember2
+                    MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll,
+                    MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone,
+                    MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs
                   )
                 end
 
-              class Type < MetronomeSDK::Internal::Type::BaseModel
+              class CommitHierarchyChildAccessAll < MetronomeSDK::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
                     T.any(
-                      MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::Type,
+                      MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll,
                       MetronomeSDK::Internal::AnyHash
                     )
                   end
 
                 sig do
                   returns(
-                    MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::Type::Type::OrSymbol
+                    MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::OrSymbol
                   )
                 end
                 attr_accessor :type
@@ -1377,7 +1371,7 @@ module MetronomeSDK
                 sig do
                   params(
                     type:
-                      MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::Type::Type::OrSymbol
+                      MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::OrSymbol
                   ).returns(T.attached_class)
                 end
                 def self.new(type:)
@@ -1387,7 +1381,7 @@ module MetronomeSDK
                   override.returns(
                     {
                       type:
-                        MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::Type::Type::OrSymbol
+                        MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::OrSymbol
                     }
                   )
                 end
@@ -1401,7 +1395,7 @@ module MetronomeSDK
                     T.type_alias do
                       T.all(
                         Symbol,
-                        MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::Type::Type
+                        MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type
                       )
                     end
                   OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1409,13 +1403,13 @@ module MetronomeSDK
                   ALL =
                     T.let(
                       :ALL,
-                      MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::Type::Type::TaggedSymbol
+                      MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::TaggedSymbol
                     )
 
                   sig do
                     override.returns(
                       T::Array[
-                        MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::Type::Type::TaggedSymbol
+                        MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::TaggedSymbol
                       ]
                     )
                   end
@@ -1424,11 +1418,77 @@ module MetronomeSDK
                 end
               end
 
-              class UnionMember2 < MetronomeSDK::Internal::Type::BaseModel
+              class CommitHierarchyChildAccessNone < MetronomeSDK::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
                     T.any(
-                      MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::UnionMember2,
+                      MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig do
+                  returns(
+                    MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::OrSymbol
+                  )
+                end
+                attr_accessor :type
+
+                sig do
+                  params(
+                    type:
+                      MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::OrSymbol
+                  ).returns(T.attached_class)
+                end
+                def self.new(type:)
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      type:
+                        MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::OrSymbol
+                    }
+                  )
+                end
+                def to_hash
+                end
+
+                module Type
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  TaggedSymbol =
+                    T.type_alias do
+                      T.all(
+                        Symbol,
+                        MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type
+                      )
+                    end
+                  OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                  NONE =
+                    T.let(
+                      :NONE,
+                      MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::TaggedSymbol
+                    )
+
+                  sig do
+                    override.returns(
+                      T::Array[
+                        MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::TaggedSymbol
+                      ]
+                    )
+                  end
+                  def self.values
+                  end
+                end
+              end
+
+              class CommitHierarchyChildAccessContractIDs < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs,
                       MetronomeSDK::Internal::AnyHash
                     )
                   end
@@ -1438,7 +1498,7 @@ module MetronomeSDK
 
                 sig do
                   returns(
-                    MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::UnionMember2::Type::OrSymbol
+                    MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::OrSymbol
                   )
                 end
                 attr_accessor :type
@@ -1447,7 +1507,7 @@ module MetronomeSDK
                   params(
                     contract_ids: T::Array[String],
                     type:
-                      MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::UnionMember2::Type::OrSymbol
+                      MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::OrSymbol
                   ).returns(T.attached_class)
                 end
                 def self.new(contract_ids:, type:)
@@ -1458,7 +1518,7 @@ module MetronomeSDK
                     {
                       contract_ids: T::Array[String],
                       type:
-                        MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::UnionMember2::Type::OrSymbol
+                        MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::OrSymbol
                     }
                   )
                 end
@@ -1472,7 +1532,7 @@ module MetronomeSDK
                     T.type_alias do
                       T.all(
                         Symbol,
-                        MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::UnionMember2::Type
+                        MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type
                       )
                     end
                   OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1480,13 +1540,13 @@ module MetronomeSDK
                   CONTRACT_IDS =
                     T.let(
                       :CONTRACT_IDS,
-                      MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::UnionMember2::Type::TaggedSymbol
+                      MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::TaggedSymbol
                     )
 
                   sig do
                     override.returns(
                       T::Array[
-                        MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::UnionMember2::Type::TaggedSymbol
+                        MetronomeSDK::V1::ContractCreateParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::TaggedSymbol
                       ]
                     )
                   end
@@ -2711,8 +2771,9 @@ module MetronomeSDK
             sig do
               returns(
                 T.any(
-                  MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::Type,
-                  MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::UnionMember2
+                  MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll,
+                  MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone,
+                  MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs
                 )
               )
             end
@@ -2723,8 +2784,9 @@ module MetronomeSDK
               params(
                 child_access:
                   T.any(
-                    MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::Type::OrHash,
-                    MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::UnionMember2::OrHash
+                    MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::OrHash,
+                    MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::OrHash,
+                    MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::OrHash
                   )
               ).returns(T.attached_class)
             end
@@ -2736,8 +2798,9 @@ module MetronomeSDK
                 {
                   child_access:
                     T.any(
-                      MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::Type,
-                      MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::UnionMember2
+                      MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll,
+                      MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone,
+                      MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs
                     )
                 }
               )
@@ -2751,23 +2814,24 @@ module MetronomeSDK
               Variants =
                 T.type_alias do
                   T.any(
-                    MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::Type,
-                    MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::UnionMember2
+                    MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll,
+                    MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone,
+                    MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs
                   )
                 end
 
-              class Type < MetronomeSDK::Internal::Type::BaseModel
+              class CommitHierarchyChildAccessAll < MetronomeSDK::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
                     T.any(
-                      MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::Type,
+                      MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll,
                       MetronomeSDK::Internal::AnyHash
                     )
                   end
 
                 sig do
                   returns(
-                    MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::Type::Type::OrSymbol
+                    MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::OrSymbol
                   )
                 end
                 attr_accessor :type
@@ -2775,7 +2839,7 @@ module MetronomeSDK
                 sig do
                   params(
                     type:
-                      MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::Type::Type::OrSymbol
+                      MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::OrSymbol
                   ).returns(T.attached_class)
                 end
                 def self.new(type:)
@@ -2785,7 +2849,7 @@ module MetronomeSDK
                   override.returns(
                     {
                       type:
-                        MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::Type::Type::OrSymbol
+                        MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::OrSymbol
                     }
                   )
                 end
@@ -2799,7 +2863,7 @@ module MetronomeSDK
                     T.type_alias do
                       T.all(
                         Symbol,
-                        MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::Type::Type
+                        MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type
                       )
                     end
                   OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -2807,13 +2871,13 @@ module MetronomeSDK
                   ALL =
                     T.let(
                       :ALL,
-                      MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::Type::Type::TaggedSymbol
+                      MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::TaggedSymbol
                     )
 
                   sig do
                     override.returns(
                       T::Array[
-                        MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::Type::Type::TaggedSymbol
+                        MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::TaggedSymbol
                       ]
                     )
                   end
@@ -2822,11 +2886,77 @@ module MetronomeSDK
                 end
               end
 
-              class UnionMember2 < MetronomeSDK::Internal::Type::BaseModel
+              class CommitHierarchyChildAccessNone < MetronomeSDK::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
                     T.any(
-                      MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::UnionMember2,
+                      MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig do
+                  returns(
+                    MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::OrSymbol
+                  )
+                end
+                attr_accessor :type
+
+                sig do
+                  params(
+                    type:
+                      MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::OrSymbol
+                  ).returns(T.attached_class)
+                end
+                def self.new(type:)
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      type:
+                        MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::OrSymbol
+                    }
+                  )
+                end
+                def to_hash
+                end
+
+                module Type
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  TaggedSymbol =
+                    T.type_alias do
+                      T.all(
+                        Symbol,
+                        MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type
+                      )
+                    end
+                  OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                  NONE =
+                    T.let(
+                      :NONE,
+                      MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::TaggedSymbol
+                    )
+
+                  sig do
+                    override.returns(
+                      T::Array[
+                        MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::TaggedSymbol
+                      ]
+                    )
+                  end
+                  def self.values
+                  end
+                end
+              end
+
+              class CommitHierarchyChildAccessContractIDs < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs,
                       MetronomeSDK::Internal::AnyHash
                     )
                   end
@@ -2836,7 +2966,7 @@ module MetronomeSDK
 
                 sig do
                   returns(
-                    MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::UnionMember2::Type::OrSymbol
+                    MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::OrSymbol
                   )
                 end
                 attr_accessor :type
@@ -2845,7 +2975,7 @@ module MetronomeSDK
                   params(
                     contract_ids: T::Array[String],
                     type:
-                      MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::UnionMember2::Type::OrSymbol
+                      MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::OrSymbol
                   ).returns(T.attached_class)
                 end
                 def self.new(contract_ids:, type:)
@@ -2856,7 +2986,7 @@ module MetronomeSDK
                     {
                       contract_ids: T::Array[String],
                       type:
-                        MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::UnionMember2::Type::OrSymbol
+                        MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::OrSymbol
                     }
                   )
                 end
@@ -2870,7 +3000,7 @@ module MetronomeSDK
                     T.type_alias do
                       T.all(
                         Symbol,
-                        MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::UnionMember2::Type
+                        MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type
                       )
                     end
                   OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -2878,13 +3008,13 @@ module MetronomeSDK
                   CONTRACT_IDS =
                     T.let(
                       :CONTRACT_IDS,
-                      MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::UnionMember2::Type::TaggedSymbol
+                      MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::TaggedSymbol
                     )
 
                   sig do
                     override.returns(
                       T::Array[
-                        MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::UnionMember2::Type::TaggedSymbol
+                        MetronomeSDK::V1::ContractCreateParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::TaggedSymbol
                       ]
                     )
                   end
@@ -4113,25 +4243,10 @@ module MetronomeSDK
             attr_writer :quantity
 
             # Only set for TIERED rate_type.
-            sig do
-              returns(
-                T.nilable(
-                  T::Array[
-                    MetronomeSDK::V1::ContractCreateParams::Override::OverwriteRate::Tier
-                  ]
-                )
-              )
-            end
+            sig { returns(T.nilable(T::Array[MetronomeSDK::Tier])) }
             attr_reader :tiers
 
-            sig do
-              params(
-                tiers:
-                  T::Array[
-                    MetronomeSDK::V1::ContractCreateParams::Override::OverwriteRate::Tier::OrHash
-                  ]
-              ).void
-            end
+            sig { params(tiers: T::Array[MetronomeSDK::Tier::OrHash]).void }
             attr_writer :tiers
 
             # Required for OVERWRITE type.
@@ -4144,10 +4259,7 @@ module MetronomeSDK
                 is_prorated: T::Boolean,
                 price: Float,
                 quantity: Float,
-                tiers:
-                  T::Array[
-                    MetronomeSDK::V1::ContractCreateParams::Override::OverwriteRate::Tier::OrHash
-                  ]
+                tiers: T::Array[MetronomeSDK::Tier::OrHash]
               ).returns(T.attached_class)
             end
             def self.new(
@@ -4179,10 +4291,7 @@ module MetronomeSDK
                   is_prorated: T::Boolean,
                   price: Float,
                   quantity: Float,
-                  tiers:
-                    T::Array[
-                      MetronomeSDK::V1::ContractCreateParams::Override::OverwriteRate::Tier
-                    ]
+                  tiers: T::Array[MetronomeSDK::Tier]
                 }
               )
             end
@@ -4235,35 +4344,6 @@ module MetronomeSDK
                 )
               end
               def self.values
-              end
-            end
-
-            class Tier < MetronomeSDK::Internal::Type::BaseModel
-              OrHash =
-                T.type_alias do
-                  T.any(
-                    MetronomeSDK::V1::ContractCreateParams::Override::OverwriteRate::Tier,
-                    MetronomeSDK::Internal::AnyHash
-                  )
-                end
-
-              sig { returns(Float) }
-              attr_accessor :price
-
-              sig { returns(T.nilable(Float)) }
-              attr_reader :size
-
-              sig { params(size: Float).void }
-              attr_writer :size
-
-              sig do
-                params(price: Float, size: Float).returns(T.attached_class)
-              end
-              def self.new(price:, size: nil)
-              end
-
-              sig { override.returns({ price: Float, size: Float }) }
-              def to_hash
               end
             end
           end
@@ -5646,8 +5726,9 @@ module MetronomeSDK
             sig do
               returns(
                 T.any(
-                  MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::Type,
-                  MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::UnionMember2
+                  MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll,
+                  MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone,
+                  MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs
                 )
               )
             end
@@ -5658,8 +5739,9 @@ module MetronomeSDK
               params(
                 child_access:
                   T.any(
-                    MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::Type::OrHash,
-                    MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::UnionMember2::OrHash
+                    MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::OrHash,
+                    MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::OrHash,
+                    MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::OrHash
                   )
               ).returns(T.attached_class)
             end
@@ -5671,8 +5753,9 @@ module MetronomeSDK
                 {
                   child_access:
                     T.any(
-                      MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::Type,
-                      MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::UnionMember2
+                      MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll,
+                      MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone,
+                      MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs
                     )
                 }
               )
@@ -5686,23 +5769,24 @@ module MetronomeSDK
               Variants =
                 T.type_alias do
                   T.any(
-                    MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::Type,
-                    MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::UnionMember2
+                    MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll,
+                    MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone,
+                    MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs
                   )
                 end
 
-              class Type < MetronomeSDK::Internal::Type::BaseModel
+              class CommitHierarchyChildAccessAll < MetronomeSDK::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
                     T.any(
-                      MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::Type,
+                      MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll,
                       MetronomeSDK::Internal::AnyHash
                     )
                   end
 
                 sig do
                   returns(
-                    MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::Type::Type::OrSymbol
+                    MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::OrSymbol
                   )
                 end
                 attr_accessor :type
@@ -5710,7 +5794,7 @@ module MetronomeSDK
                 sig do
                   params(
                     type:
-                      MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::Type::Type::OrSymbol
+                      MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::OrSymbol
                   ).returns(T.attached_class)
                 end
                 def self.new(type:)
@@ -5720,7 +5804,7 @@ module MetronomeSDK
                   override.returns(
                     {
                       type:
-                        MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::Type::Type::OrSymbol
+                        MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::OrSymbol
                     }
                   )
                 end
@@ -5734,7 +5818,7 @@ module MetronomeSDK
                     T.type_alias do
                       T.all(
                         Symbol,
-                        MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::Type::Type
+                        MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type
                       )
                     end
                   OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -5742,13 +5826,13 @@ module MetronomeSDK
                   ALL =
                     T.let(
                       :ALL,
-                      MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::Type::Type::TaggedSymbol
+                      MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::TaggedSymbol
                     )
 
                   sig do
                     override.returns(
                       T::Array[
-                        MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::Type::Type::TaggedSymbol
+                        MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::TaggedSymbol
                       ]
                     )
                   end
@@ -5757,11 +5841,77 @@ module MetronomeSDK
                 end
               end
 
-              class UnionMember2 < MetronomeSDK::Internal::Type::BaseModel
+              class CommitHierarchyChildAccessNone < MetronomeSDK::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
                     T.any(
-                      MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::UnionMember2,
+                      MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig do
+                  returns(
+                    MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::OrSymbol
+                  )
+                end
+                attr_accessor :type
+
+                sig do
+                  params(
+                    type:
+                      MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::OrSymbol
+                  ).returns(T.attached_class)
+                end
+                def self.new(type:)
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      type:
+                        MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::OrSymbol
+                    }
+                  )
+                end
+                def to_hash
+                end
+
+                module Type
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  TaggedSymbol =
+                    T.type_alias do
+                      T.all(
+                        Symbol,
+                        MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type
+                      )
+                    end
+                  OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                  NONE =
+                    T.let(
+                      :NONE,
+                      MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::TaggedSymbol
+                    )
+
+                  sig do
+                    override.returns(
+                      T::Array[
+                        MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::TaggedSymbol
+                      ]
+                    )
+                  end
+                  def self.values
+                  end
+                end
+              end
+
+              class CommitHierarchyChildAccessContractIDs < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs,
                       MetronomeSDK::Internal::AnyHash
                     )
                   end
@@ -5771,7 +5921,7 @@ module MetronomeSDK
 
                 sig do
                   returns(
-                    MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::UnionMember2::Type::OrSymbol
+                    MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::OrSymbol
                   )
                 end
                 attr_accessor :type
@@ -5780,7 +5930,7 @@ module MetronomeSDK
                   params(
                     contract_ids: T::Array[String],
                     type:
-                      MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::UnionMember2::Type::OrSymbol
+                      MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::OrSymbol
                   ).returns(T.attached_class)
                 end
                 def self.new(contract_ids:, type:)
@@ -5791,7 +5941,7 @@ module MetronomeSDK
                     {
                       contract_ids: T::Array[String],
                       type:
-                        MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::UnionMember2::Type::OrSymbol
+                        MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::OrSymbol
                     }
                   )
                 end
@@ -5805,7 +5955,7 @@ module MetronomeSDK
                     T.type_alias do
                       T.all(
                         Symbol,
-                        MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::UnionMember2::Type
+                        MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type
                       )
                     end
                   OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -5813,13 +5963,13 @@ module MetronomeSDK
                   CONTRACT_IDS =
                     T.let(
                       :CONTRACT_IDS,
-                      MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::UnionMember2::Type::TaggedSymbol
+                      MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::TaggedSymbol
                     )
 
                   sig do
                     override.returns(
                       T::Array[
-                        MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::UnionMember2::Type::TaggedSymbol
+                        MetronomeSDK::V1::ContractCreateParams::RecurringCommit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::TaggedSymbol
                       ]
                     )
                   end
@@ -6718,8 +6868,9 @@ module MetronomeSDK
             sig do
               returns(
                 T.any(
-                  MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::Type,
-                  MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::UnionMember2
+                  MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll,
+                  MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone,
+                  MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs
                 )
               )
             end
@@ -6730,8 +6881,9 @@ module MetronomeSDK
               params(
                 child_access:
                   T.any(
-                    MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::Type::OrHash,
-                    MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::UnionMember2::OrHash
+                    MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::OrHash,
+                    MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::OrHash,
+                    MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::OrHash
                   )
               ).returns(T.attached_class)
             end
@@ -6743,8 +6895,9 @@ module MetronomeSDK
                 {
                   child_access:
                     T.any(
-                      MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::Type,
-                      MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::UnionMember2
+                      MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll,
+                      MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone,
+                      MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs
                     )
                 }
               )
@@ -6758,23 +6911,24 @@ module MetronomeSDK
               Variants =
                 T.type_alias do
                   T.any(
-                    MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::Type,
-                    MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::UnionMember2
+                    MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll,
+                    MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone,
+                    MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs
                   )
                 end
 
-              class Type < MetronomeSDK::Internal::Type::BaseModel
+              class CommitHierarchyChildAccessAll < MetronomeSDK::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
                     T.any(
-                      MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::Type,
+                      MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll,
                       MetronomeSDK::Internal::AnyHash
                     )
                   end
 
                 sig do
                   returns(
-                    MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::Type::Type::OrSymbol
+                    MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::OrSymbol
                   )
                 end
                 attr_accessor :type
@@ -6782,7 +6936,7 @@ module MetronomeSDK
                 sig do
                   params(
                     type:
-                      MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::Type::Type::OrSymbol
+                      MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::OrSymbol
                   ).returns(T.attached_class)
                 end
                 def self.new(type:)
@@ -6792,7 +6946,7 @@ module MetronomeSDK
                   override.returns(
                     {
                       type:
-                        MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::Type::Type::OrSymbol
+                        MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::OrSymbol
                     }
                   )
                 end
@@ -6806,7 +6960,7 @@ module MetronomeSDK
                     T.type_alias do
                       T.all(
                         Symbol,
-                        MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::Type::Type
+                        MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type
                       )
                     end
                   OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -6814,13 +6968,13 @@ module MetronomeSDK
                   ALL =
                     T.let(
                       :ALL,
-                      MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::Type::Type::TaggedSymbol
+                      MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::TaggedSymbol
                     )
 
                   sig do
                     override.returns(
                       T::Array[
-                        MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::Type::Type::TaggedSymbol
+                        MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::TaggedSymbol
                       ]
                     )
                   end
@@ -6829,11 +6983,77 @@ module MetronomeSDK
                 end
               end
 
-              class UnionMember2 < MetronomeSDK::Internal::Type::BaseModel
+              class CommitHierarchyChildAccessNone < MetronomeSDK::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
                     T.any(
-                      MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::UnionMember2,
+                      MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig do
+                  returns(
+                    MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::OrSymbol
+                  )
+                end
+                attr_accessor :type
+
+                sig do
+                  params(
+                    type:
+                      MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::OrSymbol
+                  ).returns(T.attached_class)
+                end
+                def self.new(type:)
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      type:
+                        MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::OrSymbol
+                    }
+                  )
+                end
+                def to_hash
+                end
+
+                module Type
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  TaggedSymbol =
+                    T.type_alias do
+                      T.all(
+                        Symbol,
+                        MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type
+                      )
+                    end
+                  OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                  NONE =
+                    T.let(
+                      :NONE,
+                      MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::TaggedSymbol
+                    )
+
+                  sig do
+                    override.returns(
+                      T::Array[
+                        MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::TaggedSymbol
+                      ]
+                    )
+                  end
+                  def self.values
+                  end
+                end
+              end
+
+              class CommitHierarchyChildAccessContractIDs < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs,
                       MetronomeSDK::Internal::AnyHash
                     )
                   end
@@ -6843,7 +7063,7 @@ module MetronomeSDK
 
                 sig do
                   returns(
-                    MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::UnionMember2::Type::OrSymbol
+                    MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::OrSymbol
                   )
                 end
                 attr_accessor :type
@@ -6852,7 +7072,7 @@ module MetronomeSDK
                   params(
                     contract_ids: T::Array[String],
                     type:
-                      MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::UnionMember2::Type::OrSymbol
+                      MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::OrSymbol
                   ).returns(T.attached_class)
                 end
                 def self.new(contract_ids:, type:)
@@ -6863,7 +7083,7 @@ module MetronomeSDK
                     {
                       contract_ids: T::Array[String],
                       type:
-                        MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::UnionMember2::Type::OrSymbol
+                        MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::OrSymbol
                     }
                   )
                 end
@@ -6877,7 +7097,7 @@ module MetronomeSDK
                     T.type_alias do
                       T.all(
                         Symbol,
-                        MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::UnionMember2::Type
+                        MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type
                       )
                     end
                   OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -6885,13 +7105,13 @@ module MetronomeSDK
                   CONTRACT_IDS =
                     T.let(
                       :CONTRACT_IDS,
-                      MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::UnionMember2::Type::TaggedSymbol
+                      MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::TaggedSymbol
                     )
 
                   sig do
                     override.returns(
                       T::Array[
-                        MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::UnionMember2::Type::TaggedSymbol
+                        MetronomeSDK::V1::ContractCreateParams::RecurringCredit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::TaggedSymbol
                       ]
                     )
                   end
@@ -9103,50 +9323,6 @@ module MetronomeSDK
               def self.values
               end
             end
-          end
-        end
-
-        class UsageFilter < MetronomeSDK::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                MetronomeSDK::V1::ContractCreateParams::UsageFilter,
-                MetronomeSDK::Internal::AnyHash
-              )
-            end
-
-          sig { returns(String) }
-          attr_accessor :group_key
-
-          sig { returns(T::Array[String]) }
-          attr_accessor :group_values
-
-          sig { returns(T.nilable(Time)) }
-          attr_reader :starting_at
-
-          sig { params(starting_at: Time).void }
-          attr_writer :starting_at
-
-          sig do
-            params(
-              group_key: String,
-              group_values: T::Array[String],
-              starting_at: Time
-            ).returns(T.attached_class)
-          end
-          def self.new(group_key:, group_values:, starting_at: nil)
-          end
-
-          sig do
-            override.returns(
-              {
-                group_key: String,
-                group_values: T::Array[String],
-                starting_at: Time
-              }
-            )
-          end
-          def to_hash
           end
         end
 
