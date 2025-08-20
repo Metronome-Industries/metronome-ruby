@@ -60,8 +60,9 @@ module MetronomeSDK
 
             # @!attribute fiat_credit_type
             #
-            #   @return [MetronomeSDK::Models::CreditTypeData, nil]
-            optional :fiat_credit_type, -> { MetronomeSDK::CreditTypeData }
+            #   @return [MetronomeSDK::Models::V1::Contracts::RateCardRetrieveResponse::Data::FiatCreditType, nil]
+            optional :fiat_credit_type,
+                     -> { MetronomeSDK::Models::V1::Contracts::RateCardRetrieveResponse::Data::FiatCreditType }
 
             # @!method initialize(id:, created_at:, created_by:, name:, aliases: nil, credit_type_conversions: nil, custom_fields: nil, description: nil, fiat_credit_type: nil)
             #   @param id [String]
@@ -72,7 +73,7 @@ module MetronomeSDK
             #   @param credit_type_conversions [Array<MetronomeSDK::Models::V1::Contracts::RateCardRetrieveResponse::Data::CreditTypeConversion>]
             #   @param custom_fields [Hash{Symbol=>String}]
             #   @param description [String]
-            #   @param fiat_credit_type [MetronomeSDK::Models::CreditTypeData]
+            #   @param fiat_credit_type [MetronomeSDK::Models::V1::Contracts::RateCardRetrieveResponse::Data::FiatCreditType]
 
             class Alias < MetronomeSDK::Internal::Type::BaseModel
               # @!attribute name
@@ -99,8 +100,9 @@ module MetronomeSDK
             class CreditTypeConversion < MetronomeSDK::Internal::Type::BaseModel
               # @!attribute custom_credit_type
               #
-              #   @return [MetronomeSDK::Models::CreditTypeData]
-              required :custom_credit_type, -> { MetronomeSDK::CreditTypeData }
+              #   @return [MetronomeSDK::Models::V1::Contracts::RateCardRetrieveResponse::Data::CreditTypeConversion::CustomCreditType]
+              required :custom_credit_type,
+                       -> { MetronomeSDK::Models::V1::Contracts::RateCardRetrieveResponse::Data::CreditTypeConversion::CustomCreditType }
 
               # @!attribute fiat_per_custom_credit
               #
@@ -108,8 +110,42 @@ module MetronomeSDK
               required :fiat_per_custom_credit, String
 
               # @!method initialize(custom_credit_type:, fiat_per_custom_credit:)
-              #   @param custom_credit_type [MetronomeSDK::Models::CreditTypeData]
+              #   @param custom_credit_type [MetronomeSDK::Models::V1::Contracts::RateCardRetrieveResponse::Data::CreditTypeConversion::CustomCreditType]
               #   @param fiat_per_custom_credit [String]
+
+              # @see MetronomeSDK::Models::V1::Contracts::RateCardRetrieveResponse::Data::CreditTypeConversion#custom_credit_type
+              class CustomCreditType < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute id
+                #
+                #   @return [String]
+                required :id, String
+
+                # @!attribute name
+                #
+                #   @return [String]
+                required :name, String
+
+                # @!method initialize(id:, name:)
+                #   @param id [String]
+                #   @param name [String]
+              end
+            end
+
+            # @see MetronomeSDK::Models::V1::Contracts::RateCardRetrieveResponse::Data#fiat_credit_type
+            class FiatCreditType < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute id
+              #
+              #   @return [String]
+              required :id, String
+
+              # @!attribute name
+              #
+              #   @return [String]
+              required :name, String
+
+              # @!method initialize(id:, name:)
+              #   @param id [String]
+              #   @param name [String]
             end
           end
         end

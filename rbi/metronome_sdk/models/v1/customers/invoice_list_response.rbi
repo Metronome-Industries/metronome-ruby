@@ -4,11 +4,11 @@ module MetronomeSDK
   module Models
     module V1
       module Customers
-        class Invoice < MetronomeSDK::Internal::Type::BaseModel
+        class InvoiceListResponse < MetronomeSDK::Internal::Type::BaseModel
           OrHash =
             T.type_alias do
               T.any(
-                MetronomeSDK::V1::Customers::Invoice,
+                MetronomeSDK::Models::V1::Customers::InvoiceListResponse,
                 MetronomeSDK::Internal::AnyHash
               )
             end
@@ -16,17 +16,30 @@ module MetronomeSDK
           sig { returns(String) }
           attr_accessor :id
 
-          sig { returns(MetronomeSDK::CreditTypeData) }
+          sig do
+            returns(
+              MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CreditType
+            )
+          end
           attr_reader :credit_type
 
-          sig { params(credit_type: MetronomeSDK::CreditTypeData::OrHash).void }
+          sig do
+            params(
+              credit_type:
+                MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CreditType::OrHash
+            ).void
+          end
           attr_writer :credit_type
 
           sig { returns(String) }
           attr_accessor :customer_id
 
           sig do
-            returns(T::Array[MetronomeSDK::V1::Customers::Invoice::LineItem])
+            returns(
+              T::Array[
+                MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem
+              ]
+            )
           end
           attr_accessor :line_items
 
@@ -49,7 +62,7 @@ module MetronomeSDK
           sig do
             returns(
               T.nilable(
-                MetronomeSDK::V1::Customers::Invoice::BillableStatus::TaggedSymbol
+                MetronomeSDK::Models::V1::Customers::InvoiceListResponse::BillableStatus::TaggedSymbol
               )
             )
           end
@@ -58,7 +71,7 @@ module MetronomeSDK
           sig do
             params(
               billable_status:
-                MetronomeSDK::V1::Customers::Invoice::BillableStatus::OrSymbol
+                MetronomeSDK::Models::V1::Customers::InvoiceListResponse::BillableStatus::OrSymbol
             ).void
           end
           attr_writer :billable_status
@@ -77,7 +90,9 @@ module MetronomeSDK
 
           sig do
             returns(
-              T.nilable(MetronomeSDK::V1::Customers::Invoice::CorrectionRecord)
+              T.nilable(
+                MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord
+              )
             )
           end
           attr_reader :correction_record
@@ -85,7 +100,7 @@ module MetronomeSDK
           sig do
             params(
               correction_record:
-                MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::OrHash
+                MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::OrHash
             ).void
           end
           attr_writer :correction_record
@@ -119,7 +134,9 @@ module MetronomeSDK
 
           sig do
             returns(
-              T.nilable(MetronomeSDK::V1::Customers::Invoice::ExternalInvoice)
+              T.nilable(
+                MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice
+              )
             )
           end
           attr_reader :external_invoice
@@ -128,7 +145,7 @@ module MetronomeSDK
             params(
               external_invoice:
                 T.nilable(
-                  MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::OrHash
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice::OrHash
                 )
             ).void
           end
@@ -138,7 +155,7 @@ module MetronomeSDK
             returns(
               T.nilable(
                 T::Array[
-                  MetronomeSDK::V1::Customers::Invoice::InvoiceAdjustment
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::InvoiceAdjustment
                 ]
               )
             )
@@ -149,7 +166,7 @@ module MetronomeSDK
             params(
               invoice_adjustments:
                 T::Array[
-                  MetronomeSDK::V1::Customers::Invoice::InvoiceAdjustment::OrHash
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::InvoiceAdjustment::OrHash
                 ]
             ).void
           end
@@ -196,7 +213,9 @@ module MetronomeSDK
           # Only present for contract invoices with reseller royalties.
           sig do
             returns(
-              T.nilable(MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty)
+              T.nilable(
+                MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ResellerRoyalty
+              )
             )
           end
           attr_reader :reseller_royalty
@@ -204,7 +223,7 @@ module MetronomeSDK
           sig do
             params(
               reseller_royalty:
-                MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty::OrHash
+                MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ResellerRoyalty::OrHash
             ).void
           end
           attr_writer :reseller_royalty
@@ -232,33 +251,34 @@ module MetronomeSDK
           sig do
             params(
               id: String,
-              credit_type: MetronomeSDK::CreditTypeData::OrHash,
+              credit_type:
+                MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CreditType::OrHash,
               customer_id: String,
               line_items:
                 T::Array[
-                  MetronomeSDK::V1::Customers::Invoice::LineItem::OrHash
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::OrHash
                 ],
               status: String,
               total: Float,
               type: String,
               amendment_id: String,
               billable_status:
-                MetronomeSDK::V1::Customers::Invoice::BillableStatus::OrSymbol,
+                MetronomeSDK::Models::V1::Customers::InvoiceListResponse::BillableStatus::OrSymbol,
               contract_custom_fields: T::Hash[Symbol, String],
               contract_id: String,
               correction_record:
-                MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::OrHash,
+                MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::OrHash,
               created_at: Time,
               custom_fields: T::Hash[Symbol, T.anything],
               customer_custom_fields: T::Hash[Symbol, String],
               end_timestamp: Time,
               external_invoice:
                 T.nilable(
-                  MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::OrHash
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice::OrHash
                 ),
               invoice_adjustments:
                 T::Array[
-                  MetronomeSDK::V1::Customers::Invoice::InvoiceAdjustment::OrHash
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::InvoiceAdjustment::OrHash
                 ],
               issued_at: Time,
               net_payment_terms_days: Float,
@@ -267,7 +287,7 @@ module MetronomeSDK
               plan_id: String,
               plan_name: String,
               reseller_royalty:
-                MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty::OrHash,
+                MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ResellerRoyalty::OrHash,
               salesforce_opportunity_id: String,
               start_timestamp: Time,
               subtotal: Float
@@ -318,31 +338,34 @@ module MetronomeSDK
             override.returns(
               {
                 id: String,
-                credit_type: MetronomeSDK::CreditTypeData,
+                credit_type:
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CreditType,
                 customer_id: String,
                 line_items:
-                  T::Array[MetronomeSDK::V1::Customers::Invoice::LineItem],
+                  T::Array[
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem
+                  ],
                 status: String,
                 total: Float,
                 type: String,
                 amendment_id: String,
                 billable_status:
-                  MetronomeSDK::V1::Customers::Invoice::BillableStatus::TaggedSymbol,
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::BillableStatus::TaggedSymbol,
                 contract_custom_fields: T::Hash[Symbol, String],
                 contract_id: String,
                 correction_record:
-                  MetronomeSDK::V1::Customers::Invoice::CorrectionRecord,
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord,
                 created_at: Time,
                 custom_fields: T::Hash[Symbol, T.anything],
                 customer_custom_fields: T::Hash[Symbol, String],
                 end_timestamp: Time,
                 external_invoice:
                   T.nilable(
-                    MetronomeSDK::V1::Customers::Invoice::ExternalInvoice
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice
                   ),
                 invoice_adjustments:
                   T::Array[
-                    MetronomeSDK::V1::Customers::Invoice::InvoiceAdjustment
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::InvoiceAdjustment
                   ],
                 issued_at: Time,
                 net_payment_terms_days: Float,
@@ -351,7 +374,7 @@ module MetronomeSDK
                 plan_id: String,
                 plan_name: String,
                 reseller_royalty:
-                  MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty,
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ResellerRoyalty,
                 salesforce_opportunity_id: String,
                 start_timestamp: Time,
                 subtotal: Float
@@ -361,20 +384,51 @@ module MetronomeSDK
           def to_hash
           end
 
-          class LineItem < MetronomeSDK::Internal::Type::BaseModel
+          class CreditType < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
                 T.any(
-                  MetronomeSDK::V1::Customers::Invoice::LineItem,
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CreditType,
                   MetronomeSDK::Internal::AnyHash
                 )
               end
 
-            sig { returns(MetronomeSDK::CreditTypeData) }
+            sig { returns(String) }
+            attr_accessor :id
+
+            sig { returns(String) }
+            attr_accessor :name
+
+            sig { params(id: String, name: String).returns(T.attached_class) }
+            def self.new(id:, name:)
+            end
+
+            sig { override.returns({ id: String, name: String }) }
+            def to_hash
+            end
+          end
+
+          class LineItem < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            sig do
+              returns(
+                MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::CreditType
+              )
+            end
             attr_reader :credit_type
 
             sig do
-              params(credit_type: MetronomeSDK::CreditTypeData::OrHash).void
+              params(
+                credit_type:
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::CreditType::OrHash
+              ).void
             end
             attr_writer :credit_type
 
@@ -414,7 +468,7 @@ module MetronomeSDK
             sig do
               returns(
                 T.nilable(
-                  MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::AppliedCommitOrCredit
                 )
               )
             end
@@ -423,7 +477,7 @@ module MetronomeSDK
             sig do
               params(
                 applied_commit_or_credit:
-                  MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::OrHash
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::AppliedCommitOrCredit::OrHash
               ).void
             end
             attr_writer :applied_commit_or_credit
@@ -515,10 +569,21 @@ module MetronomeSDK
             # Only present for contract invoices and when the `include_list_prices` query
             # parameter is set to true. This will include the list rate for the charge if
             # applicable. Only present for usage and subscription line items.
-            sig { returns(T.nilable(MetronomeSDK::Rate)) }
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ListPrice
+                )
+              )
+            end
             attr_reader :list_price
 
-            sig { params(list_price: MetronomeSDK::Rate::OrHash).void }
+            sig do
+              params(
+                list_price:
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ListPrice::OrHash
+              ).void
+            end
             attr_writer :list_price
 
             sig { returns(T.nilable(String)) }
@@ -551,7 +616,7 @@ module MetronomeSDK
             sig do
               returns(
                 T.nilable(
-                  MetronomeSDK::V1::Customers::Invoice::LineItem::PostpaidCommit
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::PostpaidCommit
                 )
               )
             end
@@ -560,7 +625,7 @@ module MetronomeSDK
             sig do
               params(
                 postpaid_commit:
-                  MetronomeSDK::V1::Customers::Invoice::LineItem::PostpaidCommit::OrHash
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::PostpaidCommit::OrHash
               ).void
             end
             attr_writer :postpaid_commit
@@ -642,7 +707,7 @@ module MetronomeSDK
             sig do
               returns(
                 T.nilable(
-                  MetronomeSDK::V1::Customers::Invoice::LineItem::ResellerType::TaggedSymbol
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ResellerType::TaggedSymbol
                 )
               )
             end
@@ -651,7 +716,7 @@ module MetronomeSDK
             sig do
               params(
                 reseller_type:
-                  MetronomeSDK::V1::Customers::Invoice::LineItem::ResellerType::OrSymbol
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ResellerType::OrSymbol
               ).void
             end
             attr_writer :reseller_type
@@ -684,7 +749,7 @@ module MetronomeSDK
               returns(
                 T.nilable(
                   T::Array[
-                    MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::SubLineItem
                   ]
                 )
               )
@@ -695,7 +760,7 @@ module MetronomeSDK
               params(
                 sub_line_items:
                   T::Array[
-                    MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem::OrHash
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::SubLineItem::OrHash
                   ]
               ).void
             end
@@ -712,7 +777,9 @@ module MetronomeSDK
             # Populated if the line item has a tiered price.
             sig do
               returns(
-                T.nilable(MetronomeSDK::V1::Customers::Invoice::LineItem::Tier)
+                T.nilable(
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::Tier
+                )
               )
             end
             attr_reader :tier
@@ -720,7 +787,7 @@ module MetronomeSDK
             sig do
               params(
                 tier:
-                  MetronomeSDK::V1::Customers::Invoice::LineItem::Tier::OrHash
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::Tier::OrHash
               ).void
             end
             attr_writer :tier
@@ -734,12 +801,13 @@ module MetronomeSDK
 
             sig do
               params(
-                credit_type: MetronomeSDK::CreditTypeData::OrHash,
+                credit_type:
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::CreditType::OrHash,
                 name: String,
                 total: Float,
                 type: String,
                 applied_commit_or_credit:
-                  MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::OrHash,
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::AppliedCommitOrCredit::OrHash,
                 commit_custom_fields: T::Hash[Symbol, String],
                 commit_id: String,
                 commit_netsuite_item_id: String,
@@ -753,13 +821,14 @@ module MetronomeSDK
                 group_key: String,
                 group_value: T.nilable(String),
                 is_prorated: T::Boolean,
-                list_price: MetronomeSDK::Rate::OrHash,
+                list_price:
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ListPrice::OrHash,
                 metadata: String,
                 netsuite_invoice_billing_end: Time,
                 netsuite_invoice_billing_start: Time,
                 netsuite_item_id: String,
                 postpaid_commit:
-                  MetronomeSDK::V1::Customers::Invoice::LineItem::PostpaidCommit::OrHash,
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::PostpaidCommit::OrHash,
                 presentation_group_values: T::Hash[Symbol, T.nilable(String)],
                 pricing_group_values: T::Hash[Symbol, String],
                 product_custom_fields: T::Hash[Symbol, String],
@@ -770,17 +839,17 @@ module MetronomeSDK
                 professional_service_id: String,
                 quantity: Float,
                 reseller_type:
-                  MetronomeSDK::V1::Customers::Invoice::LineItem::ResellerType::OrSymbol,
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ResellerType::OrSymbol,
                 scheduled_charge_custom_fields: T::Hash[Symbol, String],
                 scheduled_charge_id: String,
                 starting_at: Time,
                 sub_line_items:
                   T::Array[
-                    MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem::OrHash
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::SubLineItem::OrHash
                   ],
                 subscription_custom_fields: T::Hash[Symbol, String],
                 tier:
-                  MetronomeSDK::V1::Customers::Invoice::LineItem::Tier::OrHash,
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::Tier::OrHash,
                 unit_price: Float
               ).returns(T.attached_class)
             end
@@ -887,12 +956,13 @@ module MetronomeSDK
             sig do
               override.returns(
                 {
-                  credit_type: MetronomeSDK::CreditTypeData,
+                  credit_type:
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::CreditType,
                   name: String,
                   total: Float,
                   type: String,
                   applied_commit_or_credit:
-                    MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit,
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::AppliedCommitOrCredit,
                   commit_custom_fields: T::Hash[Symbol, String],
                   commit_id: String,
                   commit_netsuite_item_id: String,
@@ -906,13 +976,14 @@ module MetronomeSDK
                   group_key: String,
                   group_value: T.nilable(String),
                   is_prorated: T::Boolean,
-                  list_price: MetronomeSDK::Rate,
+                  list_price:
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ListPrice,
                   metadata: String,
                   netsuite_invoice_billing_end: Time,
                   netsuite_invoice_billing_start: Time,
                   netsuite_item_id: String,
                   postpaid_commit:
-                    MetronomeSDK::V1::Customers::Invoice::LineItem::PostpaidCommit,
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::PostpaidCommit,
                   presentation_group_values: T::Hash[Symbol, T.nilable(String)],
                   pricing_group_values: T::Hash[Symbol, String],
                   product_custom_fields: T::Hash[Symbol, String],
@@ -923,16 +994,17 @@ module MetronomeSDK
                   professional_service_id: String,
                   quantity: Float,
                   reseller_type:
-                    MetronomeSDK::V1::Customers::Invoice::LineItem::ResellerType::TaggedSymbol,
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ResellerType::TaggedSymbol,
                   scheduled_charge_custom_fields: T::Hash[Symbol, String],
                   scheduled_charge_id: String,
                   starting_at: Time,
                   sub_line_items:
                     T::Array[
-                      MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem
+                      MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::SubLineItem
                     ],
                   subscription_custom_fields: T::Hash[Symbol, String],
-                  tier: MetronomeSDK::V1::Customers::Invoice::LineItem::Tier,
+                  tier:
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::Tier,
                   unit_price: Float
                 }
               )
@@ -940,11 +1012,35 @@ module MetronomeSDK
             def to_hash
             end
 
+            class CreditType < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::CreditType,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig { returns(String) }
+              attr_accessor :id
+
+              sig { returns(String) }
+              attr_accessor :name
+
+              sig { params(id: String, name: String).returns(T.attached_class) }
+              def self.new(id:, name:)
+              end
+
+              sig { override.returns({ id: String, name: String }) }
+              def to_hash
+              end
+            end
+
             class AppliedCommitOrCredit < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
                   T.any(
-                    MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit,
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::AppliedCommitOrCredit,
                     MetronomeSDK::Internal::AnyHash
                   )
                 end
@@ -954,7 +1050,7 @@ module MetronomeSDK
 
               sig do
                 returns(
-                  MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::Type::TaggedSymbol
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::AppliedCommitOrCredit::Type::TaggedSymbol
                 )
               end
               attr_accessor :type
@@ -966,7 +1062,7 @@ module MetronomeSDK
                 params(
                   id: String,
                   type:
-                    MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::Type::OrSymbol
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::AppliedCommitOrCredit::Type::OrSymbol
                 ).returns(T.attached_class)
               end
               def self.new(id:, type:)
@@ -977,7 +1073,7 @@ module MetronomeSDK
                   {
                     id: String,
                     type:
-                      MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::Type::TaggedSymbol
+                      MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::AppliedCommitOrCredit::Type::TaggedSymbol
                   }
                 )
               end
@@ -991,7 +1087,7 @@ module MetronomeSDK
                   T.type_alias do
                     T.all(
                       Symbol,
-                      MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::Type
+                      MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::AppliedCommitOrCredit::Type
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -999,23 +1095,23 @@ module MetronomeSDK
                 PREPAID =
                   T.let(
                     :PREPAID,
-                    MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::Type::TaggedSymbol
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::AppliedCommitOrCredit::Type::TaggedSymbol
                   )
                 POSTPAID =
                   T.let(
                     :POSTPAID,
-                    MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::Type::TaggedSymbol
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::AppliedCommitOrCredit::Type::TaggedSymbol
                   )
                 CREDIT =
                   T.let(
                     :CREDIT,
-                    MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::Type::TaggedSymbol
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::AppliedCommitOrCredit::Type::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::Type::TaggedSymbol
+                      MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::AppliedCommitOrCredit::Type::TaggedSymbol
                     ]
                   )
                 end
@@ -1024,11 +1120,289 @@ module MetronomeSDK
               end
             end
 
+            class ListPrice < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ListPrice,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig do
+                returns(
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ListPrice::RateType::TaggedSymbol
+                )
+              end
+              attr_accessor :rate_type
+
+              sig do
+                returns(
+                  T.nilable(
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ListPrice::CreditType
+                  )
+                )
+              end
+              attr_reader :credit_type
+
+              sig do
+                params(
+                  credit_type:
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ListPrice::CreditType::OrHash
+                ).void
+              end
+              attr_writer :credit_type
+
+              # Only set for CUSTOM rate_type. This field is interpreted by custom rate
+              # processors.
+              sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
+              attr_reader :custom_rate
+
+              sig { params(custom_rate: T::Hash[Symbol, T.anything]).void }
+              attr_writer :custom_rate
+
+              # Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be
+              # set to true.
+              sig { returns(T.nilable(T::Boolean)) }
+              attr_reader :is_prorated
+
+              sig { params(is_prorated: T::Boolean).void }
+              attr_writer :is_prorated
+
+              # Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type,
+              # this is a decimal fraction, e.g. use 0.1 for 10%; this must be >=0 and <=1.
+              sig { returns(T.nilable(Float)) }
+              attr_reader :price
+
+              sig { params(price: Float).void }
+              attr_writer :price
+
+              # if pricing groups are used, this will contain the values used to calculate the
+              # price
+              sig { returns(T.nilable(T::Hash[Symbol, String])) }
+              attr_reader :pricing_group_values
+
+              sig { params(pricing_group_values: T::Hash[Symbol, String]).void }
+              attr_writer :pricing_group_values
+
+              # Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
+              sig { returns(T.nilable(Float)) }
+              attr_reader :quantity
+
+              sig { params(quantity: Float).void }
+              attr_writer :quantity
+
+              # Only set for TIERED rate_type.
+              sig do
+                returns(
+                  T.nilable(
+                    T::Array[
+                      MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ListPrice::Tier
+                    ]
+                  )
+                )
+              end
+              attr_reader :tiers
+
+              sig do
+                params(
+                  tiers:
+                    T::Array[
+                      MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ListPrice::Tier::OrHash
+                    ]
+                ).void
+              end
+              attr_writer :tiers
+
+              # Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed
+              # using list prices rather than the standard rates for this product on the
+              # contract.
+              sig { returns(T.nilable(T::Boolean)) }
+              attr_reader :use_list_prices
+
+              sig { params(use_list_prices: T::Boolean).void }
+              attr_writer :use_list_prices
+
+              # Only present for contract invoices and when the `include_list_prices` query
+              # parameter is set to true. This will include the list rate for the charge if
+              # applicable. Only present for usage and subscription line items.
+              sig do
+                params(
+                  rate_type:
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ListPrice::RateType::OrSymbol,
+                  credit_type:
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ListPrice::CreditType::OrHash,
+                  custom_rate: T::Hash[Symbol, T.anything],
+                  is_prorated: T::Boolean,
+                  price: Float,
+                  pricing_group_values: T::Hash[Symbol, String],
+                  quantity: Float,
+                  tiers:
+                    T::Array[
+                      MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ListPrice::Tier::OrHash
+                    ],
+                  use_list_prices: T::Boolean
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                rate_type:,
+                credit_type: nil,
+                # Only set for CUSTOM rate_type. This field is interpreted by custom rate
+                # processors.
+                custom_rate: nil,
+                # Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be
+                # set to true.
+                is_prorated: nil,
+                # Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type,
+                # this is a decimal fraction, e.g. use 0.1 for 10%; this must be >=0 and <=1.
+                price: nil,
+                # if pricing groups are used, this will contain the values used to calculate the
+                # price
+                pricing_group_values: nil,
+                # Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
+                quantity: nil,
+                # Only set for TIERED rate_type.
+                tiers: nil,
+                # Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed
+                # using list prices rather than the standard rates for this product on the
+                # contract.
+                use_list_prices: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    rate_type:
+                      MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ListPrice::RateType::TaggedSymbol,
+                    credit_type:
+                      MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ListPrice::CreditType,
+                    custom_rate: T::Hash[Symbol, T.anything],
+                    is_prorated: T::Boolean,
+                    price: Float,
+                    pricing_group_values: T::Hash[Symbol, String],
+                    quantity: Float,
+                    tiers:
+                      T::Array[
+                        MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ListPrice::Tier
+                      ],
+                    use_list_prices: T::Boolean
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              module RateType
+                extend MetronomeSDK::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ListPrice::RateType
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                FLAT =
+                  T.let(
+                    :FLAT,
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ListPrice::RateType::TaggedSymbol
+                  )
+                PERCENTAGE =
+                  T.let(
+                    :PERCENTAGE,
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ListPrice::RateType::TaggedSymbol
+                  )
+                SUBSCRIPTION =
+                  T.let(
+                    :SUBSCRIPTION,
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ListPrice::RateType::TaggedSymbol
+                  )
+                CUSTOM =
+                  T.let(
+                    :CUSTOM,
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ListPrice::RateType::TaggedSymbol
+                  )
+                TIERED =
+                  T.let(
+                    :TIERED,
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ListPrice::RateType::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ListPrice::RateType::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+
+              class CreditType < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ListPrice::CreditType,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig { returns(String) }
+                attr_accessor :id
+
+                sig { returns(String) }
+                attr_accessor :name
+
+                sig do
+                  params(id: String, name: String).returns(T.attached_class)
+                end
+                def self.new(id:, name:)
+                end
+
+                sig { override.returns({ id: String, name: String }) }
+                def to_hash
+                end
+              end
+
+              class Tier < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ListPrice::Tier,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig { returns(Float) }
+                attr_accessor :price
+
+                sig { returns(T.nilable(Float)) }
+                attr_reader :size
+
+                sig { params(size: Float).void }
+                attr_writer :size
+
+                sig do
+                  params(price: Float, size: Float).returns(T.attached_class)
+                end
+                def self.new(price:, size: nil)
+                end
+
+                sig { override.returns({ price: Float, size: Float }) }
+                def to_hash
+                end
+              end
+            end
+
             class PostpaidCommit < MetronomeSDK::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
                   T.any(
-                    MetronomeSDK::V1::Customers::Invoice::LineItem::PostpaidCommit,
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::PostpaidCommit,
                     MetronomeSDK::Internal::AnyHash
                   )
                 end
@@ -1053,7 +1427,7 @@ module MetronomeSDK
                 T.type_alias do
                   T.all(
                     Symbol,
-                    MetronomeSDK::V1::Customers::Invoice::LineItem::ResellerType
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ResellerType
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1061,28 +1435,28 @@ module MetronomeSDK
               AWS =
                 T.let(
                   :AWS,
-                  MetronomeSDK::V1::Customers::Invoice::LineItem::ResellerType::TaggedSymbol
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ResellerType::TaggedSymbol
                 )
               AWS_PRO_SERVICE =
                 T.let(
                   :AWS_PRO_SERVICE,
-                  MetronomeSDK::V1::Customers::Invoice::LineItem::ResellerType::TaggedSymbol
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ResellerType::TaggedSymbol
                 )
               GCP =
                 T.let(
                   :GCP,
-                  MetronomeSDK::V1::Customers::Invoice::LineItem::ResellerType::TaggedSymbol
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ResellerType::TaggedSymbol
                 )
               GCP_PRO_SERVICE =
                 T.let(
                   :GCP_PRO_SERVICE,
-                  MetronomeSDK::V1::Customers::Invoice::LineItem::ResellerType::TaggedSymbol
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ResellerType::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    MetronomeSDK::V1::Customers::Invoice::LineItem::ResellerType::TaggedSymbol
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::ResellerType::TaggedSymbol
                   ]
                 )
               end
@@ -1094,7 +1468,7 @@ module MetronomeSDK
               OrHash =
                 T.type_alias do
                   T.any(
-                    MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem,
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::SubLineItem,
                     MetronomeSDK::Internal::AnyHash
                   )
                 end
@@ -1149,7 +1523,7 @@ module MetronomeSDK
               sig do
                 returns(
                   T.nilable(
-                    MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem::TierPeriod
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::SubLineItem::TierPeriod
                   )
                 )
               end
@@ -1158,7 +1532,7 @@ module MetronomeSDK
               sig do
                 params(
                   tier_period:
-                    MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem::TierPeriod::OrHash
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::SubLineItem::TierPeriod::OrHash
                 ).void
               end
               attr_writer :tier_period
@@ -1167,7 +1541,7 @@ module MetronomeSDK
                 returns(
                   T.nilable(
                     T::Array[
-                      MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem::Tier
+                      MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::SubLineItem::Tier
                     ]
                   )
                 )
@@ -1178,7 +1552,7 @@ module MetronomeSDK
                 params(
                   tiers:
                     T::Array[
-                      MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem::Tier::OrHash
+                      MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::SubLineItem::Tier::OrHash
                     ]
                 ).void
               end
@@ -1196,10 +1570,10 @@ module MetronomeSDK
                   price: Float,
                   start_date: Time,
                   tier_period:
-                    MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem::TierPeriod::OrHash,
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::SubLineItem::TierPeriod::OrHash,
                   tiers:
                     T::Array[
-                      MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem::Tier::OrHash
+                      MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::SubLineItem::Tier::OrHash
                     ]
                 ).returns(T.attached_class)
               end
@@ -1236,10 +1610,10 @@ module MetronomeSDK
                     price: Float,
                     start_date: Time,
                     tier_period:
-                      MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem::TierPeriod,
+                      MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::SubLineItem::TierPeriod,
                     tiers:
                       T::Array[
-                        MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem::Tier
+                        MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::SubLineItem::Tier
                       ]
                   }
                 )
@@ -1251,7 +1625,7 @@ module MetronomeSDK
                 OrHash =
                   T.type_alias do
                     T.any(
-                      MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem::TierPeriod,
+                      MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::SubLineItem::TierPeriod,
                       MetronomeSDK::Internal::AnyHash
                     )
                   end
@@ -1285,7 +1659,7 @@ module MetronomeSDK
                 OrHash =
                   T.type_alias do
                     T.any(
-                      MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem::Tier,
+                      MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::SubLineItem::Tier,
                       MetronomeSDK::Internal::AnyHash
                     )
                   end
@@ -1339,7 +1713,7 @@ module MetronomeSDK
               OrHash =
                 T.type_alias do
                   T.any(
-                    MetronomeSDK::V1::Customers::Invoice::LineItem::Tier,
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::LineItem::Tier,
                     MetronomeSDK::Internal::AnyHash
                   )
                 end
@@ -1382,7 +1756,7 @@ module MetronomeSDK
               T.type_alias do
                 T.all(
                   Symbol,
-                  MetronomeSDK::V1::Customers::Invoice::BillableStatus
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::BillableStatus
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1390,18 +1764,18 @@ module MetronomeSDK
             BILLABLE =
               T.let(
                 :billable,
-                MetronomeSDK::V1::Customers::Invoice::BillableStatus::TaggedSymbol
+                MetronomeSDK::Models::V1::Customers::InvoiceListResponse::BillableStatus::TaggedSymbol
               )
             UNBILLABLE =
               T.let(
                 :unbillable,
-                MetronomeSDK::V1::Customers::Invoice::BillableStatus::TaggedSymbol
+                MetronomeSDK::Models::V1::Customers::InvoiceListResponse::BillableStatus::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  MetronomeSDK::V1::Customers::Invoice::BillableStatus::TaggedSymbol
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::BillableStatus::TaggedSymbol
                 ]
               )
             end
@@ -1413,7 +1787,7 @@ module MetronomeSDK
             OrHash =
               T.type_alias do
                 T.any(
-                  MetronomeSDK::V1::Customers::Invoice::CorrectionRecord,
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord,
                   MetronomeSDK::Internal::AnyHash
                 )
               end
@@ -1430,7 +1804,7 @@ module MetronomeSDK
             sig do
               returns(
                 T.nilable(
-                  MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice
                 )
               )
             end
@@ -1439,7 +1813,7 @@ module MetronomeSDK
             sig do
               params(
                 corrected_external_invoice:
-                  MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::OrHash
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice::OrHash
               ).void
             end
             attr_writer :corrected_external_invoice
@@ -1450,7 +1824,7 @@ module MetronomeSDK
                 memo: String,
                 reason: String,
                 corrected_external_invoice:
-                  MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::OrHash
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice::OrHash
               ).returns(T.attached_class)
             end
             def self.new(
@@ -1468,7 +1842,7 @@ module MetronomeSDK
                   memo: String,
                   reason: String,
                   corrected_external_invoice:
-                    MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice
                 }
               )
             end
@@ -1479,14 +1853,14 @@ module MetronomeSDK
               OrHash =
                 T.type_alias do
                   T.any(
-                    MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice,
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice,
                     MetronomeSDK::Internal::AnyHash
                   )
                 end
 
               sig do
                 returns(
-                  MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType::TaggedSymbol
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType::TaggedSymbol
                 )
               end
               attr_accessor :billing_provider_type
@@ -1494,7 +1868,7 @@ module MetronomeSDK
               sig do
                 returns(
                   T.nilable(
-                    MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus::TaggedSymbol
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus::TaggedSymbol
                   )
                 )
               end
@@ -1503,7 +1877,7 @@ module MetronomeSDK
               sig do
                 params(
                   external_status:
-                    MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus::OrSymbol
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus::OrSymbol
                 ).void
               end
               attr_writer :external_status
@@ -1523,9 +1897,9 @@ module MetronomeSDK
               sig do
                 params(
                   billing_provider_type:
-                    MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType::OrSymbol,
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType::OrSymbol,
                   external_status:
-                    MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus::OrSymbol,
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus::OrSymbol,
                   invoice_id: String,
                   issued_at_timestamp: Time
                 ).returns(T.attached_class)
@@ -1542,9 +1916,9 @@ module MetronomeSDK
                 override.returns(
                   {
                     billing_provider_type:
-                      MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType::TaggedSymbol,
+                      MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType::TaggedSymbol,
                     external_status:
-                      MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus::TaggedSymbol,
+                      MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus::TaggedSymbol,
                     invoice_id: String,
                     issued_at_timestamp: Time
                   }
@@ -1560,7 +1934,7 @@ module MetronomeSDK
                   T.type_alias do
                     T.all(
                       Symbol,
-                      MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType
+                      MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1568,48 +1942,48 @@ module MetronomeSDK
                 AWS_MARKETPLACE =
                   T.let(
                     :aws_marketplace,
-                    MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType::TaggedSymbol
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType::TaggedSymbol
                   )
                 STRIPE =
                   T.let(
                     :stripe,
-                    MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType::TaggedSymbol
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType::TaggedSymbol
                   )
                 NETSUITE =
                   T.let(
                     :netsuite,
-                    MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType::TaggedSymbol
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType::TaggedSymbol
                   )
                 CUSTOM =
                   T.let(
                     :custom,
-                    MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType::TaggedSymbol
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType::TaggedSymbol
                   )
                 AZURE_MARKETPLACE =
                   T.let(
                     :azure_marketplace,
-                    MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType::TaggedSymbol
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType::TaggedSymbol
                   )
                 QUICKBOOKS_ONLINE =
                   T.let(
                     :quickbooks_online,
-                    MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType::TaggedSymbol
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType::TaggedSymbol
                   )
                 WORKDAY =
                   T.let(
                     :workday,
-                    MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType::TaggedSymbol
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType::TaggedSymbol
                   )
                 GCP_MARKETPLACE =
                   T.let(
                     :gcp_marketplace,
-                    MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType::TaggedSymbol
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType::TaggedSymbol
+                      MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType::TaggedSymbol
                     ]
                   )
                 end
@@ -1624,7 +1998,7 @@ module MetronomeSDK
                   T.type_alias do
                     T.all(
                       Symbol,
-                      MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus
+                      MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1632,63 +2006,63 @@ module MetronomeSDK
                 DRAFT =
                   T.let(
                     :DRAFT,
-                    MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus::TaggedSymbol
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus::TaggedSymbol
                   )
                 FINALIZED =
                   T.let(
                     :FINALIZED,
-                    MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus::TaggedSymbol
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus::TaggedSymbol
                   )
                 PAID =
                   T.let(
                     :PAID,
-                    MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus::TaggedSymbol
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus::TaggedSymbol
                   )
                 UNCOLLECTIBLE =
                   T.let(
                     :UNCOLLECTIBLE,
-                    MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus::TaggedSymbol
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus::TaggedSymbol
                   )
                 VOID =
                   T.let(
                     :VOID,
-                    MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus::TaggedSymbol
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus::TaggedSymbol
                   )
                 DELETED =
                   T.let(
                     :DELETED,
-                    MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus::TaggedSymbol
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus::TaggedSymbol
                   )
                 PAYMENT_FAILED =
                   T.let(
                     :PAYMENT_FAILED,
-                    MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus::TaggedSymbol
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus::TaggedSymbol
                   )
                 INVALID_REQUEST_ERROR =
                   T.let(
                     :INVALID_REQUEST_ERROR,
-                    MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus::TaggedSymbol
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus::TaggedSymbol
                   )
                 SKIPPED =
                   T.let(
                     :SKIPPED,
-                    MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus::TaggedSymbol
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus::TaggedSymbol
                   )
                 SENT =
                   T.let(
                     :SENT,
-                    MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus::TaggedSymbol
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus::TaggedSymbol
                   )
                 QUEUED =
                   T.let(
                     :QUEUED,
-                    MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus::TaggedSymbol
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus::TaggedSymbol
+                      MetronomeSDK::Models::V1::Customers::InvoiceListResponse::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus::TaggedSymbol
                     ]
                   )
                 end
@@ -1702,14 +2076,14 @@ module MetronomeSDK
             OrHash =
               T.type_alias do
                 T.any(
-                  MetronomeSDK::V1::Customers::Invoice::ExternalInvoice,
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice,
                   MetronomeSDK::Internal::AnyHash
                 )
               end
 
             sig do
               returns(
-                MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::BillingProviderType::TaggedSymbol
+                MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice::BillingProviderType::TaggedSymbol
               )
             end
             attr_accessor :billing_provider_type
@@ -1717,7 +2091,7 @@ module MetronomeSDK
             sig do
               returns(
                 T.nilable(
-                  MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::ExternalStatus::TaggedSymbol
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice::ExternalStatus::TaggedSymbol
                 )
               )
             end
@@ -1726,7 +2100,7 @@ module MetronomeSDK
             sig do
               params(
                 external_status:
-                  MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::ExternalStatus::OrSymbol
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice::ExternalStatus::OrSymbol
               ).void
             end
             attr_writer :external_status
@@ -1746,9 +2120,9 @@ module MetronomeSDK
             sig do
               params(
                 billing_provider_type:
-                  MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::BillingProviderType::OrSymbol,
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice::BillingProviderType::OrSymbol,
                 external_status:
-                  MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::ExternalStatus::OrSymbol,
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice::ExternalStatus::OrSymbol,
                 invoice_id: String,
                 issued_at_timestamp: Time
               ).returns(T.attached_class)
@@ -1765,9 +2139,9 @@ module MetronomeSDK
               override.returns(
                 {
                   billing_provider_type:
-                    MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::BillingProviderType::TaggedSymbol,
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice::BillingProviderType::TaggedSymbol,
                   external_status:
-                    MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::ExternalStatus::TaggedSymbol,
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice::ExternalStatus::TaggedSymbol,
                   invoice_id: String,
                   issued_at_timestamp: Time
                 }
@@ -1783,7 +2157,7 @@ module MetronomeSDK
                 T.type_alias do
                   T.all(
                     Symbol,
-                    MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::BillingProviderType
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice::BillingProviderType
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1791,48 +2165,48 @@ module MetronomeSDK
               AWS_MARKETPLACE =
                 T.let(
                   :aws_marketplace,
-                  MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::BillingProviderType::TaggedSymbol
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice::BillingProviderType::TaggedSymbol
                 )
               STRIPE =
                 T.let(
                   :stripe,
-                  MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::BillingProviderType::TaggedSymbol
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice::BillingProviderType::TaggedSymbol
                 )
               NETSUITE =
                 T.let(
                   :netsuite,
-                  MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::BillingProviderType::TaggedSymbol
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice::BillingProviderType::TaggedSymbol
                 )
               CUSTOM =
                 T.let(
                   :custom,
-                  MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::BillingProviderType::TaggedSymbol
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice::BillingProviderType::TaggedSymbol
                 )
               AZURE_MARKETPLACE =
                 T.let(
                   :azure_marketplace,
-                  MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::BillingProviderType::TaggedSymbol
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice::BillingProviderType::TaggedSymbol
                 )
               QUICKBOOKS_ONLINE =
                 T.let(
                   :quickbooks_online,
-                  MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::BillingProviderType::TaggedSymbol
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice::BillingProviderType::TaggedSymbol
                 )
               WORKDAY =
                 T.let(
                   :workday,
-                  MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::BillingProviderType::TaggedSymbol
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice::BillingProviderType::TaggedSymbol
                 )
               GCP_MARKETPLACE =
                 T.let(
                   :gcp_marketplace,
-                  MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::BillingProviderType::TaggedSymbol
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice::BillingProviderType::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::BillingProviderType::TaggedSymbol
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice::BillingProviderType::TaggedSymbol
                   ]
                 )
               end
@@ -1847,7 +2221,7 @@ module MetronomeSDK
                 T.type_alias do
                   T.all(
                     Symbol,
-                    MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::ExternalStatus
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice::ExternalStatus
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1855,63 +2229,63 @@ module MetronomeSDK
               DRAFT =
                 T.let(
                   :DRAFT,
-                  MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::ExternalStatus::TaggedSymbol
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice::ExternalStatus::TaggedSymbol
                 )
               FINALIZED =
                 T.let(
                   :FINALIZED,
-                  MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::ExternalStatus::TaggedSymbol
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice::ExternalStatus::TaggedSymbol
                 )
               PAID =
                 T.let(
                   :PAID,
-                  MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::ExternalStatus::TaggedSymbol
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice::ExternalStatus::TaggedSymbol
                 )
               UNCOLLECTIBLE =
                 T.let(
                   :UNCOLLECTIBLE,
-                  MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::ExternalStatus::TaggedSymbol
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice::ExternalStatus::TaggedSymbol
                 )
               VOID =
                 T.let(
                   :VOID,
-                  MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::ExternalStatus::TaggedSymbol
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice::ExternalStatus::TaggedSymbol
                 )
               DELETED =
                 T.let(
                   :DELETED,
-                  MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::ExternalStatus::TaggedSymbol
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice::ExternalStatus::TaggedSymbol
                 )
               PAYMENT_FAILED =
                 T.let(
                   :PAYMENT_FAILED,
-                  MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::ExternalStatus::TaggedSymbol
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice::ExternalStatus::TaggedSymbol
                 )
               INVALID_REQUEST_ERROR =
                 T.let(
                   :INVALID_REQUEST_ERROR,
-                  MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::ExternalStatus::TaggedSymbol
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice::ExternalStatus::TaggedSymbol
                 )
               SKIPPED =
                 T.let(
                   :SKIPPED,
-                  MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::ExternalStatus::TaggedSymbol
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice::ExternalStatus::TaggedSymbol
                 )
               SENT =
                 T.let(
                   :SENT,
-                  MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::ExternalStatus::TaggedSymbol
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice::ExternalStatus::TaggedSymbol
                 )
               QUEUED =
                 T.let(
                   :QUEUED,
-                  MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::ExternalStatus::TaggedSymbol
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice::ExternalStatus::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::ExternalStatus::TaggedSymbol
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ExternalInvoice::ExternalStatus::TaggedSymbol
                   ]
                 )
               end
@@ -1924,16 +2298,23 @@ module MetronomeSDK
             OrHash =
               T.type_alias do
                 T.any(
-                  MetronomeSDK::V1::Customers::Invoice::InvoiceAdjustment,
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::InvoiceAdjustment,
                   MetronomeSDK::Internal::AnyHash
                 )
               end
 
-            sig { returns(MetronomeSDK::CreditTypeData) }
+            sig do
+              returns(
+                MetronomeSDK::Models::V1::Customers::InvoiceListResponse::InvoiceAdjustment::CreditType
+              )
+            end
             attr_reader :credit_type
 
             sig do
-              params(credit_type: MetronomeSDK::CreditTypeData::OrHash).void
+              params(
+                credit_type:
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::InvoiceAdjustment::CreditType::OrHash
+              ).void
             end
             attr_writer :credit_type
 
@@ -1959,7 +2340,8 @@ module MetronomeSDK
 
             sig do
               params(
-                credit_type: MetronomeSDK::CreditTypeData::OrHash,
+                credit_type:
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::InvoiceAdjustment::CreditType::OrHash,
                 name: String,
                 total: Float,
                 credit_grant_custom_fields: T::Hash[Symbol, String],
@@ -1978,7 +2360,8 @@ module MetronomeSDK
             sig do
               override.returns(
                 {
-                  credit_type: MetronomeSDK::CreditTypeData,
+                  credit_type:
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::InvoiceAdjustment::CreditType,
                   name: String,
                   total: Float,
                   credit_grant_custom_fields: T::Hash[Symbol, String],
@@ -1988,13 +2371,37 @@ module MetronomeSDK
             end
             def to_hash
             end
+
+            class CreditType < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::InvoiceAdjustment::CreditType,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig { returns(String) }
+              attr_accessor :id
+
+              sig { returns(String) }
+              attr_accessor :name
+
+              sig { params(id: String, name: String).returns(T.attached_class) }
+              def self.new(id:, name:)
+              end
+
+              sig { override.returns({ id: String, name: String }) }
+              def to_hash
+              end
+            end
           end
 
           class ResellerRoyalty < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
                 T.any(
-                  MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty,
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ResellerRoyalty,
                   MetronomeSDK::Internal::AnyHash
                 )
               end
@@ -2007,7 +2414,7 @@ module MetronomeSDK
 
             sig do
               returns(
-                MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty::ResellerType::TaggedSymbol
+                MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ResellerRoyalty::ResellerType::TaggedSymbol
               )
             end
             attr_accessor :reseller_type
@@ -2015,7 +2422,7 @@ module MetronomeSDK
             sig do
               returns(
                 T.nilable(
-                  MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty::AwsOptions
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ResellerRoyalty::AwsOptions
                 )
               )
             end
@@ -2024,7 +2431,7 @@ module MetronomeSDK
             sig do
               params(
                 aws_options:
-                  MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty::AwsOptions::OrHash
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ResellerRoyalty::AwsOptions::OrHash
               ).void
             end
             attr_writer :aws_options
@@ -2032,7 +2439,7 @@ module MetronomeSDK
             sig do
               returns(
                 T.nilable(
-                  MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty::GcpOptions
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ResellerRoyalty::GcpOptions
                 )
               )
             end
@@ -2041,7 +2448,7 @@ module MetronomeSDK
             sig do
               params(
                 gcp_options:
-                  MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty::GcpOptions::OrHash
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ResellerRoyalty::GcpOptions::OrHash
               ).void
             end
             attr_writer :gcp_options
@@ -2052,11 +2459,11 @@ module MetronomeSDK
                 fraction: String,
                 netsuite_reseller_id: String,
                 reseller_type:
-                  MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty::ResellerType::OrSymbol,
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ResellerRoyalty::ResellerType::OrSymbol,
                 aws_options:
-                  MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty::AwsOptions::OrHash,
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ResellerRoyalty::AwsOptions::OrHash,
                 gcp_options:
-                  MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty::GcpOptions::OrHash
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ResellerRoyalty::GcpOptions::OrHash
               ).returns(T.attached_class)
             end
             def self.new(
@@ -2074,11 +2481,11 @@ module MetronomeSDK
                   fraction: String,
                   netsuite_reseller_id: String,
                   reseller_type:
-                    MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty::ResellerType::TaggedSymbol,
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ResellerRoyalty::ResellerType::TaggedSymbol,
                   aws_options:
-                    MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty::AwsOptions,
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ResellerRoyalty::AwsOptions,
                   gcp_options:
-                    MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty::GcpOptions
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ResellerRoyalty::GcpOptions
                 }
               )
             end
@@ -2092,7 +2499,7 @@ module MetronomeSDK
                 T.type_alias do
                   T.all(
                     Symbol,
-                    MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty::ResellerType
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ResellerRoyalty::ResellerType
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -2100,28 +2507,28 @@ module MetronomeSDK
               AWS =
                 T.let(
                   :AWS,
-                  MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty::ResellerType::TaggedSymbol
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ResellerRoyalty::ResellerType::TaggedSymbol
                 )
               AWS_PRO_SERVICE =
                 T.let(
                   :AWS_PRO_SERVICE,
-                  MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty::ResellerType::TaggedSymbol
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ResellerRoyalty::ResellerType::TaggedSymbol
                 )
               GCP =
                 T.let(
                   :GCP,
-                  MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty::ResellerType::TaggedSymbol
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ResellerRoyalty::ResellerType::TaggedSymbol
                 )
               GCP_PRO_SERVICE =
                 T.let(
                   :GCP_PRO_SERVICE,
-                  MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty::ResellerType::TaggedSymbol
+                  MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ResellerRoyalty::ResellerType::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty::ResellerType::TaggedSymbol
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ResellerRoyalty::ResellerType::TaggedSymbol
                   ]
                 )
               end
@@ -2133,7 +2540,7 @@ module MetronomeSDK
               OrHash =
                 T.type_alias do
                   T.any(
-                    MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty::AwsOptions,
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ResellerRoyalty::AwsOptions,
                     MetronomeSDK::Internal::AnyHash
                   )
                 end
@@ -2187,7 +2594,7 @@ module MetronomeSDK
               OrHash =
                 T.type_alias do
                   T.any(
-                    MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty::GcpOptions,
+                    MetronomeSDK::Models::V1::Customers::InvoiceListResponse::ResellerRoyalty::GcpOptions,
                     MetronomeSDK::Internal::AnyHash
                   )
                 end
