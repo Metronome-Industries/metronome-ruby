@@ -126,6 +126,14 @@ module MetronomeSDK
           #   @return [Time, nil]
           optional :timestamp, Time
 
+          # @!attribute uniqueness_key
+          #   Prevents the creation of duplicates. If a request to create a record is made
+          #   with a previously used uniqueness key, a new record will not be created and the
+          #   request will fail with a 409 error.
+          #
+          #   @return [String, nil]
+          optional :uniqueness_key, String
+
           # @!attribute update_commits
           #
           #   @return [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit>, nil]
@@ -199,7 +207,7 @@ module MetronomeSDK
           optional :update_subscriptions,
                    -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSubscription] }
 
-          # @!method initialize(id:, add_commits: nil, add_credits: nil, add_discounts: nil, add_overrides: nil, add_prepaid_balance_threshold_configuration: nil, add_pro_services: nil, add_recurring_commits: nil, add_recurring_credits: nil, add_reseller_royalties: nil, add_scheduled_charges: nil, add_spend_threshold_configuration: nil, add_subscriptions: nil, add_usage_filters: nil, archive_commits: nil, archive_credits: nil, archive_scheduled_charges: nil, remove_overrides: nil, timestamp: nil, update_commits: nil, update_contract_end_date: nil, update_contract_name: nil, update_credits: nil, update_discounts: nil, update_prepaid_balance_threshold_configuration: nil, update_recurring_commits: nil, update_recurring_credits: nil, update_refund_invoices: nil, update_scheduled_charges: nil, update_spend_threshold_configuration: nil, update_subscriptions: nil)
+          # @!method initialize(id:, add_commits: nil, add_credits: nil, add_discounts: nil, add_overrides: nil, add_prepaid_balance_threshold_configuration: nil, add_pro_services: nil, add_recurring_commits: nil, add_recurring_credits: nil, add_reseller_royalties: nil, add_scheduled_charges: nil, add_spend_threshold_configuration: nil, add_subscriptions: nil, add_usage_filters: nil, archive_commits: nil, archive_credits: nil, archive_scheduled_charges: nil, remove_overrides: nil, timestamp: nil, uniqueness_key: nil, update_commits: nil, update_contract_end_date: nil, update_contract_name: nil, update_credits: nil, update_discounts: nil, update_prepaid_balance_threshold_configuration: nil, update_recurring_commits: nil, update_recurring_credits: nil, update_refund_invoices: nil, update_scheduled_charges: nil, update_spend_threshold_configuration: nil, update_subscriptions: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data} for more
           #   details.
@@ -241,6 +249,8 @@ module MetronomeSDK
           #   @param remove_overrides [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::RemoveOverride>]
           #
           #   @param timestamp [Time]
+          #
+          #   @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a record is made wit
           #
           #   @param update_commits [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit>]
           #
