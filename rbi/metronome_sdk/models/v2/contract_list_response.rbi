@@ -445,9 +445,7 @@ module MetronomeSDK
           sig { params(total_contract_value: Float).void }
           attr_writer :total_contract_value
 
-          # Prevents the creation of duplicates. If a request to create a record is made
-          # with a previously used uniqueness key, a new record will not be created and the
-          # request will fail with a 409 error.
+          # Optional uniqueness key to prevent duplicate contract creations.
           sig { returns(T.nilable(String)) }
           attr_reader :uniqueness_key
 
@@ -590,9 +588,7 @@ module MetronomeSDK
             # List of subscriptions on the contract.
             subscriptions: nil,
             total_contract_value: nil,
-            # Prevents the creation of duplicates. If a request to create a record is made
-            # with a previously used uniqueness key, a new record will not be created and the
-            # request will fail with a 409 error.
+            # Optional uniqueness key to prevent duplicate contract creations.
             uniqueness_key: nil
           )
           end

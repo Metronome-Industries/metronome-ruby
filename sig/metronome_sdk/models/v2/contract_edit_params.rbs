@@ -22,6 +22,7 @@ module MetronomeSDK
           archive_credits: ::Array[MetronomeSDK::V2::ContractEditParams::ArchiveCredit],
           archive_scheduled_charges: ::Array[MetronomeSDK::V2::ContractEditParams::ArchiveScheduledCharge],
           remove_overrides: ::Array[MetronomeSDK::V2::ContractEditParams::RemoveOverride],
+          uniqueness_key: String,
           update_commits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateCommit],
           update_contract_end_date: Time?,
           update_contract_name: String?,
@@ -143,6 +144,10 @@ module MetronomeSDK
           ::Array[MetronomeSDK::V2::ContractEditParams::RemoveOverride]
         ) -> ::Array[MetronomeSDK::V2::ContractEditParams::RemoveOverride]
 
+        attr_reader uniqueness_key: String?
+
+        def uniqueness_key=: (String) -> String
+
         attr_reader update_commits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateCommit]?
 
         def update_commits=: (
@@ -215,6 +220,7 @@ module MetronomeSDK
           ?archive_credits: ::Array[MetronomeSDK::V2::ContractEditParams::ArchiveCredit],
           ?archive_scheduled_charges: ::Array[MetronomeSDK::V2::ContractEditParams::ArchiveScheduledCharge],
           ?remove_overrides: ::Array[MetronomeSDK::V2::ContractEditParams::RemoveOverride],
+          ?uniqueness_key: String,
           ?update_commits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateCommit],
           ?update_contract_end_date: Time?,
           ?update_contract_name: String?,
@@ -248,6 +254,7 @@ module MetronomeSDK
           archive_credits: ::Array[MetronomeSDK::V2::ContractEditParams::ArchiveCredit],
           archive_scheduled_charges: ::Array[MetronomeSDK::V2::ContractEditParams::ArchiveScheduledCharge],
           remove_overrides: ::Array[MetronomeSDK::V2::ContractEditParams::RemoveOverride],
+          uniqueness_key: String,
           update_commits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateCommit],
           update_contract_end_date: Time?,
           update_contract_name: String?,

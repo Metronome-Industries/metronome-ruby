@@ -228,9 +228,7 @@ module MetronomeSDK
           optional :total_contract_value, Float
 
           # @!attribute uniqueness_key
-          #   Prevents the creation of duplicates. If a request to create a record is made
-          #   with a previously used uniqueness key, a new record will not be created and the
-          #   request will fail with a 409 error.
+          #   Optional uniqueness key to prevent duplicate contract creations.
           #
           #   @return [String, nil]
           optional :uniqueness_key, String
@@ -309,7 +307,7 @@ module MetronomeSDK
           #
           #   @param total_contract_value [Float]
           #
-          #   @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a record is made wit
+          #   @param uniqueness_key [String] Optional uniqueness key to prevent duplicate contract creations.
 
           class Commit < MetronomeSDK::Internal::Type::BaseModel
             # @!attribute id

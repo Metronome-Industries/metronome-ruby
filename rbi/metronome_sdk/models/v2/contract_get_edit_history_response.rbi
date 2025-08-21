@@ -389,6 +389,15 @@ module MetronomeSDK
           sig { params(timestamp: Time).void }
           attr_writer :timestamp
 
+          # Prevents the creation of duplicates. If a request to create a record is made
+          # with a previously used uniqueness key, a new record will not be created and the
+          # request will fail with a 409 error.
+          sig { returns(T.nilable(String)) }
+          attr_reader :uniqueness_key
+
+          sig { params(uniqueness_key: String).void }
+          attr_writer :uniqueness_key
+
           sig do
             returns(
               T.nilable(
@@ -665,6 +674,7 @@ module MetronomeSDK
                   MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::RemoveOverride::OrHash
                 ],
               timestamp: Time,
+              uniqueness_key: String,
               update_commits:
                 T::Array[
                   MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::OrHash
@@ -726,6 +736,10 @@ module MetronomeSDK
             archive_scheduled_charges: nil,
             remove_overrides: nil,
             timestamp: nil,
+            # Prevents the creation of duplicates. If a request to create a record is made
+            # with a previously used uniqueness key, a new record will not be created and the
+            # request will fail with a 409 error.
+            uniqueness_key: nil,
             update_commits: nil,
             update_contract_end_date: nil,
             # Value to update the contract name to. If not provided, the contract name will
@@ -807,6 +821,7 @@ module MetronomeSDK
                     MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::RemoveOverride
                   ],
                 timestamp: Time,
+                uniqueness_key: String,
                 update_commits:
                   T::Array[
                     MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit

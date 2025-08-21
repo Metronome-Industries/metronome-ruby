@@ -35,13 +35,38 @@ class MetronomeSDK::Test::Resources::V1::Customers::CreditsTest < MetronomeSDK::
     response = @metronome.v1.customers.credits.list(customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d")
 
     assert_pattern do
-      response => MetronomeSDK::Models::V1::Customers::CreditListResponse
+      response => MetronomeSDK::Internal::BodyCursorPage
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => MetronomeSDK::Credit
     end
 
     assert_pattern do
-      response => {
-        data: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Credit]),
-        next_page: String | nil
+      row => {
+        id: String,
+        product: MetronomeSDK::Credit::Product,
+        type: MetronomeSDK::Credit::Type,
+        access_schedule: MetronomeSDK::ScheduleDuration | nil,
+        applicable_contract_ids: ^(MetronomeSDK::Internal::Type::ArrayOf[String]) | nil,
+        applicable_product_ids: ^(MetronomeSDK::Internal::Type::ArrayOf[String]) | nil,
+        applicable_product_tags: ^(MetronomeSDK::Internal::Type::ArrayOf[String]) | nil,
+        balance: Float | nil,
+        contract: MetronomeSDK::Credit::Contract | nil,
+        custom_fields: ^(MetronomeSDK::Internal::Type::HashOf[String]) | nil,
+        description: String | nil,
+        hierarchy_configuration: MetronomeSDK::Credit::HierarchyConfiguration | nil,
+        ledger: ^(MetronomeSDK::Internal::Type::ArrayOf[union: MetronomeSDK::Credit::Ledger]) | nil,
+        name: String | nil,
+        netsuite_sales_order_id: String | nil,
+        priority: Float | nil,
+        rate_type: MetronomeSDK::Credit::RateType | nil,
+        salesforce_opportunity_id: String | nil,
+        specifiers: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Credit::Specifier]) | nil,
+        uniqueness_key: String | nil
       }
     end
   end

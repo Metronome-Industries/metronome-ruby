@@ -41,6 +41,7 @@ module MetronomeSDK
           ?archive_credits: ::Array[MetronomeSDK::V2::ContractEditParams::ArchiveCredit],
           ?archive_scheduled_charges: ::Array[MetronomeSDK::V2::ContractEditParams::ArchiveScheduledCharge],
           ?remove_overrides: ::Array[MetronomeSDK::V2::ContractEditParams::RemoveOverride],
+          ?uniqueness_key: String,
           ?update_commits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateCommit],
           ?update_contract_end_date: Time?,
           ?update_contract_name: String?,

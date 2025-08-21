@@ -38,7 +38,7 @@ module MetronomeSDK
             ?next_page: String,
             ?starting_at: Time,
             ?request_options: MetronomeSDK::request_opts
-          ) -> MetronomeSDK::Models::V1::Customers::CommitListResponse
+          ) -> MetronomeSDK::Internal::BodyCursorPage[MetronomeSDK::Commit]
 
           def update_end_date: (
             commit_id: String,

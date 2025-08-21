@@ -341,6 +341,13 @@ module MetronomeSDK
         end
         attr_writer :remove_overrides
 
+        # Optional uniqueness key to prevent duplicate contract edits.
+        sig { returns(T.nilable(String)) }
+        attr_reader :uniqueness_key
+
+        sig { params(uniqueness_key: String).void }
+        attr_writer :uniqueness_key
+
         sig do
           returns(
             T.nilable(
@@ -572,6 +579,7 @@ module MetronomeSDK
               T::Array[
                 MetronomeSDK::V2::ContractEditParams::RemoveOverride::OrHash
               ],
+            uniqueness_key: String,
             update_commits:
               T::Array[
                 MetronomeSDK::V2::ContractEditParams::UpdateCommit::OrHash
@@ -639,6 +647,8 @@ module MetronomeSDK
           archive_scheduled_charges: nil,
           # IDs of overrides to remove
           remove_overrides: nil,
+          # Optional uniqueness key to prevent duplicate contract edits.
+          uniqueness_key: nil,
           update_commits: nil,
           # RFC 3339 timestamp indicating when the contract will end (exclusive).
           update_contract_end_date: nil,
@@ -713,6 +723,7 @@ module MetronomeSDK
                 ],
               remove_overrides:
                 T::Array[MetronomeSDK::V2::ContractEditParams::RemoveOverride],
+              uniqueness_key: String,
               update_commits:
                 T::Array[MetronomeSDK::V2::ContractEditParams::UpdateCommit],
               update_contract_end_date: T.nilable(Time),
