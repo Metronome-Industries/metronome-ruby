@@ -43,6 +43,10 @@ module MetronomeSDK
 
   Commit = MetronomeSDK::Models::Commit
 
+  Contract = MetronomeSDK::Models::Contract
+
+  ContractV2 = MetronomeSDK::Models::ContractV2
+
   ContractWithoutAmendments = MetronomeSDK::Models::ContractWithoutAmendments
 
   Credit = MetronomeSDK::Models::Credit

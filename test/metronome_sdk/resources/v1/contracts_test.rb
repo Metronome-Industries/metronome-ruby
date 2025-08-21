@@ -34,7 +34,7 @@ class MetronomeSDK::Test::Resources::V1::ContractsTest < MetronomeSDK::Test::Res
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::Models::V1::ContractRetrieveResponse::Data
+        data: MetronomeSDK::Contract
       }
     end
   end
@@ -48,7 +48,7 @@ class MetronomeSDK::Test::Resources::V1::ContractsTest < MetronomeSDK::Test::Res
 
     assert_pattern do
       response => {
-        data: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::ContractListResponse::Data])
+        data: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Contract])
       }
     end
   end
