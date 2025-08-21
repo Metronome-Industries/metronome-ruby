@@ -3,6 +3,10 @@ module MetronomeSDK
 
   class Commit = MetronomeSDK::Models::Commit
 
+  class Contract = MetronomeSDK::Models::Contract
+
+  class ContractV2 = MetronomeSDK::Models::ContractV2
+
   class ContractWithoutAmendments = MetronomeSDK::Models::ContractWithoutAmendments
 
   class Credit = MetronomeSDK::Models::Credit
