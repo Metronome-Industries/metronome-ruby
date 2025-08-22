@@ -12,13 +12,25 @@ class MetronomeSDK::Test::Resources::V1::UsageTest < MetronomeSDK::Test::Resourc
       )
 
     assert_pattern do
-      response => MetronomeSDK::Models::V1::UsageListResponse
+      response => MetronomeSDK::Internal::CursorPageWithoutLimit
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => MetronomeSDK::Models::V1::UsageListResponse
     end
 
     assert_pattern do
-      response => {
-        data: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::UsageListResponse::Data]),
-        next_page: String | nil
+      row => {
+        billable_metric_id: String,
+        billable_metric_name: String,
+        customer_id: String,
+        end_timestamp: Time,
+        start_timestamp: Time,
+        value: Float | nil,
+        groups: ^(MetronomeSDK::Internal::Type::HashOf[Float, nil?: true]) | nil
       }
     end
   end

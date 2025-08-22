@@ -15,7 +15,7 @@ module MetronomeSDK
             ?next_page: String,
             ?alert_statuses: ::Array[MetronomeSDK::Models::V1::Customers::AlertListParams::alert_status],
             ?request_options: MetronomeSDK::request_opts
-          ) -> MetronomeSDK::Models::V1::Customers::AlertListResponse
+          ) -> MetronomeSDK::Internal::CursorPageWithoutLimit[MetronomeSDK::V1::Customers::CustomerAlert]
 
           def reset: (
             alert_id: String,

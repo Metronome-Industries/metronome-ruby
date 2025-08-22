@@ -19,7 +19,11 @@ module MetronomeSDK
               ],
             customer_ids: T::Array[String],
             request_options: MetronomeSDK::RequestOptions::OrHash
-          ).returns(MetronomeSDK::Models::V1::UsageListResponse)
+          ).returns(
+            MetronomeSDK::Internal::CursorPageWithoutLimit[
+              MetronomeSDK::Models::V1::UsageListResponse
+            ]
+          )
         end
         def list(
           # Body param:

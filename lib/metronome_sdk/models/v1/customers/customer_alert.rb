@@ -4,6 +4,7 @@ module MetronomeSDK
   module Models
     module V1
       module Customers
+        # @see MetronomeSDK::Resources::V1::Customers::Alerts#list
         class CustomerAlert < MetronomeSDK::Internal::Type::BaseModel
           # @!attribute alert
           #

@@ -80,13 +80,20 @@ class MetronomeSDK::Test::Resources::V1::CreditGrantsTest < MetronomeSDK::Test::
     response = @metronome.v1.credit_grants.list_entries
 
     assert_pattern do
-      response => MetronomeSDK::Models::V1::CreditGrantListEntriesResponse
+      response => MetronomeSDK::Internal::CursorPageWithoutLimit
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => MetronomeSDK::Models::V1::CreditGrantListEntriesResponse
     end
 
     assert_pattern do
-      response => {
-        data: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data]),
-        next_page: String | nil
+      row => {
+        customer_id: String,
+        ledgers: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Ledger])
       }
     end
   end
