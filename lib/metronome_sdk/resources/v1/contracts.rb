@@ -48,7 +48,7 @@ module MetronomeSDK
         #
         # @param overrides [Array<MetronomeSDK::Models::V1::ContractCreateParams::Override>]
         #
-        # @param prepaid_balance_threshold_configuration [MetronomeSDK::Models::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration]
+        # @param prepaid_balance_threshold_configuration [MetronomeSDK::Models::PrepaidBalanceThresholdConfiguration]
         #
         # @param priority [Float] Priority of the contract.
         #
@@ -70,7 +70,7 @@ module MetronomeSDK
         #
         # @param scheduled_charges_on_usage_invoices [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::ScheduledChargesOnUsageInvoices] Determines which scheduled and commit charges to consolidate onto the Contract's
         #
-        # @param spend_threshold_configuration [MetronomeSDK::Models::V1::ContractCreateParams::SpendThresholdConfiguration]
+        # @param spend_threshold_configuration [MetronomeSDK::Models::SpendThresholdConfiguration]
         #
         # @param subscriptions [Array<MetronomeSDK::Models::V1::ContractCreateParams::Subscription>] Optional list of [subscriptions](https://docs.metronome.com/manage-product-acces
         #

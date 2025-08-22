@@ -38,7 +38,7 @@ module MetronomeSDK
           #
           # @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
           #
-          # @param specifiers [Array<MetronomeSDK::Models::V1::Customers::CreditCreateParams::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
+          # @param specifiers [Array<MetronomeSDK::Models::CommitSpecifierInput>] List of filters that determine what kind of customer usage draws down a commit o
           #
           # @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a commit or credit i
           #

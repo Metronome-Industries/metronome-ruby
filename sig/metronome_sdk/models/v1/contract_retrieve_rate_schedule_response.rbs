@@ -33,7 +33,7 @@ module MetronomeSDK
             rate_card_id: String,
             starting_at: Time,
             billing_frequency: MetronomeSDK::Models::V1::ContractRetrieveRateScheduleResponse::Data::billing_frequency,
-            commit_rate: MetronomeSDK::Models::V1::ContractRetrieveRateScheduleResponse::Data::CommitRate,
+            commit_rate: MetronomeSDK::CommitRate,
             ending_before: Time,
             override_rate: MetronomeSDK::Rate,
             pricing_group_values: ::Hash[Symbol, String]
@@ -62,11 +62,11 @@ module MetronomeSDK
             MetronomeSDK::Models::V1::ContractRetrieveRateScheduleResponse::Data::billing_frequency
           ) -> MetronomeSDK::Models::V1::ContractRetrieveRateScheduleResponse::Data::billing_frequency
 
-          attr_reader commit_rate: MetronomeSDK::Models::V1::ContractRetrieveRateScheduleResponse::Data::CommitRate?
+          attr_reader commit_rate: MetronomeSDK::CommitRate?
 
           def commit_rate=: (
-            MetronomeSDK::Models::V1::ContractRetrieveRateScheduleResponse::Data::CommitRate
-          ) -> MetronomeSDK::Models::V1::ContractRetrieveRateScheduleResponse::Data::CommitRate
+            MetronomeSDK::CommitRate
+          ) -> MetronomeSDK::CommitRate
 
           attr_reader ending_before: Time?
 
@@ -92,7 +92,7 @@ module MetronomeSDK
             rate_card_id: String,
             starting_at: Time,
             ?billing_frequency: MetronomeSDK::Models::V1::ContractRetrieveRateScheduleResponse::Data::billing_frequency,
-            ?commit_rate: MetronomeSDK::Models::V1::ContractRetrieveRateScheduleResponse::Data::CommitRate,
+            ?commit_rate: MetronomeSDK::CommitRate,
             ?ending_before: Time,
             ?override_rate: MetronomeSDK::Rate,
             ?pricing_group_values: ::Hash[Symbol, String]
@@ -108,7 +108,7 @@ module MetronomeSDK
             rate_card_id: String,
             starting_at: Time,
             billing_frequency: MetronomeSDK::Models::V1::ContractRetrieveRateScheduleResponse::Data::billing_frequency,
-            commit_rate: MetronomeSDK::Models::V1::ContractRetrieveRateScheduleResponse::Data::CommitRate,
+            commit_rate: MetronomeSDK::CommitRate,
             ending_before: Time,
             override_rate: MetronomeSDK::Rate,
             pricing_group_values: ::Hash[Symbol, String]
@@ -125,54 +125,6 @@ module MetronomeSDK
             WEEKLY: :WEEKLY
 
             def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractRetrieveRateScheduleResponse::Data::billing_frequency]
-          end
-
-          type commit_rate =
-            {
-              rate_type: MetronomeSDK::Models::V1::ContractRetrieveRateScheduleResponse::Data::CommitRate::rate_type,
-              price: Float,
-              tiers: ::Array[MetronomeSDK::Tier]
-            }
-
-          class CommitRate < MetronomeSDK::Internal::Type::BaseModel
-            attr_accessor rate_type: MetronomeSDK::Models::V1::ContractRetrieveRateScheduleResponse::Data::CommitRate::rate_type
-
-            attr_reader price: Float?
-
-            def price=: (Float) -> Float
-
-            attr_reader tiers: ::Array[MetronomeSDK::Tier]?
-
-            def tiers=: (
-              ::Array[MetronomeSDK::Tier]
-            ) -> ::Array[MetronomeSDK::Tier]
-
-            def initialize: (
-              rate_type: MetronomeSDK::Models::V1::ContractRetrieveRateScheduleResponse::Data::CommitRate::rate_type,
-              ?price: Float,
-              ?tiers: ::Array[MetronomeSDK::Tier]
-            ) -> void
-
-            def to_hash: -> {
-              rate_type: MetronomeSDK::Models::V1::ContractRetrieveRateScheduleResponse::Data::CommitRate::rate_type,
-              price: Float,
-              tiers: ::Array[MetronomeSDK::Tier]
-            }
-
-            type rate_type =
-              :FLAT | :PERCENTAGE | :SUBSCRIPTION | :TIERED | :CUSTOM
-
-            module RateType
-              extend MetronomeSDK::Internal::Type::Enum
-
-              FLAT: :FLAT
-              PERCENTAGE: :PERCENTAGE
-              SUBSCRIPTION: :SUBSCRIPTION
-              TIERED: :TIERED
-              CUSTOM: :CUSTOM
-
-              def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractRetrieveRateScheduleResponse::Data::CommitRate::rate_type]
-            end
           end
         end
       end

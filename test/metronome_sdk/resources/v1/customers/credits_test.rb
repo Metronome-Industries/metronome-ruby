@@ -58,14 +58,14 @@ class MetronomeSDK::Test::Resources::V1::Customers::CreditsTest < MetronomeSDK::
         contract: MetronomeSDK::Credit::Contract | nil,
         custom_fields: ^(MetronomeSDK::Internal::Type::HashOf[String]) | nil,
         description: String | nil,
-        hierarchy_configuration: MetronomeSDK::Credit::HierarchyConfiguration | nil,
+        hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration | nil,
         ledger: ^(MetronomeSDK::Internal::Type::ArrayOf[union: MetronomeSDK::Credit::Ledger]) | nil,
         name: String | nil,
         netsuite_sales_order_id: String | nil,
         priority: Float | nil,
         rate_type: MetronomeSDK::Credit::RateType | nil,
         salesforce_opportunity_id: String | nil,
-        specifiers: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Credit::Specifier]) | nil,
+        specifiers: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::CommitSpecifier]) | nil,
         uniqueness_key: String | nil
       }
     end
