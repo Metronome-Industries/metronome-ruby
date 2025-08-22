@@ -12,7 +12,7 @@ module MetronomeSDK
         is_prorated: bool,
         multiplier: Float,
         override_specifiers: ::Array[MetronomeSDK::Override::OverrideSpecifier],
-        override_tiers: ::Array[MetronomeSDK::Override::OverrideTier],
+        override_tiers: ::Array[MetronomeSDK::OverrideTier],
         overwrite_rate: MetronomeSDK::Override::OverwriteRate,
         price: Float,
         priority: Float,
@@ -66,11 +66,11 @@ module MetronomeSDK
         ::Array[MetronomeSDK::Override::OverrideSpecifier]
       ) -> ::Array[MetronomeSDK::Override::OverrideSpecifier]
 
-      attr_reader override_tiers: ::Array[MetronomeSDK::Override::OverrideTier]?
+      attr_reader override_tiers: ::Array[MetronomeSDK::OverrideTier]?
 
       def override_tiers=: (
-        ::Array[MetronomeSDK::Override::OverrideTier]
-      ) -> ::Array[MetronomeSDK::Override::OverrideTier]
+        ::Array[MetronomeSDK::OverrideTier]
+      ) -> ::Array[MetronomeSDK::OverrideTier]
 
       attr_reader overwrite_rate: MetronomeSDK::Override::OverwriteRate?
 
@@ -133,7 +133,7 @@ module MetronomeSDK
         ?is_prorated: bool,
         ?multiplier: Float,
         ?override_specifiers: ::Array[MetronomeSDK::Override::OverrideSpecifier],
-        ?override_tiers: ::Array[MetronomeSDK::Override::OverrideTier],
+        ?override_tiers: ::Array[MetronomeSDK::OverrideTier],
         ?overwrite_rate: MetronomeSDK::Override::OverwriteRate,
         ?price: Float,
         ?priority: Float,
@@ -157,7 +157,7 @@ module MetronomeSDK
         is_prorated: bool,
         multiplier: Float,
         override_specifiers: ::Array[MetronomeSDK::Override::OverrideSpecifier],
-        override_tiers: ::Array[MetronomeSDK::Override::OverrideTier],
+        override_tiers: ::Array[MetronomeSDK::OverrideTier],
         overwrite_rate: MetronomeSDK::Override::OverwriteRate,
         price: Float,
         priority: Float,
@@ -255,20 +255,6 @@ module MetronomeSDK
 
           def self?.values: -> ::Array[MetronomeSDK::Models::Override::OverrideSpecifier::billing_frequency]
         end
-      end
-
-      type override_tier = { multiplier: Float, size: Float }
-
-      class OverrideTier < MetronomeSDK::Internal::Type::BaseModel
-        attr_accessor multiplier: Float
-
-        attr_reader size: Float?
-
-        def size=: (Float) -> Float
-
-        def initialize: (multiplier: Float, ?size: Float) -> void
-
-        def to_hash: -> { multiplier: Float, size: Float }
       end
 
       type overwrite_rate =

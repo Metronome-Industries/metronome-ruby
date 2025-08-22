@@ -11,7 +11,7 @@ module MetronomeSDK
               rate_type: MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::rate_type,
               starting_at: Time,
               billing_frequency: MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::billing_frequency,
-              commit_rate: MetronomeSDK::V1::Contracts::RateCards::RateAddParams::CommitRate,
+              commit_rate: MetronomeSDK::CommitRate,
               credit_type_id: String,
               custom_rate: ::Hash[Symbol, top],
               ending_before: Time,
@@ -44,11 +44,11 @@ module MetronomeSDK
               MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::billing_frequency
             ) -> MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::billing_frequency
 
-            attr_reader commit_rate: MetronomeSDK::V1::Contracts::RateCards::RateAddParams::CommitRate?
+            attr_reader commit_rate: MetronomeSDK::CommitRate?
 
             def commit_rate=: (
-              MetronomeSDK::V1::Contracts::RateCards::RateAddParams::CommitRate
-            ) -> MetronomeSDK::V1::Contracts::RateCards::RateAddParams::CommitRate
+              MetronomeSDK::CommitRate
+            ) -> MetronomeSDK::CommitRate
 
             attr_reader credit_type_id: String?
 
@@ -97,7 +97,7 @@ module MetronomeSDK
               rate_type: MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::rate_type,
               starting_at: Time,
               ?billing_frequency: MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::billing_frequency,
-              ?commit_rate: MetronomeSDK::V1::Contracts::RateCards::RateAddParams::CommitRate,
+              ?commit_rate: MetronomeSDK::CommitRate,
               ?credit_type_id: String,
               ?custom_rate: ::Hash[Symbol, top],
               ?ending_before: Time,
@@ -117,7 +117,7 @@ module MetronomeSDK
               rate_type: MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::rate_type,
               starting_at: Time,
               billing_frequency: MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::billing_frequency,
-              commit_rate: MetronomeSDK::V1::Contracts::RateCards::RateAddParams::CommitRate,
+              commit_rate: MetronomeSDK::CommitRate,
               credit_type_id: String,
               custom_rate: ::Hash[Symbol, top],
               ending_before: Time,
@@ -156,54 +156,6 @@ module MetronomeSDK
               WEEKLY: :WEEKLY
 
               def self?.values: -> ::Array[MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::billing_frequency]
-            end
-
-            type commit_rate =
-              {
-                rate_type: MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::CommitRate::rate_type,
-                price: Float,
-                tiers: ::Array[MetronomeSDK::Tier]
-              }
-
-            class CommitRate < MetronomeSDK::Internal::Type::BaseModel
-              attr_accessor rate_type: MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::CommitRate::rate_type
-
-              attr_reader price: Float?
-
-              def price=: (Float) -> Float
-
-              attr_reader tiers: ::Array[MetronomeSDK::Tier]?
-
-              def tiers=: (
-                ::Array[MetronomeSDK::Tier]
-              ) -> ::Array[MetronomeSDK::Tier]
-
-              def initialize: (
-                rate_type: MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::CommitRate::rate_type,
-                ?price: Float,
-                ?tiers: ::Array[MetronomeSDK::Tier]
-              ) -> void
-
-              def to_hash: -> {
-                rate_type: MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::CommitRate::rate_type,
-                price: Float,
-                tiers: ::Array[MetronomeSDK::Tier]
-              }
-
-              type rate_type =
-                :FLAT | :PERCENTAGE | :SUBSCRIPTION | :TIERED | :CUSTOM
-
-              module RateType
-                extend MetronomeSDK::Internal::Type::Enum
-
-                FLAT: :FLAT
-                PERCENTAGE: :PERCENTAGE
-                SUBSCRIPTION: :SUBSCRIPTION
-                TIERED: :TIERED
-                CUSTOM: :CUSTOM
-
-                def self?.values: -> ::Array[MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::CommitRate::rate_type]
-              end
             end
           end
         end

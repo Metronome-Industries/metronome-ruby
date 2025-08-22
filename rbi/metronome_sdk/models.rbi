@@ -1,9 +1,20 @@
 # typed: strong
 
 module MetronomeSDK
+  BaseThresholdCommit = MetronomeSDK::Models::BaseThresholdCommit
+
   BaseUsageFilter = MetronomeSDK::Models::BaseUsageFilter
 
   Commit = MetronomeSDK::Models::Commit
+
+  CommitHierarchyConfiguration =
+    MetronomeSDK::Models::CommitHierarchyConfiguration
+
+  CommitRate = MetronomeSDK::Models::CommitRate
+
+  CommitSpecifier = MetronomeSDK::Models::CommitSpecifier
+
+  CommitSpecifierInput = MetronomeSDK::Models::CommitSpecifierInput
 
   Contract = MetronomeSDK::Models::Contract
 
@@ -19,9 +30,23 @@ module MetronomeSDK
 
   EventTypeFilter = MetronomeSDK::Models::EventTypeFilter
 
+  HierarchyConfiguration = MetronomeSDK::Models::HierarchyConfiguration
+
   ID = MetronomeSDK::Models::ID
 
   Override = MetronomeSDK::Models::Override
+
+  OverrideTier = MetronomeSDK::Models::OverrideTier
+
+  PaymentGateConfig = MetronomeSDK::Models::PaymentGateConfig
+
+  PaymentGateConfigV2 = MetronomeSDK::Models::PaymentGateConfigV2
+
+  PrepaidBalanceThresholdConfiguration =
+    MetronomeSDK::Models::PrepaidBalanceThresholdConfiguration
+
+  PrepaidBalanceThresholdConfigurationV2 =
+    MetronomeSDK::Models::PrepaidBalanceThresholdConfigurationV2
 
   PropertyFilter = MetronomeSDK::Models::PropertyFilter
 
@@ -34,6 +59,14 @@ module MetronomeSDK
   ScheduleDuration = MetronomeSDK::Models::ScheduleDuration
 
   SchedulePointInTime = MetronomeSDK::Models::SchedulePointInTime
+
+  SpendThresholdConfiguration =
+    MetronomeSDK::Models::SpendThresholdConfiguration
+
+  SpendThresholdConfigurationV2 =
+    MetronomeSDK::Models::SpendThresholdConfigurationV2
+
+  Subscription = MetronomeSDK::Models::Subscription
 
   Tier = MetronomeSDK::Models::Tier
 

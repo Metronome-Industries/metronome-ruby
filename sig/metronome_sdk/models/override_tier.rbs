@@ -1,0 +1,17 @@
+module MetronomeSDK
+  module Models
+    type override_tier = { multiplier: Float, size: Float }
+
+    class OverrideTier < MetronomeSDK::Internal::Type::BaseModel
+      attr_accessor multiplier: Float
+
+      attr_reader size: Float?
+
+      def size=: (Float) -> Float
+
+      def initialize: (multiplier: Float, ?size: Float) -> void
+
+      def to_hash: -> { multiplier: Float, size: Float }
+    end
+  end
+end

@@ -1,0 +1,48 @@
+module MetronomeSDK
+  module Models
+    type commit_rate =
+      {
+        rate_type: MetronomeSDK::Models::CommitRate::rate_type,
+        price: Float,
+        tiers: ::Array[MetronomeSDK::Tier]
+      }
+
+    class CommitRate < MetronomeSDK::Internal::Type::BaseModel
+      attr_accessor rate_type: MetronomeSDK::Models::CommitRate::rate_type
+
+      attr_reader price: Float?
+
+      def price=: (Float) -> Float
+
+      attr_reader tiers: ::Array[MetronomeSDK::Tier]?
+
+      def tiers=: (::Array[MetronomeSDK::Tier]) -> ::Array[MetronomeSDK::Tier]
+
+      def initialize: (
+        rate_type: MetronomeSDK::Models::CommitRate::rate_type,
+        ?price: Float,
+        ?tiers: ::Array[MetronomeSDK::Tier]
+      ) -> void
+
+      def to_hash: -> {
+        rate_type: MetronomeSDK::Models::CommitRate::rate_type,
+        price: Float,
+        tiers: ::Array[MetronomeSDK::Tier]
+      }
+
+      type rate_type = :FLAT | :PERCENTAGE | :SUBSCRIPTION | :TIERED | :CUSTOM
+
+      module RateType
+        extend MetronomeSDK::Internal::Type::Enum
+
+        FLAT: :FLAT
+        PERCENTAGE: :PERCENTAGE
+        SUBSCRIPTION: :SUBSCRIPTION
+        TIERED: :TIERED
+        CUSTOM: :CUSTOM
+
+        def self?.values: -> ::Array[MetronomeSDK::Models::CommitRate::rate_type]
+      end
+    end
+  end
+end

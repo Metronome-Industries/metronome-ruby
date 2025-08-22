@@ -6,14 +6,14 @@ module MetronomeSDK
       # @api private
       #
       # @example
-      #   # `contract_list_balances_response` is a `MetronomeSDK::Models::V1::ContractListBalancesResponse`
-      #   case contract_list_balances_response
-      #   when MetronomeSDK::Commit
-      #     puts(contract_list_balances_response.id)
-      #   when MetronomeSDK::Credit
-      #     puts(contract_list_balances_response.product)
+      #   # `hierarchy_configuration` is a `MetronomeSDK::HierarchyConfiguration`
+      #   case hierarchy_configuration
+      #   when MetronomeSDK::HierarchyConfiguration::ParentHierarchyConfiguration
+      #     puts(hierarchy_configuration.children)
+      #   when MetronomeSDK::HierarchyConfiguration::ChildHierarchyConfiguration
+      #     puts(hierarchy_configuration.parent)
       #   else
-      #     puts(contract_list_balances_response)
+      #     puts(hierarchy_configuration)
       #   end
       module Union
         include MetronomeSDK::Internal::Type::Converter

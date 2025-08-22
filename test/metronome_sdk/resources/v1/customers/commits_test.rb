@@ -61,7 +61,7 @@ class MetronomeSDK::Test::Resources::V1::Customers::CommitsTest < MetronomeSDK::
         contract: MetronomeSDK::Commit::Contract | nil,
         custom_fields: ^(MetronomeSDK::Internal::Type::HashOf[String]) | nil,
         description: String | nil,
-        hierarchy_configuration: MetronomeSDK::Commit::HierarchyConfiguration | nil,
+        hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration | nil,
         invoice_contract: MetronomeSDK::Commit::InvoiceContract | nil,
         invoice_schedule: MetronomeSDK::SchedulePointInTime | nil,
         ledger: ^(MetronomeSDK::Internal::Type::ArrayOf[union: MetronomeSDK::Commit::Ledger]) | nil,
@@ -72,7 +72,7 @@ class MetronomeSDK::Test::Resources::V1::Customers::CommitsTest < MetronomeSDK::
         rolled_over_from: MetronomeSDK::Commit::RolledOverFrom | nil,
         rollover_fraction: Float | nil,
         salesforce_opportunity_id: String | nil,
-        specifiers: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Commit::Specifier]) | nil,
+        specifiers: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::CommitSpecifier]) | nil,
         uniqueness_key: String | nil
       }
     end

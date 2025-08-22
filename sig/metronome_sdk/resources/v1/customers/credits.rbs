@@ -17,7 +17,7 @@ module MetronomeSDK
             ?netsuite_sales_order_id: String,
             ?rate_type: MetronomeSDK::Models::V1::Customers::CreditCreateParams::rate_type,
             ?salesforce_opportunity_id: String,
-            ?specifiers: ::Array[MetronomeSDK::V1::Customers::CreditCreateParams::Specifier],
+            ?specifiers: ::Array[MetronomeSDK::CommitSpecifierInput],
             ?uniqueness_key: String,
             ?request_options: MetronomeSDK::request_opts
           ) -> MetronomeSDK::Models::V1::Customers::CreditCreateResponse

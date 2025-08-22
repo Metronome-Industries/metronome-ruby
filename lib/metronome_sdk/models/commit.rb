@@ -84,8 +84,8 @@ module MetronomeSDK
       # @!attribute hierarchy_configuration
       #   Optional configuration for commit hierarchy access control
       #
-      #   @return [MetronomeSDK::Models::Commit::HierarchyConfiguration, nil]
-      optional :hierarchy_configuration, -> { MetronomeSDK::Commit::HierarchyConfiguration }
+      #   @return [MetronomeSDK::Models::CommitHierarchyConfiguration, nil]
+      optional :hierarchy_configuration, -> { MetronomeSDK::CommitHierarchyConfiguration }
 
       # @!attribute invoice_contract
       #   The contract that this commit will be billed on.
@@ -150,8 +150,8 @@ module MetronomeSDK
       #   or credit. A customer's usage needs to meet the condition of at least one of the
       #   specifiers to contribute to a commit's or credit's drawdown.
       #
-      #   @return [Array<MetronomeSDK::Models::Commit::Specifier>, nil]
-      optional :specifiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Commit::Specifier] }
+      #   @return [Array<MetronomeSDK::Models::CommitSpecifier>, nil]
+      optional :specifiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::CommitSpecifier] }
 
       # @!attribute uniqueness_key
       #   Prevents the creation of duplicates. If a request to create a commit or credit
@@ -192,7 +192,7 @@ module MetronomeSDK
       #
       #   @param description [String]
       #
-      #   @param hierarchy_configuration [MetronomeSDK::Models::Commit::HierarchyConfiguration] Optional configuration for commit hierarchy access control
+      #   @param hierarchy_configuration [MetronomeSDK::Models::CommitHierarchyConfiguration] Optional configuration for commit hierarchy access control
       #
       #   @param invoice_contract [MetronomeSDK::Models::Commit::InvoiceContract] The contract that this commit will be billed on.
       #
@@ -214,7 +214,7 @@ module MetronomeSDK
       #
       #   @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
       #
-      #   @param specifiers [Array<MetronomeSDK::Models::Commit::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
+      #   @param specifiers [Array<MetronomeSDK::Models::CommitSpecifier>] List of filters that determine what kind of customer usage draws down a commit o
       #
       #   @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a commit or credit i
 
@@ -255,102 +255,6 @@ module MetronomeSDK
 
         # @!method initialize(id:)
         #   @param id [String]
-      end
-
-      # @see MetronomeSDK::Models::Commit#hierarchy_configuration
-      class HierarchyConfiguration < MetronomeSDK::Internal::Type::BaseModel
-        # @!attribute child_access
-        #
-        #   @return [MetronomeSDK::Models::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs]
-        required :child_access, union: -> { MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess }
-
-        # @!method initialize(child_access:)
-        #   Optional configuration for commit hierarchy access control
-        #
-        #   @param child_access [MetronomeSDK::Models::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs]
-
-        # @see MetronomeSDK::Models::Commit::HierarchyConfiguration#child_access
-        module ChildAccess
-          extend MetronomeSDK::Internal::Type::Union
-
-          variant -> { MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll }
-
-          variant -> { MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone }
-
-          variant -> { MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs }
-
-          class CommitHierarchyChildAccessAll < MetronomeSDK::Internal::Type::BaseModel
-            # @!attribute type
-            #
-            #   @return [Symbol, MetronomeSDK::Models::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type]
-            required :type,
-                     enum: -> { MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type }
-
-            # @!method initialize(type:)
-            #   @param type [Symbol, MetronomeSDK::Models::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type]
-
-            # @see MetronomeSDK::Models::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll#type
-            module Type
-              extend MetronomeSDK::Internal::Type::Enum
-
-              ALL = :ALL
-
-              # @!method self.values
-              #   @return [Array<Symbol>]
-            end
-          end
-
-          class CommitHierarchyChildAccessNone < MetronomeSDK::Internal::Type::BaseModel
-            # @!attribute type
-            #
-            #   @return [Symbol, MetronomeSDK::Models::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type]
-            required :type,
-                     enum: -> { MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type }
-
-            # @!method initialize(type:)
-            #   @param type [Symbol, MetronomeSDK::Models::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type]
-
-            # @see MetronomeSDK::Models::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone#type
-            module Type
-              extend MetronomeSDK::Internal::Type::Enum
-
-              NONE = :NONE
-
-              # @!method self.values
-              #   @return [Array<Symbol>]
-            end
-          end
-
-          class CommitHierarchyChildAccessContractIDs < MetronomeSDK::Internal::Type::BaseModel
-            # @!attribute contract_ids
-            #
-            #   @return [Array<String>]
-            required :contract_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
-
-            # @!attribute type
-            #
-            #   @return [Symbol, MetronomeSDK::Models::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type]
-            required :type,
-                     enum: -> { MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type }
-
-            # @!method initialize(contract_ids:, type:)
-            #   @param contract_ids [Array<String>]
-            #   @param type [Symbol, MetronomeSDK::Models::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type]
-
-            # @see MetronomeSDK::Models::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs#type
-            module Type
-              extend MetronomeSDK::Internal::Type::Enum
-
-              CONTRACT_IDS = :CONTRACT_IDS
-
-              # @!method self.values
-              #   @return [Array<Symbol>]
-            end
-          end
-
-          # @!method self.variants
-          #   @return [Array(MetronomeSDK::Models::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs)]
-        end
       end
 
       # @see MetronomeSDK::Models::Commit#invoice_contract
@@ -1016,43 +920,6 @@ module MetronomeSDK
         # @!method initialize(commit_id:, contract_id:)
         #   @param commit_id [String]
         #   @param contract_id [String]
-      end
-
-      class Specifier < MetronomeSDK::Internal::Type::BaseModel
-        # @!attribute presentation_group_values
-        #
-        #   @return [Hash{Symbol=>String}, nil]
-        optional :presentation_group_values, MetronomeSDK::Internal::Type::HashOf[String]
-
-        # @!attribute pricing_group_values
-        #
-        #   @return [Hash{Symbol=>String}, nil]
-        optional :pricing_group_values, MetronomeSDK::Internal::Type::HashOf[String]
-
-        # @!attribute product_id
-        #   If provided, the specifier will only apply to the product with the specified ID.
-        #
-        #   @return [String, nil]
-        optional :product_id, String
-
-        # @!attribute product_tags
-        #   If provided, the specifier will only apply to products with all the specified
-        #   tags.
-        #
-        #   @return [Array<String>, nil]
-        optional :product_tags, MetronomeSDK::Internal::Type::ArrayOf[String]
-
-        # @!method initialize(presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil)
-        #   Some parameter documentations has been truncated, see
-        #   {MetronomeSDK::Models::Commit::Specifier} for more details.
-        #
-        #   @param presentation_group_values [Hash{Symbol=>String}]
-        #
-        #   @param pricing_group_values [Hash{Symbol=>String}]
-        #
-        #   @param product_id [String] If provided, the specifier will only apply to the product with the specified ID.
-        #
-        #   @param product_tags [Array<String>] If provided, the specifier will only apply to products with all the specified ta
       end
     end
   end
