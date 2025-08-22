@@ -47,7 +47,7 @@ module MetronomeSDK
           ?ending_before: Time,
           ?starting_on: Time,
           ?request_options: MetronomeSDK::request_opts
-        ) -> MetronomeSDK::Models::V1::CreditGrantListEntriesResponse
+        ) -> MetronomeSDK::Internal::CursorPageWithoutLimit[MetronomeSDK::Models::V1::CreditGrantListEntriesResponse]
 
         def `void`: (
           id: String,

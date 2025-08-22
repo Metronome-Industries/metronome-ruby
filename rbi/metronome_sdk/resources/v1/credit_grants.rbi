@@ -141,7 +141,11 @@ module MetronomeSDK
             ending_before: Time,
             starting_on: Time,
             request_options: MetronomeSDK::RequestOptions::OrHash
-          ).returns(MetronomeSDK::Models::V1::CreditGrantListEntriesResponse)
+          ).returns(
+            MetronomeSDK::Internal::CursorPageWithoutLimit[
+              MetronomeSDK::Models::V1::CreditGrantListEntriesResponse
+            ]
+          )
         end
         def list_entries(
           # Query param: Cursor that indicates where the next page of results should start.
