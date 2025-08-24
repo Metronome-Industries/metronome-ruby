@@ -67,18 +67,14 @@ module MetronomeSDK
         #
         #   @return [Array<MetronomeSDK::Models::V1::ContractAmendParams::ProfessionalService>, nil]
         optional :professional_services,
-                 -> {
-                   MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractAmendParams::ProfessionalService]
-                 }
+                 -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractAmendParams::ProfessionalService] }
 
         # @!attribute reseller_royalties
         #   This field's availability is dependent on your client's configuration.
         #
         #   @return [Array<MetronomeSDK::Models::V1::ContractAmendParams::ResellerRoyalty>, nil]
         optional :reseller_royalties,
-                 -> {
-                   MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractAmendParams::ResellerRoyalty]
-                 }
+                 -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractAmendParams::ResellerRoyalty] }
 
         # @!attribute salesforce_opportunity_id
         #   This field's availability is dependent on your client's configuration.
@@ -90,9 +86,7 @@ module MetronomeSDK
         #
         #   @return [Array<MetronomeSDK::Models::V1::ContractAmendParams::ScheduledCharge>, nil]
         optional :scheduled_charges,
-                 -> {
-                   MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractAmendParams::ScheduledCharge]
-                 }
+                 -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractAmendParams::ScheduledCharge] }
 
         # @!attribute total_contract_value
         #   This field's availability is dependent on your client's configuration.
@@ -186,9 +180,8 @@ module MetronomeSDK
           # @!attribute hierarchy_configuration
           #   Optional configuration for commit hierarchy access control
           #
-          #   @return [MetronomeSDK::Models::V1::ContractAmendParams::Commit::HierarchyConfiguration, nil]
-          optional :hierarchy_configuration,
-                   -> { MetronomeSDK::V1::ContractAmendParams::Commit::HierarchyConfiguration }
+          #   @return [MetronomeSDK::Models::CommitHierarchyConfiguration, nil]
+          optional :hierarchy_configuration, -> { MetronomeSDK::CommitHierarchyConfiguration }
 
           # @!attribute invoice_schedule
           #   Required for "POSTPAID" commits: the true up invoice will be generated at this
@@ -215,10 +208,7 @@ module MetronomeSDK
           #   optionally payment gate this commit
           #
           #   @return [MetronomeSDK::Models::V1::ContractAmendParams::Commit::PaymentGateConfig, nil]
-          optional :payment_gate_config,
-                   -> {
-                     MetronomeSDK::V1::ContractAmendParams::Commit::PaymentGateConfig
-                   }
+          optional :payment_gate_config, -> { MetronomeSDK::V1::ContractAmendParams::Commit::PaymentGateConfig }
 
           # @!attribute priority
           #   If multiple commits are applicable, the one with the lower priority will apply
@@ -244,11 +234,8 @@ module MetronomeSDK
           #   specifiers to contribute to a commit's or credit's drawdown. This field cannot
           #   be used together with `applicable_product_ids` or `applicable_product_tags`.
           #
-          #   @return [Array<MetronomeSDK::Models::V1::ContractAmendParams::Commit::Specifier>, nil]
-          optional :specifiers,
-                   -> {
-                     MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractAmendParams::Commit::Specifier]
-                   }
+          #   @return [Array<MetronomeSDK::Models::CommitSpecifierInput>, nil]
+          optional :specifiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::CommitSpecifierInput] }
 
           # @!attribute temporary_id
           #   A temporary ID for the commit that can be used to reference the commit for
@@ -277,7 +264,7 @@ module MetronomeSDK
           #
           #   @param description [String] Used only in UI/API. It is not exposed to end customers.
           #
-          #   @param hierarchy_configuration [MetronomeSDK::Models::V1::ContractAmendParams::Commit::HierarchyConfiguration] Optional configuration for commit hierarchy access control
+          #   @param hierarchy_configuration [MetronomeSDK::Models::CommitHierarchyConfiguration] Optional configuration for commit hierarchy access control
           #
           #   @param invoice_schedule [MetronomeSDK::Models::V1::ContractAmendParams::Commit::InvoiceSchedule] Required for "POSTPAID" commits: the true up invoice will be generated at this t
           #
@@ -293,7 +280,7 @@ module MetronomeSDK
           #
           #   @param rollover_fraction [Float] Fraction of unused segments that will be rolled over. Must be between 0 and 1.
           #
-          #   @param specifiers [Array<MetronomeSDK::Models::V1::ContractAmendParams::Commit::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
+          #   @param specifiers [Array<MetronomeSDK::Models::CommitSpecifierInput>] List of filters that determine what kind of customer usage draws down a commit o
           #
           #   @param temporary_id [String] A temporary ID for the commit that can be used to reference the commit for commi
 
@@ -314,9 +301,7 @@ module MetronomeSDK
             #
             #   @return [Array<MetronomeSDK::Models::V1::ContractAmendParams::Commit::AccessSchedule::ScheduleItem>]
             required :schedule_items,
-                     -> {
-                       MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractAmendParams::Commit::AccessSchedule::ScheduleItem]
-                     }
+                     -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractAmendParams::Commit::AccessSchedule::ScheduleItem] }
 
             # @!attribute credit_type_id
             #   Defaults to USD (cents) if not passed
@@ -360,117 +345,6 @@ module MetronomeSDK
             end
           end
 
-          # @see MetronomeSDK::Models::V1::ContractAmendParams::Commit#hierarchy_configuration
-          class HierarchyConfiguration < MetronomeSDK::Internal::Type::BaseModel
-            # @!attribute child_access
-            #
-            #   @return [MetronomeSDK::Models::V1::ContractAmendParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V1::ContractAmendParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V1::ContractAmendParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs]
-            required :child_access,
-                     union: -> {
-                       MetronomeSDK::V1::ContractAmendParams::Commit::HierarchyConfiguration::ChildAccess
-                     }
-
-            # @!method initialize(child_access:)
-            #   Optional configuration for commit hierarchy access control
-            #
-            #   @param child_access [MetronomeSDK::Models::V1::ContractAmendParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V1::ContractAmendParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V1::ContractAmendParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs]
-
-            # @see MetronomeSDK::Models::V1::ContractAmendParams::Commit::HierarchyConfiguration#child_access
-            module ChildAccess
-              extend MetronomeSDK::Internal::Type::Union
-
-              variant -> {
-                MetronomeSDK::V1::ContractAmendParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll
-              }
-
-              variant -> {
-                MetronomeSDK::V1::ContractAmendParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone
-              }
-
-              variant -> {
-                MetronomeSDK::V1::ContractAmendParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs
-              }
-
-              class CommitHierarchyChildAccessAll < MetronomeSDK::Internal::Type::BaseModel
-                # @!attribute type
-                #
-                #   @return [Symbol, MetronomeSDK::Models::V1::ContractAmendParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type]
-                required :type,
-                         enum: -> {
-                           MetronomeSDK::V1::ContractAmendParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type
-                         }
-
-                # @!method initialize(type:)
-                #   @param type [Symbol, MetronomeSDK::Models::V1::ContractAmendParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type]
-
-                # @see MetronomeSDK::Models::V1::ContractAmendParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll#type
-                module Type
-                  extend MetronomeSDK::Internal::Type::Enum
-
-                  ALL = :ALL
-
-                  # @!method self.values
-                  #   @return [Array<Symbol>]
-                end
-              end
-
-              class CommitHierarchyChildAccessNone < MetronomeSDK::Internal::Type::BaseModel
-                # @!attribute type
-                #
-                #   @return [Symbol, MetronomeSDK::Models::V1::ContractAmendParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type]
-                required :type,
-                         enum: -> {
-                           MetronomeSDK::V1::ContractAmendParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type
-                         }
-
-                # @!method initialize(type:)
-                #   @param type [Symbol, MetronomeSDK::Models::V1::ContractAmendParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type]
-
-                # @see MetronomeSDK::Models::V1::ContractAmendParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone#type
-                module Type
-                  extend MetronomeSDK::Internal::Type::Enum
-
-                  NONE = :NONE
-
-                  # @!method self.values
-                  #   @return [Array<Symbol>]
-                end
-              end
-
-              class CommitHierarchyChildAccessContractIDs < MetronomeSDK::Internal::Type::BaseModel
-                # @!attribute contract_ids
-                #
-                #   @return [Array<String>]
-                required :contract_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
-
-                # @!attribute type
-                #
-                #   @return [Symbol, MetronomeSDK::Models::V1::ContractAmendParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type]
-                required :type,
-                         enum: -> {
-                           MetronomeSDK::V1::ContractAmendParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type
-                         }
-
-                # @!method initialize(contract_ids:, type:)
-                #   @param contract_ids [Array<String>]
-                #   @param type [Symbol, MetronomeSDK::Models::V1::ContractAmendParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type]
-
-                # @see MetronomeSDK::Models::V1::ContractAmendParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs#type
-                module Type
-                  extend MetronomeSDK::Internal::Type::Enum
-
-                  CONTRACT_IDS = :CONTRACT_IDS
-
-                  # @!method self.values
-                  #   @return [Array<Symbol>]
-                end
-              end
-
-              # @!method self.variants
-              #   @return [Array(MetronomeSDK::Models::V1::ContractAmendParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V1::ContractAmendParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V1::ContractAmendParams::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs)]
-            end
-          end
-
           # @see MetronomeSDK::Models::V1::ContractAmendParams::Commit#invoice_schedule
           class InvoiceSchedule < MetronomeSDK::Internal::Type::BaseModel
             # @!attribute credit_type_id
@@ -500,9 +374,7 @@ module MetronomeSDK
             #
             #   @return [Array<MetronomeSDK::Models::V1::ContractAmendParams::Commit::InvoiceSchedule::ScheduleItem>, nil]
             optional :schedule_items,
-                     -> {
-                       MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractAmendParams::Commit::InvoiceSchedule::ScheduleItem]
-                     }
+                     -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractAmendParams::Commit::InvoiceSchedule::ScheduleItem] }
 
             # @!method initialize(credit_type_id: nil, do_not_invoice: nil, recurring_schedule: nil, schedule_items: nil)
             #   Some parameter documentations has been truncated, see
@@ -528,9 +400,7 @@ module MetronomeSDK
               #
               #   @return [Symbol, MetronomeSDK::Models::V1::ContractAmendParams::Commit::InvoiceSchedule::RecurringSchedule::AmountDistribution]
               required :amount_distribution,
-                       enum: -> {
-                         MetronomeSDK::V1::ContractAmendParams::Commit::InvoiceSchedule::RecurringSchedule::AmountDistribution
-                       }
+                       enum: -> { MetronomeSDK::V1::ContractAmendParams::Commit::InvoiceSchedule::RecurringSchedule::AmountDistribution }
 
               # @!attribute ending_before
               #   RFC 3339 timestamp (exclusive).
@@ -542,9 +412,7 @@ module MetronomeSDK
               #
               #   @return [Symbol, MetronomeSDK::Models::V1::ContractAmendParams::Commit::InvoiceSchedule::RecurringSchedule::Frequency]
               required :frequency,
-                       enum: -> {
-                         MetronomeSDK::V1::ContractAmendParams::Commit::InvoiceSchedule::RecurringSchedule::Frequency
-                       }
+                       enum: -> { MetronomeSDK::V1::ContractAmendParams::Commit::InvoiceSchedule::RecurringSchedule::Frequency }
 
               # @!attribute starting_at
               #   RFC 3339 timestamp (inclusive).
@@ -681,18 +549,14 @@ module MetronomeSDK
             #
             #   @return [Symbol, MetronomeSDK::Models::V1::ContractAmendParams::Commit::PaymentGateConfig::PaymentGateType]
             required :payment_gate_type,
-                     enum: -> {
-                       MetronomeSDK::V1::ContractAmendParams::Commit::PaymentGateConfig::PaymentGateType
-                     }
+                     enum: -> { MetronomeSDK::V1::ContractAmendParams::Commit::PaymentGateConfig::PaymentGateType }
 
             # @!attribute precalculated_tax_config
             #   Only applicable if using PRECALCULATED as your tax type.
             #
             #   @return [MetronomeSDK::Models::V1::ContractAmendParams::Commit::PaymentGateConfig::PrecalculatedTaxConfig, nil]
             optional :precalculated_tax_config,
-                     -> {
-                       MetronomeSDK::V1::ContractAmendParams::Commit::PaymentGateConfig::PrecalculatedTaxConfig
-                     }
+                     -> { MetronomeSDK::V1::ContractAmendParams::Commit::PaymentGateConfig::PrecalculatedTaxConfig }
 
             # @!attribute stripe_config
             #   Only applicable if using STRIPE as your payment gate type.
@@ -707,10 +571,7 @@ module MetronomeSDK
             #   will default to NONE.
             #
             #   @return [Symbol, MetronomeSDK::Models::V1::ContractAmendParams::Commit::PaymentGateConfig::TaxType, nil]
-            optional :tax_type,
-                     enum: -> {
-                       MetronomeSDK::V1::ContractAmendParams::Commit::PaymentGateConfig::TaxType
-                     }
+            optional :tax_type, enum: -> { MetronomeSDK::V1::ContractAmendParams::Commit::PaymentGateConfig::TaxType }
 
             # @!method initialize(payment_gate_type:, precalculated_tax_config: nil, stripe_config: nil, tax_type: nil)
             #   Some parameter documentations has been truncated, see
@@ -779,9 +640,7 @@ module MetronomeSDK
               #
               #   @return [Symbol, MetronomeSDK::Models::V1::ContractAmendParams::Commit::PaymentGateConfig::StripeConfig::PaymentType]
               required :payment_type,
-                       enum: -> {
-                         MetronomeSDK::V1::ContractAmendParams::Commit::PaymentGateConfig::StripeConfig::PaymentType
-                       }
+                       enum: -> { MetronomeSDK::V1::ContractAmendParams::Commit::PaymentGateConfig::StripeConfig::PaymentType }
 
               # @!attribute invoice_metadata
               #   Metadata to be added to the Stripe invoice. Only applicable if using INVOICE as
@@ -858,44 +717,6 @@ module MetronomeSDK
             # @!method self.values
             #   @return [Array<Symbol>]
           end
-
-          class Specifier < MetronomeSDK::Internal::Type::BaseModel
-            # @!attribute presentation_group_values
-            #
-            #   @return [Hash{Symbol=>String}, nil]
-            optional :presentation_group_values, MetronomeSDK::Internal::Type::HashOf[String]
-
-            # @!attribute pricing_group_values
-            #
-            #   @return [Hash{Symbol=>String}, nil]
-            optional :pricing_group_values, MetronomeSDK::Internal::Type::HashOf[String]
-
-            # @!attribute product_id
-            #   If provided, the specifier will only apply to the product with the specified ID.
-            #
-            #   @return [String, nil]
-            optional :product_id, String
-
-            # @!attribute product_tags
-            #   If provided, the specifier will only apply to products with all the specified
-            #   tags.
-            #
-            #   @return [Array<String>, nil]
-            optional :product_tags, MetronomeSDK::Internal::Type::ArrayOf[String]
-
-            # @!method initialize(presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil)
-            #   Some parameter documentations has been truncated, see
-            #   {MetronomeSDK::Models::V1::ContractAmendParams::Commit::Specifier} for more
-            #   details.
-            #
-            #   @param presentation_group_values [Hash{Symbol=>String}]
-            #
-            #   @param pricing_group_values [Hash{Symbol=>String}]
-            #
-            #   @param product_id [String] If provided, the specifier will only apply to the product with the specified ID.
-            #
-            #   @param product_tags [Array<String>] If provided, the specifier will only apply to products with all the specified ta
-          end
         end
 
         class Credit < MetronomeSDK::Internal::Type::BaseModel
@@ -938,9 +759,8 @@ module MetronomeSDK
           # @!attribute hierarchy_configuration
           #   Optional configuration for credit hierarchy access control
           #
-          #   @return [MetronomeSDK::Models::V1::ContractAmendParams::Credit::HierarchyConfiguration, nil]
-          optional :hierarchy_configuration,
-                   -> { MetronomeSDK::V1::ContractAmendParams::Credit::HierarchyConfiguration }
+          #   @return [MetronomeSDK::Models::CommitHierarchyConfiguration, nil]
+          optional :hierarchy_configuration, -> { MetronomeSDK::CommitHierarchyConfiguration }
 
           # @!attribute name
           #   displayed on invoices
@@ -972,11 +792,8 @@ module MetronomeSDK
           #   specifiers to contribute to a commit's or credit's drawdown. This field cannot
           #   be used together with `applicable_product_ids` or `applicable_product_tags`.
           #
-          #   @return [Array<MetronomeSDK::Models::V1::ContractAmendParams::Credit::Specifier>, nil]
-          optional :specifiers,
-                   -> {
-                     MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractAmendParams::Credit::Specifier]
-                   }
+          #   @return [Array<MetronomeSDK::Models::CommitSpecifierInput>, nil]
+          optional :specifiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::CommitSpecifierInput] }
 
           # @!method initialize(access_schedule:, product_id:, applicable_product_ids: nil, applicable_product_tags: nil, custom_fields: nil, description: nil, hierarchy_configuration: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil, specifiers: nil)
           #   Some parameter documentations has been truncated, see
@@ -994,7 +811,7 @@ module MetronomeSDK
           #
           #   @param description [String] Used only in UI/API. It is not exposed to end customers.
           #
-          #   @param hierarchy_configuration [MetronomeSDK::Models::V1::ContractAmendParams::Credit::HierarchyConfiguration] Optional configuration for credit hierarchy access control
+          #   @param hierarchy_configuration [MetronomeSDK::Models::CommitHierarchyConfiguration] Optional configuration for credit hierarchy access control
           #
           #   @param name [String] displayed on invoices
           #
@@ -1004,7 +821,7 @@ module MetronomeSDK
           #
           #   @param rate_type [Symbol, MetronomeSDK::Models::V1::ContractAmendParams::Credit::RateType]
           #
-          #   @param specifiers [Array<MetronomeSDK::Models::V1::ContractAmendParams::Credit::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
+          #   @param specifiers [Array<MetronomeSDK::Models::CommitSpecifierInput>] List of filters that determine what kind of customer usage draws down a commit o
 
           # @see MetronomeSDK::Models::V1::ContractAmendParams::Credit#access_schedule
           class AccessSchedule < MetronomeSDK::Internal::Type::BaseModel
@@ -1012,9 +829,7 @@ module MetronomeSDK
             #
             #   @return [Array<MetronomeSDK::Models::V1::ContractAmendParams::Credit::AccessSchedule::ScheduleItem>]
             required :schedule_items,
-                     -> {
-                       MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractAmendParams::Credit::AccessSchedule::ScheduleItem]
-                     }
+                     -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractAmendParams::Credit::AccessSchedule::ScheduleItem] }
 
             # @!attribute credit_type_id
             #   Defaults to USD (cents) if not passed
@@ -1056,117 +871,6 @@ module MetronomeSDK
             end
           end
 
-          # @see MetronomeSDK::Models::V1::ContractAmendParams::Credit#hierarchy_configuration
-          class HierarchyConfiguration < MetronomeSDK::Internal::Type::BaseModel
-            # @!attribute child_access
-            #
-            #   @return [MetronomeSDK::Models::V1::ContractAmendParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V1::ContractAmendParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V1::ContractAmendParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs]
-            required :child_access,
-                     union: -> {
-                       MetronomeSDK::V1::ContractAmendParams::Credit::HierarchyConfiguration::ChildAccess
-                     }
-
-            # @!method initialize(child_access:)
-            #   Optional configuration for credit hierarchy access control
-            #
-            #   @param child_access [MetronomeSDK::Models::V1::ContractAmendParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V1::ContractAmendParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V1::ContractAmendParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs]
-
-            # @see MetronomeSDK::Models::V1::ContractAmendParams::Credit::HierarchyConfiguration#child_access
-            module ChildAccess
-              extend MetronomeSDK::Internal::Type::Union
-
-              variant -> {
-                MetronomeSDK::V1::ContractAmendParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll
-              }
-
-              variant -> {
-                MetronomeSDK::V1::ContractAmendParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone
-              }
-
-              variant -> {
-                MetronomeSDK::V1::ContractAmendParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs
-              }
-
-              class CommitHierarchyChildAccessAll < MetronomeSDK::Internal::Type::BaseModel
-                # @!attribute type
-                #
-                #   @return [Symbol, MetronomeSDK::Models::V1::ContractAmendParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type]
-                required :type,
-                         enum: -> {
-                           MetronomeSDK::V1::ContractAmendParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type
-                         }
-
-                # @!method initialize(type:)
-                #   @param type [Symbol, MetronomeSDK::Models::V1::ContractAmendParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type]
-
-                # @see MetronomeSDK::Models::V1::ContractAmendParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll#type
-                module Type
-                  extend MetronomeSDK::Internal::Type::Enum
-
-                  ALL = :ALL
-
-                  # @!method self.values
-                  #   @return [Array<Symbol>]
-                end
-              end
-
-              class CommitHierarchyChildAccessNone < MetronomeSDK::Internal::Type::BaseModel
-                # @!attribute type
-                #
-                #   @return [Symbol, MetronomeSDK::Models::V1::ContractAmendParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type]
-                required :type,
-                         enum: -> {
-                           MetronomeSDK::V1::ContractAmendParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type
-                         }
-
-                # @!method initialize(type:)
-                #   @param type [Symbol, MetronomeSDK::Models::V1::ContractAmendParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type]
-
-                # @see MetronomeSDK::Models::V1::ContractAmendParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone#type
-                module Type
-                  extend MetronomeSDK::Internal::Type::Enum
-
-                  NONE = :NONE
-
-                  # @!method self.values
-                  #   @return [Array<Symbol>]
-                end
-              end
-
-              class CommitHierarchyChildAccessContractIDs < MetronomeSDK::Internal::Type::BaseModel
-                # @!attribute contract_ids
-                #
-                #   @return [Array<String>]
-                required :contract_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
-
-                # @!attribute type
-                #
-                #   @return [Symbol, MetronomeSDK::Models::V1::ContractAmendParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type]
-                required :type,
-                         enum: -> {
-                           MetronomeSDK::V1::ContractAmendParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type
-                         }
-
-                # @!method initialize(contract_ids:, type:)
-                #   @param contract_ids [Array<String>]
-                #   @param type [Symbol, MetronomeSDK::Models::V1::ContractAmendParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type]
-
-                # @see MetronomeSDK::Models::V1::ContractAmendParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs#type
-                module Type
-                  extend MetronomeSDK::Internal::Type::Enum
-
-                  CONTRACT_IDS = :CONTRACT_IDS
-
-                  # @!method self.values
-                  #   @return [Array<Symbol>]
-                end
-              end
-
-              # @!method self.variants
-              #   @return [Array(MetronomeSDK::Models::V1::ContractAmendParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll, MetronomeSDK::Models::V1::ContractAmendParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone, MetronomeSDK::Models::V1::ContractAmendParams::Credit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs)]
-            end
-          end
-
           # @see MetronomeSDK::Models::V1::ContractAmendParams::Credit#rate_type
           module RateType
             extend MetronomeSDK::Internal::Type::Enum
@@ -1176,44 +880,6 @@ module MetronomeSDK
 
             # @!method self.values
             #   @return [Array<Symbol>]
-          end
-
-          class Specifier < MetronomeSDK::Internal::Type::BaseModel
-            # @!attribute presentation_group_values
-            #
-            #   @return [Hash{Symbol=>String}, nil]
-            optional :presentation_group_values, MetronomeSDK::Internal::Type::HashOf[String]
-
-            # @!attribute pricing_group_values
-            #
-            #   @return [Hash{Symbol=>String}, nil]
-            optional :pricing_group_values, MetronomeSDK::Internal::Type::HashOf[String]
-
-            # @!attribute product_id
-            #   If provided, the specifier will only apply to the product with the specified ID.
-            #
-            #   @return [String, nil]
-            optional :product_id, String
-
-            # @!attribute product_tags
-            #   If provided, the specifier will only apply to products with all the specified
-            #   tags.
-            #
-            #   @return [Array<String>, nil]
-            optional :product_tags, MetronomeSDK::Internal::Type::ArrayOf[String]
-
-            # @!method initialize(presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil)
-            #   Some parameter documentations has been truncated, see
-            #   {MetronomeSDK::Models::V1::ContractAmendParams::Credit::Specifier} for more
-            #   details.
-            #
-            #   @param presentation_group_values [Hash{Symbol=>String}]
-            #
-            #   @param pricing_group_values [Hash{Symbol=>String}]
-            #
-            #   @param product_id [String] If provided, the specifier will only apply to the product with the specified ID.
-            #
-            #   @param product_tags [Array<String>] If provided, the specifier will only apply to products with all the specified ta
           end
         end
 
@@ -1286,9 +952,7 @@ module MetronomeSDK
             #
             #   @return [Array<MetronomeSDK::Models::V1::ContractAmendParams::Discount::Schedule::ScheduleItem>, nil]
             optional :schedule_items,
-                     -> {
-                       MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractAmendParams::Discount::Schedule::ScheduleItem]
-                     }
+                     -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractAmendParams::Discount::Schedule::ScheduleItem] }
 
             # @!method initialize(credit_type_id: nil, do_not_invoice: nil, recurring_schedule: nil, schedule_items: nil)
             #   Some parameter documentations has been truncated, see
@@ -1311,9 +975,7 @@ module MetronomeSDK
               #
               #   @return [Symbol, MetronomeSDK::Models::V1::ContractAmendParams::Discount::Schedule::RecurringSchedule::AmountDistribution]
               required :amount_distribution,
-                       enum: -> {
-                         MetronomeSDK::V1::ContractAmendParams::Discount::Schedule::RecurringSchedule::AmountDistribution
-                       }
+                       enum: -> { MetronomeSDK::V1::ContractAmendParams::Discount::Schedule::RecurringSchedule::AmountDistribution }
 
               # @!attribute ending_before
               #   RFC 3339 timestamp (exclusive).
@@ -1325,9 +987,7 @@ module MetronomeSDK
               #
               #   @return [Symbol, MetronomeSDK::Models::V1::ContractAmendParams::Discount::Schedule::RecurringSchedule::Frequency]
               required :frequency,
-                       enum: -> {
-                         MetronomeSDK::V1::ContractAmendParams::Discount::Schedule::RecurringSchedule::Frequency
-                       }
+                       enum: -> { MetronomeSDK::V1::ContractAmendParams::Discount::Schedule::RecurringSchedule::Frequency }
 
               # @!attribute starting_at
               #   RFC 3339 timestamp (inclusive).
@@ -1501,9 +1161,7 @@ module MetronomeSDK
           #
           #   @return [Array<MetronomeSDK::Models::V1::ContractAmendParams::Override::OverrideSpecifier>, nil]
           optional :override_specifiers,
-                   -> {
-                     MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractAmendParams::Override::OverrideSpecifier]
-                   }
+                   -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractAmendParams::Override::OverrideSpecifier] }
 
           # @!attribute overwrite_rate
           #   Required for OVERWRITE type.
@@ -1540,9 +1198,7 @@ module MetronomeSDK
           #
           #   @return [Array<MetronomeSDK::Models::V1::ContractAmendParams::Override::Tier>, nil]
           optional :tiers,
-                   -> {
-                     MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractAmendParams::Override::Tier]
-                   }
+                   -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractAmendParams::Override::Tier] }
 
           # @!attribute type
           #   Overwrites are prioritized over multipliers and tiered overrides.
@@ -1585,9 +1241,7 @@ module MetronomeSDK
             #
             #   @return [Symbol, MetronomeSDK::Models::V1::ContractAmendParams::Override::OverrideSpecifier::BillingFrequency, nil]
             optional :billing_frequency,
-                     enum: -> {
-                       MetronomeSDK::V1::ContractAmendParams::Override::OverrideSpecifier::BillingFrequency
-                     }
+                     enum: -> { MetronomeSDK::V1::ContractAmendParams::Override::OverrideSpecifier::BillingFrequency }
 
             # @!attribute commit_ids
             #   Can only be used for commit specific overrides. Must be used in conjunction with
@@ -1683,10 +1337,7 @@ module MetronomeSDK
             # @!attribute rate_type
             #
             #   @return [Symbol, MetronomeSDK::Models::V1::ContractAmendParams::Override::OverwriteRate::RateType]
-            required :rate_type,
-                     enum: -> {
-                       MetronomeSDK::V1::ContractAmendParams::Override::OverwriteRate::RateType
-                     }
+            required :rate_type, enum: -> { MetronomeSDK::V1::ContractAmendParams::Override::OverwriteRate::RateType }
 
             # @!attribute credit_type_id
             #
@@ -1874,10 +1525,7 @@ module MetronomeSDK
           # @!attribute reseller_type
           #
           #   @return [Symbol, MetronomeSDK::Models::V1::ContractAmendParams::ResellerRoyalty::ResellerType]
-          required :reseller_type,
-                   enum: -> {
-                     MetronomeSDK::V1::ContractAmendParams::ResellerRoyalty::ResellerType
-                   }
+          required :reseller_type, enum: -> { MetronomeSDK::V1::ContractAmendParams::ResellerRoyalty::ResellerType }
 
           # @!attribute applicable_product_ids
           #   Must provide at least one of applicable_product_ids or applicable_product_tags.
@@ -2064,18 +1712,14 @@ module MetronomeSDK
             #
             #   @return [MetronomeSDK::Models::V1::ContractAmendParams::ScheduledCharge::Schedule::RecurringSchedule, nil]
             optional :recurring_schedule,
-                     -> {
-                       MetronomeSDK::V1::ContractAmendParams::ScheduledCharge::Schedule::RecurringSchedule
-                     }
+                     -> { MetronomeSDK::V1::ContractAmendParams::ScheduledCharge::Schedule::RecurringSchedule }
 
             # @!attribute schedule_items
             #   Either provide amount or provide both unit_price and quantity.
             #
             #   @return [Array<MetronomeSDK::Models::V1::ContractAmendParams::ScheduledCharge::Schedule::ScheduleItem>, nil]
             optional :schedule_items,
-                     -> {
-                       MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractAmendParams::ScheduledCharge::Schedule::ScheduleItem]
-                     }
+                     -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractAmendParams::ScheduledCharge::Schedule::ScheduleItem] }
 
             # @!method initialize(credit_type_id: nil, do_not_invoice: nil, recurring_schedule: nil, schedule_items: nil)
             #   Some parameter documentations has been truncated, see
@@ -2098,9 +1742,7 @@ module MetronomeSDK
               #
               #   @return [Symbol, MetronomeSDK::Models::V1::ContractAmendParams::ScheduledCharge::Schedule::RecurringSchedule::AmountDistribution]
               required :amount_distribution,
-                       enum: -> {
-                         MetronomeSDK::V1::ContractAmendParams::ScheduledCharge::Schedule::RecurringSchedule::AmountDistribution
-                       }
+                       enum: -> { MetronomeSDK::V1::ContractAmendParams::ScheduledCharge::Schedule::RecurringSchedule::AmountDistribution }
 
               # @!attribute ending_before
               #   RFC 3339 timestamp (exclusive).
@@ -2112,9 +1754,7 @@ module MetronomeSDK
               #
               #   @return [Symbol, MetronomeSDK::Models::V1::ContractAmendParams::ScheduledCharge::Schedule::RecurringSchedule::Frequency]
               required :frequency,
-                       enum: -> {
-                         MetronomeSDK::V1::ContractAmendParams::ScheduledCharge::Schedule::RecurringSchedule::Frequency
-                       }
+                       enum: -> { MetronomeSDK::V1::ContractAmendParams::ScheduledCharge::Schedule::RecurringSchedule::Frequency }
 
               # @!attribute starting_at
               #   RFC 3339 timestamp (inclusive).

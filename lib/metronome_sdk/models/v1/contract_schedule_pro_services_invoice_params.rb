@@ -29,9 +29,7 @@ module MetronomeSDK
         #
         #   @return [Array<MetronomeSDK::Models::V1::ContractScheduleProServicesInvoiceParams::LineItem>]
         required :line_items,
-                 -> {
-                   MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractScheduleProServicesInvoiceParams::LineItem]
-                 }
+                 -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractScheduleProServicesInvoiceParams::LineItem] }
 
         # @!attribute netsuite_invoice_header_end
         #   The end date of the invoice header in Netsuite

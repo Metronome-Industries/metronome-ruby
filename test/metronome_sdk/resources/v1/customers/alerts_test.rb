@@ -25,13 +25,21 @@ class MetronomeSDK::Test::Resources::V1::Customers::AlertsTest < MetronomeSDK::T
     response = @metronome.v1.customers.alerts.list(customer_id: "9b85c1c1-5238-4f2a-a409-61412905e1e1")
 
     assert_pattern do
-      response => MetronomeSDK::Models::V1::Customers::AlertListResponse
+      response => MetronomeSDK::Internal::CursorPageWithoutLimit
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => MetronomeSDK::V1::Customers::CustomerAlert
     end
 
     assert_pattern do
-      response => {
-        data: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::CustomerAlert]),
-        next_page: String | nil
+      row => {
+        alert: MetronomeSDK::V1::Customers::CustomerAlert::Alert,
+        customer_status: MetronomeSDK::V1::Customers::CustomerAlert::CustomerStatus | nil,
+        triggered_by: String | nil
       }
     end
   end

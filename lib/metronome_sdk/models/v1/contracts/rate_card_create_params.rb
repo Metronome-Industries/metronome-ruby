@@ -22,18 +22,14 @@ module MetronomeSDK
           #
           #   @return [Array<MetronomeSDK::Models::V1::Contracts::RateCardCreateParams::Alias>, nil]
           optional :aliases,
-                   -> {
-                     MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Contracts::RateCardCreateParams::Alias]
-                   }
+                   -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Contracts::RateCardCreateParams::Alias] }
 
           # @!attribute credit_type_conversions
           #   Required when using custom pricing units in rates.
           #
           #   @return [Array<MetronomeSDK::Models::V1::Contracts::RateCardCreateParams::CreditTypeConversion>, nil]
           optional :credit_type_conversions,
-                   -> {
-                     MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Contracts::RateCardCreateParams::CreditTypeConversion]
-                   }
+                   -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Contracts::RateCardCreateParams::CreditTypeConversion] }
 
           # @!attribute custom_fields
           #

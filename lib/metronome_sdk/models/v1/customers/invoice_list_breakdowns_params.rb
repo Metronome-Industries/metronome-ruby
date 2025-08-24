@@ -72,10 +72,7 @@ module MetronomeSDK
           #   The granularity of the breakdowns to return. Defaults to day.
           #
           #   @return [Symbol, MetronomeSDK::Models::V1::Customers::InvoiceListBreakdownsParams::WindowSize, nil]
-          optional :window_size,
-                   enum: -> {
-                     MetronomeSDK::V1::Customers::InvoiceListBreakdownsParams::WindowSize
-                   }
+          optional :window_size, enum: -> { MetronomeSDK::V1::Customers::InvoiceListBreakdownsParams::WindowSize }
 
           # @!method initialize(customer_id:, ending_before:, starting_on:, credit_type_id: nil, limit: nil, next_page: nil, skip_zero_qty_line_items: nil, sort: nil, status: nil, window_size: nil, request_options: {})
           #   Some parameter documentations has been truncated, see

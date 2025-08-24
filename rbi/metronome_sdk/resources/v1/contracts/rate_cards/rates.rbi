@@ -52,8 +52,7 @@ module MetronomeSDK
                 starting_at: Time,
                 billing_frequency:
                   MetronomeSDK::V1::Contracts::RateCards::RateAddParams::BillingFrequency::OrSymbol,
-                commit_rate:
-                  MetronomeSDK::V1::Contracts::RateCards::RateAddParams::CommitRate::OrHash,
+                commit_rate: MetronomeSDK::CommitRate::OrHash,
                 credit_type_id: String,
                 custom_rate: T::Hash[Symbol, T.anything],
                 ending_before: Time,

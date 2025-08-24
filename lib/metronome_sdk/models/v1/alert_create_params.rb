@@ -56,9 +56,7 @@ module MetronomeSDK
         #
         #   @return [Array<MetronomeSDK::Models::V1::AlertCreateParams::CustomFieldFilter>, nil]
         optional :custom_field_filters,
-                 -> {
-                   MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::AlertCreateParams::CustomFieldFilter]
-                 }
+                 -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::AlertCreateParams::CustomFieldFilter] }
 
         # @!attribute customer_id
         #   If provided, will create this alert for this specific customer. To create an
@@ -204,10 +202,10 @@ module MetronomeSDK
 
           # @!attribute value
           #
-          #   @return [String]
-          required :value, String
+          #   @return [String, nil]
+          optional :value, String
 
-          # @!method initialize(key:, value:)
+          # @!method initialize(key:, value: nil)
           #   @param key [String]
           #   @param value [String]
         end

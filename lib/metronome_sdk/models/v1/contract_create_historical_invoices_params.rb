@@ -12,9 +12,7 @@ module MetronomeSDK
         #
         #   @return [Array<MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesParams::Invoice>]
         required :invoices,
-                 -> {
-                   MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractCreateHistoricalInvoicesParams::Invoice]
-                 }
+                 -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractCreateHistoricalInvoicesParams::Invoice] }
 
         # @!attribute preview
         #
@@ -61,26 +59,20 @@ module MetronomeSDK
           #
           #   @return [Array<MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem>]
           required :usage_line_items,
-                   -> {
-                     MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem]
-                   }
+                   -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem] }
 
           # @!attribute billable_status
           #   This field's availability is dependent on your client's configuration.
           #
           #   @return [Symbol, MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesParams::Invoice::BillableStatus, nil]
           optional :billable_status,
-                   enum: -> {
-                     MetronomeSDK::V1::ContractCreateHistoricalInvoicesParams::Invoice::BillableStatus
-                   }
+                   enum: -> { MetronomeSDK::V1::ContractCreateHistoricalInvoicesParams::Invoice::BillableStatus }
 
           # @!attribute breakdown_granularity
           #
           #   @return [Symbol, MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesParams::Invoice::BreakdownGranularity, nil]
           optional :breakdown_granularity,
-                   enum: -> {
-                     MetronomeSDK::V1::ContractCreateHistoricalInvoicesParams::Invoice::BreakdownGranularity
-                   }
+                   enum: -> { MetronomeSDK::V1::ContractCreateHistoricalInvoicesParams::Invoice::BreakdownGranularity }
 
           # @!attribute custom_fields
           #
@@ -143,9 +135,7 @@ module MetronomeSDK
             #
             #   @return [Array<MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity>, nil]
             optional :subtotals_with_quantity,
-                     -> {
-                       MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity]
-                     }
+                     -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractCreateHistoricalInvoicesParams::Invoice::UsageLineItem::SubtotalsWithQuantity] }
 
             # @!method initialize(exclusive_end_date:, inclusive_start_date:, product_id:, presentation_group_values: nil, pricing_group_values: nil, quantity: nil, subtotals_with_quantity: nil)
             #   @param exclusive_end_date [Time]

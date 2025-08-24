@@ -33,10 +33,7 @@ module MetronomeSDK
         # @!attribute minimums
         #
         #   @return [Array<MetronomeSDK::Models::V1::PlanDetail::Minimum>, nil]
-        optional :minimums,
-                 -> {
-                   MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::PlanDetail::Minimum]
-                 }
+        optional :minimums, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::PlanDetail::Minimum] }
 
         # @!attribute overage_rates
         #

@@ -3,71 +3,20 @@
 module MetronomeSDK
   module Models
     module V1
-      class ContractListBalancesResponse < MetronomeSDK::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              MetronomeSDK::Models::V1::ContractListBalancesResponse,
-              MetronomeSDK::Internal::AnyHash
-            )
-          end
+      module ContractListBalancesResponse
+        extend MetronomeSDK::Internal::Type::Union
 
-        sig do
-          returns(
-            T::Array[
-              MetronomeSDK::Models::V1::ContractListBalancesResponse::Data::Variants
-            ]
-          )
-        end
-        attr_accessor :data
-
-        sig { returns(T.nilable(String)) }
-        attr_accessor :next_page
-
-        sig do
-          params(
-            data:
-              T::Array[
-                T.any(
-                  MetronomeSDK::Commit::OrHash,
-                  MetronomeSDK::Credit::OrHash
-                )
-              ],
-            next_page: T.nilable(String)
-          ).returns(T.attached_class)
-        end
-        def self.new(data:, next_page:)
-        end
+        Variants =
+          T.type_alias { T.any(MetronomeSDK::Commit, MetronomeSDK::Credit) }
 
         sig do
           override.returns(
-            {
-              data:
-                T::Array[
-                  MetronomeSDK::Models::V1::ContractListBalancesResponse::Data::Variants
-                ],
-              next_page: T.nilable(String)
-            }
+            T::Array[
+              MetronomeSDK::Models::V1::ContractListBalancesResponse::Variants
+            ]
           )
         end
-        def to_hash
-        end
-
-        module Data
-          extend MetronomeSDK::Internal::Type::Union
-
-          Variants =
-            T.type_alias { T.any(MetronomeSDK::Commit, MetronomeSDK::Credit) }
-
-          sig do
-            override.returns(
-              T::Array[
-                MetronomeSDK::Models::V1::ContractListBalancesResponse::Data::Variants
-              ]
-            )
-          end
-          def self.variants
-          end
+        def self.variants
         end
       end
     end

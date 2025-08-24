@@ -1,0 +1,123 @@
+module MetronomeSDK
+  module Models
+    type payment_gate_config =
+      {
+        payment_gate_type: MetronomeSDK::Models::PaymentGateConfig::payment_gate_type,
+        precalculated_tax_config: MetronomeSDK::PaymentGateConfig::PrecalculatedTaxConfig,
+        stripe_config: MetronomeSDK::PaymentGateConfig::StripeConfig,
+        tax_type: MetronomeSDK::Models::PaymentGateConfig::tax_type
+      }
+
+    class PaymentGateConfig < MetronomeSDK::Internal::Type::BaseModel
+      attr_accessor payment_gate_type: MetronomeSDK::Models::PaymentGateConfig::payment_gate_type
+
+      attr_reader precalculated_tax_config: MetronomeSDK::PaymentGateConfig::PrecalculatedTaxConfig?
+
+      def precalculated_tax_config=: (
+        MetronomeSDK::PaymentGateConfig::PrecalculatedTaxConfig
+      ) -> MetronomeSDK::PaymentGateConfig::PrecalculatedTaxConfig
+
+      attr_reader stripe_config: MetronomeSDK::PaymentGateConfig::StripeConfig?
+
+      def stripe_config=: (
+        MetronomeSDK::PaymentGateConfig::StripeConfig
+      ) -> MetronomeSDK::PaymentGateConfig::StripeConfig
+
+      attr_reader tax_type: MetronomeSDK::Models::PaymentGateConfig::tax_type?
+
+      def tax_type=: (
+        MetronomeSDK::Models::PaymentGateConfig::tax_type
+      ) -> MetronomeSDK::Models::PaymentGateConfig::tax_type
+
+      def initialize: (
+        payment_gate_type: MetronomeSDK::Models::PaymentGateConfig::payment_gate_type,
+        ?precalculated_tax_config: MetronomeSDK::PaymentGateConfig::PrecalculatedTaxConfig,
+        ?stripe_config: MetronomeSDK::PaymentGateConfig::StripeConfig,
+        ?tax_type: MetronomeSDK::Models::PaymentGateConfig::tax_type
+      ) -> void
+
+      def to_hash: -> {
+        payment_gate_type: MetronomeSDK::Models::PaymentGateConfig::payment_gate_type,
+        precalculated_tax_config: MetronomeSDK::PaymentGateConfig::PrecalculatedTaxConfig,
+        stripe_config: MetronomeSDK::PaymentGateConfig::StripeConfig,
+        tax_type: MetronomeSDK::Models::PaymentGateConfig::tax_type
+      }
+
+      type payment_gate_type = :NONE | :STRIPE | :EXTERNAL
+
+      module PaymentGateType
+        extend MetronomeSDK::Internal::Type::Enum
+
+        NONE: :NONE
+        STRIPE: :STRIPE
+        EXTERNAL: :EXTERNAL
+
+        def self?.values: -> ::Array[MetronomeSDK::Models::PaymentGateConfig::payment_gate_type]
+      end
+
+      type precalculated_tax_config = { tax_amount: Float, tax_name: String }
+
+      class PrecalculatedTaxConfig < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor tax_amount: Float
+
+        attr_reader tax_name: String?
+
+        def tax_name=: (String) -> String
+
+        def initialize: (tax_amount: Float, ?tax_name: String) -> void
+
+        def to_hash: -> { tax_amount: Float, tax_name: String }
+      end
+
+      type stripe_config =
+        {
+          payment_type: MetronomeSDK::Models::PaymentGateConfig::StripeConfig::payment_type,
+          invoice_metadata: ::Hash[Symbol, String]
+        }
+
+      class StripeConfig < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor payment_type: MetronomeSDK::Models::PaymentGateConfig::StripeConfig::payment_type
+
+        attr_reader invoice_metadata: ::Hash[Symbol, String]?
+
+        def invoice_metadata=: (
+          ::Hash[Symbol, String]
+        ) -> ::Hash[Symbol, String]
+
+        def initialize: (
+          payment_type: MetronomeSDK::Models::PaymentGateConfig::StripeConfig::payment_type,
+          ?invoice_metadata: ::Hash[Symbol, String]
+        ) -> void
+
+        def to_hash: -> {
+          payment_type: MetronomeSDK::Models::PaymentGateConfig::StripeConfig::payment_type,
+          invoice_metadata: ::Hash[Symbol, String]
+        }
+
+        type payment_type = :INVOICE | :PAYMENT_INTENT
+
+        module PaymentType
+          extend MetronomeSDK::Internal::Type::Enum
+
+          INVOICE: :INVOICE
+          PAYMENT_INTENT: :PAYMENT_INTENT
+
+          def self?.values: -> ::Array[MetronomeSDK::Models::PaymentGateConfig::StripeConfig::payment_type]
+        end
+      end
+
+      type tax_type = :NONE | :STRIPE | :ANROK | :PRECALCULATED
+
+      module TaxType
+        extend MetronomeSDK::Internal::Type::Enum
+
+        NONE: :NONE
+        STRIPE: :STRIPE
+        ANROK: :ANROK
+        PRECALCULATED: :PRECALCULATED
+
+        def self?.values: -> ::Array[MetronomeSDK::Models::PaymentGateConfig::tax_type]
+      end
+    end
+  end
+end

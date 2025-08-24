@@ -26,7 +26,7 @@ module MetronomeSDK
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [MetronomeSDK::Models::V1::UsageListResponse]
+        # @return [MetronomeSDK::Internal::CursorPageWithoutLimit<MetronomeSDK::Models::V1::UsageListResponse>]
         #
         # @see MetronomeSDK::Models::V1::UsageListParams
         def list(params)
@@ -37,6 +37,7 @@ module MetronomeSDK
             path: "v1/usage",
             query: parsed.slice(*query_params),
             body: parsed.except(*query_params),
+            page: MetronomeSDK::Internal::CursorPageWithoutLimit,
             model: MetronomeSDK::Models::V1::UsageListResponse,
             options: options
           )

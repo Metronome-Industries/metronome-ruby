@@ -3,73 +3,51 @@ module MetronomeSDK
     module V1
       type usage_list_response =
         {
-          data: ::Array[MetronomeSDK::Models::V1::UsageListResponse::Data],
-          next_page: String?
+          billable_metric_id: String,
+          billable_metric_name: String,
+          customer_id: String,
+          end_timestamp: Time,
+          start_timestamp: Time,
+          value: Float?,
+          groups: ::Hash[Symbol, Float?]
         }
 
       class UsageListResponse < MetronomeSDK::Internal::Type::BaseModel
-        attr_accessor data: ::Array[MetronomeSDK::Models::V1::UsageListResponse::Data]
+        attr_accessor billable_metric_id: String
 
-        attr_accessor next_page: String?
+        attr_accessor billable_metric_name: String
+
+        attr_accessor customer_id: String
+
+        attr_accessor end_timestamp: Time
+
+        attr_accessor start_timestamp: Time
+
+        attr_accessor value: Float?
+
+        attr_reader groups: ::Hash[Symbol, Float?]?
+
+        def groups=: (::Hash[Symbol, Float?]) -> ::Hash[Symbol, Float?]
 
         def initialize: (
-          data: ::Array[MetronomeSDK::Models::V1::UsageListResponse::Data],
-          next_page: String?
+          billable_metric_id: String,
+          billable_metric_name: String,
+          customer_id: String,
+          end_timestamp: Time,
+          start_timestamp: Time,
+          value: Float?,
+          ?groups: ::Hash[Symbol, Float?]
         ) -> void
 
         def to_hash: -> {
-          data: ::Array[MetronomeSDK::Models::V1::UsageListResponse::Data],
-          next_page: String?
+          billable_metric_id: String,
+          billable_metric_name: String,
+          customer_id: String,
+          end_timestamp: Time,
+          start_timestamp: Time,
+          value: Float?,
+          groups: ::Hash[Symbol, Float?]
         }
-
-        type data =
-          {
-            billable_metric_id: String,
-            billable_metric_name: String,
-            customer_id: String,
-            end_timestamp: Time,
-            start_timestamp: Time,
-            value: Float?,
-            groups: ::Hash[Symbol, Float?]
-          }
-
-        class Data < MetronomeSDK::Internal::Type::BaseModel
-          attr_accessor billable_metric_id: String
-
-          attr_accessor billable_metric_name: String
-
-          attr_accessor customer_id: String
-
-          attr_accessor end_timestamp: Time
-
-          attr_accessor start_timestamp: Time
-
-          attr_accessor value: Float?
-
-          attr_reader groups: ::Hash[Symbol, Float?]?
-
-          def groups=: (::Hash[Symbol, Float?]) -> ::Hash[Symbol, Float?]
-
-          def initialize: (
-            billable_metric_id: String,
-            billable_metric_name: String,
-            customer_id: String,
-            end_timestamp: Time,
-            start_timestamp: Time,
-            value: Float?,
-            ?groups: ::Hash[Symbol, Float?]
-          ) -> void
-
-          def to_hash: -> {
-            billable_metric_id: String,
-            billable_metric_name: String,
-            customer_id: String,
-            end_timestamp: Time,
-            start_timestamp: Time,
-            value: Float?,
-            groups: ::Hash[Symbol, Float?]
-          }
-        end
       end
     end
   end

@@ -25,9 +25,7 @@ module MetronomeSDK
           #
           #   @return [Array<MetronomeSDK::Models::V1::Customers::Invoice::LineItem>]
           required :line_items,
-                   -> {
-                     MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::Invoice::LineItem]
-                   }
+                   -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::Invoice::LineItem] }
 
           # @!attribute status
           #
@@ -102,9 +100,7 @@ module MetronomeSDK
           #
           #   @return [Array<MetronomeSDK::Models::V1::Customers::Invoice::InvoiceAdjustment>, nil]
           optional :invoice_adjustments,
-                   -> {
-                     MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::Invoice::InvoiceAdjustment]
-                   }
+                   -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::Invoice::InvoiceAdjustment] }
 
           # @!attribute issued_at
           #   When the invoice was issued (UTC)
@@ -238,11 +234,29 @@ module MetronomeSDK
             required :total, Float
 
             # @!attribute type
-            #   The type of line item. Possible values are 'aws_royalty',
-            #   'applied_commit_or_credit', 'scheduled', 'commit_purchase', 'cpu_conversion',
-            #   'discount', 'gcp_royalty', 'postpaid_trueup', 'professional_services',
-            #   'subscription', 'usage', 'legacy', 'minimum', 'product_charge',
-            #   'trial_discount', 'rollover', 'seat', 'grouped_charge'.
+            #   The type of line item.
+            #
+            #   - `scheduled`: Line item is associated with a scheduled charge. View the
+            #     scheduled_charge_id on the line item.
+            #   - `commit_purchase`: Line item is associated with a payment for a prepaid
+            #     commit. View the commit_id on the line item.
+            #   - `usage`: Line item is associated with a usage product or composite product.
+            #     View the product_id on the line item to determine which product.
+            #   - `subscription`: Line item is associated with a subscription. e.g. monthly
+            #     recurring payment for an in-advance subscription.
+            #   - `applied_commit_or_credit`: On metronome invoices, applied commits and credits
+            #     are associated with their own line items. These line items have negative
+            #     totals. Use the applied_commit_or_credit object on the line item to understand
+            #     the id of the applied commit or credit, and its type. Note that the
+            #     application of a postpaid commit is associated with a line item, but the total
+            #     on the line item is not included in the invoice's total as postpaid commits
+            #     are paid in-arrears.
+            #   - `cpu_conversion`: Line item converting between a custom pricing unit and fiat
+            #     currency, using the conversion rate set on the rate card. This line item will
+            #     appear when there are products priced in custom pricing units, and there is
+            #     insufficient prepaid commit/credit in that custom pricing unit to fully cover
+            #     the spend. Then, the outstanding spend in custom pricing units will be
+            #     converted to fiat currency using a cpu_conversion line item.
             #
             #   @return [String]
             required :type, String
@@ -449,9 +463,7 @@ module MetronomeSDK
             #
             #   @return [Array<MetronomeSDK::Models::V1::Customers::Invoice::LineItem::SubLineItem>, nil]
             optional :sub_line_items,
-                     -> {
-                       MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem]
-                     }
+                     -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem] }
 
             # @!attribute subscription_custom_fields
             #
@@ -480,7 +492,7 @@ module MetronomeSDK
             #
             #   @param total [Float]
             #
-            #   @param type [String] The type of line item. Possible values are 'aws_royalty', 'applied_commit_or_cre
+            #   @param type [String] The type of line item.
             #
             #   @param applied_commit_or_credit [MetronomeSDK::Models::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit] Details about the credit or commit that was applied to this line item. Only pres
             #
@@ -566,10 +578,7 @@ module MetronomeSDK
               # @!attribute type
               #
               #   @return [Symbol, MetronomeSDK::Models::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::Type]
-              required :type,
-                       enum: -> {
-                         MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::Type
-                       }
+              required :type, enum: -> { MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::Type }
 
               # @!method initialize(id:, type:)
               #   Details about the credit or commit that was applied to this line item. Only
@@ -672,18 +681,13 @@ module MetronomeSDK
               #   when the current tier started and ends (for tiered charges only)
               #
               #   @return [MetronomeSDK::Models::V1::Customers::Invoice::LineItem::SubLineItem::TierPeriod, nil]
-              optional :tier_period,
-                       -> {
-                         MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem::TierPeriod
-                       }
+              optional :tier_period, -> { MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem::TierPeriod }
 
               # @!attribute tiers
               #
               #   @return [Array<MetronomeSDK::Models::V1::Customers::Invoice::LineItem::SubLineItem::Tier>, nil]
               optional :tiers,
-                       -> {
-                         MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem::Tier]
-                       }
+                       -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem::Tier] }
 
               # @!method initialize(custom_fields:, name:, quantity:, subtotal:, charge_id: nil, credit_grant_id: nil, end_date: nil, price: nil, start_date: nil, tier_period: nil, tiers: nil)
               #   Some parameter documentations has been truncated, see
@@ -838,17 +842,13 @@ module MetronomeSDK
               #
               #   @return [Symbol, MetronomeSDK::Models::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType]
               required :billing_provider_type,
-                       enum: -> {
-                         MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType
-                       }
+                       enum: -> { MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType }
 
               # @!attribute external_status
               #
               #   @return [Symbol, MetronomeSDK::Models::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus, nil]
               optional :external_status,
-                       enum: -> {
-                         MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus
-                       }
+                       enum: -> { MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus }
 
               # @!attribute invoice_id
               #
@@ -1022,10 +1022,7 @@ module MetronomeSDK
             # @!attribute reseller_type
             #
             #   @return [Symbol, MetronomeSDK::Models::V1::Customers::Invoice::ResellerRoyalty::ResellerType]
-            required :reseller_type,
-                     enum: -> {
-                       MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty::ResellerType
-                     }
+            required :reseller_type, enum: -> { MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty::ResellerType }
 
             # @!attribute aws_options
             #

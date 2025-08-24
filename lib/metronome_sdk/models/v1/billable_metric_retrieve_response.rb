@@ -65,8 +65,7 @@ module MetronomeSDK
           #   represents a set of properties used to slice events into distinct buckets.
           #
           #   @return [Array<Array<String>>, nil]
-          optional :group_keys,
-                   MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Internal::Type::ArrayOf[String]]
+          optional :group_keys, MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Internal::Type::ArrayOf[String]]
 
           # @!attribute property_filters
           #   A list of filters to match events to this billable metric. Each filter defines a
@@ -74,10 +73,7 @@ module MetronomeSDK
           #   billable metric.
           #
           #   @return [Array<MetronomeSDK::Models::PropertyFilter>, nil]
-          optional :property_filters,
-                   -> {
-                     MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::PropertyFilter]
-                   }
+          optional :property_filters, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::PropertyFilter] }
 
           # @!attribute sql
           #   The SQL query associated with the billable metric

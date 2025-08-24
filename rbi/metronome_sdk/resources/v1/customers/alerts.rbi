@@ -40,7 +40,11 @@ module MetronomeSDK
                   MetronomeSDK::V1::Customers::AlertListParams::AlertStatus::OrSymbol
                 ],
               request_options: MetronomeSDK::RequestOptions::OrHash
-            ).returns(MetronomeSDK::Models::V1::Customers::AlertListResponse)
+            ).returns(
+              MetronomeSDK::Internal::CursorPageWithoutLimit[
+                MetronomeSDK::V1::Customers::CustomerAlert
+              ]
+            )
           end
           def list(
             # Body param: The Metronome ID of the customer

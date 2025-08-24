@@ -14,9 +14,7 @@ module MetronomeSDK
             #
             #   @return [Array<MetronomeSDK::Models::V1::Contracts::RateCards::ProductOrderUpdateParams::ProductMove>]
             required :product_moves,
-                     -> {
-                       MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Contracts::RateCards::ProductOrderUpdateParams::ProductMove]
-                     }
+                     -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Contracts::RateCards::ProductOrderUpdateParams::ProductMove] }
 
             # @!attribute rate_card_id
             #   ID of the rate card to update

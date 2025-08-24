@@ -46,9 +46,7 @@ module MetronomeSDK
           #
           #   @return [Array<MetronomeSDK::Models::V1::Customers::PlanAddParams::OverageRateAdjustment>, nil]
           optional :overage_rate_adjustments,
-                   -> {
-                     MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::PlanAddParams::OverageRateAdjustment]
-                   }
+                   -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::PlanAddParams::OverageRateAdjustment] }
 
           # @!attribute price_adjustments
           #   A list of price adjustments can be applied on top of the pricing in the plans.
@@ -58,9 +56,7 @@ module MetronomeSDK
           #
           #   @return [Array<MetronomeSDK::Models::V1::Customers::PlanAddParams::PriceAdjustment>, nil]
           optional :price_adjustments,
-                   -> {
-                     MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::PlanAddParams::PriceAdjustment]
-                   }
+                   -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::PlanAddParams::PriceAdjustment] }
 
           # @!attribute trial_spec
           #   A custom trial can be set for the customer's plan. See the

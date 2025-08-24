@@ -71,12 +71,12 @@ module MetronomeSDK
       end
       attr_writer :override_specifiers
 
-      sig { returns(T.nilable(T::Array[MetronomeSDK::Override::OverrideTier])) }
+      sig { returns(T.nilable(T::Array[MetronomeSDK::OverrideTier])) }
       attr_reader :override_tiers
 
       sig do
         params(
-          override_tiers: T::Array[MetronomeSDK::Override::OverrideTier::OrHash]
+          override_tiers: T::Array[MetronomeSDK::OverrideTier::OrHash]
         ).void
       end
       attr_writer :override_tiers
@@ -164,8 +164,7 @@ module MetronomeSDK
           multiplier: Float,
           override_specifiers:
             T::Array[MetronomeSDK::Override::OverrideSpecifier::OrHash],
-          override_tiers:
-            T::Array[MetronomeSDK::Override::OverrideTier::OrHash],
+          override_tiers: T::Array[MetronomeSDK::OverrideTier::OrHash],
           overwrite_rate: MetronomeSDK::Override::OverwriteRate::OrHash,
           price: Float,
           priority: Float,
@@ -225,7 +224,7 @@ module MetronomeSDK
             multiplier: Float,
             override_specifiers:
               T::Array[MetronomeSDK::Override::OverrideSpecifier],
-            override_tiers: T::Array[MetronomeSDK::Override::OverrideTier],
+            override_tiers: T::Array[MetronomeSDK::OverrideTier],
             overwrite_rate: MetronomeSDK::Override::OverwriteRate,
             price: Float,
             priority: Float,
@@ -399,33 +398,6 @@ module MetronomeSDK
           end
           def self.values
           end
-        end
-      end
-
-      class OverrideTier < MetronomeSDK::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              MetronomeSDK::Override::OverrideTier,
-              MetronomeSDK::Internal::AnyHash
-            )
-          end
-
-        sig { returns(Float) }
-        attr_accessor :multiplier
-
-        sig { returns(T.nilable(Float)) }
-        attr_reader :size
-
-        sig { params(size: Float).void }
-        attr_writer :size
-
-        sig { params(multiplier: Float, size: Float).returns(T.attached_class) }
-        def self.new(multiplier:, size: nil)
-        end
-
-        sig { override.returns({ multiplier: Float, size: Float }) }
-        def to_hash
         end
       end
 

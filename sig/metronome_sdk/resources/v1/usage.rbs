@@ -10,7 +10,7 @@ module MetronomeSDK
           ?billable_metrics: ::Array[MetronomeSDK::V1::UsageListParams::BillableMetric],
           ?customer_ids: ::Array[String],
           ?request_options: MetronomeSDK::request_opts
-        ) -> MetronomeSDK::Models::V1::UsageListResponse
+        ) -> MetronomeSDK::Internal::CursorPageWithoutLimit[MetronomeSDK::Models::V1::UsageListResponse]
 
         def ingest: (
           ?usage: ::Array[MetronomeSDK::V1::UsageIngestParams::Usage],

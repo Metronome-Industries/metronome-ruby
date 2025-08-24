@@ -29,13 +29,21 @@ class MetronomeSDK::Test::Resources::V1::CustomFieldsTest < MetronomeSDK::Test::
     response = @metronome.v1.custom_fields.list_keys
 
     assert_pattern do
-      response => MetronomeSDK::Models::V1::CustomFieldListKeysResponse
+      response => MetronomeSDK::Internal::CursorPageWithoutLimit
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => MetronomeSDK::Models::V1::CustomFieldListKeysResponse
     end
 
     assert_pattern do
-      response => {
-        data: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::CustomFieldListKeysResponse::Data]),
-        next_page: String | nil
+      row => {
+        enforce_uniqueness: MetronomeSDK::Internal::Type::Boolean,
+        entity: MetronomeSDK::Models::V1::CustomFieldListKeysResponse::Entity,
+        key: String
       }
     end
   end

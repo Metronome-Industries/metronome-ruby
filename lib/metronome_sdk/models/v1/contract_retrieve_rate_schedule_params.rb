@@ -45,9 +45,7 @@ module MetronomeSDK
         #
         #   @return [Array<MetronomeSDK::Models::V1::ContractRetrieveRateScheduleParams::Selector>, nil]
         optional :selectors,
-                 -> {
-                   MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractRetrieveRateScheduleParams::Selector]
-                 }
+                 -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractRetrieveRateScheduleParams::Selector] }
 
         # @!method initialize(contract_id:, customer_id:, limit: nil, next_page: nil, at: nil, selectors: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
@@ -74,9 +72,7 @@ module MetronomeSDK
           #
           #   @return [Symbol, MetronomeSDK::Models::V1::ContractRetrieveRateScheduleParams::Selector::BillingFrequency, nil]
           optional :billing_frequency,
-                   enum: -> {
-                     MetronomeSDK::V1::ContractRetrieveRateScheduleParams::Selector::BillingFrequency
-                   }
+                   enum: -> { MetronomeSDK::V1::ContractRetrieveRateScheduleParams::Selector::BillingFrequency }
 
           # @!attribute partial_pricing_group_values
           #   List of pricing group key value pairs, rates containing the matching key / value

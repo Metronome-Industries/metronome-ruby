@@ -42,7 +42,7 @@ module MetronomeSDK
                 MetronomeSDK::V1::ContractCreateParams::Override::OrHash
               ],
             prepaid_balance_threshold_configuration:
-              MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::OrHash,
+              MetronomeSDK::PrepaidBalanceThresholdConfiguration::OrHash,
             priority: Float,
             professional_services:
               T::Array[
@@ -70,7 +70,7 @@ module MetronomeSDK
             scheduled_charges_on_usage_invoices:
               MetronomeSDK::V1::ContractCreateParams::ScheduledChargesOnUsageInvoices::OrSymbol,
             spend_threshold_configuration:
-              MetronomeSDK::V1::ContractCreateParams::SpendThresholdConfiguration::OrHash,
+              MetronomeSDK::SpendThresholdConfiguration::OrHash,
             subscriptions:
               T::Array[
                 MetronomeSDK::V1::ContractCreateParams::Subscription::OrHash
@@ -359,7 +359,11 @@ module MetronomeSDK
             next_page: String,
             starting_at: Time,
             request_options: MetronomeSDK::RequestOptions::OrHash
-          ).returns(MetronomeSDK::Models::V1::ContractListBalancesResponse)
+          ).returns(
+            MetronomeSDK::Internal::BodyCursorPage[
+              MetronomeSDK::Models::V1::ContractListBalancesResponse::Variants
+            ]
+          )
         end
         def list_balances(
           customer_id:,

@@ -3,135 +3,113 @@ module MetronomeSDK
     module V1
       type credit_grant_list_entries_response =
         {
-          data: ::Array[MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data],
-          next_page: String?
+          customer_id: String,
+          ledgers: ::Array[MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Ledger]
         }
 
       class CreditGrantListEntriesResponse < MetronomeSDK::Internal::Type::BaseModel
-        attr_accessor data: ::Array[MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data]
+        attr_accessor customer_id: String
 
-        attr_accessor next_page: String?
+        attr_accessor ledgers: ::Array[MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Ledger]
 
         def initialize: (
-          data: ::Array[MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data],
-          next_page: String?
+          customer_id: String,
+          ledgers: ::Array[MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Ledger]
         ) -> void
 
         def to_hash: -> {
-          data: ::Array[MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data],
-          next_page: String?
+          customer_id: String,
+          ledgers: ::Array[MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Ledger]
         }
 
-        type data =
+        type ledger =
           {
-            customer_id: String,
-            ledgers: ::Array[MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger]
+            credit_type: MetronomeSDK::CreditTypeData,
+            ending_balance: MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Ledger::EndingBalance,
+            entries: ::Array[MetronomeSDK::V1::CreditLedgerEntry],
+            pending_entries: ::Array[MetronomeSDK::V1::CreditLedgerEntry],
+            starting_balance: MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Ledger::StartingBalance
           }
 
-        class Data < MetronomeSDK::Internal::Type::BaseModel
-          attr_accessor customer_id: String
+        class Ledger < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor credit_type: MetronomeSDK::CreditTypeData
 
-          attr_accessor ledgers: ::Array[MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger]
+          attr_accessor ending_balance: MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Ledger::EndingBalance
+
+          attr_accessor entries: ::Array[MetronomeSDK::V1::CreditLedgerEntry]
+
+          attr_accessor pending_entries: ::Array[MetronomeSDK::V1::CreditLedgerEntry]
+
+          attr_accessor starting_balance: MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Ledger::StartingBalance
 
           def initialize: (
-            customer_id: String,
-            ledgers: ::Array[MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger]
+            credit_type: MetronomeSDK::CreditTypeData,
+            ending_balance: MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Ledger::EndingBalance,
+            entries: ::Array[MetronomeSDK::V1::CreditLedgerEntry],
+            pending_entries: ::Array[MetronomeSDK::V1::CreditLedgerEntry],
+            starting_balance: MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Ledger::StartingBalance
           ) -> void
 
           def to_hash: -> {
-            customer_id: String,
-            ledgers: ::Array[MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger]
+            credit_type: MetronomeSDK::CreditTypeData,
+            ending_balance: MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Ledger::EndingBalance,
+            entries: ::Array[MetronomeSDK::V1::CreditLedgerEntry],
+            pending_entries: ::Array[MetronomeSDK::V1::CreditLedgerEntry],
+            starting_balance: MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Ledger::StartingBalance
           }
 
-          type ledger =
+          type ending_balance =
             {
-              credit_type: MetronomeSDK::CreditTypeData,
-              ending_balance: MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger::EndingBalance,
-              entries: ::Array[MetronomeSDK::V1::CreditLedgerEntry],
-              pending_entries: ::Array[MetronomeSDK::V1::CreditLedgerEntry],
-              starting_balance: MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger::StartingBalance
+              effective_at: Time,
+              excluding_pending: Float,
+              including_pending: Float
             }
 
-          class Ledger < MetronomeSDK::Internal::Type::BaseModel
-            attr_accessor credit_type: MetronomeSDK::CreditTypeData
+          class EndingBalance < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor effective_at: Time
 
-            attr_accessor ending_balance: MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger::EndingBalance
+            attr_accessor excluding_pending: Float
 
-            attr_accessor entries: ::Array[MetronomeSDK::V1::CreditLedgerEntry]
-
-            attr_accessor pending_entries: ::Array[MetronomeSDK::V1::CreditLedgerEntry]
-
-            attr_accessor starting_balance: MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger::StartingBalance
+            attr_accessor including_pending: Float
 
             def initialize: (
-              credit_type: MetronomeSDK::CreditTypeData,
-              ending_balance: MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger::EndingBalance,
-              entries: ::Array[MetronomeSDK::V1::CreditLedgerEntry],
-              pending_entries: ::Array[MetronomeSDK::V1::CreditLedgerEntry],
-              starting_balance: MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger::StartingBalance
+              effective_at: Time,
+              excluding_pending: Float,
+              including_pending: Float
             ) -> void
 
             def to_hash: -> {
-              credit_type: MetronomeSDK::CreditTypeData,
-              ending_balance: MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger::EndingBalance,
-              entries: ::Array[MetronomeSDK::V1::CreditLedgerEntry],
-              pending_entries: ::Array[MetronomeSDK::V1::CreditLedgerEntry],
-              starting_balance: MetronomeSDK::Models::V1::CreditGrantListEntriesResponse::Data::Ledger::StartingBalance
+              effective_at: Time,
+              excluding_pending: Float,
+              including_pending: Float
+            }
+          end
+
+          type starting_balance =
+            {
+              effective_at: Time,
+              excluding_pending: Float,
+              including_pending: Float
             }
 
-            type ending_balance =
-              {
-                effective_at: Time,
-                excluding_pending: Float,
-                including_pending: Float
-              }
+          class StartingBalance < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor effective_at: Time
 
-            class EndingBalance < MetronomeSDK::Internal::Type::BaseModel
-              attr_accessor effective_at: Time
+            attr_accessor excluding_pending: Float
 
-              attr_accessor excluding_pending: Float
+            attr_accessor including_pending: Float
 
-              attr_accessor including_pending: Float
+            def initialize: (
+              effective_at: Time,
+              excluding_pending: Float,
+              including_pending: Float
+            ) -> void
 
-              def initialize: (
-                effective_at: Time,
-                excluding_pending: Float,
-                including_pending: Float
-              ) -> void
-
-              def to_hash: -> {
-                effective_at: Time,
-                excluding_pending: Float,
-                including_pending: Float
-              }
-            end
-
-            type starting_balance =
-              {
-                effective_at: Time,
-                excluding_pending: Float,
-                including_pending: Float
-              }
-
-            class StartingBalance < MetronomeSDK::Internal::Type::BaseModel
-              attr_accessor effective_at: Time
-
-              attr_accessor excluding_pending: Float
-
-              attr_accessor including_pending: Float
-
-              def initialize: (
-                effective_at: Time,
-                excluding_pending: Float,
-                including_pending: Float
-              ) -> void
-
-              def to_hash: -> {
-                effective_at: Time,
-                excluding_pending: Float,
-                including_pending: Float
-              }
-            end
+            def to_hash: -> {
+              effective_at: Time,
+              excluding_pending: Float,
+              including_pending: Float
+            }
           end
         end
       end

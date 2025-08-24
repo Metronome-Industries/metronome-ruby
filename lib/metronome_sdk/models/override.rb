@@ -58,9 +58,8 @@ module MetronomeSDK
 
       # @!attribute override_tiers
       #
-      #   @return [Array<MetronomeSDK::Models::Override::OverrideTier>, nil]
-      optional :override_tiers,
-               -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Override::OverrideTier] }
+      #   @return [Array<MetronomeSDK::Models::OverrideTier>, nil]
+      optional :override_tiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::OverrideTier] }
 
       # @!attribute overwrite_rate
       #
@@ -142,7 +141,7 @@ module MetronomeSDK
       #
       #   @param override_specifiers [Array<MetronomeSDK::Models::Override::OverrideSpecifier>]
       #
-      #   @param override_tiers [Array<MetronomeSDK::Models::Override::OverrideTier>]
+      #   @param override_tiers [Array<MetronomeSDK::Models::OverrideTier>]
       #
       #   @param overwrite_rate [MetronomeSDK::Models::Override::OverwriteRate]
       #
@@ -227,22 +226,6 @@ module MetronomeSDK
           # @!method self.values
           #   @return [Array<Symbol>]
         end
-      end
-
-      class OverrideTier < MetronomeSDK::Internal::Type::BaseModel
-        # @!attribute multiplier
-        #
-        #   @return [Float]
-        required :multiplier, Float
-
-        # @!attribute size
-        #
-        #   @return [Float, nil]
-        optional :size, Float
-
-        # @!method initialize(multiplier:, size: nil)
-        #   @param multiplier [Float]
-        #   @param size [Float]
       end
 
       # @see MetronomeSDK::Models::Override#overwrite_rate

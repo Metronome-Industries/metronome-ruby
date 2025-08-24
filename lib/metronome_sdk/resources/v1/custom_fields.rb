@@ -61,7 +61,7 @@ module MetronomeSDK
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [MetronomeSDK::Models::V1::CustomFieldListKeysResponse]
+        # @return [MetronomeSDK::Internal::CursorPageWithoutLimit<MetronomeSDK::Models::V1::CustomFieldListKeysResponse>]
         #
         # @see MetronomeSDK::Models::V1::CustomFieldListKeysParams
         def list_keys(params = {})
@@ -72,6 +72,7 @@ module MetronomeSDK
             path: "v1/customFields/listKeys",
             query: parsed.slice(*query_params),
             body: parsed.except(*query_params),
+            page: MetronomeSDK::Internal::CursorPageWithoutLimit,
             model: MetronomeSDK::Models::V1::CustomFieldListKeysResponse,
             options: options
           )

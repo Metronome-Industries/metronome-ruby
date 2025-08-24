@@ -39,7 +39,11 @@ module MetronomeSDK
                 MetronomeSDK::V1::CustomFieldListKeysParams::Entity::OrSymbol
               ],
             request_options: MetronomeSDK::RequestOptions::OrHash
-          ).returns(MetronomeSDK::Models::V1::CustomFieldListKeysResponse)
+          ).returns(
+            MetronomeSDK::Internal::CursorPageWithoutLimit[
+              MetronomeSDK::Models::V1::CustomFieldListKeysResponse
+            ]
+          )
         end
         def list_keys(
           # Query param: Cursor that indicates where the next page of results should start.
