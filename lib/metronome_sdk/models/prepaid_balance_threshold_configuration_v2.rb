@@ -58,14 +58,7 @@ module MetronomeSDK
       #   @param custom_credit_type_id [String] If provided, the threshold, recharge-to amount, and the resulting threshold comm
 
       # @see MetronomeSDK::Models::PrepaidBalanceThresholdConfigurationV2#commit
-      class Commit < MetronomeSDK::Internal::Type::BaseModel
-        # @!attribute product_id
-        #   The commit product that will be used to generate the line item for commit
-        #   payment.
-        #
-        #   @return [String]
-        required :product_id, String
-
+      class Commit < MetronomeSDK::Models::UpdateBaseThresholdCommit
         # @!attribute applicable_product_ids
         #   Which products the threshold commit applies to. If applicable_product_ids,
         #   applicable_product_tags or specifiers are not provided, the commit applies to
@@ -82,18 +75,6 @@ module MetronomeSDK
         #   @return [Array<String>, nil]
         optional :applicable_product_tags, MetronomeSDK::Internal::Type::ArrayOf[String]
 
-        # @!attribute description
-        #
-        #   @return [String, nil]
-        optional :description, String
-
-        # @!attribute name
-        #   Specify the name of the line item for the threshold charge. If left blank, it
-        #   will default to the commit product name.
-        #
-        #   @return [String, nil]
-        optional :name, String
-
         # @!attribute specifiers
         #   List of filters that determine what kind of customer usage draws down a commit
         #   or credit. A customer's usage needs to meet the condition of at least one of the
@@ -105,20 +86,14 @@ module MetronomeSDK
         #   @return [Array<MetronomeSDK::Models::CommitSpecifierInput>, nil]
         optional :specifiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::CommitSpecifierInput] }
 
-        # @!method initialize(product_id:, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, name: nil, specifiers: nil)
+        # @!method initialize(applicable_product_ids: nil, applicable_product_tags: nil, specifiers: nil)
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::PrepaidBalanceThresholdConfigurationV2::Commit} for more
         #   details.
         #
-        #   @param product_id [String] The commit product that will be used to generate the line item for commit paymen
-        #
         #   @param applicable_product_ids [Array<String>] Which products the threshold commit applies to. If applicable_product_ids, appli
         #
         #   @param applicable_product_tags [Array<String>] Which tags the threshold commit applies to. If applicable_product_ids, applicabl
-        #
-        #   @param description [String]
-        #
-        #   @param name [String] Specify the name of the line item for the threshold charge. If left blank, it wi
         #
         #   @param specifiers [Array<MetronomeSDK::Models::CommitSpecifierInput>] List of filters that determine what kind of customer usage draws down a commit o
       end

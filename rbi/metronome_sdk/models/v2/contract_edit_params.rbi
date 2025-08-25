@@ -7518,7 +7518,7 @@ module MetronomeSDK
           def to_hash
           end
 
-          class Commit < MetronomeSDK::Internal::Type::BaseModel
+          class Commit < MetronomeSDK::Models::UpdateBaseThresholdCommit
             OrHash =
               T.type_alias do
                 T.any(
@@ -7538,28 +7538,6 @@ module MetronomeSDK
             sig { returns(T.nilable(T::Array[String])) }
             attr_accessor :applicable_product_tags
 
-            sig { returns(T.nilable(String)) }
-            attr_reader :description
-
-            sig { params(description: String).void }
-            attr_writer :description
-
-            # Specify the name of the line item for the threshold charge. If left blank, it
-            # will default to the commit product name.
-            sig { returns(T.nilable(String)) }
-            attr_reader :name
-
-            sig { params(name: String).void }
-            attr_writer :name
-
-            # The commit product that will be used to generate the line item for commit
-            # payment.
-            sig { returns(T.nilable(String)) }
-            attr_reader :product_id
-
-            sig { params(product_id: String).void }
-            attr_writer :product_id
-
             # List of filters that determine what kind of customer usage draws down a commit
             # or credit. A customer's usage needs to meet the condition of at least one of the
             # specifiers to contribute to a commit's or credit's drawdown. This field cannot
@@ -7575,9 +7553,6 @@ module MetronomeSDK
               params(
                 applicable_product_ids: T.nilable(T::Array[String]),
                 applicable_product_tags: T.nilable(T::Array[String]),
-                description: String,
-                name: String,
-                product_id: String,
                 specifiers:
                   T.nilable(
                     T::Array[MetronomeSDK::CommitSpecifierInput::OrHash]
@@ -7592,13 +7567,6 @@ module MetronomeSDK
               # Which tags the threshold commit applies to. If both applicable_product_ids and
               # applicable_product_tags are not provided, the commit applies to all products.
               applicable_product_tags: nil,
-              description: nil,
-              # Specify the name of the line item for the threshold charge. If left blank, it
-              # will default to the commit product name.
-              name: nil,
-              # The commit product that will be used to generate the line item for commit
-              # payment.
-              product_id: nil,
               # List of filters that determine what kind of customer usage draws down a commit
               # or credit. A customer's usage needs to meet the condition of at least one of the
               # specifiers to contribute to a commit's or credit's drawdown. This field cannot
@@ -7614,9 +7582,6 @@ module MetronomeSDK
                 {
                   applicable_product_ids: T.nilable(T::Array[String]),
                   applicable_product_tags: T.nilable(T::Array[String]),
-                  description: String,
-                  name: String,
-                  product_id: String,
                   specifiers:
                     T.nilable(T::Array[MetronomeSDK::CommitSpecifierInput])
                 }
@@ -8210,20 +8175,11 @@ module MetronomeSDK
               )
             end
 
-          sig do
-            returns(
-              T.nilable(
-                MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::Commit
-              )
-            )
-          end
+          sig { returns(T.nilable(MetronomeSDK::UpdateBaseThresholdCommit)) }
           attr_reader :commit
 
           sig do
-            params(
-              commit:
-                MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::Commit::OrHash
-            ).void
+            params(commit: MetronomeSDK::UpdateBaseThresholdCommit::OrHash).void
           end
           attr_writer :commit
 
@@ -8256,8 +8212,7 @@ module MetronomeSDK
 
           sig do
             params(
-              commit:
-                MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::Commit::OrHash,
+              commit: MetronomeSDK::UpdateBaseThresholdCommit::OrHash,
               is_enabled: T::Boolean,
               payment_gate_config: MetronomeSDK::PaymentGateConfigV2::OrHash,
               threshold_amount: Float
@@ -8279,8 +8234,7 @@ module MetronomeSDK
           sig do
             override.returns(
               {
-                commit:
-                  MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::Commit,
+                commit: MetronomeSDK::UpdateBaseThresholdCommit,
                 is_enabled: T::Boolean,
                 payment_gate_config: MetronomeSDK::PaymentGateConfigV2,
                 threshold_amount: Float
@@ -8288,64 +8242,6 @@ module MetronomeSDK
             )
           end
           def to_hash
-          end
-
-          class Commit < MetronomeSDK::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::Commit,
-                  MetronomeSDK::Internal::AnyHash
-                )
-              end
-
-            sig { returns(T.nilable(String)) }
-            attr_reader :description
-
-            sig { params(description: String).void }
-            attr_writer :description
-
-            # Specify the name of the line item for the threshold charge. If left blank, it
-            # will default to the commit product name.
-            sig { returns(T.nilable(String)) }
-            attr_reader :name
-
-            sig { params(name: String).void }
-            attr_writer :name
-
-            # The commit product that will be used to generate the line item for commit
-            # payment.
-            sig { returns(T.nilable(String)) }
-            attr_reader :product_id
-
-            sig { params(product_id: String).void }
-            attr_writer :product_id
-
-            sig do
-              params(
-                description: String,
-                name: String,
-                product_id: String
-              ).returns(T.attached_class)
-            end
-            def self.new(
-              description: nil,
-              # Specify the name of the line item for the threshold charge. If left blank, it
-              # will default to the commit product name.
-              name: nil,
-              # The commit product that will be used to generate the line item for commit
-              # payment.
-              product_id: nil
-            )
-            end
-
-            sig do
-              override.returns(
-                { description: String, name: String, product_id: String }
-              )
-            end
-            def to_hash
-            end
           end
         end
 

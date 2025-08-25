@@ -102,7 +102,7 @@ module MetronomeSDK
       def to_hash
       end
 
-      class Commit < MetronomeSDK::Internal::Type::BaseModel
+      class Commit < MetronomeSDK::Models::UpdateBaseThresholdCommit
         OrHash =
           T.type_alias do
             T.any(
@@ -110,11 +110,6 @@ module MetronomeSDK
               MetronomeSDK::Internal::AnyHash
             )
           end
-
-        # The commit product that will be used to generate the line item for commit
-        # payment.
-        sig { returns(String) }
-        attr_accessor :product_id
 
         # Which products the threshold commit applies to. If applicable_product_ids,
         # applicable_product_tags or specifiers are not provided, the commit applies to
@@ -134,20 +129,6 @@ module MetronomeSDK
         sig { params(applicable_product_tags: T::Array[String]).void }
         attr_writer :applicable_product_tags
 
-        sig { returns(T.nilable(String)) }
-        attr_reader :description
-
-        sig { params(description: String).void }
-        attr_writer :description
-
-        # Specify the name of the line item for the threshold charge. If left blank, it
-        # will default to the commit product name.
-        sig { returns(T.nilable(String)) }
-        attr_reader :name
-
-        sig { params(name: String).void }
-        attr_writer :name
-
         # List of filters that determine what kind of customer usage draws down a commit
         # or credit. A customer's usage needs to meet the condition of at least one of the
         # specifiers to contribute to a commit's or credit's drawdown. This field cannot
@@ -166,18 +147,12 @@ module MetronomeSDK
 
         sig do
           params(
-            product_id: String,
             applicable_product_ids: T::Array[String],
             applicable_product_tags: T::Array[String],
-            description: String,
-            name: String,
             specifiers: T::Array[MetronomeSDK::CommitSpecifierInput::OrHash]
           ).returns(T.attached_class)
         end
         def self.new(
-          # The commit product that will be used to generate the line item for commit
-          # payment.
-          product_id:,
           # Which products the threshold commit applies to. If applicable_product_ids,
           # applicable_product_tags or specifiers are not provided, the commit applies to
           # all products.
@@ -186,10 +161,6 @@ module MetronomeSDK
           # applicable_product_tags or specifiers are not provided, the commit applies to
           # all products.
           applicable_product_tags: nil,
-          description: nil,
-          # Specify the name of the line item for the threshold charge. If left blank, it
-          # will default to the commit product name.
-          name: nil,
           # List of filters that determine what kind of customer usage draws down a commit
           # or credit. A customer's usage needs to meet the condition of at least one of the
           # specifiers to contribute to a commit's or credit's drawdown. This field cannot
@@ -203,11 +174,8 @@ module MetronomeSDK
         sig do
           override.returns(
             {
-              product_id: String,
               applicable_product_ids: T::Array[String],
               applicable_product_tags: T::Array[String],
-              description: String,
-              name: String,
               specifiers: T::Array[MetronomeSDK::CommitSpecifierInput]
             }
           )

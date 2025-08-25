@@ -3223,46 +3223,37 @@ module MetronomeSDK
             {
               applicable_product_ids: ::Array[String]?,
               applicable_product_tags: ::Array[String]?,
-              description: String,
-              name: String,
-              product_id: String,
               specifiers: ::Array[MetronomeSDK::CommitSpecifierInput]?
             }
 
-          class Commit < MetronomeSDK::Internal::Type::BaseModel
-            attr_accessor applicable_product_ids: ::Array[String]?
+          class Commit < MetronomeSDK::Models::UpdateBaseThresholdCommit
+            def applicable_product_ids: -> ::Array[String]?
 
-            attr_accessor applicable_product_tags: ::Array[String]?
+            def applicable_product_ids=: (
+              ::Array[String]? _
+            ) -> ::Array[String]?
 
-            attr_reader description: String?
+            def applicable_product_tags: -> ::Array[String]?
 
-            def description=: (String) -> String
+            def applicable_product_tags=: (
+              ::Array[String]? _
+            ) -> ::Array[String]?
 
-            attr_reader name: String?
+            def specifiers: -> ::Array[MetronomeSDK::CommitSpecifierInput]?
 
-            def name=: (String) -> String
-
-            attr_reader product_id: String?
-
-            def product_id=: (String) -> String
-
-            attr_accessor specifiers: ::Array[MetronomeSDK::CommitSpecifierInput]?
+            def specifiers=: (
+              ::Array[MetronomeSDK::CommitSpecifierInput]? _
+            ) -> ::Array[MetronomeSDK::CommitSpecifierInput]?
 
             def initialize: (
               ?applicable_product_ids: ::Array[String]?,
               ?applicable_product_tags: ::Array[String]?,
-              ?description: String,
-              ?name: String,
-              ?product_id: String,
               ?specifiers: ::Array[MetronomeSDK::CommitSpecifierInput]?
             ) -> void
 
             def to_hash: -> {
               applicable_product_ids: ::Array[String]?,
               applicable_product_tags: ::Array[String]?,
-              description: String,
-              name: String,
-              product_id: String,
               specifiers: ::Array[MetronomeSDK::CommitSpecifierInput]?
             }
           end
@@ -3552,18 +3543,18 @@ module MetronomeSDK
 
         type update_spend_threshold_configuration =
           {
-            commit: MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::Commit,
+            commit: MetronomeSDK::UpdateBaseThresholdCommit,
             is_enabled: bool,
             payment_gate_config: MetronomeSDK::PaymentGateConfigV2,
             threshold_amount: Float
           }
 
         class UpdateSpendThresholdConfiguration < MetronomeSDK::Internal::Type::BaseModel
-          attr_reader commit: MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::Commit?
+          attr_reader commit: MetronomeSDK::UpdateBaseThresholdCommit?
 
           def commit=: (
-            MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::Commit
-          ) -> MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::Commit
+            MetronomeSDK::UpdateBaseThresholdCommit
+          ) -> MetronomeSDK::UpdateBaseThresholdCommit
 
           attr_reader is_enabled: bool?
 
@@ -3580,47 +3571,18 @@ module MetronomeSDK
           def threshold_amount=: (Float) -> Float
 
           def initialize: (
-            ?commit: MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::Commit,
+            ?commit: MetronomeSDK::UpdateBaseThresholdCommit,
             ?is_enabled: bool,
             ?payment_gate_config: MetronomeSDK::PaymentGateConfigV2,
             ?threshold_amount: Float
           ) -> void
 
           def to_hash: -> {
-            commit: MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::Commit,
+            commit: MetronomeSDK::UpdateBaseThresholdCommit,
             is_enabled: bool,
             payment_gate_config: MetronomeSDK::PaymentGateConfigV2,
             threshold_amount: Float
           }
-
-          type commit =
-            { description: String, name: String, product_id: String }
-
-          class Commit < MetronomeSDK::Internal::Type::BaseModel
-            attr_reader description: String?
-
-            def description=: (String) -> String
-
-            attr_reader name: String?
-
-            def name=: (String) -> String
-
-            attr_reader product_id: String?
-
-            def product_id=: (String) -> String
-
-            def initialize: (
-              ?description: String,
-              ?name: String,
-              ?product_id: String
-            ) -> void
-
-            def to_hash: -> {
-              description: String,
-              name: String,
-              product_id: String
-            }
-          end
         end
 
         type update_subscription =
