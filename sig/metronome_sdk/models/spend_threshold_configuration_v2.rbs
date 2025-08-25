@@ -2,14 +2,14 @@ module MetronomeSDK
   module Models
     type spend_threshold_configuration_v2 =
       {
-        commit: MetronomeSDK::SpendThresholdConfigurationV2::Commit,
+        commit: MetronomeSDK::UpdateBaseThresholdCommit,
         is_enabled: bool,
         payment_gate_config: MetronomeSDK::PaymentGateConfigV2,
         threshold_amount: Float
       }
 
     class SpendThresholdConfigurationV2 < MetronomeSDK::Internal::Type::BaseModel
-      attr_accessor commit: MetronomeSDK::SpendThresholdConfigurationV2::Commit
+      attr_accessor commit: MetronomeSDK::UpdateBaseThresholdCommit
 
       attr_accessor is_enabled: bool
 
@@ -18,44 +18,18 @@ module MetronomeSDK
       attr_accessor threshold_amount: Float
 
       def initialize: (
-        commit: MetronomeSDK::SpendThresholdConfigurationV2::Commit,
+        commit: MetronomeSDK::UpdateBaseThresholdCommit,
         is_enabled: bool,
         payment_gate_config: MetronomeSDK::PaymentGateConfigV2,
         threshold_amount: Float
       ) -> void
 
       def to_hash: -> {
-        commit: MetronomeSDK::SpendThresholdConfigurationV2::Commit,
+        commit: MetronomeSDK::UpdateBaseThresholdCommit,
         is_enabled: bool,
         payment_gate_config: MetronomeSDK::PaymentGateConfigV2,
         threshold_amount: Float
       }
-
-      type commit = { product_id: String, description: String, name: String }
-
-      class Commit < MetronomeSDK::Internal::Type::BaseModel
-        attr_accessor product_id: String
-
-        attr_reader description: String?
-
-        def description=: (String) -> String
-
-        attr_reader name: String?
-
-        def name=: (String) -> String
-
-        def initialize: (
-          product_id: String,
-          ?description: String,
-          ?name: String
-        ) -> void
-
-        def to_hash: -> {
-          product_id: String,
-          description: String,
-          name: String
-        }
-      end
     end
   end
 end

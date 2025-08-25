@@ -11,13 +11,11 @@ module MetronomeSDK
           )
         end
 
-      sig { returns(MetronomeSDK::SpendThresholdConfigurationV2::Commit) }
+      sig { returns(MetronomeSDK::UpdateBaseThresholdCommit) }
       attr_reader :commit
 
       sig do
-        params(
-          commit: MetronomeSDK::SpendThresholdConfigurationV2::Commit::OrHash
-        ).void
+        params(commit: MetronomeSDK::UpdateBaseThresholdCommit::OrHash).void
       end
       attr_writer :commit
 
@@ -44,7 +42,7 @@ module MetronomeSDK
 
       sig do
         params(
-          commit: MetronomeSDK::SpendThresholdConfigurationV2::Commit::OrHash,
+          commit: MetronomeSDK::UpdateBaseThresholdCommit::OrHash,
           is_enabled: T::Boolean,
           payment_gate_config: MetronomeSDK::PaymentGateConfigV2::OrHash,
           threshold_amount: Float
@@ -66,7 +64,7 @@ module MetronomeSDK
       sig do
         override.returns(
           {
-            commit: MetronomeSDK::SpendThresholdConfigurationV2::Commit,
+            commit: MetronomeSDK::UpdateBaseThresholdCommit,
             is_enabled: T::Boolean,
             payment_gate_config: MetronomeSDK::PaymentGateConfigV2,
             threshold_amount: Float
@@ -74,59 +72,6 @@ module MetronomeSDK
         )
       end
       def to_hash
-      end
-
-      class Commit < MetronomeSDK::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              MetronomeSDK::SpendThresholdConfigurationV2::Commit,
-              MetronomeSDK::Internal::AnyHash
-            )
-          end
-
-        # The commit product that will be used to generate the line item for commit
-        # payment.
-        sig { returns(String) }
-        attr_accessor :product_id
-
-        sig { returns(T.nilable(String)) }
-        attr_reader :description
-
-        sig { params(description: String).void }
-        attr_writer :description
-
-        # Specify the name of the line item for the threshold charge. If left blank, it
-        # will default to the commit product name.
-        sig { returns(T.nilable(String)) }
-        attr_reader :name
-
-        sig { params(name: String).void }
-        attr_writer :name
-
-        sig do
-          params(product_id: String, description: String, name: String).returns(
-            T.attached_class
-          )
-        end
-        def self.new(
-          # The commit product that will be used to generate the line item for commit
-          # payment.
-          product_id:,
-          description: nil,
-          # Specify the name of the line item for the threshold charge. If left blank, it
-          # will default to the commit product name.
-          name: nil
-        )
-        end
-
-        sig do
-          override.returns(
-            { product_id: String, description: String, name: String }
-          )
-        end
-        def to_hash
-        end
       end
     end
   end

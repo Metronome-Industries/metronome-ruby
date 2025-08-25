@@ -13,7 +13,7 @@ module MetronomeSDK
         multiplier: Float,
         override_specifiers: ::Array[MetronomeSDK::Override::OverrideSpecifier],
         override_tiers: ::Array[MetronomeSDK::OverrideTier],
-        overwrite_rate: MetronomeSDK::Override::OverwriteRate,
+        overwrite_rate: MetronomeSDK::OverwriteRate,
         price: Float,
         priority: Float,
         product: MetronomeSDK::Override::Product,
@@ -72,11 +72,11 @@ module MetronomeSDK
         ::Array[MetronomeSDK::OverrideTier]
       ) -> ::Array[MetronomeSDK::OverrideTier]
 
-      attr_reader overwrite_rate: MetronomeSDK::Override::OverwriteRate?
+      attr_reader overwrite_rate: MetronomeSDK::OverwriteRate?
 
       def overwrite_rate=: (
-        MetronomeSDK::Override::OverwriteRate
-      ) -> MetronomeSDK::Override::OverwriteRate
+        MetronomeSDK::OverwriteRate
+      ) -> MetronomeSDK::OverwriteRate
 
       attr_reader price: Float?
 
@@ -134,7 +134,7 @@ module MetronomeSDK
         ?multiplier: Float,
         ?override_specifiers: ::Array[MetronomeSDK::Override::OverrideSpecifier],
         ?override_tiers: ::Array[MetronomeSDK::OverrideTier],
-        ?overwrite_rate: MetronomeSDK::Override::OverwriteRate,
+        ?overwrite_rate: MetronomeSDK::OverwriteRate,
         ?price: Float,
         ?priority: Float,
         ?product: MetronomeSDK::Override::Product,
@@ -158,7 +158,7 @@ module MetronomeSDK
         multiplier: Float,
         override_specifiers: ::Array[MetronomeSDK::Override::OverrideSpecifier],
         override_tiers: ::Array[MetronomeSDK::OverrideTier],
-        overwrite_rate: MetronomeSDK::Override::OverwriteRate,
+        overwrite_rate: MetronomeSDK::OverwriteRate,
         price: Float,
         priority: Float,
         product: MetronomeSDK::Override::Product,
@@ -254,81 +254,6 @@ module MetronomeSDK
           WEEKLY: :WEEKLY
 
           def self?.values: -> ::Array[MetronomeSDK::Models::Override::OverrideSpecifier::billing_frequency]
-        end
-      end
-
-      type overwrite_rate =
-        {
-          rate_type: MetronomeSDK::Models::Override::OverwriteRate::rate_type,
-          credit_type: MetronomeSDK::CreditTypeData,
-          custom_rate: ::Hash[Symbol, top],
-          is_prorated: bool,
-          price: Float,
-          quantity: Float,
-          tiers: ::Array[MetronomeSDK::Tier]
-        }
-
-      class OverwriteRate < MetronomeSDK::Internal::Type::BaseModel
-        attr_accessor rate_type: MetronomeSDK::Models::Override::OverwriteRate::rate_type
-
-        attr_reader credit_type: MetronomeSDK::CreditTypeData?
-
-        def credit_type=: (
-          MetronomeSDK::CreditTypeData
-        ) -> MetronomeSDK::CreditTypeData
-
-        attr_reader custom_rate: ::Hash[Symbol, top]?
-
-        def custom_rate=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
-
-        attr_reader is_prorated: bool?
-
-        def is_prorated=: (bool) -> bool
-
-        attr_reader price: Float?
-
-        def price=: (Float) -> Float
-
-        attr_reader quantity: Float?
-
-        def quantity=: (Float) -> Float
-
-        attr_reader tiers: ::Array[MetronomeSDK::Tier]?
-
-        def tiers=: (::Array[MetronomeSDK::Tier]) -> ::Array[MetronomeSDK::Tier]
-
-        def initialize: (
-          rate_type: MetronomeSDK::Models::Override::OverwriteRate::rate_type,
-          ?credit_type: MetronomeSDK::CreditTypeData,
-          ?custom_rate: ::Hash[Symbol, top],
-          ?is_prorated: bool,
-          ?price: Float,
-          ?quantity: Float,
-          ?tiers: ::Array[MetronomeSDK::Tier]
-        ) -> void
-
-        def to_hash: -> {
-          rate_type: MetronomeSDK::Models::Override::OverwriteRate::rate_type,
-          credit_type: MetronomeSDK::CreditTypeData,
-          custom_rate: ::Hash[Symbol, top],
-          is_prorated: bool,
-          price: Float,
-          quantity: Float,
-          tiers: ::Array[MetronomeSDK::Tier]
-        }
-
-        type rate_type = :FLAT | :PERCENTAGE | :SUBSCRIPTION | :TIERED | :CUSTOM
-
-        module RateType
-          extend MetronomeSDK::Internal::Type::Enum
-
-          FLAT: :FLAT
-          PERCENTAGE: :PERCENTAGE
-          SUBSCRIPTION: :SUBSCRIPTION
-          TIERED: :TIERED
-          CUSTOM: :CUSTOM
-
-          def self?.values: -> ::Array[MetronomeSDK::Models::Override::OverwriteRate::rate_type]
         end
       end
 

@@ -35,6 +35,8 @@ module MetronomeSDK
 
   class OverrideTier = MetronomeSDK::Models::OverrideTier
 
+  class OverwriteRate = MetronomeSDK::Models::OverwriteRate
+
   class PaymentGateConfig = MetronomeSDK::Models::PaymentGateConfig
 
   class PaymentGateConfigV2 = MetronomeSDK::Models::PaymentGateConfigV2
@@ -49,6 +51,8 @@ module MetronomeSDK
 
   class Rate = MetronomeSDK::Models::Rate
 
+  class RecurringCommitSubscriptionConfig = MetronomeSDK::Models::RecurringCommitSubscriptionConfig
+
   class ScheduledCharge = MetronomeSDK::Models::ScheduledCharge
 
   class ScheduleDuration = MetronomeSDK::Models::ScheduleDuration
@@ -62,6 +66,8 @@ module MetronomeSDK
   class Subscription = MetronomeSDK::Models::Subscription
 
   class Tier = MetronomeSDK::Models::Tier
+
+  class UpdateBaseThresholdCommit = MetronomeSDK::Models::UpdateBaseThresholdCommit
 
   module V1 = MetronomeSDK::Models::V1
 
