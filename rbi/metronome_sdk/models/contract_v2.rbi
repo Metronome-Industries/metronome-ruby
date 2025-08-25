@@ -63,6 +63,7 @@ module MetronomeSDK
       end
       attr_writer :credits
 
+      # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
       sig { returns(T.nilable(T::Hash[Symbol, String])) }
       attr_reader :custom_fields
 
@@ -370,6 +371,7 @@ module MetronomeSDK
         usage_statement_schedule:,
         archived_at: nil,
         credits: nil,
+        # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         custom_fields: nil,
         # This field's availability is dependent on your client's configuration.
         customer_billing_provider_configuration: nil,
@@ -556,6 +558,7 @@ module MetronomeSDK
         end
         attr_writer :contract
 
+        # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         sig { returns(T.nilable(T::Hash[Symbol, String])) }
         attr_reader :custom_fields
 
@@ -785,6 +788,7 @@ module MetronomeSDK
           # included in the balance, including future-dated manual ledger entries.
           balance: nil,
           contract: nil,
+          # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           custom_fields: nil,
           description: nil,
           # Optional configuration for commit hierarchy access control
@@ -3012,6 +3016,7 @@ module MetronomeSDK
         end
         attr_writer :contract
 
+        # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         sig { returns(T.nilable(T::Hash[Symbol, String])) }
         attr_reader :custom_fields
 
@@ -3159,6 +3164,7 @@ module MetronomeSDK
           # included in the balance, including future-dated manual ledger entries.
           balance: nil,
           contract: nil,
+          # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           custom_fields: nil,
           description: nil,
           # Optional configuration for credit hierarchy access control

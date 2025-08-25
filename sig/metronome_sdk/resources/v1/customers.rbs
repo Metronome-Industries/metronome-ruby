@@ -72,6 +72,16 @@ module MetronomeSDK
           ?request_options: MetronomeSDK::request_opts
         ) -> MetronomeSDK::Models::V1::CustomerPreviewEventsResponse
 
+        def retrieve_customer_billing_configurations: (
+          customer_id: String,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse
+
+        def set_customer_billing_configurations: (
+          data: ::Array[MetronomeSDK::V1::CustomerSetCustomerBillingConfigurationsParams::Data],
+          ?request_options: MetronomeSDK::request_opts
+        ) -> nil
+
         def set_ingest_aliases: (
           customer_id: String,
           ingest_aliases: ::Array[String],

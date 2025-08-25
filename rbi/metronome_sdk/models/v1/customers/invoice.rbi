@@ -63,6 +63,7 @@ module MetronomeSDK
           end
           attr_writer :billable_status
 
+          # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           sig { returns(T.nilable(T::Hash[Symbol, String])) }
           attr_reader :contract_custom_fields
 
@@ -104,6 +105,7 @@ module MetronomeSDK
           sig { params(custom_fields: T::Hash[Symbol, T.anything]).void }
           attr_writer :custom_fields
 
+          # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           sig { returns(T.nilable(T::Hash[Symbol, String])) }
           attr_reader :customer_custom_fields
 
@@ -175,6 +177,7 @@ module MetronomeSDK
           sig { params(netsuite_sales_order_id: String).void }
           attr_writer :netsuite_sales_order_id
 
+          # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           sig { returns(T.nilable(T::Hash[Symbol, String])) }
           attr_reader :plan_custom_fields
 
@@ -284,6 +287,7 @@ module MetronomeSDK
             amendment_id: nil,
             # This field's availability is dependent on your client's configuration.
             billable_status: nil,
+            # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             contract_custom_fields: nil,
             contract_id: nil,
             correction_record: nil,
@@ -291,6 +295,7 @@ module MetronomeSDK
             # invoices only.
             created_at: nil,
             custom_fields: nil,
+            # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             customer_custom_fields: nil,
             # End of the usage period this invoice covers (UTC)
             end_timestamp: nil,
@@ -301,6 +306,7 @@ module MetronomeSDK
             net_payment_terms_days: nil,
             # This field's availability is dependent on your client's configuration.
             netsuite_sales_order_id: nil,
+            # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             plan_custom_fields: nil,
             plan_id: nil,
             plan_name: nil,
@@ -430,6 +436,7 @@ module MetronomeSDK
             end
             attr_writer :applied_commit_or_credit
 
+            # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             sig { returns(T.nilable(T::Hash[Symbol, String])) }
             attr_reader :commit_custom_fields
 
@@ -472,12 +479,14 @@ module MetronomeSDK
             sig { params(commit_type: String).void }
             attr_writer :commit_type
 
+            # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             sig { returns(T.nilable(T::Hash[Symbol, String])) }
             attr_reader :custom_fields
 
             sig { params(custom_fields: T::Hash[Symbol, String]).void }
             attr_writer :custom_fields
 
+            # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             sig { returns(T.nilable(T::Hash[Symbol, String])) }
             attr_reader :discount_custom_fields
 
@@ -587,6 +596,7 @@ module MetronomeSDK
             sig { params(pricing_group_values: T::Hash[Symbol, String]).void }
             attr_writer :pricing_group_values
 
+            # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             sig { returns(T.nilable(T::Hash[Symbol, String])) }
             attr_reader :product_custom_fields
 
@@ -618,6 +628,7 @@ module MetronomeSDK
             sig { params(product_type: String).void }
             attr_writer :product_type
 
+            # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             sig { returns(T.nilable(T::Hash[Symbol, String])) }
             attr_reader :professional_service_custom_fields
 
@@ -658,6 +669,7 @@ module MetronomeSDK
             end
             attr_writer :reseller_type
 
+            # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             sig { returns(T.nilable(T::Hash[Symbol, String])) }
             attr_reader :scheduled_charge_custom_fields
 
@@ -703,6 +715,7 @@ module MetronomeSDK
             end
             attr_writer :sub_line_items
 
+            # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             sig { returns(T.nilable(T::Hash[Symbol, String])) }
             attr_reader :subscription_custom_fields
 
@@ -818,6 +831,7 @@ module MetronomeSDK
               # present on line items with product of `USAGE`, `SUBSCRIPTION` or `COMPOSITE`
               # types.
               applied_commit_or_credit: nil,
+              # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
               commit_custom_fields: nil,
               # For line items with product of `USAGE`, `SUBSCRIPTION`, or `COMPOSITE` types,
               # the ID of the credit or commit that was applied to this line item. For line
@@ -830,7 +844,9 @@ module MetronomeSDK
               # `PrepaidCommit` (for commit types `PREPAID` and `CREDIT`) or `PostpaidCommit`
               # (for commit type `POSTPAID`).
               commit_type: nil,
+              # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
               custom_fields: nil,
+              # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
               discount_custom_fields: nil,
               # ID of the discount applied to this line item.
               discount_id: nil,
@@ -858,6 +874,7 @@ module MetronomeSDK
               # Includes the pricing group values associated with this line item if dimensional
               # pricing is used.
               pricing_group_values: nil,
+              # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
               product_custom_fields: nil,
               # ID of the product associated with the line item.
               product_id: nil,
@@ -869,17 +886,20 @@ module MetronomeSDK
               # `CompositeProductListItem` (for `COMPOSITE` type products). For scheduled
               # charges, commit and credit payments, the value is `FixedProductListItem`.
               product_type: nil,
+              # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
               professional_service_custom_fields: nil,
               professional_service_id: nil,
               # The quantity associated with the line item.
               quantity: nil,
               reseller_type: nil,
+              # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
               scheduled_charge_custom_fields: nil,
               # ID of scheduled charge.
               scheduled_charge_id: nil,
               # The line item's start date (inclusive).
               starting_at: nil,
               sub_line_items: nil,
+              # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
               subscription_custom_fields: nil,
               # Populated if the line item has a tiered price.
               tier: nil,
@@ -1103,6 +1123,7 @@ module MetronomeSDK
                   )
                 end
 
+              # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
               sig { returns(T::Hash[Symbol, String]) }
               attr_accessor :custom_fields
 
@@ -1208,6 +1229,7 @@ module MetronomeSDK
                 ).returns(T.attached_class)
               end
               def self.new(
+                # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
                 custom_fields:,
                 name:,
                 quantity:,
@@ -1947,6 +1969,7 @@ module MetronomeSDK
             sig { returns(Float) }
             attr_accessor :total
 
+            # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             sig { returns(T.nilable(T::Hash[Symbol, String])) }
             attr_reader :credit_grant_custom_fields
 
@@ -1974,6 +1997,7 @@ module MetronomeSDK
               credit_type:,
               name:,
               total:,
+              # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
               credit_grant_custom_fields: nil,
               credit_grant_id: nil
             )

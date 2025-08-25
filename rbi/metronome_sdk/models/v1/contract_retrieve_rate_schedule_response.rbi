@@ -68,6 +68,7 @@ module MetronomeSDK
           sig { params(list_rate: MetronomeSDK::Rate::OrHash).void }
           attr_writer :list_rate
 
+          # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           sig { returns(T::Hash[Symbol, String]) }
           attr_accessor :product_custom_fields
 
@@ -150,6 +151,7 @@ module MetronomeSDK
           def self.new(
             entitled:,
             list_rate:,
+            # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             product_custom_fields:,
             product_id:,
             product_name:,

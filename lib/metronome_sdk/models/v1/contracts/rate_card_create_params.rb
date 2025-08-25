@@ -32,6 +32,7 @@ module MetronomeSDK
                    -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Contracts::RateCardCreateParams::CreditTypeConversion] }
 
           # @!attribute custom_fields
+          #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           #
           #   @return [Hash{Symbol=>String}, nil]
           optional :custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
@@ -58,7 +59,7 @@ module MetronomeSDK
           #
           #   @param credit_type_conversions [Array<MetronomeSDK::Models::V1::Contracts::RateCardCreateParams::CreditTypeConversion>] Required when using custom pricing units in rates.
           #
-          #   @param custom_fields [Hash{Symbol=>String}]
+          #   @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           #
           #   @param description [String]
           #

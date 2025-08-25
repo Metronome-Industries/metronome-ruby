@@ -13,6 +13,15 @@ module MetronomeSDK
       #   @return [MetronomeSDK::Models::Subscription::Proration]
       required :proration, -> { MetronomeSDK::Subscription::Proration }
 
+      # @!attribute quantity_management_mode
+      #   Determines how the subscription's quantity is controlled. Defaults to
+      #   QUANTITY_ONLY. **QUANTITY_ONLY**: The subscription quantity is specified
+      #   directly on the subscription. `initial_quantity` must be provided with this
+      #   option. Compatible with recurring commits/credits that use POOLED allocation.
+      #
+      #   @return [Symbol, MetronomeSDK::Models::Subscription::QuantityManagementMode]
+      required :quantity_management_mode, enum: -> { MetronomeSDK::Subscription::QuantityManagementMode }
+
       # @!attribute quantity_schedule
       #   List of quantity schedule items for the subscription. Only includes the current
       #   quantity and future quantity changes.
@@ -37,6 +46,7 @@ module MetronomeSDK
       optional :id, String
 
       # @!attribute custom_fields
+      #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
       #
       #   @return [Hash{Symbol=>String}, nil]
       optional :custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
@@ -61,13 +71,15 @@ module MetronomeSDK
       #   @return [String, nil]
       optional :name, String
 
-      # @!method initialize(collection_schedule:, proration:, quantity_schedule:, starting_at:, subscription_rate:, id: nil, custom_fields: nil, description: nil, ending_before: nil, fiat_credit_type_id: nil, name: nil)
+      # @!method initialize(collection_schedule:, proration:, quantity_management_mode:, quantity_schedule:, starting_at:, subscription_rate:, id: nil, custom_fields: nil, description: nil, ending_before: nil, fiat_credit_type_id: nil, name: nil)
       #   Some parameter documentations has been truncated, see
       #   {MetronomeSDK::Models::Subscription} for more details.
       #
       #   @param collection_schedule [Symbol, MetronomeSDK::Models::Subscription::CollectionSchedule]
       #
       #   @param proration [MetronomeSDK::Models::Subscription::Proration]
+      #
+      #   @param quantity_management_mode [Symbol, MetronomeSDK::Models::Subscription::QuantityManagementMode] Determines how the subscription's quantity is controlled. Defaults to QUANTITY_O
       #
       #   @param quantity_schedule [Array<MetronomeSDK::Models::Subscription::QuantitySchedule>] List of quantity schedule items for the subscription. Only includes the current
       #
@@ -77,7 +89,7 @@ module MetronomeSDK
       #
       #   @param id [String]
       #
-      #   @param custom_fields [Hash{Symbol=>String}]
+      #   @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
       #
       #   @param description [String]
       #
@@ -124,6 +136,22 @@ module MetronomeSDK
           # @!method self.values
           #   @return [Array<Symbol>]
         end
+      end
+
+      # Determines how the subscription's quantity is controlled. Defaults to
+      # QUANTITY_ONLY. **QUANTITY_ONLY**: The subscription quantity is specified
+      # directly on the subscription. `initial_quantity` must be provided with this
+      # option. Compatible with recurring commits/credits that use POOLED allocation.
+      #
+      # @see MetronomeSDK::Models::Subscription#quantity_management_mode
+      module QuantityManagementMode
+        extend MetronomeSDK::Internal::Type::Enum
+
+        SEAT_BASED = :SEAT_BASED
+        QUANTITY_ONLY = :QUANTITY_ONLY
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       class QuantitySchedule < MetronomeSDK::Internal::Type::BaseModel

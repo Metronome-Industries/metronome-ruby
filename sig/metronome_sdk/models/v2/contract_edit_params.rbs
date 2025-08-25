@@ -2477,21 +2477,20 @@ module MetronomeSDK
         type add_subscription =
           {
             collection_schedule: MetronomeSDK::Models::V2::ContractEditParams::AddSubscription::collection_schedule,
-            initial_quantity: Float,
             proration: MetronomeSDK::V2::ContractEditParams::AddSubscription::Proration,
             subscription_rate: MetronomeSDK::V2::ContractEditParams::AddSubscription::SubscriptionRate,
             custom_fields: ::Hash[Symbol, String],
             description: String,
             ending_before: Time,
+            initial_quantity: Float,
             name: String,
+            quantity_management_mode: MetronomeSDK::Models::V2::ContractEditParams::AddSubscription::quantity_management_mode,
             starting_at: Time,
             temporary_id: String
           }
 
         class AddSubscription < MetronomeSDK::Internal::Type::BaseModel
           attr_accessor collection_schedule: MetronomeSDK::Models::V2::ContractEditParams::AddSubscription::collection_schedule
-
-          attr_accessor initial_quantity: Float
 
           attr_accessor proration: MetronomeSDK::V2::ContractEditParams::AddSubscription::Proration
 
@@ -2509,9 +2508,19 @@ module MetronomeSDK
 
           def ending_before=: (Time) -> Time
 
+          attr_reader initial_quantity: Float?
+
+          def initial_quantity=: (Float) -> Float
+
           attr_reader name: String?
 
           def name=: (String) -> String
+
+          attr_reader quantity_management_mode: MetronomeSDK::Models::V2::ContractEditParams::AddSubscription::quantity_management_mode?
+
+          def quantity_management_mode=: (
+            MetronomeSDK::Models::V2::ContractEditParams::AddSubscription::quantity_management_mode
+          ) -> MetronomeSDK::Models::V2::ContractEditParams::AddSubscription::quantity_management_mode
 
           attr_reader starting_at: Time?
 
@@ -2523,26 +2532,28 @@ module MetronomeSDK
 
           def initialize: (
             collection_schedule: MetronomeSDK::Models::V2::ContractEditParams::AddSubscription::collection_schedule,
-            initial_quantity: Float,
             proration: MetronomeSDK::V2::ContractEditParams::AddSubscription::Proration,
             subscription_rate: MetronomeSDK::V2::ContractEditParams::AddSubscription::SubscriptionRate,
             ?custom_fields: ::Hash[Symbol, String],
             ?description: String,
             ?ending_before: Time,
+            ?initial_quantity: Float,
             ?name: String,
+            ?quantity_management_mode: MetronomeSDK::Models::V2::ContractEditParams::AddSubscription::quantity_management_mode,
             ?starting_at: Time,
             ?temporary_id: String
           ) -> void
 
           def to_hash: -> {
             collection_schedule: MetronomeSDK::Models::V2::ContractEditParams::AddSubscription::collection_schedule,
-            initial_quantity: Float,
             proration: MetronomeSDK::V2::ContractEditParams::AddSubscription::Proration,
             subscription_rate: MetronomeSDK::V2::ContractEditParams::AddSubscription::SubscriptionRate,
             custom_fields: ::Hash[Symbol, String],
             description: String,
             ending_before: Time,
+            initial_quantity: Float,
             name: String,
+            quantity_management_mode: MetronomeSDK::Models::V2::ContractEditParams::AddSubscription::quantity_management_mode,
             starting_at: Time,
             temporary_id: String
           }
@@ -2631,6 +2642,17 @@ module MetronomeSDK
 
               def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractEditParams::AddSubscription::SubscriptionRate::billing_frequency]
             end
+          end
+
+          type quantity_management_mode = :SEAT_BASED | :QUANTITY_ONLY
+
+          module QuantityManagementMode
+            extend MetronomeSDK::Internal::Type::Enum
+
+            SEAT_BASED: :SEAT_BASED
+            QUANTITY_ONLY: :QUANTITY_ONLY
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractEditParams::AddSubscription::quantity_management_mode]
           end
         end
 

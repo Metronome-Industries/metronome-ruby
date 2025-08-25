@@ -20,6 +20,7 @@ module MetronomeSDK
         optional :billing_config, -> { MetronomeSDK::V1::CustomerCreateParams::BillingConfig }
 
         # @!attribute custom_fields
+        #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         #
         #   @return [Hash{Symbol=>String}, nil]
         optional :custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
@@ -51,7 +52,7 @@ module MetronomeSDK
         #
         #   @param billing_config [MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig]
         #
-        #   @param custom_fields [Hash{Symbol=>String}]
+        #   @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         #
         #   @param customer_billing_provider_configurations [Array<MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration>]
         #

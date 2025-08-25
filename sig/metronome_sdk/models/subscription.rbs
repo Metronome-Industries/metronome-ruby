@@ -4,6 +4,7 @@ module MetronomeSDK
       {
         collection_schedule: MetronomeSDK::Models::Subscription::collection_schedule,
         proration: MetronomeSDK::Subscription::Proration,
+        quantity_management_mode: MetronomeSDK::Models::Subscription::quantity_management_mode,
         quantity_schedule: ::Array[MetronomeSDK::Subscription::QuantitySchedule],
         starting_at: Time,
         subscription_rate: MetronomeSDK::Subscription::SubscriptionRate,
@@ -19,6 +20,8 @@ module MetronomeSDK
       attr_accessor collection_schedule: MetronomeSDK::Models::Subscription::collection_schedule
 
       attr_accessor proration: MetronomeSDK::Subscription::Proration
+
+      attr_accessor quantity_management_mode: MetronomeSDK::Models::Subscription::quantity_management_mode
 
       attr_accessor quantity_schedule: ::Array[MetronomeSDK::Subscription::QuantitySchedule]
 
@@ -53,6 +56,7 @@ module MetronomeSDK
       def initialize: (
         collection_schedule: MetronomeSDK::Models::Subscription::collection_schedule,
         proration: MetronomeSDK::Subscription::Proration,
+        quantity_management_mode: MetronomeSDK::Models::Subscription::quantity_management_mode,
         quantity_schedule: ::Array[MetronomeSDK::Subscription::QuantitySchedule],
         starting_at: Time,
         subscription_rate: MetronomeSDK::Subscription::SubscriptionRate,
@@ -67,6 +71,7 @@ module MetronomeSDK
       def to_hash: -> {
         collection_schedule: MetronomeSDK::Models::Subscription::collection_schedule,
         proration: MetronomeSDK::Subscription::Proration,
+        quantity_management_mode: MetronomeSDK::Models::Subscription::quantity_management_mode,
         quantity_schedule: ::Array[MetronomeSDK::Subscription::QuantitySchedule],
         starting_at: Time,
         subscription_rate: MetronomeSDK::Subscription::SubscriptionRate,
@@ -121,6 +126,17 @@ module MetronomeSDK
 
           def self?.values: -> ::Array[MetronomeSDK::Models::Subscription::Proration::invoice_behavior]
         end
+      end
+
+      type quantity_management_mode = :SEAT_BASED | :QUANTITY_ONLY
+
+      module QuantityManagementMode
+        extend MetronomeSDK::Internal::Type::Enum
+
+        SEAT_BASED: :SEAT_BASED
+        QUANTITY_ONLY: :QUANTITY_ONLY
+
+        def self?.values: -> ::Array[MetronomeSDK::Models::Subscription::quantity_management_mode]
       end
 
       type quantity_schedule =

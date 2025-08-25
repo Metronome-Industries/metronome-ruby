@@ -126,6 +126,7 @@ module MetronomeSDK
           end
           attr_writer :breakdown_granularity
 
+          # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           sig { returns(T.nilable(T::Hash[Symbol, String])) }
           attr_reader :custom_fields
 
@@ -162,6 +163,7 @@ module MetronomeSDK
             # This field's availability is dependent on your client's configuration.
             billable_status: nil,
             breakdown_granularity: nil,
+            # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             custom_fields: nil
           )
           end

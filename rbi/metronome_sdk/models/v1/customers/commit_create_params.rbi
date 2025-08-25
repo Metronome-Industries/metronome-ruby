@@ -79,6 +79,7 @@ module MetronomeSDK
           sig { params(applicable_product_tags: T::Array[String]).void }
           attr_writer :applicable_product_tags
 
+          # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           sig { returns(T.nilable(T::Hash[Symbol, String])) }
           attr_reader :custom_fields
 
@@ -236,6 +237,7 @@ module MetronomeSDK
             # applicable_product_tags or specifiers are not provided, the commit applies to
             # all products.
             applicable_product_tags: nil,
+            # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             custom_fields: nil,
             # Used only in UI/API. It is not exposed to end customers.
             description: nil,

@@ -7,8 +7,23 @@ module MetronomeSDK
         # Some parameter documentations has been truncated, see
         # {MetronomeSDK::Models::V2::ContractRetrieveParams} for more details.
         #
-        # Get a specific contract. New clients should use this endpoint rather than the v1
-        # endpoint.
+        # Gets the details for a specific contract, including contract term, rate card
+        # information, credits and commits, and more.
+        #
+        # Use this endpoint to:
+        #
+        # - Check the duration of a customer's current contract
+        # - Get details on contract terms, including access schedule amounts for
+        #   commitments and credits
+        # - Understand the state of a contract at a past time. As you can evolve the terms
+        #   of a contract over time through editing, use the as_of_date parameter to view
+        #   the full contract configuration as of that point in time.
+        #
+        # Usage guidelines:
+        #
+        # - Optionally, use the include_balance and include_ledger fields to include
+        #   balances and ledgers in the credit and commit responses. Using these fields
+        #   will cause the query to be slower.
         #
         # @overload retrieve(contract_id:, customer_id:, as_of_date: nil, include_balance: nil, include_ledgers: nil, request_options: {})
         #
@@ -41,8 +56,20 @@ module MetronomeSDK
         # Some parameter documentations has been truncated, see
         # {MetronomeSDK::Models::V2::ContractListParams} for more details.
         #
-        # List all contracts for a customer in chronological order. New clients should use
-        # this endpoint rather than the v1 endpoint.
+        # For a given customer, lists all of their contracts in chronological order.
+        #
+        # Use this endpoint to:
+        #
+        # - Check if a customer is provisioned with any contract, and at which tier
+        # - Check the duration and terms of a customer's current contract
+        # - Power a page in your end customer experience that shows the customer's history
+        #   of tiers (e.g. this customer started out on the Pro Plan, then downgraded to
+        #   the Starter plan).
+        #
+        # Usage guidelines:\
+        # Use the starting_at, covering_date, and include_archived parameters to filter the
+        # list of returned contracts. For example, to list only currently active contracts,
+        # pass covering_date equal to the current time.
         #
         # @overload list(customer_id:, covering_date: nil, include_archived: nil, include_balance: nil, include_ledgers: nil, starting_at: nil, request_options: {})
         #
@@ -77,7 +104,28 @@ module MetronomeSDK
         # Some parameter documentations has been truncated, see
         # {MetronomeSDK::Models::V2::ContractEditParams} for more details.
         #
-        # Edit a contract. Contract editing must be enabled to use this endpoint.
+        # The ability to edit a contract helps you react quickly to the needs of your
+        # customers and your business.
+        #
+        # Use this endpoint to:
+        #
+        # - Encode mid-term commitment and discount changes
+        # - Fix configuration mistakes and easily roll back packaging changes
+        #
+        # Key response fields:
+        #
+        # - The id of the edit
+        # - Complete edit details. For example, if you edited the contract to add new
+        #   overrides and credits, you will receive the IDs of those overrides and credits
+        #   in the response.
+        #
+        # Usage guidelines:
+        #
+        # - When you edit a contract, any draft invoices update immediately to reflect
+        #   that edit. Finalized invoices remain unchanged - you must void and regenerate
+        #   them in the UI or API to reflect the edit.
+        # - Contract editing must be enabled to use this endpoint. Reach out to your
+        #   Metronome representative to learn more.
         #
         # @overload edit(contract_id:, customer_id:, add_commits: nil, add_credits: nil, add_discounts: nil, add_overrides: nil, add_prepaid_balance_threshold_configuration: nil, add_professional_services: nil, add_recurring_commits: nil, add_recurring_credits: nil, add_reseller_royalties: nil, add_scheduled_charges: nil, add_spend_threshold_configuration: nil, add_subscriptions: nil, allow_contract_ending_before_finalized_invoice: nil, archive_commits: nil, archive_credits: nil, archive_scheduled_charges: nil, remove_overrides: nil, uniqueness_key: nil, update_commits: nil, update_contract_end_date: nil, update_contract_name: nil, update_credits: nil, update_prepaid_balance_threshold_configuration: nil, update_recurring_commits: nil, update_recurring_credits: nil, update_scheduled_charges: nil, update_spend_threshold_configuration: nil, update_subscriptions: nil, request_options: {})
         #
@@ -160,8 +208,22 @@ module MetronomeSDK
         # Some parameter documentations has been truncated, see
         # {MetronomeSDK::Models::V2::ContractEditCommitParams} for more details.
         #
-        # Edit a customer or contract commit. Contract commits can only be edited using
-        # this endpoint if contract editing is enabled.
+        # Edit specific details for a contract-level or customer-level commit. Use this
+        # endpoint to modify individual commit access schedules, invoice schedules,
+        # applicable products, invoicing contracts, or other fields.
+        #
+        # Usage guidelines:
+        #
+        # - As with all edits in Metronome, draft invoices will reflect the edit
+        #   immediately, while finalized invoices are untouched unless voided and
+        #   regenerated.
+        # - If a commit's invoice schedule item is associated with a finalized invoice,
+        #   you cannot remove or update the invoice schedule item.
+        # - If a commit's invoice schedule item is associated with a voided invoice, you
+        #   cannot remove the invoice schedule item.
+        # - You cannot remove an commit access schedule segment that was applied to a
+        #   finalized invoice. You can void the invoice beforehand and then remove the
+        #   access schedule segment.
         #
         # @overload edit_commit(commit_id:, customer_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, invoice_contract_id: nil, invoice_schedule: nil, priority: nil, product_id: nil, specifiers: nil, request_options: {})
         #
@@ -204,8 +266,22 @@ module MetronomeSDK
         # Some parameter documentations has been truncated, see
         # {MetronomeSDK::Models::V2::ContractEditCreditParams} for more details.
         #
-        # Edit a customer or contract credit. Contract credits can only be edited using
-        # this endpoint if contract editing is enabled.
+        # Edit details for a contract-level or customer-level credit.
+        #
+        # Use this endpoint to:
+        #
+        # - Extend the duration or the amount of an existing free credit like a trial
+        # - Modify individual credit access schedules, applicable products, priority, or
+        #   other fields.
+        #
+        # Usage guidelines:
+        #
+        # - As with all edits in Metronome, draft invoices will reflect the edit
+        #   immediately, while finalized invoices are untouched unless voided and
+        #   regenerated.
+        # - You cannot remove an access schedule segment that was applied to a finalized
+        #   invoice. You can void the invoice beforehand and then remove the access
+        #   schedule segment.
         #
         # @overload edit_credit(credit_id:, customer_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, priority: nil, product_id: nil, specifiers: nil, request_options: {})
         #
@@ -241,8 +317,21 @@ module MetronomeSDK
           )
         end
 
-        # Get the edit history of a specific contract. Contract editing must be enabled to
-        # use this endpoint.
+        # List all the edits made to a contract over time. In Metronome, you can edit a
+        # contract at any point after it's created to fix mistakes or reflect changes in
+        # terms. Metronome stores a full history of all edits that were ever made to a
+        # contract, whether through the UI, editContract endpoint, or other endpoints like
+        # updateContractEndDate.
+        #
+        # Use this endpoint to:
+        #
+        # - Understand what changes were made to a contract, when, and by who
+        #
+        # Key response fields:
+        #
+        # - An array of every edit ever made to the contract
+        # - Details on each individual edit - for example showing that in one edit, a user
+        #   added two discounts and incremented a subscription quantity.
         #
         # @overload get_edit_history(contract_id:, customer_id:, request_options: {})
         #

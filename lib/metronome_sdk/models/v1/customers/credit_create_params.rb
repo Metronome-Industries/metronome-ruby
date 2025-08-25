@@ -54,6 +54,7 @@ module MetronomeSDK
           optional :applicable_product_tags, MetronomeSDK::Internal::Type::ArrayOf[String]
 
           # @!attribute custom_fields
+          #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           #
           #   @return [Hash{Symbol=>String}, nil]
           optional :custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
@@ -123,7 +124,7 @@ module MetronomeSDK
           #
           #   @param applicable_product_tags [Array<String>] Which tags the credit applies to. If both applicable*product_ids and applicable*
           #
-          #   @param custom_fields [Hash{Symbol=>String}]
+          #   @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           #
           #   @param description [String] Used only in UI/API. It is not exposed to end customers.
           #

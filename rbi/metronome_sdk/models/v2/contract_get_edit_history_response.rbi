@@ -4767,6 +4767,7 @@ module MetronomeSDK
             sig { returns(String) }
             attr_accessor :id
 
+            # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             sig { returns(T.nilable(T::Hash[Symbol, String])) }
             attr_reader :custom_fields
 
@@ -4815,6 +4816,7 @@ module MetronomeSDK
             end
             def self.new(
               id:,
+              # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
               custom_fields: nil,
               name: nil,
               netsuite_sales_order_id: nil,

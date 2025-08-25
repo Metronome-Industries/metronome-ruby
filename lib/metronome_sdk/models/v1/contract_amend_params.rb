@@ -39,6 +39,7 @@ module MetronomeSDK
                  -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractAmendParams::Credit] }
 
         # @!attribute custom_fields
+        #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         #
         #   @return [Hash{Symbol=>String}, nil]
         optional :custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
@@ -105,7 +106,7 @@ module MetronomeSDK
         #
         #   @param credits [Array<MetronomeSDK::Models::V1::ContractAmendParams::Credit>]
         #
-        #   @param custom_fields [Hash{Symbol=>String}]
+        #   @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         #
         #   @param discounts [Array<MetronomeSDK::Models::V1::ContractAmendParams::Discount>] This field's availability is dependent on your client's configuration.
         #
@@ -167,6 +168,7 @@ module MetronomeSDK
           optional :applicable_product_tags, MetronomeSDK::Internal::Type::ArrayOf[String]
 
           # @!attribute custom_fields
+          #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           #
           #   @return [Hash{Symbol=>String}, nil]
           optional :custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
@@ -260,7 +262,7 @@ module MetronomeSDK
           #
           #   @param applicable_product_tags [Array<String>] Which tags the commit applies to. If applicable*product_ids, applicable_product*
           #
-          #   @param custom_fields [Hash{Symbol=>String}]
+          #   @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           #
           #   @param description [String] Used only in UI/API. It is not exposed to end customers.
           #
@@ -746,6 +748,7 @@ module MetronomeSDK
           optional :applicable_product_tags, MetronomeSDK::Internal::Type::ArrayOf[String]
 
           # @!attribute custom_fields
+          #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           #
           #   @return [Hash{Symbol=>String}, nil]
           optional :custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
@@ -807,7 +810,7 @@ module MetronomeSDK
           #
           #   @param applicable_product_tags [Array<String>] Which tags the credit applies to. If both applicable*product_ids and applicable*
           #
-          #   @param custom_fields [Hash{Symbol=>String}]
+          #   @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           #
           #   @param description [String] Used only in UI/API. It is not exposed to end customers.
           #
@@ -896,6 +899,7 @@ module MetronomeSDK
           required :schedule, -> { MetronomeSDK::V1::ContractAmendParams::Discount::Schedule }
 
           # @!attribute custom_fields
+          #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           #
           #   @return [Hash{Symbol=>String}, nil]
           optional :custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
@@ -917,7 +921,7 @@ module MetronomeSDK
           #
           #   @param schedule [MetronomeSDK::Models::V1::ContractAmendParams::Discount::Schedule] Must provide either schedule_items or recurring_schedule.
           #
-          #   @param custom_fields [Hash{Symbol=>String}]
+          #   @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           #
           #   @param name [String] displayed on invoices
           #
@@ -1486,6 +1490,7 @@ module MetronomeSDK
           required :unit_price, Float
 
           # @!attribute custom_fields
+          #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           #
           #   @return [Hash{Symbol=>String}, nil]
           optional :custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
@@ -1514,7 +1519,7 @@ module MetronomeSDK
           #
           #   @param unit_price [Float] Unit price for the charge. Will be multiplied by quantity to determine the amoun
           #
-          #   @param custom_fields [Hash{Symbol=>String}]
+          #   @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           #
           #   @param description [String]
           #
@@ -1663,6 +1668,7 @@ module MetronomeSDK
           required :schedule, -> { MetronomeSDK::V1::ContractAmendParams::ScheduledCharge::Schedule }
 
           # @!attribute custom_fields
+          #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           #
           #   @return [Hash{Symbol=>String}, nil]
           optional :custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
@@ -1684,7 +1690,7 @@ module MetronomeSDK
           #
           #   @param schedule [MetronomeSDK::Models::V1::ContractAmendParams::ScheduledCharge::Schedule] Must provide either schedule_items or recurring_schedule.
           #
-          #   @param custom_fields [Hash{Symbol=>String}]
+          #   @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           #
           #   @param name [String] displayed on invoices
           #
