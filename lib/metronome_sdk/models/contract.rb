@@ -36,6 +36,7 @@ module MetronomeSDK
       optional :archived_at, Time
 
       # @!attribute custom_fields
+      #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
       #
       #   @return [Hash{Symbol=>String}, nil]
       optional :custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
@@ -105,7 +106,7 @@ module MetronomeSDK
       #
       #   @param archived_at [Time] RFC 3339 timestamp indicating when the contract was archived. If not returned, t
       #
-      #   @param custom_fields [Hash{Symbol=>String}]
+      #   @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
       #
       #   @param customer_billing_provider_configuration [MetronomeSDK::Models::Contract::CustomerBillingProviderConfiguration] The billing provider configuration associated with a contract.
       #

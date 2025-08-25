@@ -41,6 +41,7 @@ module MetronomeSDK
       sig { params(archived_at: Time).void }
       attr_writer :archived_at
 
+      # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
       sig { returns(T.nilable(T::Hash[Symbol, String])) }
       attr_reader :custom_fields
 
@@ -167,6 +168,7 @@ module MetronomeSDK
         # RFC 3339 timestamp indicating when the contract was archived. If not returned,
         # the contract is not archived.
         archived_at: nil,
+        # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         custom_fields: nil,
         # The billing provider configuration associated with a contract.
         customer_billing_provider_configuration: nil,

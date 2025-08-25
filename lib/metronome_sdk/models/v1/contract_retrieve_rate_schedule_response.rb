@@ -32,6 +32,7 @@ module MetronomeSDK
           required :list_rate, -> { MetronomeSDK::Rate }
 
           # @!attribute product_custom_fields
+          #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           #
           #   @return [Hash{Symbol=>String}]
           required :product_custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
@@ -98,7 +99,7 @@ module MetronomeSDK
           #
           #   @param list_rate [MetronomeSDK::Models::Rate]
           #
-          #   @param product_custom_fields [Hash{Symbol=>String}]
+          #   @param product_custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           #
           #   @param product_id [String]
           #

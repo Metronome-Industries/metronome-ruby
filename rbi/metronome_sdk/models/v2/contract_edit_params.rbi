@@ -813,6 +813,7 @@ module MetronomeSDK
           sig { params(applicable_product_tags: T::Array[String]).void }
           attr_writer :applicable_product_tags
 
+          # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           sig { returns(T.nilable(T::Hash[Symbol, String])) }
           attr_reader :custom_fields
 
@@ -994,6 +995,7 @@ module MetronomeSDK
             # applicable_product_tags or specifiers are not provided, the commit applies to
             # all products.
             applicable_product_tags: nil,
+            # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             custom_fields: nil,
             # Used only in UI/API. It is not exposed to end customers.
             description: nil,
@@ -2044,6 +2046,7 @@ module MetronomeSDK
           sig { params(applicable_product_tags: T::Array[String]).void }
           attr_writer :applicable_product_tags
 
+          # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           sig { returns(T.nilable(T::Hash[Symbol, String])) }
           attr_reader :custom_fields
 
@@ -2155,6 +2158,7 @@ module MetronomeSDK
             # Which tags the credit applies to. If both applicable_product_ids and
             # applicable_product_tags are not provided, the credit applies to all products.
             applicable_product_tags: nil,
+            # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             custom_fields: nil,
             # Used only in UI/API. It is not exposed to end customers.
             description: nil,
@@ -2360,6 +2364,7 @@ module MetronomeSDK
           end
           attr_writer :schedule
 
+          # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           sig { returns(T.nilable(T::Hash[Symbol, String])) }
           attr_reader :custom_fields
 
@@ -2394,6 +2399,7 @@ module MetronomeSDK
             product_id:,
             # Must provide either schedule_items or recurring_schedule.
             schedule:,
+            # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             custom_fields: nil,
             # displayed on invoices
             name: nil,
@@ -3562,6 +3568,7 @@ module MetronomeSDK
           sig { returns(Float) }
           attr_accessor :unit_price
 
+          # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           sig { returns(T.nilable(T::Hash[Symbol, String])) }
           attr_reader :custom_fields
 
@@ -3602,6 +3609,7 @@ module MetronomeSDK
             # Unit price for the charge. Will be multiplied by quantity to determine the
             # amount and must be specified.
             unit_price:,
+            # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             custom_fields: nil,
             description: nil,
             # This field's availability is dependent on your client's configuration.
@@ -5479,6 +5487,7 @@ module MetronomeSDK
           end
           attr_writer :schedule
 
+          # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           sig { returns(T.nilable(T::Hash[Symbol, String])) }
           attr_reader :custom_fields
 
@@ -5513,6 +5522,7 @@ module MetronomeSDK
             product_id:,
             # Must provide either schedule_items or recurring_schedule.
             schedule:,
+            # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             custom_fields: nil,
             # displayed on invoices
             name: nil,
@@ -5948,9 +5958,6 @@ module MetronomeSDK
           end
           attr_accessor :collection_schedule
 
-          sig { returns(Float) }
-          attr_accessor :initial_quantity
-
           sig do
             returns(
               MetronomeSDK::V2::ContractEditParams::AddSubscription::Proration
@@ -5981,6 +5988,7 @@ module MetronomeSDK
           end
           attr_writer :subscription_rate
 
+          # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           sig { returns(T.nilable(T::Hash[Symbol, String])) }
           attr_reader :custom_fields
 
@@ -6001,11 +6009,40 @@ module MetronomeSDK
           sig { params(ending_before: Time).void }
           attr_writer :ending_before
 
+          # The initial quantity for the subscription. It must be non-negative value.
+          # Required if quantity_management_mode is QUANTITY_ONLY.
+          sig { returns(T.nilable(Float)) }
+          attr_reader :initial_quantity
+
+          sig { params(initial_quantity: Float).void }
+          attr_writer :initial_quantity
+
           sig { returns(T.nilable(String)) }
           attr_reader :name
 
           sig { params(name: String).void }
           attr_writer :name
+
+          # Determines how the subscription's quantity is controlled. Defaults to
+          # QUANTITY_ONLY. **QUANTITY_ONLY**: The subscription quantity is specified
+          # directly on the subscription. `initial_quantity` must be provided with this
+          # option. Compatible with recurring commits/credits that use POOLED allocation.
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::V2::ContractEditParams::AddSubscription::QuantityManagementMode::OrSymbol
+              )
+            )
+          end
+          attr_reader :quantity_management_mode
+
+          sig do
+            params(
+              quantity_management_mode:
+                MetronomeSDK::V2::ContractEditParams::AddSubscription::QuantityManagementMode::OrSymbol
+            ).void
+          end
+          attr_writer :quantity_management_mode
 
           # Inclusive start time for the subscription. If not provided, defaults to contract
           # start date
@@ -6027,7 +6064,6 @@ module MetronomeSDK
             params(
               collection_schedule:
                 MetronomeSDK::V2::ContractEditParams::AddSubscription::CollectionSchedule::OrSymbol,
-              initial_quantity: Float,
               proration:
                 MetronomeSDK::V2::ContractEditParams::AddSubscription::Proration::OrHash,
               subscription_rate:
@@ -6035,22 +6071,33 @@ module MetronomeSDK
               custom_fields: T::Hash[Symbol, String],
               description: String,
               ending_before: Time,
+              initial_quantity: Float,
               name: String,
+              quantity_management_mode:
+                MetronomeSDK::V2::ContractEditParams::AddSubscription::QuantityManagementMode::OrSymbol,
               starting_at: Time,
               temporary_id: String
             ).returns(T.attached_class)
           end
           def self.new(
             collection_schedule:,
-            initial_quantity:,
             proration:,
             subscription_rate:,
+            # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             custom_fields: nil,
             description: nil,
             # Exclusive end time for the subscription. If not provided, subscription inherits
             # contract end date.
             ending_before: nil,
+            # The initial quantity for the subscription. It must be non-negative value.
+            # Required if quantity_management_mode is QUANTITY_ONLY.
+            initial_quantity: nil,
             name: nil,
+            # Determines how the subscription's quantity is controlled. Defaults to
+            # QUANTITY_ONLY. **QUANTITY_ONLY**: The subscription quantity is specified
+            # directly on the subscription. `initial_quantity` must be provided with this
+            # option. Compatible with recurring commits/credits that use POOLED allocation.
+            quantity_management_mode: nil,
             # Inclusive start time for the subscription. If not provided, defaults to contract
             # start date
             starting_at: nil,
@@ -6065,7 +6112,6 @@ module MetronomeSDK
               {
                 collection_schedule:
                   MetronomeSDK::V2::ContractEditParams::AddSubscription::CollectionSchedule::OrSymbol,
-                initial_quantity: Float,
                 proration:
                   MetronomeSDK::V2::ContractEditParams::AddSubscription::Proration,
                 subscription_rate:
@@ -6073,7 +6119,10 @@ module MetronomeSDK
                 custom_fields: T::Hash[Symbol, String],
                 description: String,
                 ending_before: Time,
+                initial_quantity: Float,
                 name: String,
+                quantity_management_mode:
+                  MetronomeSDK::V2::ContractEditParams::AddSubscription::QuantityManagementMode::OrSymbol,
                 starting_at: Time,
                 temporary_id: String
               }
@@ -6319,6 +6368,44 @@ module MetronomeSDK
               end
               def self.values
               end
+            end
+          end
+
+          # Determines how the subscription's quantity is controlled. Defaults to
+          # QUANTITY_ONLY. **QUANTITY_ONLY**: The subscription quantity is specified
+          # directly on the subscription. `initial_quantity` must be provided with this
+          # option. Compatible with recurring commits/credits that use POOLED allocation.
+          module QuantityManagementMode
+            extend MetronomeSDK::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  MetronomeSDK::V2::ContractEditParams::AddSubscription::QuantityManagementMode
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            SEAT_BASED =
+              T.let(
+                :SEAT_BASED,
+                MetronomeSDK::V2::ContractEditParams::AddSubscription::QuantityManagementMode::TaggedSymbol
+              )
+            QUANTITY_ONLY =
+              T.let(
+                :QUANTITY_ONLY,
+                MetronomeSDK::V2::ContractEditParams::AddSubscription::QuantityManagementMode::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  MetronomeSDK::V2::ContractEditParams::AddSubscription::QuantityManagementMode::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
             end
           end
         end

@@ -99,6 +99,7 @@ module MetronomeSDK
           sig { params(archived_at: Time).void }
           attr_writer :archived_at
 
+          # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           sig { returns(T.nilable(T::Hash[Symbol, String])) }
           attr_reader :custom_fields
 
@@ -173,6 +174,7 @@ module MetronomeSDK
             # RFC 3339 timestamp indicating when the billable metric was archived. If not
             # provided, the billable metric is not archived.
             archived_at: nil,
+            # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             custom_fields: nil,
             # An optional filtering rule to match the 'event_type' property of an event.
             event_type_filter: nil,

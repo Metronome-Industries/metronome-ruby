@@ -4,7 +4,35 @@ module MetronomeSDK
   module Resources
     class V1
       class BillableMetrics
-        # Creates a new Billable Metric.
+        # Create billable metrics programmatically with this endpoint—an essential step in
+        # configuring your pricing and packaging in Metronome.
+        #
+        # A billable metric is a customizable query that filters and aggregates events
+        # from your event stream. These metrics are continuously tracked as usage data
+        # enters Metronome through the ingestion pipeline. The ingestion process
+        # transforms raw usage data into actionable pricing metrics, enabling accurate
+        # metering and billing for your products.
+        #
+        # Use this endpoint to:
+        #
+        # - Create individual or multiple billable metrics as part of a setup workflow.
+        # - Automate the entire pricing configuration process, from metric creation to
+        #   customer contract setup.
+        # - Define metrics using either standard filtering/aggregation or a custom SQL
+        #   query.
+        #
+        # Key response fields:
+        #
+        # - The ID of the billable metric that was created
+        # - The created billable metric will be available to be used in Products, usage
+        #   endpoints, and alerts.
+        #
+        # Usage guidelines:
+        #
+        # - Metrics defined using standard filtering and aggregation are Streaming
+        #   billable metrics, which have been optimized for ultra low latency and high
+        #   throughput workflows.
+        # - Use SQL billable metrics if you require more flexible aggregation options.
         sig do
           params(
             name: String,
@@ -47,7 +75,13 @@ module MetronomeSDK
         )
         end
 
-        # Get a billable metric.
+        # Retrieves the complete configuration for a specific billable metric by its ID.
+        # Use this to review billable metric setup before associating it with products.
+        # Returns the metric's name, event type, properties, aggregation_type,
+        # aggregation_key, group_keys, custom fields, and SQL query (if it's a SQL
+        # billable metric). Important: Archived billable metrics will include an
+        # archived_at timestamp; they no longer process new usage events but remain
+        # accessible for historical reference.
         sig do
           params(
             billable_metric_id: String,
@@ -57,7 +91,11 @@ module MetronomeSDK
         def retrieve(billable_metric_id:, request_options: {})
         end
 
-        # List all billable metrics.
+        # Retrieves all billable metrics with their complete configurations. Use this for
+        # programmatic discovery and management of billable metrics, such as associating
+        # metrics to products and auditing for orphaned or archived metrics. Important:
+        # Archived metrics are excluded by default; use include_archived=true parameter to
+        # include them.
         sig do
           params(
             include_archived: T::Boolean,
@@ -81,7 +119,14 @@ module MetronomeSDK
         )
         end
 
-        # Archive an existing billable metric.
+        # Use this endpoint to retire billable metrics that are no longer used. After a
+        # billable metric is archived, that billable metric can no longer be used in any
+        # new Products to define how that product should be metered. If you archive a
+        # billable metric that is already associated with a Product, the Product will
+        # continue to function as usual, metering based on the definition of the archived
+        # billable metric. Archived billable metrics will be returned on the
+        # getBillableMetric and listBillableMetrics endpoints with a populated archived_at
+        # field.
         sig do
           params(
             id: String,

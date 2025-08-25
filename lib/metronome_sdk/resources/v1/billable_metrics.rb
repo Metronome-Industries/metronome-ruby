@@ -7,7 +7,35 @@ module MetronomeSDK
         # Some parameter documentations has been truncated, see
         # {MetronomeSDK::Models::V1::BillableMetricCreateParams} for more details.
         #
-        # Creates a new Billable Metric.
+        # Create billable metrics programmatically with this endpoint—an essential step in
+        # configuring your pricing and packaging in Metronome.
+        #
+        # A billable metric is a customizable query that filters and aggregates events
+        # from your event stream. These metrics are continuously tracked as usage data
+        # enters Metronome through the ingestion pipeline. The ingestion process
+        # transforms raw usage data into actionable pricing metrics, enabling accurate
+        # metering and billing for your products.
+        #
+        # Use this endpoint to:
+        #
+        # - Create individual or multiple billable metrics as part of a setup workflow.
+        # - Automate the entire pricing configuration process, from metric creation to
+        #   customer contract setup.
+        # - Define metrics using either standard filtering/aggregation or a custom SQL
+        #   query.
+        #
+        # Key response fields:
+        #
+        # - The ID of the billable metric that was created
+        # - The created billable metric will be available to be used in Products, usage
+        #   endpoints, and alerts.
+        #
+        # Usage guidelines:
+        #
+        # - Metrics defined using standard filtering and aggregation are Streaming
+        #   billable metrics, which have been optimized for ultra low latency and high
+        #   throughput workflows.
+        # - Use SQL billable metrics if you require more flexible aggregation options.
         #
         # @overload create(name:, aggregation_key: nil, aggregation_type: nil, custom_fields: nil, event_type_filter: nil, group_keys: nil, property_filters: nil, sql: nil, request_options: {})
         #
@@ -43,7 +71,13 @@ module MetronomeSDK
           )
         end
 
-        # Get a billable metric.
+        # Retrieves the complete configuration for a specific billable metric by its ID.
+        # Use this to review billable metric setup before associating it with products.
+        # Returns the metric's name, event type, properties, aggregation_type,
+        # aggregation_key, group_keys, custom fields, and SQL query (if it's a SQL
+        # billable metric). Important: Archived billable metrics will include an
+        # archived_at timestamp; they no longer process new usage events but remain
+        # accessible for historical reference.
         #
         # @overload retrieve(billable_metric_id:, request_options: {})
         #
@@ -67,7 +101,11 @@ module MetronomeSDK
           )
         end
 
-        # List all billable metrics.
+        # Retrieves all billable metrics with their complete configurations. Use this for
+        # programmatic discovery and management of billable metrics, such as associating
+        # metrics to products and auditing for orphaned or archived metrics. Important:
+        # Archived metrics are excluded by default; use include_archived=true parameter to
+        # include them.
         #
         # @overload list(include_archived: nil, limit: nil, next_page: nil, request_options: {})
         #
@@ -94,7 +132,14 @@ module MetronomeSDK
           )
         end
 
-        # Archive an existing billable metric.
+        # Use this endpoint to retire billable metrics that are no longer used. After a
+        # billable metric is archived, that billable metric can no longer be used in any
+        # new Products to define how that product should be metered. If you archive a
+        # billable metric that is already associated with a Product, the Product will
+        # continue to function as usual, metering based on the definition of the archived
+        # billable metric. Archived billable metrics will be returned on the
+        # getBillableMetric and listBillableMetrics endpoints with a populated archived_at
+        # field.
         #
         # @overload archive(id:, request_options: {})
         #

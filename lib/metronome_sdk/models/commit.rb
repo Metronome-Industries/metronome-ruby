@@ -72,6 +72,7 @@ module MetronomeSDK
       optional :contract, -> { MetronomeSDK::Commit::Contract }
 
       # @!attribute custom_fields
+      #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
       #
       #   @return [Hash{Symbol=>String}, nil]
       optional :custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
@@ -188,7 +189,7 @@ module MetronomeSDK
       #
       #   @param contract [MetronomeSDK::Models::Commit::Contract]
       #
-      #   @param custom_fields [Hash{Symbol=>String}]
+      #   @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
       #
       #   @param description [String]
       #

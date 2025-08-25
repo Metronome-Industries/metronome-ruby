@@ -2595,21 +2595,20 @@ module MetronomeSDK
         type subscription =
           {
             collection_schedule: MetronomeSDK::Models::V1::ContractCreateParams::Subscription::collection_schedule,
-            initial_quantity: Float,
             proration: MetronomeSDK::V1::ContractCreateParams::Subscription::Proration,
             subscription_rate: MetronomeSDK::V1::ContractCreateParams::Subscription::SubscriptionRate,
             custom_fields: ::Hash[Symbol, String],
             description: String,
             ending_before: Time,
+            initial_quantity: Float,
             name: String,
+            quantity_management_mode: MetronomeSDK::Models::V1::ContractCreateParams::Subscription::quantity_management_mode,
             starting_at: Time,
             temporary_id: String
           }
 
         class Subscription < MetronomeSDK::Internal::Type::BaseModel
           attr_accessor collection_schedule: MetronomeSDK::Models::V1::ContractCreateParams::Subscription::collection_schedule
-
-          attr_accessor initial_quantity: Float
 
           attr_accessor proration: MetronomeSDK::V1::ContractCreateParams::Subscription::Proration
 
@@ -2627,9 +2626,19 @@ module MetronomeSDK
 
           def ending_before=: (Time) -> Time
 
+          attr_reader initial_quantity: Float?
+
+          def initial_quantity=: (Float) -> Float
+
           attr_reader name: String?
 
           def name=: (String) -> String
+
+          attr_reader quantity_management_mode: MetronomeSDK::Models::V1::ContractCreateParams::Subscription::quantity_management_mode?
+
+          def quantity_management_mode=: (
+            MetronomeSDK::Models::V1::ContractCreateParams::Subscription::quantity_management_mode
+          ) -> MetronomeSDK::Models::V1::ContractCreateParams::Subscription::quantity_management_mode
 
           attr_reader starting_at: Time?
 
@@ -2641,26 +2650,28 @@ module MetronomeSDK
 
           def initialize: (
             collection_schedule: MetronomeSDK::Models::V1::ContractCreateParams::Subscription::collection_schedule,
-            initial_quantity: Float,
             proration: MetronomeSDK::V1::ContractCreateParams::Subscription::Proration,
             subscription_rate: MetronomeSDK::V1::ContractCreateParams::Subscription::SubscriptionRate,
             ?custom_fields: ::Hash[Symbol, String],
             ?description: String,
             ?ending_before: Time,
+            ?initial_quantity: Float,
             ?name: String,
+            ?quantity_management_mode: MetronomeSDK::Models::V1::ContractCreateParams::Subscription::quantity_management_mode,
             ?starting_at: Time,
             ?temporary_id: String
           ) -> void
 
           def to_hash: -> {
             collection_schedule: MetronomeSDK::Models::V1::ContractCreateParams::Subscription::collection_schedule,
-            initial_quantity: Float,
             proration: MetronomeSDK::V1::ContractCreateParams::Subscription::Proration,
             subscription_rate: MetronomeSDK::V1::ContractCreateParams::Subscription::SubscriptionRate,
             custom_fields: ::Hash[Symbol, String],
             description: String,
             ending_before: Time,
+            initial_quantity: Float,
             name: String,
+            quantity_management_mode: MetronomeSDK::Models::V1::ContractCreateParams::Subscription::quantity_management_mode,
             starting_at: Time,
             temporary_id: String
           }
@@ -2749,6 +2760,17 @@ module MetronomeSDK
 
               def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::Subscription::SubscriptionRate::billing_frequency]
             end
+          end
+
+          type quantity_management_mode = :SEAT_BASED | :QUANTITY_ONLY
+
+          module QuantityManagementMode
+            extend MetronomeSDK::Internal::Type::Enum
+
+            SEAT_BASED: :SEAT_BASED
+            QUANTITY_ONLY: :QUANTITY_ONLY
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::Subscription::quantity_management_mode]
           end
         end
 

@@ -75,6 +75,7 @@ module MetronomeSDK
                    enum: -> { MetronomeSDK::V1::ContractCreateHistoricalInvoicesParams::Invoice::BreakdownGranularity }
 
           # @!attribute custom_fields
+          #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           #
           #   @return [Hash{Symbol=>String}, nil]
           optional :custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
@@ -98,7 +99,7 @@ module MetronomeSDK
           #
           #   @param breakdown_granularity [Symbol, MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesParams::Invoice::BreakdownGranularity]
           #
-          #   @param custom_fields [Hash{Symbol=>String}]
+          #   @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
 
           class UsageLineItem < MetronomeSDK::Internal::Type::BaseModel
             # @!attribute exclusive_end_date

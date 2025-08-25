@@ -21,6 +21,17 @@ module MetronomeSDK
       end
       attr_writer :proration
 
+      # Determines how the subscription's quantity is controlled. Defaults to
+      # QUANTITY_ONLY. **QUANTITY_ONLY**: The subscription quantity is specified
+      # directly on the subscription. `initial_quantity` must be provided with this
+      # option. Compatible with recurring commits/credits that use POOLED allocation.
+      sig do
+        returns(
+          MetronomeSDK::Subscription::QuantityManagementMode::TaggedSymbol
+        )
+      end
+      attr_accessor :quantity_management_mode
+
       # List of quantity schedule items for the subscription. Only includes the current
       # quantity and future quantity changes.
       sig { returns(T::Array[MetronomeSDK::Subscription::QuantitySchedule]) }
@@ -46,6 +57,7 @@ module MetronomeSDK
       sig { params(id: String).void }
       attr_writer :id
 
+      # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
       sig { returns(T.nilable(T::Hash[Symbol, String])) }
       attr_reader :custom_fields
 
@@ -81,6 +93,8 @@ module MetronomeSDK
           collection_schedule:
             MetronomeSDK::Subscription::CollectionSchedule::OrSymbol,
           proration: MetronomeSDK::Subscription::Proration::OrHash,
+          quantity_management_mode:
+            MetronomeSDK::Subscription::QuantityManagementMode::OrSymbol,
           quantity_schedule:
             T::Array[MetronomeSDK::Subscription::QuantitySchedule::OrHash],
           starting_at: Time,
@@ -97,12 +111,18 @@ module MetronomeSDK
       def self.new(
         collection_schedule:,
         proration:,
+        # Determines how the subscription's quantity is controlled. Defaults to
+        # QUANTITY_ONLY. **QUANTITY_ONLY**: The subscription quantity is specified
+        # directly on the subscription. `initial_quantity` must be provided with this
+        # option. Compatible with recurring commits/credits that use POOLED allocation.
+        quantity_management_mode:,
         # List of quantity schedule items for the subscription. Only includes the current
         # quantity and future quantity changes.
         quantity_schedule:,
         starting_at:,
         subscription_rate:,
         id: nil,
+        # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         custom_fields: nil,
         description: nil,
         ending_before: nil,
@@ -117,6 +137,8 @@ module MetronomeSDK
             collection_schedule:
               MetronomeSDK::Subscription::CollectionSchedule::TaggedSymbol,
             proration: MetronomeSDK::Subscription::Proration,
+            quantity_management_mode:
+              MetronomeSDK::Subscription::QuantityManagementMode::TaggedSymbol,
             quantity_schedule:
               T::Array[MetronomeSDK::Subscription::QuantitySchedule],
             starting_at: Time,
@@ -237,6 +259,41 @@ module MetronomeSDK
           end
           def self.values
           end
+        end
+      end
+
+      # Determines how the subscription's quantity is controlled. Defaults to
+      # QUANTITY_ONLY. **QUANTITY_ONLY**: The subscription quantity is specified
+      # directly on the subscription. `initial_quantity` must be provided with this
+      # option. Compatible with recurring commits/credits that use POOLED allocation.
+      module QuantityManagementMode
+        extend MetronomeSDK::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, MetronomeSDK::Subscription::QuantityManagementMode)
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        SEAT_BASED =
+          T.let(
+            :SEAT_BASED,
+            MetronomeSDK::Subscription::QuantityManagementMode::TaggedSymbol
+          )
+        QUANTITY_ONLY =
+          T.let(
+            :QUANTITY_ONLY,
+            MetronomeSDK::Subscription::QuantityManagementMode::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[
+              MetronomeSDK::Subscription::QuantityManagementMode::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
         end
       end
 

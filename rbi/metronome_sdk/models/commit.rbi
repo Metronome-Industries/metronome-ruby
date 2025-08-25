@@ -83,6 +83,7 @@ module MetronomeSDK
       sig { params(contract: MetronomeSDK::Commit::Contract::OrHash).void }
       attr_writer :contract
 
+      # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
       sig { returns(T.nilable(T::Hash[Symbol, String])) }
       attr_reader :custom_fields
 
@@ -304,6 +305,7 @@ module MetronomeSDK
         # included in the balance, including future-dated manual ledger entries.
         balance: nil,
         contract: nil,
+        # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         custom_fields: nil,
         description: nil,
         # Optional configuration for commit hierarchy access control

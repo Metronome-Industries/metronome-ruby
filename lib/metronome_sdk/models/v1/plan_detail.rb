@@ -10,6 +10,7 @@ module MetronomeSDK
         required :id, String
 
         # @!attribute custom_fields
+        #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         #
         #   @return [Hash{Symbol=>String}]
         required :custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
@@ -43,11 +44,17 @@ module MetronomeSDK
 
         # @!method initialize(id:, custom_fields:, name:, credit_grants: nil, description: nil, minimums: nil, overage_rates: nil)
         #   @param id [String]
-        #   @param custom_fields [Hash{Symbol=>String}]
+        #
+        #   @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
+        #
         #   @param name [String]
+        #
         #   @param credit_grants [Array<MetronomeSDK::Models::V1::PlanDetail::CreditGrant>]
+        #
         #   @param description [String]
+        #
         #   @param minimums [Array<MetronomeSDK::Models::V1::PlanDetail::Minimum>]
+        #
         #   @param overage_rates [Array<MetronomeSDK::Models::V1::PlanDetail::OverageRate>]
 
         class CreditGrant < MetronomeSDK::Internal::Type::BaseModel

@@ -66,6 +66,7 @@ module MetronomeSDK
           end
           attr_writer :credit_type_conversions
 
+          # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           sig { returns(T.nilable(T::Hash[Symbol, String])) }
           attr_reader :custom_fields
 
@@ -112,6 +113,7 @@ module MetronomeSDK
             aliases: nil,
             # Required when using custom pricing units in rates.
             credit_type_conversions: nil,
+            # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             custom_fields: nil,
             description: nil,
             # The Metronome ID of the credit type to associate with the rate card, defaults to

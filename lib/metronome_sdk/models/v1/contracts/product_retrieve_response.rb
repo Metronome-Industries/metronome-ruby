@@ -48,18 +48,25 @@ module MetronomeSDK
             optional :archived_at, Time, nil?: true
 
             # @!attribute custom_fields
+            #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             #
             #   @return [Hash{Symbol=>String}, nil]
             optional :custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
 
             # @!method initialize(id:, current:, initial:, type:, updates:, archived_at: nil, custom_fields: nil)
             #   @param id [String]
+            #
             #   @param current [MetronomeSDK::Models::V1::Contracts::ProductListItemState]
+            #
             #   @param initial [MetronomeSDK::Models::V1::Contracts::ProductListItemState]
+            #
             #   @param type [Symbol, MetronomeSDK::Models::V1::Contracts::ProductRetrieveResponse::Data::Type]
+            #
             #   @param updates [Array<MetronomeSDK::Models::V1::Contracts::ProductRetrieveResponse::Data::Update>]
+            #
             #   @param archived_at [Time, nil]
-            #   @param custom_fields [Hash{Symbol=>String}]
+            #
+            #   @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
 
             # @see MetronomeSDK::Models::V1::Contracts::ProductRetrieveResponse::Data#type
             module Type

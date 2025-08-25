@@ -63,6 +63,7 @@ module MetronomeSDK
             sig { returns(T::Boolean) }
             attr_accessor :entitled
 
+            # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             sig { returns(T::Hash[Symbol, String]) }
             attr_accessor :product_custom_fields
 
@@ -139,6 +140,7 @@ module MetronomeSDK
             end
             def self.new(
               entitled:,
+              # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
               product_custom_fields:,
               product_id:,
               product_name:,
