@@ -26,7 +26,7 @@ class MetronomeSDK::Test::Resources::V1::Customers::CreditsTest < MetronomeSDK::
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::ID
+        data: MetronomeSDK::Models::V1::Customers::CreditCreateResponse::Data
       }
     end
   end
@@ -42,30 +42,30 @@ class MetronomeSDK::Test::Resources::V1::Customers::CreditsTest < MetronomeSDK::
     return if row.nil?
 
     assert_pattern do
-      row => MetronomeSDK::Credit
+      row => MetronomeSDK::Models::V1::Customers::CreditListResponse
     end
 
     assert_pattern do
       row => {
         id: String,
-        product: MetronomeSDK::Credit::Product,
-        type: MetronomeSDK::Credit::Type,
-        access_schedule: MetronomeSDK::ScheduleDuration | nil,
+        product: MetronomeSDK::Models::V1::Customers::CreditListResponse::Product,
+        type: MetronomeSDK::Models::V1::Customers::CreditListResponse::Type,
+        access_schedule: MetronomeSDK::Models::V1::Customers::CreditListResponse::AccessSchedule | nil,
         applicable_contract_ids: ^(MetronomeSDK::Internal::Type::ArrayOf[String]) | nil,
         applicable_product_ids: ^(MetronomeSDK::Internal::Type::ArrayOf[String]) | nil,
         applicable_product_tags: ^(MetronomeSDK::Internal::Type::ArrayOf[String]) | nil,
         balance: Float | nil,
-        contract: MetronomeSDK::Credit::Contract | nil,
+        contract: MetronomeSDK::Models::V1::Customers::CreditListResponse::Contract | nil,
         custom_fields: ^(MetronomeSDK::Internal::Type::HashOf[String]) | nil,
         description: String | nil,
-        hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration | nil,
-        ledger: ^(MetronomeSDK::Internal::Type::ArrayOf[union: MetronomeSDK::Credit::Ledger]) | nil,
+        hierarchy_configuration: MetronomeSDK::Models::V1::Customers::CreditListResponse::HierarchyConfiguration | nil,
+        ledger: ^(MetronomeSDK::Internal::Type::ArrayOf[union: MetronomeSDK::Models::V1::Customers::CreditListResponse::Ledger]) | nil,
         name: String | nil,
         netsuite_sales_order_id: String | nil,
         priority: Float | nil,
-        rate_type: MetronomeSDK::Credit::RateType | nil,
+        rate_type: MetronomeSDK::Models::V1::Customers::CreditListResponse::RateType | nil,
         salesforce_opportunity_id: String | nil,
-        specifiers: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::CommitSpecifier]) | nil,
+        specifiers: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::Customers::CreditListResponse::Specifier]) | nil,
         uniqueness_key: String | nil
       }
     end
@@ -85,7 +85,7 @@ class MetronomeSDK::Test::Resources::V1::Customers::CreditsTest < MetronomeSDK::
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::ID
+        data: MetronomeSDK::Models::V1::Customers::CreditUpdateEndDateResponse::Data
       }
     end
   end

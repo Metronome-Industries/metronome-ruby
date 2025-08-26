@@ -438,11 +438,9 @@ module MetronomeSDK
         # @return [Hash{Symbol=>Object}]
         #
         # @example
-        #   # `base_threshold_commit` is a `MetronomeSDK::BaseThresholdCommit`
-        #   base_threshold_commit => {
-        #     product_id: product_id,
-        #     description: description,
-        #     name: name
+        #   # `contract_retrieve_response` is a `MetronomeSDK::Models::V2::ContractRetrieveResponse`
+        #   contract_retrieve_response => {
+        #     data: data
         #   }
         def deconstruct_keys(keys)
           (keys || self.class.known_fields.keys)

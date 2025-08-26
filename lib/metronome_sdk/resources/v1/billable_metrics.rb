@@ -47,11 +47,11 @@ module MetronomeSDK
         #
         # @param custom_fields [Hash{Symbol=>String}] Custom fields to attach to the billable metric.
         #
-        # @param event_type_filter [MetronomeSDK::Models::EventTypeFilter] An optional filtering rule to match the 'event_type' property of an event.
+        # @param event_type_filter [MetronomeSDK::Models::V1::BillableMetricCreateParams::EventTypeFilter] An optional filtering rule to match the 'event_type' property of an event.
         #
         # @param group_keys [Array<Array<String>>] Property names that are used to group usage costs on an invoice. Each entry repr
         #
-        # @param property_filters [Array<MetronomeSDK::Models::PropertyFilter>] A list of filters to match events to this billable metric. Each filter defines a
+        # @param property_filters [Array<MetronomeSDK::Models::V1::BillableMetricCreateParams::PropertyFilter>] A list of filters to match events to this billable metric. Each filter defines a
         #
         # @param sql [String] The SQL query associated with the billable metric. This field is mutually exclus
         #

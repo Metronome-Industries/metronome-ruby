@@ -27,11 +27,11 @@ module MetronomeSDK
               pricing_group_key: T::Array[String],
               quantity_conversion:
                 T.nilable(
-                  MetronomeSDK::V1::Contracts::QuantityConversion::OrHash
+                  MetronomeSDK::V1::Contracts::ProductCreateParams::QuantityConversion::OrHash
                 ),
               quantity_rounding:
                 T.nilable(
-                  MetronomeSDK::V1::Contracts::QuantityRounding::OrHash
+                  MetronomeSDK::V1::Contracts::ProductCreateParams::QuantityRounding::OrHash
                 ),
               tags: T::Array[String],
               request_options: MetronomeSDK::RequestOptions::OrHash
@@ -125,11 +125,11 @@ module MetronomeSDK
               pricing_group_key: T::Array[String],
               quantity_conversion:
                 T.nilable(
-                  MetronomeSDK::V1::Contracts::QuantityConversion::OrHash
+                  MetronomeSDK::V1::Contracts::ProductUpdateParams::QuantityConversion::OrHash
                 ),
               quantity_rounding:
                 T.nilable(
-                  MetronomeSDK::V1::Contracts::QuantityRounding::OrHash
+                  MetronomeSDK::V1::Contracts::ProductUpdateParams::QuantityRounding::OrHash
                 ),
               tags: T::Array[String],
               request_options: MetronomeSDK::RequestOptions::OrHash

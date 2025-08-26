@@ -28,10 +28,10 @@ class MetronomeSDK::Test::Resources::V1::Contracts::RateCards::RatesTest < Metro
         product_id: String,
         product_name: String,
         product_tags: ^(MetronomeSDK::Internal::Type::ArrayOf[String]),
-        rate: MetronomeSDK::Rate,
+        rate: MetronomeSDK::Models::V1::Contracts::RateCards::RateListResponse::Rate,
         starting_at: Time,
         billing_frequency: MetronomeSDK::Models::V1::Contracts::RateCards::RateListResponse::BillingFrequency | nil,
-        commit_rate: MetronomeSDK::CommitRate | nil,
+        commit_rate: MetronomeSDK::Models::V1::Contracts::RateCards::RateListResponse::CommitRate | nil,
         ending_before: Time | nil,
         pricing_group_values: ^(MetronomeSDK::Internal::Type::HashOf[String]) | nil
       }
@@ -85,7 +85,7 @@ class MetronomeSDK::Test::Resources::V1::Contracts::RateCards::RatesTest < Metro
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::ID
+        data: MetronomeSDK::Models::V1::Contracts::RateCards::RateAddManyResponse::Data
       }
     end
   end

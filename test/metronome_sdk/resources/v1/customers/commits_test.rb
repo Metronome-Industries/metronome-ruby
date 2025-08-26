@@ -27,7 +27,7 @@ class MetronomeSDK::Test::Resources::V1::Customers::CommitsTest < MetronomeSDK::
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::ID
+        data: MetronomeSDK::Models::V1::Customers::CommitCreateResponse::Data
       }
     end
   end
@@ -43,36 +43,36 @@ class MetronomeSDK::Test::Resources::V1::Customers::CommitsTest < MetronomeSDK::
     return if row.nil?
 
     assert_pattern do
-      row => MetronomeSDK::Commit
+      row => MetronomeSDK::Models::V1::Customers::CommitListResponse
     end
 
     assert_pattern do
       row => {
         id: String,
-        product: MetronomeSDK::Commit::Product,
-        type: MetronomeSDK::Commit::Type,
-        access_schedule: MetronomeSDK::ScheduleDuration | nil,
+        product: MetronomeSDK::Models::V1::Customers::CommitListResponse::Product,
+        type: MetronomeSDK::Models::V1::Customers::CommitListResponse::Type,
+        access_schedule: MetronomeSDK::Models::V1::Customers::CommitListResponse::AccessSchedule | nil,
         amount: Float | nil,
         applicable_contract_ids: ^(MetronomeSDK::Internal::Type::ArrayOf[String]) | nil,
         applicable_product_ids: ^(MetronomeSDK::Internal::Type::ArrayOf[String]) | nil,
         applicable_product_tags: ^(MetronomeSDK::Internal::Type::ArrayOf[String]) | nil,
         archived_at: Time | nil,
         balance: Float | nil,
-        contract: MetronomeSDK::Commit::Contract | nil,
+        contract: MetronomeSDK::Models::V1::Customers::CommitListResponse::Contract | nil,
         custom_fields: ^(MetronomeSDK::Internal::Type::HashOf[String]) | nil,
         description: String | nil,
-        hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration | nil,
-        invoice_contract: MetronomeSDK::Commit::InvoiceContract | nil,
-        invoice_schedule: MetronomeSDK::SchedulePointInTime | nil,
-        ledger: ^(MetronomeSDK::Internal::Type::ArrayOf[union: MetronomeSDK::Commit::Ledger]) | nil,
+        hierarchy_configuration: MetronomeSDK::Models::V1::Customers::CommitListResponse::HierarchyConfiguration | nil,
+        invoice_contract: MetronomeSDK::Models::V1::Customers::CommitListResponse::InvoiceContract | nil,
+        invoice_schedule: MetronomeSDK::Models::V1::Customers::CommitListResponse::InvoiceSchedule | nil,
+        ledger: ^(MetronomeSDK::Internal::Type::ArrayOf[union: MetronomeSDK::Models::V1::Customers::CommitListResponse::Ledger]) | nil,
         name: String | nil,
         netsuite_sales_order_id: String | nil,
         priority: Float | nil,
-        rate_type: MetronomeSDK::Commit::RateType | nil,
-        rolled_over_from: MetronomeSDK::Commit::RolledOverFrom | nil,
+        rate_type: MetronomeSDK::Models::V1::Customers::CommitListResponse::RateType | nil,
+        rolled_over_from: MetronomeSDK::Models::V1::Customers::CommitListResponse::RolledOverFrom | nil,
         rollover_fraction: Float | nil,
         salesforce_opportunity_id: String | nil,
-        specifiers: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::CommitSpecifier]) | nil,
+        specifiers: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::Customers::CommitListResponse::Specifier]) | nil,
         uniqueness_key: String | nil
       }
     end
@@ -91,7 +91,7 @@ class MetronomeSDK::Test::Resources::V1::Customers::CommitsTest < MetronomeSDK::
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::ID
+        data: MetronomeSDK::Models::V1::Customers::CommitUpdateEndDateResponse::Data
       }
     end
   end

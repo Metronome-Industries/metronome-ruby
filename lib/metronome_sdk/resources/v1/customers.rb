@@ -145,7 +145,7 @@ module MetronomeSDK
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [MetronomeSDK::Internal::CursorPage<MetronomeSDK::Models::V1::CustomerDetail>]
+        # @return [MetronomeSDK::Internal::CursorPage<MetronomeSDK::Models::V1::CustomerListResponse>]
         #
         # @see MetronomeSDK::Models::V1::CustomerListParams
         def list(params = {})
@@ -155,7 +155,7 @@ module MetronomeSDK
             path: "v1/customers",
             query: parsed,
             page: MetronomeSDK::Internal::CursorPage,
-            model: MetronomeSDK::V1::CustomerDetail,
+            model: MetronomeSDK::Models::V1::CustomerListResponse,
             options: options
           )
         end
