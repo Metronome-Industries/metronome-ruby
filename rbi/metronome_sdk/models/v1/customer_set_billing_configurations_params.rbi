@@ -3,14 +3,14 @@
 module MetronomeSDK
   module Models
     module V1
-      class CustomerSetCustomerBillingConfigurationsParams < MetronomeSDK::Internal::Type::BaseModel
+      class CustomerSetBillingConfigurationsParams < MetronomeSDK::Internal::Type::BaseModel
         extend MetronomeSDK::Internal::Type::RequestParameters::Converter
         include MetronomeSDK::Internal::Type::RequestParameters
 
         OrHash =
           T.type_alias do
             T.any(
-              MetronomeSDK::V1::CustomerSetCustomerBillingConfigurationsParams,
+              MetronomeSDK::V1::CustomerSetBillingConfigurationsParams,
               MetronomeSDK::Internal::AnyHash
             )
           end
@@ -18,7 +18,7 @@ module MetronomeSDK
         sig do
           returns(
             T::Array[
-              MetronomeSDK::V1::CustomerSetCustomerBillingConfigurationsParams::Data
+              MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data
             ]
           )
         end
@@ -28,7 +28,7 @@ module MetronomeSDK
           params(
             data:
               T::Array[
-                MetronomeSDK::V1::CustomerSetCustomerBillingConfigurationsParams::Data::OrHash
+                MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::OrHash
               ],
             request_options: MetronomeSDK::RequestOptions::OrHash
           ).returns(T.attached_class)
@@ -41,7 +41,7 @@ module MetronomeSDK
             {
               data:
                 T::Array[
-                  MetronomeSDK::V1::CustomerSetCustomerBillingConfigurationsParams::Data
+                  MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data
                 ],
               request_options: MetronomeSDK::RequestOptions
             }
@@ -54,7 +54,7 @@ module MetronomeSDK
           OrHash =
             T.type_alias do
               T.any(
-                MetronomeSDK::V1::CustomerSetCustomerBillingConfigurationsParams::Data,
+                MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data,
                 MetronomeSDK::Internal::AnyHash
               )
             end
@@ -62,7 +62,7 @@ module MetronomeSDK
           # The billing provider set for this configuration.
           sig do
             returns(
-              MetronomeSDK::V1::CustomerSetCustomerBillingConfigurationsParams::Data::BillingProvider::OrSymbol
+              MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::BillingProvider::OrSymbol
             )
           end
           attr_accessor :billing_provider
@@ -88,7 +88,7 @@ module MetronomeSDK
           sig do
             returns(
               T.nilable(
-                MetronomeSDK::V1::CustomerSetCustomerBillingConfigurationsParams::Data::DeliveryMethod::OrSymbol
+                MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::DeliveryMethod::OrSymbol
               )
             )
           end
@@ -97,7 +97,7 @@ module MetronomeSDK
           sig do
             params(
               delivery_method:
-                MetronomeSDK::V1::CustomerSetCustomerBillingConfigurationsParams::Data::DeliveryMethod::OrSymbol
+                MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::DeliveryMethod::OrSymbol
             ).void
           end
           attr_writer :delivery_method
@@ -113,11 +113,11 @@ module MetronomeSDK
           sig do
             params(
               billing_provider:
-                MetronomeSDK::V1::CustomerSetCustomerBillingConfigurationsParams::Data::BillingProvider::OrSymbol,
+                MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::BillingProvider::OrSymbol,
               customer_id: String,
               configuration: T::Hash[Symbol, T.anything],
               delivery_method:
-                MetronomeSDK::V1::CustomerSetCustomerBillingConfigurationsParams::Data::DeliveryMethod::OrSymbol,
+                MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::DeliveryMethod::OrSymbol,
               delivery_method_id: String
             ).returns(T.attached_class)
           end
@@ -146,11 +146,11 @@ module MetronomeSDK
             override.returns(
               {
                 billing_provider:
-                  MetronomeSDK::V1::CustomerSetCustomerBillingConfigurationsParams::Data::BillingProvider::OrSymbol,
+                  MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::BillingProvider::OrSymbol,
                 customer_id: String,
                 configuration: T::Hash[Symbol, T.anything],
                 delivery_method:
-                  MetronomeSDK::V1::CustomerSetCustomerBillingConfigurationsParams::Data::DeliveryMethod::OrSymbol,
+                  MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::DeliveryMethod::OrSymbol,
                 delivery_method_id: String
               }
             )
@@ -166,7 +166,7 @@ module MetronomeSDK
               T.type_alias do
                 T.all(
                   Symbol,
-                  MetronomeSDK::V1::CustomerSetCustomerBillingConfigurationsParams::Data::BillingProvider
+                  MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::BillingProvider
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -174,48 +174,48 @@ module MetronomeSDK
             AWS_MARKETPLACE =
               T.let(
                 :aws_marketplace,
-                MetronomeSDK::V1::CustomerSetCustomerBillingConfigurationsParams::Data::BillingProvider::TaggedSymbol
+                MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::BillingProvider::TaggedSymbol
               )
             STRIPE =
               T.let(
                 :stripe,
-                MetronomeSDK::V1::CustomerSetCustomerBillingConfigurationsParams::Data::BillingProvider::TaggedSymbol
+                MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::BillingProvider::TaggedSymbol
               )
             NETSUITE =
               T.let(
                 :netsuite,
-                MetronomeSDK::V1::CustomerSetCustomerBillingConfigurationsParams::Data::BillingProvider::TaggedSymbol
+                MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::BillingProvider::TaggedSymbol
               )
             CUSTOM =
               T.let(
                 :custom,
-                MetronomeSDK::V1::CustomerSetCustomerBillingConfigurationsParams::Data::BillingProvider::TaggedSymbol
+                MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::BillingProvider::TaggedSymbol
               )
             AZURE_MARKETPLACE =
               T.let(
                 :azure_marketplace,
-                MetronomeSDK::V1::CustomerSetCustomerBillingConfigurationsParams::Data::BillingProvider::TaggedSymbol
+                MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::BillingProvider::TaggedSymbol
               )
             QUICKBOOKS_ONLINE =
               T.let(
                 :quickbooks_online,
-                MetronomeSDK::V1::CustomerSetCustomerBillingConfigurationsParams::Data::BillingProvider::TaggedSymbol
+                MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::BillingProvider::TaggedSymbol
               )
             WORKDAY =
               T.let(
                 :workday,
-                MetronomeSDK::V1::CustomerSetCustomerBillingConfigurationsParams::Data::BillingProvider::TaggedSymbol
+                MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::BillingProvider::TaggedSymbol
               )
             GCP_MARKETPLACE =
               T.let(
                 :gcp_marketplace,
-                MetronomeSDK::V1::CustomerSetCustomerBillingConfigurationsParams::Data::BillingProvider::TaggedSymbol
+                MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::BillingProvider::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  MetronomeSDK::V1::CustomerSetCustomerBillingConfigurationsParams::Data::BillingProvider::TaggedSymbol
+                  MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::BillingProvider::TaggedSymbol
                 ]
               )
             end
@@ -232,7 +232,7 @@ module MetronomeSDK
               T.type_alias do
                 T.all(
                   Symbol,
-                  MetronomeSDK::V1::CustomerSetCustomerBillingConfigurationsParams::Data::DeliveryMethod
+                  MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::DeliveryMethod
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -240,28 +240,28 @@ module MetronomeSDK
             DIRECT_TO_BILLING_PROVIDER =
               T.let(
                 :direct_to_billing_provider,
-                MetronomeSDK::V1::CustomerSetCustomerBillingConfigurationsParams::Data::DeliveryMethod::TaggedSymbol
+                MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::DeliveryMethod::TaggedSymbol
               )
             AWS_SQS =
               T.let(
                 :aws_sqs,
-                MetronomeSDK::V1::CustomerSetCustomerBillingConfigurationsParams::Data::DeliveryMethod::TaggedSymbol
+                MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::DeliveryMethod::TaggedSymbol
               )
             TACKLE =
               T.let(
                 :tackle,
-                MetronomeSDK::V1::CustomerSetCustomerBillingConfigurationsParams::Data::DeliveryMethod::TaggedSymbol
+                MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::DeliveryMethod::TaggedSymbol
               )
             AWS_SNS =
               T.let(
                 :aws_sns,
-                MetronomeSDK::V1::CustomerSetCustomerBillingConfigurationsParams::Data::DeliveryMethod::TaggedSymbol
+                MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::DeliveryMethod::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  MetronomeSDK::V1::CustomerSetCustomerBillingConfigurationsParams::Data::DeliveryMethod::TaggedSymbol
+                  MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::DeliveryMethod::TaggedSymbol
                 ]
               )
             end

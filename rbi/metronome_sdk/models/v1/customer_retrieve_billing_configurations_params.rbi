@@ -3,14 +3,14 @@
 module MetronomeSDK
   module Models
     module V1
-      class CustomerRetrieveCustomerBillingConfigurationsParams < MetronomeSDK::Internal::Type::BaseModel
+      class CustomerRetrieveBillingConfigurationsParams < MetronomeSDK::Internal::Type::BaseModel
         extend MetronomeSDK::Internal::Type::RequestParameters::Converter
         include MetronomeSDK::Internal::Type::RequestParameters
 
         OrHash =
           T.type_alias do
             T.any(
-              MetronomeSDK::V1::CustomerRetrieveCustomerBillingConfigurationsParams,
+              MetronomeSDK::V1::CustomerRetrieveBillingConfigurationsParams,
               MetronomeSDK::Internal::AnyHash
             )
           end

@@ -3,8 +3,8 @@
 module MetronomeSDK
   module Models
     module V1
-      # @see MetronomeSDK::Resources::V1::Customers#retrieve_customer_billing_configurations
-      class CustomerRetrieveCustomerBillingConfigurationsParams < MetronomeSDK::Internal::Type::BaseModel
+      # @see MetronomeSDK::Resources::V1::Customers#retrieve_billing_configurations
+      class CustomerRetrieveBillingConfigurationsParams < MetronomeSDK::Internal::Type::BaseModel
         extend MetronomeSDK::Internal::Type::RequestParameters::Converter
         include MetronomeSDK::Internal::Type::RequestParameters
 
