@@ -154,7 +154,7 @@ module MetronomeSDK
                 MetronomeSDK::V1::ContractCreateParams::Override::OrHash
               ],
             prepaid_balance_threshold_configuration:
-              MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration::OrHash,
+              MetronomeSDK::PrepaidBalanceThresholdConfiguration::OrHash,
             priority: Float,
             professional_services:
               T::Array[
@@ -182,7 +182,7 @@ module MetronomeSDK
             scheduled_charges_on_usage_invoices:
               MetronomeSDK::V1::ContractCreateParams::ScheduledChargesOnUsageInvoices::OrSymbol,
             spend_threshold_configuration:
-              MetronomeSDK::V1::ContractCreateParams::SpendThresholdConfiguration::OrHash,
+              MetronomeSDK::SpendThresholdConfiguration::OrHash,
             subscriptions:
               T::Array[
                 MetronomeSDK::V1::ContractCreateParams::Subscription::OrHash
@@ -191,8 +191,7 @@ module MetronomeSDK
             transition:
               MetronomeSDK::V1::ContractCreateParams::Transition::OrHash,
             uniqueness_key: String,
-            usage_filter:
-              MetronomeSDK::V1::ContractCreateParams::UsageFilter::OrHash,
+            usage_filter: MetronomeSDK::BaseUsageFilter::OrHash,
             usage_statement_schedule:
               MetronomeSDK::V1::ContractCreateParams::UsageStatementSchedule::OrHash,
             request_options: MetronomeSDK::RequestOptions::OrHash

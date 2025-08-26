@@ -160,7 +160,7 @@ module MetronomeSDK
         #
         # @param overrides [Array<MetronomeSDK::Models::V1::ContractCreateParams::Override>]
         #
-        # @param prepaid_balance_threshold_configuration [MetronomeSDK::Models::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration]
+        # @param prepaid_balance_threshold_configuration [MetronomeSDK::Models::PrepaidBalanceThresholdConfiguration]
         #
         # @param priority [Float] Priority of the contract.
         #
@@ -182,7 +182,7 @@ module MetronomeSDK
         #
         # @param scheduled_charges_on_usage_invoices [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::ScheduledChargesOnUsageInvoices] Determines which scheduled and commit charges to consolidate onto the Contract's
         #
-        # @param spend_threshold_configuration [MetronomeSDK::Models::V1::ContractCreateParams::SpendThresholdConfiguration]
+        # @param spend_threshold_configuration [MetronomeSDK::Models::SpendThresholdConfiguration]
         #
         # @param subscriptions [Array<MetronomeSDK::Models::V1::ContractCreateParams::Subscription>] Optional list of [subscriptions](https://docs.metronome.com/manage-product-acces
         #
@@ -192,7 +192,7 @@ module MetronomeSDK
         #
         # @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a record is made wit
         #
-        # @param usage_filter [MetronomeSDK::Models::V1::ContractCreateParams::UsageFilter]
+        # @param usage_filter [MetronomeSDK::Models::BaseUsageFilter]
         #
         # @param usage_statement_schedule [MetronomeSDK::Models::V1::ContractCreateParams::UsageStatementSchedule]
         #
@@ -529,7 +529,7 @@ module MetronomeSDK
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [MetronomeSDK::Internal::BodyCursorPage<MetronomeSDK::Models::V1::ContractListBalancesResponse::UnionMember0, MetronomeSDK::Models::V1::ContractListBalancesResponse::UnionMember1>]
+        # @return [MetronomeSDK::Internal::BodyCursorPage<MetronomeSDK::Models::Commit, MetronomeSDK::Models::Credit>]
         #
         # @see MetronomeSDK::Models::V1::ContractListBalancesParams
         def list_balances(params)

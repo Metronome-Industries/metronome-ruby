@@ -16,7 +16,7 @@ class MetronomeSDK::Test::Resources::V1::ContractsTest < MetronomeSDK::Test::Res
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::Models::V1::ContractCreateResponse::Data
+        data: MetronomeSDK::ID
       }
     end
   end
@@ -34,7 +34,7 @@ class MetronomeSDK::Test::Resources::V1::ContractsTest < MetronomeSDK::Test::Res
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::Models::V1::ContractRetrieveResponse::Data
+        data: MetronomeSDK::Contract
       }
     end
   end
@@ -48,7 +48,7 @@ class MetronomeSDK::Test::Resources::V1::ContractsTest < MetronomeSDK::Test::Res
 
     assert_pattern do
       response => {
-        data: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::ContractListResponse::Data])
+        data: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Contract])
       }
     end
   end
@@ -82,7 +82,7 @@ class MetronomeSDK::Test::Resources::V1::ContractsTest < MetronomeSDK::Test::Res
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::Models::V1::ContractAmendResponse::Data
+        data: MetronomeSDK::ID
       }
     end
   end
@@ -101,7 +101,7 @@ class MetronomeSDK::Test::Resources::V1::ContractsTest < MetronomeSDK::Test::Res
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::Models::V1::ContractArchiveResponse::Data
+        data: MetronomeSDK::ID
       }
     end
   end
@@ -135,7 +135,7 @@ class MetronomeSDK::Test::Resources::V1::ContractsTest < MetronomeSDK::Test::Res
 
     assert_pattern do
       response => {
-        data: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse::Data])
+        data: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::Invoice])
       }
     end
   end
@@ -156,8 +156,8 @@ class MetronomeSDK::Test::Resources::V1::ContractsTest < MetronomeSDK::Test::Res
 
     assert_pattern do
       case row
-      in MetronomeSDK::Models::V1::ContractListBalancesResponse::UnionMember0
-      in MetronomeSDK::Models::V1::ContractListBalancesResponse::UnionMember1
+      in MetronomeSDK::Commit
+      in MetronomeSDK::Credit
       end
     end
   end
@@ -215,7 +215,7 @@ class MetronomeSDK::Test::Resources::V1::ContractsTest < MetronomeSDK::Test::Res
 
     assert_pattern do
       response => {
-        data: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::ContractScheduleProServicesInvoiceResponse::Data])
+        data: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::Invoice])
       }
     end
   end
@@ -248,7 +248,7 @@ class MetronomeSDK::Test::Resources::V1::ContractsTest < MetronomeSDK::Test::Res
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::Models::V1::ContractUpdateEndDateResponse::Data
+        data: MetronomeSDK::ID
       }
     end
   end

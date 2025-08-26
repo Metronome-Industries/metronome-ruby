@@ -124,22 +124,13 @@ module MetronomeSDK
           # specifiers to contribute to a commit's or credit's drawdown. This field cannot
           # be used together with `applicable_product_ids` or `applicable_product_tags`.
           sig do
-            returns(
-              T.nilable(
-                T::Array[
-                  MetronomeSDK::V1::Customers::CreditCreateParams::Specifier
-                ]
-              )
-            )
+            returns(T.nilable(T::Array[MetronomeSDK::CommitSpecifierInput]))
           end
           attr_reader :specifiers
 
           sig do
             params(
-              specifiers:
-                T::Array[
-                  MetronomeSDK::V1::Customers::CreditCreateParams::Specifier::OrHash
-                ]
+              specifiers: T::Array[MetronomeSDK::CommitSpecifierInput::OrHash]
             ).void
           end
           attr_writer :specifiers
@@ -171,10 +162,7 @@ module MetronomeSDK
               rate_type:
                 MetronomeSDK::V1::Customers::CreditCreateParams::RateType::OrSymbol,
               salesforce_opportunity_id: String,
-              specifiers:
-                T::Array[
-                  MetronomeSDK::V1::Customers::CreditCreateParams::Specifier::OrHash
-                ],
+              specifiers: T::Array[MetronomeSDK::CommitSpecifierInput::OrHash],
               uniqueness_key: String,
               request_options: MetronomeSDK::RequestOptions::OrHash
             ).returns(T.attached_class)
@@ -239,10 +227,7 @@ module MetronomeSDK
                 rate_type:
                   MetronomeSDK::V1::Customers::CreditCreateParams::RateType::OrSymbol,
                 salesforce_opportunity_id: String,
-                specifiers:
-                  T::Array[
-                    MetronomeSDK::V1::Customers::CreditCreateParams::Specifier
-                  ],
+                specifiers: T::Array[MetronomeSDK::CommitSpecifierInput],
                 uniqueness_key: String,
                 request_options: MetronomeSDK::RequestOptions
               }
@@ -384,77 +369,6 @@ module MetronomeSDK
               )
             end
             def self.values
-            end
-          end
-
-          class Specifier < MetronomeSDK::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  MetronomeSDK::V1::Customers::CreditCreateParams::Specifier,
-                  MetronomeSDK::Internal::AnyHash
-                )
-              end
-
-            sig { returns(T.nilable(T::Hash[Symbol, String])) }
-            attr_reader :presentation_group_values
-
-            sig do
-              params(presentation_group_values: T::Hash[Symbol, String]).void
-            end
-            attr_writer :presentation_group_values
-
-            sig { returns(T.nilable(T::Hash[Symbol, String])) }
-            attr_reader :pricing_group_values
-
-            sig { params(pricing_group_values: T::Hash[Symbol, String]).void }
-            attr_writer :pricing_group_values
-
-            # If provided, the specifier will only apply to the product with the specified ID.
-            sig { returns(T.nilable(String)) }
-            attr_reader :product_id
-
-            sig { params(product_id: String).void }
-            attr_writer :product_id
-
-            # If provided, the specifier will only apply to products with all the specified
-            # tags.
-            sig { returns(T.nilable(T::Array[String])) }
-            attr_reader :product_tags
-
-            sig { params(product_tags: T::Array[String]).void }
-            attr_writer :product_tags
-
-            sig do
-              params(
-                presentation_group_values: T::Hash[Symbol, String],
-                pricing_group_values: T::Hash[Symbol, String],
-                product_id: String,
-                product_tags: T::Array[String]
-              ).returns(T.attached_class)
-            end
-            def self.new(
-              presentation_group_values: nil,
-              pricing_group_values: nil,
-              # If provided, the specifier will only apply to the product with the specified ID.
-              product_id: nil,
-              # If provided, the specifier will only apply to products with all the specified
-              # tags.
-              product_tags: nil
-            )
-            end
-
-            sig do
-              override.returns(
-                {
-                  presentation_group_values: T::Hash[Symbol, String],
-                  pricing_group_values: T::Hash[Symbol, String],
-                  product_id: String,
-                  product_tags: T::Array[String]
-                }
-              )
-            end
-            def to_hash
             end
           end
         end

@@ -141,7 +141,7 @@ module MetronomeSDK
         #
         # @param add_overrides [Array<MetronomeSDK::Models::V2::ContractEditParams::AddOverride>]
         #
-        # @param add_prepaid_balance_threshold_configuration [MetronomeSDK::Models::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration]
+        # @param add_prepaid_balance_threshold_configuration [MetronomeSDK::Models::PrepaidBalanceThresholdConfigurationV2]
         #
         # @param add_professional_services [Array<MetronomeSDK::Models::V2::ContractEditParams::AddProfessionalService>] This field's availability is dependent on your client's configuration.
         #
@@ -153,7 +153,7 @@ module MetronomeSDK
         #
         # @param add_scheduled_charges [Array<MetronomeSDK::Models::V2::ContractEditParams::AddScheduledCharge>]
         #
-        # @param add_spend_threshold_configuration [MetronomeSDK::Models::V2::ContractEditParams::AddSpendThresholdConfiguration]
+        # @param add_spend_threshold_configuration [MetronomeSDK::Models::SpendThresholdConfigurationV2]
         #
         # @param add_subscriptions [Array<MetronomeSDK::Models::V2::ContractEditParams::AddSubscription>] Optional list of [subscriptions](https://docs.metronome.com/manage-product-acces
         #
@@ -245,7 +245,7 @@ module MetronomeSDK
         #
         # @param product_id [String]
         #
-        # @param specifiers [Array<MetronomeSDK::Models::V2::ContractEditCommitParams::Specifier>, nil] List of filters that determine what kind of customer usage draws down a commit o
+        # @param specifiers [Array<MetronomeSDK::Models::CommitSpecifierInput>, nil] List of filters that determine what kind of customer usage draws down a commit o
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -299,7 +299,7 @@ module MetronomeSDK
         #
         # @param product_id [String]
         #
-        # @param specifiers [Array<MetronomeSDK::Models::V2::ContractEditCreditParams::Specifier>, nil] List of filters that determine what kind of customer usage draws down a commit o
+        # @param specifiers [Array<MetronomeSDK::Models::CommitSpecifierInput>, nil] List of filters that determine what kind of customer usage draws down a commit o
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #

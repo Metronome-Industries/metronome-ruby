@@ -17,8 +17,8 @@ module MetronomeSDK
 
         # @!attribute credit_type
         #
-        #   @return [MetronomeSDK::Models::V1::PlanListChargesResponse::CreditType]
-        required :credit_type, -> { MetronomeSDK::Models::V1::PlanListChargesResponse::CreditType }
+        #   @return [MetronomeSDK::Models::CreditTypeData]
+        required :credit_type, -> { MetronomeSDK::CreditTypeData }
 
         # @!attribute custom_fields
         #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
@@ -80,7 +80,7 @@ module MetronomeSDK
         #
         #   @param charge_type [Symbol, MetronomeSDK::Models::V1::PlanListChargesResponse::ChargeType]
         #
-        #   @param credit_type [MetronomeSDK::Models::V1::PlanListChargesResponse::CreditType]
+        #   @param credit_type [MetronomeSDK::Models::CreditTypeData]
         #
         #   @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         #
@@ -112,23 +112,6 @@ module MetronomeSDK
 
           # @!method self.values
           #   @return [Array<Symbol>]
-        end
-
-        # @see MetronomeSDK::Models::V1::PlanListChargesResponse#credit_type
-        class CreditType < MetronomeSDK::Internal::Type::BaseModel
-          # @!attribute id
-          #
-          #   @return [String]
-          required :id, String
-
-          # @!attribute name
-          #
-          #   @return [String]
-          required :name, String
-
-          # @!method initialize(id:, name:)
-          #   @param id [String]
-          #   @param name [String]
         end
 
         class Price < MetronomeSDK::Internal::Type::BaseModel

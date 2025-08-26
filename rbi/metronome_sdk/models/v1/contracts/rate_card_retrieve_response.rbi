@@ -124,19 +124,12 @@ module MetronomeSDK
             sig { params(description: String).void }
             attr_writer :description
 
-            sig do
-              returns(
-                T.nilable(
-                  MetronomeSDK::Models::V1::Contracts::RateCardRetrieveResponse::Data::FiatCreditType
-                )
-              )
-            end
+            sig { returns(T.nilable(MetronomeSDK::CreditTypeData)) }
             attr_reader :fiat_credit_type
 
             sig do
               params(
-                fiat_credit_type:
-                  MetronomeSDK::Models::V1::Contracts::RateCardRetrieveResponse::Data::FiatCreditType::OrHash
+                fiat_credit_type: MetronomeSDK::CreditTypeData::OrHash
               ).void
             end
             attr_writer :fiat_credit_type
@@ -157,8 +150,7 @@ module MetronomeSDK
                   ],
                 custom_fields: T::Hash[Symbol, String],
                 description: String,
-                fiat_credit_type:
-                  MetronomeSDK::Models::V1::Contracts::RateCardRetrieveResponse::Data::FiatCreditType::OrHash
+                fiat_credit_type: MetronomeSDK::CreditTypeData::OrHash
               ).returns(T.attached_class)
             end
             def self.new(
@@ -192,8 +184,7 @@ module MetronomeSDK
                     ],
                   custom_fields: T::Hash[Symbol, String],
                   description: String,
-                  fiat_credit_type:
-                    MetronomeSDK::Models::V1::Contracts::RateCardRetrieveResponse::Data::FiatCreditType
+                  fiat_credit_type: MetronomeSDK::CreditTypeData
                 }
               )
             end
@@ -252,17 +243,12 @@ module MetronomeSDK
                   )
                 end
 
-              sig do
-                returns(
-                  MetronomeSDK::Models::V1::Contracts::RateCardRetrieveResponse::Data::CreditTypeConversion::CustomCreditType
-                )
-              end
+              sig { returns(MetronomeSDK::CreditTypeData) }
               attr_reader :custom_credit_type
 
               sig do
                 params(
-                  custom_credit_type:
-                    MetronomeSDK::Models::V1::Contracts::RateCardRetrieveResponse::Data::CreditTypeConversion::CustomCreditType::OrHash
+                  custom_credit_type: MetronomeSDK::CreditTypeData::OrHash
                 ).void
               end
               attr_writer :custom_credit_type
@@ -272,8 +258,7 @@ module MetronomeSDK
 
               sig do
                 params(
-                  custom_credit_type:
-                    MetronomeSDK::Models::V1::Contracts::RateCardRetrieveResponse::Data::CreditTypeConversion::CustomCreditType::OrHash,
+                  custom_credit_type: MetronomeSDK::CreditTypeData::OrHash,
                   fiat_per_custom_credit: String
                 ).returns(T.attached_class)
               end
@@ -283,62 +268,11 @@ module MetronomeSDK
               sig do
                 override.returns(
                   {
-                    custom_credit_type:
-                      MetronomeSDK::Models::V1::Contracts::RateCardRetrieveResponse::Data::CreditTypeConversion::CustomCreditType,
+                    custom_credit_type: MetronomeSDK::CreditTypeData,
                     fiat_per_custom_credit: String
                   }
                 )
               end
-              def to_hash
-              end
-
-              class CustomCreditType < MetronomeSDK::Internal::Type::BaseModel
-                OrHash =
-                  T.type_alias do
-                    T.any(
-                      MetronomeSDK::Models::V1::Contracts::RateCardRetrieveResponse::Data::CreditTypeConversion::CustomCreditType,
-                      MetronomeSDK::Internal::AnyHash
-                    )
-                  end
-
-                sig { returns(String) }
-                attr_accessor :id
-
-                sig { returns(String) }
-                attr_accessor :name
-
-                sig do
-                  params(id: String, name: String).returns(T.attached_class)
-                end
-                def self.new(id:, name:)
-                end
-
-                sig { override.returns({ id: String, name: String }) }
-                def to_hash
-                end
-              end
-            end
-
-            class FiatCreditType < MetronomeSDK::Internal::Type::BaseModel
-              OrHash =
-                T.type_alias do
-                  T.any(
-                    MetronomeSDK::Models::V1::Contracts::RateCardRetrieveResponse::Data::FiatCreditType,
-                    MetronomeSDK::Internal::AnyHash
-                  )
-                end
-
-              sig { returns(String) }
-              attr_accessor :id
-
-              sig { returns(String) }
-              attr_accessor :name
-
-              sig { params(id: String, name: String).returns(T.attached_class) }
-              def self.new(id:, name:)
-              end
-
-              sig { override.returns({ id: String, name: String }) }
               def to_hash
               end
             end
