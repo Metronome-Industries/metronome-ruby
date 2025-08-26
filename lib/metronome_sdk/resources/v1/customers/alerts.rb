@@ -113,7 +113,7 @@ module MetronomeSDK
           #
           # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [MetronomeSDK::Internal::CursorPageWithoutLimit<MetronomeSDK::Models::V1::Customers::AlertListResponse>]
+          # @return [MetronomeSDK::Internal::CursorPageWithoutLimit<MetronomeSDK::Models::V1::Customers::CustomerAlert>]
           #
           # @see MetronomeSDK::Models::V1::Customers::AlertListParams
           def list(params)
@@ -125,7 +125,7 @@ module MetronomeSDK
               query: parsed.slice(*query_params),
               body: parsed.except(*query_params),
               page: MetronomeSDK::Internal::CursorPageWithoutLimit,
-              model: MetronomeSDK::Models::V1::Customers::AlertListResponse,
+              model: MetronomeSDK::V1::Customers::CustomerAlert,
               options: options
             )
           end

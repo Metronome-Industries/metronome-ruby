@@ -62,10 +62,7 @@ module MetronomeSDK
               rate_type:
                 MetronomeSDK::V1::Customers::CreditCreateParams::RateType::OrSymbol,
               salesforce_opportunity_id: String,
-              specifiers:
-                T::Array[
-                  MetronomeSDK::V1::Customers::CreditCreateParams::Specifier::OrHash
-                ],
+              specifiers: T::Array[MetronomeSDK::CommitSpecifierInput::OrHash],
               uniqueness_key: String,
               request_options: MetronomeSDK::RequestOptions::OrHash
             ).returns(MetronomeSDK::Models::V1::Customers::CreditCreateResponse)
@@ -169,9 +166,7 @@ module MetronomeSDK
               starting_at: Time,
               request_options: MetronomeSDK::RequestOptions::OrHash
             ).returns(
-              MetronomeSDK::Internal::BodyCursorPage[
-                MetronomeSDK::Models::V1::Customers::CreditListResponse
-              ]
+              MetronomeSDK::Internal::BodyCursorPage[MetronomeSDK::Credit]
             )
           end
           def list(

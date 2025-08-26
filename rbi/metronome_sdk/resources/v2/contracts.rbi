@@ -131,7 +131,7 @@ module MetronomeSDK
                 MetronomeSDK::V2::ContractEditParams::AddOverride::OrHash
               ],
             add_prepaid_balance_threshold_configuration:
-              MetronomeSDK::V2::ContractEditParams::AddPrepaidBalanceThresholdConfiguration::OrHash,
+              MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::OrHash,
             add_professional_services:
               T::Array[
                 MetronomeSDK::V2::ContractEditParams::AddProfessionalService::OrHash
@@ -153,7 +153,7 @@ module MetronomeSDK
                 MetronomeSDK::V2::ContractEditParams::AddScheduledCharge::OrHash
               ],
             add_spend_threshold_configuration:
-              MetronomeSDK::V2::ContractEditParams::AddSpendThresholdConfiguration::OrHash,
+              MetronomeSDK::SpendThresholdConfigurationV2::OrHash,
             add_subscriptions:
               T::Array[
                 MetronomeSDK::V2::ContractEditParams::AddSubscription::OrHash
@@ -299,11 +299,7 @@ module MetronomeSDK
             priority: T.nilable(Float),
             product_id: String,
             specifiers:
-              T.nilable(
-                T::Array[
-                  MetronomeSDK::V2::ContractEditCommitParams::Specifier::OrHash
-                ]
-              ),
+              T.nilable(T::Array[MetronomeSDK::CommitSpecifierInput::OrHash]),
             request_options: MetronomeSDK::RequestOptions::OrHash
           ).returns(MetronomeSDK::Models::V2::ContractEditCommitResponse)
         end
@@ -366,11 +362,7 @@ module MetronomeSDK
             priority: T.nilable(Float),
             product_id: String,
             specifiers:
-              T.nilable(
-                T::Array[
-                  MetronomeSDK::V2::ContractEditCreditParams::Specifier::OrHash
-                ]
-              ),
+              T.nilable(T::Array[MetronomeSDK::CommitSpecifierInput::OrHash]),
             request_options: MetronomeSDK::RequestOptions::OrHash
           ).returns(MetronomeSDK::Models::V2::ContractEditCreditResponse)
         end

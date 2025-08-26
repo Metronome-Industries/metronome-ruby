@@ -70,7 +70,7 @@ module MetronomeSDK
             #
             # @param billing_frequency [Symbol, MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::BillingFrequency] Optional. Frequency to bill subscriptions with. Required for subscription type p
             #
-            # @param commit_rate [MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::CommitRate] A distinct rate on the rate card. You can choose to use this rate rather than li
+            # @param commit_rate [MetronomeSDK::Models::CommitRate] A distinct rate on the rate card. You can choose to use this rate rather than li
             #
             # @param credit_type_id [String] The Metronome ID of the credit type to associate with price, defaults to USD (ce
             #
@@ -86,7 +86,7 @@ module MetronomeSDK
             #
             # @param quantity [Float] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
             #
-            # @param tiers [Array<MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::Tier>] Only set for TIERED rate_type.
+            # @param tiers [Array<MetronomeSDK::Models::Tier>] Only set for TIERED rate_type.
             #
             # @param use_list_prices [Boolean] Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed
             #

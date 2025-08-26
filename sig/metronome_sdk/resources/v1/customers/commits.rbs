@@ -20,7 +20,7 @@ module MetronomeSDK
             ?netsuite_sales_order_id: String,
             ?rate_type: MetronomeSDK::Models::V1::Customers::CommitCreateParams::rate_type,
             ?salesforce_opportunity_id: String,
-            ?specifiers: ::Array[MetronomeSDK::V1::Customers::CommitCreateParams::Specifier],
+            ?specifiers: ::Array[MetronomeSDK::CommitSpecifierInput],
             ?uniqueness_key: String,
             ?request_options: MetronomeSDK::request_opts
           ) -> MetronomeSDK::Models::V1::Customers::CommitCreateResponse
@@ -38,7 +38,7 @@ module MetronomeSDK
             ?next_page: String,
             ?starting_at: Time,
             ?request_options: MetronomeSDK::request_opts
-          ) -> MetronomeSDK::Internal::BodyCursorPage[MetronomeSDK::Models::V1::Customers::CommitListResponse]
+          ) -> MetronomeSDK::Internal::BodyCursorPage[MetronomeSDK::Commit]
 
           def update_end_date: (
             commit_id: String,
