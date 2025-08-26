@@ -16,7 +16,7 @@ class MetronomeSDK::Test::Resources::V2::ContractsTest < MetronomeSDK::Test::Res
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::ContractV2
+        data: MetronomeSDK::Models::V2::ContractRetrieveResponse::Data
       }
     end
   end
@@ -30,7 +30,7 @@ class MetronomeSDK::Test::Resources::V2::ContractsTest < MetronomeSDK::Test::Res
 
     assert_pattern do
       response => {
-        data: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::ContractV2])
+        data: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V2::ContractListResponse::Data])
       }
     end
   end
@@ -48,7 +48,7 @@ class MetronomeSDK::Test::Resources::V2::ContractsTest < MetronomeSDK::Test::Res
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::ID
+        data: MetronomeSDK::Models::V2::ContractEditResponse::Data
       }
     end
   end
@@ -66,7 +66,7 @@ class MetronomeSDK::Test::Resources::V2::ContractsTest < MetronomeSDK::Test::Res
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::ID
+        data: MetronomeSDK::Models::V2::ContractEditCommitResponse::Data
       }
     end
   end
@@ -84,7 +84,7 @@ class MetronomeSDK::Test::Resources::V2::ContractsTest < MetronomeSDK::Test::Res
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::ID
+        data: MetronomeSDK::Models::V2::ContractEditCreditResponse::Data
       }
     end
   end

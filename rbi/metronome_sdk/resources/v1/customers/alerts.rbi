@@ -105,7 +105,7 @@ module MetronomeSDK
               request_options: MetronomeSDK::RequestOptions::OrHash
             ).returns(
               MetronomeSDK::Internal::CursorPageWithoutLimit[
-                MetronomeSDK::V1::Customers::CustomerAlert
+                MetronomeSDK::Models::V1::Customers::AlertListResponse
               ]
             )
           end

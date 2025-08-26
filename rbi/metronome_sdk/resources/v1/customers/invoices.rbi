@@ -125,7 +125,7 @@ module MetronomeSDK
               request_options: MetronomeSDK::RequestOptions::OrHash
             ).returns(
               MetronomeSDK::Internal::CursorPage[
-                MetronomeSDK::V1::Customers::Invoice
+                MetronomeSDK::Models::V1::Customers::InvoiceListResponse
               ]
             )
           end

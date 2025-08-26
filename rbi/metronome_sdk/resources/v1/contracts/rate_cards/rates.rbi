@@ -59,7 +59,8 @@ module MetronomeSDK
                 starting_at: Time,
                 billing_frequency:
                   MetronomeSDK::V1::Contracts::RateCards::RateAddParams::BillingFrequency::OrSymbol,
-                commit_rate: MetronomeSDK::CommitRate::OrHash,
+                commit_rate:
+                  MetronomeSDK::V1::Contracts::RateCards::RateAddParams::CommitRate::OrHash,
                 credit_type_id: String,
                 custom_rate: T::Hash[Symbol, T.anything],
                 ending_before: Time,
@@ -67,7 +68,10 @@ module MetronomeSDK
                 price: Float,
                 pricing_group_values: T::Hash[Symbol, String],
                 quantity: Float,
-                tiers: T::Array[MetronomeSDK::Tier::OrHash],
+                tiers:
+                  T::Array[
+                    MetronomeSDK::V1::Contracts::RateCards::RateAddParams::Tier::OrHash
+                  ],
                 use_list_prices: T::Boolean,
                 request_options: MetronomeSDK::RequestOptions::OrHash
               ).returns(

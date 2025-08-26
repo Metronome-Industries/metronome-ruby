@@ -16,7 +16,7 @@ class MetronomeSDK::Test::Resources::V1::Customers::AlertsTest < MetronomeSDK::T
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::V1::Customers::CustomerAlert
+        data: MetronomeSDK::Models::V1::Customers::AlertRetrieveResponse::Data
       }
     end
   end
@@ -32,13 +32,13 @@ class MetronomeSDK::Test::Resources::V1::Customers::AlertsTest < MetronomeSDK::T
     return if row.nil?
 
     assert_pattern do
-      row => MetronomeSDK::V1::Customers::CustomerAlert
+      row => MetronomeSDK::Models::V1::Customers::AlertListResponse
     end
 
     assert_pattern do
       row => {
-        alert: MetronomeSDK::V1::Customers::CustomerAlert::Alert,
-        customer_status: MetronomeSDK::V1::Customers::CustomerAlert::CustomerStatus | nil,
+        alert: MetronomeSDK::Models::V1::Customers::AlertListResponse::Alert,
+        customer_status: MetronomeSDK::Models::V1::Customers::AlertListResponse::CustomerStatus | nil,
         triggered_by: String | nil
       }
     end
