@@ -3,11 +3,11 @@
 module MetronomeSDK
   module Models
     module V1
-      class CustomerRetrieveCustomerBillingConfigurationsResponse < MetronomeSDK::Internal::Type::BaseModel
+      class CustomerRetrieveBillingConfigurationsResponse < MetronomeSDK::Internal::Type::BaseModel
         OrHash =
           T.type_alias do
             T.any(
-              MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse,
+              MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse,
               MetronomeSDK::Internal::AnyHash
             )
           end
@@ -15,7 +15,7 @@ module MetronomeSDK
         sig do
           returns(
             T::Array[
-              MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data
+              MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data
             ]
           )
         end
@@ -25,7 +25,7 @@ module MetronomeSDK
           params(
             data:
               T::Array[
-                MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data::OrHash
+                MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::OrHash
               ]
           ).returns(T.attached_class)
         end
@@ -37,7 +37,7 @@ module MetronomeSDK
             {
               data:
                 T::Array[
-                  MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data
+                  MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data
                 ]
             }
           )
@@ -49,7 +49,7 @@ module MetronomeSDK
           OrHash =
             T.type_alias do
               T.any(
-                MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data,
+                MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data,
                 MetronomeSDK::Internal::AnyHash
               )
             end
@@ -62,7 +62,7 @@ module MetronomeSDK
           # The billing provider set for this configuration.
           sig do
             returns(
-              MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data::BillingProvider::TaggedSymbol
+              MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::BillingProvider::TaggedSymbol
             )
           end
           attr_accessor :billing_provider
@@ -78,7 +78,7 @@ module MetronomeSDK
           # The method to use for delivering invoices to this customer.
           sig do
             returns(
-              MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data::DeliveryMethod::TaggedSymbol
+              MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::DeliveryMethod::TaggedSymbol
             )
           end
           attr_accessor :delivery_method
@@ -96,11 +96,11 @@ module MetronomeSDK
             params(
               id: String,
               billing_provider:
-                MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data::BillingProvider::OrSymbol,
+                MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::BillingProvider::OrSymbol,
               configuration: T::Hash[Symbol, T.anything],
               customer_id: String,
               delivery_method:
-                MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data::DeliveryMethod::OrSymbol,
+                MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::DeliveryMethod::OrSymbol,
               delivery_method_configuration: T::Hash[Symbol, T.anything],
               delivery_method_id: String
             ).returns(T.attached_class)
@@ -130,11 +130,11 @@ module MetronomeSDK
               {
                 id: String,
                 billing_provider:
-                  MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data::BillingProvider::TaggedSymbol,
+                  MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::BillingProvider::TaggedSymbol,
                 configuration: T::Hash[Symbol, T.anything],
                 customer_id: String,
                 delivery_method:
-                  MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data::DeliveryMethod::TaggedSymbol,
+                  MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::DeliveryMethod::TaggedSymbol,
                 delivery_method_configuration: T::Hash[Symbol, T.anything],
                 delivery_method_id: String
               }
@@ -151,7 +151,7 @@ module MetronomeSDK
               T.type_alias do
                 T.all(
                   Symbol,
-                  MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data::BillingProvider
+                  MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::BillingProvider
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -159,48 +159,48 @@ module MetronomeSDK
             AWS_MARKETPLACE =
               T.let(
                 :aws_marketplace,
-                MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data::BillingProvider::TaggedSymbol
+                MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::BillingProvider::TaggedSymbol
               )
             STRIPE =
               T.let(
                 :stripe,
-                MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data::BillingProvider::TaggedSymbol
+                MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::BillingProvider::TaggedSymbol
               )
             NETSUITE =
               T.let(
                 :netsuite,
-                MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data::BillingProvider::TaggedSymbol
+                MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::BillingProvider::TaggedSymbol
               )
             CUSTOM =
               T.let(
                 :custom,
-                MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data::BillingProvider::TaggedSymbol
+                MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::BillingProvider::TaggedSymbol
               )
             AZURE_MARKETPLACE =
               T.let(
                 :azure_marketplace,
-                MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data::BillingProvider::TaggedSymbol
+                MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::BillingProvider::TaggedSymbol
               )
             QUICKBOOKS_ONLINE =
               T.let(
                 :quickbooks_online,
-                MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data::BillingProvider::TaggedSymbol
+                MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::BillingProvider::TaggedSymbol
               )
             WORKDAY =
               T.let(
                 :workday,
-                MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data::BillingProvider::TaggedSymbol
+                MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::BillingProvider::TaggedSymbol
               )
             GCP_MARKETPLACE =
               T.let(
                 :gcp_marketplace,
-                MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data::BillingProvider::TaggedSymbol
+                MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::BillingProvider::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data::BillingProvider::TaggedSymbol
+                  MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::BillingProvider::TaggedSymbol
                 ]
               )
             end
@@ -216,7 +216,7 @@ module MetronomeSDK
               T.type_alias do
                 T.all(
                   Symbol,
-                  MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data::DeliveryMethod
+                  MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::DeliveryMethod
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -224,28 +224,28 @@ module MetronomeSDK
             DIRECT_TO_BILLING_PROVIDER =
               T.let(
                 :direct_to_billing_provider,
-                MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data::DeliveryMethod::TaggedSymbol
+                MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::DeliveryMethod::TaggedSymbol
               )
             AWS_SQS =
               T.let(
                 :aws_sqs,
-                MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data::DeliveryMethod::TaggedSymbol
+                MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::DeliveryMethod::TaggedSymbol
               )
             TACKLE =
               T.let(
                 :tackle,
-                MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data::DeliveryMethod::TaggedSymbol
+                MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::DeliveryMethod::TaggedSymbol
               )
             AWS_SNS =
               T.let(
                 :aws_sns,
-                MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data::DeliveryMethod::TaggedSymbol
+                MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::DeliveryMethod::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data::DeliveryMethod::TaggedSymbol
+                  MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::DeliveryMethod::TaggedSymbol
                 ]
               )
             end

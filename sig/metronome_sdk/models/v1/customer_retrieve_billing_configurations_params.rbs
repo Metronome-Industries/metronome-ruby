@@ -1,11 +1,11 @@
 module MetronomeSDK
   module Models
     module V1
-      type customer_retrieve_customer_billing_configurations_params =
+      type customer_retrieve_billing_configurations_params =
         { customer_id: String }
         & MetronomeSDK::Internal::Type::request_parameters
 
-      class CustomerRetrieveCustomerBillingConfigurationsParams < MetronomeSDK::Internal::Type::BaseModel
+      class CustomerRetrieveBillingConfigurationsParams < MetronomeSDK::Internal::Type::BaseModel
         extend MetronomeSDK::Internal::Type::RequestParameters::Converter
         include MetronomeSDK::Internal::Type::RequestParameters
 

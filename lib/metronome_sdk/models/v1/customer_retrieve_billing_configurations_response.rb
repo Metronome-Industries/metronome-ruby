@@ -3,16 +3,16 @@
 module MetronomeSDK
   module Models
     module V1
-      # @see MetronomeSDK::Resources::V1::Customers#retrieve_customer_billing_configurations
-      class CustomerRetrieveCustomerBillingConfigurationsResponse < MetronomeSDK::Internal::Type::BaseModel
+      # @see MetronomeSDK::Resources::V1::Customers#retrieve_billing_configurations
+      class CustomerRetrieveBillingConfigurationsResponse < MetronomeSDK::Internal::Type::BaseModel
         # @!attribute data
         #
-        #   @return [Array<MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data>]
+        #   @return [Array<MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data>]
         required :data,
-                 -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data] }
+                 -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data] }
 
         # @!method initialize(data:)
-        #   @param data [Array<MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data>]
+        #   @param data [Array<MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data>]
 
         class Data < MetronomeSDK::Internal::Type::BaseModel
           # @!attribute id
@@ -25,9 +25,9 @@ module MetronomeSDK
           # @!attribute billing_provider
           #   The billing provider set for this configuration.
           #
-          #   @return [Symbol, MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data::BillingProvider]
+          #   @return [Symbol, MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::BillingProvider]
           required :billing_provider,
-                   enum: -> { MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data::BillingProvider }
+                   enum: -> { MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::BillingProvider }
 
           # @!attribute configuration
           #   Configuration for the billing provider. The structure of this object is specific
@@ -44,9 +44,9 @@ module MetronomeSDK
           # @!attribute delivery_method
           #   The method to use for delivering invoices to this customer.
           #
-          #   @return [Symbol, MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data::DeliveryMethod]
+          #   @return [Symbol, MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::DeliveryMethod]
           required :delivery_method,
-                   enum: -> { MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data::DeliveryMethod }
+                   enum: -> { MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::DeliveryMethod }
 
           # @!attribute delivery_method_configuration
           #   Configuration for the delivery method. The structure of this object is specific
@@ -64,18 +64,18 @@ module MetronomeSDK
 
           # @!method initialize(id:, billing_provider:, configuration:, customer_id:, delivery_method:, delivery_method_configuration:, delivery_method_id:)
           #   Some parameter documentations has been truncated, see
-          #   {MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data}
+          #   {MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data}
           #   for more details.
           #
           #   @param id [String] ID of this configuration; can be provided as the billing*provider_configuration*
           #
-          #   @param billing_provider [Symbol, MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data::BillingProvider] The billing provider set for this configuration.
+          #   @param billing_provider [Symbol, MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::BillingProvider] The billing provider set for this configuration.
           #
           #   @param configuration [Hash{Symbol=>Object}] Configuration for the billing provider. The structure of this object is specific
           #
           #   @param customer_id [String]
           #
-          #   @param delivery_method [Symbol, MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data::DeliveryMethod] The method to use for delivering invoices to this customer.
+          #   @param delivery_method [Symbol, MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::DeliveryMethod] The method to use for delivering invoices to this customer.
           #
           #   @param delivery_method_configuration [Hash{Symbol=>Object}] Configuration for the delivery method. The structure of this object is specific
           #
@@ -83,7 +83,7 @@ module MetronomeSDK
 
           # The billing provider set for this configuration.
           #
-          # @see MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data#billing_provider
+          # @see MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data#billing_provider
           module BillingProvider
             extend MetronomeSDK::Internal::Type::Enum
 
@@ -102,7 +102,7 @@ module MetronomeSDK
 
           # The method to use for delivering invoices to this customer.
           #
-          # @see MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data#delivery_method
+          # @see MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data#delivery_method
           module DeliveryMethod
             extend MetronomeSDK::Internal::Type::Enum
 

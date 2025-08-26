@@ -315,22 +315,21 @@ module MetronomeSDK
         # `billing_provider_configuration_id` needed to set the contract billing
         # configuration.
         #
-        # @overload retrieve_customer_billing_configurations(customer_id:, request_options: {})
+        # @overload retrieve_billing_configurations(customer_id:, request_options: {})
         #
         # @param customer_id [String]
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse]
+        # @return [MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse]
         #
-        # @see MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsParams
-        def retrieve_customer_billing_configurations(params)
-          parsed, options =
-            MetronomeSDK::V1::CustomerRetrieveCustomerBillingConfigurationsParams.dump_request(params)
+        # @see MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsParams
+        def retrieve_billing_configurations(params)
+          parsed, options = MetronomeSDK::V1::CustomerRetrieveBillingConfigurationsParams.dump_request(params)
           @client.request(
             method: :post,
             path: "v1/getCustomerBillingProviderConfigurations",
             body: parsed,
-            model: MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse,
+            model: MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse,
             options: options
           )
         end
@@ -370,16 +369,16 @@ module MetronomeSDK
         # Must use the delivery_method_id if you have multiple Stripe accounts connected to
         # Metronome.
         #
-        # @overload set_customer_billing_configurations(data:, request_options: {})
+        # @overload set_billing_configurations(data:, request_options: {})
         #
-        # @param data [Array<MetronomeSDK::Models::V1::CustomerSetCustomerBillingConfigurationsParams::Data>]
+        # @param data [Array<MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data>]
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [nil]
         #
-        # @see MetronomeSDK::Models::V1::CustomerSetCustomerBillingConfigurationsParams
-        def set_customer_billing_configurations(params)
-          parsed, options = MetronomeSDK::V1::CustomerSetCustomerBillingConfigurationsParams.dump_request(params)
+        # @see MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams
+        def set_billing_configurations(params)
+          parsed, options = MetronomeSDK::V1::CustomerSetBillingConfigurationsParams.dump_request(params)
           @client.request(
             method: :post,
             path: "v1/setCustomerBillingProviderConfigurations",

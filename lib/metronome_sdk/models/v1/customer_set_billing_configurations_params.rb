@@ -3,28 +3,28 @@
 module MetronomeSDK
   module Models
     module V1
-      # @see MetronomeSDK::Resources::V1::Customers#set_customer_billing_configurations
-      class CustomerSetCustomerBillingConfigurationsParams < MetronomeSDK::Internal::Type::BaseModel
+      # @see MetronomeSDK::Resources::V1::Customers#set_billing_configurations
+      class CustomerSetBillingConfigurationsParams < MetronomeSDK::Internal::Type::BaseModel
         extend MetronomeSDK::Internal::Type::RequestParameters::Converter
         include MetronomeSDK::Internal::Type::RequestParameters
 
         # @!attribute data
         #
-        #   @return [Array<MetronomeSDK::Models::V1::CustomerSetCustomerBillingConfigurationsParams::Data>]
+        #   @return [Array<MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data>]
         required :data,
-                 -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::CustomerSetCustomerBillingConfigurationsParams::Data] }
+                 -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data] }
 
         # @!method initialize(data:, request_options: {})
-        #   @param data [Array<MetronomeSDK::Models::V1::CustomerSetCustomerBillingConfigurationsParams::Data>]
+        #   @param data [Array<MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data>]
         #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
 
         class Data < MetronomeSDK::Internal::Type::BaseModel
           # @!attribute billing_provider
           #   The billing provider set for this configuration.
           #
-          #   @return [Symbol, MetronomeSDK::Models::V1::CustomerSetCustomerBillingConfigurationsParams::Data::BillingProvider]
+          #   @return [Symbol, MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data::BillingProvider]
           required :billing_provider,
-                   enum: -> { MetronomeSDK::V1::CustomerSetCustomerBillingConfigurationsParams::Data::BillingProvider }
+                   enum: -> { MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::BillingProvider }
 
           # @!attribute customer_id
           #
@@ -47,9 +47,9 @@ module MetronomeSDK
           #   The method to use for delivering invoices to this customer. If not provided, the
           #   `delivery_method_id` must be provided.
           #
-          #   @return [Symbol, MetronomeSDK::Models::V1::CustomerSetCustomerBillingConfigurationsParams::Data::DeliveryMethod, nil]
+          #   @return [Symbol, MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data::DeliveryMethod, nil]
           optional :delivery_method,
-                   enum: -> { MetronomeSDK::V1::CustomerSetCustomerBillingConfigurationsParams::Data::DeliveryMethod }
+                   enum: -> { MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::DeliveryMethod }
 
           # @!attribute delivery_method_id
           #   ID of the delivery method to use for this customer. If not provided, the
@@ -60,22 +60,22 @@ module MetronomeSDK
 
           # @!method initialize(billing_provider:, customer_id:, configuration: nil, delivery_method: nil, delivery_method_id: nil)
           #   Some parameter documentations has been truncated, see
-          #   {MetronomeSDK::Models::V1::CustomerSetCustomerBillingConfigurationsParams::Data}
-          #   for more details.
+          #   {MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data} for
+          #   more details.
           #
-          #   @param billing_provider [Symbol, MetronomeSDK::Models::V1::CustomerSetCustomerBillingConfigurationsParams::Data::BillingProvider] The billing provider set for this configuration.
+          #   @param billing_provider [Symbol, MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data::BillingProvider] The billing provider set for this configuration.
           #
           #   @param customer_id [String]
           #
           #   @param configuration [Hash{Symbol=>Object}] Configuration for the billing provider. The structure of this object is specific
           #
-          #   @param delivery_method [Symbol, MetronomeSDK::Models::V1::CustomerSetCustomerBillingConfigurationsParams::Data::DeliveryMethod] The method to use for delivering invoices to this customer. If not provided, the
+          #   @param delivery_method [Symbol, MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data::DeliveryMethod] The method to use for delivering invoices to this customer. If not provided, the
           #
           #   @param delivery_method_id [String] ID of the delivery method to use for this customer. If not provided, the `delive
 
           # The billing provider set for this configuration.
           #
-          # @see MetronomeSDK::Models::V1::CustomerSetCustomerBillingConfigurationsParams::Data#billing_provider
+          # @see MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data#billing_provider
           module BillingProvider
             extend MetronomeSDK::Internal::Type::Enum
 
@@ -95,7 +95,7 @@ module MetronomeSDK
           # The method to use for delivering invoices to this customer. If not provided, the
           # `delivery_method_id` must be provided.
           #
-          # @see MetronomeSDK::Models::V1::CustomerSetCustomerBillingConfigurationsParams::Data#delivery_method
+          # @see MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data#delivery_method
           module DeliveryMethod
             extend MetronomeSDK::Internal::Type::Enum
 

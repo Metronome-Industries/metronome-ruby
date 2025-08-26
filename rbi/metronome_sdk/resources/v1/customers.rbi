@@ -271,13 +271,10 @@ module MetronomeSDK
             customer_id: String,
             request_options: MetronomeSDK::RequestOptions::OrHash
           ).returns(
-            MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse
+            MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse
           )
         end
-        def retrieve_customer_billing_configurations(
-          customer_id:,
-          request_options: {}
-        )
+        def retrieve_billing_configurations(customer_id:, request_options: {})
         end
 
         # Create a billing configuration for a customer. Once created, these
@@ -318,12 +315,12 @@ module MetronomeSDK
           params(
             data:
               T::Array[
-                MetronomeSDK::V1::CustomerSetCustomerBillingConfigurationsParams::Data::OrHash
+                MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::OrHash
               ],
             request_options: MetronomeSDK::RequestOptions::OrHash
           ).void
         end
-        def set_customer_billing_configurations(data:, request_options: {})
+        def set_billing_configurations(data:, request_options: {})
         end
 
         # Sets the ingest aliases for a customer. Use this endpoint to associate a

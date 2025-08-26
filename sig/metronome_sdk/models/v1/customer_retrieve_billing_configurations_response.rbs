@@ -1,29 +1,29 @@
 module MetronomeSDK
   module Models
     module V1
-      type customer_retrieve_customer_billing_configurations_response =
+      type customer_retrieve_billing_configurations_response =
         {
-          data: ::Array[MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data]
+          data: ::Array[MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data]
         }
 
-      class CustomerRetrieveCustomerBillingConfigurationsResponse < MetronomeSDK::Internal::Type::BaseModel
-        attr_accessor data: ::Array[MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data]
+      class CustomerRetrieveBillingConfigurationsResponse < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor data: ::Array[MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data]
 
         def initialize: (
-          data: ::Array[MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data]
+          data: ::Array[MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data]
         ) -> void
 
         def to_hash: -> {
-          data: ::Array[MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data]
+          data: ::Array[MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data]
         }
 
         type data =
           {
             id: String,
-            billing_provider: MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data::billing_provider,
+            billing_provider: MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::billing_provider,
             configuration: ::Hash[Symbol, top],
             customer_id: String,
-            delivery_method: MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data::delivery_method,
+            delivery_method: MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::delivery_method,
             delivery_method_configuration: ::Hash[Symbol, top],
             delivery_method_id: String
           }
@@ -31,13 +31,13 @@ module MetronomeSDK
         class Data < MetronomeSDK::Internal::Type::BaseModel
           attr_accessor id: String
 
-          attr_accessor billing_provider: MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data::billing_provider
+          attr_accessor billing_provider: MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::billing_provider
 
           attr_accessor configuration: ::Hash[Symbol, top]
 
           attr_accessor customer_id: String
 
-          attr_accessor delivery_method: MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data::delivery_method
+          attr_accessor delivery_method: MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::delivery_method
 
           attr_accessor delivery_method_configuration: ::Hash[Symbol, top]
 
@@ -45,20 +45,20 @@ module MetronomeSDK
 
           def initialize: (
             id: String,
-            billing_provider: MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data::billing_provider,
+            billing_provider: MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::billing_provider,
             configuration: ::Hash[Symbol, top],
             customer_id: String,
-            delivery_method: MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data::delivery_method,
+            delivery_method: MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::delivery_method,
             delivery_method_configuration: ::Hash[Symbol, top],
             delivery_method_id: String
           ) -> void
 
           def to_hash: -> {
             id: String,
-            billing_provider: MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data::billing_provider,
+            billing_provider: MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::billing_provider,
             configuration: ::Hash[Symbol, top],
             customer_id: String,
-            delivery_method: MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data::delivery_method,
+            delivery_method: MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::delivery_method,
             delivery_method_configuration: ::Hash[Symbol, top],
             delivery_method_id: String
           }
@@ -85,7 +85,7 @@ module MetronomeSDK
             WORKDAY: :workday
             GCP_MARKETPLACE: :gcp_marketplace
 
-            def self?.values: -> ::Array[MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data::billing_provider]
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::billing_provider]
           end
 
           type delivery_method =
@@ -99,7 +99,7 @@ module MetronomeSDK
             TACKLE: :tackle
             AWS_SNS: :aws_sns
 
-            def self?.values: -> ::Array[MetronomeSDK::Models::V1::CustomerRetrieveCustomerBillingConfigurationsResponse::Data::delivery_method]
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::delivery_method]
           end
         end
       end
