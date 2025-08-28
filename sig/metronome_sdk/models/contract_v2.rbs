@@ -272,6 +272,7 @@ module MetronomeSDK
       type commit =
         {
           id: String,
+          created_at: Time,
           product: MetronomeSDK::ContractV2::Commit::Product,
           type: MetronomeSDK::Models::ContractV2::Commit::type_,
           access_schedule: MetronomeSDK::ScheduleDuration,
@@ -299,6 +300,8 @@ module MetronomeSDK
 
       class Commit < MetronomeSDK::Internal::Type::BaseModel
         attr_accessor id: String
+
+        attr_accessor created_at: Time
 
         attr_accessor product: MetronomeSDK::ContractV2::Commit::Product
 
@@ -408,6 +411,7 @@ module MetronomeSDK
 
         def initialize: (
           id: String,
+          created_at: Time,
           product: MetronomeSDK::ContractV2::Commit::Product,
           type: MetronomeSDK::Models::ContractV2::Commit::type_,
           ?access_schedule: MetronomeSDK::ScheduleDuration,
@@ -435,6 +439,7 @@ module MetronomeSDK
 
         def to_hash: -> {
           id: String,
+          created_at: Time,
           product: MetronomeSDK::ContractV2::Commit::Product,
           type: MetronomeSDK::Models::ContractV2::Commit::type_,
           access_schedule: MetronomeSDK::ScheduleDuration,

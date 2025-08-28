@@ -8,6 +8,16 @@ module MetronomeSDK
       #   @return [String]
       required :id, String
 
+      # @!attribute created_at
+      #   Timestamp of when the commit was created.
+      #
+      #   - Recurring commits: latter of commit service period date and parent commit
+      #     start date
+      #   - Rollover commits: when the new contract started
+      #
+      #   @return [Time]
+      required :created_at, Time
+
       # @!attribute product
       #
       #   @return [MetronomeSDK::Models::Commit::Product]
@@ -163,11 +173,13 @@ module MetronomeSDK
       #   @return [String, nil]
       optional :uniqueness_key, String
 
-      # @!method initialize(id:, product:, type:, access_schedule: nil, amount: nil, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, archived_at: nil, balance: nil, contract: nil, custom_fields: nil, description: nil, hierarchy_configuration: nil, invoice_contract: nil, invoice_schedule: nil, ledger: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil, rolled_over_from: nil, rollover_fraction: nil, salesforce_opportunity_id: nil, specifiers: nil, uniqueness_key: nil)
+      # @!method initialize(id:, created_at:, product:, type:, access_schedule: nil, amount: nil, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, archived_at: nil, balance: nil, contract: nil, custom_fields: nil, description: nil, hierarchy_configuration: nil, invoice_contract: nil, invoice_schedule: nil, ledger: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil, rolled_over_from: nil, rollover_fraction: nil, salesforce_opportunity_id: nil, specifiers: nil, uniqueness_key: nil)
       #   Some parameter documentations has been truncated, see
       #   {MetronomeSDK::Models::Commit} for more details.
       #
       #   @param id [String]
+      #
+      #   @param created_at [Time] Timestamp of when the commit was created.
       #
       #   @param product [MetronomeSDK::Models::Commit::Product]
       #
