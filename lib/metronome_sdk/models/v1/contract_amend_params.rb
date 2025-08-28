@@ -1249,8 +1249,8 @@ module MetronomeSDK
 
             # @!attribute commit_ids
             #   Can only be used for commit specific overrides. Must be used in conjunction with
-            #   one of product_id, product_tags, pricing_group_values, or
-            #   presentation_group_values. If provided, the override will only apply to the
+            #   one of `product_id`, `product_tags`, `pricing_group_values`, or
+            #   `presentation_group_values`. If provided, the override will only apply to the
             #   specified commits. If not provided, the override will apply to all commits.
             #
             #   @return [Array<String>, nil]
@@ -1285,18 +1285,18 @@ module MetronomeSDK
 
             # @!attribute recurring_commit_ids
             #   Can only be used for commit specific overrides. Must be used in conjunction with
-            #   one of product_id, product_tags, pricing_group_values, or
-            #   presentation_group_values. If provided, the override will only apply to commits
-            #   created by the specified recurring commit ids.
+            #   one of `product_id`, `product_tags`, `pricing_group_values`, or
+            #   `presentation_group_values`. If provided, the override will only apply to
+            #   commits created by the specified recurring commit ids.
             #
             #   @return [Array<String>, nil]
             optional :recurring_commit_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
 
             # @!attribute recurring_credit_ids
             #   Can only be used for commit specific overrides. Must be used in conjunction with
-            #   one of product_id, product_tags, pricing_group_values, or
-            #   presentation_group_values. If provided, the override will only apply to credits
-            #   created by the specified recurring credit ids.
+            #   one of `product_id`, `product_tags`, `pricing_group_values`, or
+            #   `presentation_group_values`. If provided, the override will only apply to
+            #   credits created by the specified recurring credit ids.
             #
             #   @return [Array<String>, nil]
             optional :recurring_credit_ids, MetronomeSDK::Internal::Type::ArrayOf[String]

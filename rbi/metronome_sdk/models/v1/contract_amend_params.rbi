@@ -2627,8 +2627,8 @@ module MetronomeSDK
             attr_writer :billing_frequency
 
             # Can only be used for commit specific overrides. Must be used in conjunction with
-            # one of product_id, product_tags, pricing_group_values, or
-            # presentation_group_values. If provided, the override will only apply to the
+            # one of `product_id`, `product_tags`, `pricing_group_values`, or
+            # `presentation_group_values`. If provided, the override will only apply to the
             # specified commits. If not provided, the override will apply to all commits.
             sig { returns(T.nilable(T::Array[String])) }
             attr_reader :commit_ids
@@ -2670,9 +2670,9 @@ module MetronomeSDK
             attr_writer :product_tags
 
             # Can only be used for commit specific overrides. Must be used in conjunction with
-            # one of product_id, product_tags, pricing_group_values, or
-            # presentation_group_values. If provided, the override will only apply to commits
-            # created by the specified recurring commit ids.
+            # one of `product_id`, `product_tags`, `pricing_group_values`, or
+            # `presentation_group_values`. If provided, the override will only apply to
+            # commits created by the specified recurring commit ids.
             sig { returns(T.nilable(T::Array[String])) }
             attr_reader :recurring_commit_ids
 
@@ -2680,9 +2680,9 @@ module MetronomeSDK
             attr_writer :recurring_commit_ids
 
             # Can only be used for commit specific overrides. Must be used in conjunction with
-            # one of product_id, product_tags, pricing_group_values, or
-            # presentation_group_values. If provided, the override will only apply to credits
-            # created by the specified recurring credit ids.
+            # one of `product_id`, `product_tags`, `pricing_group_values`, or
+            # `presentation_group_values`. If provided, the override will only apply to
+            # credits created by the specified recurring credit ids.
             sig { returns(T.nilable(T::Array[String])) }
             attr_reader :recurring_credit_ids
 
@@ -2705,8 +2705,8 @@ module MetronomeSDK
             def self.new(
               billing_frequency: nil,
               # Can only be used for commit specific overrides. Must be used in conjunction with
-              # one of product_id, product_tags, pricing_group_values, or
-              # presentation_group_values. If provided, the override will only apply to the
+              # one of `product_id`, `product_tags`, `pricing_group_values`, or
+              # `presentation_group_values`. If provided, the override will only apply to the
               # specified commits. If not provided, the override will apply to all commits.
               commit_ids: nil,
               # A map of group names to values. The override will only apply to line items with
@@ -2721,14 +2721,14 @@ module MetronomeSDK
               # tags.
               product_tags: nil,
               # Can only be used for commit specific overrides. Must be used in conjunction with
-              # one of product_id, product_tags, pricing_group_values, or
-              # presentation_group_values. If provided, the override will only apply to commits
-              # created by the specified recurring commit ids.
+              # one of `product_id`, `product_tags`, `pricing_group_values`, or
+              # `presentation_group_values`. If provided, the override will only apply to
+              # commits created by the specified recurring commit ids.
               recurring_commit_ids: nil,
               # Can only be used for commit specific overrides. Must be used in conjunction with
-              # one of product_id, product_tags, pricing_group_values, or
-              # presentation_group_values. If provided, the override will only apply to credits
-              # created by the specified recurring credit ids.
+              # one of `product_id`, `product_tags`, `pricing_group_values`, or
+              # `presentation_group_values`. If provided, the override will only apply to
+              # credits created by the specified recurring credit ids.
               recurring_credit_ids: nil
             )
             end
