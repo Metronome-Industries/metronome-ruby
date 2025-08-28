@@ -1928,11 +1928,12 @@ module MetronomeSDK
               def to_hash: -> { is_prorated: bool }
             end
 
-            type allocation = :POOLED
+            type allocation = :INDIVIDUAL | :POOLED
 
             module Allocation
               extend MetronomeSDK::Internal::Type::Enum
 
+              INDIVIDUAL: :INDIVIDUAL
               POOLED: :POOLED
 
               def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::SubscriptionConfig::allocation]
@@ -2224,11 +2225,12 @@ module MetronomeSDK
               def to_hash: -> { is_prorated: bool }
             end
 
-            type allocation = :POOLED
+            type allocation = :INDIVIDUAL | :POOLED
 
             module Allocation
               extend MetronomeSDK::Internal::Type::Enum
 
+              INDIVIDUAL: :INDIVIDUAL
               POOLED: :POOLED
 
               def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::SubscriptionConfig::allocation]

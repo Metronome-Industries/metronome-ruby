@@ -4588,6 +4588,11 @@ module MetronomeSDK
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
+              INDIVIDUAL =
+                T.let(
+                  :INDIVIDUAL,
+                  MetronomeSDK::V1::ContractCreateParams::RecurringCommit::SubscriptionConfig::Allocation::TaggedSymbol
+                )
               POOLED =
                 T.let(
                   :POOLED,
@@ -5324,6 +5329,11 @@ module MetronomeSDK
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
+              INDIVIDUAL =
+                T.let(
+                  :INDIVIDUAL,
+                  MetronomeSDK::V1::ContractCreateParams::RecurringCredit::SubscriptionConfig::Allocation::TaggedSymbol
+                )
               POOLED =
                 T.let(
                   :POOLED,

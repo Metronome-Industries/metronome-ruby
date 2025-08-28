@@ -2158,6 +2158,7 @@ module MetronomeSDK
             module Allocation
               extend MetronomeSDK::Internal::Type::Enum
 
+              INDIVIDUAL = :INDIVIDUAL
               POOLED = :POOLED
 
               # @!method self.values
@@ -2498,6 +2499,7 @@ module MetronomeSDK
             module Allocation
               extend MetronomeSDK::Internal::Type::Enum
 
+              INDIVIDUAL = :INDIVIDUAL
               POOLED = :POOLED
 
               # @!method self.values

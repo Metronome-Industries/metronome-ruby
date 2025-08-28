@@ -2042,6 +2042,7 @@ module MetronomeSDK
               extend MetronomeSDK::Internal::Type::Enum
 
               POOLED = :POOLED
+              INDIVIDUAL = :INDIVIDUAL
 
               # @!method self.values
               #   @return [Array<Symbol>]
@@ -2385,6 +2386,7 @@ module MetronomeSDK
               extend MetronomeSDK::Internal::Type::Enum
 
               POOLED = :POOLED
+              INDIVIDUAL = :INDIVIDUAL
 
               # @!method self.values
               #   @return [Array<Symbol>]
@@ -3064,12 +3066,20 @@ module MetronomeSDK
           #   @return [String, nil]
           optional :product_id, String
 
+          # @!attribute rate_type
+          #   If provided, updates the commit to use the specified rate type for current and
+          #   future invoices. Previously finalized invoices will need to be voided and
+          #   regenerated to reflect the rate type change.
+          #
+          #   @return [Symbol, MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit::RateType, nil]
+          optional :rate_type, enum: -> { MetronomeSDK::V2::ContractEditParams::UpdateCommit::RateType }
+
           # @!attribute rollover_fraction
           #
           #   @return [Float, nil]
           optional :rollover_fraction, Float, nil?: true
 
-          # @!method initialize(commit_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, hierarchy_configuration: nil, invoice_schedule: nil, netsuite_sales_order_id: nil, priority: nil, product_id: nil, rollover_fraction: nil)
+          # @!method initialize(commit_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, hierarchy_configuration: nil, invoice_schedule: nil, netsuite_sales_order_id: nil, priority: nil, product_id: nil, rate_type: nil, rollover_fraction: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit} for more details.
           #
@@ -3090,6 +3100,8 @@ module MetronomeSDK
           #   @param priority [Float, nil]
           #
           #   @param product_id [String]
+          #
+          #   @param rate_type [Symbol, MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit::RateType] If provided, updates the commit to use the specified rate type for current and f
           #
           #   @param rollover_fraction [Float, nil]
 
@@ -3276,6 +3288,21 @@ module MetronomeSDK
               #   @param unit_price [Float]
             end
           end
+
+          # If provided, updates the commit to use the specified rate type for current and
+          # future invoices. Previously finalized invoices will need to be voided and
+          # regenerated to reflect the rate type change.
+          #
+          # @see MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit#rate_type
+          module RateType
+            extend MetronomeSDK::Internal::Type::Enum
+
+            LIST_RATE = :LIST_RATE
+            COMMIT_RATE = :COMMIT_RATE
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
         end
 
         class UpdateCredit < MetronomeSDK::Internal::Type::BaseModel
@@ -3326,7 +3353,15 @@ module MetronomeSDK
           #   @return [String, nil]
           optional :product_id, String
 
-          # @!method initialize(credit_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, hierarchy_configuration: nil, netsuite_sales_order_id: nil, priority: nil, product_id: nil)
+          # @!attribute rate_type
+          #   If provided, updates the credit to use the specified rate type for current and
+          #   future invoices. Previously finalized invoices will need to be voided and
+          #   regenerated to reflect the rate type change.
+          #
+          #   @return [Symbol, MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit::RateType, nil]
+          optional :rate_type, enum: -> { MetronomeSDK::V2::ContractEditParams::UpdateCredit::RateType }
+
+          # @!method initialize(credit_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, hierarchy_configuration: nil, netsuite_sales_order_id: nil, priority: nil, product_id: nil, rate_type: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit} for more details.
           #
@@ -3345,6 +3380,8 @@ module MetronomeSDK
           #   @param priority [Float, nil]
           #
           #   @param product_id [String]
+          #
+          #   @param rate_type [Symbol, MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit::RateType] If provided, updates the credit to use the specified rate type for current and f
 
           # @see MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit#access_schedule
           class AccessSchedule < MetronomeSDK::Internal::Type::BaseModel
@@ -3430,6 +3467,21 @@ module MetronomeSDK
               #   @param ending_before [Time]
               #   @param starting_at [Time]
             end
+          end
+
+          # If provided, updates the credit to use the specified rate type for current and
+          # future invoices. Previously finalized invoices will need to be voided and
+          # regenerated to reflect the rate type change.
+          #
+          # @see MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit#rate_type
+          module RateType
+            extend MetronomeSDK::Internal::Type::Enum
+
+            LIST_RATE = :LIST_RATE
+            COMMIT_RATE = :COMMIT_RATE
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 

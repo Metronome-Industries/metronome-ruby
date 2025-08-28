@@ -226,7 +226,7 @@ module MetronomeSDK
         #   finalized invoice. You can void the invoice beforehand and then remove the
         #   access schedule segment.
         #
-        # @overload edit_commit(commit_id:, customer_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, invoice_contract_id: nil, invoice_schedule: nil, priority: nil, product_id: nil, specifiers: nil, request_options: {})
+        # @overload edit_commit(commit_id:, customer_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, invoice_contract_id: nil, invoice_schedule: nil, priority: nil, product_id: nil, rate_type: nil, specifiers: nil, request_options: {})
         #
         # @param commit_id [String] ID of the commit to edit
         #
@@ -245,6 +245,8 @@ module MetronomeSDK
         # @param priority [Float, nil] If multiple commits are applicable, the one with the lower priority will apply f
         #
         # @param product_id [String]
+        #
+        # @param rate_type [Symbol, MetronomeSDK::Models::V2::ContractEditCommitParams::RateType] If provided, updates the commit to use the specified rate type for current and f
         #
         # @param specifiers [Array<MetronomeSDK::Models::CommitSpecifierInput>, nil] List of filters that determine what kind of customer usage draws down a commit o
         #
@@ -284,7 +286,7 @@ module MetronomeSDK
         #   invoice. You can void the invoice beforehand and then remove the access
         #   schedule segment.
         #
-        # @overload edit_credit(credit_id:, customer_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, priority: nil, product_id: nil, specifiers: nil, request_options: {})
+        # @overload edit_credit(credit_id:, customer_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, priority: nil, product_id: nil, rate_type: nil, specifiers: nil, request_options: {})
         #
         # @param credit_id [String] ID of the credit to edit
         #
@@ -299,6 +301,8 @@ module MetronomeSDK
         # @param priority [Float, nil] If multiple commits are applicable, the one with the lower priority will apply f
         #
         # @param product_id [String]
+        #
+        # @param rate_type [Symbol, MetronomeSDK::Models::V2::ContractEditCreditParams::RateType] If provided, updates the credit to use the specified rate type for current and f
         #
         # @param specifiers [Array<MetronomeSDK::Models::CommitSpecifierInput>, nil] List of filters that determine what kind of customer usage draws down a commit o
         #

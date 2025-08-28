@@ -277,25 +277,25 @@ metronome.v1.usage.ingest(**params)
 Since this library does not depend on `sorbet-runtime`, it cannot provide [`T::Enum`](https://sorbet.org/docs/tenum) instances. Instead, we provide "tagged symbols" instead, which is always a primitive at runtime:
 
 ```ruby
-# :low_credit_balance_reached
-puts(MetronomeSDK::V1::AlertCreateParams::AlertType::LOW_CREDIT_BALANCE_REACHED)
+# :LIST_RATE
+puts(MetronomeSDK::V2::ContractEditCommitParams::RateType::LIST_RATE)
 
-# Revealed type: `T.all(MetronomeSDK::V1::AlertCreateParams::AlertType, Symbol)`
-T.reveal_type(MetronomeSDK::V1::AlertCreateParams::AlertType::LOW_CREDIT_BALANCE_REACHED)
+# Revealed type: `T.all(MetronomeSDK::V2::ContractEditCommitParams::RateType, Symbol)`
+T.reveal_type(MetronomeSDK::V2::ContractEditCommitParams::RateType::LIST_RATE)
 ```
 
 Enum parameters have a "relaxed" type, so you can either pass in enum constants or their literal value:
 
 ```ruby
 # Using the enum constants preserves the tagged type information:
-metronome.v1.alerts.create(
-  alert_type: MetronomeSDK::V1::AlertCreateParams::AlertType::LOW_CREDIT_BALANCE_REACHED,
+metronome.v2.contracts.edit_commit(
+  rate_type: MetronomeSDK::V2::ContractEditCommitParams::RateType::LIST_RATE,
   # …
 )
 
 # Literal values are also permissible:
-metronome.v1.alerts.create(
-  alert_type: :low_credit_balance_reached,
+metronome.v2.contracts.edit_commit(
+  rate_type: :LIST_RATE,
   # …
 )
 ```
