@@ -7,13 +7,14 @@ module MetronomeSDK
         class RateCards
           class Rates
             # Understand the rate schedule at a given timestamp, optionally filtering the list
-            # of rates returned based on properties such as product_id and
-            # pricing_group_values . For example, you may want to display the current price
+            # of rates returned based on properties such as `product_id` and
+            # `pricing_group_values`. For example, you may want to display the current price
             # for a given product in your product experience - use this endpoint to fetch that
             # information from its source of truth in Metronome.
             #
             # If you want to understand the rates for a specific customer's contract,
-            # inclusive of contract-level overrides, use the getContractRateSchedule endpoint.
+            # inclusive of contract-level overrides, use the `getContractRateSchedule`
+            # endpoint.
             sig do
               params(
                 at: Time,
