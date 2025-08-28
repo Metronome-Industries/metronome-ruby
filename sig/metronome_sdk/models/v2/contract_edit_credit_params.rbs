@@ -10,6 +10,7 @@ module MetronomeSDK
           applicable_product_tags: ::Array[String]?,
           priority: Float?,
           product_id: String,
+          rate_type: MetronomeSDK::Models::V2::ContractEditCreditParams::rate_type,
           specifiers: ::Array[MetronomeSDK::CommitSpecifierInput]?
         }
         & MetronomeSDK::Internal::Type::request_parameters
@@ -38,6 +39,12 @@ module MetronomeSDK
 
         def product_id=: (String) -> String
 
+        attr_reader rate_type: MetronomeSDK::Models::V2::ContractEditCreditParams::rate_type?
+
+        def rate_type=: (
+          MetronomeSDK::Models::V2::ContractEditCreditParams::rate_type
+        ) -> MetronomeSDK::Models::V2::ContractEditCreditParams::rate_type
+
         attr_accessor specifiers: ::Array[MetronomeSDK::CommitSpecifierInput]?
 
         def initialize: (
@@ -48,6 +55,7 @@ module MetronomeSDK
           ?applicable_product_tags: ::Array[String]?,
           ?priority: Float?,
           ?product_id: String,
+          ?rate_type: MetronomeSDK::Models::V2::ContractEditCreditParams::rate_type,
           ?specifiers: ::Array[MetronomeSDK::CommitSpecifierInput]?,
           ?request_options: MetronomeSDK::request_opts
         ) -> void
@@ -60,6 +68,7 @@ module MetronomeSDK
           applicable_product_tags: ::Array[String]?,
           priority: Float?,
           product_id: String,
+          rate_type: MetronomeSDK::Models::V2::ContractEditCreditParams::rate_type,
           specifiers: ::Array[MetronomeSDK::CommitSpecifierInput]?,
           request_options: MetronomeSDK::RequestOptions
         }
@@ -172,6 +181,17 @@ module MetronomeSDK
               starting_at: Time
             }
           end
+        end
+
+        type rate_type = :LIST_RATE | :COMMIT_RATE
+
+        module RateType
+          extend MetronomeSDK::Internal::Type::Enum
+
+          LIST_RATE: :LIST_RATE
+          COMMIT_RATE: :COMMIT_RATE
+
+          def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractEditCreditParams::rate_type]
         end
       end
     end

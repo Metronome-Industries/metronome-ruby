@@ -4422,6 +4422,11 @@ module MetronomeSDK
                   :POOLED,
                   MetronomeSDK::V2::ContractEditParams::AddRecurringCommit::SubscriptionConfig::Allocation::TaggedSymbol
                 )
+              INDIVIDUAL =
+                T.let(
+                  :INDIVIDUAL,
+                  MetronomeSDK::V2::ContractEditParams::AddRecurringCommit::SubscriptionConfig::Allocation::TaggedSymbol
+                )
 
               sig do
                 override.returns(
@@ -5160,6 +5165,11 @@ module MetronomeSDK
               POOLED =
                 T.let(
                   :POOLED,
+                  MetronomeSDK::V2::ContractEditParams::AddRecurringCredit::SubscriptionConfig::Allocation::TaggedSymbol
+                )
+              INDIVIDUAL =
+                T.let(
+                  :INDIVIDUAL,
                   MetronomeSDK::V2::ContractEditParams::AddRecurringCredit::SubscriptionConfig::Allocation::TaggedSymbol
                 )
 
@@ -6576,6 +6586,26 @@ module MetronomeSDK
           sig { params(product_id: String).void }
           attr_writer :product_id
 
+          # If provided, updates the commit to use the specified rate type for current and
+          # future invoices. Previously finalized invoices will need to be voided and
+          # regenerated to reflect the rate type change.
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::V2::ContractEditParams::UpdateCommit::RateType::OrSymbol
+              )
+            )
+          end
+          attr_reader :rate_type
+
+          sig do
+            params(
+              rate_type:
+                MetronomeSDK::V2::ContractEditParams::UpdateCommit::RateType::OrSymbol
+            ).void
+          end
+          attr_writer :rate_type
+
           sig { returns(T.nilable(Float)) }
           attr_accessor :rollover_fraction
 
@@ -6593,6 +6623,8 @@ module MetronomeSDK
               netsuite_sales_order_id: T.nilable(String),
               priority: T.nilable(Float),
               product_id: String,
+              rate_type:
+                MetronomeSDK::V2::ContractEditParams::UpdateCommit::RateType::OrSymbol,
               rollover_fraction: T.nilable(Float)
             ).returns(T.attached_class)
           end
@@ -6613,6 +6645,10 @@ module MetronomeSDK
             netsuite_sales_order_id: nil,
             priority: nil,
             product_id: nil,
+            # If provided, updates the commit to use the specified rate type for current and
+            # future invoices. Previously finalized invoices will need to be voided and
+            # regenerated to reflect the rate type change.
+            rate_type: nil,
             rollover_fraction: nil
           )
           end
@@ -6632,6 +6668,8 @@ module MetronomeSDK
                 netsuite_sales_order_id: T.nilable(String),
                 priority: T.nilable(Float),
                 product_id: String,
+                rate_type:
+                  MetronomeSDK::V2::ContractEditParams::UpdateCommit::RateType::OrSymbol,
                 rollover_fraction: T.nilable(Float)
               }
             )
@@ -7140,6 +7178,43 @@ module MetronomeSDK
               end
             end
           end
+
+          # If provided, updates the commit to use the specified rate type for current and
+          # future invoices. Previously finalized invoices will need to be voided and
+          # regenerated to reflect the rate type change.
+          module RateType
+            extend MetronomeSDK::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  MetronomeSDK::V2::ContractEditParams::UpdateCommit::RateType
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            LIST_RATE =
+              T.let(
+                :LIST_RATE,
+                MetronomeSDK::V2::ContractEditParams::UpdateCommit::RateType::TaggedSymbol
+              )
+            COMMIT_RATE =
+              T.let(
+                :COMMIT_RATE,
+                MetronomeSDK::V2::ContractEditParams::UpdateCommit::RateType::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  MetronomeSDK::V2::ContractEditParams::UpdateCommit::RateType::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
         end
 
         class UpdateCredit < MetronomeSDK::Internal::Type::BaseModel
@@ -7207,6 +7282,26 @@ module MetronomeSDK
           sig { params(product_id: String).void }
           attr_writer :product_id
 
+          # If provided, updates the credit to use the specified rate type for current and
+          # future invoices. Previously finalized invoices will need to be voided and
+          # regenerated to reflect the rate type change.
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::V2::ContractEditParams::UpdateCredit::RateType::OrSymbol
+              )
+            )
+          end
+          attr_reader :rate_type
+
+          sig do
+            params(
+              rate_type:
+                MetronomeSDK::V2::ContractEditParams::UpdateCredit::RateType::OrSymbol
+            ).void
+          end
+          attr_writer :rate_type
+
           sig do
             params(
               credit_id: String,
@@ -7218,7 +7313,9 @@ module MetronomeSDK
                 MetronomeSDK::CommitHierarchyConfiguration::OrHash,
               netsuite_sales_order_id: T.nilable(String),
               priority: T.nilable(Float),
-              product_id: String
+              product_id: String,
+              rate_type:
+                MetronomeSDK::V2::ContractEditParams::UpdateCredit::RateType::OrSymbol
             ).returns(T.attached_class)
           end
           def self.new(
@@ -7236,7 +7333,11 @@ module MetronomeSDK
             hierarchy_configuration: nil,
             netsuite_sales_order_id: nil,
             priority: nil,
-            product_id: nil
+            product_id: nil,
+            # If provided, updates the credit to use the specified rate type for current and
+            # future invoices. Previously finalized invoices will need to be voided and
+            # regenerated to reflect the rate type change.
+            rate_type: nil
           )
           end
 
@@ -7252,7 +7353,9 @@ module MetronomeSDK
                   MetronomeSDK::CommitHierarchyConfiguration,
                 netsuite_sales_order_id: T.nilable(String),
                 priority: T.nilable(Float),
-                product_id: String
+                product_id: String,
+                rate_type:
+                  MetronomeSDK::V2::ContractEditParams::UpdateCredit::RateType::OrSymbol
               }
             )
           end
@@ -7491,6 +7594,43 @@ module MetronomeSDK
               end
               def to_hash
               end
+            end
+          end
+
+          # If provided, updates the credit to use the specified rate type for current and
+          # future invoices. Previously finalized invoices will need to be voided and
+          # regenerated to reflect the rate type change.
+          module RateType
+            extend MetronomeSDK::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  MetronomeSDK::V2::ContractEditParams::UpdateCredit::RateType
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            LIST_RATE =
+              T.let(
+                :LIST_RATE,
+                MetronomeSDK::V2::ContractEditParams::UpdateCredit::RateType::TaggedSymbol
+              )
+            COMMIT_RATE =
+              T.let(
+                :COMMIT_RATE,
+                MetronomeSDK::V2::ContractEditParams::UpdateCredit::RateType::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  MetronomeSDK::V2::ContractEditParams::UpdateCredit::RateType::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
             end
           end
         end

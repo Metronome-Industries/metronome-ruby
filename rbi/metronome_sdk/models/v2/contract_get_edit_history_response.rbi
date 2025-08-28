@@ -3795,6 +3795,24 @@ module MetronomeSDK
             sig { params(product_id: String).void }
             attr_writer :product_id
 
+            # If set, the commit's rate type was updated to the specified value.
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::RateType::TaggedSymbol
+                )
+              )
+            end
+            attr_reader :rate_type
+
+            sig do
+              params(
+                rate_type:
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::RateType::OrSymbol
+              ).void
+            end
+            attr_writer :rate_type
+
             sig { returns(T.nilable(Float)) }
             attr_accessor :rollover_fraction
 
@@ -3824,6 +3842,8 @@ module MetronomeSDK
                 netsuite_sales_order_id: T.nilable(String),
                 priority: T.nilable(Float),
                 product_id: String,
+                rate_type:
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::RateType::OrSymbol,
                 rollover_fraction: T.nilable(Float),
                 specifiers:
                   T.nilable(
@@ -3851,6 +3871,8 @@ module MetronomeSDK
               # first.
               priority: nil,
               product_id: nil,
+              # If set, the commit's rate type was updated to the specified value.
+              rate_type: nil,
               rollover_fraction: nil,
               # List of filters that determine what kind of customer usage draws down a commit
               # or credit. A customer's usage needs to meet the condition of at least one of the
@@ -3878,6 +3900,8 @@ module MetronomeSDK
                   netsuite_sales_order_id: T.nilable(String),
                   priority: T.nilable(Float),
                   product_id: String,
+                  rate_type:
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::RateType::TaggedSymbol,
                   rollover_fraction: T.nilable(Float),
                   specifiers:
                     T.nilable(T::Array[MetronomeSDK::CommitSpecifierInput])
@@ -4400,6 +4424,41 @@ module MetronomeSDK
                 end
               end
             end
+
+            # If set, the commit's rate type was updated to the specified value.
+            module RateType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::RateType
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              COMMIT_RATE =
+                T.let(
+                  :COMMIT_RATE,
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::RateType::TaggedSymbol
+                )
+              LIST_RATE =
+                T.let(
+                  :LIST_RATE,
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::RateType::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::RateType::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
           end
 
           class UpdateCredit < MetronomeSDK::Internal::Type::BaseModel
@@ -4459,6 +4518,24 @@ module MetronomeSDK
             sig { returns(T.nilable(Float)) }
             attr_accessor :priority
 
+            # If set, the credit's rate type was updated to the specified value.
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::RateType::TaggedSymbol
+                )
+              )
+            end
+            attr_reader :rate_type
+
+            sig do
+              params(
+                rate_type:
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::RateType::OrSymbol
+              ).void
+            end
+            attr_writer :rate_type
+
             sig { returns(T.nilable(Float)) }
             attr_accessor :rollover_fraction
 
@@ -4472,6 +4549,8 @@ module MetronomeSDK
                 name: String,
                 netsuite_sales_order_id: T.nilable(String),
                 priority: T.nilable(Float),
+                rate_type:
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::RateType::OrSymbol,
                 rollover_fraction: T.nilable(Float)
               ).returns(T.attached_class)
             end
@@ -4485,6 +4564,8 @@ module MetronomeSDK
               # If multiple credits are applicable, the one with the lower priority will apply
               # first.
               priority: nil,
+              # If set, the credit's rate type was updated to the specified value.
+              rate_type: nil,
               rollover_fraction: nil
             )
             end
@@ -4500,6 +4581,8 @@ module MetronomeSDK
                   name: String,
                   netsuite_sales_order_id: T.nilable(String),
                   priority: T.nilable(Float),
+                  rate_type:
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::RateType::TaggedSymbol,
                   rollover_fraction: T.nilable(Float)
                 }
               )
@@ -4751,6 +4834,41 @@ module MetronomeSDK
                 end
                 def to_hash
                 end
+              end
+            end
+
+            # If set, the credit's rate type was updated to the specified value.
+            module RateType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::RateType
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              LIST_RATE =
+                T.let(
+                  :LIST_RATE,
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::RateType::TaggedSymbol
+                )
+              COMMIT_RATE =
+                T.let(
+                  :COMMIT_RATE,
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::RateType::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::RateType::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
               end
             end
           end

@@ -65,6 +65,7 @@ module MetronomeSDK
           ?invoice_schedule: MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule,
           ?priority: Float?,
           ?product_id: String,
+          ?rate_type: MetronomeSDK::Models::V2::ContractEditCommitParams::rate_type,
           ?specifiers: ::Array[MetronomeSDK::CommitSpecifierInput]?,
           ?request_options: MetronomeSDK::request_opts
         ) -> MetronomeSDK::Models::V2::ContractEditCommitResponse
@@ -77,6 +78,7 @@ module MetronomeSDK
           ?applicable_product_tags: ::Array[String]?,
           ?priority: Float?,
           ?product_id: String,
+          ?rate_type: MetronomeSDK::Models::V2::ContractEditCreditParams::rate_type,
           ?specifiers: ::Array[MetronomeSDK::CommitSpecifierInput]?,
           ?request_options: MetronomeSDK::request_opts
         ) -> MetronomeSDK::Models::V2::ContractEditCreditResponse

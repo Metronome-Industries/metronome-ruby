@@ -51,6 +51,14 @@ module MetronomeSDK
         #   @return [String, nil]
         optional :product_id, String
 
+        # @!attribute rate_type
+        #   If provided, updates the credit to use the specified rate type for current and
+        #   future invoices. Previously finalized invoices will need to be voided and
+        #   regenerated to reflect the rate type change.
+        #
+        #   @return [Symbol, MetronomeSDK::Models::V2::ContractEditCreditParams::RateType, nil]
+        optional :rate_type, enum: -> { MetronomeSDK::V2::ContractEditCreditParams::RateType }
+
         # @!attribute specifiers
         #   List of filters that determine what kind of customer usage draws down a commit
         #   or credit. A customer's usage needs to meet the condition of at least one of the
@@ -64,7 +72,7 @@ module MetronomeSDK
                  -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::CommitSpecifierInput] },
                  nil?: true
 
-        # @!method initialize(credit_id:, customer_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, priority: nil, product_id: nil, specifiers: nil, request_options: {})
+        # @!method initialize(credit_id:, customer_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, priority: nil, product_id: nil, rate_type: nil, specifiers: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::V2::ContractEditCreditParams} for more details.
         #
@@ -81,6 +89,8 @@ module MetronomeSDK
         #   @param priority [Float, nil] If multiple commits are applicable, the one with the lower priority will apply f
         #
         #   @param product_id [String]
+        #
+        #   @param rate_type [Symbol, MetronomeSDK::Models::V2::ContractEditCreditParams::RateType] If provided, updates the credit to use the specified rate type for current and f
         #
         #   @param specifiers [Array<MetronomeSDK::Models::CommitSpecifierInput>, nil] List of filters that determine what kind of customer usage draws down a commit o
         #
@@ -169,6 +179,19 @@ module MetronomeSDK
             #   @param ending_before [Time]
             #   @param starting_at [Time]
           end
+        end
+
+        # If provided, updates the credit to use the specified rate type for current and
+        # future invoices. Previously finalized invoices will need to be voided and
+        # regenerated to reflect the rate type change.
+        module RateType
+          extend MetronomeSDK::Internal::Type::Enum
+
+          LIST_RATE = :LIST_RATE
+          COMMIT_RATE = :COMMIT_RATE
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end

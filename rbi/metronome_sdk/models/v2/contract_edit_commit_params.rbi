@@ -87,6 +87,26 @@ module MetronomeSDK
         sig { params(product_id: String).void }
         attr_writer :product_id
 
+        # If provided, updates the commit to use the specified rate type for current and
+        # future invoices. Previously finalized invoices will need to be voided and
+        # regenerated to reflect the rate type change.
+        sig do
+          returns(
+            T.nilable(
+              MetronomeSDK::V2::ContractEditCommitParams::RateType::OrSymbol
+            )
+          )
+        end
+        attr_reader :rate_type
+
+        sig do
+          params(
+            rate_type:
+              MetronomeSDK::V2::ContractEditCommitParams::RateType::OrSymbol
+          ).void
+        end
+        attr_writer :rate_type
+
         # List of filters that determine what kind of customer usage draws down a commit
         # or credit. A customer's usage needs to meet the condition of at least one of the
         # specifiers to contribute to a commit's or credit's drawdown. This field cannot
@@ -109,6 +129,8 @@ module MetronomeSDK
               MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule::OrHash,
             priority: T.nilable(Float),
             product_id: String,
+            rate_type:
+              MetronomeSDK::V2::ContractEditCommitParams::RateType::OrSymbol,
             specifiers:
               T.nilable(T::Array[MetronomeSDK::CommitSpecifierInput::OrHash]),
             request_options: MetronomeSDK::RequestOptions::OrHash
@@ -135,6 +157,10 @@ module MetronomeSDK
           # first.
           priority: nil,
           product_id: nil,
+          # If provided, updates the commit to use the specified rate type for current and
+          # future invoices. Previously finalized invoices will need to be voided and
+          # regenerated to reflect the rate type change.
+          rate_type: nil,
           # List of filters that determine what kind of customer usage draws down a commit
           # or credit. A customer's usage needs to meet the condition of at least one of the
           # specifiers to contribute to a commit's or credit's drawdown. This field cannot
@@ -160,6 +186,8 @@ module MetronomeSDK
                 MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule,
               priority: T.nilable(Float),
               product_id: String,
+              rate_type:
+                MetronomeSDK::V2::ContractEditCommitParams::RateType::OrSymbol,
               specifiers:
                 T.nilable(T::Array[MetronomeSDK::CommitSpecifierInput]),
               request_options: MetronomeSDK::RequestOptions
@@ -663,6 +691,43 @@ module MetronomeSDK
             end
             def to_hash
             end
+          end
+        end
+
+        # If provided, updates the commit to use the specified rate type for current and
+        # future invoices. Previously finalized invoices will need to be voided and
+        # regenerated to reflect the rate type change.
+        module RateType
+          extend MetronomeSDK::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                MetronomeSDK::V2::ContractEditCommitParams::RateType
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          LIST_RATE =
+            T.let(
+              :LIST_RATE,
+              MetronomeSDK::V2::ContractEditCommitParams::RateType::TaggedSymbol
+            )
+          COMMIT_RATE =
+            T.let(
+              :COMMIT_RATE,
+              MetronomeSDK::V2::ContractEditCommitParams::RateType::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                MetronomeSDK::V2::ContractEditCommitParams::RateType::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
           end
         end
       end

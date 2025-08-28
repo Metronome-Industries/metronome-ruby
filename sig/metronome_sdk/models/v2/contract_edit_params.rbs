@@ -1814,12 +1814,13 @@ module MetronomeSDK
               def to_hash: -> { is_prorated: bool }
             end
 
-            type allocation = :POOLED
+            type allocation = :POOLED | :INDIVIDUAL
 
             module Allocation
               extend MetronomeSDK::Internal::Type::Enum
 
               POOLED: :POOLED
+              INDIVIDUAL: :INDIVIDUAL
 
               def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractEditParams::AddRecurringCommit::SubscriptionConfig::allocation]
             end
@@ -2110,12 +2111,13 @@ module MetronomeSDK
               def to_hash: -> { is_prorated: bool }
             end
 
-            type allocation = :POOLED
+            type allocation = :POOLED | :INDIVIDUAL
 
             module Allocation
               extend MetronomeSDK::Internal::Type::Enum
 
               POOLED: :POOLED
+              INDIVIDUAL: :INDIVIDUAL
 
               def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractEditParams::AddRecurringCredit::SubscriptionConfig::allocation]
             end
@@ -2707,6 +2709,7 @@ module MetronomeSDK
             netsuite_sales_order_id: String?,
             priority: Float?,
             product_id: String,
+            rate_type: MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit::rate_type,
             rollover_fraction: Float?
           }
 
@@ -2743,6 +2746,12 @@ module MetronomeSDK
 
           def product_id=: (String) -> String
 
+          attr_reader rate_type: MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit::rate_type?
+
+          def rate_type=: (
+            MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit::rate_type
+          ) -> MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit::rate_type
+
           attr_accessor rollover_fraction: Float?
 
           def initialize: (
@@ -2755,6 +2764,7 @@ module MetronomeSDK
             ?netsuite_sales_order_id: String?,
             ?priority: Float?,
             ?product_id: String,
+            ?rate_type: MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit::rate_type,
             ?rollover_fraction: Float?
           ) -> void
 
@@ -2768,6 +2778,7 @@ module MetronomeSDK
             netsuite_sales_order_id: String?,
             priority: Float?,
             product_id: String,
+            rate_type: MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit::rate_type,
             rollover_fraction: Float?
           }
 
@@ -3012,6 +3023,17 @@ module MetronomeSDK
               }
             end
           end
+
+          type rate_type = :LIST_RATE | :COMMIT_RATE
+
+          module RateType
+            extend MetronomeSDK::Internal::Type::Enum
+
+            LIST_RATE: :LIST_RATE
+            COMMIT_RATE: :COMMIT_RATE
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit::rate_type]
+          end
         end
 
         type update_credit =
@@ -3023,7 +3045,8 @@ module MetronomeSDK
             hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,
             netsuite_sales_order_id: String?,
             priority: Float?,
-            product_id: String
+            product_id: String,
+            rate_type: MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit::rate_type
           }
 
         class UpdateCredit < MetronomeSDK::Internal::Type::BaseModel
@@ -3053,6 +3076,12 @@ module MetronomeSDK
 
           def product_id=: (String) -> String
 
+          attr_reader rate_type: MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit::rate_type?
+
+          def rate_type=: (
+            MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit::rate_type
+          ) -> MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit::rate_type
+
           def initialize: (
             credit_id: String,
             ?access_schedule: MetronomeSDK::V2::ContractEditParams::UpdateCredit::AccessSchedule,
@@ -3061,7 +3090,8 @@ module MetronomeSDK
             ?hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,
             ?netsuite_sales_order_id: String?,
             ?priority: Float?,
-            ?product_id: String
+            ?product_id: String,
+            ?rate_type: MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit::rate_type
           ) -> void
 
           def to_hash: -> {
@@ -3072,7 +3102,8 @@ module MetronomeSDK
             hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,
             netsuite_sales_order_id: String?,
             priority: Float?,
-            product_id: String
+            product_id: String,
+            rate_type: MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit::rate_type
           }
 
           type access_schedule =
@@ -3183,6 +3214,17 @@ module MetronomeSDK
                 starting_at: Time
               }
             end
+          end
+
+          type rate_type = :LIST_RATE | :COMMIT_RATE
+
+          module RateType
+            extend MetronomeSDK::Internal::Type::Enum
+
+            LIST_RATE: :LIST_RATE
+            COMMIT_RATE: :COMMIT_RATE
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit::rate_type]
           end
         end
 

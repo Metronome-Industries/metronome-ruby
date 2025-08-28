@@ -1655,6 +1655,7 @@ module MetronomeSDK
               netsuite_sales_order_id: String?,
               priority: Float?,
               product_id: String,
+              rate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::rate_type,
               rollover_fraction: Float?,
               specifiers: ::Array[MetronomeSDK::CommitSpecifierInput]?
             }
@@ -1696,6 +1697,12 @@ module MetronomeSDK
 
             def product_id=: (String) -> String
 
+            attr_reader rate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::rate_type?
+
+            def rate_type=: (
+              MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::rate_type
+            ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::rate_type
+
             attr_accessor rollover_fraction: Float?
 
             attr_accessor specifiers: ::Array[MetronomeSDK::CommitSpecifierInput]?
@@ -1711,6 +1718,7 @@ module MetronomeSDK
               ?netsuite_sales_order_id: String?,
               ?priority: Float?,
               ?product_id: String,
+              ?rate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::rate_type,
               ?rollover_fraction: Float?,
               ?specifiers: ::Array[MetronomeSDK::CommitSpecifierInput]?
             ) -> void
@@ -1726,6 +1734,7 @@ module MetronomeSDK
               netsuite_sales_order_id: String?,
               priority: Float?,
               product_id: String,
+              rate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::rate_type,
               rollover_fraction: Float?,
               specifiers: ::Array[MetronomeSDK::CommitSpecifierInput]?
             }
@@ -1971,6 +1980,17 @@ module MetronomeSDK
                 }
               end
             end
+
+            type rate_type = :COMMIT_RATE | :LIST_RATE
+
+            module RateType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              COMMIT_RATE: :COMMIT_RATE
+              LIST_RATE: :LIST_RATE
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::rate_type]
+            end
           end
 
           type update_credit =
@@ -1981,6 +2001,7 @@ module MetronomeSDK
               name: String,
               netsuite_sales_order_id: String?,
               priority: Float?,
+              rate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::rate_type,
               rollover_fraction: Float?
             }
 
@@ -2007,6 +2028,12 @@ module MetronomeSDK
 
             attr_accessor priority: Float?
 
+            attr_reader rate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::rate_type?
+
+            def rate_type=: (
+              MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::rate_type
+            ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::rate_type
+
             attr_accessor rollover_fraction: Float?
 
             def initialize: (
@@ -2016,6 +2043,7 @@ module MetronomeSDK
               ?name: String,
               ?netsuite_sales_order_id: String?,
               ?priority: Float?,
+              ?rate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::rate_type,
               ?rollover_fraction: Float?
             ) -> void
 
@@ -2026,6 +2054,7 @@ module MetronomeSDK
               name: String,
               netsuite_sales_order_id: String?,
               priority: Float?,
+              rate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::rate_type,
               rollover_fraction: Float?
             }
 
@@ -2137,6 +2166,17 @@ module MetronomeSDK
                   starting_at: Time
                 }
               end
+            end
+
+            type rate_type = :LIST_RATE | :COMMIT_RATE
+
+            module RateType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              LIST_RATE: :LIST_RATE
+              COMMIT_RATE: :COMMIT_RATE
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::rate_type]
             end
           end
 

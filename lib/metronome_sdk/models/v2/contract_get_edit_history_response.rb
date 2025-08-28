@@ -1737,6 +1737,13 @@ module MetronomeSDK
             #   @return [String, nil]
             optional :product_id, String
 
+            # @!attribute rate_type
+            #   If set, the commit's rate type was updated to the specified value.
+            #
+            #   @return [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::RateType, nil]
+            optional :rate_type,
+                     enum: -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::RateType }
+
             # @!attribute rollover_fraction
             #
             #   @return [Float, nil]
@@ -1755,7 +1762,7 @@ module MetronomeSDK
                      -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::CommitSpecifierInput] },
                      nil?: true
 
-            # @!method initialize(id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, hierarchy_configuration: nil, invoice_schedule: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, product_id: nil, rollover_fraction: nil, specifiers: nil)
+            # @!method initialize(id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, hierarchy_configuration: nil, invoice_schedule: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, product_id: nil, rate_type: nil, rollover_fraction: nil, specifiers: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit}
             #   for more details.
@@ -1779,6 +1786,8 @@ module MetronomeSDK
             #   @param priority [Float, nil] If multiple commits are applicable, the one with the lower priority will apply f
             #
             #   @param product_id [String]
+            #
+            #   @param rate_type [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::RateType] If set, the commit's rate type was updated to the specified value.
             #
             #   @param rollover_fraction [Float, nil]
             #
@@ -2000,6 +2009,19 @@ module MetronomeSDK
                 #   @param unit_price [Float]
               end
             end
+
+            # If set, the commit's rate type was updated to the specified value.
+            #
+            # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit#rate_type
+            module RateType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              COMMIT_RATE = :COMMIT_RATE
+              LIST_RATE = :LIST_RATE
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
           end
 
           class UpdateCredit < MetronomeSDK::Internal::Type::BaseModel
@@ -2037,12 +2059,19 @@ module MetronomeSDK
             #   @return [Float, nil]
             optional :priority, Float, nil?: true
 
+            # @!attribute rate_type
+            #   If set, the credit's rate type was updated to the specified value.
+            #
+            #   @return [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::RateType, nil]
+            optional :rate_type,
+                     enum: -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::RateType }
+
             # @!attribute rollover_fraction
             #
             #   @return [Float, nil]
             optional :rollover_fraction, Float, nil?: true
 
-            # @!method initialize(id:, access_schedule: nil, hierarchy_configuration: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rollover_fraction: nil)
+            # @!method initialize(id:, access_schedule: nil, hierarchy_configuration: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil, rollover_fraction: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit}
             #   for more details.
@@ -2058,6 +2087,8 @@ module MetronomeSDK
             #   @param netsuite_sales_order_id [String, nil]
             #
             #   @param priority [Float, nil] If multiple credits are applicable, the one with the lower priority will apply f
+            #
+            #   @param rate_type [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::RateType] If set, the credit's rate type was updated to the specified value.
             #
             #   @param rollover_fraction [Float, nil]
 
@@ -2166,6 +2197,19 @@ module MetronomeSDK
                 #
                 #   @param starting_at [Time] RFC 3339 timestamp (inclusive)
               end
+            end
+
+            # If set, the credit's rate type was updated to the specified value.
+            #
+            # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit#rate_type
+            module RateType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              LIST_RATE = :LIST_RATE
+              COMMIT_RATE = :COMMIT_RATE
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
           end
 

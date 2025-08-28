@@ -299,6 +299,8 @@ module MetronomeSDK
               MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule::OrHash,
             priority: T.nilable(Float),
             product_id: String,
+            rate_type:
+              MetronomeSDK::V2::ContractEditCommitParams::RateType::OrSymbol,
             specifiers:
               T.nilable(T::Array[MetronomeSDK::CommitSpecifierInput::OrHash]),
             request_options: MetronomeSDK::RequestOptions::OrHash
@@ -325,6 +327,10 @@ module MetronomeSDK
           # first.
           priority: nil,
           product_id: nil,
+          # If provided, updates the commit to use the specified rate type for current and
+          # future invoices. Previously finalized invoices will need to be voided and
+          # regenerated to reflect the rate type change.
+          rate_type: nil,
           # List of filters that determine what kind of customer usage draws down a commit
           # or credit. A customer's usage needs to meet the condition of at least one of the
           # specifiers to contribute to a commit's or credit's drawdown. This field cannot
@@ -362,6 +368,8 @@ module MetronomeSDK
             applicable_product_tags: T.nilable(T::Array[String]),
             priority: T.nilable(Float),
             product_id: String,
+            rate_type:
+              MetronomeSDK::V2::ContractEditCreditParams::RateType::OrSymbol,
             specifiers:
               T.nilable(T::Array[MetronomeSDK::CommitSpecifierInput::OrHash]),
             request_options: MetronomeSDK::RequestOptions::OrHash
@@ -383,6 +391,10 @@ module MetronomeSDK
           # first.
           priority: nil,
           product_id: nil,
+          # If provided, updates the credit to use the specified rate type for current and
+          # future invoices. Previously finalized invoices will need to be voided and
+          # regenerated to reflect the rate type change.
+          rate_type: nil,
           # List of filters that determine what kind of customer usage draws down a commit
           # or credit. A customer's usage needs to meet the condition of at least one of the
           # specifiers to contribute to a commit's or credit's drawdown. This field cannot
