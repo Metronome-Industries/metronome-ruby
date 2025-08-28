@@ -49,6 +49,7 @@ class MetronomeSDK::Test::Resources::V1::Customers::CommitsTest < MetronomeSDK::
     assert_pattern do
       row => {
         id: String,
+        created_at: Time,
         product: MetronomeSDK::Commit::Product,
         type: MetronomeSDK::Commit::Type,
         access_schedule: MetronomeSDK::ScheduleDuration | nil,

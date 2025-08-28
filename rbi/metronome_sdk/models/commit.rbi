@@ -11,6 +11,14 @@ module MetronomeSDK
       sig { returns(String) }
       attr_accessor :id
 
+      # Timestamp of when the commit was created.
+      #
+      # - Recurring commits: latter of commit service period date and parent commit
+      #   start date
+      # - Rollover commits: when the new contract started
+      sig { returns(Time) }
+      attr_accessor :created_at
+
       sig { returns(MetronomeSDK::Commit::Product) }
       attr_reader :product
 
@@ -234,6 +242,7 @@ module MetronomeSDK
       sig do
         params(
           id: String,
+          created_at: Time,
           product: MetronomeSDK::Commit::Product::OrHash,
           type: MetronomeSDK::Commit::Type::OrSymbol,
           access_schedule: MetronomeSDK::ScheduleDuration::OrHash,
@@ -282,6 +291,12 @@ module MetronomeSDK
       end
       def self.new(
         id:,
+        # Timestamp of when the commit was created.
+        #
+        # - Recurring commits: latter of commit service period date and parent commit
+        #   start date
+        # - Rollover commits: when the new contract started
+        created_at:,
         product:,
         type:,
         # The schedule that the customer will gain access to the credits purposed with
@@ -344,6 +359,7 @@ module MetronomeSDK
         override.returns(
           {
             id: String,
+            created_at: Time,
             product: MetronomeSDK::Commit::Product,
             type: MetronomeSDK::Commit::Type::TaggedSymbol,
             access_schedule: MetronomeSDK::ScheduleDuration,
