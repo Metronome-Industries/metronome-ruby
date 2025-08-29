@@ -64,6 +64,7 @@ module MetronomeSDK
           optional :applicable_product_tags, MetronomeSDK::Internal::Type::ArrayOf[String]
 
           # @!attribute custom_fields
+          #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           #
           #   @return [Hash{Symbol=>String}, nil]
           optional :custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
@@ -120,11 +121,8 @@ module MetronomeSDK
           #   specifiers to contribute to a commit's or credit's drawdown. This field cannot
           #   be used together with `applicable_product_ids` or `applicable_product_tags`.
           #
-          #   @return [Array<MetronomeSDK::Models::V1::Customers::CommitCreateParams::Specifier>, nil]
-          optional :specifiers,
-                   -> {
-                     MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::CommitCreateParams::Specifier]
-                   }
+          #   @return [Array<MetronomeSDK::Models::CommitSpecifierInput>, nil]
+          optional :specifiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::CommitSpecifierInput] }
 
           # @!attribute uniqueness_key
           #   Prevents the creation of duplicates. If a request to create a commit or credit
@@ -155,7 +153,7 @@ module MetronomeSDK
           #
           #   @param applicable_product_tags [Array<String>] Which tags the commit applies to. If applicable*product_ids, applicable_product*
           #
-          #   @param custom_fields [Hash{Symbol=>String}]
+          #   @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           #
           #   @param description [String] Used only in UI/API. It is not exposed to end customers.
           #
@@ -171,7 +169,7 @@ module MetronomeSDK
           #
           #   @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
           #
-          #   @param specifiers [Array<MetronomeSDK::Models::V1::Customers::CommitCreateParams::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
+          #   @param specifiers [Array<MetronomeSDK::Models::CommitSpecifierInput>] List of filters that determine what kind of customer usage draws down a commit o
           #
           #   @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a commit or credit i
           #
@@ -182,9 +180,7 @@ module MetronomeSDK
             #
             #   @return [Array<MetronomeSDK::Models::V1::Customers::CommitCreateParams::AccessSchedule::ScheduleItem>]
             required :schedule_items,
-                     -> {
-                       MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::CommitCreateParams::AccessSchedule::ScheduleItem]
-                     }
+                     -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::CommitCreateParams::AccessSchedule::ScheduleItem] }
 
             # @!attribute credit_type_id
             #   Defaults to USD (cents) if not passed
@@ -258,18 +254,14 @@ module MetronomeSDK
             #
             #   @return [MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule, nil]
             optional :recurring_schedule,
-                     -> {
-                       MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule
-                     }
+                     -> { MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule }
 
             # @!attribute schedule_items
             #   Either provide amount or provide both unit_price and quantity.
             #
             #   @return [Array<MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem>, nil]
             optional :schedule_items,
-                     -> {
-                       MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem]
-                     }
+                     -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::ScheduleItem] }
 
             # @!method initialize(credit_type_id: nil, do_not_invoice: nil, recurring_schedule: nil, schedule_items: nil)
             #   Some parameter documentations has been truncated, see
@@ -295,9 +287,7 @@ module MetronomeSDK
               #
               #   @return [Symbol, MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::AmountDistribution]
               required :amount_distribution,
-                       enum: -> {
-                         MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::AmountDistribution
-                       }
+                       enum: -> { MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::AmountDistribution }
 
               # @!attribute ending_before
               #   RFC 3339 timestamp (exclusive).
@@ -309,9 +299,7 @@ module MetronomeSDK
               #
               #   @return [Symbol, MetronomeSDK::Models::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::Frequency]
               required :frequency,
-                       enum: -> {
-                         MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::Frequency
-                       }
+                       enum: -> { MetronomeSDK::V1::Customers::CommitCreateParams::InvoiceSchedule::RecurringSchedule::Frequency }
 
               # @!attribute starting_at
               #   RFC 3339 timestamp (inclusive).
@@ -446,44 +434,6 @@ module MetronomeSDK
 
             # @!method self.values
             #   @return [Array<Symbol>]
-          end
-
-          class Specifier < MetronomeSDK::Internal::Type::BaseModel
-            # @!attribute presentation_group_values
-            #
-            #   @return [Hash{Symbol=>String}, nil]
-            optional :presentation_group_values, MetronomeSDK::Internal::Type::HashOf[String]
-
-            # @!attribute pricing_group_values
-            #
-            #   @return [Hash{Symbol=>String}, nil]
-            optional :pricing_group_values, MetronomeSDK::Internal::Type::HashOf[String]
-
-            # @!attribute product_id
-            #   If provided, the specifier will only apply to the product with the specified ID.
-            #
-            #   @return [String, nil]
-            optional :product_id, String
-
-            # @!attribute product_tags
-            #   If provided, the specifier will only apply to products with all the specified
-            #   tags.
-            #
-            #   @return [Array<String>, nil]
-            optional :product_tags, MetronomeSDK::Internal::Type::ArrayOf[String]
-
-            # @!method initialize(presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil)
-            #   Some parameter documentations has been truncated, see
-            #   {MetronomeSDK::Models::V1::Customers::CommitCreateParams::Specifier} for more
-            #   details.
-            #
-            #   @param presentation_group_values [Hash{Symbol=>String}]
-            #
-            #   @param pricing_group_values [Hash{Symbol=>String}]
-            #
-            #   @param product_id [String] If provided, the specifier will only apply to the product with the specified ID.
-            #
-            #   @param product_tags [Array<String>] If provided, the specifier will only apply to products with all the specified ta
           end
         end
       end

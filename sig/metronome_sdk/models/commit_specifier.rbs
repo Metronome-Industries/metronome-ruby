@@ -1,0 +1,47 @@
+module MetronomeSDK
+  module Models
+    type commit_specifier =
+      {
+        presentation_group_values: ::Hash[Symbol, String],
+        pricing_group_values: ::Hash[Symbol, String],
+        product_id: String,
+        product_tags: ::Array[String]
+      }
+
+    class CommitSpecifier < MetronomeSDK::Internal::Type::BaseModel
+      attr_reader presentation_group_values: ::Hash[Symbol, String]?
+
+      def presentation_group_values=: (
+        ::Hash[Symbol, String]
+      ) -> ::Hash[Symbol, String]
+
+      attr_reader pricing_group_values: ::Hash[Symbol, String]?
+
+      def pricing_group_values=: (
+        ::Hash[Symbol, String]
+      ) -> ::Hash[Symbol, String]
+
+      attr_reader product_id: String?
+
+      def product_id=: (String) -> String
+
+      attr_reader product_tags: ::Array[String]?
+
+      def product_tags=: (::Array[String]) -> ::Array[String]
+
+      def initialize: (
+        ?presentation_group_values: ::Hash[Symbol, String],
+        ?pricing_group_values: ::Hash[Symbol, String],
+        ?product_id: String,
+        ?product_tags: ::Array[String]
+      ) -> void
+
+      def to_hash: -> {
+        presentation_group_values: ::Hash[Symbol, String],
+        pricing_group_values: ::Hash[Symbol, String],
+        product_id: String,
+        product_tags: ::Array[String]
+      }
+    end
+  end
+end

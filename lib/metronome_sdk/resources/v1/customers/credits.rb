@@ -8,7 +8,55 @@ module MetronomeSDK
           # Some parameter documentations has been truncated, see
           # {MetronomeSDK::Models::V1::Customers::CreditCreateParams} for more details.
           #
-          # Create a new credit at the customer level.
+          # Creates customer-level credits that provide spending allowances or free credit
+          # balances for customers across their Metronome usage. Note: In most cases, you
+          # should add credits directly to customer contracts using the contract/create or
+          # contract/edit APIs.
+          #
+          # ### Use this endpoint to:
+          #
+          # Use this endpoint when you need to provision credits directly at the customer
+          # level that can be applied across multiple contracts or scoped to specific
+          # contracts. Customer-level credits are ideal for:
+          #
+          # - Customer onboarding incentives that apply globally
+          # - Flexible spending allowances that aren't tied to a single contract
+          # - Migration scenarios where you need to preserve existing customer balances
+          #
+          # #### Scoping flexibility:
+          #
+          # Customer-level credits can be configured in two ways:
+          #
+          # - Contract-specific: Use the applicable_contract_ids field to limit the credit
+          #   to specific contracts
+          # - Cross-contract: Leave applicable_contract_ids empty to allow the credit to be
+          #   used across all of the customer's contracts
+          #
+          # #### Product Targeting:
+          #
+          # Credits can be scoped to specific products using `applicable_product_ids` or
+          # `applicable_product_tags`, or left unrestricted to apply to all products.
+          #
+          # #### Priority considerations:
+          #
+          # When multiple credits are applicable, the one with the lower priority value will
+          # be consumed first. If there is a tie, contract level commits and credits will be
+          # applied before customer level commits and credits. Plan your priority scheme
+          # carefully to ensure credits are applied in the desired order.
+          #
+          # #### Access Schedule Required:
+          #
+          # You must provide an `access_schedule` that defines when and how much credit
+          # becomes available to the customer over time. This usually is aligned to the
+          # contract schedule or starts immediately and is set to expire in the future.
+          #
+          # ### Usage Guidelines:
+          #
+          # ⚠️ Preferred Alternative: In most cases, you should add credits directly to
+          # contracts using the contract/create or contract/edit APIs instead of creating
+          # customer-level credits. Contract-level credits provide better organization, and
+          # are easier for finance teams to recognize revenue, and are the recommended
+          # approach for most use cases.
           #
           # @overload create(access_schedule:, customer_id:, priority:, product_id:, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, custom_fields: nil, description: nil, name: nil, netsuite_sales_order_id: nil, rate_type: nil, salesforce_opportunity_id: nil, specifiers: nil, uniqueness_key: nil, request_options: {})
           #
@@ -26,7 +74,7 @@ module MetronomeSDK
           #
           # @param applicable_product_tags [Array<String>] Which tags the credit applies to. If both applicable*product_ids and applicable*
           #
-          # @param custom_fields [Hash{Symbol=>String}]
+          # @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           #
           # @param description [String] Used only in UI/API. It is not exposed to end customers.
           #
@@ -38,7 +86,7 @@ module MetronomeSDK
           #
           # @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
           #
-          # @param specifiers [Array<MetronomeSDK::Models::V1::Customers::CreditCreateParams::Specifier>] List of filters that determine what kind of customer usage draws down a commit o
+          # @param specifiers [Array<MetronomeSDK::Models::CommitSpecifierInput>] List of filters that determine what kind of customer usage draws down a commit o
           #
           # @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a commit or credit i
           #
@@ -61,7 +109,50 @@ module MetronomeSDK
           # Some parameter documentations has been truncated, see
           # {MetronomeSDK::Models::V1::Customers::CreditListParams} for more details.
           #
-          # List credits.
+          # Retrieve a detailed list of all credits available to a customer, including
+          # promotional credits and contract-specific credits. This endpoint provides
+          # comprehensive visibility into credit balances, access schedules, and usage
+          # rules, enabling you to build credit management interfaces and track available
+          # funding.
+          #
+          # ### Use this endpoint to:
+          #
+          # - Display all available credits in customer billing dashboards
+          # - Show credit balances and expiration dates
+          # - Track credit usage history with optional ledger details
+          # - Build credit management and reporting tools
+          # - Monitor promotional credit utilization • Support customer inquiries about
+          #   available credits
+          #
+          # ### Key response fields:
+          #
+          # An array of Credit objects containing:
+          #
+          # - Credit details: Name, priority, and which applicable products/tags it applies
+          #   to
+          # - Product ID: The `product_id` of the credit. This is for external mapping into
+          #   your quote-to-cash stack, not the product it applies to.
+          # - Access schedule: When credits become available and expire
+          # - Optional ledger entries: Transaction history (if `include_ledgers=true`)
+          # - Balance information: Current available amount (if `include_balance=true`)
+          # - Metadata: Custom fields and usage specifiers
+          #
+          # ### Usage guidelines:
+          #
+          # - Pagination: Results limited to 25 commits per page; use next_page for more
+          # - Date filtering options:
+          #   - `covering_date`: Credits active on a specific date
+          #   - `starting_at`: Credits with access on/after a date
+          #   - `effective_before`: Credits with access before a date (exclusive)
+          # - Scope options:
+          #   - `include_contract_credits`: Include contract-level credits (not just
+          #     customer-level)
+          #   - `include_archived`: Include archived credits and credits from archived
+          #     contracts
+          # - Performance considerations:
+          #   - `include_ledgers`: Adds detailed transaction history (slower)
+          #   - `include_balance`: Adds current balance calculation (slower)
+          # - Optional filtering: Use credit_id to retrieve a specific commit
           #
           # @overload list(customer_id:, covering_date: nil, credit_id: nil, effective_before: nil, include_archived: nil, include_balance: nil, include_contract_credits: nil, include_ledgers: nil, limit: nil, next_page: nil, starting_at: nil, request_options: {})
           #
@@ -89,7 +180,7 @@ module MetronomeSDK
           #
           # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
           #
-          # @return [MetronomeSDK::Models::V1::Customers::CreditListResponse]
+          # @return [MetronomeSDK::Internal::BodyCursorPage<MetronomeSDK::Models::Credit>]
           #
           # @see MetronomeSDK::Models::V1::Customers::CreditListParams
           def list(params)
@@ -98,7 +189,8 @@ module MetronomeSDK
               method: :post,
               path: "v1/contracts/customerCredits/list",
               body: parsed,
-              model: MetronomeSDK::Models::V1::Customers::CreditListResponse,
+              page: MetronomeSDK::Internal::BodyCursorPage,
+              model: MetronomeSDK::Credit,
               options: options
             )
           end
@@ -107,8 +199,12 @@ module MetronomeSDK
           # {MetronomeSDK::Models::V1::Customers::CreditUpdateEndDateParams} for more
           # details.
           #
-          # Pull forward the end date of a credit. Use the "edit a credit" endpoint to
-          # extend the end date of a credit, or to make other edits to the credit.
+          # Shortens the end date of an existing customer credit to terminate it earlier
+          # than originally scheduled. Only allows moving end dates forward (earlier), not
+          # extending them.
+          #
+          # Note: To extend credit end dates or make comprehensive edits, use the 'edit
+          # credit' endpoint instead.
           #
           # @overload update_end_date(access_ending_before:, credit_id:, customer_id:, request_options: {})
           #

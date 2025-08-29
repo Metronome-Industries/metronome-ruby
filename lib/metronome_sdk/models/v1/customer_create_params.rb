@@ -20,6 +20,7 @@ module MetronomeSDK
         optional :billing_config, -> { MetronomeSDK::V1::CustomerCreateParams::BillingConfig }
 
         # @!attribute custom_fields
+        #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         #
         #   @return [Hash{Symbol=>String}, nil]
         optional :custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
@@ -28,9 +29,7 @@ module MetronomeSDK
         #
         #   @return [Array<MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration>, nil]
         optional :customer_billing_provider_configurations,
-                 -> {
-                   MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration]
-                 }
+                 -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration] }
 
         # @!attribute external_id
         #   (deprecated, use ingest_aliases instead) an alias that can be used to refer to
@@ -53,7 +52,7 @@ module MetronomeSDK
         #
         #   @param billing_config [MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig]
         #
-        #   @param custom_fields [Hash{Symbol=>String}]
+        #   @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         #
         #   @param customer_billing_provider_configurations [Array<MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration>]
         #
@@ -179,9 +178,7 @@ module MetronomeSDK
           #
           #   @return [Symbol, MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::BillingProvider]
           required :billing_provider,
-                   enum: -> {
-                     MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::BillingProvider
-                   }
+                   enum: -> { MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::BillingProvider }
 
           # @!attribute configuration
           #   Configuration for the billing provider. The structure of this object is specific
@@ -198,9 +195,7 @@ module MetronomeSDK
           #
           #   @return [Symbol, MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::DeliveryMethod, nil]
           optional :delivery_method,
-                   enum: -> {
-                     MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::DeliveryMethod
-                   }
+                   enum: -> { MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::DeliveryMethod }
 
           # @!attribute delivery_method_id
           #   ID of the delivery method to use for this customer. If not provided, the

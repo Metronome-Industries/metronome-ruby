@@ -18,6 +18,7 @@ module MetronomeSDK
         required :created_at, Time
 
         # @!attribute custom_fields
+        #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         #
         #   @return [Hash{Symbol=>String}]
         required :custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
@@ -67,7 +68,7 @@ module MetronomeSDK
         #
         #   @param created_at [Time] RFC 3339 timestamp indicating when the customer was created.
         #
-        #   @param custom_fields [Hash{Symbol=>String}]
+        #   @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         #
         #   @param customer_config [MetronomeSDK::Models::V1::CustomerDetail::CustomerConfig]
         #

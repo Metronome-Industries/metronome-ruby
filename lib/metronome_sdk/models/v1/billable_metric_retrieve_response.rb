@@ -50,6 +50,7 @@ module MetronomeSDK
           optional :archived_at, Time
 
           # @!attribute custom_fields
+          #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           #
           #   @return [Hash{Symbol=>String}, nil]
           optional :custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
@@ -65,8 +66,7 @@ module MetronomeSDK
           #   represents a set of properties used to slice events into distinct buckets.
           #
           #   @return [Array<Array<String>>, nil]
-          optional :group_keys,
-                   MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Internal::Type::ArrayOf[String]]
+          optional :group_keys, MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Internal::Type::ArrayOf[String]]
 
           # @!attribute property_filters
           #   A list of filters to match events to this billable metric. Each filter defines a
@@ -74,10 +74,7 @@ module MetronomeSDK
           #   billable metric.
           #
           #   @return [Array<MetronomeSDK::Models::PropertyFilter>, nil]
-          optional :property_filters,
-                   -> {
-                     MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::PropertyFilter]
-                   }
+          optional :property_filters, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::PropertyFilter] }
 
           # @!attribute sql
           #   The SQL query associated with the billable metric
@@ -100,7 +97,7 @@ module MetronomeSDK
           #
           #   @param archived_at [Time] RFC 3339 timestamp indicating when the billable metric was archived. If not prov
           #
-          #   @param custom_fields [Hash{Symbol=>String}]
+          #   @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           #
           #   @param event_type_filter [MetronomeSDK::Models::EventTypeFilter] An optional filtering rule to match the 'event_type' property of an event.
           #

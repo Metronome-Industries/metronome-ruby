@@ -155,6 +155,39 @@ class MetronomeSDK::Test::Resources::V1::CustomersTest < MetronomeSDK::Test::Res
     end
   end
 
+  def test_retrieve_billing_configurations_required_params
+    response =
+      @metronome.v1.customers.retrieve_billing_configurations(
+        customer_id: "6a37bb88-8538-48c5-b37b-a41c836328bd"
+      )
+
+    assert_pattern do
+      response => MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data])
+      }
+    end
+  end
+
+  def test_set_billing_configurations_required_params
+    response =
+      @metronome.v1.customers.set_billing_configurations(
+        data: [
+          {billing_provider: :stripe, customer_id: "4db51251-61de-4bfe-b9ce-495e244f3491"},
+          {billing_provider: :aws_marketplace, customer_id: "4db51251-61de-4bfe-b9ce-495e244f3491"},
+          {billing_provider: :azure_marketplace, customer_id: "4db51251-61de-4bfe-b9ce-495e244f3491"},
+          {billing_provider: :aws_marketplace, customer_id: "4db51251-61de-4bfe-b9ce-495e244f3491"}
+        ]
+      )
+
+    assert_pattern do
+      response => nil
+    end
+  end
+
   def test_set_ingest_aliases_required_params
     response =
       @metronome.v1.customers.set_ingest_aliases(

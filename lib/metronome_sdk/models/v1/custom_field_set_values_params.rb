@@ -9,6 +9,7 @@ module MetronomeSDK
         include MetronomeSDK::Internal::Type::RequestParameters
 
         # @!attribute custom_fields
+        #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         #
         #   @return [Hash{Symbol=>String}]
         required :custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
@@ -24,9 +25,12 @@ module MetronomeSDK
         required :entity_id, String
 
         # @!method initialize(custom_fields:, entity:, entity_id:, request_options: {})
-        #   @param custom_fields [Hash{Symbol=>String}]
+        #   @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
+        #
         #   @param entity [Symbol, MetronomeSDK::Models::V1::CustomFieldSetValuesParams::Entity]
+        #
         #   @param entity_id [String]
+        #
         #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
 
         module Entity

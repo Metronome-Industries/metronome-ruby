@@ -26,6 +26,7 @@ module MetronomeSDK
         sig { returns(String) }
         attr_accessor :name
 
+        # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         sig { returns(T.nilable(T::Hash[Symbol, String])) }
         attr_reader :custom_fields
 
@@ -51,6 +52,7 @@ module MetronomeSDK
           # in usage events
           ingest_aliases:,
           name:,
+          # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           custom_fields: nil
         )
         end

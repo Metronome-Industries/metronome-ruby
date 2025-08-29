@@ -21,6 +21,7 @@ module MetronomeSDK
         required :credit_type, -> { MetronomeSDK::CreditTypeData }
 
         # @!attribute custom_fields
+        #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         #
         #   @return [Hash{Symbol=>String}]
         required :custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
@@ -81,7 +82,7 @@ module MetronomeSDK
         #
         #   @param credit_type [MetronomeSDK::Models::CreditTypeData]
         #
-        #   @param custom_fields [Hash{Symbol=>String}]
+        #   @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         #
         #   @param name [String]
         #

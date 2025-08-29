@@ -4,10 +4,12 @@ module MetronomeSDK
   module Resources
     class V1
       class Services
-        # Fetches a list of services used by Metronome and the associated IP addresses. IP
-        # addresses are not necessarily unique between services. In most cases, IP
-        # addresses will appear in the list at least 30 days before they are used for the
-        # first time.
+        # Gets Metronome's service registry with associated IP addresses for security
+        # allowlisting and firewall configuration. Use this endpoint to maintain an
+        # up-to-date list of IPs that your systems should trust for Metronome
+        # communications. Returns service names and their current IP ranges, with new IPs
+        # typically appearing 30+ days before first use to ensure smooth allowlist
+        # updates.
         #
         # @overload list(request_options: {})
         #

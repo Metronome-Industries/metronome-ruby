@@ -34,6 +34,7 @@ module MetronomeSDK
         end
         attr_writer :billing_config
 
+        # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         sig { returns(T.nilable(T::Hash[Symbol, String])) }
         attr_reader :custom_fields
 
@@ -95,6 +96,7 @@ module MetronomeSDK
           # This will be truncated to 160 characters if the provided name is longer.
           name:,
           billing_config: nil,
+          # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           custom_fields: nil,
           customer_billing_provider_configurations: nil,
           # (deprecated, use ingest_aliases instead) an alias that can be used to refer to

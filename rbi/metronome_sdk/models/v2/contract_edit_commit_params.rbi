@@ -87,19 +87,33 @@ module MetronomeSDK
         sig { params(product_id: String).void }
         attr_writer :product_id
 
+        # If provided, updates the commit to use the specified rate type for current and
+        # future invoices. Previously finalized invoices will need to be voided and
+        # regenerated to reflect the rate type change.
+        sig do
+          returns(
+            T.nilable(
+              MetronomeSDK::V2::ContractEditCommitParams::RateType::OrSymbol
+            )
+          )
+        end
+        attr_reader :rate_type
+
+        sig do
+          params(
+            rate_type:
+              MetronomeSDK::V2::ContractEditCommitParams::RateType::OrSymbol
+          ).void
+        end
+        attr_writer :rate_type
+
         # List of filters that determine what kind of customer usage draws down a commit
         # or credit. A customer's usage needs to meet the condition of at least one of the
         # specifiers to contribute to a commit's or credit's drawdown. This field cannot
         # be used together with `applicable_product_ids` or `applicable_product_tags`.
         # Instead, to target usage by product or product tag, pass those values in the
         # body of `specifiers`.
-        sig do
-          returns(
-            T.nilable(
-              T::Array[MetronomeSDK::V2::ContractEditCommitParams::Specifier]
-            )
-          )
-        end
+        sig { returns(T.nilable(T::Array[MetronomeSDK::CommitSpecifierInput])) }
         attr_accessor :specifiers
 
         sig do
@@ -115,12 +129,10 @@ module MetronomeSDK
               MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule::OrHash,
             priority: T.nilable(Float),
             product_id: String,
+            rate_type:
+              MetronomeSDK::V2::ContractEditCommitParams::RateType::OrSymbol,
             specifiers:
-              T.nilable(
-                T::Array[
-                  MetronomeSDK::V2::ContractEditCommitParams::Specifier::OrHash
-                ]
-              ),
+              T.nilable(T::Array[MetronomeSDK::CommitSpecifierInput::OrHash]),
             request_options: MetronomeSDK::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
@@ -145,6 +157,10 @@ module MetronomeSDK
           # first.
           priority: nil,
           product_id: nil,
+          # If provided, updates the commit to use the specified rate type for current and
+          # future invoices. Previously finalized invoices will need to be voided and
+          # regenerated to reflect the rate type change.
+          rate_type: nil,
           # List of filters that determine what kind of customer usage draws down a commit
           # or credit. A customer's usage needs to meet the condition of at least one of the
           # specifiers to contribute to a commit's or credit's drawdown. This field cannot
@@ -170,12 +186,10 @@ module MetronomeSDK
                 MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule,
               priority: T.nilable(Float),
               product_id: String,
+              rate_type:
+                MetronomeSDK::V2::ContractEditCommitParams::RateType::OrSymbol,
               specifiers:
-                T.nilable(
-                  T::Array[
-                    MetronomeSDK::V2::ContractEditCommitParams::Specifier
-                  ]
-                ),
+                T.nilable(T::Array[MetronomeSDK::CommitSpecifierInput]),
               request_options: MetronomeSDK::RequestOptions
             }
           )
@@ -680,74 +694,40 @@ module MetronomeSDK
           end
         end
 
-        class Specifier < MetronomeSDK::Internal::Type::BaseModel
-          OrHash =
+        # If provided, updates the commit to use the specified rate type for current and
+        # future invoices. Previously finalized invoices will need to be voided and
+        # regenerated to reflect the rate type change.
+        module RateType
+          extend MetronomeSDK::Internal::Type::Enum
+
+          TaggedSymbol =
             T.type_alias do
-              T.any(
-                MetronomeSDK::V2::ContractEditCommitParams::Specifier,
-                MetronomeSDK::Internal::AnyHash
+              T.all(
+                Symbol,
+                MetronomeSDK::V2::ContractEditCommitParams::RateType
               )
             end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          sig { returns(T.nilable(T::Hash[Symbol, String])) }
-          attr_reader :presentation_group_values
-
-          sig do
-            params(presentation_group_values: T::Hash[Symbol, String]).void
-          end
-          attr_writer :presentation_group_values
-
-          sig { returns(T.nilable(T::Hash[Symbol, String])) }
-          attr_reader :pricing_group_values
-
-          sig { params(pricing_group_values: T::Hash[Symbol, String]).void }
-          attr_writer :pricing_group_values
-
-          # If provided, the specifier will only apply to the product with the specified ID.
-          sig { returns(T.nilable(String)) }
-          attr_reader :product_id
-
-          sig { params(product_id: String).void }
-          attr_writer :product_id
-
-          # If provided, the specifier will only apply to products with all the specified
-          # tags.
-          sig { returns(T.nilable(T::Array[String])) }
-          attr_reader :product_tags
-
-          sig { params(product_tags: T::Array[String]).void }
-          attr_writer :product_tags
-
-          sig do
-            params(
-              presentation_group_values: T::Hash[Symbol, String],
-              pricing_group_values: T::Hash[Symbol, String],
-              product_id: String,
-              product_tags: T::Array[String]
-            ).returns(T.attached_class)
-          end
-          def self.new(
-            presentation_group_values: nil,
-            pricing_group_values: nil,
-            # If provided, the specifier will only apply to the product with the specified ID.
-            product_id: nil,
-            # If provided, the specifier will only apply to products with all the specified
-            # tags.
-            product_tags: nil
-          )
-          end
+          LIST_RATE =
+            T.let(
+              :LIST_RATE,
+              MetronomeSDK::V2::ContractEditCommitParams::RateType::TaggedSymbol
+            )
+          COMMIT_RATE =
+            T.let(
+              :COMMIT_RATE,
+              MetronomeSDK::V2::ContractEditCommitParams::RateType::TaggedSymbol
+            )
 
           sig do
             override.returns(
-              {
-                presentation_group_values: T::Hash[Symbol, String],
-                pricing_group_values: T::Hash[Symbol, String],
-                product_id: String,
-                product_tags: T::Array[String]
-              }
+              T::Array[
+                MetronomeSDK::V2::ContractEditCommitParams::RateType::TaggedSymbol
+              ]
             )
           end
-          def to_hash
+          def self.values
           end
         end
       end

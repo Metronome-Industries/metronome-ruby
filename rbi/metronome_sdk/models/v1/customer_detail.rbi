@@ -20,6 +20,7 @@ module MetronomeSDK
         sig { returns(Time) }
         attr_accessor :created_at
 
+        # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :custom_fields
 
@@ -88,6 +89,7 @@ module MetronomeSDK
           id:,
           # RFC 3339 timestamp indicating when the customer was created.
           created_at:,
+          # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           custom_fields:,
           customer_config:,
           # (deprecated, use ingest_aliases instead) the first ID (Metronome or ingest

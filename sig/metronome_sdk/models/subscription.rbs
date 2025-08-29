@@ -1,0 +1,215 @@
+module MetronomeSDK
+  module Models
+    type subscription =
+      {
+        collection_schedule: MetronomeSDK::Models::Subscription::collection_schedule,
+        proration: MetronomeSDK::Subscription::Proration,
+        quantity_management_mode: MetronomeSDK::Models::Subscription::quantity_management_mode,
+        quantity_schedule: ::Array[MetronomeSDK::Subscription::QuantitySchedule],
+        starting_at: Time,
+        subscription_rate: MetronomeSDK::Subscription::SubscriptionRate,
+        id: String,
+        custom_fields: ::Hash[Symbol, String],
+        description: String,
+        ending_before: Time,
+        fiat_credit_type_id: String,
+        name: String
+      }
+
+    class Subscription < MetronomeSDK::Internal::Type::BaseModel
+      attr_accessor collection_schedule: MetronomeSDK::Models::Subscription::collection_schedule
+
+      attr_accessor proration: MetronomeSDK::Subscription::Proration
+
+      attr_accessor quantity_management_mode: MetronomeSDK::Models::Subscription::quantity_management_mode
+
+      attr_accessor quantity_schedule: ::Array[MetronomeSDK::Subscription::QuantitySchedule]
+
+      attr_accessor starting_at: Time
+
+      attr_accessor subscription_rate: MetronomeSDK::Subscription::SubscriptionRate
+
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader custom_fields: ::Hash[Symbol, String]?
+
+      def custom_fields=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
+
+      attr_reader description: String?
+
+      def description=: (String) -> String
+
+      attr_reader ending_before: Time?
+
+      def ending_before=: (Time) -> Time
+
+      attr_reader fiat_credit_type_id: String?
+
+      def fiat_credit_type_id=: (String) -> String
+
+      attr_reader name: String?
+
+      def name=: (String) -> String
+
+      def initialize: (
+        collection_schedule: MetronomeSDK::Models::Subscription::collection_schedule,
+        proration: MetronomeSDK::Subscription::Proration,
+        quantity_management_mode: MetronomeSDK::Models::Subscription::quantity_management_mode,
+        quantity_schedule: ::Array[MetronomeSDK::Subscription::QuantitySchedule],
+        starting_at: Time,
+        subscription_rate: MetronomeSDK::Subscription::SubscriptionRate,
+        ?id: String,
+        ?custom_fields: ::Hash[Symbol, String],
+        ?description: String,
+        ?ending_before: Time,
+        ?fiat_credit_type_id: String,
+        ?name: String
+      ) -> void
+
+      def to_hash: -> {
+        collection_schedule: MetronomeSDK::Models::Subscription::collection_schedule,
+        proration: MetronomeSDK::Subscription::Proration,
+        quantity_management_mode: MetronomeSDK::Models::Subscription::quantity_management_mode,
+        quantity_schedule: ::Array[MetronomeSDK::Subscription::QuantitySchedule],
+        starting_at: Time,
+        subscription_rate: MetronomeSDK::Subscription::SubscriptionRate,
+        id: String,
+        custom_fields: ::Hash[Symbol, String],
+        description: String,
+        ending_before: Time,
+        fiat_credit_type_id: String,
+        name: String
+      }
+
+      type collection_schedule = :ADVANCE | :ARREARS
+
+      module CollectionSchedule
+        extend MetronomeSDK::Internal::Type::Enum
+
+        ADVANCE: :ADVANCE
+        ARREARS: :ARREARS
+
+        def self?.values: -> ::Array[MetronomeSDK::Models::Subscription::collection_schedule]
+      end
+
+      type proration =
+        {
+          invoice_behavior: MetronomeSDK::Models::Subscription::Proration::invoice_behavior,
+          is_prorated: bool
+        }
+
+      class Proration < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor invoice_behavior: MetronomeSDK::Models::Subscription::Proration::invoice_behavior
+
+        attr_accessor is_prorated: bool
+
+        def initialize: (
+          invoice_behavior: MetronomeSDK::Models::Subscription::Proration::invoice_behavior,
+          is_prorated: bool
+        ) -> void
+
+        def to_hash: -> {
+          invoice_behavior: MetronomeSDK::Models::Subscription::Proration::invoice_behavior,
+          is_prorated: bool
+        }
+
+        type invoice_behavior =
+          :BILL_IMMEDIATELY | :BILL_ON_NEXT_COLLECTION_DATE
+
+        module InvoiceBehavior
+          extend MetronomeSDK::Internal::Type::Enum
+
+          BILL_IMMEDIATELY: :BILL_IMMEDIATELY
+          BILL_ON_NEXT_COLLECTION_DATE: :BILL_ON_NEXT_COLLECTION_DATE
+
+          def self?.values: -> ::Array[MetronomeSDK::Models::Subscription::Proration::invoice_behavior]
+        end
+      end
+
+      type quantity_management_mode = :SEAT_BASED | :QUANTITY_ONLY
+
+      module QuantityManagementMode
+        extend MetronomeSDK::Internal::Type::Enum
+
+        SEAT_BASED: :SEAT_BASED
+        QUANTITY_ONLY: :QUANTITY_ONLY
+
+        def self?.values: -> ::Array[MetronomeSDK::Models::Subscription::quantity_management_mode]
+      end
+
+      type quantity_schedule =
+        { quantity: Float, starting_at: Time, ending_before: Time }
+
+      class QuantitySchedule < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor quantity: Float
+
+        attr_accessor starting_at: Time
+
+        attr_reader ending_before: Time?
+
+        def ending_before=: (Time) -> Time
+
+        def initialize: (
+          quantity: Float,
+          starting_at: Time,
+          ?ending_before: Time
+        ) -> void
+
+        def to_hash: -> {
+          quantity: Float,
+          starting_at: Time,
+          ending_before: Time
+        }
+      end
+
+      type subscription_rate =
+        {
+          billing_frequency: MetronomeSDK::Models::Subscription::SubscriptionRate::billing_frequency,
+          product: MetronomeSDK::Subscription::SubscriptionRate::Product
+        }
+
+      class SubscriptionRate < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor billing_frequency: MetronomeSDK::Models::Subscription::SubscriptionRate::billing_frequency
+
+        attr_accessor product: MetronomeSDK::Subscription::SubscriptionRate::Product
+
+        def initialize: (
+          billing_frequency: MetronomeSDK::Models::Subscription::SubscriptionRate::billing_frequency,
+          product: MetronomeSDK::Subscription::SubscriptionRate::Product
+        ) -> void
+
+        def to_hash: -> {
+          billing_frequency: MetronomeSDK::Models::Subscription::SubscriptionRate::billing_frequency,
+          product: MetronomeSDK::Subscription::SubscriptionRate::Product
+        }
+
+        type billing_frequency = :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY
+
+        module BillingFrequency
+          extend MetronomeSDK::Internal::Type::Enum
+
+          MONTHLY: :MONTHLY
+          QUARTERLY: :QUARTERLY
+          ANNUAL: :ANNUAL
+          WEEKLY: :WEEKLY
+
+          def self?.values: -> ::Array[MetronomeSDK::Models::Subscription::SubscriptionRate::billing_frequency]
+        end
+
+        type product = { id: String, name: String }
+
+        class Product < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor name: String
+
+          def initialize: (id: String, name: String) -> void
+
+          def to_hash: -> { id: String, name: String }
+        end
+      end
+    end
+  end
+end

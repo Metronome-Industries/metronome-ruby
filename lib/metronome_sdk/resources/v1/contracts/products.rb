@@ -8,7 +8,11 @@ module MetronomeSDK
           # Some parameter documentations has been truncated, see
           # {MetronomeSDK::Models::V1::Contracts::ProductCreateParams} for more details.
           #
-          # Create a new product
+          # Create a new product object. Products in Metronome represent your company's
+          # individual product or service offerings. A Product can be thought of as the
+          # basic unit of a line item on the invoice. This is analogous to SKUs or items in
+          # an ERP system. Give the product a meaningful name as they will appear on
+          # customer invoices.
           #
           # @overload create(name:, type:, billable_metric_id: nil, composite_product_ids: nil, composite_tags: nil, custom_fields: nil, exclude_free_usage: nil, is_refundable: nil, netsuite_internal_item_id: nil, netsuite_overage_item_id: nil, presentation_group_key: nil, pricing_group_key: nil, quantity_conversion: nil, quantity_rounding: nil, tags: nil, request_options: {})
           #
@@ -22,7 +26,7 @@ module MetronomeSDK
           #
           # @param composite_tags [Array<String>] Required for COMPOSITE products
           #
-          # @param custom_fields [Hash{Symbol=>String}]
+          # @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           #
           # @param exclude_free_usage [Boolean] Beta feature only available for composite products. If true, products with $0 wi
           #
@@ -58,7 +62,7 @@ module MetronomeSDK
             )
           end
 
-          # Get a specific product
+          # Retrieve a product by its ID, including all metadata and historical changes.
           #
           # @overload retrieve(id:, request_options: {})
           #
@@ -82,7 +86,17 @@ module MetronomeSDK
           # Some parameter documentations has been truncated, see
           # {MetronomeSDK::Models::V1::Contracts::ProductUpdateParams} for more details.
           #
-          # Update a product
+          # Updates a product's configuration while maintaining billing continuity for
+          # active customers. Use this endpoint to modify product names, metrics, pricing
+          # rules, and composite settings without disrupting ongoing billing cycles. Changes
+          # are scheduled using the starting_at timestamp, which must be on an hour
+          # boundary—set future dates to schedule updates ahead of time, or past dates for
+          # retroactive changes. Returns the updated product ID upon success.
+          #
+          # ### Usage guidance:
+          #
+          # - Product type cannot be changed after creation. For incorrect product types,
+          #   create a new product and archive the original instead.
           #
           # @overload update(product_id:, starting_at:, billable_metric_id: nil, composite_product_ids: nil, composite_tags: nil, exclude_free_usage: nil, is_refundable: nil, name: nil, netsuite_internal_item_id: nil, netsuite_overage_item_id: nil, presentation_group_key: nil, pricing_group_key: nil, quantity_conversion: nil, quantity_rounding: nil, tags: nil, request_options: {})
           #
@@ -135,7 +149,9 @@ module MetronomeSDK
           # Some parameter documentations has been truncated, see
           # {MetronomeSDK::Models::V1::Contracts::ProductListParams} for more details.
           #
-          # List products
+          # Get a paginated list of all products in your organization with their complete
+          # configuration, version history, and metadata. By default excludes archived
+          # products unless explicitly requested via the `archive_filter` parameter.
           #
           # @overload list(limit: nil, next_page: nil, archive_filter: nil, request_options: {})
           #
@@ -164,7 +180,10 @@ module MetronomeSDK
             )
           end
 
-          # Archive a product
+          # Archive a product. Any current rate cards associated with this product will
+          # continue to function as normal. However, it will no longer be available as an
+          # option for newly created rates. Once you archive a product, you can still
+          # retrieve it in the UI and API, but you cannot unarchive it.
           #
           # @overload archive(product_id:, request_options: {})
           #

@@ -10,7 +10,15 @@ module MetronomeSDK
             # {MetronomeSDK::Models::V1::Contracts::RateCards::RateListParams} for more
             # details.
             #
-            # Get all rates for a rate card at a point in time
+            # Understand the rate schedule at a given timestamp, optionally filtering the list
+            # of rates returned based on properties such as `product_id` and
+            # `pricing_group_values`. For example, you may want to display the current price
+            # for a given product in your product experience - use this endpoint to fetch that
+            # information from its source of truth in Metronome.
+            #
+            # If you want to understand the rates for a specific customer's contract,
+            # inclusive of contract-level overrides, use the `getContractRateSchedule`
+            # endpoint.
             #
             # @overload list(at:, rate_card_id:, limit: nil, next_page: nil, selectors: nil, request_options: {})
             #
@@ -63,7 +71,7 @@ module MetronomeSDK
             #
             # @param billing_frequency [Symbol, MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::BillingFrequency] Optional. Frequency to bill subscriptions with. Required for subscription type p
             #
-            # @param commit_rate [MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::CommitRate] A distinct rate on the rate card. You can choose to use this rate rather than li
+            # @param commit_rate [MetronomeSDK::Models::CommitRate] A distinct rate on the rate card. You can choose to use this rate rather than li
             #
             # @param credit_type_id [String] The Metronome ID of the credit type to associate with price, defaults to USD (ce
             #

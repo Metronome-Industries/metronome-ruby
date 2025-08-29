@@ -49,6 +49,7 @@ module MetronomeSDK
                      -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::Contracts::RateCardRetrieveResponse::Data::CreditTypeConversion] }
 
             # @!attribute custom_fields
+            #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             #
             #   @return [Hash{Symbol=>String}, nil]
             optional :custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
@@ -65,13 +66,21 @@ module MetronomeSDK
 
             # @!method initialize(id:, created_at:, created_by:, name:, aliases: nil, credit_type_conversions: nil, custom_fields: nil, description: nil, fiat_credit_type: nil)
             #   @param id [String]
+            #
             #   @param created_at [Time]
+            #
             #   @param created_by [String]
+            #
             #   @param name [String]
+            #
             #   @param aliases [Array<MetronomeSDK::Models::V1::Contracts::RateCardRetrieveResponse::Data::Alias>]
+            #
             #   @param credit_type_conversions [Array<MetronomeSDK::Models::V1::Contracts::RateCardRetrieveResponse::Data::CreditTypeConversion>]
-            #   @param custom_fields [Hash{Symbol=>String}]
+            #
+            #   @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
+            #
             #   @param description [String]
+            #
             #   @param fiat_credit_type [MetronomeSDK::Models::CreditTypeData]
 
             class Alias < MetronomeSDK::Internal::Type::BaseModel

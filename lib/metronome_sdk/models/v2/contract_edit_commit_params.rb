@@ -64,6 +64,14 @@ module MetronomeSDK
         #   @return [String, nil]
         optional :product_id, String
 
+        # @!attribute rate_type
+        #   If provided, updates the commit to use the specified rate type for current and
+        #   future invoices. Previously finalized invoices will need to be voided and
+        #   regenerated to reflect the rate type change.
+        #
+        #   @return [Symbol, MetronomeSDK::Models::V2::ContractEditCommitParams::RateType, nil]
+        optional :rate_type, enum: -> { MetronomeSDK::V2::ContractEditCommitParams::RateType }
+
         # @!attribute specifiers
         #   List of filters that determine what kind of customer usage draws down a commit
         #   or credit. A customer's usage needs to meet the condition of at least one of the
@@ -72,14 +80,12 @@ module MetronomeSDK
         #   Instead, to target usage by product or product tag, pass those values in the
         #   body of `specifiers`.
         #
-        #   @return [Array<MetronomeSDK::Models::V2::ContractEditCommitParams::Specifier>, nil]
+        #   @return [Array<MetronomeSDK::Models::CommitSpecifierInput>, nil]
         optional :specifiers,
-                 -> {
-                   MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V2::ContractEditCommitParams::Specifier]
-                 },
+                 -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::CommitSpecifierInput] },
                  nil?: true
 
-        # @!method initialize(commit_id:, customer_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, invoice_contract_id: nil, invoice_schedule: nil, priority: nil, product_id: nil, specifiers: nil, request_options: {})
+        # @!method initialize(commit_id:, customer_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, invoice_contract_id: nil, invoice_schedule: nil, priority: nil, product_id: nil, rate_type: nil, specifiers: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::V2::ContractEditCommitParams} for more details.
         #
@@ -101,7 +107,9 @@ module MetronomeSDK
         #
         #   @param product_id [String]
         #
-        #   @param specifiers [Array<MetronomeSDK::Models::V2::ContractEditCommitParams::Specifier>, nil] List of filters that determine what kind of customer usage draws down a commit o
+        #   @param rate_type [Symbol, MetronomeSDK::Models::V2::ContractEditCommitParams::RateType] If provided, updates the commit to use the specified rate type for current and f
+        #
+        #   @param specifiers [Array<MetronomeSDK::Models::CommitSpecifierInput>, nil] List of filters that determine what kind of customer usage draws down a commit o
         #
         #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
 
@@ -110,25 +118,19 @@ module MetronomeSDK
           #
           #   @return [Array<MetronomeSDK::Models::V2::ContractEditCommitParams::AccessSchedule::AddScheduleItem>, nil]
           optional :add_schedule_items,
-                   -> {
-                     MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule::AddScheduleItem]
-                   }
+                   -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule::AddScheduleItem] }
 
           # @!attribute remove_schedule_items
           #
           #   @return [Array<MetronomeSDK::Models::V2::ContractEditCommitParams::AccessSchedule::RemoveScheduleItem>, nil]
           optional :remove_schedule_items,
-                   -> {
-                     MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule::RemoveScheduleItem]
-                   }
+                   -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule::RemoveScheduleItem] }
 
           # @!attribute update_schedule_items
           #
           #   @return [Array<MetronomeSDK::Models::V2::ContractEditCommitParams::AccessSchedule::UpdateScheduleItem>, nil]
           optional :update_schedule_items,
-                   -> {
-                     MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule::UpdateScheduleItem]
-                   }
+                   -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule::UpdateScheduleItem] }
 
           # @!method initialize(add_schedule_items: nil, remove_schedule_items: nil, update_schedule_items: nil)
           #   @param add_schedule_items [Array<MetronomeSDK::Models::V2::ContractEditCommitParams::AccessSchedule::AddScheduleItem>]
@@ -201,25 +203,19 @@ module MetronomeSDK
           #
           #   @return [Array<MetronomeSDK::Models::V2::ContractEditCommitParams::InvoiceSchedule::AddScheduleItem>, nil]
           optional :add_schedule_items,
-                   -> {
-                     MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule::AddScheduleItem]
-                   }
+                   -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule::AddScheduleItem] }
 
           # @!attribute remove_schedule_items
           #
           #   @return [Array<MetronomeSDK::Models::V2::ContractEditCommitParams::InvoiceSchedule::RemoveScheduleItem>, nil]
           optional :remove_schedule_items,
-                   -> {
-                     MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule::RemoveScheduleItem]
-                   }
+                   -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule::RemoveScheduleItem] }
 
           # @!attribute update_schedule_items
           #
           #   @return [Array<MetronomeSDK::Models::V2::ContractEditCommitParams::InvoiceSchedule::UpdateScheduleItem>, nil]
           optional :update_schedule_items,
-                   -> {
-                     MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule::UpdateScheduleItem]
-                   }
+                   -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule::UpdateScheduleItem] }
 
           # @!method initialize(add_schedule_items: nil, remove_schedule_items: nil, update_schedule_items: nil)
           #   @param add_schedule_items [Array<MetronomeSDK::Models::V2::ContractEditCommitParams::InvoiceSchedule::AddScheduleItem>]
@@ -299,42 +295,17 @@ module MetronomeSDK
           end
         end
 
-        class Specifier < MetronomeSDK::Internal::Type::BaseModel
-          # @!attribute presentation_group_values
-          #
-          #   @return [Hash{Symbol=>String}, nil]
-          optional :presentation_group_values, MetronomeSDK::Internal::Type::HashOf[String]
+        # If provided, updates the commit to use the specified rate type for current and
+        # future invoices. Previously finalized invoices will need to be voided and
+        # regenerated to reflect the rate type change.
+        module RateType
+          extend MetronomeSDK::Internal::Type::Enum
 
-          # @!attribute pricing_group_values
-          #
-          #   @return [Hash{Symbol=>String}, nil]
-          optional :pricing_group_values, MetronomeSDK::Internal::Type::HashOf[String]
+          LIST_RATE = :LIST_RATE
+          COMMIT_RATE = :COMMIT_RATE
 
-          # @!attribute product_id
-          #   If provided, the specifier will only apply to the product with the specified ID.
-          #
-          #   @return [String, nil]
-          optional :product_id, String
-
-          # @!attribute product_tags
-          #   If provided, the specifier will only apply to products with all the specified
-          #   tags.
-          #
-          #   @return [Array<String>, nil]
-          optional :product_tags, MetronomeSDK::Internal::Type::ArrayOf[String]
-
-          # @!method initialize(presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil)
-          #   Some parameter documentations has been truncated, see
-          #   {MetronomeSDK::Models::V2::ContractEditCommitParams::Specifier} for more
-          #   details.
-          #
-          #   @param presentation_group_values [Hash{Symbol=>String}]
-          #
-          #   @param pricing_group_values [Hash{Symbol=>String}]
-          #
-          #   @param product_id [String] If provided, the specifier will only apply to the product with the specified ID.
-          #
-          #   @param product_tags [Array<String>] If provided, the specifier will only apply to products with all the specified ta
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end

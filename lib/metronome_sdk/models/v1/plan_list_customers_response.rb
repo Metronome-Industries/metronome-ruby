@@ -27,6 +27,7 @@ module MetronomeSDK
           required :id, String
 
           # @!attribute custom_fields
+          #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           #
           #   @return [Hash{Symbol=>String}]
           required :custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
@@ -56,7 +57,7 @@ module MetronomeSDK
           # @!method initialize(id:, custom_fields:, customer_plan_id:, name:, starting_on:, ending_before: nil)
           #   @param id [String]
           #
-          #   @param custom_fields [Hash{Symbol=>String}]
+          #   @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           #
           #   @param customer_plan_id [String]
           #

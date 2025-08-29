@@ -48,6 +48,7 @@ module MetronomeSDK
           sig { params(composite_tags: T::Array[String]).void }
           attr_writer :composite_tags
 
+          # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           sig { returns(T.nilable(T::Hash[Symbol, String])) }
           attr_reader :custom_fields
 
@@ -185,6 +186,7 @@ module MetronomeSDK
             composite_product_ids: nil,
             # Required for COMPOSITE products
             composite_tags: nil,
+            # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             custom_fields: nil,
             # Beta feature only available for composite products. If true, products with $0
             # will not be included when computing composite usage. Defaults to false

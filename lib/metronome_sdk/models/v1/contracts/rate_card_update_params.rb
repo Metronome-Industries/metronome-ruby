@@ -22,9 +22,7 @@ module MetronomeSDK
           #
           #   @return [Array<MetronomeSDK::Models::V1::Contracts::RateCardUpdateParams::Alias>, nil]
           optional :aliases,
-                   -> {
-                     MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Contracts::RateCardUpdateParams::Alias]
-                   }
+                   -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Contracts::RateCardUpdateParams::Alias] }
 
           # @!attribute description
           #

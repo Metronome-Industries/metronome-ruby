@@ -3,95 +3,73 @@ module MetronomeSDK
     module V1
       type custom_field_list_keys_response =
         {
-          data: ::Array[MetronomeSDK::Models::V1::CustomFieldListKeysResponse::Data],
-          next_page: String?
+          enforce_uniqueness: bool,
+          entity: MetronomeSDK::Models::V1::CustomFieldListKeysResponse::entity,
+          key: String
         }
 
       class CustomFieldListKeysResponse < MetronomeSDK::Internal::Type::BaseModel
-        attr_accessor data: ::Array[MetronomeSDK::Models::V1::CustomFieldListKeysResponse::Data]
+        attr_accessor enforce_uniqueness: bool
 
-        attr_accessor next_page: String?
+        attr_accessor entity: MetronomeSDK::Models::V1::CustomFieldListKeysResponse::entity
+
+        attr_accessor key: String
 
         def initialize: (
-          data: ::Array[MetronomeSDK::Models::V1::CustomFieldListKeysResponse::Data],
-          next_page: String?
+          enforce_uniqueness: bool,
+          entity: MetronomeSDK::Models::V1::CustomFieldListKeysResponse::entity,
+          key: String
         ) -> void
 
         def to_hash: -> {
-          data: ::Array[MetronomeSDK::Models::V1::CustomFieldListKeysResponse::Data],
-          next_page: String?
+          enforce_uniqueness: bool,
+          entity: MetronomeSDK::Models::V1::CustomFieldListKeysResponse::entity,
+          key: String
         }
 
-        type data =
-          {
-            enforce_uniqueness: bool,
-            entity: MetronomeSDK::Models::V1::CustomFieldListKeysResponse::Data::entity,
-            key: String
-          }
+        type entity =
+          :alert
+          | :billable_metric
+          | :charge
+          | :commit
+          | :contract_credit
+          | :contract_product
+          | :contract
+          | :credit_grant
+          | :customer_plan
+          | :customer
+          | :discount
+          | :invoice
+          | :plan
+          | :professional_service
+          | :product
+          | :rate_card
+          | :scheduled_charge
+          | :subscription
 
-        class Data < MetronomeSDK::Internal::Type::BaseModel
-          attr_accessor enforce_uniqueness: bool
+        module Entity
+          extend MetronomeSDK::Internal::Type::Enum
 
-          attr_accessor entity: MetronomeSDK::Models::V1::CustomFieldListKeysResponse::Data::entity
+          ALERT: :alert
+          BILLABLE_METRIC: :billable_metric
+          CHARGE: :charge
+          COMMIT: :commit
+          CONTRACT_CREDIT: :contract_credit
+          CONTRACT_PRODUCT: :contract_product
+          CONTRACT: :contract
+          CREDIT_GRANT: :credit_grant
+          CUSTOMER_PLAN: :customer_plan
+          CUSTOMER: :customer
+          DISCOUNT: :discount
+          INVOICE: :invoice
+          PLAN: :plan
+          PROFESSIONAL_SERVICE: :professional_service
+          PRODUCT: :product
+          RATE_CARD: :rate_card
+          SCHEDULED_CHARGE: :scheduled_charge
+          SUBSCRIPTION: :subscription
 
-          attr_accessor key: String
-
-          def initialize: (
-            enforce_uniqueness: bool,
-            entity: MetronomeSDK::Models::V1::CustomFieldListKeysResponse::Data::entity,
-            key: String
-          ) -> void
-
-          def to_hash: -> {
-            enforce_uniqueness: bool,
-            entity: MetronomeSDK::Models::V1::CustomFieldListKeysResponse::Data::entity,
-            key: String
-          }
-
-          type entity =
-            :alert
-            | :billable_metric
-            | :charge
-            | :commit
-            | :contract_credit
-            | :contract_product
-            | :contract
-            | :credit_grant
-            | :customer_plan
-            | :customer
-            | :discount
-            | :invoice
-            | :plan
-            | :professional_service
-            | :product
-            | :rate_card
-            | :scheduled_charge
-            | :subscription
-
-          module Entity
-            extend MetronomeSDK::Internal::Type::Enum
-
-            ALERT: :alert
-            BILLABLE_METRIC: :billable_metric
-            CHARGE: :charge
-            COMMIT: :commit
-            CONTRACT_CREDIT: :contract_credit
-            CONTRACT_PRODUCT: :contract_product
-            CONTRACT: :contract
-            CREDIT_GRANT: :credit_grant
-            CUSTOMER_PLAN: :customer_plan
-            CUSTOMER: :customer
-            DISCOUNT: :discount
-            INVOICE: :invoice
-            PLAN: :plan
-            PROFESSIONAL_SERVICE: :professional_service
-            PRODUCT: :product
-            RATE_CARD: :rate_card
-            SCHEDULED_CHARGE: :scheduled_charge
-            SUBSCRIPTION: :subscription
-
-            def self?.values: -> ::Array[MetronomeSDK::Models::V1::CustomFieldListKeysResponse::Data::entity]
-          end
+          def self?.values: -> ::Array[MetronomeSDK::Models::V1::CustomFieldListKeysResponse::entity]
         end
       end
     end

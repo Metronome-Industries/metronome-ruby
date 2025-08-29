@@ -17,6 +17,7 @@ module MetronomeSDK
           sig { returns(String) }
           attr_accessor :id
 
+          # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           sig { returns(T::Hash[Symbol, String]) }
           attr_accessor :custom_fields
 
@@ -79,6 +80,7 @@ module MetronomeSDK
           def self.new(
             # the ID of the customer plan
             id:,
+            # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             custom_fields:,
             plan_description:,
             # the ID of the plan

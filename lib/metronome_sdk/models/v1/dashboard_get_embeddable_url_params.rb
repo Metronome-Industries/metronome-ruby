@@ -24,27 +24,21 @@ module MetronomeSDK
         #
         #   @return [Array<MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::BmGroupKeyOverride>, nil]
         optional :bm_group_key_overrides,
-                 -> {
-                   MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::DashboardGetEmbeddableURLParams::BmGroupKeyOverride]
-                 }
+                 -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::DashboardGetEmbeddableURLParams::BmGroupKeyOverride] }
 
         # @!attribute color_overrides
         #   Optional list of colors to override
         #
         #   @return [Array<MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::ColorOverride>, nil]
         optional :color_overrides,
-                 -> {
-                   MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::DashboardGetEmbeddableURLParams::ColorOverride]
-                 }
+                 -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::DashboardGetEmbeddableURLParams::ColorOverride] }
 
         # @!attribute dashboard_options
         #   Optional dashboard specific options
         #
         #   @return [Array<MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::DashboardOption>, nil]
         optional :dashboard_options,
-                 -> {
-                   MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::DashboardGetEmbeddableURLParams::DashboardOption]
-                 }
+                 -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::DashboardGetEmbeddableURLParams::DashboardOption] }
 
         # @!method initialize(customer_id:, dashboard:, bm_group_key_overrides: nil, color_overrides: nil, dashboard_options: nil, request_options: {})
         #   @param customer_id [String]
@@ -90,8 +84,7 @@ module MetronomeSDK
           #   names. e.g. {"a": "Asia", "b": "Euro"}
           #
           #   @return [Hash{Symbol=>Object}, nil]
-          optional :value_display_names,
-                   MetronomeSDK::Internal::Type::HashOf[MetronomeSDK::Internal::Type::Unknown]
+          optional :value_display_names, MetronomeSDK::Internal::Type::HashOf[MetronomeSDK::Internal::Type::Unknown]
 
           # @!method initialize(group_key_name:, display_name: nil, value_display_names: nil)
           #   Some parameter documentations has been truncated, see

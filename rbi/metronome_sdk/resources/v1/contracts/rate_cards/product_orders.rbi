@@ -6,7 +6,10 @@ module MetronomeSDK
       class Contracts
         class RateCards
           class ProductOrders
-            # Updates ordering of specified products
+            # The ordering of products on a rate card determines the order in which the
+            # products will appear on customers' invoices. Use this endpoint to set the order
+            # of specific products on the rate card by moving them relative to their current
+            # location.
             sig do
               params(
                 product_moves:
@@ -27,7 +30,9 @@ module MetronomeSDK
             )
             end
 
-            # Sets the ordering of products within a rate card
+            # The ordering of products on a rate card determines the order in which the
+            # products will appear on customers' invoices. Use this endpoint to set the order
+            # of products on the rate card.
             sig do
               params(
                 product_order: T::Array[String],

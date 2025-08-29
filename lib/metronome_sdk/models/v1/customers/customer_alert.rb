@@ -4,6 +4,7 @@ module MetronomeSDK
   module Models
     module V1
       module Customers
+        # @see MetronomeSDK::Resources::V1::Customers::Alerts#list
         class CustomerAlert < MetronomeSDK::Internal::Type::BaseModel
           # @!attribute alert
           #
@@ -91,19 +92,14 @@ module MetronomeSDK
             #
             #   @return [Array<MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::CustomFieldFilter>, nil]
             optional :custom_field_filters,
-                     -> {
-                       MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::CustomerAlert::Alert::CustomFieldFilter]
-                     }
+                     -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::CustomerAlert::Alert::CustomFieldFilter] }
 
             # @!attribute group_key_filter
             #   Scopes alert evaluation to a specific presentation group key on individual line
             #   items. Only present for spend alerts.
             #
             #   @return [MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::GroupKeyFilter, nil]
-            optional :group_key_filter,
-                     -> {
-                       MetronomeSDK::V1::Customers::CustomerAlert::Alert::GroupKeyFilter
-                     }
+            optional :group_key_filter, -> { MetronomeSDK::V1::Customers::CustomerAlert::Alert::GroupKeyFilter }
 
             # @!attribute group_values
             #   Only present for `spend_threshold_reached` alerts. Scope alert to a specific
@@ -111,9 +107,7 @@ module MetronomeSDK
             #
             #   @return [Array<MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::GroupValue>, nil]
             optional :group_values,
-                     -> {
-                       MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::CustomerAlert::Alert::GroupValue]
-                     }
+                     -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::CustomerAlert::Alert::GroupValue] }
 
             # @!attribute invoice_types_filter
             #   Only supported for invoice_total_reached alerts. A list of invoice types to
@@ -206,9 +200,7 @@ module MetronomeSDK
               #
               #   @return [Symbol, MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::CustomFieldFilter::Entity]
               required :entity,
-                       enum: -> {
-                         MetronomeSDK::V1::Customers::CustomerAlert::Alert::CustomFieldFilter::Entity
-                       }
+                       enum: -> { MetronomeSDK::V1::Customers::CustomerAlert::Alert::CustomFieldFilter::Entity }
 
               # @!attribute key
               #
@@ -266,10 +258,10 @@ module MetronomeSDK
 
               # @!attribute value
               #
-              #   @return [String]
-              required :value, String
+              #   @return [String, nil]
+              optional :value, String
 
-              # @!method initialize(key:, value:)
+              # @!method initialize(key:, value: nil)
               #   @param key [String]
               #   @param value [String]
             end

@@ -4,6 +4,17 @@ module MetronomeSDK
   module Internal
     module Type
       # @api private
+      #
+      # @example
+      #   # `hierarchy_configuration` is a `MetronomeSDK::HierarchyConfiguration`
+      #   case hierarchy_configuration
+      #   when MetronomeSDK::HierarchyConfiguration::ParentHierarchyConfiguration
+      #     puts(hierarchy_configuration.children)
+      #   when MetronomeSDK::HierarchyConfiguration::ChildHierarchyConfiguration
+      #     puts(hierarchy_configuration.parent)
+      #   else
+      #     puts(hierarchy_configuration)
+      #   end
       module Union
         include MetronomeSDK::Internal::Type::Converter
         include MetronomeSDK::Internal::Util::SorbetRuntimeSupport

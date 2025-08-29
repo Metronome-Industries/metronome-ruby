@@ -25,9 +25,7 @@ module MetronomeSDK
           #
           #   @return [Array<MetronomeSDK::Models::V1::Customers::Invoice::LineItem>]
           required :line_items,
-                   -> {
-                     MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::Invoice::LineItem]
-                   }
+                   -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::Invoice::LineItem] }
 
           # @!attribute status
           #
@@ -56,6 +54,7 @@ module MetronomeSDK
           optional :billable_status, enum: -> { MetronomeSDK::V1::Customers::Invoice::BillableStatus }
 
           # @!attribute contract_custom_fields
+          #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           #
           #   @return [Hash{Symbol=>String}, nil]
           optional :contract_custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
@@ -83,6 +82,7 @@ module MetronomeSDK
           optional :custom_fields, MetronomeSDK::Internal::Type::HashOf[MetronomeSDK::Internal::Type::Unknown]
 
           # @!attribute customer_custom_fields
+          #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           #
           #   @return [Hash{Symbol=>String}, nil]
           optional :customer_custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
@@ -102,9 +102,7 @@ module MetronomeSDK
           #
           #   @return [Array<MetronomeSDK::Models::V1::Customers::Invoice::InvoiceAdjustment>, nil]
           optional :invoice_adjustments,
-                   -> {
-                     MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::Invoice::InvoiceAdjustment]
-                   }
+                   -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::Invoice::InvoiceAdjustment] }
 
           # @!attribute issued_at
           #   When the invoice was issued (UTC)
@@ -124,6 +122,7 @@ module MetronomeSDK
           optional :netsuite_sales_order_id, String
 
           # @!attribute plan_custom_fields
+          #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           #
           #   @return [Hash{Symbol=>String}, nil]
           optional :plan_custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
@@ -183,7 +182,7 @@ module MetronomeSDK
           #
           #   @param billable_status [Symbol, MetronomeSDK::Models::V1::Customers::Invoice::BillableStatus] This field's availability is dependent on your client's configuration.
           #
-          #   @param contract_custom_fields [Hash{Symbol=>String}]
+          #   @param contract_custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           #
           #   @param contract_id [String]
           #
@@ -193,7 +192,7 @@ module MetronomeSDK
           #
           #   @param custom_fields [Hash{Symbol=>Object}]
           #
-          #   @param customer_custom_fields [Hash{Symbol=>String}]
+          #   @param customer_custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           #
           #   @param end_timestamp [Time] End of the usage period this invoice covers (UTC)
           #
@@ -207,7 +206,7 @@ module MetronomeSDK
           #
           #   @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
           #
-          #   @param plan_custom_fields [Hash{Symbol=>String}]
+          #   @param plan_custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           #
           #   @param plan_id [String]
           #
@@ -238,11 +237,29 @@ module MetronomeSDK
             required :total, Float
 
             # @!attribute type
-            #   The type of line item. Possible values are 'aws_royalty',
-            #   'applied_commit_or_credit', 'scheduled', 'commit_purchase', 'cpu_conversion',
-            #   'discount', 'gcp_royalty', 'postpaid_trueup', 'professional_services',
-            #   'subscription', 'usage', 'legacy', 'minimum', 'product_charge',
-            #   'trial_discount', 'rollover', 'seat', 'grouped_charge'.
+            #   The type of line item.
+            #
+            #   - `scheduled`: Line item is associated with a scheduled charge. View the
+            #     scheduled_charge_id on the line item.
+            #   - `commit_purchase`: Line item is associated with a payment for a prepaid
+            #     commit. View the commit_id on the line item.
+            #   - `usage`: Line item is associated with a usage product or composite product.
+            #     View the product_id on the line item to determine which product.
+            #   - `subscription`: Line item is associated with a subscription. e.g. monthly
+            #     recurring payment for an in-advance subscription.
+            #   - `applied_commit_or_credit`: On metronome invoices, applied commits and credits
+            #     are associated with their own line items. These line items have negative
+            #     totals. Use the applied_commit_or_credit object on the line item to understand
+            #     the id of the applied commit or credit, and its type. Note that the
+            #     application of a postpaid commit is associated with a line item, but the total
+            #     on the line item is not included in the invoice's total as postpaid commits
+            #     are paid in-arrears.
+            #   - `cpu_conversion`: Line item converting between a custom pricing unit and fiat
+            #     currency, using the conversion rate set on the rate card. This line item will
+            #     appear when there are products priced in custom pricing units, and there is
+            #     insufficient prepaid commit/credit in that custom pricing unit to fully cover
+            #     the spend. Then, the outstanding spend in custom pricing units will be
+            #     converted to fiat currency using a cpu_conversion line item.
             #
             #   @return [String]
             required :type, String
@@ -257,6 +274,7 @@ module MetronomeSDK
                      -> { MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit }
 
             # @!attribute commit_custom_fields
+            #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             #
             #   @return [Hash{Symbol=>String}, nil]
             optional :commit_custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
@@ -293,11 +311,13 @@ module MetronomeSDK
             optional :commit_type, String
 
             # @!attribute custom_fields
+            #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             #
             #   @return [Hash{Symbol=>String}, nil]
             optional :custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
 
             # @!attribute discount_custom_fields
+            #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             #
             #   @return [Hash{Symbol=>String}, nil]
             optional :discount_custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
@@ -381,6 +401,7 @@ module MetronomeSDK
             optional :pricing_group_values, MetronomeSDK::Internal::Type::HashOf[String]
 
             # @!attribute product_custom_fields
+            #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             #
             #   @return [Hash{Symbol=>String}, nil]
             optional :product_custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
@@ -408,6 +429,7 @@ module MetronomeSDK
             optional :product_type, String
 
             # @!attribute professional_service_custom_fields
+            #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             #
             #   @return [Hash{Symbol=>String}, nil]
             optional :professional_service_custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
@@ -429,6 +451,7 @@ module MetronomeSDK
             optional :reseller_type, enum: -> { MetronomeSDK::V1::Customers::Invoice::LineItem::ResellerType }
 
             # @!attribute scheduled_charge_custom_fields
+            #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             #
             #   @return [Hash{Symbol=>String}, nil]
             optional :scheduled_charge_custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
@@ -449,11 +472,10 @@ module MetronomeSDK
             #
             #   @return [Array<MetronomeSDK::Models::V1::Customers::Invoice::LineItem::SubLineItem>, nil]
             optional :sub_line_items,
-                     -> {
-                       MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem]
-                     }
+                     -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem] }
 
             # @!attribute subscription_custom_fields
+            #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             #
             #   @return [Hash{Symbol=>String}, nil]
             optional :subscription_custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
@@ -480,11 +502,11 @@ module MetronomeSDK
             #
             #   @param total [Float]
             #
-            #   @param type [String] The type of line item. Possible values are 'aws_royalty', 'applied_commit_or_cre
+            #   @param type [String] The type of line item.
             #
             #   @param applied_commit_or_credit [MetronomeSDK::Models::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit] Details about the credit or commit that was applied to this line item. Only pres
             #
-            #   @param commit_custom_fields [Hash{Symbol=>String}]
+            #   @param commit_custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             #
             #   @param commit_id [String] For line items with product of `USAGE`, `SUBSCRIPTION`, or `COMPOSITE` types, th
             #
@@ -496,9 +518,9 @@ module MetronomeSDK
             #
             #   @param commit_type [String] `PrepaidCommit` (for commit types `PREPAID` and `CREDIT`) or `PostpaidCommit` (f
             #
-            #   @param custom_fields [Hash{Symbol=>String}]
+            #   @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             #
-            #   @param discount_custom_fields [Hash{Symbol=>String}]
+            #   @param discount_custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             #
             #   @param discount_id [String] ID of the discount applied to this line item.
             #
@@ -526,7 +548,7 @@ module MetronomeSDK
             #
             #   @param pricing_group_values [Hash{Symbol=>String}] Includes the pricing group values associated with this line item if dimensional
             #
-            #   @param product_custom_fields [Hash{Symbol=>String}]
+            #   @param product_custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             #
             #   @param product_id [String] ID of the product associated with the line item.
             #
@@ -534,7 +556,7 @@ module MetronomeSDK
             #
             #   @param product_type [String] The type of the line item's product. Possible values are `FixedProductListItem`
             #
-            #   @param professional_service_custom_fields [Hash{Symbol=>String}]
+            #   @param professional_service_custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             #
             #   @param professional_service_id [String]
             #
@@ -542,7 +564,7 @@ module MetronomeSDK
             #
             #   @param reseller_type [Symbol, MetronomeSDK::Models::V1::Customers::Invoice::LineItem::ResellerType]
             #
-            #   @param scheduled_charge_custom_fields [Hash{Symbol=>String}]
+            #   @param scheduled_charge_custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             #
             #   @param scheduled_charge_id [String] ID of scheduled charge.
             #
@@ -550,7 +572,7 @@ module MetronomeSDK
             #
             #   @param sub_line_items [Array<MetronomeSDK::Models::V1::Customers::Invoice::LineItem::SubLineItem>]
             #
-            #   @param subscription_custom_fields [Hash{Symbol=>String}]
+            #   @param subscription_custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             #
             #   @param tier [MetronomeSDK::Models::V1::Customers::Invoice::LineItem::Tier] Populated if the line item has a tiered price.
             #
@@ -566,10 +588,7 @@ module MetronomeSDK
               # @!attribute type
               #
               #   @return [Symbol, MetronomeSDK::Models::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::Type]
-              required :type,
-                       enum: -> {
-                         MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::Type
-                       }
+              required :type, enum: -> { MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::Type }
 
               # @!method initialize(id:, type:)
               #   Details about the credit or commit that was applied to this line item. Only
@@ -620,6 +639,7 @@ module MetronomeSDK
 
             class SubLineItem < MetronomeSDK::Internal::Type::BaseModel
               # @!attribute custom_fields
+              #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
               #
               #   @return [Hash{Symbol=>String}]
               required :custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
@@ -672,25 +692,20 @@ module MetronomeSDK
               #   when the current tier started and ends (for tiered charges only)
               #
               #   @return [MetronomeSDK::Models::V1::Customers::Invoice::LineItem::SubLineItem::TierPeriod, nil]
-              optional :tier_period,
-                       -> {
-                         MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem::TierPeriod
-                       }
+              optional :tier_period, -> { MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem::TierPeriod }
 
               # @!attribute tiers
               #
               #   @return [Array<MetronomeSDK::Models::V1::Customers::Invoice::LineItem::SubLineItem::Tier>, nil]
               optional :tiers,
-                       -> {
-                         MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem::Tier]
-                       }
+                       -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem::Tier] }
 
               # @!method initialize(custom_fields:, name:, quantity:, subtotal:, charge_id: nil, credit_grant_id: nil, end_date: nil, price: nil, start_date: nil, tier_period: nil, tiers: nil)
               #   Some parameter documentations has been truncated, see
               #   {MetronomeSDK::Models::V1::Customers::Invoice::LineItem::SubLineItem} for more
               #   details.
               #
-              #   @param custom_fields [Hash{Symbol=>String}]
+              #   @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
               #
               #   @param name [String]
               #
@@ -838,17 +853,13 @@ module MetronomeSDK
               #
               #   @return [Symbol, MetronomeSDK::Models::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType]
               required :billing_provider_type,
-                       enum: -> {
-                         MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType
-                       }
+                       enum: -> { MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType }
 
               # @!attribute external_status
               #
               #   @return [Symbol, MetronomeSDK::Models::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus, nil]
               optional :external_status,
-                       enum: -> {
-                         MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus
-                       }
+                       enum: -> { MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus }
 
               # @!attribute invoice_id
               #
@@ -990,6 +1001,7 @@ module MetronomeSDK
             required :total, Float
 
             # @!attribute credit_grant_custom_fields
+            #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             #
             #   @return [Hash{Symbol=>String}, nil]
             optional :credit_grant_custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
@@ -1001,9 +1013,13 @@ module MetronomeSDK
 
             # @!method initialize(credit_type:, name:, total:, credit_grant_custom_fields: nil, credit_grant_id: nil)
             #   @param credit_type [MetronomeSDK::Models::CreditTypeData]
+            #
             #   @param name [String]
+            #
             #   @param total [Float]
-            #   @param credit_grant_custom_fields [Hash{Symbol=>String}]
+            #
+            #   @param credit_grant_custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
+            #
             #   @param credit_grant_id [String]
           end
 
@@ -1022,10 +1038,7 @@ module MetronomeSDK
             # @!attribute reseller_type
             #
             #   @return [Symbol, MetronomeSDK::Models::V1::Customers::Invoice::ResellerRoyalty::ResellerType]
-            required :reseller_type,
-                     enum: -> {
-                       MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty::ResellerType
-                     }
+            required :reseller_type, enum: -> { MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty::ResellerType }
 
             # @!attribute aws_options
             #

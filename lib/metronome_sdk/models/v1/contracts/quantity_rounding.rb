@@ -13,10 +13,7 @@ module MetronomeSDK
           # @!attribute rounding_method
           #
           #   @return [Symbol, MetronomeSDK::Models::V1::Contracts::QuantityRounding::RoundingMethod]
-          required :rounding_method,
-                   enum: -> {
-                     MetronomeSDK::V1::Contracts::QuantityRounding::RoundingMethod
-                   }
+          required :rounding_method, enum: -> { MetronomeSDK::V1::Contracts::QuantityRounding::RoundingMethod }
 
           # @!method initialize(decimal_places:, rounding_method:)
           #   Optional. Only valid for USAGE products. If provided, the quantity will be
