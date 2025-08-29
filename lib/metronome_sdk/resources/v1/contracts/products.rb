@@ -93,8 +93,10 @@ module MetronomeSDK
           # boundary—set future dates to schedule updates ahead of time, or past dates for
           # retroactive changes. Returns the updated product ID upon success.
           #
-          # Usage guidance: Product type cannot be changed after creation. For incorrect
-          # product types, create a new product and archive the original instead.
+          # ### Usage guidance:
+          #
+          # - Product type cannot be changed after creation. For incorrect product types,
+          #   create a new product and archive the original instead.
           #
           # @overload update(product_id:, starting_at:, billable_metric_id: nil, composite_product_ids: nil, composite_tags: nil, exclude_free_usage: nil, is_refundable: nil, name: nil, netsuite_internal_item_id: nil, netsuite_overage_item_id: nil, presentation_group_key: nil, pricing_group_key: nil, quantity_conversion: nil, quantity_rounding: nil, tags: nil, request_options: {})
           #
@@ -149,7 +151,7 @@ module MetronomeSDK
           #
           # Get a paginated list of all products in your organization with their complete
           # configuration, version history, and metadata. By default excludes archived
-          # products unless explicitly requested via the archive_filter parameter.
+          # products unless explicitly requested via the `archive_filter` parameter.
           #
           # @overload list(limit: nil, next_page: nil, archive_filter: nil, request_options: {})
           #
