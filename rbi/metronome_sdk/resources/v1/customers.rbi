@@ -272,12 +272,17 @@ module MetronomeSDK
         sig do
           params(
             customer_id: String,
+            include_archived: T::Boolean,
             request_options: MetronomeSDK::RequestOptions::OrHash
           ).returns(
             MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse
           )
         end
-        def retrieve_billing_configurations(customer_id:, request_options: {})
+        def retrieve_billing_configurations(
+          customer_id:,
+          include_archived: nil,
+          request_options: {}
+        )
         end
 
         # Create a billing configuration for a customer. Once created, these

@@ -22,6 +22,11 @@ module MetronomeSDK
           #   @return [String]
           required :id, String
 
+          # @!attribute archived_at
+          #
+          #   @return [Time, nil]
+          required :archived_at, Time, nil?: true
+
           # @!attribute billing_provider
           #   The billing provider set for this configuration.
           #
@@ -62,12 +67,14 @@ module MetronomeSDK
           #   @return [String]
           required :delivery_method_id, String
 
-          # @!method initialize(id:, billing_provider:, configuration:, customer_id:, delivery_method:, delivery_method_configuration:, delivery_method_id:)
+          # @!method initialize(id:, archived_at:, billing_provider:, configuration:, customer_id:, delivery_method:, delivery_method_configuration:, delivery_method_id:)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data}
           #   for more details.
           #
           #   @param id [String] ID of this configuration; can be provided as the billing*provider_configuration*
+          #
+          #   @param archived_at [Time, nil]
           #
           #   @param billing_provider [Symbol, MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::BillingProvider] The billing provider set for this configuration.
           #

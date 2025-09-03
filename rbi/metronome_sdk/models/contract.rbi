@@ -551,6 +551,9 @@ module MetronomeSDK
             )
           end
 
+        sig { returns(T.nilable(Time)) }
+        attr_accessor :archived_at
+
         sig do
           returns(
             MetronomeSDK::Contract::CustomerBillingProviderConfiguration::BillingProvider::TaggedSymbol
@@ -582,6 +585,7 @@ module MetronomeSDK
         # The billing provider configuration associated with a contract.
         sig do
           params(
+            archived_at: T.nilable(Time),
             billing_provider:
               MetronomeSDK::Contract::CustomerBillingProviderConfiguration::BillingProvider::OrSymbol,
             delivery_method:
@@ -591,6 +595,7 @@ module MetronomeSDK
           ).returns(T.attached_class)
         end
         def self.new(
+          archived_at:,
           billing_provider:,
           delivery_method:,
           id: nil,
@@ -603,6 +608,7 @@ module MetronomeSDK
         sig do
           override.returns(
             {
+              archived_at: T.nilable(Time),
               billing_provider:
                 MetronomeSDK::Contract::CustomerBillingProviderConfiguration::BillingProvider::TaggedSymbol,
               delivery_method:

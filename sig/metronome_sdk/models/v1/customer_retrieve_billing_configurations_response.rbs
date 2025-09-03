@@ -20,6 +20,7 @@ module MetronomeSDK
         type data =
           {
             id: String,
+            archived_at: Time?,
             billing_provider: MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::billing_provider,
             configuration: ::Hash[Symbol, top],
             customer_id: String,
@@ -30,6 +31,8 @@ module MetronomeSDK
 
         class Data < MetronomeSDK::Internal::Type::BaseModel
           attr_accessor id: String
+
+          attr_accessor archived_at: Time?
 
           attr_accessor billing_provider: MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::billing_provider
 
@@ -45,6 +48,7 @@ module MetronomeSDK
 
           def initialize: (
             id: String,
+            archived_at: Time?,
             billing_provider: MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::billing_provider,
             configuration: ::Hash[Symbol, top],
             customer_id: String,
@@ -55,6 +59,7 @@ module MetronomeSDK
 
           def to_hash: -> {
             id: String,
+            archived_at: Time?,
             billing_provider: MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::billing_provider,
             configuration: ::Hash[Symbol, top],
             customer_id: String,

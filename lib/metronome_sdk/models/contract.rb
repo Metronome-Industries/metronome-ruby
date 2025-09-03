@@ -307,6 +307,11 @@ module MetronomeSDK
 
       # @see MetronomeSDK::Models::Contract#customer_billing_provider_configuration
       class CustomerBillingProviderConfiguration < MetronomeSDK::Internal::Type::BaseModel
+        # @!attribute archived_at
+        #
+        #   @return [Time, nil]
+        required :archived_at, Time, nil?: true
+
         # @!attribute billing_provider
         #
         #   @return [Symbol, MetronomeSDK::Models::Contract::CustomerBillingProviderConfiguration::BillingProvider]
@@ -331,12 +336,14 @@ module MetronomeSDK
         #   @return [Hash{Symbol=>Object}, nil]
         optional :configuration, MetronomeSDK::Internal::Type::HashOf[MetronomeSDK::Internal::Type::Unknown]
 
-        # @!method initialize(billing_provider:, delivery_method:, id: nil, configuration: nil)
+        # @!method initialize(archived_at:, billing_provider:, delivery_method:, id: nil, configuration: nil)
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::Contract::CustomerBillingProviderConfiguration} for more
         #   details.
         #
         #   The billing provider configuration associated with a contract.
+        #
+        #   @param archived_at [Time, nil]
         #
         #   @param billing_provider [Symbol, MetronomeSDK::Models::Contract::CustomerBillingProviderConfiguration::BillingProvider]
         #

@@ -74,6 +74,7 @@ module MetronomeSDK
 
         def retrieve_billing_configurations: (
           customer_id: String,
+          ?include_archived: bool,
           ?request_options: MetronomeSDK::request_opts
         ) -> MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse
 

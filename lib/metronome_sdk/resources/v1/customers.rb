@@ -318,9 +318,10 @@ module MetronomeSDK
         # `billing_provider_configuration_id` needed to set the contract billing
         # configuration.
         #
-        # @overload retrieve_billing_configurations(customer_id:, request_options: {})
+        # @overload retrieve_billing_configurations(customer_id:, include_archived: nil, request_options: {})
         #
         # @param customer_id [String]
+        # @param include_archived [Boolean]
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse]
