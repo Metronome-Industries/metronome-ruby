@@ -13,8 +13,14 @@ module MetronomeSDK
         #   @return [String]
         required :customer_id, String
 
-        # @!method initialize(customer_id:, request_options: {})
+        # @!attribute include_archived
+        #
+        #   @return [Boolean, nil]
+        optional :include_archived, MetronomeSDK::Internal::Type::Boolean
+
+        # @!method initialize(customer_id:, include_archived: nil, request_options: {})
         #   @param customer_id [String]
+        #   @param include_archived [Boolean]
         #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
       end
     end

@@ -59,6 +59,9 @@ module MetronomeSDK
           sig { returns(String) }
           attr_accessor :id
 
+          sig { returns(T.nilable(Time)) }
+          attr_accessor :archived_at
+
           # The billing provider set for this configuration.
           sig do
             returns(
@@ -95,6 +98,7 @@ module MetronomeSDK
           sig do
             params(
               id: String,
+              archived_at: T.nilable(Time),
               billing_provider:
                 MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::BillingProvider::OrSymbol,
               configuration: T::Hash[Symbol, T.anything],
@@ -109,6 +113,7 @@ module MetronomeSDK
             # ID of this configuration; can be provided as the
             # billing_provider_configuration_id when creating a contract.
             id:,
+            archived_at:,
             # The billing provider set for this configuration.
             billing_provider:,
             # Configuration for the billing provider. The structure of this object is specific
@@ -129,6 +134,7 @@ module MetronomeSDK
             override.returns(
               {
                 id: String,
+                archived_at: T.nilable(Time),
                 billing_provider:
                   MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::BillingProvider::TaggedSymbol,
                 configuration: T::Hash[Symbol, T.anything],

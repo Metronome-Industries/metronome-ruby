@@ -306,6 +306,7 @@ module MetronomeSDK
 
       type customer_billing_provider_configuration =
         {
+          archived_at: Time?,
           billing_provider: MetronomeSDK::Models::Contract::CustomerBillingProviderConfiguration::billing_provider,
           delivery_method: MetronomeSDK::Models::Contract::CustomerBillingProviderConfiguration::delivery_method,
           id: String,
@@ -313,6 +314,8 @@ module MetronomeSDK
         }
 
       class CustomerBillingProviderConfiguration < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor archived_at: Time?
+
         attr_accessor billing_provider: MetronomeSDK::Models::Contract::CustomerBillingProviderConfiguration::billing_provider
 
         attr_accessor delivery_method: MetronomeSDK::Models::Contract::CustomerBillingProviderConfiguration::delivery_method
@@ -326,6 +329,7 @@ module MetronomeSDK
         def configuration=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
 
         def initialize: (
+          archived_at: Time?,
           billing_provider: MetronomeSDK::Models::Contract::CustomerBillingProviderConfiguration::billing_provider,
           delivery_method: MetronomeSDK::Models::Contract::CustomerBillingProviderConfiguration::delivery_method,
           ?id: String,
@@ -333,6 +337,7 @@ module MetronomeSDK
         ) -> void
 
         def to_hash: -> {
+          archived_at: Time?,
           billing_provider: MetronomeSDK::Models::Contract::CustomerBillingProviderConfiguration::billing_provider,
           delivery_method: MetronomeSDK::Models::Contract::CustomerBillingProviderConfiguration::delivery_method,
           id: String,

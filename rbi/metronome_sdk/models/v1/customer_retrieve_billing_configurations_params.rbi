@@ -18,19 +18,27 @@ module MetronomeSDK
         sig { returns(String) }
         attr_accessor :customer_id
 
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :include_archived
+
+        sig { params(include_archived: T::Boolean).void }
+        attr_writer :include_archived
+
         sig do
           params(
             customer_id: String,
+            include_archived: T::Boolean,
             request_options: MetronomeSDK::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
-        def self.new(customer_id:, request_options: {})
+        def self.new(customer_id:, include_archived: nil, request_options: {})
         end
 
         sig do
           override.returns(
             {
               customer_id: String,
+              include_archived: T::Boolean,
               request_options: MetronomeSDK::RequestOptions
             }
           )
