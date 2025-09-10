@@ -182,13 +182,18 @@ module MetronomeSDK
             end
 
             type stripe_collection_method =
-              :charge_automatically | :send_invoice
+              :charge_automatically
+              | :send_invoice
+              | :auto_charge_payment_intent
+              | :manually_charge_payment_intent
 
             module StripeCollectionMethod
               extend MetronomeSDK::Internal::Type::Enum
 
               CHARGE_AUTOMATICALLY: :charge_automatically
               SEND_INVOICE: :send_invoice
+              AUTO_CHARGE_PAYMENT_INTENT: :auto_charge_payment_intent
+              MANUALLY_CHARGE_PAYMENT_INTENT: :manually_charge_payment_intent
 
               def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::stripe_collection_method]
             end

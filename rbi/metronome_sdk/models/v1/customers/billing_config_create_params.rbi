@@ -352,6 +352,16 @@ module MetronomeSDK
                 :send_invoice,
                 MetronomeSDK::V1::Customers::BillingConfigCreateParams::StripeCollectionMethod::TaggedSymbol
               )
+            AUTO_CHARGE_PAYMENT_INTENT =
+              T.let(
+                :auto_charge_payment_intent,
+                MetronomeSDK::V1::Customers::BillingConfigCreateParams::StripeCollectionMethod::TaggedSymbol
+              )
+            MANUALLY_CHARGE_PAYMENT_INTENT =
+              T.let(
+                :manually_charge_payment_intent,
+                MetronomeSDK::V1::Customers::BillingConfigCreateParams::StripeCollectionMethod::TaggedSymbol
+              )
 
             sig do
               override.returns(

@@ -166,6 +166,8 @@ module MetronomeSDK
 
             CHARGE_AUTOMATICALLY = :charge_automatically
             SEND_INVOICE = :send_invoice
+            AUTO_CHARGE_PAYMENT_INTENT = :auto_charge_payment_intent
+            MANUALLY_CHARGE_PAYMENT_INTENT = :manually_charge_payment_intent
 
             # @!method self.values
             #   @return [Array<Symbol>]
@@ -204,7 +206,17 @@ module MetronomeSDK
           #   @return [String, nil]
           optional :delivery_method_id, String
 
-          # @!method initialize(billing_provider:, configuration: nil, delivery_method: nil, delivery_method_id: nil)
+          # @!attribute tax_provider
+          #   Specifies which tax provider Metronome should use for tax calculation when
+          #   billing through Stripe. This is only supported for Stripe billing provider
+          #   configurations with auto_charge_payment_intent or manual_charge_payment_intent
+          #   collection methods.
+          #
+          #   @return [Symbol, MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::TaxProvider, nil]
+          optional :tax_provider,
+                   enum: -> { MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::TaxProvider }
+
+          # @!method initialize(billing_provider:, configuration: nil, delivery_method: nil, delivery_method_id: nil, tax_provider: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration}
           #   for more details.
@@ -216,6 +228,8 @@ module MetronomeSDK
           #   @param delivery_method [Symbol, MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::DeliveryMethod] The method to use for delivering invoices to this customer. If not provided, the
           #
           #   @param delivery_method_id [String] ID of the delivery method to use for this customer. If not provided, the `delive
+          #
+          #   @param tax_provider [Symbol, MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::TaxProvider] Specifies which tax provider Metronome should use for tax calculation when billi
 
           # The billing provider set for this configuration.
           #
@@ -244,6 +258,23 @@ module MetronomeSDK
             AWS_SQS = :aws_sqs
             TACKLE = :tackle
             AWS_SNS = :aws_sns
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Specifies which tax provider Metronome should use for tax calculation when
+          # billing through Stripe. This is only supported for Stripe billing provider
+          # configurations with auto_charge_payment_intent or manual_charge_payment_intent
+          # collection methods.
+          #
+          # @see MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration#tax_provider
+          module TaxProvider
+            extend MetronomeSDK::Internal::Type::Enum
+
+            ANROK = :anrok
+            AVALARA = :avalara
+            STRIPE = :stripe
 
             # @!method self.values
             #   @return [Array<Symbol>]
