@@ -29,7 +29,8 @@ module MetronomeSDK
             customer_id: String,
             configuration: ::Hash[Symbol, top],
             delivery_method: MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data::delivery_method,
-            delivery_method_id: String
+            delivery_method_id: String,
+            tax_provider: MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data::tax_provider
           }
 
         class Data < MetronomeSDK::Internal::Type::BaseModel
@@ -51,12 +52,19 @@ module MetronomeSDK
 
           def delivery_method_id=: (String) -> String
 
+          attr_reader tax_provider: MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data::tax_provider?
+
+          def tax_provider=: (
+            MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data::tax_provider
+          ) -> MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data::tax_provider
+
           def initialize: (
             billing_provider: MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data::billing_provider,
             customer_id: String,
             ?configuration: ::Hash[Symbol, top],
             ?delivery_method: MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data::delivery_method,
-            ?delivery_method_id: String
+            ?delivery_method_id: String,
+            ?tax_provider: MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data::tax_provider
           ) -> void
 
           def to_hash: -> {
@@ -64,7 +72,8 @@ module MetronomeSDK
             customer_id: String,
             configuration: ::Hash[Symbol, top],
             delivery_method: MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data::delivery_method,
-            delivery_method_id: String
+            delivery_method_id: String,
+            tax_provider: MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data::tax_provider
           }
 
           type billing_provider =
@@ -104,6 +113,18 @@ module MetronomeSDK
             AWS_SNS: :aws_sns
 
             def self?.values: -> ::Array[MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data::delivery_method]
+          end
+
+          type tax_provider = :anrok | :avalara | :stripe
+
+          module TaxProvider
+            extend MetronomeSDK::Internal::Type::Enum
+
+            ANROK: :anrok
+            AVALARA: :avalara
+            STRIPE: :stripe
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data::tax_provider]
           end
         end
       end

@@ -471,6 +471,16 @@ module MetronomeSDK
                 :send_invoice,
                 MetronomeSDK::V1::CustomerCreateParams::BillingConfig::StripeCollectionMethod::TaggedSymbol
               )
+            AUTO_CHARGE_PAYMENT_INTENT =
+              T.let(
+                :auto_charge_payment_intent,
+                MetronomeSDK::V1::CustomerCreateParams::BillingConfig::StripeCollectionMethod::TaggedSymbol
+              )
+            MANUALLY_CHARGE_PAYMENT_INTENT =
+              T.let(
+                :manually_charge_payment_intent,
+                MetronomeSDK::V1::CustomerCreateParams::BillingConfig::StripeCollectionMethod::TaggedSymbol
+              )
 
             sig do
               override.returns(
@@ -538,6 +548,27 @@ module MetronomeSDK
           sig { params(delivery_method_id: String).void }
           attr_writer :delivery_method_id
 
+          # Specifies which tax provider Metronome should use for tax calculation when
+          # billing through Stripe. This is only supported for Stripe billing provider
+          # configurations with auto_charge_payment_intent or manual_charge_payment_intent
+          # collection methods.
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::TaxProvider::OrSymbol
+              )
+            )
+          end
+          attr_reader :tax_provider
+
+          sig do
+            params(
+              tax_provider:
+                MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::TaxProvider::OrSymbol
+            ).void
+          end
+          attr_writer :tax_provider
+
           sig do
             params(
               billing_provider:
@@ -545,7 +576,9 @@ module MetronomeSDK
               configuration: T::Hash[Symbol, T.anything],
               delivery_method:
                 MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::DeliveryMethod::OrSymbol,
-              delivery_method_id: String
+              delivery_method_id: String,
+              tax_provider:
+                MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::TaxProvider::OrSymbol
             ).returns(T.attached_class)
           end
           def self.new(
@@ -561,7 +594,12 @@ module MetronomeSDK
             delivery_method: nil,
             # ID of the delivery method to use for this customer. If not provided, the
             # `delivery_method` must be provided.
-            delivery_method_id: nil
+            delivery_method_id: nil,
+            # Specifies which tax provider Metronome should use for tax calculation when
+            # billing through Stripe. This is only supported for Stripe billing provider
+            # configurations with auto_charge_payment_intent or manual_charge_payment_intent
+            # collection methods.
+            tax_provider: nil
           )
           end
 
@@ -573,7 +611,9 @@ module MetronomeSDK
                 configuration: T::Hash[Symbol, T.anything],
                 delivery_method:
                   MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::DeliveryMethod::OrSymbol,
-                delivery_method_id: String
+                delivery_method_id: String,
+                tax_provider:
+                  MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::TaxProvider::OrSymbol
               }
             )
           end
@@ -669,6 +709,49 @@ module MetronomeSDK
               override.returns(
                 T::Array[
                   MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::DeliveryMethod::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Specifies which tax provider Metronome should use for tax calculation when
+          # billing through Stripe. This is only supported for Stripe billing provider
+          # configurations with auto_charge_payment_intent or manual_charge_payment_intent
+          # collection methods.
+          module TaxProvider
+            extend MetronomeSDK::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::TaxProvider
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            ANROK =
+              T.let(
+                :anrok,
+                MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::TaxProvider::TaggedSymbol
+              )
+            AVALARA =
+              T.let(
+                :avalara,
+                MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::TaxProvider::TaggedSymbol
+              )
+            STRIPE =
+              T.let(
+                :stripe,
+                MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::TaxProvider::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::TaxProvider::TaggedSymbol
                 ]
               )
             end

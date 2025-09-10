@@ -199,13 +199,19 @@ module MetronomeSDK
             def self?.values: -> ::Array[MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig::aws_region]
           end
 
-          type stripe_collection_method = :charge_automatically | :send_invoice
+          type stripe_collection_method =
+            :charge_automatically
+            | :send_invoice
+            | :auto_charge_payment_intent
+            | :manually_charge_payment_intent
 
           module StripeCollectionMethod
             extend MetronomeSDK::Internal::Type::Enum
 
             CHARGE_AUTOMATICALLY: :charge_automatically
             SEND_INVOICE: :send_invoice
+            AUTO_CHARGE_PAYMENT_INTENT: :auto_charge_payment_intent
+            MANUALLY_CHARGE_PAYMENT_INTENT: :manually_charge_payment_intent
 
             def self?.values: -> ::Array[MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig::stripe_collection_method]
           end
@@ -216,7 +222,8 @@ module MetronomeSDK
             billing_provider: MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::billing_provider,
             configuration: ::Hash[Symbol, top],
             delivery_method: MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::delivery_method,
-            delivery_method_id: String
+            delivery_method_id: String,
+            tax_provider: MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::tax_provider
           }
 
         class CustomerBillingProviderConfiguration < MetronomeSDK::Internal::Type::BaseModel
@@ -236,18 +243,26 @@ module MetronomeSDK
 
           def delivery_method_id=: (String) -> String
 
+          attr_reader tax_provider: MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::tax_provider?
+
+          def tax_provider=: (
+            MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::tax_provider
+          ) -> MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::tax_provider
+
           def initialize: (
             billing_provider: MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::billing_provider,
             ?configuration: ::Hash[Symbol, top],
             ?delivery_method: MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::delivery_method,
-            ?delivery_method_id: String
+            ?delivery_method_id: String,
+            ?tax_provider: MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::tax_provider
           ) -> void
 
           def to_hash: -> {
             billing_provider: MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::billing_provider,
             configuration: ::Hash[Symbol, top],
             delivery_method: MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::delivery_method,
-            delivery_method_id: String
+            delivery_method_id: String,
+            tax_provider: MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::tax_provider
           }
 
           type billing_provider =
@@ -281,6 +296,18 @@ module MetronomeSDK
             AWS_SNS: :aws_sns
 
             def self?.values: -> ::Array[MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::delivery_method]
+          end
+
+          type tax_provider = :anrok | :avalara | :stripe
+
+          module TaxProvider
+            extend MetronomeSDK::Internal::Type::Enum
+
+            ANROK: :anrok
+            AVALARA: :avalara
+            STRIPE: :stripe
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::tax_provider]
           end
         end
       end
