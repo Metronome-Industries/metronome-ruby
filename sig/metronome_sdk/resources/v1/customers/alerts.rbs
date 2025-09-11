@@ -6,6 +6,7 @@ module MetronomeSDK
           def retrieve: (
             alert_id: String,
             customer_id: String,
+            ?group_values: ::Array[MetronomeSDK::V1::Customers::AlertRetrieveParams::GroupValue],
             ?plans_or_contracts: MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::plans_or_contracts,
             ?request_options: MetronomeSDK::request_opts
           ) -> MetronomeSDK::Models::V1::Customers::AlertRetrieveResponse

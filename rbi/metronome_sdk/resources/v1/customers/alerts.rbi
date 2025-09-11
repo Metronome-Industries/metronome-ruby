@@ -52,6 +52,10 @@ module MetronomeSDK
             params(
               alert_id: String,
               customer_id: String,
+              group_values:
+                T::Array[
+                  MetronomeSDK::V1::Customers::AlertRetrieveParams::GroupValue::OrHash
+                ],
               plans_or_contracts:
                 MetronomeSDK::V1::Customers::AlertRetrieveParams::PlansOrContracts::OrSymbol,
               request_options: MetronomeSDK::RequestOptions::OrHash
@@ -64,6 +68,9 @@ module MetronomeSDK
             alert_id:,
             # The Metronome ID of the customer
             customer_id:,
+            # Only present for `spend_threshold_reached` alerts. Retrieve the alert for a
+            # specific group key-value pair.
+            group_values: nil,
             # When parallel alerts are enabled during migration, this flag denotes whether to
             # fetch alerts for plans or contracts.
             plans_or_contracts: nil,
