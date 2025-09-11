@@ -24,6 +24,29 @@ module MetronomeSDK
           sig { returns(String) }
           attr_accessor :customer_id
 
+          # Only present for `spend_threshold_reached` alerts. Retrieve the alert for a
+          # specific group key-value pair.
+          sig do
+            returns(
+              T.nilable(
+                T::Array[
+                  MetronomeSDK::V1::Customers::AlertRetrieveParams::GroupValue
+                ]
+              )
+            )
+          end
+          attr_reader :group_values
+
+          sig do
+            params(
+              group_values:
+                T::Array[
+                  MetronomeSDK::V1::Customers::AlertRetrieveParams::GroupValue::OrHash
+                ]
+            ).void
+          end
+          attr_writer :group_values
+
           # When parallel alerts are enabled during migration, this flag denotes whether to
           # fetch alerts for plans or contracts.
           sig do
@@ -47,6 +70,10 @@ module MetronomeSDK
             params(
               alert_id: String,
               customer_id: String,
+              group_values:
+                T::Array[
+                  MetronomeSDK::V1::Customers::AlertRetrieveParams::GroupValue::OrHash
+                ],
               plans_or_contracts:
                 MetronomeSDK::V1::Customers::AlertRetrieveParams::PlansOrContracts::OrSymbol,
               request_options: MetronomeSDK::RequestOptions::OrHash
@@ -57,6 +84,9 @@ module MetronomeSDK
             alert_id:,
             # The Metronome ID of the customer
             customer_id:,
+            # Only present for `spend_threshold_reached` alerts. Retrieve the alert for a
+            # specific group key-value pair.
+            group_values: nil,
             # When parallel alerts are enabled during migration, this flag denotes whether to
             # fetch alerts for plans or contracts.
             plans_or_contracts: nil,
@@ -69,6 +99,10 @@ module MetronomeSDK
               {
                 alert_id: String,
                 customer_id: String,
+                group_values:
+                  T::Array[
+                    MetronomeSDK::V1::Customers::AlertRetrieveParams::GroupValue
+                  ],
                 plans_or_contracts:
                   MetronomeSDK::V1::Customers::AlertRetrieveParams::PlansOrContracts::OrSymbol,
                 request_options: MetronomeSDK::RequestOptions
@@ -76,6 +110,32 @@ module MetronomeSDK
             )
           end
           def to_hash
+          end
+
+          class GroupValue < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V1::Customers::AlertRetrieveParams::GroupValue,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            sig { returns(String) }
+            attr_accessor :key
+
+            sig { returns(String) }
+            attr_accessor :value
+
+            # Scopes alert evaluation to a specific presentation group key on individual line
+            # items. Only present for spend alerts.
+            sig { params(key: String, value: String).returns(T.attached_class) }
+            def self.new(key:, value:)
+            end
+
+            sig { override.returns({ key: String, value: String }) }
+            def to_hash
+            end
           end
 
           # When parallel alerts are enabled during migration, this flag denotes whether to

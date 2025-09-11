@@ -52,11 +52,13 @@ module MetronomeSDK
           # - Error handling: Returns 404 if either the customer or alert ID doesn't exist
           #   or isn't accessible to your organization
           #
-          # @overload retrieve(alert_id:, customer_id:, plans_or_contracts: nil, request_options: {})
+          # @overload retrieve(alert_id:, customer_id:, group_values: nil, plans_or_contracts: nil, request_options: {})
           #
           # @param alert_id [String] The Metronome ID of the alert
           #
           # @param customer_id [String] The Metronome ID of the customer
+          #
+          # @param group_values [Array<MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::GroupValue>] Only present for `spend_threshold_reached` alerts. Retrieve the alert for a spec
           #
           # @param plans_or_contracts [Symbol, MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::PlansOrContracts] When parallel alerts are enabled during migration, this flag denotes whether to
           #
