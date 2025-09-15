@@ -1,5 +1,41 @@
 # Changelog
 
+## 1.0.0 (2025-09-15)
+
+Full Changelog: [v0.3.0...v1.0.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v0.3.0...v1.0.0)
+
+### ⚠ BREAKING CHANGES
+
+* **api:** add pagination support to multiple endpoints - Added pagination to CustomerList, AlertList, InvoiceList, CommitList, CreditList, CreditGrantList, CustomerAlerts, UsageList, CustomFields list, and ContractListBalances endpoints.
+* **api:** enhance subscriptions and commits/credits - Added Individual enum to SubscriptionConfig and rate_type enums to UpdateCredit/UpdateCommit.
+* **api:** add comprehensive shared types to SDK - Added 34 new shared types including BaseThresholdCommit, BaseUsageFilter, Commit, CommitHierarchyConfiguration, CommitRate, CommitSpecifier, CommitSpecifierInput, Contract, ContractV2, ContractWithoutAmendments, Credit, CreditTypeData, Discount, EventTypeFilter, HierarchyConfiguration, ID, Override, OverrideTier, OverwriteRate, PaymentGateConfig, PaymentGateConfigV2, PrepaidBalanceThresholdConfiguration, PrepaidBalanceThresholdConfigurationV2, PropertyFilter, ProService, Rate, RecurringCommitSubscriptionConfig, ScheduledCharge, ScheduleDuration, SchedulePointInTime, SpendThresholdConfiguration, SpendThresholdConfigurationV2, Subscription, Tier, and UpdateBaseThresholdCommit.
+
+### Features
+
+* **api:** add archived_at field to CustomerBillingConfiguration ([8eb235f](https://github.com/Metronome-Industries/metronome-ruby/commit/8eb235f643fec7937b291ce3435598b5e09f0081))
+* **api:** add comprehensive shared types to SDK - Added 34 new shared types including BaseThresholdCommit, BaseUsageFilter, Commit, CommitHierarchyConfiguration, CommitRate, CommitSpecifier, CommitSpecifierInput, Contract, ContractV2, ContractWithoutAmendments, Credit, CreditTypeData, Discount, EventTypeFilter, HierarchyConfiguration, ID, Override, OverrideTier, OverwriteRate, PaymentGateConfig, PaymentGateConfigV2, PrepaidBalanceThresholdConfiguration, PrepaidBalanceThresholdConfigurationV2, PropertyFilter, ProService, Rate, RecurringCommitSubscriptionConfig, ScheduledCharge, ScheduleDuration, SchedulePointInTime, SpendThresholdConfiguration, SpendThresholdConfigurationV2, Subscription, Tier, and UpdateBaseThresholdCommit. ([8eb235f](https://github.com/Metronome-Industries/metronome-ruby/commit/8eb235f643fec7937b291ce3435598b5e09f0081))
+* **api:** add created_at field to Commit ([8eb235f](https://github.com/Metronome-Industries/metronome-ruby/commit/8eb235f643fec7937b291ce3435598b5e09f0081))
+* **api:** add customer billing configuration endpoints - Added set and retrieve endpoints for customer billing configurations. ([8eb235f](https://github.com/Metronome-Industries/metronome-ruby/commit/8eb235f643fec7937b291ce3435598b5e09f0081))
+* **api:** add pagination support to multiple endpoints - Added pagination to CustomerList, AlertList, InvoiceList, CommitList, CreditList, CreditGrantList, CustomerAlerts, UsageList, CustomFields list, and ContractListBalances endpoints. ([8eb235f](https://github.com/Metronome-Industries/metronome-ruby/commit/8eb235f643fec7937b291ce3435598b5e09f0081))
+* **api:** Add support for granular spend threshold alerts with group key filters. ([8eb235f](https://github.com/Metronome-Industries/metronome-ruby/commit/8eb235f643fec7937b291ce3435598b5e09f0081))
+* **api:** enhance subscriptions and commits/credits - Added Individual enum to SubscriptionConfig and rate_type enums to UpdateCredit/UpdateCommit. ([8eb235f](https://github.com/Metronome-Industries/metronome-ruby/commit/8eb235f643fec7937b291ce3435598b5e09f0081))
+
+
+### Bug Fixes
+
+* bump sorbet version and fix new type errors from the breaking change ([8eb235f](https://github.com/Metronome-Industries/metronome-ruby/commit/8eb235f643fec7937b291ce3435598b5e09f0081))
+
+
+### Chores
+
+* add json schema comment for rubocop.yml ([8eb235f](https://github.com/Metronome-Industries/metronome-ruby/commit/8eb235f643fec7937b291ce3435598b5e09f0081))
+* revert version bump ([d7acdc6](https://github.com/Metronome-Industries/metronome-ruby/commit/d7acdc6fe3c9ecd51ecb5d67b3033280d02400b6))
+
+
+### Documentation
+
+* enhance API documentation - Added more detailed descriptions and styling improvements, and enhanced usage filter documentation with additional context. ([8eb235f](https://github.com/Metronome-Industries/metronome-ruby/commit/8eb235f643fec7937b291ce3435598b5e09f0081))
+
 ## 0.3.0 (2025-08-15)
 
 Full Changelog: [v0.2.0...v0.3.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v0.2.0...v0.3.0)
