@@ -1,0 +1,113 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type customer_retrieve_billing_configurations_response =
+        {
+          data: ::Array[MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data]
+        }
+
+      class CustomerRetrieveBillingConfigurationsResponse < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor data: ::Array[MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data]
+
+        def initialize: (
+          data: ::Array[MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data]
+        ) -> void
+
+        def to_hash: -> {
+          data: ::Array[MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data]
+        }
+
+        type data =
+          {
+            id: String,
+            archived_at: Time?,
+            billing_provider: MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::billing_provider,
+            configuration: ::Hash[Symbol, top],
+            customer_id: String,
+            delivery_method: MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::delivery_method,
+            delivery_method_configuration: ::Hash[Symbol, top],
+            delivery_method_id: String
+          }
+
+        class Data < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor archived_at: Time?
+
+          attr_accessor billing_provider: MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::billing_provider
+
+          attr_accessor configuration: ::Hash[Symbol, top]
+
+          attr_accessor customer_id: String
+
+          attr_accessor delivery_method: MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::delivery_method
+
+          attr_accessor delivery_method_configuration: ::Hash[Symbol, top]
+
+          attr_accessor delivery_method_id: String
+
+          def initialize: (
+            id: String,
+            archived_at: Time?,
+            billing_provider: MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::billing_provider,
+            configuration: ::Hash[Symbol, top],
+            customer_id: String,
+            delivery_method: MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::delivery_method,
+            delivery_method_configuration: ::Hash[Symbol, top],
+            delivery_method_id: String
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            archived_at: Time?,
+            billing_provider: MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::billing_provider,
+            configuration: ::Hash[Symbol, top],
+            customer_id: String,
+            delivery_method: MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::delivery_method,
+            delivery_method_configuration: ::Hash[Symbol, top],
+            delivery_method_id: String
+          }
+
+          type billing_provider =
+            :aws_marketplace
+            | :stripe
+            | :netsuite
+            | :custom
+            | :azure_marketplace
+            | :quickbooks_online
+            | :workday
+            | :gcp_marketplace
+
+          module BillingProvider
+            extend MetronomeSDK::Internal::Type::Enum
+
+            AWS_MARKETPLACE: :aws_marketplace
+            STRIPE: :stripe
+            NETSUITE: :netsuite
+            CUSTOM: :custom
+            AZURE_MARKETPLACE: :azure_marketplace
+            QUICKBOOKS_ONLINE: :quickbooks_online
+            WORKDAY: :workday
+            GCP_MARKETPLACE: :gcp_marketplace
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::billing_provider]
+          end
+
+          type delivery_method =
+            :direct_to_billing_provider | :aws_sqs | :tackle | :aws_sns
+
+          module DeliveryMethod
+            extend MetronomeSDK::Internal::Type::Enum
+
+            DIRECT_TO_BILLING_PROVIDER: :direct_to_billing_provider
+            AWS_SQS: :aws_sqs
+            TACKLE: :tackle
+            AWS_SNS: :aws_sns
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::CustomerRetrieveBillingConfigurationsResponse::Data::delivery_method]
+          end
+        end
+      end
+    end
+  end
+end

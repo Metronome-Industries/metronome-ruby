@@ -27,9 +27,7 @@ module MetronomeSDK
           #
           #   @return [Array<Symbol, MetronomeSDK::Models::V1::Customers::AlertListParams::AlertStatus>, nil]
           optional :alert_statuses,
-                   -> {
-                     MetronomeSDK::Internal::Type::ArrayOf[enum: MetronomeSDK::V1::Customers::AlertListParams::AlertStatus]
-                   }
+                   -> { MetronomeSDK::Internal::Type::ArrayOf[enum: MetronomeSDK::V1::Customers::AlertListParams::AlertStatus] }
 
           # @!method initialize(customer_id:, next_page: nil, alert_statuses: nil, request_options: {})
           #   Some parameter documentations has been truncated, see

@@ -32,6 +32,7 @@ module MetronomeSDK
         end
         attr_writer :balance
 
+        # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :custom_fields
 
@@ -162,6 +163,7 @@ module MetronomeSDK
           # billing period. Expiration deductions will be included only if the grant expires
           # before the end of the current billing period.
           balance:,
+          # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           custom_fields:,
           # the Metronome ID of the customer
           customer_id:,

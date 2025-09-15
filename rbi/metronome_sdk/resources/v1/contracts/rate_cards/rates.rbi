@@ -6,7 +6,15 @@ module MetronomeSDK
       class Contracts
         class RateCards
           class Rates
-            # Get all rates for a rate card at a point in time
+            # Understand the rate schedule at a given timestamp, optionally filtering the list
+            # of rates returned based on properties such as `product_id` and
+            # `pricing_group_values`. For example, you may want to display the current price
+            # for a given product in your product experience - use this endpoint to fetch that
+            # information from its source of truth in Metronome.
+            #
+            # If you want to understand the rates for a specific customer's contract,
+            # inclusive of contract-level overrides, use the `getContractRateSchedule`
+            # endpoint.
             sig do
               params(
                 at: Time,
@@ -52,8 +60,7 @@ module MetronomeSDK
                 starting_at: Time,
                 billing_frequency:
                   MetronomeSDK::V1::Contracts::RateCards::RateAddParams::BillingFrequency::OrSymbol,
-                commit_rate:
-                  MetronomeSDK::V1::Contracts::RateCards::RateAddParams::CommitRate::OrHash,
+                commit_rate: MetronomeSDK::CommitRate::OrHash,
                 credit_type_id: String,
                 custom_rate: T::Hash[Symbol, T.anything],
                 ending_before: Time,

@@ -28,6 +28,7 @@ module MetronomeSDK
       sig { returns(Float) }
       attr_accessor :unit_price
 
+      # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
       sig { returns(T.nilable(T::Hash[Symbol, String])) }
       attr_reader :custom_fields
 
@@ -70,6 +71,7 @@ module MetronomeSDK
         # Unit price for the charge. Will be multiplied by quantity to determine the
         # amount and must be specified.
         unit_price:,
+        # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         custom_fields: nil,
         description: nil,
         # This field's availability is dependent on your client's configuration.

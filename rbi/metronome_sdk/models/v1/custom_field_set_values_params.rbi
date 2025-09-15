@@ -15,6 +15,7 @@ module MetronomeSDK
             )
           end
 
+        # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :custom_fields
 
@@ -37,7 +38,13 @@ module MetronomeSDK
             request_options: MetronomeSDK::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
-        def self.new(custom_fields:, entity:, entity_id:, request_options: {})
+        def self.new(
+          # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
+          custom_fields:,
+          entity:,
+          entity_id:,
+          request_options: {}
+        )
         end
 
         sig do

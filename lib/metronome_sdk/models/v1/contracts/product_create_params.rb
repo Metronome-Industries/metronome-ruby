@@ -39,6 +39,7 @@ module MetronomeSDK
           optional :composite_tags, MetronomeSDK::Internal::Type::ArrayOf[String]
 
           # @!attribute custom_fields
+          #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           #
           #   @return [Hash{Symbol=>String}, nil]
           optional :custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
@@ -126,7 +127,7 @@ module MetronomeSDK
           #
           #   @param composite_tags [Array<String>] Required for COMPOSITE products
           #
-          #   @param custom_fields [Hash{Symbol=>String}]
+          #   @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           #
           #   @param exclude_free_usage [Boolean] Beta feature only available for composite products. If true, products with $0 wi
           #

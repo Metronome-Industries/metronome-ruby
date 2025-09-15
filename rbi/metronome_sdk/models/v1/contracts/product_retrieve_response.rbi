@@ -101,6 +101,7 @@ module MetronomeSDK
             sig { returns(T.nilable(Time)) }
             attr_accessor :archived_at
 
+            # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             sig { returns(T.nilable(T::Hash[Symbol, String])) }
             attr_reader :custom_fields
 
@@ -131,6 +132,7 @@ module MetronomeSDK
               type:,
               updates:,
               archived_at: nil,
+              # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
               custom_fields: nil
             )
             end

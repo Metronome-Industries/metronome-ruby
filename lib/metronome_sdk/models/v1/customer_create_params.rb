@@ -20,6 +20,7 @@ module MetronomeSDK
         optional :billing_config, -> { MetronomeSDK::V1::CustomerCreateParams::BillingConfig }
 
         # @!attribute custom_fields
+        #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         #
         #   @return [Hash{Symbol=>String}, nil]
         optional :custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
@@ -28,9 +29,7 @@ module MetronomeSDK
         #
         #   @return [Array<MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration>, nil]
         optional :customer_billing_provider_configurations,
-                 -> {
-                   MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration]
-                 }
+                 -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration] }
 
         # @!attribute external_id
         #   (deprecated, use ingest_aliases instead) an alias that can be used to refer to
@@ -53,7 +52,7 @@ module MetronomeSDK
         #
         #   @param billing_config [MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig]
         #
-        #   @param custom_fields [Hash{Symbol=>String}]
+        #   @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         #
         #   @param customer_billing_provider_configurations [Array<MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration>]
         #
@@ -167,6 +166,8 @@ module MetronomeSDK
 
             CHARGE_AUTOMATICALLY = :charge_automatically
             SEND_INVOICE = :send_invoice
+            AUTO_CHARGE_PAYMENT_INTENT = :auto_charge_payment_intent
+            MANUALLY_CHARGE_PAYMENT_INTENT = :manually_charge_payment_intent
 
             # @!method self.values
             #   @return [Array<Symbol>]
@@ -179,9 +180,7 @@ module MetronomeSDK
           #
           #   @return [Symbol, MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::BillingProvider]
           required :billing_provider,
-                   enum: -> {
-                     MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::BillingProvider
-                   }
+                   enum: -> { MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::BillingProvider }
 
           # @!attribute configuration
           #   Configuration for the billing provider. The structure of this object is specific
@@ -198,9 +197,7 @@ module MetronomeSDK
           #
           #   @return [Symbol, MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::DeliveryMethod, nil]
           optional :delivery_method,
-                   enum: -> {
-                     MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::DeliveryMethod
-                   }
+                   enum: -> { MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::DeliveryMethod }
 
           # @!attribute delivery_method_id
           #   ID of the delivery method to use for this customer. If not provided, the
@@ -209,7 +206,17 @@ module MetronomeSDK
           #   @return [String, nil]
           optional :delivery_method_id, String
 
-          # @!method initialize(billing_provider:, configuration: nil, delivery_method: nil, delivery_method_id: nil)
+          # @!attribute tax_provider
+          #   Specifies which tax provider Metronome should use for tax calculation when
+          #   billing through Stripe. This is only supported for Stripe billing provider
+          #   configurations with auto_charge_payment_intent or manual_charge_payment_intent
+          #   collection methods.
+          #
+          #   @return [Symbol, MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::TaxProvider, nil]
+          optional :tax_provider,
+                   enum: -> { MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::TaxProvider }
+
+          # @!method initialize(billing_provider:, configuration: nil, delivery_method: nil, delivery_method_id: nil, tax_provider: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration}
           #   for more details.
@@ -221,6 +228,8 @@ module MetronomeSDK
           #   @param delivery_method [Symbol, MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::DeliveryMethod] The method to use for delivering invoices to this customer. If not provided, the
           #
           #   @param delivery_method_id [String] ID of the delivery method to use for this customer. If not provided, the `delive
+          #
+          #   @param tax_provider [Symbol, MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::TaxProvider] Specifies which tax provider Metronome should use for tax calculation when billi
 
           # The billing provider set for this configuration.
           #
@@ -249,6 +258,23 @@ module MetronomeSDK
             AWS_SQS = :aws_sqs
             TACKLE = :tackle
             AWS_SNS = :aws_sns
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Specifies which tax provider Metronome should use for tax calculation when
+          # billing through Stripe. This is only supported for Stripe billing provider
+          # configurations with auto_charge_payment_intent or manual_charge_payment_intent
+          # collection methods.
+          #
+          # @see MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration#tax_provider
+          module TaxProvider
+            extend MetronomeSDK::Internal::Type::Enum
+
+            ANROK = :anrok
+            AVALARA = :avalara
+            STRIPE = :stripe
 
             # @!method self.values
             #   @return [Array<Symbol>]

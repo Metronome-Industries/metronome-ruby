@@ -1,0 +1,51 @@
+module MetronomeSDK
+  module Models
+    type recurring_commit_subscription_config =
+      {
+        allocation: MetronomeSDK::Models::RecurringCommitSubscriptionConfig::allocation,
+        apply_seat_increase_config: MetronomeSDK::RecurringCommitSubscriptionConfig::ApplySeatIncreaseConfig,
+        subscription_id: String
+      }
+
+    class RecurringCommitSubscriptionConfig < MetronomeSDK::Internal::Type::BaseModel
+      attr_accessor allocation: MetronomeSDK::Models::RecurringCommitSubscriptionConfig::allocation
+
+      attr_accessor apply_seat_increase_config: MetronomeSDK::RecurringCommitSubscriptionConfig::ApplySeatIncreaseConfig
+
+      attr_accessor subscription_id: String
+
+      def initialize: (
+        allocation: MetronomeSDK::Models::RecurringCommitSubscriptionConfig::allocation,
+        apply_seat_increase_config: MetronomeSDK::RecurringCommitSubscriptionConfig::ApplySeatIncreaseConfig,
+        subscription_id: String
+      ) -> void
+
+      def to_hash: -> {
+        allocation: MetronomeSDK::Models::RecurringCommitSubscriptionConfig::allocation,
+        apply_seat_increase_config: MetronomeSDK::RecurringCommitSubscriptionConfig::ApplySeatIncreaseConfig,
+        subscription_id: String
+      }
+
+      type allocation = :INDIVIDUAL | :POOLED
+
+      module Allocation
+        extend MetronomeSDK::Internal::Type::Enum
+
+        INDIVIDUAL: :INDIVIDUAL
+        POOLED: :POOLED
+
+        def self?.values: -> ::Array[MetronomeSDK::Models::RecurringCommitSubscriptionConfig::allocation]
+      end
+
+      type apply_seat_increase_config = { is_prorated: bool }
+
+      class ApplySeatIncreaseConfig < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor is_prorated: bool
+
+        def initialize: (is_prorated: bool) -> void
+
+        def to_hash: -> { is_prorated: bool }
+      end
+    end
+  end
+end

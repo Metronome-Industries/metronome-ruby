@@ -6,6 +6,7 @@ module MetronomeSDK
           {
             alert_id: String,
             customer_id: String,
+            group_values: ::Array[MetronomeSDK::V1::Customers::AlertRetrieveParams::GroupValue],
             plans_or_contracts: MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::plans_or_contracts
           }
           & MetronomeSDK::Internal::Type::request_parameters
@@ -18,6 +19,12 @@ module MetronomeSDK
 
           attr_accessor customer_id: String
 
+          attr_reader group_values: ::Array[MetronomeSDK::V1::Customers::AlertRetrieveParams::GroupValue]?
+
+          def group_values=: (
+            ::Array[MetronomeSDK::V1::Customers::AlertRetrieveParams::GroupValue]
+          ) -> ::Array[MetronomeSDK::V1::Customers::AlertRetrieveParams::GroupValue]
+
           attr_reader plans_or_contracts: MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::plans_or_contracts?
 
           def plans_or_contracts=: (
@@ -27,6 +34,7 @@ module MetronomeSDK
           def initialize: (
             alert_id: String,
             customer_id: String,
+            ?group_values: ::Array[MetronomeSDK::V1::Customers::AlertRetrieveParams::GroupValue],
             ?plans_or_contracts: MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::plans_or_contracts,
             ?request_options: MetronomeSDK::request_opts
           ) -> void
@@ -34,9 +42,22 @@ module MetronomeSDK
           def to_hash: -> {
             alert_id: String,
             customer_id: String,
+            group_values: ::Array[MetronomeSDK::V1::Customers::AlertRetrieveParams::GroupValue],
             plans_or_contracts: MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::plans_or_contracts,
             request_options: MetronomeSDK::RequestOptions
           }
+
+          type group_value = { key: String, value: String }
+
+          class GroupValue < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor key: String
+
+            attr_accessor value: String
+
+            def initialize: (key: String, value: String) -> void
+
+            def to_hash: -> { key: String, value: String }
+          end
 
           type plans_or_contracts = :PLANS | :CONTRACTS
 

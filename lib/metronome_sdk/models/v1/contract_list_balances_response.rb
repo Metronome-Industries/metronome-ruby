@@ -4,32 +4,15 @@ module MetronomeSDK
   module Models
     module V1
       # @see MetronomeSDK::Resources::V1::Contracts#list_balances
-      class ContractListBalancesResponse < MetronomeSDK::Internal::Type::BaseModel
-        # @!attribute data
-        #
-        #   @return [Array<MetronomeSDK::Models::Commit, MetronomeSDK::Models::Credit>]
-        required :data,
-                 -> { MetronomeSDK::Internal::Type::ArrayOf[union: MetronomeSDK::Models::V1::ContractListBalancesResponse::Data] }
+      module ContractListBalancesResponse
+        extend MetronomeSDK::Internal::Type::Union
 
-        # @!attribute next_page
-        #
-        #   @return [String, nil]
-        required :next_page, String, nil?: true
+        variant -> { MetronomeSDK::Commit }
 
-        # @!method initialize(data:, next_page:)
-        #   @param data [Array<MetronomeSDK::Models::Commit, MetronomeSDK::Models::Credit>]
-        #   @param next_page [String, nil]
+        variant -> { MetronomeSDK::Credit }
 
-        module Data
-          extend MetronomeSDK::Internal::Type::Union
-
-          variant -> { MetronomeSDK::Commit }
-
-          variant -> { MetronomeSDK::Credit }
-
-          # @!method self.variants
-          #   @return [Array(MetronomeSDK::Models::Commit, MetronomeSDK::Models::Credit)]
-        end
+        # @!method self.variants
+        #   @return [Array(MetronomeSDK::Models::Commit, MetronomeSDK::Models::Credit)]
       end
     end
   end

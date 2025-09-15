@@ -147,7 +147,7 @@ module MetronomeSDK
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [MetronomeSDK::Models::V1::CreditGrantListEntriesResponse]
+        # @return [MetronomeSDK::Internal::CursorPageWithoutLimit<MetronomeSDK::Models::V1::CreditGrantListEntriesResponse>]
         #
         # @see MetronomeSDK::Models::V1::CreditGrantListEntriesParams
         def list_entries(params = {})
@@ -158,6 +158,7 @@ module MetronomeSDK
             path: "v1/credits/listEntries",
             query: parsed.slice(*query_params),
             body: parsed.except(*query_params),
+            page: MetronomeSDK::Internal::CursorPageWithoutLimit,
             model: MetronomeSDK::Models::V1::CreditGrantListEntriesResponse,
             options: options
           )

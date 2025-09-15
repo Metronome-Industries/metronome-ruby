@@ -12,7 +12,8 @@ module MetronomeSDK
           invoice_schedule: MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule,
           priority: Float?,
           product_id: String,
-          specifiers: ::Array[MetronomeSDK::V2::ContractEditCommitParams::Specifier]?
+          rate_type: MetronomeSDK::Models::V2::ContractEditCommitParams::rate_type,
+          specifiers: ::Array[MetronomeSDK::CommitSpecifierInput]?
         }
         & MetronomeSDK::Internal::Type::request_parameters
 
@@ -50,7 +51,13 @@ module MetronomeSDK
 
         def product_id=: (String) -> String
 
-        attr_accessor specifiers: ::Array[MetronomeSDK::V2::ContractEditCommitParams::Specifier]?
+        attr_reader rate_type: MetronomeSDK::Models::V2::ContractEditCommitParams::rate_type?
+
+        def rate_type=: (
+          MetronomeSDK::Models::V2::ContractEditCommitParams::rate_type
+        ) -> MetronomeSDK::Models::V2::ContractEditCommitParams::rate_type
+
+        attr_accessor specifiers: ::Array[MetronomeSDK::CommitSpecifierInput]?
 
         def initialize: (
           commit_id: String,
@@ -62,7 +69,8 @@ module MetronomeSDK
           ?invoice_schedule: MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule,
           ?priority: Float?,
           ?product_id: String,
-          ?specifiers: ::Array[MetronomeSDK::V2::ContractEditCommitParams::Specifier]?,
+          ?rate_type: MetronomeSDK::Models::V2::ContractEditCommitParams::rate_type,
+          ?specifiers: ::Array[MetronomeSDK::CommitSpecifierInput]?,
           ?request_options: MetronomeSDK::request_opts
         ) -> void
 
@@ -76,7 +84,8 @@ module MetronomeSDK
           invoice_schedule: MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule,
           priority: Float?,
           product_id: String,
-          specifiers: ::Array[MetronomeSDK::V2::ContractEditCommitParams::Specifier]?,
+          rate_type: MetronomeSDK::Models::V2::ContractEditCommitParams::rate_type,
+          specifiers: ::Array[MetronomeSDK::CommitSpecifierInput]?,
           request_options: MetronomeSDK::RequestOptions
         }
 
@@ -322,48 +331,15 @@ module MetronomeSDK
           end
         end
 
-        type specifier =
-          {
-            presentation_group_values: ::Hash[Symbol, String],
-            pricing_group_values: ::Hash[Symbol, String],
-            product_id: String,
-            product_tags: ::Array[String]
-          }
+        type rate_type = :LIST_RATE | :COMMIT_RATE
 
-        class Specifier < MetronomeSDK::Internal::Type::BaseModel
-          attr_reader presentation_group_values: ::Hash[Symbol, String]?
+        module RateType
+          extend MetronomeSDK::Internal::Type::Enum
 
-          def presentation_group_values=: (
-            ::Hash[Symbol, String]
-          ) -> ::Hash[Symbol, String]
+          LIST_RATE: :LIST_RATE
+          COMMIT_RATE: :COMMIT_RATE
 
-          attr_reader pricing_group_values: ::Hash[Symbol, String]?
-
-          def pricing_group_values=: (
-            ::Hash[Symbol, String]
-          ) -> ::Hash[Symbol, String]
-
-          attr_reader product_id: String?
-
-          def product_id=: (String) -> String
-
-          attr_reader product_tags: ::Array[String]?
-
-          def product_tags=: (::Array[String]) -> ::Array[String]
-
-          def initialize: (
-            ?presentation_group_values: ::Hash[Symbol, String],
-            ?pricing_group_values: ::Hash[Symbol, String],
-            ?product_id: String,
-            ?product_tags: ::Array[String]
-          ) -> void
-
-          def to_hash: -> {
-            presentation_group_values: ::Hash[Symbol, String],
-            pricing_group_values: ::Hash[Symbol, String],
-            product_id: String,
-            product_tags: ::Array[String]
-          }
+          def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractEditCommitParams::rate_type]
         end
       end
     end

@@ -1,0 +1,32 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type customer_retrieve_billing_configurations_params =
+        { customer_id: String, include_archived: bool }
+        & MetronomeSDK::Internal::Type::request_parameters
+
+      class CustomerRetrieveBillingConfigurationsParams < MetronomeSDK::Internal::Type::BaseModel
+        extend MetronomeSDK::Internal::Type::RequestParameters::Converter
+        include MetronomeSDK::Internal::Type::RequestParameters
+
+        attr_accessor customer_id: String
+
+        attr_reader include_archived: bool?
+
+        def include_archived=: (bool) -> bool
+
+        def initialize: (
+          customer_id: String,
+          ?include_archived: bool,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          customer_id: String,
+          include_archived: bool,
+          request_options: MetronomeSDK::RequestOptions
+        }
+      end
+    end
+  end
+end

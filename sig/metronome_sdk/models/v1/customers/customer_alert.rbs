@@ -229,9 +229,11 @@ module MetronomeSDK
             class GroupValue < MetronomeSDK::Internal::Type::BaseModel
               attr_accessor key: String
 
-              attr_accessor value: String
+              attr_reader value: String?
 
-              def initialize: (key: String, value: String) -> void
+              def value=: (String) -> String
+
+              def initialize: (key: String, ?value: String) -> void
 
               def to_hash: -> { key: String, value: String }
             end

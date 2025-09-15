@@ -64,14 +64,7 @@ module MetronomeSDK
             setter = :"#{name_sym}="
             api_name = info.fetch(:api_name, name_sym)
             nilable = info.fetch(:nil?, false)
-            const = if required && !nilable
-              info.fetch(
-                :const,
-                MetronomeSDK::Internal::OMIT
-              )
-            else
-              MetronomeSDK::Internal::OMIT
-            end
+            const = required && !nilable ? info.fetch(:const, MetronomeSDK::Internal::OMIT) : MetronomeSDK::Internal::OMIT
 
             [name_sym, setter].each { undef_method(_1) } if known_fields.key?(name_sym)
 
@@ -445,11 +438,11 @@ module MetronomeSDK
         # @return [Hash{Symbol=>Object}]
         #
         # @example
-        #   # `base_usage_filter` is a `MetronomeSDK::BaseUsageFilter`
-        #   base_usage_filter => {
-        #     group_key: group_key,
-        #     group_values: group_values,
-        #     starting_at: starting_at
+        #   # `base_threshold_commit` is a `MetronomeSDK::BaseThresholdCommit`
+        #   base_threshold_commit => {
+        #     product_id: product_id,
+        #     description: description,
+        #     name: name
         #   }
         def deconstruct_keys(keys)
           (keys || self.class.known_fields.keys)

@@ -34,7 +34,7 @@ class MetronomeSDK::Test::Resources::V1::ContractsTest < MetronomeSDK::Test::Res
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::Models::V1::ContractRetrieveResponse::Data
+        data: MetronomeSDK::Contract
       }
     end
   end
@@ -48,7 +48,7 @@ class MetronomeSDK::Test::Resources::V1::ContractsTest < MetronomeSDK::Test::Res
 
     assert_pattern do
       response => {
-        data: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::ContractListResponse::Data])
+        data: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Contract])
       }
     end
   end
@@ -144,14 +144,21 @@ class MetronomeSDK::Test::Resources::V1::ContractsTest < MetronomeSDK::Test::Res
     response = @metronome.v1.contracts.list_balances(customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d")
 
     assert_pattern do
-      response => MetronomeSDK::Models::V1::ContractListBalancesResponse
+      response => MetronomeSDK::Internal::BodyCursorPage
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => MetronomeSDK::Models::V1::ContractListBalancesResponse
     end
 
     assert_pattern do
-      response => {
-        data: ^(MetronomeSDK::Internal::Type::ArrayOf[union: MetronomeSDK::Models::V1::ContractListBalancesResponse::Data]),
-        next_page: String | nil
-      }
+      case row
+      in MetronomeSDK::Commit
+      in MetronomeSDK::Credit
+      end
     end
   end
 

@@ -157,6 +157,8 @@ module MetronomeSDK
 
               CHARGE_AUTOMATICALLY = :charge_automatically
               SEND_INVOICE = :send_invoice
+              AUTO_CHARGE_PAYMENT_INTENT = :auto_charge_payment_intent
+              MANUALLY_CHARGE_PAYMENT_INTENT = :manually_charge_payment_intent
 
               # @!method self.values
               #   @return [Array<Symbol>]

@@ -17,9 +17,7 @@ module MetronomeSDK
         #
         #   @return [Array<MetronomeSDK::Models::V1::CustomerPreviewEventsParams::Event>]
         required :events,
-                 -> {
-                   MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::CustomerPreviewEventsParams::Event]
-                 }
+                 -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::CustomerPreviewEventsParams::Event] }
 
         # @!attribute mode
         #   If set to "replace", the preview will be generated as if those were the only

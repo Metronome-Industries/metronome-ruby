@@ -11,6 +11,14 @@ module MetronomeSDK
       sig { returns(String) }
       attr_accessor :id
 
+      # Timestamp of when the commit was created.
+      #
+      # - Recurring commits: latter of commit service period date and parent commit
+      #   start date
+      # - Rollover commits: when the new contract started
+      sig { returns(Time) }
+      attr_accessor :created_at
+
       sig { returns(MetronomeSDK::Commit::Product) }
       attr_reader :product
 
@@ -83,6 +91,7 @@ module MetronomeSDK
       sig { params(contract: MetronomeSDK::Commit::Contract::OrHash).void }
       attr_writer :contract
 
+      # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
       sig { returns(T.nilable(T::Hash[Symbol, String])) }
       attr_reader :custom_fields
 
@@ -96,13 +105,13 @@ module MetronomeSDK
       attr_writer :description
 
       # Optional configuration for commit hierarchy access control
-      sig { returns(T.nilable(MetronomeSDK::Commit::HierarchyConfiguration)) }
+      sig { returns(T.nilable(MetronomeSDK::CommitHierarchyConfiguration)) }
       attr_reader :hierarchy_configuration
 
       sig do
         params(
           hierarchy_configuration:
-            MetronomeSDK::Commit::HierarchyConfiguration::OrHash
+            MetronomeSDK::CommitHierarchyConfiguration::OrHash
         ).void
       end
       attr_writer :hierarchy_configuration
@@ -212,13 +221,11 @@ module MetronomeSDK
       # List of filters that determine what kind of customer usage draws down a commit
       # or credit. A customer's usage needs to meet the condition of at least one of the
       # specifiers to contribute to a commit's or credit's drawdown.
-      sig { returns(T.nilable(T::Array[MetronomeSDK::Commit::Specifier])) }
+      sig { returns(T.nilable(T::Array[MetronomeSDK::CommitSpecifier])) }
       attr_reader :specifiers
 
       sig do
-        params(
-          specifiers: T::Array[MetronomeSDK::Commit::Specifier::OrHash]
-        ).void
+        params(specifiers: T::Array[MetronomeSDK::CommitSpecifier::OrHash]).void
       end
       attr_writer :specifiers
 
@@ -235,6 +242,7 @@ module MetronomeSDK
       sig do
         params(
           id: String,
+          created_at: Time,
           product: MetronomeSDK::Commit::Product::OrHash,
           type: MetronomeSDK::Commit::Type::OrSymbol,
           access_schedule: MetronomeSDK::ScheduleDuration::OrHash,
@@ -248,7 +256,7 @@ module MetronomeSDK
           custom_fields: T::Hash[Symbol, String],
           description: String,
           hierarchy_configuration:
-            MetronomeSDK::Commit::HierarchyConfiguration::OrHash,
+            MetronomeSDK::CommitHierarchyConfiguration::OrHash,
           invoice_contract: MetronomeSDK::Commit::InvoiceContract::OrHash,
           invoice_schedule: MetronomeSDK::SchedulePointInTime::OrHash,
           ledger:
@@ -277,12 +285,18 @@ module MetronomeSDK
           rolled_over_from: MetronomeSDK::Commit::RolledOverFrom::OrHash,
           rollover_fraction: Float,
           salesforce_opportunity_id: String,
-          specifiers: T::Array[MetronomeSDK::Commit::Specifier::OrHash],
+          specifiers: T::Array[MetronomeSDK::CommitSpecifier::OrHash],
           uniqueness_key: String
         ).returns(T.attached_class)
       end
       def self.new(
         id:,
+        # Timestamp of when the commit was created.
+        #
+        # - Recurring commits: latter of commit service period date and parent commit
+        #   start date
+        # - Rollover commits: when the new contract started
+        created_at:,
         product:,
         type:,
         # The schedule that the customer will gain access to the credits purposed with
@@ -306,6 +320,7 @@ module MetronomeSDK
         # included in the balance, including future-dated manual ledger entries.
         balance: nil,
         contract: nil,
+        # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         custom_fields: nil,
         description: nil,
         # Optional configuration for commit hierarchy access control
@@ -344,6 +359,7 @@ module MetronomeSDK
         override.returns(
           {
             id: String,
+            created_at: Time,
             product: MetronomeSDK::Commit::Product,
             type: MetronomeSDK::Commit::Type::TaggedSymbol,
             access_schedule: MetronomeSDK::ScheduleDuration,
@@ -356,8 +372,7 @@ module MetronomeSDK
             contract: MetronomeSDK::Commit::Contract,
             custom_fields: T::Hash[Symbol, String],
             description: String,
-            hierarchy_configuration:
-              MetronomeSDK::Commit::HierarchyConfiguration,
+            hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,
             invoice_contract: MetronomeSDK::Commit::InvoiceContract,
             invoice_schedule: MetronomeSDK::SchedulePointInTime,
             ledger: T::Array[MetronomeSDK::Commit::Ledger::Variants],
@@ -368,7 +383,7 @@ module MetronomeSDK
             rolled_over_from: MetronomeSDK::Commit::RolledOverFrom,
             rollover_fraction: Float,
             salesforce_opportunity_id: String,
-            specifiers: T::Array[MetronomeSDK::Commit::Specifier],
+            specifiers: T::Array[MetronomeSDK::CommitSpecifier],
             uniqueness_key: String
           }
         )
@@ -435,274 +450,6 @@ module MetronomeSDK
 
         sig { override.returns({ id: String }) }
         def to_hash
-        end
-      end
-
-      class HierarchyConfiguration < MetronomeSDK::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              MetronomeSDK::Commit::HierarchyConfiguration,
-              MetronomeSDK::Internal::AnyHash
-            )
-          end
-
-        sig do
-          returns(
-            MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::Variants
-          )
-        end
-        attr_accessor :child_access
-
-        # Optional configuration for commit hierarchy access control
-        sig do
-          params(
-            child_access:
-              T.any(
-                MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::OrHash,
-                MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::OrHash,
-                MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::OrHash
-              )
-          ).returns(T.attached_class)
-        end
-        def self.new(child_access:)
-        end
-
-        sig do
-          override.returns(
-            {
-              child_access:
-                MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::Variants
-            }
-          )
-        end
-        def to_hash
-        end
-
-        module ChildAccess
-          extend MetronomeSDK::Internal::Type::Union
-
-          Variants =
-            T.type_alias do
-              T.any(
-                MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll,
-                MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone,
-                MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs
-              )
-            end
-
-          class CommitHierarchyChildAccessAll < MetronomeSDK::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll,
-                  MetronomeSDK::Internal::AnyHash
-                )
-              end
-
-            sig do
-              returns(
-                MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::TaggedSymbol
-              )
-            end
-            attr_accessor :type
-
-            sig do
-              params(
-                type:
-                  MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::OrSymbol
-              ).returns(T.attached_class)
-            end
-            def self.new(type:)
-            end
-
-            sig do
-              override.returns(
-                {
-                  type:
-                    MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::TaggedSymbol
-                }
-              )
-            end
-            def to_hash
-            end
-
-            module Type
-              extend MetronomeSDK::Internal::Type::Enum
-
-              TaggedSymbol =
-                T.type_alias do
-                  T.all(
-                    Symbol,
-                    MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type
-                  )
-                end
-              OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-              ALL =
-                T.let(
-                  :ALL,
-                  MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::TaggedSymbol
-                )
-
-              sig do
-                override.returns(
-                  T::Array[
-                    MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessAll::Type::TaggedSymbol
-                  ]
-                )
-              end
-              def self.values
-              end
-            end
-          end
-
-          class CommitHierarchyChildAccessNone < MetronomeSDK::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone,
-                  MetronomeSDK::Internal::AnyHash
-                )
-              end
-
-            sig do
-              returns(
-                MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::TaggedSymbol
-              )
-            end
-            attr_accessor :type
-
-            sig do
-              params(
-                type:
-                  MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::OrSymbol
-              ).returns(T.attached_class)
-            end
-            def self.new(type:)
-            end
-
-            sig do
-              override.returns(
-                {
-                  type:
-                    MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::TaggedSymbol
-                }
-              )
-            end
-            def to_hash
-            end
-
-            module Type
-              extend MetronomeSDK::Internal::Type::Enum
-
-              TaggedSymbol =
-                T.type_alias do
-                  T.all(
-                    Symbol,
-                    MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type
-                  )
-                end
-              OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-              NONE =
-                T.let(
-                  :NONE,
-                  MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::TaggedSymbol
-                )
-
-              sig do
-                override.returns(
-                  T::Array[
-                    MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessNone::Type::TaggedSymbol
-                  ]
-                )
-              end
-              def self.values
-              end
-            end
-          end
-
-          class CommitHierarchyChildAccessContractIDs < MetronomeSDK::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs,
-                  MetronomeSDK::Internal::AnyHash
-                )
-              end
-
-            sig { returns(T::Array[String]) }
-            attr_accessor :contract_ids
-
-            sig do
-              returns(
-                MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::TaggedSymbol
-              )
-            end
-            attr_accessor :type
-
-            sig do
-              params(
-                contract_ids: T::Array[String],
-                type:
-                  MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::OrSymbol
-              ).returns(T.attached_class)
-            end
-            def self.new(contract_ids:, type:)
-            end
-
-            sig do
-              override.returns(
-                {
-                  contract_ids: T::Array[String],
-                  type:
-                    MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::TaggedSymbol
-                }
-              )
-            end
-            def to_hash
-            end
-
-            module Type
-              extend MetronomeSDK::Internal::Type::Enum
-
-              TaggedSymbol =
-                T.type_alias do
-                  T.all(
-                    Symbol,
-                    MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type
-                  )
-                end
-              OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-              CONTRACT_IDS =
-                T.let(
-                  :CONTRACT_IDS,
-                  MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::TaggedSymbol
-                )
-
-              sig do
-                override.returns(
-                  T::Array[
-                    MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::CommitHierarchyChildAccessContractIDs::Type::TaggedSymbol
-                  ]
-                )
-              end
-              def self.values
-              end
-            end
-          end
-
-          sig do
-            override.returns(
-              T::Array[
-                MetronomeSDK::Commit::HierarchyConfiguration::ChildAccess::Variants
-              ]
-            )
-          end
-          def self.variants
-          end
         end
       end
 
@@ -2043,75 +1790,6 @@ module MetronomeSDK
         end
 
         sig { override.returns({ commit_id: String, contract_id: String }) }
-        def to_hash
-        end
-      end
-
-      class Specifier < MetronomeSDK::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              MetronomeSDK::Commit::Specifier,
-              MetronomeSDK::Internal::AnyHash
-            )
-          end
-
-        sig { returns(T.nilable(T::Hash[Symbol, String])) }
-        attr_reader :presentation_group_values
-
-        sig { params(presentation_group_values: T::Hash[Symbol, String]).void }
-        attr_writer :presentation_group_values
-
-        sig { returns(T.nilable(T::Hash[Symbol, String])) }
-        attr_reader :pricing_group_values
-
-        sig { params(pricing_group_values: T::Hash[Symbol, String]).void }
-        attr_writer :pricing_group_values
-
-        # If provided, the specifier will only apply to the product with the specified ID.
-        sig { returns(T.nilable(String)) }
-        attr_reader :product_id
-
-        sig { params(product_id: String).void }
-        attr_writer :product_id
-
-        # If provided, the specifier will only apply to products with all the specified
-        # tags.
-        sig { returns(T.nilable(T::Array[String])) }
-        attr_reader :product_tags
-
-        sig { params(product_tags: T::Array[String]).void }
-        attr_writer :product_tags
-
-        sig do
-          params(
-            presentation_group_values: T::Hash[Symbol, String],
-            pricing_group_values: T::Hash[Symbol, String],
-            product_id: String,
-            product_tags: T::Array[String]
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          presentation_group_values: nil,
-          pricing_group_values: nil,
-          # If provided, the specifier will only apply to the product with the specified ID.
-          product_id: nil,
-          # If provided, the specifier will only apply to products with all the specified
-          # tags.
-          product_tags: nil
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              presentation_group_values: T::Hash[Symbol, String],
-              pricing_group_values: T::Hash[Symbol, String],
-              product_id: String,
-              product_tags: T::Array[String]
-            }
-          )
-        end
         def to_hash
         end
       end

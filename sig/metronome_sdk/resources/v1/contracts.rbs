@@ -23,7 +23,7 @@ module MetronomeSDK
           ?net_payment_terms_days: Float,
           ?netsuite_sales_order_id: String,
           ?overrides: ::Array[MetronomeSDK::V1::ContractCreateParams::Override],
-          ?prepaid_balance_threshold_configuration: MetronomeSDK::V1::ContractCreateParams::PrepaidBalanceThresholdConfiguration,
+          ?prepaid_balance_threshold_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration,
           ?priority: Float,
           ?professional_services: ::Array[MetronomeSDK::V1::ContractCreateParams::ProfessionalService],
           ?rate_card_alias: String,
@@ -34,7 +34,7 @@ module MetronomeSDK
           ?salesforce_opportunity_id: String,
           ?scheduled_charges: ::Array[MetronomeSDK::V1::ContractCreateParams::ScheduledCharge],
           ?scheduled_charges_on_usage_invoices: MetronomeSDK::Models::V1::ContractCreateParams::scheduled_charges_on_usage_invoices,
-          ?spend_threshold_configuration: MetronomeSDK::V1::ContractCreateParams::SpendThresholdConfiguration,
+          ?spend_threshold_configuration: MetronomeSDK::SpendThresholdConfiguration,
           ?subscriptions: ::Array[MetronomeSDK::V1::ContractCreateParams::Subscription],
           ?total_contract_value: Float,
           ?transition: MetronomeSDK::V1::ContractCreateParams::Transition,
@@ -117,7 +117,7 @@ module MetronomeSDK
           ?next_page: String,
           ?starting_at: Time,
           ?request_options: MetronomeSDK::request_opts
-        ) -> MetronomeSDK::Models::V1::ContractListBalancesResponse
+        ) -> MetronomeSDK::Internal::BodyCursorPage[MetronomeSDK::Models::V1::contract_list_balances_response]
 
         def retrieve_rate_schedule: (
           contract_id: String,

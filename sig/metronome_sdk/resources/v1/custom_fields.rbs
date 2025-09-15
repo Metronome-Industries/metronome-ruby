@@ -20,7 +20,7 @@ module MetronomeSDK
           ?next_page: String,
           ?entities: ::Array[MetronomeSDK::Models::V1::CustomFieldListKeysParams::entity],
           ?request_options: MetronomeSDK::request_opts
-        ) -> MetronomeSDK::Models::V1::CustomFieldListKeysResponse
+        ) -> MetronomeSDK::Internal::CursorPageWithoutLimit[MetronomeSDK::Models::V1::CustomFieldListKeysResponse]
 
         def remove_key: (
           entity: MetronomeSDK::Models::V1::CustomFieldRemoveKeyParams::entity,

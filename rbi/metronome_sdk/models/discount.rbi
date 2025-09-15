@@ -23,6 +23,7 @@ module MetronomeSDK
       sig { params(schedule: MetronomeSDK::SchedulePointInTime::OrHash).void }
       attr_writer :schedule
 
+      # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
       sig { returns(T.nilable(T::Hash[Symbol, String])) }
       attr_reader :custom_fields
 
@@ -56,6 +57,7 @@ module MetronomeSDK
         id:,
         product:,
         schedule:,
+        # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         custom_fields: nil,
         name: nil,
         # This field's availability is dependent on your client's configuration.

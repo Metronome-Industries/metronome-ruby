@@ -28,6 +28,7 @@ module MetronomeSDK
         sig { params(credit_type: MetronomeSDK::CreditTypeData::OrHash).void }
         attr_writer :credit_type
 
+        # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         sig { returns(T::Hash[Symbol, String]) }
         attr_accessor :custom_fields
 
@@ -112,6 +113,7 @@ module MetronomeSDK
           id:,
           charge_type:,
           credit_type:,
+          # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           custom_fields:,
           name:,
           prices:,

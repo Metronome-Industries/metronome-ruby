@@ -1,5 +1,44 @@
 # Changelog
 
+## 0.4.0 (2025-09-15)
+
+Full Changelog: [v0.3.0...v0.4.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v0.3.0...v0.4.0)
+
+### Features
+
+* **api:** api update ([b3f2aeb](https://github.com/Metronome-Industries/metronome-ruby/commit/b3f2aeb0a8d57324f3c1ec8a5336f79c59b4137a))
+* **api:** api update ([6813668](https://github.com/Metronome-Industries/metronome-ruby/commit/6813668cebea02a68645ca00d44d255f6c0b710c))
+* **api:** api update ([31bd52b](https://github.com/Metronome-Industries/metronome-ruby/commit/31bd52b62c8fa5aae27ba945728fde027e5d5985))
+* **api:** api update ([45eccf1](https://github.com/Metronome-Industries/metronome-ruby/commit/45eccf1feac42d7274ebacbc8587157c4202d275))
+* **api:** api update ([5bbac53](https://github.com/Metronome-Industries/metronome-ruby/commit/5bbac53382da0c7e672df5ed3f948d52312e8079))
+* **api:** api update ([9830da9](https://github.com/Metronome-Industries/metronome-ruby/commit/9830da971ce054a993a65e647c8d5b770ea3c084))
+* **api:** api update ([cc2c608](https://github.com/Metronome-Industries/metronome-ruby/commit/cc2c60844c7047041978bf22baa838d69e5379d0))
+* **api:** api update ([7eca928](https://github.com/Metronome-Industries/metronome-ruby/commit/7eca928c3e2a2c67aa85b31e5301a19f00b06839))
+* **api:** api update ([93ab567](https://github.com/Metronome-Industries/metronome-ruby/commit/93ab5670c401aae66ea1da0aa2c46f7c501c65f3))
+* **api:** api update ([6e1ad79](https://github.com/Metronome-Industries/metronome-ruby/commit/6e1ad798d73433a0de9a99f73ead657572dc40d2))
+* **api:** api update ([af9d407](https://github.com/Metronome-Industries/metronome-ruby/commit/af9d40723783d66698f89d39c510394fc6171245))
+* **api:** api update ([afda04f](https://github.com/Metronome-Industries/metronome-ruby/commit/afda04fed93d4f110f38f5e5efe71536e6d65edb))
+* **api:** api update ([6417f51](https://github.com/Metronome-Industries/metronome-ruby/commit/6417f516cc9545f70e68cfe97019f4f4a6f213cb))
+* **api:** api update ([f7f88b8](https://github.com/Metronome-Industries/metronome-ruby/commit/f7f88b85ee83bbf5281643f5fd53727e7027cfae))
+* **api:** api update ([0ce9d85](https://github.com/Metronome-Industries/metronome-ruby/commit/0ce9d859593d0493dc6e310597eeac16b23985bd))
+* **api:** api update ([de06e47](https://github.com/Metronome-Industries/metronome-ruby/commit/de06e47feb7a0c24de59f3144cf18ab6fff0e359))
+* **api:** api update ([b356318](https://github.com/Metronome-Industries/metronome-ruby/commit/b3563186d1d6d06710f31faf36cfec71b42089cf))
+* **api:** api update ([b2109da](https://github.com/Metronome-Industries/metronome-ruby/commit/b2109da6b8e9b10478d95cb3dff3dec5bd3b7cbe))
+* **api:** api update ([b4c5660](https://github.com/Metronome-Industries/metronome-ruby/commit/b4c5660b71b7f7a24ab58678d2815794fb0265f5))
+* **api:** api update ([de6921a](https://github.com/Metronome-Industries/metronome-ruby/commit/de6921adc8f379ddd51c65160d6d171e3a627d44))
+* **api:** api update ([8ca1dd7](https://github.com/Metronome-Industries/metronome-ruby/commit/8ca1dd72e65db8c15f37c97d304e96ef51f32e4c))
+* **api:** api update ([31104ec](https://github.com/Metronome-Industries/metronome-ruby/commit/31104ec05b6b6249649c835cc07a232b51d746a1))
+
+
+### Bug Fixes
+
+* bump sorbet version and fix new type errors from the breaking change ([8d6cb6f](https://github.com/Metronome-Industries/metronome-ruby/commit/8d6cb6f7ccf6a99b411766d0327fec9c91f8a103))
+
+
+### Chores
+
+* add json schema comment for rubocop.yml ([3c3b445](https://github.com/Metronome-Industries/metronome-ruby/commit/3c3b4459d85be606eade13625754549cb62b76da))
+
 ## 0.3.0 (2025-08-15)
 
 Full Changelog: [v0.2.0...v0.3.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v0.2.0...v0.3.0)

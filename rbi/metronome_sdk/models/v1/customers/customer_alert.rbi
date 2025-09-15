@@ -570,13 +570,16 @@ module MetronomeSDK
               sig { returns(String) }
               attr_accessor :key
 
-              sig { returns(String) }
-              attr_accessor :value
+              sig { returns(T.nilable(String)) }
+              attr_reader :value
+
+              sig { params(value: String).void }
+              attr_writer :value
 
               sig do
                 params(key: String, value: String).returns(T.attached_class)
               end
-              def self.new(key:, value:)
+              def self.new(key:, value: nil)
               end
 
               sig { override.returns({ key: String, value: String }) }
