@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.1.0 (2025-09-19)
+
+Full Changelog: [v1.0.0...v1.1.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v1.0.0...v1.1.0)
+
+### Features
+
+* expose response headers for both streams and errors ([9f0e87e](https://github.com/Metronome-Industries/metronome-ruby/commit/9f0e87e8df28a54ccc7a913d687205dee5ccf9cb))
+
+
+### Chores
+
+* do not install brew dependencies in ./scripts/bootstrap by default ([92ff30c](https://github.com/Metronome-Industries/metronome-ruby/commit/92ff30cd9332917e0f465525ccf2ac809d8de48b))
+
 ## 1.0.0 (2025-09-15)
 
 Full Changelog: [v0.3.0...v1.0.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v0.3.0...v1.0.0)
