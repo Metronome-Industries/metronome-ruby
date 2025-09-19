@@ -60,7 +60,7 @@ module MetronomeSDK
       #
       # @param client [MetronomeSDK::Internal::Transport::BaseClient]
       # @param req [Hash{Symbol=>Object}]
-      # @param headers [Hash{String=>String}, Net::HTTPHeader]
+      # @param headers [Hash{String=>String}]
       # @param page_data [Hash{Symbol=>Object}]
       def initialize(client:, req:, headers:, page_data:)
         super
