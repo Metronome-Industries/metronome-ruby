@@ -1,0 +1,198 @@
+module MetronomeSDK
+  module Models
+    type payment_list_response =
+      {
+        id: String,
+        amount: Float,
+        amount_paid: Float,
+        contract_id: String,
+        created_at: Time,
+        customer_id: String,
+        error_message: String,
+        fiat_credit_type: MetronomeSDK::CreditTypeData,
+        invoice_id: String,
+        payment_gateway: MetronomeSDK::Models::PaymentListResponse::PaymentGateway,
+        status: MetronomeSDK::Models::PaymentListResponse::status,
+        updated_at: Time
+      }
+
+    class PaymentListResponse < MetronomeSDK::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_reader amount: Float?
+
+      def amount=: (Float) -> Float
+
+      attr_reader amount_paid: Float?
+
+      def amount_paid=: (Float) -> Float
+
+      attr_reader contract_id: String?
+
+      def contract_id=: (String) -> String
+
+      attr_reader created_at: Time?
+
+      def created_at=: (Time) -> Time
+
+      attr_reader customer_id: String?
+
+      def customer_id=: (String) -> String
+
+      attr_reader error_message: String?
+
+      def error_message=: (String) -> String
+
+      attr_reader fiat_credit_type: MetronomeSDK::CreditTypeData?
+
+      def fiat_credit_type=: (
+        MetronomeSDK::CreditTypeData
+      ) -> MetronomeSDK::CreditTypeData
+
+      attr_reader invoice_id: String?
+
+      def invoice_id=: (String) -> String
+
+      attr_reader payment_gateway: MetronomeSDK::Models::PaymentListResponse::PaymentGateway?
+
+      def payment_gateway=: (
+        MetronomeSDK::Models::PaymentListResponse::PaymentGateway
+      ) -> MetronomeSDK::Models::PaymentListResponse::PaymentGateway
+
+      attr_reader status: MetronomeSDK::Models::PaymentListResponse::status?
+
+      def status=: (
+        MetronomeSDK::Models::PaymentListResponse::status
+      ) -> MetronomeSDK::Models::PaymentListResponse::status
+
+      attr_reader updated_at: Time?
+
+      def updated_at=: (Time) -> Time
+
+      def initialize: (
+        id: String,
+        ?amount: Float,
+        ?amount_paid: Float,
+        ?contract_id: String,
+        ?created_at: Time,
+        ?customer_id: String,
+        ?error_message: String,
+        ?fiat_credit_type: MetronomeSDK::CreditTypeData,
+        ?invoice_id: String,
+        ?payment_gateway: MetronomeSDK::Models::PaymentListResponse::PaymentGateway,
+        ?status: MetronomeSDK::Models::PaymentListResponse::status,
+        ?updated_at: Time
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        amount: Float,
+        amount_paid: Float,
+        contract_id: String,
+        created_at: Time,
+        customer_id: String,
+        error_message: String,
+        fiat_credit_type: MetronomeSDK::CreditTypeData,
+        invoice_id: String,
+        payment_gateway: MetronomeSDK::Models::PaymentListResponse::PaymentGateway,
+        status: MetronomeSDK::Models::PaymentListResponse::status,
+        updated_at: Time
+      }
+
+      type payment_gateway =
+        {
+          stripe: MetronomeSDK::Models::PaymentListResponse::PaymentGateway::Stripe,
+          type: MetronomeSDK::Models::PaymentListResponse::PaymentGateway::type_
+        }
+
+      class PaymentGateway < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor stripe: MetronomeSDK::Models::PaymentListResponse::PaymentGateway::Stripe
+
+        attr_accessor type: MetronomeSDK::Models::PaymentListResponse::PaymentGateway::type_
+
+        def initialize: (
+          stripe: MetronomeSDK::Models::PaymentListResponse::PaymentGateway::Stripe,
+          type: MetronomeSDK::Models::PaymentListResponse::PaymentGateway::type_
+        ) -> void
+
+        def to_hash: -> {
+          stripe: MetronomeSDK::Models::PaymentListResponse::PaymentGateway::Stripe,
+          type: MetronomeSDK::Models::PaymentListResponse::PaymentGateway::type_
+        }
+
+        type stripe =
+          {
+            payment_intent_id: String,
+            error: MetronomeSDK::Models::PaymentListResponse::PaymentGateway::Stripe::Error
+          }
+
+        class Stripe < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor payment_intent_id: String
+
+          attr_reader error: MetronomeSDK::Models::PaymentListResponse::PaymentGateway::Stripe::Error?
+
+          def error=: (
+            MetronomeSDK::Models::PaymentListResponse::PaymentGateway::Stripe::Error
+          ) -> MetronomeSDK::Models::PaymentListResponse::PaymentGateway::Stripe::Error
+
+          def initialize: (
+            payment_intent_id: String,
+            ?error: MetronomeSDK::Models::PaymentListResponse::PaymentGateway::Stripe::Error
+          ) -> void
+
+          def to_hash: -> {
+            payment_intent_id: String,
+            error: MetronomeSDK::Models::PaymentListResponse::PaymentGateway::Stripe::Error
+          }
+
+          type error = { code: String, decline_code: String, type: String }
+
+          class Error < MetronomeSDK::Internal::Type::BaseModel
+            attr_reader code: String?
+
+            def code=: (String) -> String
+
+            attr_reader decline_code: String?
+
+            def decline_code=: (String) -> String
+
+            attr_reader type: String?
+
+            def type=: (String) -> String
+
+            def initialize: (
+              ?code: String,
+              ?decline_code: String,
+              ?type: String
+            ) -> void
+
+            def to_hash: -> { code: String, decline_code: String, type: String }
+          end
+        end
+
+        type type_ = :stripe
+
+        module Type
+          extend MetronomeSDK::Internal::Type::Enum
+
+          STRIPE: :stripe
+
+          def self?.values: -> ::Array[MetronomeSDK::Models::PaymentListResponse::PaymentGateway::type_]
+        end
+      end
+
+      type status = :pending | :requires_intervention | :paid | :canceled
+
+      module Status
+        extend MetronomeSDK::Internal::Type::Enum
+
+        PENDING: :pending
+        REQUIRES_INTERVENTION: :requires_intervention
+        PAID: :paid
+        CANCELED: :canceled
+
+        def self?.values: -> ::Array[MetronomeSDK::Models::PaymentListResponse::status]
+      end
+    end
+  end
+end
