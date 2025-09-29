@@ -50,6 +50,18 @@ module MetronomeSDK
         sig { returns(T.nilable(T::Array[String])) }
         attr_accessor :applicable_product_tags
 
+        # Optional configuration for credit hierarchy access control
+        sig { returns(T.nilable(MetronomeSDK::CommitHierarchyConfiguration)) }
+        attr_reader :hierarchy_configuration
+
+        sig do
+          params(
+            hierarchy_configuration:
+              MetronomeSDK::CommitHierarchyConfiguration::OrHash
+          ).void
+        end
+        attr_writer :hierarchy_configuration
+
         # If multiple commits are applicable, the one with the lower priority will apply
         # first.
         sig { returns(T.nilable(Float)) }
@@ -98,6 +110,8 @@ module MetronomeSDK
               MetronomeSDK::V2::ContractEditCreditParams::AccessSchedule::OrHash,
             applicable_product_ids: T.nilable(T::Array[String]),
             applicable_product_tags: T.nilable(T::Array[String]),
+            hierarchy_configuration:
+              MetronomeSDK::CommitHierarchyConfiguration::OrHash,
             priority: T.nilable(Float),
             product_id: String,
             rate_type:
@@ -119,6 +133,8 @@ module MetronomeSDK
           # Which tags the credit applies to. If both applicable_product_ids and
           # applicable_product_tags are not provided, the credit applies to all products.
           applicable_product_tags: nil,
+          # Optional configuration for credit hierarchy access control
+          hierarchy_configuration: nil,
           # If multiple commits are applicable, the one with the lower priority will apply
           # first.
           priority: nil,
@@ -147,6 +163,8 @@ module MetronomeSDK
                 MetronomeSDK::V2::ContractEditCreditParams::AccessSchedule,
               applicable_product_ids: T.nilable(T::Array[String]),
               applicable_product_tags: T.nilable(T::Array[String]),
+              hierarchy_configuration:
+                MetronomeSDK::CommitHierarchyConfiguration,
               priority: T.nilable(Float),
               product_id: String,
               rate_type:

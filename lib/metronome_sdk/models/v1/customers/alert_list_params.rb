@@ -22,8 +22,8 @@ module MetronomeSDK
           optional :next_page, String
 
           # @!attribute alert_statuses
-          #   Optionally filter by alert status. If absent, only enabled alerts will be
-          #   returned.
+          #   Optionally filter by threshold notification status. If absent, only enabled
+          #   notifications will be returned.
           #
           #   @return [Array<Symbol, MetronomeSDK::Models::V1::Customers::AlertListParams::AlertStatus>, nil]
           optional :alert_statuses,
@@ -37,7 +37,7 @@ module MetronomeSDK
           #
           #   @param next_page [String] Cursor that indicates where the next page of results should start.
           #
-          #   @param alert_statuses [Array<Symbol, MetronomeSDK::Models::V1::Customers::AlertListParams::AlertStatus>] Optionally filter by alert status. If absent, only enabled alerts will be return
+          #   @param alert_statuses [Array<Symbol, MetronomeSDK::Models::V1::Customers::AlertListParams::AlertStatus>] Optionally filter by threshold notification status. If absent, only enabled noti
           #
           #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
 

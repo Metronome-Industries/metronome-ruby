@@ -80,8 +80,7 @@ module MetronomeSDK
         # ingestion, supports backdating 34 days, and is built to handle mission-critical
         # usage data with enterprise-grade reliability. Metronome supports 100,000 events
         # per second without requiring pre-aggregation or rollups and can scale up from
-        # there. See
-        # [Getting usage into Metronome](https://docs.metronome.com/connect-metronome/) to
+        # there. See the [Send usage events](/guides/events/send-usage-events) guide to
         # learn more about usage events.
         #
         # ### Use this endpoint to:
@@ -123,6 +122,9 @@ module MetronomeSDK
         #   }
         # }
         # ```
+        #
+        # Learn more about
+        # [usage event structure definitions](/guides/events/design-usage-events).
         #
         # #### Transaction ID
         #

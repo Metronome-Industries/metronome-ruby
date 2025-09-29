@@ -1,0 +1,13 @@
+module MetronomeSDK
+  module Resources
+    class Notifications
+      class System
+        def list: (
+          ?request_options: MetronomeSDK::request_opts
+        ) -> MetronomeSDK::Models::Notifications::SystemListResponse
+
+        def initialize: (client: MetronomeSDK::Client) -> void
+      end
+    end
+  end
+end

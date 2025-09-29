@@ -12,8 +12,8 @@ module MetronomeSDK
           required :alert, -> { MetronomeSDK::V1::Customers::CustomerAlert::Alert }
 
           # @!attribute customer_status
-          #   The status of the customer alert. If the alert is archived, null will be
-          #   returned.
+          #   The status of the threshold notification. If the notification is archived, null
+          #   will be returned.
           #
           #   @return [Symbol, MetronomeSDK::Models::V1::Customers::CustomerAlert::CustomerStatus, nil]
           required :customer_status,
@@ -21,7 +21,7 @@ module MetronomeSDK
                    nil?: true
 
           # @!attribute triggered_by
-          #   If present, indicates the reason the alert was triggered.
+          #   If present, indicates the reason the threshold notification was triggered.
           #
           #   @return [String, nil]
           optional :triggered_by, String, nil?: true
@@ -32,52 +32,53 @@ module MetronomeSDK
           #
           #   @param alert [MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert]
           #
-          #   @param customer_status [Symbol, MetronomeSDK::Models::V1::Customers::CustomerAlert::CustomerStatus, nil] The status of the customer alert. If the alert is archived, null will be returne
+          #   @param customer_status [Symbol, MetronomeSDK::Models::V1::Customers::CustomerAlert::CustomerStatus, nil] The status of the threshold notification. If the notification is archived, null
           #
-          #   @param triggered_by [String, nil] If present, indicates the reason the alert was triggered.
+          #   @param triggered_by [String, nil] If present, indicates the reason the threshold notification was triggered.
 
           # @see MetronomeSDK::Models::V1::Customers::CustomerAlert#alert
           class Alert < MetronomeSDK::Internal::Type::BaseModel
             # @!attribute id
-            #   the Metronome ID of the alert
+            #   the Metronome ID of the threshold notification
             #
             #   @return [String]
             required :id, String
 
             # @!attribute name
-            #   Name of the alert
+            #   Name of the threshold notification
             #
             #   @return [String]
             required :name, String
 
             # @!attribute status
-            #   Status of the alert
+            #   Status of the threshold notification
             #
             #   @return [Symbol, MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::Status]
             required :status, enum: -> { MetronomeSDK::V1::Customers::CustomerAlert::Alert::Status }
 
             # @!attribute threshold
-            #   Threshold value of the alert policy
+            #   Threshold value of the notification policy
             #
             #   @return [Float]
             required :threshold, Float
 
             # @!attribute type
-            #   Type of the alert
+            #   Type of the threshold notification
             #
             #   @return [Symbol, MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::Type]
             required :type, enum: -> { MetronomeSDK::V1::Customers::CustomerAlert::Alert::Type }
 
             # @!attribute updated_at
-            #   Timestamp for when the alert was last updated
+            #   Timestamp for when the threshold notification was last updated
             #
             #   @return [Time]
             required :updated_at, Time
 
             # @!attribute credit_grant_type_filters
-            #   An array of strings, representing a way to filter the credit grant this alert
-            #   applies to, by looking at the credit_grant_type field on the credit grant. This
-            #   field is only defined for CreditPercentage and CreditBalance alerts
+            #   An array of strings, representing a way to filter the credit grant this
+            #   threshold notification applies to, by looking at the credit_grant_type field on
+            #   the credit grant. This field is only defined for CreditPercentage and
+            #   CreditBalance notifications
             #
             #   @return [Array<String>, nil]
             optional :credit_grant_type_filters, MetronomeSDK::Internal::Type::ArrayOf[String]
@@ -88,30 +89,31 @@ module MetronomeSDK
             optional :credit_type, -> { MetronomeSDK::CreditTypeData }, nil?: true
 
             # @!attribute custom_field_filters
-            #   A list of custom field filters for alert types that support advanced filtering
+            #   A list of custom field filters for notification types that support advanced
+            #   filtering
             #
             #   @return [Array<MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::CustomFieldFilter>, nil]
             optional :custom_field_filters,
                      -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::CustomerAlert::Alert::CustomFieldFilter] }
 
             # @!attribute group_key_filter
-            #   Scopes alert evaluation to a specific presentation group key on individual line
-            #   items. Only present for spend alerts.
+            #   Scopes threshold notification evaluation to a specific presentation group key on
+            #   individual line items. Only present for spend notifications.
             #
             #   @return [MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::GroupKeyFilter, nil]
             optional :group_key_filter, -> { MetronomeSDK::V1::Customers::CustomerAlert::Alert::GroupKeyFilter }
 
             # @!attribute group_values
-            #   Only present for `spend_threshold_reached` alerts. Scope alert to a specific
-            #   group key on individual line items.
+            #   Only present for `spend_threshold_reached` notifications. Scope notification to
+            #   a specific group key on individual line items.
             #
             #   @return [Array<MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::GroupValue>, nil]
             optional :group_values,
                      -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::CustomerAlert::Alert::GroupValue] }
 
             # @!attribute invoice_types_filter
-            #   Only supported for invoice_total_reached alerts. A list of invoice types to
-            #   evaluate.
+            #   Only supported for invoice_total_reached threshold notifications. A list of
+            #   invoice types to evaluate.
             #
             #   @return [Array<String>, nil]
             optional :invoice_types_filter, MetronomeSDK::Internal::Type::ArrayOf[String]
@@ -128,33 +130,33 @@ module MetronomeSDK
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert} for more details.
             #
-            #   @param id [String] the Metronome ID of the alert
+            #   @param id [String] the Metronome ID of the threshold notification
             #
-            #   @param name [String] Name of the alert
+            #   @param name [String] Name of the threshold notification
             #
-            #   @param status [Symbol, MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::Status] Status of the alert
+            #   @param status [Symbol, MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::Status] Status of the threshold notification
             #
-            #   @param threshold [Float] Threshold value of the alert policy
+            #   @param threshold [Float] Threshold value of the notification policy
             #
-            #   @param type [Symbol, MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::Type] Type of the alert
+            #   @param type [Symbol, MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::Type] Type of the threshold notification
             #
-            #   @param updated_at [Time] Timestamp for when the alert was last updated
+            #   @param updated_at [Time] Timestamp for when the threshold notification was last updated
             #
-            #   @param credit_grant_type_filters [Array<String>] An array of strings, representing a way to filter the credit grant this alert ap
+            #   @param credit_grant_type_filters [Array<String>] An array of strings, representing a way to filter the credit grant this threshol
             #
             #   @param credit_type [MetronomeSDK::Models::CreditTypeData, nil]
             #
-            #   @param custom_field_filters [Array<MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::CustomFieldFilter>] A list of custom field filters for alert types that support advanced filtering
+            #   @param custom_field_filters [Array<MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::CustomFieldFilter>] A list of custom field filters for notification types that support advanced filt
             #
-            #   @param group_key_filter [MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::GroupKeyFilter] Scopes alert evaluation to a specific presentation group key on individual line
+            #   @param group_key_filter [MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::GroupKeyFilter] Scopes threshold notification evaluation to a specific presentation group key on
             #
-            #   @param group_values [Array<MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::GroupValue>] Only present for `spend_threshold_reached` alerts. Scope alert to a specific gro
+            #   @param group_values [Array<MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::GroupValue>] Only present for `spend_threshold_reached` notifications. Scope notification to
             #
-            #   @param invoice_types_filter [Array<String>] Only supported for invoice_total_reached alerts. A list of invoice types to eval
+            #   @param invoice_types_filter [Array<String>] Only supported for invoice_total_reached threshold notifications. A list of invo
             #
             #   @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a record is made wit
 
-            # Status of the alert
+            # Status of the threshold notification
             #
             # @see MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert#status
             module Status
@@ -168,7 +170,7 @@ module MetronomeSDK
               #   @return [Array<Symbol>]
             end
 
-            # Type of the alert
+            # Type of the threshold notification
             #
             # @see MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert#type
             module Type
@@ -243,8 +245,8 @@ module MetronomeSDK
               required :value, String
 
               # @!method initialize(key:, value:)
-              #   Scopes alert evaluation to a specific presentation group key on individual line
-              #   items. Only present for spend alerts.
+              #   Scopes threshold notification evaluation to a specific presentation group key on
+              #   individual line items. Only present for spend notifications.
               #
               #   @param key [String]
               #   @param value [String]
@@ -267,8 +269,8 @@ module MetronomeSDK
             end
           end
 
-          # The status of the customer alert. If the alert is archived, null will be
-          # returned.
+          # The status of the threshold notification. If the notification is archived, null
+          # will be returned.
           #
           # @see MetronomeSDK::Models::V1::Customers::CustomerAlert#customer_status
           module CustomerStatus

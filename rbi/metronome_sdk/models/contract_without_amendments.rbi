@@ -53,7 +53,7 @@ module MetronomeSDK
       sig { params(credits: T::Array[MetronomeSDK::Credit::OrHash]).void }
       attr_writer :credits
 
-      # This field's availability is dependent on your client's configuration.
+      # This field's availability is dependent on your client's
       sig { returns(T.nilable(T::Array[MetronomeSDK::Discount])) }
       attr_reader :discounts
 
@@ -310,7 +310,7 @@ module MetronomeSDK
         transitions:,
         usage_statement_schedule:,
         credits: nil,
-        # This field's availability is dependent on your client's configuration.
+        # This field's availability is dependent on your client's
         discounts: nil,
         ending_before: nil,
         # Either a **parent** configuration with a list of children or a **child**

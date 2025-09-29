@@ -1,0 +1,77 @@
+module MetronomeSDK
+  module Models
+    type notification_retrieve_response =
+      { data: MetronomeSDK::Models::NotificationRetrieveResponse::Data }
+
+    class NotificationRetrieveResponse < MetronomeSDK::Internal::Type::BaseModel
+      attr_accessor data: MetronomeSDK::Models::NotificationRetrieveResponse::Data
+
+      def initialize: (
+        data: MetronomeSDK::Models::NotificationRetrieveResponse::Data
+      ) -> void
+
+      def to_hash: -> {
+        data: MetronomeSDK::Models::NotificationRetrieveResponse::Data
+      }
+
+      type data =
+        {
+          id: String,
+          created_at: Time,
+          created_by: String,
+          environment_type: String,
+          name: String,
+          policy: MetronomeSDK::Models::NotificationRetrieveResponse::Data::Policy,
+          type: String
+        }
+
+      class Data < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor created_at: Time
+
+        attr_accessor created_by: String
+
+        attr_accessor environment_type: String
+
+        attr_accessor name: String
+
+        attr_accessor policy: MetronomeSDK::Models::NotificationRetrieveResponse::Data::Policy
+
+        attr_accessor type: String
+
+        def initialize: (
+          id: String,
+          created_at: Time,
+          created_by: String,
+          environment_type: String,
+          name: String,
+          policy: MetronomeSDK::Models::NotificationRetrieveResponse::Data::Policy,
+          type: String
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          created_at: Time,
+          created_by: String,
+          environment_type: String,
+          name: String,
+          policy: MetronomeSDK::Models::NotificationRetrieveResponse::Data::Policy,
+          type: String
+        }
+
+        type policy = { offset: String, type: String }
+
+        class Policy < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor offset: String
+
+          attr_accessor type: String
+
+          def initialize: (offset: String, type: String) -> void
+
+          def to_hash: -> { offset: String, type: String }
+        end
+      end
+    end
+  end
+end

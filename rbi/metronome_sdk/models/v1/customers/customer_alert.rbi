@@ -25,8 +25,8 @@ module MetronomeSDK
           end
           attr_writer :alert
 
-          # The status of the customer alert. If the alert is archived, null will be
-          # returned.
+          # The status of the threshold notification. If the notification is archived, null
+          # will be returned.
           sig do
             returns(
               T.nilable(
@@ -36,7 +36,7 @@ module MetronomeSDK
           end
           attr_accessor :customer_status
 
-          # If present, indicates the reason the alert was triggered.
+          # If present, indicates the reason the threshold notification was triggered.
           sig { returns(T.nilable(String)) }
           attr_accessor :triggered_by
 
@@ -52,10 +52,10 @@ module MetronomeSDK
           end
           def self.new(
             alert:,
-            # The status of the customer alert. If the alert is archived, null will be
-            # returned.
+            # The status of the threshold notification. If the notification is archived, null
+            # will be returned.
             customer_status:,
-            # If present, indicates the reason the alert was triggered.
+            # If present, indicates the reason the threshold notification was triggered.
             triggered_by: nil
           )
           end
@@ -84,15 +84,15 @@ module MetronomeSDK
                 )
               end
 
-            # the Metronome ID of the alert
+            # the Metronome ID of the threshold notification
             sig { returns(String) }
             attr_accessor :id
 
-            # Name of the alert
+            # Name of the threshold notification
             sig { returns(String) }
             attr_accessor :name
 
-            # Status of the alert
+            # Status of the threshold notification
             sig do
               returns(
                 MetronomeSDK::V1::Customers::CustomerAlert::Alert::Status::TaggedSymbol
@@ -100,11 +100,11 @@ module MetronomeSDK
             end
             attr_accessor :status
 
-            # Threshold value of the alert policy
+            # Threshold value of the notification policy
             sig { returns(Float) }
             attr_accessor :threshold
 
-            # Type of the alert
+            # Type of the threshold notification
             sig do
               returns(
                 MetronomeSDK::V1::Customers::CustomerAlert::Alert::Type::TaggedSymbol
@@ -112,13 +112,14 @@ module MetronomeSDK
             end
             attr_accessor :type
 
-            # Timestamp for when the alert was last updated
+            # Timestamp for when the threshold notification was last updated
             sig { returns(Time) }
             attr_accessor :updated_at
 
-            # An array of strings, representing a way to filter the credit grant this alert
-            # applies to, by looking at the credit_grant_type field on the credit grant. This
-            # field is only defined for CreditPercentage and CreditBalance alerts
+            # An array of strings, representing a way to filter the credit grant this
+            # threshold notification applies to, by looking at the credit_grant_type field on
+            # the credit grant. This field is only defined for CreditPercentage and
+            # CreditBalance notifications
             sig { returns(T.nilable(T::Array[String])) }
             attr_reader :credit_grant_type_filters
 
@@ -135,7 +136,8 @@ module MetronomeSDK
             end
             attr_writer :credit_type
 
-            # A list of custom field filters for alert types that support advanced filtering
+            # A list of custom field filters for notification types that support advanced
+            # filtering
             sig do
               returns(
                 T.nilable(
@@ -157,8 +159,8 @@ module MetronomeSDK
             end
             attr_writer :custom_field_filters
 
-            # Scopes alert evaluation to a specific presentation group key on individual line
-            # items. Only present for spend alerts.
+            # Scopes threshold notification evaluation to a specific presentation group key on
+            # individual line items. Only present for spend notifications.
             sig do
               returns(
                 T.nilable(
@@ -176,8 +178,8 @@ module MetronomeSDK
             end
             attr_writer :group_key_filter
 
-            # Only present for `spend_threshold_reached` alerts. Scope alert to a specific
-            # group key on individual line items.
+            # Only present for `spend_threshold_reached` notifications. Scope notification to
+            # a specific group key on individual line items.
             sig do
               returns(
                 T.nilable(
@@ -199,8 +201,8 @@ module MetronomeSDK
             end
             attr_writer :group_values
 
-            # Only supported for invoice_total_reached alerts. A list of invoice types to
-            # evaluate.
+            # Only supported for invoice_total_reached threshold notifications. A list of
+            # invoice types to evaluate.
             sig { returns(T.nilable(T::Array[String])) }
             attr_reader :invoice_types_filter
 
@@ -243,33 +245,35 @@ module MetronomeSDK
               ).returns(T.attached_class)
             end
             def self.new(
-              # the Metronome ID of the alert
+              # the Metronome ID of the threshold notification
               id:,
-              # Name of the alert
+              # Name of the threshold notification
               name:,
-              # Status of the alert
+              # Status of the threshold notification
               status:,
-              # Threshold value of the alert policy
+              # Threshold value of the notification policy
               threshold:,
-              # Type of the alert
+              # Type of the threshold notification
               type:,
-              # Timestamp for when the alert was last updated
+              # Timestamp for when the threshold notification was last updated
               updated_at:,
-              # An array of strings, representing a way to filter the credit grant this alert
-              # applies to, by looking at the credit_grant_type field on the credit grant. This
-              # field is only defined for CreditPercentage and CreditBalance alerts
+              # An array of strings, representing a way to filter the credit grant this
+              # threshold notification applies to, by looking at the credit_grant_type field on
+              # the credit grant. This field is only defined for CreditPercentage and
+              # CreditBalance notifications
               credit_grant_type_filters: nil,
               credit_type: nil,
-              # A list of custom field filters for alert types that support advanced filtering
+              # A list of custom field filters for notification types that support advanced
+              # filtering
               custom_field_filters: nil,
-              # Scopes alert evaluation to a specific presentation group key on individual line
-              # items. Only present for spend alerts.
+              # Scopes threshold notification evaluation to a specific presentation group key on
+              # individual line items. Only present for spend notifications.
               group_key_filter: nil,
-              # Only present for `spend_threshold_reached` alerts. Scope alert to a specific
-              # group key on individual line items.
+              # Only present for `spend_threshold_reached` notifications. Scope notification to
+              # a specific group key on individual line items.
               group_values: nil,
-              # Only supported for invoice_total_reached alerts. A list of invoice types to
-              # evaluate.
+              # Only supported for invoice_total_reached threshold notifications. A list of
+              # invoice types to evaluate.
               invoice_types_filter: nil,
               # Prevents the creation of duplicates. If a request to create a record is made
               # with a previously used uniqueness key, a new record will not be created and the
@@ -309,7 +313,7 @@ module MetronomeSDK
             def to_hash
             end
 
-            # Status of the alert
+            # Status of the threshold notification
             module Status
               extend MetronomeSDK::Internal::Type::Enum
 
@@ -349,7 +353,7 @@ module MetronomeSDK
               end
             end
 
-            # Type of the alert
+            # Type of the threshold notification
             module Type
               extend MetronomeSDK::Internal::Type::Enum
 
@@ -545,8 +549,8 @@ module MetronomeSDK
               sig { returns(String) }
               attr_accessor :value
 
-              # Scopes alert evaluation to a specific presentation group key on individual line
-              # items. Only present for spend alerts.
+              # Scopes threshold notification evaluation to a specific presentation group key on
+              # individual line items. Only present for spend notifications.
               sig do
                 params(key: String, value: String).returns(T.attached_class)
               end
@@ -588,8 +592,8 @@ module MetronomeSDK
             end
           end
 
-          # The status of the customer alert. If the alert is archived, null will be
-          # returned.
+          # The status of the threshold notification. If the notification is archived, null
+          # will be returned.
           module CustomerStatus
             extend MetronomeSDK::Internal::Type::Enum
 

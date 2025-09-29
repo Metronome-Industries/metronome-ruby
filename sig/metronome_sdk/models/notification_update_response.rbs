@@ -1,0 +1,126 @@
+module MetronomeSDK
+  module Models
+    type notification_update_response =
+      { data: MetronomeSDK::Models::NotificationUpdateResponse::data }
+
+    class NotificationUpdateResponse < MetronomeSDK::Internal::Type::BaseModel
+      attr_accessor data: MetronomeSDK::Models::NotificationUpdateResponse::data
+
+      def initialize: (
+        data: MetronomeSDK::Models::NotificationUpdateResponse::data
+      ) -> void
+
+      def to_hash: -> {
+        data: MetronomeSDK::Models::NotificationUpdateResponse::data
+      }
+
+      type data =
+        MetronomeSDK::Models::NotificationUpdateResponse::Data::LifecycleEventSystemNotificationConfig
+        | MetronomeSDK::Models::NotificationUpdateResponse::Data::LifecycleEventOffsetNotificationConfig
+
+      module Data
+        extend MetronomeSDK::Internal::Type::Union
+
+        type lifecycle_event_system_notification_config =
+          {
+            policy: MetronomeSDK::Models::NotificationUpdateResponse::Data::LifecycleEventSystemNotificationConfig::Policy,
+            type: String,
+            is_enabled: bool
+          }
+
+        class LifecycleEventSystemNotificationConfig < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor policy: MetronomeSDK::Models::NotificationUpdateResponse::Data::LifecycleEventSystemNotificationConfig::Policy
+
+          attr_accessor type: String
+
+          attr_reader is_enabled: bool?
+
+          def is_enabled=: (bool) -> bool
+
+          def initialize: (
+            policy: MetronomeSDK::Models::NotificationUpdateResponse::Data::LifecycleEventSystemNotificationConfig::Policy,
+            type: String,
+            ?is_enabled: bool
+          ) -> void
+
+          def to_hash: -> {
+            policy: MetronomeSDK::Models::NotificationUpdateResponse::Data::LifecycleEventSystemNotificationConfig::Policy,
+            type: String,
+            is_enabled: bool
+          }
+
+          type policy = { type: String }
+
+          class Policy < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor type: String
+
+            def initialize: (type: String) -> void
+
+            def to_hash: -> { type: String }
+          end
+        end
+
+        type lifecycle_event_offset_notification_config =
+          {
+            id: String,
+            created_at: Time,
+            created_by: String,
+            environment_type: String,
+            name: String,
+            policy: MetronomeSDK::Models::NotificationUpdateResponse::Data::LifecycleEventOffsetNotificationConfig::Policy,
+            type: String
+          }
+
+        class LifecycleEventOffsetNotificationConfig < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor created_at: Time
+
+          attr_accessor created_by: String
+
+          attr_accessor environment_type: String
+
+          attr_accessor name: String
+
+          attr_accessor policy: MetronomeSDK::Models::NotificationUpdateResponse::Data::LifecycleEventOffsetNotificationConfig::Policy
+
+          attr_accessor type: String
+
+          def initialize: (
+            id: String,
+            created_at: Time,
+            created_by: String,
+            environment_type: String,
+            name: String,
+            policy: MetronomeSDK::Models::NotificationUpdateResponse::Data::LifecycleEventOffsetNotificationConfig::Policy,
+            type: String
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            created_at: Time,
+            created_by: String,
+            environment_type: String,
+            name: String,
+            policy: MetronomeSDK::Models::NotificationUpdateResponse::Data::LifecycleEventOffsetNotificationConfig::Policy,
+            type: String
+          }
+
+          type policy = { offset: String, type: String }
+
+          class Policy < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor offset: String
+
+            attr_accessor type: String
+
+            def initialize: (offset: String, type: String) -> void
+
+            def to_hash: -> { offset: String, type: String }
+          end
+        end
+
+        def self?.variants: -> ::Array[MetronomeSDK::Models::NotificationUpdateResponse::data]
+      end
+    end
+  end
+end

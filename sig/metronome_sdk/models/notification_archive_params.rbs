@@ -1,0 +1,23 @@
+module MetronomeSDK
+  module Models
+    type notification_archive_params =
+      { id: String } & MetronomeSDK::Internal::Type::request_parameters
+
+    class NotificationArchiveParams < MetronomeSDK::Internal::Type::BaseModel
+      extend MetronomeSDK::Internal::Type::RequestParameters::Converter
+      include MetronomeSDK::Internal::Type::RequestParameters
+
+      attr_accessor id: String
+
+      def initialize: (
+        id: String,
+        ?request_options: MetronomeSDK::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        request_options: MetronomeSDK::RequestOptions
+      }
+    end
+  end
+end

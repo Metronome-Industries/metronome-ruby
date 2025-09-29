@@ -16,7 +16,7 @@ module MetronomeSDK
               )
             end
 
-          # The Metronome ID of the alert
+          # The Metronome ID of the threshold notification
           sig { returns(String) }
           attr_accessor :alert_id
 
@@ -24,8 +24,8 @@ module MetronomeSDK
           sig { returns(String) }
           attr_accessor :customer_id
 
-          # Only present for `spend_threshold_reached` alerts. Retrieve the alert for a
-          # specific group key-value pair.
+          # Only present for `spend_threshold_reached` notifications. Retrieve the
+          # notification for a specific group key-value pair.
           sig do
             returns(
               T.nilable(
@@ -47,8 +47,8 @@ module MetronomeSDK
           end
           attr_writer :group_values
 
-          # When parallel alerts are enabled during migration, this flag denotes whether to
-          # fetch alerts for plans or contracts.
+          # When parallel threshold notifications are enabled during migration, this flag
+          # denotes whether to fetch notifications for plans or contracts.
           sig do
             returns(
               T.nilable(
@@ -80,15 +80,15 @@ module MetronomeSDK
             ).returns(T.attached_class)
           end
           def self.new(
-            # The Metronome ID of the alert
+            # The Metronome ID of the threshold notification
             alert_id:,
             # The Metronome ID of the customer
             customer_id:,
-            # Only present for `spend_threshold_reached` alerts. Retrieve the alert for a
-            # specific group key-value pair.
+            # Only present for `spend_threshold_reached` notifications. Retrieve the
+            # notification for a specific group key-value pair.
             group_values: nil,
-            # When parallel alerts are enabled during migration, this flag denotes whether to
-            # fetch alerts for plans or contracts.
+            # When parallel threshold notifications are enabled during migration, this flag
+            # denotes whether to fetch notifications for plans or contracts.
             plans_or_contracts: nil,
             request_options: {}
           )
@@ -127,8 +127,8 @@ module MetronomeSDK
             sig { returns(String) }
             attr_accessor :value
 
-            # Scopes alert evaluation to a specific presentation group key on individual line
-            # items. Only present for spend alerts.
+            # Scopes threshold notification evaluation to a specific presentation group key on
+            # individual line items. Only present for spend notifications.
             sig { params(key: String, value: String).returns(T.attached_class) }
             def self.new(key:, value:)
             end
@@ -138,8 +138,8 @@ module MetronomeSDK
             end
           end
 
-          # When parallel alerts are enabled during migration, this flag denotes whether to
-          # fetch alerts for plans or contracts.
+          # When parallel threshold notifications are enabled during migration, this flag
+          # denotes whether to fetch notifications for plans or contracts.
           module PlansOrContracts
             extend MetronomeSDK::Internal::Type::Enum
 

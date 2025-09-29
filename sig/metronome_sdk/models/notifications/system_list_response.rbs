@@ -1,0 +1,66 @@
+module MetronomeSDK
+  module Models
+    module Notifications
+      type system_list_response =
+        {
+          data: ::Array[MetronomeSDK::Models::Notifications::SystemListResponse::Data],
+          cursor: String?
+        }
+
+      class SystemListResponse < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor data: ::Array[MetronomeSDK::Models::Notifications::SystemListResponse::Data]
+
+        attr_accessor cursor: String?
+
+        def initialize: (
+          data: ::Array[MetronomeSDK::Models::Notifications::SystemListResponse::Data],
+          ?cursor: String?
+        ) -> void
+
+        def to_hash: -> {
+          data: ::Array[MetronomeSDK::Models::Notifications::SystemListResponse::Data],
+          cursor: String?
+        }
+
+        type data =
+          {
+            policy: MetronomeSDK::Models::Notifications::SystemListResponse::Data::Policy,
+            type: String,
+            is_enabled: bool
+          }
+
+        class Data < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor policy: MetronomeSDK::Models::Notifications::SystemListResponse::Data::Policy
+
+          attr_accessor type: String
+
+          attr_reader is_enabled: bool?
+
+          def is_enabled=: (bool) -> bool
+
+          def initialize: (
+            policy: MetronomeSDK::Models::Notifications::SystemListResponse::Data::Policy,
+            type: String,
+            ?is_enabled: bool
+          ) -> void
+
+          def to_hash: -> {
+            policy: MetronomeSDK::Models::Notifications::SystemListResponse::Data::Policy,
+            type: String,
+            is_enabled: bool
+          }
+
+          type policy = { type: String }
+
+          class Policy < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor type: String
+
+            def initialize: (type: String) -> void
+
+            def to_hash: -> { type: String }
+          end
+        end
+      end
+    end
+  end
+end

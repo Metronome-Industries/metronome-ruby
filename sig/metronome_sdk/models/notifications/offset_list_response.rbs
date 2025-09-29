@@ -1,0 +1,86 @@
+module MetronomeSDK
+  module Models
+    module Notifications
+      type offset_list_response =
+        {
+          data: ::Array[MetronomeSDK::Models::Notifications::OffsetListResponse::Data],
+          cursor: String?
+        }
+
+      class OffsetListResponse < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor data: ::Array[MetronomeSDK::Models::Notifications::OffsetListResponse::Data]
+
+        attr_accessor cursor: String?
+
+        def initialize: (
+          data: ::Array[MetronomeSDK::Models::Notifications::OffsetListResponse::Data],
+          ?cursor: String?
+        ) -> void
+
+        def to_hash: -> {
+          data: ::Array[MetronomeSDK::Models::Notifications::OffsetListResponse::Data],
+          cursor: String?
+        }
+
+        type data =
+          {
+            id: String,
+            created_at: Time,
+            created_by: String,
+            environment_type: String,
+            name: String,
+            policy: MetronomeSDK::Models::Notifications::OffsetListResponse::Data::Policy,
+            type: String
+          }
+
+        class Data < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor created_at: Time
+
+          attr_accessor created_by: String
+
+          attr_accessor environment_type: String
+
+          attr_accessor name: String
+
+          attr_accessor policy: MetronomeSDK::Models::Notifications::OffsetListResponse::Data::Policy
+
+          attr_accessor type: String
+
+          def initialize: (
+            id: String,
+            created_at: Time,
+            created_by: String,
+            environment_type: String,
+            name: String,
+            policy: MetronomeSDK::Models::Notifications::OffsetListResponse::Data::Policy,
+            type: String
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            created_at: Time,
+            created_by: String,
+            environment_type: String,
+            name: String,
+            policy: MetronomeSDK::Models::Notifications::OffsetListResponse::Data::Policy,
+            type: String
+          }
+
+          type policy = { offset: String, type: String }
+
+          class Policy < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor offset: String
+
+            attr_accessor type: String
+
+            def initialize: (offset: String, type: String) -> void
+
+            def to_hash: -> { offset: String, type: String }
+          end
+        end
+      end
+    end
+  end
+end
