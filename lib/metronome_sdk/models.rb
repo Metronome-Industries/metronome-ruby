@@ -93,6 +93,8 @@ module MetronomeSDK
 
   PaymentGateConfigV2 = MetronomeSDK::Models::PaymentGateConfigV2
 
+  PaymentListParams = MetronomeSDK::Models::PaymentListParams
+
   PrepaidBalanceThresholdConfiguration = MetronomeSDK::Models::PrepaidBalanceThresholdConfiguration
 
   PrepaidBalanceThresholdConfigurationV2 = MetronomeSDK::Models::PrepaidBalanceThresholdConfigurationV2
