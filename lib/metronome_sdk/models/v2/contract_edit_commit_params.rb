@@ -41,6 +41,12 @@ module MetronomeSDK
         #   @return [Array<String>, nil]
         optional :applicable_product_tags, MetronomeSDK::Internal::Type::ArrayOf[String], nil?: true
 
+        # @!attribute hierarchy_configuration
+        #   Optional configuration for commit hierarchy access control
+        #
+        #   @return [MetronomeSDK::Models::CommitHierarchyConfiguration, nil]
+        optional :hierarchy_configuration, -> { MetronomeSDK::CommitHierarchyConfiguration }
+
         # @!attribute invoice_contract_id
         #   ID of contract to use for invoicing
         #
@@ -85,7 +91,7 @@ module MetronomeSDK
                  -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::CommitSpecifierInput] },
                  nil?: true
 
-        # @!method initialize(commit_id:, customer_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, invoice_contract_id: nil, invoice_schedule: nil, priority: nil, product_id: nil, rate_type: nil, specifiers: nil, request_options: {})
+        # @!method initialize(commit_id:, customer_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, hierarchy_configuration: nil, invoice_contract_id: nil, invoice_schedule: nil, priority: nil, product_id: nil, rate_type: nil, specifiers: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::V2::ContractEditCommitParams} for more details.
         #
@@ -98,6 +104,8 @@ module MetronomeSDK
         #   @param applicable_product_ids [Array<String>, nil] Which products the commit applies to. If applicable_product_ids, applicable_prod
         #
         #   @param applicable_product_tags [Array<String>, nil] Which tags the commit applies to. If applicable*product_ids, applicable_product*
+        #
+        #   @param hierarchy_configuration [MetronomeSDK::Models::CommitHierarchyConfiguration] Optional configuration for commit hierarchy access control
         #
         #   @param invoice_contract_id [String] ID of contract to use for invoicing
         #

@@ -15,39 +15,41 @@ module MetronomeSDK
             )
           end
 
-        # Type of the alert
+        # Type of the threshold notification
         sig do
           returns(MetronomeSDK::V1::AlertCreateParams::AlertType::OrSymbol)
         end
         attr_accessor :alert_type
 
-        # Name of the alert
+        # Name of the threshold notification
         sig { returns(String) }
         attr_accessor :name
 
-        # Threshold value of the alert policy. Depending upon the alert type, this number
-        # may represent a financial amount, the days remaining, or a percentage reached.
+        # Threshold value of the notification policy. Depending upon the notification
+        # type, this number may represent a financial amount, the days remaining, or a
+        # percentage reached.
         sig { returns(Float) }
         attr_accessor :threshold
 
-        # For alerts of type `usage_threshold_reached`, specifies which billable metric to
-        # track the usage for.
+        # For threshold notifications of type `usage_threshold_reached`, specifies which
+        # billable metric to track the usage for.
         sig { returns(T.nilable(String)) }
         attr_reader :billable_metric_id
 
         sig { params(billable_metric_id: String).void }
         attr_writer :billable_metric_id
 
-        # An array of strings, representing a way to filter the credit grant this alert
-        # applies to, by looking at the credit_grant_type field on the credit grant. This
-        # field is only defined for CreditPercentage and CreditBalance alerts
+        # An array of strings, representing a way to filter the credit grant this
+        # threshold notification applies to, by looking at the credit_grant_type field on
+        # the credit grant. This field is only defined for CreditPercentage and
+        # CreditBalance notifications
         sig { returns(T.nilable(T::Array[String])) }
         attr_reader :credit_grant_type_filters
 
         sig { params(credit_grant_type_filters: T::Array[String]).void }
         attr_writer :credit_grant_type_filters
 
-        # ID of the credit's currency, defaults to USD. If the specific alert type
+        # ID of the credit's currency, defaults to USD. If the specific notification type
         # requires a pricing unit/currency, find the ID in the
         # [Metronome app](https://app.metronome.com/offering/pricing-units).
         sig { returns(T.nilable(String)) }
@@ -56,8 +58,8 @@ module MetronomeSDK
         sig { params(credit_type_id: String).void }
         attr_writer :credit_type_id
 
-        # A list of custom field filters for alert types that support advanced filtering.
-        # Only present for contract invoices.
+        # A list of custom field filters for threshold notification types that support
+        # advanced filtering. Only present for contract invoices.
         sig do
           returns(
             T.nilable(
@@ -77,25 +79,25 @@ module MetronomeSDK
         end
         attr_writer :custom_field_filters
 
-        # If provided, will create this alert for this specific customer. To create an
-        # alert for all customers, do not specify a `customer_id`.
+        # If provided, will create this threshold notification for this specific customer.
+        # To create a notification for all customers, do not specify a `customer_id`.
         sig { returns(T.nilable(String)) }
         attr_reader :customer_id
 
         sig { params(customer_id: String).void }
         attr_writer :customer_id
 
-        # If true, the alert will evaluate immediately on customers that already meet the
-        # alert threshold. If false, it will only evaluate on future customers that
-        # trigger the alert threshold. Defaults to true.
+        # If true, the threshold notification will evaluate immediately on customers that
+        # already meet the notification threshold. If false, it will only evaluate on
+        # future customers that trigger the threshold. Defaults to true.
         sig { returns(T.nilable(T::Boolean)) }
         attr_reader :evaluate_on_create
 
         sig { params(evaluate_on_create: T::Boolean).void }
         attr_writer :evaluate_on_create
 
-        # Only present for `spend_threshold_reached` alerts. Scope alert to a specific
-        # group key on individual line items.
+        # Only present for `spend_threshold_reached` notifications. Scope notification to
+        # a specific group key on individual line items.
         sig do
           returns(
             T.nilable(T::Array[MetronomeSDK::V1::AlertCreateParams::GroupValue])
@@ -111,16 +113,16 @@ module MetronomeSDK
         end
         attr_writer :group_values
 
-        # Only supported for invoice_total_reached alerts. A list of invoice types to
-        # evaluate.
+        # Only supported for invoice_total_reached threshold notifications. A list of
+        # invoice types to evaluate.
         sig { returns(T.nilable(T::Array[String])) }
         attr_reader :invoice_types_filter
 
         sig { params(invoice_types_filter: T::Array[String]).void }
         attr_writer :invoice_types_filter
 
-        # If provided, will create this alert for this specific plan. To create an alert
-        # for all customers, do not specify a `plan_id`.
+        # If provided, will create this threshold notification for this specific plan. To
+        # create a notification for all customers, do not specify a `plan_id`.
         sig { returns(T.nilable(String)) }
         attr_reader :plan_id
 
@@ -160,42 +162,44 @@ module MetronomeSDK
           ).returns(T.attached_class)
         end
         def self.new(
-          # Type of the alert
+          # Type of the threshold notification
           alert_type:,
-          # Name of the alert
+          # Name of the threshold notification
           name:,
-          # Threshold value of the alert policy. Depending upon the alert type, this number
-          # may represent a financial amount, the days remaining, or a percentage reached.
+          # Threshold value of the notification policy. Depending upon the notification
+          # type, this number may represent a financial amount, the days remaining, or a
+          # percentage reached.
           threshold:,
-          # For alerts of type `usage_threshold_reached`, specifies which billable metric to
-          # track the usage for.
+          # For threshold notifications of type `usage_threshold_reached`, specifies which
+          # billable metric to track the usage for.
           billable_metric_id: nil,
-          # An array of strings, representing a way to filter the credit grant this alert
-          # applies to, by looking at the credit_grant_type field on the credit grant. This
-          # field is only defined for CreditPercentage and CreditBalance alerts
+          # An array of strings, representing a way to filter the credit grant this
+          # threshold notification applies to, by looking at the credit_grant_type field on
+          # the credit grant. This field is only defined for CreditPercentage and
+          # CreditBalance notifications
           credit_grant_type_filters: nil,
-          # ID of the credit's currency, defaults to USD. If the specific alert type
+          # ID of the credit's currency, defaults to USD. If the specific notification type
           # requires a pricing unit/currency, find the ID in the
           # [Metronome app](https://app.metronome.com/offering/pricing-units).
           credit_type_id: nil,
-          # A list of custom field filters for alert types that support advanced filtering.
-          # Only present for contract invoices.
+          # A list of custom field filters for threshold notification types that support
+          # advanced filtering. Only present for contract invoices.
           custom_field_filters: nil,
-          # If provided, will create this alert for this specific customer. To create an
-          # alert for all customers, do not specify a `customer_id`.
+          # If provided, will create this threshold notification for this specific customer.
+          # To create a notification for all customers, do not specify a `customer_id`.
           customer_id: nil,
-          # If true, the alert will evaluate immediately on customers that already meet the
-          # alert threshold. If false, it will only evaluate on future customers that
-          # trigger the alert threshold. Defaults to true.
+          # If true, the threshold notification will evaluate immediately on customers that
+          # already meet the notification threshold. If false, it will only evaluate on
+          # future customers that trigger the threshold. Defaults to true.
           evaluate_on_create: nil,
-          # Only present for `spend_threshold_reached` alerts. Scope alert to a specific
-          # group key on individual line items.
+          # Only present for `spend_threshold_reached` notifications. Scope notification to
+          # a specific group key on individual line items.
           group_values: nil,
-          # Only supported for invoice_total_reached alerts. A list of invoice types to
-          # evaluate.
+          # Only supported for invoice_total_reached threshold notifications. A list of
+          # invoice types to evaluate.
           invoice_types_filter: nil,
-          # If provided, will create this alert for this specific plan. To create an alert
-          # for all customers, do not specify a `plan_id`.
+          # If provided, will create this threshold notification for this specific plan. To
+          # create a notification for all customers, do not specify a `plan_id`.
           plan_id: nil,
           # Prevents the creation of duplicates. If a request to create a record is made
           # with a previously used uniqueness key, a new record will not be created and the
@@ -233,7 +237,7 @@ module MetronomeSDK
         def to_hash
         end
 
-        # Type of the alert
+        # Type of the threshold notification
         module AlertType
           extend MetronomeSDK::Internal::Type::Enum
 

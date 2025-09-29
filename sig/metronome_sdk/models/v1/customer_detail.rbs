@@ -10,6 +10,7 @@ module MetronomeSDK
           external_id: String,
           ingest_aliases: ::Array[String],
           name: String,
+          updated_at: Time,
           archived_at: Time?,
           current_billable_status: MetronomeSDK::V1::CustomerDetail::CurrentBillableStatus
         }
@@ -29,6 +30,8 @@ module MetronomeSDK
 
         attr_accessor name: String
 
+        attr_accessor updated_at: Time
+
         attr_accessor archived_at: Time?
 
         attr_reader current_billable_status: MetronomeSDK::V1::CustomerDetail::CurrentBillableStatus?
@@ -45,6 +48,7 @@ module MetronomeSDK
           external_id: String,
           ingest_aliases: ::Array[String],
           name: String,
+          updated_at: Time,
           ?archived_at: Time?,
           ?current_billable_status: MetronomeSDK::V1::CustomerDetail::CurrentBillableStatus
         ) -> void
@@ -57,6 +61,7 @@ module MetronomeSDK
           external_id: String,
           ingest_aliases: ::Array[String],
           name: String,
+          updated_at: Time,
           archived_at: Time?,
           current_billable_status: MetronomeSDK::V1::CustomerDetail::CurrentBillableStatus
         }

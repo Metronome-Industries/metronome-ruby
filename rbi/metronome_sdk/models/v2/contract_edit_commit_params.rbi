@@ -52,6 +52,18 @@ module MetronomeSDK
         sig { returns(T.nilable(T::Array[String])) }
         attr_accessor :applicable_product_tags
 
+        # Optional configuration for commit hierarchy access control
+        sig { returns(T.nilable(MetronomeSDK::CommitHierarchyConfiguration)) }
+        attr_reader :hierarchy_configuration
+
+        sig do
+          params(
+            hierarchy_configuration:
+              MetronomeSDK::CommitHierarchyConfiguration::OrHash
+          ).void
+        end
+        attr_writer :hierarchy_configuration
+
         # ID of contract to use for invoicing
         sig { returns(T.nilable(String)) }
         attr_reader :invoice_contract_id
@@ -124,6 +136,8 @@ module MetronomeSDK
               MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule::OrHash,
             applicable_product_ids: T.nilable(T::Array[String]),
             applicable_product_tags: T.nilable(T::Array[String]),
+            hierarchy_configuration:
+              MetronomeSDK::CommitHierarchyConfiguration::OrHash,
             invoice_contract_id: String,
             invoice_schedule:
               MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule::OrHash,
@@ -150,6 +164,8 @@ module MetronomeSDK
           # applicable_product_tags or specifiers are not provided, the commit applies to
           # all products.
           applicable_product_tags: nil,
+          # Optional configuration for commit hierarchy access control
+          hierarchy_configuration: nil,
           # ID of contract to use for invoicing
           invoice_contract_id: nil,
           invoice_schedule: nil,
@@ -181,6 +197,8 @@ module MetronomeSDK
                 MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule,
               applicable_product_ids: T.nilable(T::Array[String]),
               applicable_product_tags: T.nilable(T::Array[String]),
+              hierarchy_configuration:
+                MetronomeSDK::CommitHierarchyConfiguration,
               invoice_contract_id: String,
               invoice_schedule:
                 MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule,

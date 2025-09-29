@@ -600,7 +600,7 @@ module MetronomeSDK
               multiplier: Float,
               override_specifiers: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverrideSpecifier],
               override_tiers: ::Array[MetronomeSDK::OverrideTier],
-              overwrite_rate: MetronomeSDK::OverwriteRate,
+              overwrite_rate: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate,
               priority: Float,
               product: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::Product,
               target: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::target,
@@ -644,11 +644,11 @@ module MetronomeSDK
               ::Array[MetronomeSDK::OverrideTier]
             ) -> ::Array[MetronomeSDK::OverrideTier]
 
-            attr_reader overwrite_rate: MetronomeSDK::OverwriteRate?
+            attr_reader overwrite_rate: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate?
 
             def overwrite_rate=: (
-              MetronomeSDK::OverwriteRate
-            ) -> MetronomeSDK::OverwriteRate
+              MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate
+            ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate
 
             attr_reader priority: Float?
 
@@ -682,7 +682,7 @@ module MetronomeSDK
               ?multiplier: Float,
               ?override_specifiers: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverrideSpecifier],
               ?override_tiers: ::Array[MetronomeSDK::OverrideTier],
-              ?overwrite_rate: MetronomeSDK::OverwriteRate,
+              ?overwrite_rate: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate,
               ?priority: Float,
               ?product: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::Product,
               ?target: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::target,
@@ -699,7 +699,7 @@ module MetronomeSDK
               multiplier: Float,
               override_specifiers: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverrideSpecifier],
               override_tiers: ::Array[MetronomeSDK::OverrideTier],
-              overwrite_rate: MetronomeSDK::OverwriteRate,
+              overwrite_rate: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate,
               priority: Float,
               product: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::Product,
               target: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::target,
@@ -790,6 +790,84 @@ module MetronomeSDK
                 WEEKLY: :WEEKLY
 
                 def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverrideSpecifier::billing_frequency]
+              end
+            end
+
+            type overwrite_rate =
+              {
+                rate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::rate_type,
+                credit_type: MetronomeSDK::CreditTypeData,
+                custom_rate: ::Hash[Symbol, top],
+                is_prorated: bool,
+                price: Float,
+                quantity: Float,
+                tiers: ::Array[MetronomeSDK::Tier]
+              }
+
+            class OverwriteRate < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor rate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::rate_type
+
+              attr_reader credit_type: MetronomeSDK::CreditTypeData?
+
+              def credit_type=: (
+                MetronomeSDK::CreditTypeData
+              ) -> MetronomeSDK::CreditTypeData
+
+              attr_reader custom_rate: ::Hash[Symbol, top]?
+
+              def custom_rate=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+              attr_reader is_prorated: bool?
+
+              def is_prorated=: (bool) -> bool
+
+              attr_reader price: Float?
+
+              def price=: (Float) -> Float
+
+              attr_reader quantity: Float?
+
+              def quantity=: (Float) -> Float
+
+              attr_reader tiers: ::Array[MetronomeSDK::Tier]?
+
+              def tiers=: (
+                ::Array[MetronomeSDK::Tier]
+              ) -> ::Array[MetronomeSDK::Tier]
+
+              def initialize: (
+                rate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::rate_type,
+                ?credit_type: MetronomeSDK::CreditTypeData,
+                ?custom_rate: ::Hash[Symbol, top],
+                ?is_prorated: bool,
+                ?price: Float,
+                ?quantity: Float,
+                ?tiers: ::Array[MetronomeSDK::Tier]
+              ) -> void
+
+              def to_hash: -> {
+                rate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::rate_type,
+                credit_type: MetronomeSDK::CreditTypeData,
+                custom_rate: ::Hash[Symbol, top],
+                is_prorated: bool,
+                price: Float,
+                quantity: Float,
+                tiers: ::Array[MetronomeSDK::Tier]
+              }
+
+              type rate_type =
+                :FLAT | :PERCENTAGE | :SUBSCRIPTION | :TIERED | :CUSTOM
+
+              module RateType
+                extend MetronomeSDK::Internal::Type::Enum
+
+                FLAT: :FLAT
+                PERCENTAGE: :PERCENTAGE
+                SUBSCRIPTION: :SUBSCRIPTION
+                TIERED: :TIERED
+                CUSTOM: :CUSTOM
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::rate_type]
               end
             end
 
@@ -2491,7 +2569,8 @@ module MetronomeSDK
               id: String,
               access_amount: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit::AccessAmount,
               ending_before: Time,
-              invoice_amount: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit::InvoiceAmount
+              invoice_amount: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit::InvoiceAmount,
+              rate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit::rate_type
             }
 
           class UpdateRecurringCommit < MetronomeSDK::Internal::Type::BaseModel
@@ -2513,18 +2592,26 @@ module MetronomeSDK
               MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit::InvoiceAmount
             ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit::InvoiceAmount
 
+            attr_reader rate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit::rate_type?
+
+            def rate_type=: (
+              MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit::rate_type
+            ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit::rate_type
+
             def initialize: (
               id: String,
               ?access_amount: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit::AccessAmount,
               ?ending_before: Time,
-              ?invoice_amount: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit::InvoiceAmount
+              ?invoice_amount: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit::InvoiceAmount,
+              ?rate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit::rate_type
             ) -> void
 
             def to_hash: -> {
               id: String,
               access_amount: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit::AccessAmount,
               ending_before: Time,
-              invoice_amount: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit::InvoiceAmount
+              invoice_amount: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit::InvoiceAmount,
+              rate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit::rate_type
             }
 
             type access_amount = { quantity: Float, unit_price: Float }
@@ -2558,13 +2645,25 @@ module MetronomeSDK
 
               def to_hash: -> { quantity: Float, unit_price: Float }
             end
+
+            type rate_type = :LIST_RATE | :COMMIT_RATE
+
+            module RateType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              LIST_RATE: :LIST_RATE
+              COMMIT_RATE: :COMMIT_RATE
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit::rate_type]
+            end
           end
 
           type update_recurring_credit =
             {
               id: String,
               access_amount: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCredit::AccessAmount,
-              ending_before: Time
+              ending_before: Time,
+              rate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCredit::rate_type
             }
 
           class UpdateRecurringCredit < MetronomeSDK::Internal::Type::BaseModel
@@ -2580,16 +2679,24 @@ module MetronomeSDK
 
             def ending_before=: (Time) -> Time
 
+            attr_reader rate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCredit::rate_type?
+
+            def rate_type=: (
+              MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCredit::rate_type
+            ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCredit::rate_type
+
             def initialize: (
               id: String,
               ?access_amount: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCredit::AccessAmount,
-              ?ending_before: Time
+              ?ending_before: Time,
+              ?rate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCredit::rate_type
             ) -> void
 
             def to_hash: -> {
               id: String,
               access_amount: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCredit::AccessAmount,
-              ending_before: Time
+              ending_before: Time,
+              rate_type: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCredit::rate_type
             }
 
             type access_amount = { quantity: Float, unit_price: Float }
@@ -2606,6 +2713,17 @@ module MetronomeSDK
               def initialize: (?quantity: Float, ?unit_price: Float) -> void
 
               def to_hash: -> { quantity: Float, unit_price: Float }
+            end
+
+            type rate_type = :LIST_RATE | :COMMIT_RATE
+
+            module RateType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              LIST_RATE: :LIST_RATE
+              COMMIT_RATE: :COMMIT_RATE
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCredit::rate_type]
             end
           end
 

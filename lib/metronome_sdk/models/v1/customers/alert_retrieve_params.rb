@@ -10,7 +10,7 @@ module MetronomeSDK
           include MetronomeSDK::Internal::Type::RequestParameters
 
           # @!attribute alert_id
-          #   The Metronome ID of the alert
+          #   The Metronome ID of the threshold notification
           #
           #   @return [String]
           required :alert_id, String
@@ -22,16 +22,16 @@ module MetronomeSDK
           required :customer_id, String
 
           # @!attribute group_values
-          #   Only present for `spend_threshold_reached` alerts. Retrieve the alert for a
-          #   specific group key-value pair.
+          #   Only present for `spend_threshold_reached` notifications. Retrieve the
+          #   notification for a specific group key-value pair.
           #
           #   @return [Array<MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::GroupValue>, nil]
           optional :group_values,
                    -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::AlertRetrieveParams::GroupValue] }
 
           # @!attribute plans_or_contracts
-          #   When parallel alerts are enabled during migration, this flag denotes whether to
-          #   fetch alerts for plans or contracts.
+          #   When parallel threshold notifications are enabled during migration, this flag
+          #   denotes whether to fetch notifications for plans or contracts.
           #
           #   @return [Symbol, MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::PlansOrContracts, nil]
           optional :plans_or_contracts,
@@ -41,13 +41,13 @@ module MetronomeSDK
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V1::Customers::AlertRetrieveParams} for more details.
           #
-          #   @param alert_id [String] The Metronome ID of the alert
+          #   @param alert_id [String] The Metronome ID of the threshold notification
           #
           #   @param customer_id [String] The Metronome ID of the customer
           #
-          #   @param group_values [Array<MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::GroupValue>] Only present for `spend_threshold_reached` alerts. Retrieve the alert for a spec
+          #   @param group_values [Array<MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::GroupValue>] Only present for `spend_threshold_reached` notifications. Retrieve the notificat
           #
-          #   @param plans_or_contracts [Symbol, MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::PlansOrContracts] When parallel alerts are enabled during migration, this flag denotes whether to
+          #   @param plans_or_contracts [Symbol, MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::PlansOrContracts] When parallel threshold notifications are enabled during migration, this flag de
           #
           #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
 
@@ -63,15 +63,15 @@ module MetronomeSDK
             required :value, String
 
             # @!method initialize(key:, value:)
-            #   Scopes alert evaluation to a specific presentation group key on individual line
-            #   items. Only present for spend alerts.
+            #   Scopes threshold notification evaluation to a specific presentation group key on
+            #   individual line items. Only present for spend notifications.
             #
             #   @param key [String]
             #   @param value [String]
           end
 
-          # When parallel alerts are enabled during migration, this flag denotes whether to
-          # fetch alerts for plans or contracts.
+          # When parallel threshold notifications are enabled during migration, this flag
+          # denotes whether to fetch notifications for plans or contracts.
           module PlansOrContracts
             extend MetronomeSDK::Internal::Type::Enum
 

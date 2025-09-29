@@ -1,0 +1,35 @@
+module MetronomeSDK
+  module Resources
+    class Packages
+      def create: (
+        name: String,
+        ?billing_anchor_date: MetronomeSDK::Models::PackageCreateParams::billing_anchor_date,
+        ?billing_provider: MetronomeSDK::Models::PackageCreateParams::billing_provider,
+        ?commits: ::Array[MetronomeSDK::PackageCreateParams::Commit],
+        ?contract_name: String,
+        ?credits: ::Array[MetronomeSDK::PackageCreateParams::Credit],
+        ?custom_fields: ::Hash[Symbol, String],
+        ?delivery_method: MetronomeSDK::Models::PackageCreateParams::delivery_method,
+        ?duration: MetronomeSDK::PackageCreateParams::Duration,
+        ?multiplier_override_prioritization: MetronomeSDK::Models::PackageCreateParams::multiplier_override_prioritization,
+        ?net_payment_terms_days: Float,
+        ?overrides: ::Array[MetronomeSDK::PackageCreateParams::Override],
+        ?prepaid_balance_threshold_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration,
+        ?priority: Float,
+        ?rate_card_alias: String,
+        ?rate_card_id: String,
+        ?recurring_commits: ::Array[MetronomeSDK::PackageCreateParams::RecurringCommit],
+        ?recurring_credits: ::Array[MetronomeSDK::PackageCreateParams::RecurringCredit],
+        ?scheduled_charges: ::Array[MetronomeSDK::PackageCreateParams::ScheduledCharge],
+        ?scheduled_charges_on_usage_invoices: MetronomeSDK::Models::PackageCreateParams::scheduled_charges_on_usage_invoices,
+        ?spend_threshold_configuration: MetronomeSDK::SpendThresholdConfiguration,
+        ?subscriptions: ::Array[MetronomeSDK::PackageCreateParams::Subscription],
+        ?uniqueness_key: String,
+        ?usage_statement_schedule: MetronomeSDK::PackageCreateParams::UsageStatementSchedule,
+        ?request_options: MetronomeSDK::request_opts
+      ) -> MetronomeSDK::Models::PackageCreateResponse
+
+      def initialize: (client: MetronomeSDK::Client) -> void
+    end
+  end
+end

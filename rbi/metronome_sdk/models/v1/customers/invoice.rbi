@@ -46,21 +46,10 @@ module MetronomeSDK
           attr_writer :amendment_id
 
           # This field's availability is dependent on your client's configuration.
-          sig do
-            returns(
-              T.nilable(
-                MetronomeSDK::V1::Customers::Invoice::BillableStatus::TaggedSymbol
-              )
-            )
-          end
+          sig { returns(T.nilable(T.anything)) }
           attr_reader :billable_status
 
-          sig do
-            params(
-              billable_status:
-                MetronomeSDK::V1::Customers::Invoice::BillableStatus::OrSymbol
-            ).void
-          end
+          sig { params(billable_status: T.anything).void }
           attr_writer :billable_status
 
           # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
@@ -245,8 +234,7 @@ module MetronomeSDK
               total: Float,
               type: String,
               amendment_id: String,
-              billable_status:
-                MetronomeSDK::V1::Customers::Invoice::BillableStatus::OrSymbol,
+              billable_status: T.anything,
               contract_custom_fields: T::Hash[Symbol, String],
               contract_id: String,
               correction_record:
@@ -332,8 +320,7 @@ module MetronomeSDK
                 total: Float,
                 type: String,
                 amendment_id: String,
-                billable_status:
-                  MetronomeSDK::V1::Customers::Invoice::BillableStatus::TaggedSymbol,
+                billable_status: T.anything,
                 contract_custom_fields: T::Hash[Symbol, String],
                 contract_id: String,
                 correction_record:
@@ -1400,41 +1387,6 @@ module MetronomeSDK
             end
           end
 
-          # This field's availability is dependent on your client's configuration.
-          module BillableStatus
-            extend MetronomeSDK::Internal::Type::Enum
-
-            TaggedSymbol =
-              T.type_alias do
-                T.all(
-                  Symbol,
-                  MetronomeSDK::V1::Customers::Invoice::BillableStatus
-                )
-              end
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-            BILLABLE =
-              T.let(
-                :billable,
-                MetronomeSDK::V1::Customers::Invoice::BillableStatus::TaggedSymbol
-              )
-            UNBILLABLE =
-              T.let(
-                :unbillable,
-                MetronomeSDK::V1::Customers::Invoice::BillableStatus::TaggedSymbol
-              )
-
-            sig do
-              override.returns(
-                T::Array[
-                  MetronomeSDK::V1::Customers::Invoice::BillableStatus::TaggedSymbol
-                ]
-              )
-            end
-            def self.values
-            end
-          end
-
           class CorrectionRecord < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
@@ -1540,11 +1492,50 @@ module MetronomeSDK
               sig { params(invoice_id: String).void }
               attr_writer :invoice_id
 
+              # The subtotal amount invoiced, if available from the billing provider.
+              sig { returns(T.nilable(Float)) }
+              attr_reader :invoiced_sub_total
+
+              sig { params(invoiced_sub_total: Float).void }
+              attr_writer :invoiced_sub_total
+
+              # The total amount invoiced, if available from the billing provider.
+              sig { returns(T.nilable(Float)) }
+              attr_reader :invoiced_total
+
+              sig { params(invoiced_total: Float).void }
+              attr_writer :invoiced_total
+
               sig { returns(T.nilable(Time)) }
               attr_reader :issued_at_timestamp
 
               sig { params(issued_at_timestamp: Time).void }
               attr_writer :issued_at_timestamp
+
+              # A URL to the PDF of the invoice, if available from the billing provider.
+              sig { returns(T.nilable(String)) }
+              attr_reader :pdf_url
+
+              sig { params(pdf_url: String).void }
+              attr_writer :pdf_url
+
+              # Tax details for the invoice, if available from the billing provider.
+              sig do
+                returns(
+                  T.nilable(
+                    MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::Tax
+                  )
+                )
+              end
+              attr_reader :tax
+
+              sig do
+                params(
+                  tax:
+                    MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::Tax::OrHash
+                ).void
+              end
+              attr_writer :tax
 
               sig do
                 params(
@@ -1553,14 +1544,27 @@ module MetronomeSDK
                   external_status:
                     MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus::OrSymbol,
                   invoice_id: String,
-                  issued_at_timestamp: Time
+                  invoiced_sub_total: Float,
+                  invoiced_total: Float,
+                  issued_at_timestamp: Time,
+                  pdf_url: String,
+                  tax:
+                    MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::Tax::OrHash
                 ).returns(T.attached_class)
               end
               def self.new(
                 billing_provider_type:,
                 external_status: nil,
                 invoice_id: nil,
-                issued_at_timestamp: nil
+                # The subtotal amount invoiced, if available from the billing provider.
+                invoiced_sub_total: nil,
+                # The total amount invoiced, if available from the billing provider.
+                invoiced_total: nil,
+                issued_at_timestamp: nil,
+                # A URL to the PDF of the invoice, if available from the billing provider.
+                pdf_url: nil,
+                # Tax details for the invoice, if available from the billing provider.
+                tax: nil
               )
               end
 
@@ -1572,7 +1576,12 @@ module MetronomeSDK
                     external_status:
                       MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus::TaggedSymbol,
                     invoice_id: String,
-                    issued_at_timestamp: Time
+                    invoiced_sub_total: Float,
+                    invoiced_total: Float,
+                    issued_at_timestamp: Time,
+                    pdf_url: String,
+                    tax:
+                      MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::Tax
                   }
                 )
               end
@@ -1721,6 +1730,67 @@ module MetronomeSDK
                 def self.values
                 end
               end
+
+              class Tax < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::Tax,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                # The total tax amount applied to the invoice.
+                sig { returns(T.nilable(Float)) }
+                attr_reader :total_tax_amount
+
+                sig { params(total_tax_amount: Float).void }
+                attr_writer :total_tax_amount
+
+                # The total taxable amount of the invoice.
+                sig { returns(T.nilable(Float)) }
+                attr_reader :total_taxable_amount
+
+                sig { params(total_taxable_amount: Float).void }
+                attr_writer :total_taxable_amount
+
+                # The transaction ID associated with the tax calculation.
+                sig { returns(T.nilable(String)) }
+                attr_reader :transaction_id
+
+                sig { params(transaction_id: String).void }
+                attr_writer :transaction_id
+
+                # Tax details for the invoice, if available from the billing provider.
+                sig do
+                  params(
+                    total_tax_amount: Float,
+                    total_taxable_amount: Float,
+                    transaction_id: String
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  # The total tax amount applied to the invoice.
+                  total_tax_amount: nil,
+                  # The total taxable amount of the invoice.
+                  total_taxable_amount: nil,
+                  # The transaction ID associated with the tax calculation.
+                  transaction_id: nil
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      total_tax_amount: Float,
+                      total_taxable_amount: Float,
+                      transaction_id: String
+                    }
+                  )
+                end
+                def to_hash
+                end
+              end
             end
           end
 
@@ -1763,11 +1833,50 @@ module MetronomeSDK
             sig { params(invoice_id: String).void }
             attr_writer :invoice_id
 
+            # The subtotal amount invoiced, if available from the billing provider.
+            sig { returns(T.nilable(Float)) }
+            attr_reader :invoiced_sub_total
+
+            sig { params(invoiced_sub_total: Float).void }
+            attr_writer :invoiced_sub_total
+
+            # The total amount invoiced, if available from the billing provider.
+            sig { returns(T.nilable(Float)) }
+            attr_reader :invoiced_total
+
+            sig { params(invoiced_total: Float).void }
+            attr_writer :invoiced_total
+
             sig { returns(T.nilable(Time)) }
             attr_reader :issued_at_timestamp
 
             sig { params(issued_at_timestamp: Time).void }
             attr_writer :issued_at_timestamp
+
+            # A URL to the PDF of the invoice, if available from the billing provider.
+            sig { returns(T.nilable(String)) }
+            attr_reader :pdf_url
+
+            sig { params(pdf_url: String).void }
+            attr_writer :pdf_url
+
+            # Tax details for the invoice, if available from the billing provider.
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::Tax
+                )
+              )
+            end
+            attr_reader :tax
+
+            sig do
+              params(
+                tax:
+                  MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::Tax::OrHash
+              ).void
+            end
+            attr_writer :tax
 
             sig do
               params(
@@ -1776,14 +1885,27 @@ module MetronomeSDK
                 external_status:
                   MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::ExternalStatus::OrSymbol,
                 invoice_id: String,
-                issued_at_timestamp: Time
+                invoiced_sub_total: Float,
+                invoiced_total: Float,
+                issued_at_timestamp: Time,
+                pdf_url: String,
+                tax:
+                  MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::Tax::OrHash
               ).returns(T.attached_class)
             end
             def self.new(
               billing_provider_type:,
               external_status: nil,
               invoice_id: nil,
-              issued_at_timestamp: nil
+              # The subtotal amount invoiced, if available from the billing provider.
+              invoiced_sub_total: nil,
+              # The total amount invoiced, if available from the billing provider.
+              invoiced_total: nil,
+              issued_at_timestamp: nil,
+              # A URL to the PDF of the invoice, if available from the billing provider.
+              pdf_url: nil,
+              # Tax details for the invoice, if available from the billing provider.
+              tax: nil
             )
             end
 
@@ -1795,7 +1917,12 @@ module MetronomeSDK
                   external_status:
                     MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::ExternalStatus::TaggedSymbol,
                   invoice_id: String,
-                  issued_at_timestamp: Time
+                  invoiced_sub_total: Float,
+                  invoiced_total: Float,
+                  issued_at_timestamp: Time,
+                  pdf_url: String,
+                  tax:
+                    MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::Tax
                 }
               )
             end
@@ -1942,6 +2069,67 @@ module MetronomeSDK
                 )
               end
               def self.values
+              end
+            end
+
+            class Tax < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::Tax,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              # The total tax amount applied to the invoice.
+              sig { returns(T.nilable(Float)) }
+              attr_reader :total_tax_amount
+
+              sig { params(total_tax_amount: Float).void }
+              attr_writer :total_tax_amount
+
+              # The total taxable amount of the invoice.
+              sig { returns(T.nilable(Float)) }
+              attr_reader :total_taxable_amount
+
+              sig { params(total_taxable_amount: Float).void }
+              attr_writer :total_taxable_amount
+
+              # The transaction ID associated with the tax calculation.
+              sig { returns(T.nilable(String)) }
+              attr_reader :transaction_id
+
+              sig { params(transaction_id: String).void }
+              attr_writer :transaction_id
+
+              # Tax details for the invoice, if available from the billing provider.
+              sig do
+                params(
+                  total_tax_amount: Float,
+                  total_taxable_amount: Float,
+                  transaction_id: String
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The total tax amount applied to the invoice.
+                total_tax_amount: nil,
+                # The total taxable amount of the invoice.
+                total_taxable_amount: nil,
+                # The transaction ID associated with the tax calculation.
+                transaction_id: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    total_tax_amount: Float,
+                    total_taxable_amount: Float,
+                    transaction_id: String
+                  }
+                )
+              end
+              def to_hash
               end
             end
           end

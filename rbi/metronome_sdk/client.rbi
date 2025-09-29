@@ -19,6 +19,12 @@ module MetronomeSDK
     sig { returns(MetronomeSDK::Resources::V1) }
     attr_reader :v1
 
+    sig { returns(MetronomeSDK::Resources::Packages) }
+    attr_reader :packages
+
+    sig { returns(MetronomeSDK::Resources::Notifications) }
+    attr_reader :notifications
+
     # @api private
     sig { override.returns(T::Hash[String, String]) }
     private def auth_headers

@@ -50,7 +50,7 @@ module MetronomeSDK
       optional :credits, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Credit] }
 
       # @!attribute discounts
-      #   This field's availability is dependent on your client's configuration.
+      #   This field's availability is dependent on your client's
       #
       #   @return [Array<MetronomeSDK::Models::Discount>, nil]
       optional :discounts, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Discount] }
@@ -174,7 +174,7 @@ module MetronomeSDK
       #
       #   @param credits [Array<MetronomeSDK::Models::Credit>]
       #
-      #   @param discounts [Array<MetronomeSDK::Models::Discount>] This field's availability is dependent on your client's configuration.
+      #   @param discounts [Array<MetronomeSDK::Models::Discount>] This field's availability is dependent on your client's
       #
       #   @param ending_before [Time]
       #

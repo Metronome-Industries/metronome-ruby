@@ -23,6 +23,26 @@ module MetronomeSDK
         sig { returns(String) }
         attr_accessor :customer_id
 
+        # Update the billing provider configuration on the contract. Currently only
+        # supports adding a billing provider configuration to a contract that does not
+        # already have one.
+        sig do
+          returns(
+            T.nilable(
+              MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate
+            )
+          )
+        end
+        attr_reader :add_billing_provider_configuration_update
+
+        sig do
+          params(
+            add_billing_provider_configuration_update:
+              MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::OrHash
+          ).void
+        end
+        attr_writer :add_billing_provider_configuration_update
+
         sig do
           returns(
             T.nilable(T::Array[MetronomeSDK::V2::ContractEditParams::AddCommit])
@@ -514,6 +534,8 @@ module MetronomeSDK
           params(
             contract_id: String,
             customer_id: String,
+            add_billing_provider_configuration_update:
+              MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::OrHash,
             add_commits:
               T::Array[MetronomeSDK::V2::ContractEditParams::AddCommit::OrHash],
             add_credits:
@@ -610,6 +632,10 @@ module MetronomeSDK
           contract_id:,
           # ID of the customer whose contract is being edited
           customer_id:,
+          # Update the billing provider configuration on the contract. Currently only
+          # supports adding a billing provider configuration to a contract that does not
+          # already have one.
+          add_billing_provider_configuration_update: nil,
           add_commits: nil,
           add_credits: nil,
           add_discounts: nil,
@@ -670,6 +696,8 @@ module MetronomeSDK
             {
               contract_id: String,
               customer_id: String,
+              add_billing_provider_configuration_update:
+                MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate,
               add_commits:
                 T::Array[MetronomeSDK::V2::ContractEditParams::AddCommit],
               add_credits:
@@ -747,6 +775,341 @@ module MetronomeSDK
           )
         end
         def to_hash
+        end
+
+        class AddBillingProviderConfigurationUpdate < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
+          sig do
+            returns(
+              MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration
+            )
+          end
+          attr_reader :billing_provider_configuration
+
+          sig do
+            params(
+              billing_provider_configuration:
+                MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::OrHash
+            ).void
+          end
+          attr_writer :billing_provider_configuration
+
+          # Indicates when the billing provider will be active on the contract. Any charges
+          # accrued during the schedule will be billed to the indicated billing provider.
+          sig do
+            returns(
+              MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::Schedule
+            )
+          end
+          attr_reader :schedule
+
+          sig do
+            params(
+              schedule:
+                MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::Schedule::OrHash
+            ).void
+          end
+          attr_writer :schedule
+
+          # Update the billing provider configuration on the contract. Currently only
+          # supports adding a billing provider configuration to a contract that does not
+          # already have one.
+          sig do
+            params(
+              billing_provider_configuration:
+                MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::OrHash,
+              schedule:
+                MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::Schedule::OrHash
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            billing_provider_configuration:,
+            # Indicates when the billing provider will be active on the contract. Any charges
+            # accrued during the schedule will be billed to the indicated billing provider.
+            schedule:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                billing_provider_configuration:
+                  MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration,
+                schedule:
+                  MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::Schedule
+              }
+            )
+          end
+          def to_hash
+          end
+
+          class BillingProviderConfiguration < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::BillingProvider::OrSymbol
+                )
+              )
+            end
+            attr_reader :billing_provider
+
+            sig do
+              params(
+                billing_provider:
+                  MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::BillingProvider::OrSymbol
+              ).void
+            end
+            attr_writer :billing_provider
+
+            sig { returns(T.nilable(String)) }
+            attr_reader :billing_provider_configuration_id
+
+            sig { params(billing_provider_configuration_id: String).void }
+            attr_writer :billing_provider_configuration_id
+
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::DeliveryMethod::OrSymbol
+                )
+              )
+            end
+            attr_reader :delivery_method
+
+            sig do
+              params(
+                delivery_method:
+                  MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::DeliveryMethod::OrSymbol
+              ).void
+            end
+            attr_writer :delivery_method
+
+            sig do
+              params(
+                billing_provider:
+                  MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::BillingProvider::OrSymbol,
+                billing_provider_configuration_id: String,
+                delivery_method:
+                  MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::DeliveryMethod::OrSymbol
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              billing_provider: nil,
+              billing_provider_configuration_id: nil,
+              delivery_method: nil
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  billing_provider:
+                    MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::BillingProvider::OrSymbol,
+                  billing_provider_configuration_id: String,
+                  delivery_method:
+                    MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::DeliveryMethod::OrSymbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            module BillingProvider
+              extend MetronomeSDK::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::BillingProvider
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              AWS_MARKETPLACE =
+                T.let(
+                  :aws_marketplace,
+                  MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::BillingProvider::TaggedSymbol
+                )
+              STRIPE =
+                T.let(
+                  :stripe,
+                  MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::BillingProvider::TaggedSymbol
+                )
+              NETSUITE =
+                T.let(
+                  :netsuite,
+                  MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::BillingProvider::TaggedSymbol
+                )
+              CUSTOM =
+                T.let(
+                  :custom,
+                  MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::BillingProvider::TaggedSymbol
+                )
+              AZURE_MARKETPLACE =
+                T.let(
+                  :azure_marketplace,
+                  MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::BillingProvider::TaggedSymbol
+                )
+              QUICKBOOKS_ONLINE =
+                T.let(
+                  :quickbooks_online,
+                  MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::BillingProvider::TaggedSymbol
+                )
+              WORKDAY =
+                T.let(
+                  :workday,
+                  MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::BillingProvider::TaggedSymbol
+                )
+              GCP_MARKETPLACE =
+                T.let(
+                  :gcp_marketplace,
+                  MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::BillingProvider::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::BillingProvider::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+
+            module DeliveryMethod
+              extend MetronomeSDK::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::DeliveryMethod
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              DIRECT_TO_BILLING_PROVIDER =
+                T.let(
+                  :direct_to_billing_provider,
+                  MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::DeliveryMethod::TaggedSymbol
+                )
+              AWS_SQS =
+                T.let(
+                  :aws_sqs,
+                  MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::DeliveryMethod::TaggedSymbol
+                )
+              TACKLE =
+                T.let(
+                  :tackle,
+                  MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::DeliveryMethod::TaggedSymbol
+                )
+              AWS_SNS =
+                T.let(
+                  :aws_sns,
+                  MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::DeliveryMethod::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::DeliveryMethod::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+          end
+
+          class Schedule < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::Schedule,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            # When the billing provider update will take effect.
+            sig do
+              returns(
+                MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::Schedule::EffectiveAt::OrSymbol
+              )
+            end
+            attr_accessor :effective_at
+
+            # Indicates when the billing provider will be active on the contract. Any charges
+            # accrued during the schedule will be billed to the indicated billing provider.
+            sig do
+              params(
+                effective_at:
+                  MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::Schedule::EffectiveAt::OrSymbol
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # When the billing provider update will take effect.
+              effective_at:
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  effective_at:
+                    MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::Schedule::EffectiveAt::OrSymbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            # When the billing provider update will take effect.
+            module EffectiveAt
+              extend MetronomeSDK::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::Schedule::EffectiveAt
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              START_OF_CURRENT_PERIOD =
+                T.let(
+                  :START_OF_CURRENT_PERIOD,
+                  MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::Schedule::EffectiveAt::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::Schedule::EffectiveAt::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+          end
         end
 
         class AddCommit < MetronomeSDK::Internal::Type::BaseModel
@@ -7868,6 +8231,25 @@ module MetronomeSDK
           end
           attr_writer :invoice_amount
 
+          # If provided, updates the recurring commit to use the specified rate type when
+          # generating future commits.
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::RateType::OrSymbol
+              )
+            )
+          end
+          attr_reader :rate_type
+
+          sig do
+            params(
+              rate_type:
+                MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::RateType::OrSymbol
+            ).void
+          end
+          attr_writer :rate_type
+
           sig do
             params(
               recurring_commit_id: String,
@@ -7875,14 +8257,19 @@ module MetronomeSDK
                 MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::AccessAmount::OrHash,
               ending_before: T.nilable(Time),
               invoice_amount:
-                MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::InvoiceAmount::OrHash
+                MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::InvoiceAmount::OrHash,
+              rate_type:
+                MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::RateType::OrSymbol
             ).returns(T.attached_class)
           end
           def self.new(
             recurring_commit_id:,
             access_amount: nil,
             ending_before: nil,
-            invoice_amount: nil
+            invoice_amount: nil,
+            # If provided, updates the recurring commit to use the specified rate type when
+            # generating future commits.
+            rate_type: nil
           )
           end
 
@@ -7894,7 +8281,9 @@ module MetronomeSDK
                   MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::AccessAmount,
                 ending_before: T.nilable(Time),
                 invoice_amount:
-                  MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::InvoiceAmount
+                  MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::InvoiceAmount,
+                rate_type:
+                  MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::RateType::OrSymbol
               }
             )
           end
@@ -7968,6 +8357,42 @@ module MetronomeSDK
             def to_hash
             end
           end
+
+          # If provided, updates the recurring commit to use the specified rate type when
+          # generating future commits.
+          module RateType
+            extend MetronomeSDK::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::RateType
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            LIST_RATE =
+              T.let(
+                :LIST_RATE,
+                MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::RateType::TaggedSymbol
+              )
+            COMMIT_RATE =
+              T.let(
+                :COMMIT_RATE,
+                MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::RateType::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::RateType::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
         end
 
         class UpdateRecurringCredit < MetronomeSDK::Internal::Type::BaseModel
@@ -8002,18 +8427,42 @@ module MetronomeSDK
           sig { returns(T.nilable(Time)) }
           attr_accessor :ending_before
 
+          # If provided, updates the recurring credit to use the specified rate type when
+          # generating future credits.
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::V2::ContractEditParams::UpdateRecurringCredit::RateType::OrSymbol
+              )
+            )
+          end
+          attr_reader :rate_type
+
+          sig do
+            params(
+              rate_type:
+                MetronomeSDK::V2::ContractEditParams::UpdateRecurringCredit::RateType::OrSymbol
+            ).void
+          end
+          attr_writer :rate_type
+
           sig do
             params(
               recurring_credit_id: String,
               access_amount:
                 MetronomeSDK::V2::ContractEditParams::UpdateRecurringCredit::AccessAmount::OrHash,
-              ending_before: T.nilable(Time)
+              ending_before: T.nilable(Time),
+              rate_type:
+                MetronomeSDK::V2::ContractEditParams::UpdateRecurringCredit::RateType::OrSymbol
             ).returns(T.attached_class)
           end
           def self.new(
             recurring_credit_id:,
             access_amount: nil,
-            ending_before: nil
+            ending_before: nil,
+            # If provided, updates the recurring credit to use the specified rate type when
+            # generating future credits.
+            rate_type: nil
           )
           end
 
@@ -8023,7 +8472,9 @@ module MetronomeSDK
                 recurring_credit_id: String,
                 access_amount:
                   MetronomeSDK::V2::ContractEditParams::UpdateRecurringCredit::AccessAmount,
-                ending_before: T.nilable(Time)
+                ending_before: T.nilable(Time),
+                rate_type:
+                  MetronomeSDK::V2::ContractEditParams::UpdateRecurringCredit::RateType::OrSymbol
               }
             )
           end
@@ -8061,6 +8512,42 @@ module MetronomeSDK
 
             sig { override.returns({ quantity: Float, unit_price: Float }) }
             def to_hash
+            end
+          end
+
+          # If provided, updates the recurring credit to use the specified rate type when
+          # generating future credits.
+          module RateType
+            extend MetronomeSDK::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  MetronomeSDK::V2::ContractEditParams::UpdateRecurringCredit::RateType
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            LIST_RATE =
+              T.let(
+                :LIST_RATE,
+                MetronomeSDK::V2::ContractEditParams::UpdateRecurringCredit::RateType::TaggedSymbol
+              )
+            COMMIT_RATE =
+              T.let(
+                :COMMIT_RATE,
+                MetronomeSDK::V2::ContractEditParams::UpdateRecurringCredit::RateType::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  MetronomeSDK::V2::ContractEditParams::UpdateRecurringCredit::RateType::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
             end
           end
         end

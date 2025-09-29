@@ -54,6 +54,7 @@ class MetronomeSDK::Test::Resources::V1::CustomersTest < MetronomeSDK::Test::Res
         external_id: String,
         ingest_aliases: ^(MetronomeSDK::Internal::Type::ArrayOf[String]),
         name: String,
+        updated_at: Time,
         archived_at: Time | nil,
         current_billable_status: MetronomeSDK::V1::CustomerDetail::CurrentBillableStatus | nil
       }

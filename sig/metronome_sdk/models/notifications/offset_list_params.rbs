@@ -1,0 +1,34 @@
+module MetronomeSDK
+  module Models
+    module Notifications
+      type offset_list_params =
+        { cursor: String, limit: Float }
+        & MetronomeSDK::Internal::Type::request_parameters
+
+      class OffsetListParams < MetronomeSDK::Internal::Type::BaseModel
+        extend MetronomeSDK::Internal::Type::RequestParameters::Converter
+        include MetronomeSDK::Internal::Type::RequestParameters
+
+        attr_reader cursor: String?
+
+        def cursor=: (String) -> String
+
+        attr_reader limit: Float?
+
+        def limit=: (Float) -> Float
+
+        def initialize: (
+          ?cursor: String,
+          ?limit: Float,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          cursor: String,
+          limit: Float,
+          request_options: MetronomeSDK::RequestOptions
+        }
+      end
+    end
+  end
+end

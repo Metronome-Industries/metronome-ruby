@@ -50,8 +50,8 @@ module MetronomeSDK
           # @!attribute billable_status
           #   This field's availability is dependent on your client's configuration.
           #
-          #   @return [Symbol, MetronomeSDK::Models::V1::Customers::Invoice::BillableStatus, nil]
-          optional :billable_status, enum: -> { MetronomeSDK::V1::Customers::Invoice::BillableStatus }
+          #   @return [Object, nil]
+          optional :billable_status, MetronomeSDK::Internal::Type::Unknown
 
           # @!attribute contract_custom_fields
           #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
@@ -180,7 +180,7 @@ module MetronomeSDK
           #
           #   @param amendment_id [String]
           #
-          #   @param billable_status [Symbol, MetronomeSDK::Models::V1::Customers::Invoice::BillableStatus] This field's availability is dependent on your client's configuration.
+          #   @param billable_status [Object] This field's availability is dependent on your client's configuration.
           #
           #   @param contract_custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           #
@@ -805,19 +805,6 @@ module MetronomeSDK
             end
           end
 
-          # This field's availability is dependent on your client's configuration.
-          #
-          # @see MetronomeSDK::Models::V1::Customers::Invoice#billable_status
-          module BillableStatus
-            extend MetronomeSDK::Internal::Type::Enum
-
-            BILLABLE = :billable
-            UNBILLABLE = :unbillable
-
-            # @!method self.values
-            #   @return [Array<Symbol>]
-          end
-
           # @see MetronomeSDK::Models::V1::Customers::Invoice#correction_record
           class CorrectionRecord < MetronomeSDK::Internal::Type::BaseModel
             # @!attribute corrected_invoice_id
@@ -866,16 +853,52 @@ module MetronomeSDK
               #   @return [String, nil]
               optional :invoice_id, String
 
+              # @!attribute invoiced_sub_total
+              #   The subtotal amount invoiced, if available from the billing provider.
+              #
+              #   @return [Float, nil]
+              optional :invoiced_sub_total, Float
+
+              # @!attribute invoiced_total
+              #   The total amount invoiced, if available from the billing provider.
+              #
+              #   @return [Float, nil]
+              optional :invoiced_total, Float
+
               # @!attribute issued_at_timestamp
               #
               #   @return [Time, nil]
               optional :issued_at_timestamp, Time
 
-              # @!method initialize(billing_provider_type:, external_status: nil, invoice_id: nil, issued_at_timestamp: nil)
+              # @!attribute pdf_url
+              #   A URL to the PDF of the invoice, if available from the billing provider.
+              #
+              #   @return [String, nil]
+              optional :pdf_url, String
+
+              # @!attribute tax
+              #   Tax details for the invoice, if available from the billing provider.
+              #
+              #   @return [MetronomeSDK::Models::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::Tax, nil]
+              optional :tax,
+                       -> { MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::Tax }
+
+              # @!method initialize(billing_provider_type:, external_status: nil, invoice_id: nil, invoiced_sub_total: nil, invoiced_total: nil, issued_at_timestamp: nil, pdf_url: nil, tax: nil)
               #   @param billing_provider_type [Symbol, MetronomeSDK::Models::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType]
+              #
               #   @param external_status [Symbol, MetronomeSDK::Models::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus]
+              #
               #   @param invoice_id [String]
+              #
+              #   @param invoiced_sub_total [Float] The subtotal amount invoiced, if available from the billing provider.
+              #
+              #   @param invoiced_total [Float] The total amount invoiced, if available from the billing provider.
+              #
               #   @param issued_at_timestamp [Time]
+              #
+              #   @param pdf_url [String] A URL to the PDF of the invoice, if available from the billing provider.
+              #
+              #   @param tax [MetronomeSDK::Models::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::Tax] Tax details for the invoice, if available from the billing provider.
 
               # @see MetronomeSDK::Models::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice#billing_provider_type
               module BillingProviderType
@@ -913,6 +936,36 @@ module MetronomeSDK
                 # @!method self.values
                 #   @return [Array<Symbol>]
               end
+
+              # @see MetronomeSDK::Models::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice#tax
+              class Tax < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute total_tax_amount
+                #   The total tax amount applied to the invoice.
+                #
+                #   @return [Float, nil]
+                optional :total_tax_amount, Float
+
+                # @!attribute total_taxable_amount
+                #   The total taxable amount of the invoice.
+                #
+                #   @return [Float, nil]
+                optional :total_taxable_amount, Float
+
+                # @!attribute transaction_id
+                #   The transaction ID associated with the tax calculation.
+                #
+                #   @return [String, nil]
+                optional :transaction_id, String
+
+                # @!method initialize(total_tax_amount: nil, total_taxable_amount: nil, transaction_id: nil)
+                #   Tax details for the invoice, if available from the billing provider.
+                #
+                #   @param total_tax_amount [Float] The total tax amount applied to the invoice.
+                #
+                #   @param total_taxable_amount [Float] The total taxable amount of the invoice.
+                #
+                #   @param transaction_id [String] The transaction ID associated with the tax calculation.
+              end
             end
           end
 
@@ -935,16 +988,51 @@ module MetronomeSDK
             #   @return [String, nil]
             optional :invoice_id, String
 
+            # @!attribute invoiced_sub_total
+            #   The subtotal amount invoiced, if available from the billing provider.
+            #
+            #   @return [Float, nil]
+            optional :invoiced_sub_total, Float
+
+            # @!attribute invoiced_total
+            #   The total amount invoiced, if available from the billing provider.
+            #
+            #   @return [Float, nil]
+            optional :invoiced_total, Float
+
             # @!attribute issued_at_timestamp
             #
             #   @return [Time, nil]
             optional :issued_at_timestamp, Time
 
-            # @!method initialize(billing_provider_type:, external_status: nil, invoice_id: nil, issued_at_timestamp: nil)
+            # @!attribute pdf_url
+            #   A URL to the PDF of the invoice, if available from the billing provider.
+            #
+            #   @return [String, nil]
+            optional :pdf_url, String
+
+            # @!attribute tax
+            #   Tax details for the invoice, if available from the billing provider.
+            #
+            #   @return [MetronomeSDK::Models::V1::Customers::Invoice::ExternalInvoice::Tax, nil]
+            optional :tax, -> { MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::Tax }
+
+            # @!method initialize(billing_provider_type:, external_status: nil, invoice_id: nil, invoiced_sub_total: nil, invoiced_total: nil, issued_at_timestamp: nil, pdf_url: nil, tax: nil)
             #   @param billing_provider_type [Symbol, MetronomeSDK::Models::V1::Customers::Invoice::ExternalInvoice::BillingProviderType]
+            #
             #   @param external_status [Symbol, MetronomeSDK::Models::V1::Customers::Invoice::ExternalInvoice::ExternalStatus]
+            #
             #   @param invoice_id [String]
+            #
+            #   @param invoiced_sub_total [Float] The subtotal amount invoiced, if available from the billing provider.
+            #
+            #   @param invoiced_total [Float] The total amount invoiced, if available from the billing provider.
+            #
             #   @param issued_at_timestamp [Time]
+            #
+            #   @param pdf_url [String] A URL to the PDF of the invoice, if available from the billing provider.
+            #
+            #   @param tax [MetronomeSDK::Models::V1::Customers::Invoice::ExternalInvoice::Tax] Tax details for the invoice, if available from the billing provider.
 
             # @see MetronomeSDK::Models::V1::Customers::Invoice::ExternalInvoice#billing_provider_type
             module BillingProviderType
@@ -981,6 +1069,36 @@ module MetronomeSDK
 
               # @!method self.values
               #   @return [Array<Symbol>]
+            end
+
+            # @see MetronomeSDK::Models::V1::Customers::Invoice::ExternalInvoice#tax
+            class Tax < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute total_tax_amount
+              #   The total tax amount applied to the invoice.
+              #
+              #   @return [Float, nil]
+              optional :total_tax_amount, Float
+
+              # @!attribute total_taxable_amount
+              #   The total taxable amount of the invoice.
+              #
+              #   @return [Float, nil]
+              optional :total_taxable_amount, Float
+
+              # @!attribute transaction_id
+              #   The transaction ID associated with the tax calculation.
+              #
+              #   @return [String, nil]
+              optional :transaction_id, String
+
+              # @!method initialize(total_tax_amount: nil, total_taxable_amount: nil, transaction_id: nil)
+              #   Tax details for the invoice, if available from the billing provider.
+              #
+              #   @param total_tax_amount [Float] The total tax amount applied to the invoice.
+              #
+              #   @param total_taxable_amount [Float] The total taxable amount of the invoice.
+              #
+              #   @param transaction_id [String] The transaction ID associated with the tax calculation.
             end
           end
 

@@ -1,0 +1,17 @@
+module MetronomeSDK
+  module Models
+    module Notifications
+      type system_list_params =
+        {  } & MetronomeSDK::Internal::Type::request_parameters
+
+      class SystemListParams < MetronomeSDK::Internal::Type::BaseModel
+        extend MetronomeSDK::Internal::Type::RequestParameters::Converter
+        include MetronomeSDK::Internal::Type::RequestParameters
+
+        def initialize: (?request_options: MetronomeSDK::request_opts) -> void
+
+        def to_hash: -> { request_options: MetronomeSDK::RequestOptions }
+      end
+    end
+  end
+end

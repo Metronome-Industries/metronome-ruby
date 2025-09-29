@@ -128,11 +128,13 @@ module MetronomeSDK
         # - Contract editing must be enabled to use this endpoint. Reach out to your
         #   Metronome representative to learn more.
         #
-        # @overload edit(contract_id:, customer_id:, add_commits: nil, add_credits: nil, add_discounts: nil, add_overrides: nil, add_prepaid_balance_threshold_configuration: nil, add_professional_services: nil, add_recurring_commits: nil, add_recurring_credits: nil, add_reseller_royalties: nil, add_scheduled_charges: nil, add_spend_threshold_configuration: nil, add_subscriptions: nil, allow_contract_ending_before_finalized_invoice: nil, archive_commits: nil, archive_credits: nil, archive_scheduled_charges: nil, remove_overrides: nil, uniqueness_key: nil, update_commits: nil, update_contract_end_date: nil, update_contract_name: nil, update_credits: nil, update_prepaid_balance_threshold_configuration: nil, update_recurring_commits: nil, update_recurring_credits: nil, update_scheduled_charges: nil, update_spend_threshold_configuration: nil, update_subscriptions: nil, request_options: {})
+        # @overload edit(contract_id:, customer_id:, add_billing_provider_configuration_update: nil, add_commits: nil, add_credits: nil, add_discounts: nil, add_overrides: nil, add_prepaid_balance_threshold_configuration: nil, add_professional_services: nil, add_recurring_commits: nil, add_recurring_credits: nil, add_reseller_royalties: nil, add_scheduled_charges: nil, add_spend_threshold_configuration: nil, add_subscriptions: nil, allow_contract_ending_before_finalized_invoice: nil, archive_commits: nil, archive_credits: nil, archive_scheduled_charges: nil, remove_overrides: nil, uniqueness_key: nil, update_commits: nil, update_contract_end_date: nil, update_contract_name: nil, update_credits: nil, update_prepaid_balance_threshold_configuration: nil, update_recurring_commits: nil, update_recurring_credits: nil, update_scheduled_charges: nil, update_spend_threshold_configuration: nil, update_subscriptions: nil, request_options: {})
         #
         # @param contract_id [String] ID of the contract being edited
         #
         # @param customer_id [String] ID of the customer whose contract is being edited
+        #
+        # @param add_billing_provider_configuration_update [MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate] Update the billing provider configuration on the contract. Currently only suppor
         #
         # @param add_commits [Array<MetronomeSDK::Models::V2::ContractEditParams::AddCommit>]
         #
@@ -226,7 +228,7 @@ module MetronomeSDK
         #   finalized invoice. You can void the invoice beforehand and then remove the
         #   access schedule segment.
         #
-        # @overload edit_commit(commit_id:, customer_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, invoice_contract_id: nil, invoice_schedule: nil, priority: nil, product_id: nil, rate_type: nil, specifiers: nil, request_options: {})
+        # @overload edit_commit(commit_id:, customer_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, hierarchy_configuration: nil, invoice_contract_id: nil, invoice_schedule: nil, priority: nil, product_id: nil, rate_type: nil, specifiers: nil, request_options: {})
         #
         # @param commit_id [String] ID of the commit to edit
         #
@@ -237,6 +239,8 @@ module MetronomeSDK
         # @param applicable_product_ids [Array<String>, nil] Which products the commit applies to. If applicable_product_ids, applicable_prod
         #
         # @param applicable_product_tags [Array<String>, nil] Which tags the commit applies to. If applicable*product_ids, applicable_product*
+        #
+        # @param hierarchy_configuration [MetronomeSDK::Models::CommitHierarchyConfiguration] Optional configuration for commit hierarchy access control
         #
         # @param invoice_contract_id [String] ID of contract to use for invoicing
         #
@@ -286,7 +290,7 @@ module MetronomeSDK
         #   invoice. You can void the invoice beforehand and then remove the access
         #   schedule segment.
         #
-        # @overload edit_credit(credit_id:, customer_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, priority: nil, product_id: nil, rate_type: nil, specifiers: nil, request_options: {})
+        # @overload edit_credit(credit_id:, customer_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, hierarchy_configuration: nil, priority: nil, product_id: nil, rate_type: nil, specifiers: nil, request_options: {})
         #
         # @param credit_id [String] ID of the credit to edit
         #
@@ -297,6 +301,8 @@ module MetronomeSDK
         # @param applicable_product_ids [Array<String>, nil] Which products the credit applies to. If both applicable_product_ids and applica
         #
         # @param applicable_product_tags [Array<String>, nil] Which tags the credit applies to. If both applicable*product_ids and applicable*
+        #
+        # @param hierarchy_configuration [MetronomeSDK::Models::CommitHierarchyConfiguration] Optional configuration for credit hierarchy access control
         #
         # @param priority [Float, nil] If multiple commits are applicable, the one with the lower priority will apply f
         #

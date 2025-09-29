@@ -34,11 +34,23 @@ module MetronomeSDK
 
   ID = MetronomeSDK::Models::ID
 
+  NotificationArchiveParams = MetronomeSDK::Models::NotificationArchiveParams
+
+  NotificationCreateParams = MetronomeSDK::Models::NotificationCreateParams
+
+  NotificationRetrieveParams = MetronomeSDK::Models::NotificationRetrieveParams
+
+  Notifications = MetronomeSDK::Models::Notifications
+
+  NotificationUpdateParams = MetronomeSDK::Models::NotificationUpdateParams
+
   Override = MetronomeSDK::Models::Override
 
   OverrideTier = MetronomeSDK::Models::OverrideTier
 
   OverwriteRate = MetronomeSDK::Models::OverwriteRate
+
+  PackageCreateParams = MetronomeSDK::Models::PackageCreateParams
 
   PaymentGateConfig = MetronomeSDK::Models::PaymentGateConfig
 

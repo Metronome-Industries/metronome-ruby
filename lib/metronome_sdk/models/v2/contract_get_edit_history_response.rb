@@ -637,8 +637,9 @@ module MetronomeSDK
 
             # @!attribute overwrite_rate
             #
-            #   @return [MetronomeSDK::Models::OverwriteRate, nil]
-            optional :overwrite_rate, -> { MetronomeSDK::OverwriteRate }
+            #   @return [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate, nil]
+            optional :overwrite_rate,
+                     -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate }
 
             # @!attribute priority
             #
@@ -673,7 +674,7 @@ module MetronomeSDK
             #   @param multiplier [Float]
             #   @param override_specifiers [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverrideSpecifier>]
             #   @param override_tiers [Array<MetronomeSDK::Models::OverrideTier>]
-            #   @param overwrite_rate [MetronomeSDK::Models::OverwriteRate]
+            #   @param overwrite_rate [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate]
             #   @param priority [Float]
             #   @param product [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::Product]
             #   @param target [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::Target]
@@ -739,6 +740,86 @@ module MetronomeSDK
                 QUARTERLY = :QUARTERLY
                 ANNUAL = :ANNUAL
                 WEEKLY = :WEEKLY
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
+            end
+
+            # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride#overwrite_rate
+            class OverwriteRate < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute rate_type
+              #
+              #   @return [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::RateType]
+              required :rate_type,
+                       enum: -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::RateType }
+
+              # @!attribute credit_type
+              #
+              #   @return [MetronomeSDK::Models::CreditTypeData, nil]
+              optional :credit_type, -> { MetronomeSDK::CreditTypeData }
+
+              # @!attribute custom_rate
+              #   Only set for CUSTOM rate_type. This field is interpreted by custom rate
+              #   processors.
+              #
+              #   @return [Hash{Symbol=>Object}, nil]
+              optional :custom_rate, MetronomeSDK::Internal::Type::HashOf[MetronomeSDK::Internal::Type::Unknown]
+
+              # @!attribute is_prorated
+              #   Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be
+              #   set to true.
+              #
+              #   @return [Boolean, nil]
+              optional :is_prorated, MetronomeSDK::Internal::Type::Boolean
+
+              # @!attribute price
+              #   Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type,
+              #   this is a decimal fraction, e.g. use 0.1 for 10%; this must be >=0 and <=1.
+              #
+              #   @return [Float, nil]
+              optional :price, Float
+
+              # @!attribute quantity
+              #   Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
+              #
+              #   @return [Float, nil]
+              optional :quantity, Float
+
+              # @!attribute tiers
+              #   Only set for TIERED rate_type.
+              #
+              #   @return [Array<MetronomeSDK::Models::Tier>, nil]
+              optional :tiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Tier] }
+
+              # @!method initialize(rate_type:, credit_type: nil, custom_rate: nil, is_prorated: nil, price: nil, quantity: nil, tiers: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate}
+              #   for more details.
+              #
+              #   @param rate_type [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::RateType]
+              #
+              #   @param credit_type [MetronomeSDK::Models::CreditTypeData]
+              #
+              #   @param custom_rate [Hash{Symbol=>Object}] Only set for CUSTOM rate_type. This field is interpreted by custom rate processo
+              #
+              #   @param is_prorated [Boolean] Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be
+              #
+              #   @param price [Float] Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type, t
+              #
+              #   @param quantity [Float] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
+              #
+              #   @param tiers [Array<MetronomeSDK::Models::Tier>] Only set for TIERED rate_type.
+
+              # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate#rate_type
+              module RateType
+                extend MetronomeSDK::Internal::Type::Enum
+
+                FLAT = :FLAT
+                PERCENTAGE = :PERCENTAGE
+                SUBSCRIPTION = :SUBSCRIPTION
+                TIERED = :TIERED
+                CUSTOM = :CUSTOM
 
                 # @!method self.values
                 #   @return [Array<Symbol>]
@@ -2570,11 +2651,18 @@ module MetronomeSDK
             optional :invoice_amount,
                      -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit::InvoiceAmount }
 
-            # @!method initialize(id:, access_amount: nil, ending_before: nil, invoice_amount: nil)
+            # @!attribute rate_type
+            #
+            #   @return [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit::RateType, nil]
+            optional :rate_type,
+                     enum: -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit::RateType }
+
+            # @!method initialize(id:, access_amount: nil, ending_before: nil, invoice_amount: nil, rate_type: nil)
             #   @param id [String]
             #   @param access_amount [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit::AccessAmount]
             #   @param ending_before [Time]
             #   @param invoice_amount [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit::InvoiceAmount]
+            #   @param rate_type [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit::RateType]
 
             # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit#access_amount
             class AccessAmount < MetronomeSDK::Internal::Type::BaseModel
@@ -2609,6 +2697,17 @@ module MetronomeSDK
               #   @param quantity [Float]
               #   @param unit_price [Float]
             end
+
+            # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCommit#rate_type
+            module RateType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              LIST_RATE = :LIST_RATE
+              COMMIT_RATE = :COMMIT_RATE
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
           end
 
           class UpdateRecurringCredit < MetronomeSDK::Internal::Type::BaseModel
@@ -2628,10 +2727,17 @@ module MetronomeSDK
             #   @return [Time, nil]
             optional :ending_before, Time
 
-            # @!method initialize(id:, access_amount: nil, ending_before: nil)
+            # @!attribute rate_type
+            #
+            #   @return [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCredit::RateType, nil]
+            optional :rate_type,
+                     enum: -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCredit::RateType }
+
+            # @!method initialize(id:, access_amount: nil, ending_before: nil, rate_type: nil)
             #   @param id [String]
             #   @param access_amount [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCredit::AccessAmount]
             #   @param ending_before [Time]
+            #   @param rate_type [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCredit::RateType]
 
             # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCredit#access_amount
             class AccessAmount < MetronomeSDK::Internal::Type::BaseModel
@@ -2648,6 +2754,17 @@ module MetronomeSDK
               # @!method initialize(quantity: nil, unit_price: nil)
               #   @param quantity [Float]
               #   @param unit_price [Float]
+            end
+
+            # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateRecurringCredit#rate_type
+            module RateType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              LIST_RATE = :LIST_RATE
+              COMMIT_RATE = :COMMIT_RATE
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
           end
 

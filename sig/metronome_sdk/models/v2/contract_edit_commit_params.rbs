@@ -8,6 +8,7 @@ module MetronomeSDK
           access_schedule: MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule,
           applicable_product_ids: ::Array[String]?,
           applicable_product_tags: ::Array[String]?,
+          hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,
           invoice_contract_id: String,
           invoice_schedule: MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule,
           priority: Float?,
@@ -34,6 +35,12 @@ module MetronomeSDK
         attr_accessor applicable_product_ids: ::Array[String]?
 
         attr_accessor applicable_product_tags: ::Array[String]?
+
+        attr_reader hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration?
+
+        def hierarchy_configuration=: (
+          MetronomeSDK::CommitHierarchyConfiguration
+        ) -> MetronomeSDK::CommitHierarchyConfiguration
 
         attr_reader invoice_contract_id: String?
 
@@ -65,6 +72,7 @@ module MetronomeSDK
           ?access_schedule: MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule,
           ?applicable_product_ids: ::Array[String]?,
           ?applicable_product_tags: ::Array[String]?,
+          ?hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,
           ?invoice_contract_id: String,
           ?invoice_schedule: MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule,
           ?priority: Float?,
@@ -80,6 +88,7 @@ module MetronomeSDK
           access_schedule: MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule,
           applicable_product_ids: ::Array[String]?,
           applicable_product_tags: ::Array[String]?,
+          hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,
           invoice_contract_id: String,
           invoice_schedule: MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule,
           priority: Float?,

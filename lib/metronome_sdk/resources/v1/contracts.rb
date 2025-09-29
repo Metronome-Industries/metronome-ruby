@@ -709,11 +709,12 @@ module MetronomeSDK
         # Some parameter documentations has been truncated, see
         # {MetronomeSDK::Models::V1::ContractUpdateEndDateParams} for more details.
         #
-        # Update or and an end date to a contract. Ending a contract early will impact
+        # Update or add an end date to a contract. Ending a contract early will impact
         # draft usage statements, truncate any terms, and remove upcoming scheduled
         # invoices. Moving the date into the future will only extend the contract length.
-        # Terms and scheduled invoices are not extended. Use this if a contract's end date
-        # has changed or if a perpetual contract ends.
+        # Terms and scheduled invoices are not extended. In-advance subscriptions will not
+        # be extended. Use this if a contract's end date has changed or if a perpetual
+        # contract ends.
         #
         # @overload update_end_date(contract_id:, customer_id:, allow_ending_before_finalized_invoice: nil, ending_before: nil, request_options: {})
         #

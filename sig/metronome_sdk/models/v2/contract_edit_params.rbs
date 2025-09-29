@@ -5,6 +5,7 @@ module MetronomeSDK
         {
           contract_id: String,
           customer_id: String,
+          add_billing_provider_configuration_update: MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate,
           add_commits: ::Array[MetronomeSDK::V2::ContractEditParams::AddCommit],
           add_credits: ::Array[MetronomeSDK::V2::ContractEditParams::AddCredit],
           add_discounts: ::Array[MetronomeSDK::V2::ContractEditParams::AddDiscount],
@@ -43,6 +44,12 @@ module MetronomeSDK
         attr_accessor contract_id: String
 
         attr_accessor customer_id: String
+
+        attr_reader add_billing_provider_configuration_update: MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate?
+
+        def add_billing_provider_configuration_update=: (
+          MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate
+        ) -> MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate
 
         attr_reader add_commits: ::Array[MetronomeSDK::V2::ContractEditParams::AddCommit]?
 
@@ -203,6 +210,7 @@ module MetronomeSDK
         def initialize: (
           contract_id: String,
           customer_id: String,
+          ?add_billing_provider_configuration_update: MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate,
           ?add_commits: ::Array[MetronomeSDK::V2::ContractEditParams::AddCommit],
           ?add_credits: ::Array[MetronomeSDK::V2::ContractEditParams::AddCredit],
           ?add_discounts: ::Array[MetronomeSDK::V2::ContractEditParams::AddDiscount],
@@ -237,6 +245,7 @@ module MetronomeSDK
         def to_hash: -> {
           contract_id: String,
           customer_id: String,
+          add_billing_provider_configuration_update: MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate,
           add_commits: ::Array[MetronomeSDK::V2::ContractEditParams::AddCommit],
           add_credits: ::Array[MetronomeSDK::V2::ContractEditParams::AddCredit],
           add_discounts: ::Array[MetronomeSDK::V2::ContractEditParams::AddDiscount],
@@ -267,6 +276,131 @@ module MetronomeSDK
           update_subscriptions: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateSubscription],
           request_options: MetronomeSDK::RequestOptions
         }
+
+        type add_billing_provider_configuration_update =
+          {
+            billing_provider_configuration: MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration,
+            schedule: MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::Schedule
+          }
+
+        class AddBillingProviderConfigurationUpdate < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor billing_provider_configuration: MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration
+
+          attr_accessor schedule: MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::Schedule
+
+          def initialize: (
+            billing_provider_configuration: MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration,
+            schedule: MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::Schedule
+          ) -> void
+
+          def to_hash: -> {
+            billing_provider_configuration: MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration,
+            schedule: MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::Schedule
+          }
+
+          type billing_provider_configuration =
+            {
+              billing_provider: MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::billing_provider,
+              billing_provider_configuration_id: String,
+              delivery_method: MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::delivery_method
+            }
+
+          class BillingProviderConfiguration < MetronomeSDK::Internal::Type::BaseModel
+            attr_reader billing_provider: MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::billing_provider?
+
+            def billing_provider=: (
+              MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::billing_provider
+            ) -> MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::billing_provider
+
+            attr_reader billing_provider_configuration_id: String?
+
+            def billing_provider_configuration_id=: (String) -> String
+
+            attr_reader delivery_method: MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::delivery_method?
+
+            def delivery_method=: (
+              MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::delivery_method
+            ) -> MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::delivery_method
+
+            def initialize: (
+              ?billing_provider: MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::billing_provider,
+              ?billing_provider_configuration_id: String,
+              ?delivery_method: MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::delivery_method
+            ) -> void
+
+            def to_hash: -> {
+              billing_provider: MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::billing_provider,
+              billing_provider_configuration_id: String,
+              delivery_method: MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::delivery_method
+            }
+
+            type billing_provider =
+              :aws_marketplace
+              | :stripe
+              | :netsuite
+              | :custom
+              | :azure_marketplace
+              | :quickbooks_online
+              | :workday
+              | :gcp_marketplace
+
+            module BillingProvider
+              extend MetronomeSDK::Internal::Type::Enum
+
+              AWS_MARKETPLACE: :aws_marketplace
+              STRIPE: :stripe
+              NETSUITE: :netsuite
+              CUSTOM: :custom
+              AZURE_MARKETPLACE: :azure_marketplace
+              QUICKBOOKS_ONLINE: :quickbooks_online
+              WORKDAY: :workday
+              GCP_MARKETPLACE: :gcp_marketplace
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::billing_provider]
+            end
+
+            type delivery_method =
+              :direct_to_billing_provider | :aws_sqs | :tackle | :aws_sns
+
+            module DeliveryMethod
+              extend MetronomeSDK::Internal::Type::Enum
+
+              DIRECT_TO_BILLING_PROVIDER: :direct_to_billing_provider
+              AWS_SQS: :aws_sqs
+              TACKLE: :tackle
+              AWS_SNS: :aws_sns
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::delivery_method]
+            end
+          end
+
+          type schedule =
+            {
+              effective_at: MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::Schedule::effective_at
+            }
+
+          class Schedule < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor effective_at: MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::Schedule::effective_at
+
+            def initialize: (
+              effective_at: MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::Schedule::effective_at
+            ) -> void
+
+            def to_hash: -> {
+              effective_at: MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::Schedule::effective_at
+            }
+
+            type effective_at = :START_OF_CURRENT_PERIOD
+
+            module EffectiveAt
+              extend MetronomeSDK::Internal::Type::Enum
+
+              START_OF_CURRENT_PERIOD: :START_OF_CURRENT_PERIOD
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::Schedule::effective_at]
+            end
+          end
+        end
 
         type add_commit =
           {
@@ -3328,7 +3462,8 @@ module MetronomeSDK
             recurring_commit_id: String,
             access_amount: MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::AccessAmount,
             ending_before: Time?,
-            invoice_amount: MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::InvoiceAmount
+            invoice_amount: MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::InvoiceAmount,
+            rate_type: MetronomeSDK::Models::V2::ContractEditParams::UpdateRecurringCommit::rate_type
           }
 
         class UpdateRecurringCommit < MetronomeSDK::Internal::Type::BaseModel
@@ -3348,18 +3483,26 @@ module MetronomeSDK
             MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::InvoiceAmount
           ) -> MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::InvoiceAmount
 
+          attr_reader rate_type: MetronomeSDK::Models::V2::ContractEditParams::UpdateRecurringCommit::rate_type?
+
+          def rate_type=: (
+            MetronomeSDK::Models::V2::ContractEditParams::UpdateRecurringCommit::rate_type
+          ) -> MetronomeSDK::Models::V2::ContractEditParams::UpdateRecurringCommit::rate_type
+
           def initialize: (
             recurring_commit_id: String,
             ?access_amount: MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::AccessAmount,
             ?ending_before: Time?,
-            ?invoice_amount: MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::InvoiceAmount
+            ?invoice_amount: MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::InvoiceAmount,
+            ?rate_type: MetronomeSDK::Models::V2::ContractEditParams::UpdateRecurringCommit::rate_type
           ) -> void
 
           def to_hash: -> {
             recurring_commit_id: String,
             access_amount: MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::AccessAmount,
             ending_before: Time?,
-            invoice_amount: MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::InvoiceAmount
+            invoice_amount: MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::InvoiceAmount,
+            rate_type: MetronomeSDK::Models::V2::ContractEditParams::UpdateRecurringCommit::rate_type
           }
 
           type access_amount = { quantity: Float, unit_price: Float }
@@ -3393,13 +3536,25 @@ module MetronomeSDK
 
             def to_hash: -> { quantity: Float, unit_price: Float }
           end
+
+          type rate_type = :LIST_RATE | :COMMIT_RATE
+
+          module RateType
+            extend MetronomeSDK::Internal::Type::Enum
+
+            LIST_RATE: :LIST_RATE
+            COMMIT_RATE: :COMMIT_RATE
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractEditParams::UpdateRecurringCommit::rate_type]
+          end
         end
 
         type update_recurring_credit =
           {
             recurring_credit_id: String,
             access_amount: MetronomeSDK::V2::ContractEditParams::UpdateRecurringCredit::AccessAmount,
-            ending_before: Time?
+            ending_before: Time?,
+            rate_type: MetronomeSDK::Models::V2::ContractEditParams::UpdateRecurringCredit::rate_type
           }
 
         class UpdateRecurringCredit < MetronomeSDK::Internal::Type::BaseModel
@@ -3413,16 +3568,24 @@ module MetronomeSDK
 
           attr_accessor ending_before: Time?
 
+          attr_reader rate_type: MetronomeSDK::Models::V2::ContractEditParams::UpdateRecurringCredit::rate_type?
+
+          def rate_type=: (
+            MetronomeSDK::Models::V2::ContractEditParams::UpdateRecurringCredit::rate_type
+          ) -> MetronomeSDK::Models::V2::ContractEditParams::UpdateRecurringCredit::rate_type
+
           def initialize: (
             recurring_credit_id: String,
             ?access_amount: MetronomeSDK::V2::ContractEditParams::UpdateRecurringCredit::AccessAmount,
-            ?ending_before: Time?
+            ?ending_before: Time?,
+            ?rate_type: MetronomeSDK::Models::V2::ContractEditParams::UpdateRecurringCredit::rate_type
           ) -> void
 
           def to_hash: -> {
             recurring_credit_id: String,
             access_amount: MetronomeSDK::V2::ContractEditParams::UpdateRecurringCredit::AccessAmount,
-            ending_before: Time?
+            ending_before: Time?,
+            rate_type: MetronomeSDK::Models::V2::ContractEditParams::UpdateRecurringCredit::rate_type
           }
 
           type access_amount = { quantity: Float, unit_price: Float }
@@ -3439,6 +3602,17 @@ module MetronomeSDK
             def initialize: (?quantity: Float, ?unit_price: Float) -> void
 
             def to_hash: -> { quantity: Float, unit_price: Float }
+          end
+
+          type rate_type = :LIST_RATE | :COMMIT_RATE
+
+          module RateType
+            extend MetronomeSDK::Internal::Type::Enum
+
+            LIST_RATE: :LIST_RATE
+            COMMIT_RATE: :COMMIT_RATE
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractEditParams::UpdateRecurringCredit::rate_type]
           end
         end
 

@@ -1,0 +1,72 @@
+module MetronomeSDK
+  module Models
+    type notification_update_params =
+      {
+        policy: MetronomeSDK::Models::NotificationUpdateParams::policy,
+        id: String,
+        is_enabled: bool
+      }
+      & MetronomeSDK::Internal::Type::request_parameters
+
+    class NotificationUpdateParams < MetronomeSDK::Internal::Type::BaseModel
+      extend MetronomeSDK::Internal::Type::RequestParameters::Converter
+      include MetronomeSDK::Internal::Type::RequestParameters
+
+      attr_accessor policy: MetronomeSDK::Models::NotificationUpdateParams::policy
+
+      attr_reader id: String?
+
+      def id=: (String) -> String
+
+      attr_reader is_enabled: bool?
+
+      def is_enabled=: (bool) -> bool
+
+      def initialize: (
+        policy: MetronomeSDK::Models::NotificationUpdateParams::policy,
+        ?id: String,
+        ?is_enabled: bool,
+        ?request_options: MetronomeSDK::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        policy: MetronomeSDK::Models::NotificationUpdateParams::policy,
+        id: String,
+        is_enabled: bool,
+        request_options: MetronomeSDK::RequestOptions
+      }
+
+      type policy =
+        MetronomeSDK::NotificationUpdateParams::Policy::LifecycleEventOffsetPolicy
+        | MetronomeSDK::NotificationUpdateParams::Policy::LifecycleEventSystemPolicy
+
+      module Policy
+        extend MetronomeSDK::Internal::Type::Union
+
+        type lifecycle_event_offset_policy = { offset: String, type: String }
+
+        class LifecycleEventOffsetPolicy < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor offset: String
+
+          attr_accessor type: String
+
+          def initialize: (offset: String, type: String) -> void
+
+          def to_hash: -> { offset: String, type: String }
+        end
+
+        type lifecycle_event_system_policy = { type: String }
+
+        class LifecycleEventSystemPolicy < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor type: String
+
+          def initialize: (type: String) -> void
+
+          def to_hash: -> { type: String }
+        end
+
+        def self?.variants: -> ::Array[MetronomeSDK::Models::NotificationUpdateParams::policy]
+      end
+    end
+  end
+end

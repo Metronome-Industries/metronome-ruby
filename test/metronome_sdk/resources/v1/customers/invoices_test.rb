@@ -45,7 +45,7 @@ class MetronomeSDK::Test::Resources::V1::Customers::InvoicesTest < MetronomeSDK:
         total: Float,
         type: String,
         amendment_id: String | nil,
-        billable_status: MetronomeSDK::V1::Customers::Invoice::BillableStatus | nil,
+        billable_status: MetronomeSDK::Internal::Type::Unknown | nil,
         contract_custom_fields: ^(MetronomeSDK::Internal::Type::HashOf[String]) | nil,
         contract_id: String | nil,
         correction_record: MetronomeSDK::V1::Customers::Invoice::CorrectionRecord | nil,
