@@ -713,7 +713,7 @@ module MetronomeSDK
             end
           end
 
-          type tax_type = :NONE | :STRIPE | :ANROK | :PRECALCULATED
+          type tax_type = :NONE | :STRIPE | :ANROK | :AVALARA | :PRECALCULATED
 
           module TaxType
             extend MetronomeSDK::Internal::Type::Enum
@@ -721,6 +721,7 @@ module MetronomeSDK
             NONE: :NONE
             STRIPE: :STRIPE
             ANROK: :ANROK
+            AVALARA: :AVALARA
             PRECALCULATED: :PRECALCULATED
 
             def self?.values: -> ::Array[MetronomeSDK::Models::PackageCreateParams::Commit::PaymentGateConfig::tax_type]
