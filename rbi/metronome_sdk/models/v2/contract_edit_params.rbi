@@ -2312,6 +2312,11 @@ module MetronomeSDK
                   :ANROK,
                   MetronomeSDK::V2::ContractEditParams::AddCommit::PaymentGateConfig::TaxType::TaggedSymbol
                 )
+              AVALARA =
+                T.let(
+                  :AVALARA,
+                  MetronomeSDK::V2::ContractEditParams::AddCommit::PaymentGateConfig::TaxType::TaggedSymbol
+                )
               PRECALCULATED =
                 T.let(
                   :PRECALCULATED,
