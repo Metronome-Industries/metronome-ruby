@@ -22,11 +22,11 @@ module MetronomeSDK
     sig { returns(MetronomeSDK::Resources::Packages) }
     attr_reader :packages
 
-    sig { returns(MetronomeSDK::Resources::Payments) }
-    attr_reader :payments
-
     sig { returns(MetronomeSDK::Resources::Notifications) }
     attr_reader :notifications
+
+    sig { returns(MetronomeSDK::Resources::Payments) }
+    attr_reader :payments
 
     # @api private
     sig { override.returns(T::Hash[String, String]) }

@@ -1210,18 +1210,49 @@ module MetronomeSDK
 
         type hierarchy_configuration =
           {
-            parent: MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::Parent
+            parent: MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::Parent,
+            parent_behavior: MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::ParentBehavior,
+            payer: MetronomeSDK::Models::V1::ContractCreateParams::HierarchyConfiguration::payer,
+            usage_statement_behavior: MetronomeSDK::Models::V1::ContractCreateParams::HierarchyConfiguration::usage_statement_behavior
           }
 
         class HierarchyConfiguration < MetronomeSDK::Internal::Type::BaseModel
-          attr_accessor parent: MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::Parent
+          attr_reader parent: MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::Parent?
+
+          def parent=: (
+            MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::Parent
+          ) -> MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::Parent
+
+          attr_reader parent_behavior: MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::ParentBehavior?
+
+          def parent_behavior=: (
+            MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::ParentBehavior
+          ) -> MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::ParentBehavior
+
+          attr_reader payer: MetronomeSDK::Models::V1::ContractCreateParams::HierarchyConfiguration::payer?
+
+          def payer=: (
+            MetronomeSDK::Models::V1::ContractCreateParams::HierarchyConfiguration::payer
+          ) -> MetronomeSDK::Models::V1::ContractCreateParams::HierarchyConfiguration::payer
+
+          attr_reader usage_statement_behavior: MetronomeSDK::Models::V1::ContractCreateParams::HierarchyConfiguration::usage_statement_behavior?
+
+          def usage_statement_behavior=: (
+            MetronomeSDK::Models::V1::ContractCreateParams::HierarchyConfiguration::usage_statement_behavior
+          ) -> MetronomeSDK::Models::V1::ContractCreateParams::HierarchyConfiguration::usage_statement_behavior
 
           def initialize: (
-            parent: MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::Parent
+            ?parent: MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::Parent,
+            ?parent_behavior: MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::ParentBehavior,
+            ?payer: MetronomeSDK::Models::V1::ContractCreateParams::HierarchyConfiguration::payer,
+            ?usage_statement_behavior: MetronomeSDK::Models::V1::ContractCreateParams::HierarchyConfiguration::usage_statement_behavior
           ) -> void
 
           def to_hash: -> {
-            parent: MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::Parent
+            parent: MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::Parent,
+            parent_behavior: MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::ParentBehavior,
+            payer: MetronomeSDK::Models::V1::ContractCreateParams::HierarchyConfiguration::payer,
+            usage_statement_behavior: MetronomeSDK::Models::V1::ContractCreateParams::HierarchyConfiguration::usage_statement_behavior
           }
 
           type parent = { contract_id: String, customer_id: String }
@@ -1234,6 +1265,60 @@ module MetronomeSDK
             def initialize: (contract_id: String, customer_id: String) -> void
 
             def to_hash: -> { contract_id: String, customer_id: String }
+          end
+
+          type parent_behavior =
+            {
+              invoice_consolidation_type: MetronomeSDK::Models::V1::ContractCreateParams::HierarchyConfiguration::ParentBehavior::invoice_consolidation_type
+            }
+
+          class ParentBehavior < MetronomeSDK::Internal::Type::BaseModel
+            attr_reader invoice_consolidation_type: MetronomeSDK::Models::V1::ContractCreateParams::HierarchyConfiguration::ParentBehavior::invoice_consolidation_type?
+
+            def invoice_consolidation_type=: (
+              MetronomeSDK::Models::V1::ContractCreateParams::HierarchyConfiguration::ParentBehavior::invoice_consolidation_type
+            ) -> MetronomeSDK::Models::V1::ContractCreateParams::HierarchyConfiguration::ParentBehavior::invoice_consolidation_type
+
+            def initialize: (
+              ?invoice_consolidation_type: MetronomeSDK::Models::V1::ContractCreateParams::HierarchyConfiguration::ParentBehavior::invoice_consolidation_type
+            ) -> void
+
+            def to_hash: -> {
+              invoice_consolidation_type: MetronomeSDK::Models::V1::ContractCreateParams::HierarchyConfiguration::ParentBehavior::invoice_consolidation_type
+            }
+
+            type invoice_consolidation_type = :CONCATENATE | :NONE
+
+            module InvoiceConsolidationType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              CONCATENATE: :CONCATENATE
+              NONE: :NONE
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::HierarchyConfiguration::ParentBehavior::invoice_consolidation_type]
+            end
+          end
+
+          type payer = :SELF | :PARENT
+
+          module Payer
+            extend MetronomeSDK::Internal::Type::Enum
+
+            SELF: :SELF
+            PARENT: :PARENT
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::HierarchyConfiguration::payer]
+          end
+
+          type usage_statement_behavior = :CONSOLIDATE | :SEPARATE
+
+          module UsageStatementBehavior
+            extend MetronomeSDK::Internal::Type::Enum
+
+            CONSOLIDATE: :CONSOLIDATE
+            SEPARATE: :SEPARATE
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::HierarchyConfiguration::usage_statement_behavior]
           end
         end
 
