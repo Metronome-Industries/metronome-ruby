@@ -47,9 +47,9 @@ module MetronomeSDK
           customer_id: String,
           invoice_id: String,
           request_options: MetronomeSDK::RequestOptions::OrHash
-        ).returns(MetronomeSDK::Models::PaymentAttemptResponse)
+        ).returns(MetronomeSDK::Models::PaymentAttemptPaymentResponse)
       end
-      def attempt(customer_id:, invoice_id:, request_options: {})
+      def attempt_payment(customer_id:, invoice_id:, request_options: {})
       end
 
       # @api private

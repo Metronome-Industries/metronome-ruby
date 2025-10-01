@@ -2,28 +2,30 @@
 
 module MetronomeSDK
   module Models
-    class PaymentAttemptResponse < MetronomeSDK::Internal::Type::BaseModel
+    class PaymentAttemptPaymentResponse < MetronomeSDK::Internal::Type::BaseModel
       OrHash =
         T.type_alias do
           T.any(
-            MetronomeSDK::Models::PaymentAttemptResponse,
+            MetronomeSDK::Models::PaymentAttemptPaymentResponse,
             MetronomeSDK::Internal::AnyHash
           )
         end
 
-      sig { returns(MetronomeSDK::Models::PaymentAttemptResponse::Data) }
+      sig { returns(MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data) }
       attr_reader :data
 
       sig do
         params(
-          data: MetronomeSDK::Models::PaymentAttemptResponse::Data::OrHash
+          data:
+            MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::OrHash
         ).void
       end
       attr_writer :data
 
       sig do
         params(
-          data: MetronomeSDK::Models::PaymentAttemptResponse::Data::OrHash
+          data:
+            MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::OrHash
         ).returns(T.attached_class)
       end
       def self.new(data:)
@@ -31,7 +33,7 @@ module MetronomeSDK
 
       sig do
         override.returns(
-          { data: MetronomeSDK::Models::PaymentAttemptResponse::Data }
+          { data: MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data }
         )
       end
       def to_hash
@@ -41,7 +43,7 @@ module MetronomeSDK
         OrHash =
           T.type_alias do
             T.any(
-              MetronomeSDK::Models::PaymentAttemptResponse::Data,
+              MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data,
               MetronomeSDK::Internal::AnyHash
             )
           end
@@ -102,7 +104,7 @@ module MetronomeSDK
         sig do
           returns(
             T.nilable(
-              MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway
+              MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway
             )
           )
         end
@@ -111,7 +113,7 @@ module MetronomeSDK
         sig do
           params(
             payment_gateway:
-              MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway::OrHash
+              MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway::OrHash
           ).void
         end
         attr_writer :payment_gateway
@@ -119,7 +121,7 @@ module MetronomeSDK
         sig do
           returns(
             T.nilable(
-              MetronomeSDK::Models::PaymentAttemptResponse::Data::Status::TaggedSymbol
+              MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::Status::TaggedSymbol
             )
           )
         end
@@ -128,7 +130,7 @@ module MetronomeSDK
         sig do
           params(
             status:
-              MetronomeSDK::Models::PaymentAttemptResponse::Data::Status::OrSymbol
+              MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::Status::OrSymbol
           ).void
         end
         attr_writer :status
@@ -151,9 +153,9 @@ module MetronomeSDK
             fiat_credit_type: MetronomeSDK::CreditTypeData::OrHash,
             invoice_id: String,
             payment_gateway:
-              MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway::OrHash,
+              MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway::OrHash,
             status:
-              MetronomeSDK::Models::PaymentAttemptResponse::Data::Status::OrSymbol,
+              MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::Status::OrSymbol,
             updated_at: Time
           ).returns(T.attached_class)
         end
@@ -186,9 +188,9 @@ module MetronomeSDK
               fiat_credit_type: MetronomeSDK::CreditTypeData,
               invoice_id: String,
               payment_gateway:
-                MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway,
+                MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway,
               status:
-                MetronomeSDK::Models::PaymentAttemptResponse::Data::Status::TaggedSymbol,
+                MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::Status::TaggedSymbol,
               updated_at: Time
             }
           )
@@ -200,14 +202,14 @@ module MetronomeSDK
           OrHash =
             T.type_alias do
               T.any(
-                MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway,
+                MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway,
                 MetronomeSDK::Internal::AnyHash
               )
             end
 
           sig do
             returns(
-              MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway::Stripe
+              MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway::Stripe
             )
           end
           attr_reader :stripe
@@ -215,14 +217,14 @@ module MetronomeSDK
           sig do
             params(
               stripe:
-                MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway::Stripe::OrHash
+                MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway::Stripe::OrHash
             ).void
           end
           attr_writer :stripe
 
           sig do
             returns(
-              MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway::Type::TaggedSymbol
+              MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway::Type::TaggedSymbol
             )
           end
           attr_accessor :type
@@ -230,9 +232,9 @@ module MetronomeSDK
           sig do
             params(
               stripe:
-                MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway::Stripe::OrHash,
+                MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway::Stripe::OrHash,
               type:
-                MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway::Type::OrSymbol
+                MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway::Type::OrSymbol
             ).returns(T.attached_class)
           end
           def self.new(stripe:, type:)
@@ -242,9 +244,9 @@ module MetronomeSDK
             override.returns(
               {
                 stripe:
-                  MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway::Stripe,
+                  MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway::Stripe,
                 type:
-                  MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway::Type::TaggedSymbol
+                  MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway::Type::TaggedSymbol
               }
             )
           end
@@ -255,7 +257,7 @@ module MetronomeSDK
             OrHash =
               T.type_alias do
                 T.any(
-                  MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway::Stripe,
+                  MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway::Stripe,
                   MetronomeSDK::Internal::AnyHash
                 )
               end
@@ -266,7 +268,7 @@ module MetronomeSDK
             sig do
               returns(
                 T.nilable(
-                  MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway::Stripe::Error
+                  MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway::Stripe::Error
                 )
               )
             end
@@ -275,7 +277,7 @@ module MetronomeSDK
             sig do
               params(
                 error:
-                  MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway::Stripe::Error::OrHash
+                  MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway::Stripe::Error::OrHash
               ).void
             end
             attr_writer :error
@@ -284,7 +286,7 @@ module MetronomeSDK
               params(
                 payment_intent_id: String,
                 error:
-                  MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway::Stripe::Error::OrHash
+                  MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway::Stripe::Error::OrHash
               ).returns(T.attached_class)
             end
             def self.new(payment_intent_id:, error: nil)
@@ -295,7 +297,7 @@ module MetronomeSDK
                 {
                   payment_intent_id: String,
                   error:
-                    MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway::Stripe::Error
+                    MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway::Stripe::Error
                 }
               )
             end
@@ -306,7 +308,7 @@ module MetronomeSDK
               OrHash =
                 T.type_alias do
                   T.any(
-                    MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway::Stripe::Error,
+                    MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway::Stripe::Error,
                     MetronomeSDK::Internal::AnyHash
                   )
                 end
@@ -356,7 +358,7 @@ module MetronomeSDK
               T.type_alias do
                 T.all(
                   Symbol,
-                  MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway::Type
+                  MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway::Type
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -364,13 +366,13 @@ module MetronomeSDK
             STRIPE =
               T.let(
                 :stripe,
-                MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway::Type::TaggedSymbol
+                MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway::Type::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway::Type::TaggedSymbol
+                  MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway::Type::TaggedSymbol
                 ]
               )
             end
@@ -386,7 +388,7 @@ module MetronomeSDK
             T.type_alias do
               T.all(
                 Symbol,
-                MetronomeSDK::Models::PaymentAttemptResponse::Data::Status
+                MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::Status
               )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -394,28 +396,28 @@ module MetronomeSDK
           PENDING =
             T.let(
               :pending,
-              MetronomeSDK::Models::PaymentAttemptResponse::Data::Status::TaggedSymbol
+              MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::Status::TaggedSymbol
             )
           REQUIRES_INTERVENTION =
             T.let(
               :requires_intervention,
-              MetronomeSDK::Models::PaymentAttemptResponse::Data::Status::TaggedSymbol
+              MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::Status::TaggedSymbol
             )
           PAID =
             T.let(
               :paid,
-              MetronomeSDK::Models::PaymentAttemptResponse::Data::Status::TaggedSymbol
+              MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::Status::TaggedSymbol
             )
           CANCELED =
             T.let(
               :canceled,
-              MetronomeSDK::Models::PaymentAttemptResponse::Data::Status::TaggedSymbol
+              MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::Status::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                MetronomeSDK::Models::PaymentAttemptResponse::Data::Status::TaggedSymbol
+                MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::Status::TaggedSymbol
               ]
             )
           end
