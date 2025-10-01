@@ -39,20 +39,20 @@ class MetronomeSDK::Test::Resources::PaymentsTest < MetronomeSDK::Test::Resource
     end
   end
 
-  def test_attempt_required_params
+  def test_attempt_payment_required_params
     response =
-      @metronome.payments.attempt(
+      @metronome.payments.attempt_payment(
         customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d",
         invoice_id: "6162d87b-e5db-4a33-b7f2-76ce6ead4e85"
       )
 
     assert_pattern do
-      response => MetronomeSDK::Models::PaymentAttemptResponse
+      response => MetronomeSDK::Models::PaymentAttemptPaymentResponse
     end
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::Models::PaymentAttemptResponse::Data
+        data: MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data
       }
     end
   end

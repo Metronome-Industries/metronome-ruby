@@ -2,8 +2,8 @@
 
 module MetronomeSDK
   module Models
-    # @see MetronomeSDK::Resources::Payments#attempt
-    class PaymentAttemptParams < MetronomeSDK::Internal::Type::BaseModel
+    # @see MetronomeSDK::Resources::Payments#attempt_payment
+    class PaymentAttemptPaymentParams < MetronomeSDK::Internal::Type::BaseModel
       extend MetronomeSDK::Internal::Type::RequestParameters::Converter
       include MetronomeSDK::Internal::Type::RequestParameters
 
