@@ -10,6 +10,12 @@ module MetronomeSDK
         ?request_options: MetronomeSDK::request_opts
       ) -> MetronomeSDK::Internal::BodyCursorPage[MetronomeSDK::Models::PaymentListResponse]
 
+      def attempt: (
+        customer_id: String,
+        invoice_id: String,
+        ?request_options: MetronomeSDK::request_opts
+      ) -> MetronomeSDK::Models::PaymentAttemptResponse
+
       def initialize: (client: MetronomeSDK::Client) -> void
     end
   end

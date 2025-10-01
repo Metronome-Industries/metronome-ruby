@@ -49,6 +49,8 @@ module MetronomeSDK
 
   class PackageCreateParams = MetronomeSDK::Models::PackageCreateParams
 
+  class PaymentAttemptParams = MetronomeSDK::Models::PaymentAttemptParams
+
   class PaymentGateConfig = MetronomeSDK::Models::PaymentGateConfig
 
   class PaymentGateConfigV2 = MetronomeSDK::Models::PaymentGateConfigV2
