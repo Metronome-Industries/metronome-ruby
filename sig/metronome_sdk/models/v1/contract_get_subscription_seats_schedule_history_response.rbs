@@ -1,0 +1,59 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type contract_get_subscription_seats_schedule_history_response =
+        {
+          data: ::Array[MetronomeSDK::Models::V1::ContractGetSubscriptionSeatsScheduleHistoryResponse::Data],
+          next_page: String?
+        }
+
+      class ContractGetSubscriptionSeatsScheduleHistoryResponse < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor data: ::Array[MetronomeSDK::Models::V1::ContractGetSubscriptionSeatsScheduleHistoryResponse::Data]
+
+        attr_accessor next_page: String?
+
+        def initialize: (
+          data: ::Array[MetronomeSDK::Models::V1::ContractGetSubscriptionSeatsScheduleHistoryResponse::Data],
+          next_page: String?
+        ) -> void
+
+        def to_hash: -> {
+          data: ::Array[MetronomeSDK::Models::V1::ContractGetSubscriptionSeatsScheduleHistoryResponse::Data],
+          next_page: String?
+        }
+
+        type data =
+          {
+            assigned_seat_ids: ::Array[String],
+            ending_before: Time?,
+            starting_at: Time,
+            total_quantity: Integer
+          }
+
+        class Data < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor assigned_seat_ids: ::Array[String]
+
+          attr_accessor ending_before: Time?
+
+          attr_accessor starting_at: Time
+
+          attr_accessor total_quantity: Integer
+
+          def initialize: (
+            assigned_seat_ids: ::Array[String],
+            ending_before: Time?,
+            starting_at: Time,
+            total_quantity: Integer
+          ) -> void
+
+          def to_hash: -> {
+            assigned_seat_ids: ::Array[String],
+            ending_before: Time?,
+            starting_at: Time,
+            total_quantity: Integer
+          }
+        end
+      end
+    end
+  end
+end

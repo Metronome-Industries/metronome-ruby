@@ -1,0 +1,63 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type contract_get_subscription_seats_schedule_history_params =
+        {
+          contract_id: String,
+          customer_id: String,
+          subscription_id: String,
+          covering_date: Time?,
+          cursor: String?,
+          ending_before: Time?,
+          limit: Integer?,
+          starting_at: Time?
+        }
+        & MetronomeSDK::Internal::Type::request_parameters
+
+      class ContractGetSubscriptionSeatsScheduleHistoryParams < MetronomeSDK::Internal::Type::BaseModel
+        extend MetronomeSDK::Internal::Type::RequestParameters::Converter
+        include MetronomeSDK::Internal::Type::RequestParameters
+
+        attr_accessor contract_id: String
+
+        attr_accessor customer_id: String
+
+        attr_accessor subscription_id: String
+
+        attr_accessor covering_date: Time?
+
+        attr_accessor cursor: String?
+
+        attr_accessor ending_before: Time?
+
+        attr_accessor limit: Integer?
+
+        attr_accessor starting_at: Time?
+
+        def initialize: (
+          contract_id: String,
+          customer_id: String,
+          subscription_id: String,
+          ?covering_date: Time?,
+          ?cursor: String?,
+          ?ending_before: Time?,
+          ?limit: Integer?,
+          ?starting_at: Time?,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          contract_id: String,
+          customer_id: String,
+          subscription_id: String,
+          covering_date: Time?,
+          cursor: String?,
+          ending_before: Time?,
+          limit: Integer?,
+          starting_at: Time?,
+          request_options: MetronomeSDK::RequestOptions
+        }
+      end
+    end
+  end
+end
