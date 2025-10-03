@@ -2,12 +2,22 @@ module MetronomeSDK
   module Models
     module Notifications
       type offset_list_params =
-        { cursor: String, limit: Float }
+        {
+          archive_filter: MetronomeSDK::Models::Notifications::OffsetListParams::archive_filter,
+          cursor: String,
+          limit: Float
+        }
         & MetronomeSDK::Internal::Type::request_parameters
 
       class OffsetListParams < MetronomeSDK::Internal::Type::BaseModel
         extend MetronomeSDK::Internal::Type::RequestParameters::Converter
         include MetronomeSDK::Internal::Type::RequestParameters
+
+        attr_reader archive_filter: MetronomeSDK::Models::Notifications::OffsetListParams::archive_filter?
+
+        def archive_filter=: (
+          MetronomeSDK::Models::Notifications::OffsetListParams::archive_filter
+        ) -> MetronomeSDK::Models::Notifications::OffsetListParams::archive_filter
 
         attr_reader cursor: String?
 
@@ -18,16 +28,30 @@ module MetronomeSDK
         def limit=: (Float) -> Float
 
         def initialize: (
+          ?archive_filter: MetronomeSDK::Models::Notifications::OffsetListParams::archive_filter,
           ?cursor: String,
           ?limit: Float,
           ?request_options: MetronomeSDK::request_opts
         ) -> void
 
         def to_hash: -> {
+          archive_filter: MetronomeSDK::Models::Notifications::OffsetListParams::archive_filter,
           cursor: String,
           limit: Float,
           request_options: MetronomeSDK::RequestOptions
         }
+
+        type archive_filter = :ARCHIVED | :NOT_ARCHIVED | :ALL
+
+        module ArchiveFilter
+          extend MetronomeSDK::Internal::Type::Enum
+
+          ARCHIVED: :ARCHIVED
+          NOT_ARCHIVED: :NOT_ARCHIVED
+          ALL: :ALL
+
+          def self?.values: -> ::Array[MetronomeSDK::Models::Notifications::OffsetListParams::archive_filter]
+        end
       end
     end
   end

@@ -3,6 +3,7 @@ module MetronomeSDK
     class Notifications
       class Offset
         def list: (
+          ?archive_filter: MetronomeSDK::Models::Notifications::OffsetListParams::archive_filter,
           ?cursor: String,
           ?limit: Float,
           ?request_options: MetronomeSDK::request_opts
