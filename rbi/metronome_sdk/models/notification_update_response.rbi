@@ -156,6 +156,10 @@ module MetronomeSDK
           sig { returns(String) }
           attr_accessor :id
 
+          # When this notification configuration was archived
+          sig { returns(T.nilable(Time)) }
+          attr_accessor :archived_at
+
           # RFC 3339 timestamp when this notification configuration was created.
           sig { returns(Time) }
           attr_accessor :created_at
@@ -194,6 +198,7 @@ module MetronomeSDK
           sig do
             params(
               id: String,
+              archived_at: T.nilable(Time),
               created_at: Time,
               created_by: String,
               environment_type: String,
@@ -206,6 +211,8 @@ module MetronomeSDK
           def self.new(
             # ID for this offset notification configuration
             id:,
+            # When this notification configuration was archived
+            archived_at:,
             # RFC 3339 timestamp when this notification configuration was created.
             created_at:,
             # Who created this notification configuration
@@ -224,6 +231,7 @@ module MetronomeSDK
             override.returns(
               {
                 id: String,
+                archived_at: T.nilable(Time),
                 created_at: Time,
                 created_by: String,
                 environment_type: String,

@@ -63,6 +63,7 @@ module MetronomeSDK
         type lifecycle_event_offset_notification_config =
           {
             id: String,
+            archived_at: Time?,
             created_at: Time,
             created_by: String,
             environment_type: String,
@@ -73,6 +74,8 @@ module MetronomeSDK
 
         class LifecycleEventOffsetNotificationConfig < MetronomeSDK::Internal::Type::BaseModel
           attr_accessor id: String
+
+          attr_accessor archived_at: Time?
 
           attr_accessor created_at: Time
 
@@ -88,6 +91,7 @@ module MetronomeSDK
 
           def initialize: (
             id: String,
+            archived_at: Time?,
             created_at: Time,
             created_by: String,
             environment_type: String,
@@ -98,6 +102,7 @@ module MetronomeSDK
 
           def to_hash: -> {
             id: String,
+            archived_at: Time?,
             created_at: Time,
             created_by: String,
             environment_type: String,

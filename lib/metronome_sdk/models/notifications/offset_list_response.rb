@@ -27,6 +27,12 @@ module MetronomeSDK
           #   @return [String]
           required :id, String
 
+          # @!attribute archived_at
+          #   When this notification configuration was archived
+          #
+          #   @return [Time, nil]
+          required :archived_at, Time, nil?: true
+
           # @!attribute created_at
           #   RFC 3339 timestamp when this notification configuration was created.
           #
@@ -62,12 +68,14 @@ module MetronomeSDK
           #   @return [String]
           required :type, String
 
-          # @!method initialize(id:, created_at:, created_by:, environment_type:, name:, policy:, type:)
+          # @!method initialize(id:, archived_at:, created_at:, created_by:, environment_type:, name:, policy:, type:)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::Notifications::OffsetListResponse::Data} for more
           #   details.
           #
           #   @param id [String] ID for this offset notification configuration
+          #
+          #   @param archived_at [Time, nil] When this notification configuration was archived
           #
           #   @param created_at [Time] RFC 3339 timestamp when this notification configuration was created.
           #
