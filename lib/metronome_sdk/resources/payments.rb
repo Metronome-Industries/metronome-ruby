@@ -47,22 +47,22 @@ module MetronomeSDK
       # Attempting to payment on an ineligible Invoice or Customer will result in a
       # `400` response.
       #
-      # @overload attempt_payment(customer_id:, invoice_id:, request_options: {})
+      # @overload attempt(customer_id:, invoice_id:, request_options: {})
       #
       # @param customer_id [String]
       # @param invoice_id [String]
       # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [MetronomeSDK::Models::PaymentAttemptPaymentResponse]
+      # @return [MetronomeSDK::Models::PaymentAttemptResponse]
       #
-      # @see MetronomeSDK::Models::PaymentAttemptPaymentParams
-      def attempt_payment(params)
-        parsed, options = MetronomeSDK::PaymentAttemptPaymentParams.dump_request(params)
+      # @see MetronomeSDK::Models::PaymentAttemptParams
+      def attempt(params)
+        parsed, options = MetronomeSDK::PaymentAttemptParams.dump_request(params)
         @client.request(
           method: :post,
           path: "v1/payments/attempt",
           body: parsed,
-          model: MetronomeSDK::Models::PaymentAttemptPaymentResponse,
+          model: MetronomeSDK::Models::PaymentAttemptResponse,
           options: options
         )
       end

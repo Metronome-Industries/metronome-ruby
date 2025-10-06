@@ -2,14 +2,14 @@
 
 module MetronomeSDK
   module Models
-    class PaymentAttemptPaymentParams < MetronomeSDK::Internal::Type::BaseModel
+    class PaymentAttemptParams < MetronomeSDK::Internal::Type::BaseModel
       extend MetronomeSDK::Internal::Type::RequestParameters::Converter
       include MetronomeSDK::Internal::Type::RequestParameters
 
       OrHash =
         T.type_alias do
           T.any(
-            MetronomeSDK::PaymentAttemptPaymentParams,
+            MetronomeSDK::PaymentAttemptParams,
             MetronomeSDK::Internal::AnyHash
           )
         end

@@ -1,10 +1,10 @@
 module MetronomeSDK
   module Models
-    type payment_attempt_payment_params =
+    type payment_attempt_params =
       { customer_id: String, invoice_id: String }
       & MetronomeSDK::Internal::Type::request_parameters
 
-    class PaymentAttemptPaymentParams < MetronomeSDK::Internal::Type::BaseModel
+    class PaymentAttemptParams < MetronomeSDK::Internal::Type::BaseModel
       extend MetronomeSDK::Internal::Type::RequestParameters::Converter
       include MetronomeSDK::Internal::Type::RequestParameters
 

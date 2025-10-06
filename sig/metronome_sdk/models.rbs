@@ -49,7 +49,7 @@ module MetronomeSDK
 
   class PackageCreateParams = MetronomeSDK::Models::PackageCreateParams
 
-  class PaymentAttemptPaymentParams = MetronomeSDK::Models::PaymentAttemptPaymentParams
+  class PaymentAttemptParams = MetronomeSDK::Models::PaymentAttemptParams
 
   class PaymentGateConfig = MetronomeSDK::Models::PaymentGateConfig
 

@@ -3,6 +3,12 @@
 module MetronomeSDK
   module Models
     class Subscription < MetronomeSDK::Internal::Type::BaseModel
+      # @!attribute billing_periods
+      #   Previous, current, and next billing periods for the subscription.
+      #
+      #   @return [MetronomeSDK::Models::Subscription::BillingPeriods]
+      required :billing_periods, -> { MetronomeSDK::Subscription::BillingPeriods }
+
       # @!attribute collection_schedule
       #
       #   @return [Symbol, MetronomeSDK::Models::Subscription::CollectionSchedule]
@@ -71,9 +77,11 @@ module MetronomeSDK
       #   @return [String, nil]
       optional :name, String
 
-      # @!method initialize(collection_schedule:, proration:, quantity_management_mode:, quantity_schedule:, starting_at:, subscription_rate:, id: nil, custom_fields: nil, description: nil, ending_before: nil, fiat_credit_type_id: nil, name: nil)
+      # @!method initialize(billing_periods:, collection_schedule:, proration:, quantity_management_mode:, quantity_schedule:, starting_at:, subscription_rate:, id: nil, custom_fields: nil, description: nil, ending_before: nil, fiat_credit_type_id: nil, name: nil)
       #   Some parameter documentations has been truncated, see
       #   {MetronomeSDK::Models::Subscription} for more details.
+      #
+      #   @param billing_periods [MetronomeSDK::Models::Subscription::BillingPeriods] Previous, current, and next billing periods for the subscription.
       #
       #   @param collection_schedule [Symbol, MetronomeSDK::Models::Subscription::CollectionSchedule]
       #
@@ -98,6 +106,82 @@ module MetronomeSDK
       #   @param fiat_credit_type_id [String]
       #
       #   @param name [String]
+
+      # @see MetronomeSDK::Models::Subscription#billing_periods
+      class BillingPeriods < MetronomeSDK::Internal::Type::BaseModel
+        # @!attribute current
+        #
+        #   @return [MetronomeSDK::Models::Subscription::BillingPeriods::Current, nil]
+        optional :current, -> { MetronomeSDK::Subscription::BillingPeriods::Current }
+
+        # @!attribute next_
+        #
+        #   @return [MetronomeSDK::Models::Subscription::BillingPeriods::Next, nil]
+        optional :next_, -> { MetronomeSDK::Subscription::BillingPeriods::Next }, api_name: :next
+
+        # @!attribute previous
+        #
+        #   @return [MetronomeSDK::Models::Subscription::BillingPeriods::Previous, nil]
+        optional :previous, -> { MetronomeSDK::Subscription::BillingPeriods::Previous }
+
+        # @!method initialize(current: nil, next_: nil, previous: nil)
+        #   Previous, current, and next billing periods for the subscription.
+        #
+        #   @param current [MetronomeSDK::Models::Subscription::BillingPeriods::Current]
+        #   @param next_ [MetronomeSDK::Models::Subscription::BillingPeriods::Next]
+        #   @param previous [MetronomeSDK::Models::Subscription::BillingPeriods::Previous]
+
+        # @see MetronomeSDK::Models::Subscription::BillingPeriods#current
+        class Current < MetronomeSDK::Internal::Type::BaseModel
+          # @!attribute ending_before
+          #
+          #   @return [Time]
+          required :ending_before, Time
+
+          # @!attribute starting_at
+          #
+          #   @return [Time]
+          required :starting_at, Time
+
+          # @!method initialize(ending_before:, starting_at:)
+          #   @param ending_before [Time]
+          #   @param starting_at [Time]
+        end
+
+        # @see MetronomeSDK::Models::Subscription::BillingPeriods#next_
+        class Next < MetronomeSDK::Internal::Type::BaseModel
+          # @!attribute ending_before
+          #
+          #   @return [Time]
+          required :ending_before, Time
+
+          # @!attribute starting_at
+          #
+          #   @return [Time]
+          required :starting_at, Time
+
+          # @!method initialize(ending_before:, starting_at:)
+          #   @param ending_before [Time]
+          #   @param starting_at [Time]
+        end
+
+        # @see MetronomeSDK::Models::Subscription::BillingPeriods#previous
+        class Previous < MetronomeSDK::Internal::Type::BaseModel
+          # @!attribute ending_before
+          #
+          #   @return [Time]
+          required :ending_before, Time
+
+          # @!attribute starting_at
+          #
+          #   @return [Time]
+          required :starting_at, Time
+
+          # @!method initialize(ending_before:, starting_at:)
+          #   @param ending_before [Time]
+          #   @param starting_at [Time]
+        end
+      end
 
       # @see MetronomeSDK::Models::Subscription#collection_schedule
       module CollectionSchedule

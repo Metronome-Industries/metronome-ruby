@@ -2,17 +2,17 @@
 
 module MetronomeSDK
   module Models
-    # @see MetronomeSDK::Resources::Payments#attempt_payment
-    class PaymentAttemptPaymentResponse < MetronomeSDK::Internal::Type::BaseModel
+    # @see MetronomeSDK::Resources::Payments#attempt
+    class PaymentAttemptResponse < MetronomeSDK::Internal::Type::BaseModel
       # @!attribute data
       #
-      #   @return [MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data]
-      required :data, -> { MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data }
+      #   @return [MetronomeSDK::Models::PaymentAttemptResponse::Data]
+      required :data, -> { MetronomeSDK::Models::PaymentAttemptResponse::Data }
 
       # @!method initialize(data:)
-      #   @param data [MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data]
+      #   @param data [MetronomeSDK::Models::PaymentAttemptResponse::Data]
 
-      # @see MetronomeSDK::Models::PaymentAttemptPaymentResponse#data
+      # @see MetronomeSDK::Models::PaymentAttemptResponse#data
       class Data < MetronomeSDK::Internal::Type::BaseModel
         # @!attribute id
         #
@@ -61,14 +61,13 @@ module MetronomeSDK
 
         # @!attribute payment_gateway
         #
-        #   @return [MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway, nil]
-        optional :payment_gateway,
-                 -> { MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway }
+        #   @return [MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway, nil]
+        optional :payment_gateway, -> { MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway }
 
         # @!attribute status
         #
-        #   @return [Symbol, MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::Status, nil]
-        optional :status, enum: -> { MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::Status }
+        #   @return [Symbol, MetronomeSDK::Models::PaymentAttemptResponse::Data::Status, nil]
+        optional :status, enum: -> { MetronomeSDK::Models::PaymentAttemptResponse::Data::Status }
 
         # @!attribute updated_at
         #
@@ -85,28 +84,27 @@ module MetronomeSDK
         #   @param error_message [String]
         #   @param fiat_credit_type [MetronomeSDK::Models::CreditTypeData]
         #   @param invoice_id [String]
-        #   @param payment_gateway [MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway]
-        #   @param status [Symbol, MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::Status]
+        #   @param payment_gateway [MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway]
+        #   @param status [Symbol, MetronomeSDK::Models::PaymentAttemptResponse::Data::Status]
         #   @param updated_at [Time]
 
-        # @see MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data#payment_gateway
+        # @see MetronomeSDK::Models::PaymentAttemptResponse::Data#payment_gateway
         class PaymentGateway < MetronomeSDK::Internal::Type::BaseModel
           # @!attribute stripe
           #
-          #   @return [MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway::Stripe]
-          required :stripe, -> { MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway::Stripe }
+          #   @return [MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway::Stripe]
+          required :stripe, -> { MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway::Stripe }
 
           # @!attribute type
           #
-          #   @return [Symbol, MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway::Type]
-          required :type,
-                   enum: -> { MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway::Type }
+          #   @return [Symbol, MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway::Type]
+          required :type, enum: -> { MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway::Type }
 
           # @!method initialize(stripe:, type:)
-          #   @param stripe [MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway::Stripe]
-          #   @param type [Symbol, MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway::Type]
+          #   @param stripe [MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway::Stripe]
+          #   @param type [Symbol, MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway::Type]
 
-          # @see MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway#stripe
+          # @see MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway#stripe
           class Stripe < MetronomeSDK::Internal::Type::BaseModel
             # @!attribute payment_intent_id
             #
@@ -115,15 +113,14 @@ module MetronomeSDK
 
             # @!attribute error
             #
-            #   @return [MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway::Stripe::Error, nil]
-            optional :error,
-                     -> { MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway::Stripe::Error }
+            #   @return [MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway::Stripe::Error, nil]
+            optional :error, -> { MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway::Stripe::Error }
 
             # @!method initialize(payment_intent_id:, error: nil)
             #   @param payment_intent_id [String]
-            #   @param error [MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway::Stripe::Error]
+            #   @param error [MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway::Stripe::Error]
 
-            # @see MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway::Stripe#error
+            # @see MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway::Stripe#error
             class Error < MetronomeSDK::Internal::Type::BaseModel
               # @!attribute code
               #
@@ -147,7 +144,7 @@ module MetronomeSDK
             end
           end
 
-          # @see MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway#type
+          # @see MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway#type
           module Type
             extend MetronomeSDK::Internal::Type::Enum
 
@@ -158,7 +155,7 @@ module MetronomeSDK
           end
         end
 
-        # @see MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data#status
+        # @see MetronomeSDK::Models::PaymentAttemptResponse::Data#status
         module Status
           extend MetronomeSDK::Internal::Type::Enum
 
