@@ -27,11 +27,11 @@ module MetronomeSDK
     # @return [MetronomeSDK::Resources::Packages]
     attr_reader :packages
 
-    # @return [MetronomeSDK::Resources::Payments]
-    attr_reader :payments
-
     # @return [MetronomeSDK::Resources::Notifications]
     attr_reader :notifications
+
+    # @return [MetronomeSDK::Resources::Payments]
+    attr_reader :payments
 
     # @api private
     #
@@ -83,8 +83,8 @@ module MetronomeSDK
       @v2 = MetronomeSDK::Resources::V2.new(client: self)
       @v1 = MetronomeSDK::Resources::V1.new(client: self)
       @packages = MetronomeSDK::Resources::Packages.new(client: self)
-      @payments = MetronomeSDK::Resources::Payments.new(client: self)
       @notifications = MetronomeSDK::Resources::Notifications.new(client: self)
+      @payments = MetronomeSDK::Resources::Payments.new(client: self)
     end
   end
 end

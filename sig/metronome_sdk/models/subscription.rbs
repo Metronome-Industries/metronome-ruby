@@ -2,6 +2,7 @@ module MetronomeSDK
   module Models
     type subscription =
       {
+        billing_periods: MetronomeSDK::Subscription::BillingPeriods,
         collection_schedule: MetronomeSDK::Models::Subscription::collection_schedule,
         proration: MetronomeSDK::Subscription::Proration,
         quantity_management_mode: MetronomeSDK::Models::Subscription::quantity_management_mode,
@@ -17,6 +18,8 @@ module MetronomeSDK
       }
 
     class Subscription < MetronomeSDK::Internal::Type::BaseModel
+      attr_accessor billing_periods: MetronomeSDK::Subscription::BillingPeriods
+
       attr_accessor collection_schedule: MetronomeSDK::Models::Subscription::collection_schedule
 
       attr_accessor proration: MetronomeSDK::Subscription::Proration
@@ -54,6 +57,7 @@ module MetronomeSDK
       def name=: (String) -> String
 
       def initialize: (
+        billing_periods: MetronomeSDK::Subscription::BillingPeriods,
         collection_schedule: MetronomeSDK::Models::Subscription::collection_schedule,
         proration: MetronomeSDK::Subscription::Proration,
         quantity_management_mode: MetronomeSDK::Models::Subscription::quantity_management_mode,
@@ -69,6 +73,7 @@ module MetronomeSDK
       ) -> void
 
       def to_hash: -> {
+        billing_periods: MetronomeSDK::Subscription::BillingPeriods,
         collection_schedule: MetronomeSDK::Models::Subscription::collection_schedule,
         proration: MetronomeSDK::Subscription::Proration,
         quantity_management_mode: MetronomeSDK::Models::Subscription::quantity_management_mode,
@@ -82,6 +87,81 @@ module MetronomeSDK
         fiat_credit_type_id: String,
         name: String
       }
+
+      type billing_periods =
+        {
+          current: MetronomeSDK::Subscription::BillingPeriods::Current,
+          next_: MetronomeSDK::Subscription::BillingPeriods::Next,
+          previous: MetronomeSDK::Subscription::BillingPeriods::Previous
+        }
+
+      class BillingPeriods < MetronomeSDK::Internal::Type::BaseModel
+        attr_reader current: MetronomeSDK::Subscription::BillingPeriods::Current?
+
+        def current=: (
+          MetronomeSDK::Subscription::BillingPeriods::Current
+        ) -> MetronomeSDK::Subscription::BillingPeriods::Current
+
+        attr_reader next_: MetronomeSDK::Subscription::BillingPeriods::Next?
+
+        def next_=: (
+          MetronomeSDK::Subscription::BillingPeriods::Next
+        ) -> MetronomeSDK::Subscription::BillingPeriods::Next
+
+        attr_reader previous: MetronomeSDK::Subscription::BillingPeriods::Previous?
+
+        def previous=: (
+          MetronomeSDK::Subscription::BillingPeriods::Previous
+        ) -> MetronomeSDK::Subscription::BillingPeriods::Previous
+
+        def initialize: (
+          ?current: MetronomeSDK::Subscription::BillingPeriods::Current,
+          ?next_: MetronomeSDK::Subscription::BillingPeriods::Next,
+          ?previous: MetronomeSDK::Subscription::BillingPeriods::Previous
+        ) -> void
+
+        def to_hash: -> {
+          current: MetronomeSDK::Subscription::BillingPeriods::Current,
+          next_: MetronomeSDK::Subscription::BillingPeriods::Next,
+          previous: MetronomeSDK::Subscription::BillingPeriods::Previous
+        }
+
+        type current = { ending_before: Time, starting_at: Time }
+
+        class Current < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor ending_before: Time
+
+          attr_accessor starting_at: Time
+
+          def initialize: (ending_before: Time, starting_at: Time) -> void
+
+          def to_hash: -> { ending_before: Time, starting_at: Time }
+        end
+
+        type next_ = { ending_before: Time, starting_at: Time }
+
+        class Next < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor ending_before: Time
+
+          attr_accessor starting_at: Time
+
+          def initialize: (ending_before: Time, starting_at: Time) -> void
+
+          def to_hash: -> { ending_before: Time, starting_at: Time }
+        end
+
+        type previous = { ending_before: Time, starting_at: Time }
+
+        class Previous < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor ending_before: Time
+
+          attr_accessor starting_at: Time
+
+          def initialize: (ending_before: Time, starting_at: Time) -> void
+
+          def to_hash: -> { ending_before: Time, starting_at: Time }
+        end
+      end
 
       type collection_schedule = :ADVANCE | :ARREARS
 

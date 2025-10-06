@@ -1,17 +1,17 @@
 module MetronomeSDK
   module Models
-    type payment_attempt_payment_response =
-      { data: MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data }
+    type payment_attempt_response =
+      { data: MetronomeSDK::Models::PaymentAttemptResponse::Data }
 
-    class PaymentAttemptPaymentResponse < MetronomeSDK::Internal::Type::BaseModel
-      attr_accessor data: MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data
+    class PaymentAttemptResponse < MetronomeSDK::Internal::Type::BaseModel
+      attr_accessor data: MetronomeSDK::Models::PaymentAttemptResponse::Data
 
       def initialize: (
-        data: MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data
+        data: MetronomeSDK::Models::PaymentAttemptResponse::Data
       ) -> void
 
       def to_hash: -> {
-        data: MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data
+        data: MetronomeSDK::Models::PaymentAttemptResponse::Data
       }
 
       type data =
@@ -25,8 +25,8 @@ module MetronomeSDK
           error_message: String,
           fiat_credit_type: MetronomeSDK::CreditTypeData,
           invoice_id: String,
-          payment_gateway: MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway,
-          status: MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::status,
+          payment_gateway: MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway,
+          status: MetronomeSDK::Models::PaymentAttemptResponse::Data::status,
           updated_at: Time
         }
 
@@ -67,17 +67,17 @@ module MetronomeSDK
 
         def invoice_id=: (String) -> String
 
-        attr_reader payment_gateway: MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway?
+        attr_reader payment_gateway: MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway?
 
         def payment_gateway=: (
-          MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway
-        ) -> MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway
+          MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway
+        ) -> MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway
 
-        attr_reader status: MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::status?
+        attr_reader status: MetronomeSDK::Models::PaymentAttemptResponse::Data::status?
 
         def status=: (
-          MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::status
-        ) -> MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::status
+          MetronomeSDK::Models::PaymentAttemptResponse::Data::status
+        ) -> MetronomeSDK::Models::PaymentAttemptResponse::Data::status
 
         attr_reader updated_at: Time?
 
@@ -93,8 +93,8 @@ module MetronomeSDK
           ?error_message: String,
           ?fiat_credit_type: MetronomeSDK::CreditTypeData,
           ?invoice_id: String,
-          ?payment_gateway: MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway,
-          ?status: MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::status,
+          ?payment_gateway: MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway,
+          ?status: MetronomeSDK::Models::PaymentAttemptResponse::Data::status,
           ?updated_at: Time
         ) -> void
 
@@ -108,55 +108,55 @@ module MetronomeSDK
           error_message: String,
           fiat_credit_type: MetronomeSDK::CreditTypeData,
           invoice_id: String,
-          payment_gateway: MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway,
-          status: MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::status,
+          payment_gateway: MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway,
+          status: MetronomeSDK::Models::PaymentAttemptResponse::Data::status,
           updated_at: Time
         }
 
         type payment_gateway =
           {
-            stripe: MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway::Stripe,
-            type: MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway::type_
+            stripe: MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway::Stripe,
+            type: MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway::type_
           }
 
         class PaymentGateway < MetronomeSDK::Internal::Type::BaseModel
-          attr_accessor stripe: MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway::Stripe
+          attr_accessor stripe: MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway::Stripe
 
-          attr_accessor type: MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway::type_
+          attr_accessor type: MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway::type_
 
           def initialize: (
-            stripe: MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway::Stripe,
-            type: MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway::type_
+            stripe: MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway::Stripe,
+            type: MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway::type_
           ) -> void
 
           def to_hash: -> {
-            stripe: MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway::Stripe,
-            type: MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway::type_
+            stripe: MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway::Stripe,
+            type: MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway::type_
           }
 
           type stripe =
             {
               payment_intent_id: String,
-              error: MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway::Stripe::Error
+              error: MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway::Stripe::Error
             }
 
           class Stripe < MetronomeSDK::Internal::Type::BaseModel
             attr_accessor payment_intent_id: String
 
-            attr_reader error: MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway::Stripe::Error?
+            attr_reader error: MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway::Stripe::Error?
 
             def error=: (
-              MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway::Stripe::Error
-            ) -> MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway::Stripe::Error
+              MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway::Stripe::Error
+            ) -> MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway::Stripe::Error
 
             def initialize: (
               payment_intent_id: String,
-              ?error: MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway::Stripe::Error
+              ?error: MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway::Stripe::Error
             ) -> void
 
             def to_hash: -> {
               payment_intent_id: String,
-              error: MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway::Stripe::Error
+              error: MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway::Stripe::Error
             }
 
             type error = { code: String, decline_code: String, type: String }
@@ -195,7 +195,7 @@ module MetronomeSDK
 
             STRIPE: :stripe
 
-            def self?.values: -> ::Array[MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::PaymentGateway::type_]
+            def self?.values: -> ::Array[MetronomeSDK::Models::PaymentAttemptResponse::Data::PaymentGateway::type_]
           end
         end
 
@@ -209,7 +209,7 @@ module MetronomeSDK
           PAID: :paid
           CANCELED: :canceled
 
-          def self?.values: -> ::Array[MetronomeSDK::Models::PaymentAttemptPaymentResponse::Data::status]
+          def self?.values: -> ::Array[MetronomeSDK::Models::PaymentAttemptResponse::Data::status]
         end
       end
     end
