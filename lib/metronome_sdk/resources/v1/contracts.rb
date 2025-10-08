@@ -521,7 +521,7 @@ module MetronomeSDK
         #
         # @param ending_before [Time, nil] Include seats history segments that are active at or before this timestamp. Use
         #
-        # @param limit [Integer, nil] Maximum number of seat schedule entries to return. Defaults to 10.
+        # @param limit [Integer, nil] Maximum number of seat schedule entries to return. Defaults to 10. Required rang
         #
         # @param starting_at [Time, nil] Include seats history segments that are active at or after this timestamp. Use w
         #
