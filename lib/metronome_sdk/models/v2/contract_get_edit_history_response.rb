@@ -323,8 +323,9 @@ module MetronomeSDK
             # @!attribute invoice_schedule
             #   The schedule that the customer will be invoiced for this commit.
             #
-            #   @return [MetronomeSDK::Models::SchedulePointInTime, nil]
-            optional :invoice_schedule, -> { MetronomeSDK::SchedulePointInTime }
+            #   @return [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule, nil]
+            optional :invoice_schedule,
+                     -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule }
 
             # @!attribute name
             #
@@ -393,7 +394,7 @@ module MetronomeSDK
             #
             #   @param hierarchy_configuration [MetronomeSDK::Models::CommitHierarchyConfiguration] Optional configuration for commit hierarchy access control
             #
-            #   @param invoice_schedule [MetronomeSDK::Models::SchedulePointInTime] The schedule that the customer will be invoiced for this commit.
+            #   @param invoice_schedule [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule] The schedule that the customer will be invoiced for this commit.
             #
             #   @param name [String]
             #
@@ -435,6 +436,75 @@ module MetronomeSDK
 
               # @!method self.values
               #   @return [Array<Symbol>]
+            end
+
+            # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit#invoice_schedule
+            class InvoiceSchedule < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute credit_type
+              #
+              #   @return [MetronomeSDK::Models::CreditTypeData, nil]
+              optional :credit_type, -> { MetronomeSDK::CreditTypeData }
+
+              # @!attribute do_not_invoice
+              #   If true, this schedule will not generate an invoice.
+              #
+              #   @return [Boolean, nil]
+              optional :do_not_invoice, MetronomeSDK::Internal::Type::Boolean
+
+              # @!attribute schedule_items
+              #
+              #   @return [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule::ScheduleItem>, nil]
+              optional :schedule_items,
+                       -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule::ScheduleItem] }
+
+              # @!method initialize(credit_type: nil, do_not_invoice: nil, schedule_items: nil)
+              #   The schedule that the customer will be invoiced for this commit.
+              #
+              #   @param credit_type [MetronomeSDK::Models::CreditTypeData]
+              #
+              #   @param do_not_invoice [Boolean] If true, this schedule will not generate an invoice.
+              #
+              #   @param schedule_items [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule::ScheduleItem>]
+
+              class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute id
+                #
+                #   @return [String]
+                required :id, String
+
+                # @!attribute timestamp
+                #
+                #   @return [Time]
+                required :timestamp, Time
+
+                # @!attribute amount
+                #
+                #   @return [Float, nil]
+                optional :amount, Float
+
+                # @!attribute invoice_id
+                #
+                #   @return [String, nil]
+                optional :invoice_id, String, nil?: true
+
+                # @!attribute quantity
+                #
+                #   @return [Float, nil]
+                optional :quantity, Float
+
+                # @!attribute unit_price
+                #
+                #   @return [Float, nil]
+                optional :unit_price, Float
+
+                # @!method initialize(id:, timestamp:, amount: nil, invoice_id: nil, quantity: nil, unit_price: nil)
+                #   @param id [String]
+                #   @param timestamp [Time]
+                #   @param amount [Float]
+                #   @param invoice_id [String, nil]
+                #   @param quantity [Float]
+                #   @param unit_price [Float]
+              end
             end
 
             # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit#rate_type

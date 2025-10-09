@@ -312,7 +312,7 @@ module MetronomeSDK
               applicable_product_tags: ::Array[String],
               description: String,
               hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,
-              invoice_schedule: MetronomeSDK::SchedulePointInTime,
+              invoice_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule,
               name: String,
               netsuite_sales_order_id: String,
               priority: Float,
@@ -353,11 +353,11 @@ module MetronomeSDK
               MetronomeSDK::CommitHierarchyConfiguration
             ) -> MetronomeSDK::CommitHierarchyConfiguration
 
-            attr_reader invoice_schedule: MetronomeSDK::SchedulePointInTime?
+            attr_reader invoice_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule?
 
             def invoice_schedule=: (
-              MetronomeSDK::SchedulePointInTime
-            ) -> MetronomeSDK::SchedulePointInTime
+              MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule
+            ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule
 
             attr_reader name: String?
 
@@ -400,7 +400,7 @@ module MetronomeSDK
               ?applicable_product_tags: ::Array[String],
               ?description: String,
               ?hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,
-              ?invoice_schedule: MetronomeSDK::SchedulePointInTime,
+              ?invoice_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule,
               ?name: String,
               ?netsuite_sales_order_id: String,
               ?priority: Float,
@@ -419,7 +419,7 @@ module MetronomeSDK
               applicable_product_tags: ::Array[String],
               description: String,
               hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,
-              invoice_schedule: MetronomeSDK::SchedulePointInTime,
+              invoice_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule,
               name: String,
               netsuite_sales_order_id: String,
               priority: Float,
@@ -450,6 +450,91 @@ module MetronomeSDK
               POSTPAID: :POSTPAID
 
               def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::type_]
+            end
+
+            type invoice_schedule =
+              {
+                credit_type: MetronomeSDK::CreditTypeData,
+                do_not_invoice: bool,
+                schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule::ScheduleItem]
+              }
+
+            class InvoiceSchedule < MetronomeSDK::Internal::Type::BaseModel
+              attr_reader credit_type: MetronomeSDK::CreditTypeData?
+
+              def credit_type=: (
+                MetronomeSDK::CreditTypeData
+              ) -> MetronomeSDK::CreditTypeData
+
+              attr_reader do_not_invoice: bool?
+
+              def do_not_invoice=: (bool) -> bool
+
+              attr_reader schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule::ScheduleItem]?
+
+              def schedule_items=: (
+                ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule::ScheduleItem]
+              ) -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule::ScheduleItem]
+
+              def initialize: (
+                ?credit_type: MetronomeSDK::CreditTypeData,
+                ?do_not_invoice: bool,
+                ?schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule::ScheduleItem]
+              ) -> void
+
+              def to_hash: -> {
+                credit_type: MetronomeSDK::CreditTypeData,
+                do_not_invoice: bool,
+                schedule_items: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule::ScheduleItem]
+              }
+
+              type schedule_item =
+                {
+                  id: String,
+                  timestamp: Time,
+                  amount: Float,
+                  invoice_id: String?,
+                  quantity: Float,
+                  unit_price: Float
+                }
+
+              class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor id: String
+
+                attr_accessor timestamp: Time
+
+                attr_reader amount: Float?
+
+                def amount=: (Float) -> Float
+
+                attr_accessor invoice_id: String?
+
+                attr_reader quantity: Float?
+
+                def quantity=: (Float) -> Float
+
+                attr_reader unit_price: Float?
+
+                def unit_price=: (Float) -> Float
+
+                def initialize: (
+                  id: String,
+                  timestamp: Time,
+                  ?amount: Float,
+                  ?invoice_id: String?,
+                  ?quantity: Float,
+                  ?unit_price: Float
+                ) -> void
+
+                def to_hash: -> {
+                  id: String,
+                  timestamp: Time,
+                  amount: Float,
+                  invoice_id: String?,
+                  quantity: Float,
+                  unit_price: Float
+                }
+              end
             end
 
             type rate_type = :COMMIT_RATE | :LIST_RATE
