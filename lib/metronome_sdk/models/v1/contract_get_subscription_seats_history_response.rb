@@ -3,13 +3,13 @@
 module MetronomeSDK
   module Models
     module V1
-      # @see MetronomeSDK::Resources::V1::Contracts#get_subscription_seats_schedule_history
-      class ContractGetSubscriptionSeatsScheduleHistoryResponse < MetronomeSDK::Internal::Type::BaseModel
+      # @see MetronomeSDK::Resources::V1::Contracts#get_subscription_seats_history
+      class ContractGetSubscriptionSeatsHistoryResponse < MetronomeSDK::Internal::Type::BaseModel
         # @!attribute data
         #
-        #   @return [Array<MetronomeSDK::Models::V1::ContractGetSubscriptionSeatsScheduleHistoryResponse::Data>]
+        #   @return [Array<MetronomeSDK::Models::V1::ContractGetSubscriptionSeatsHistoryResponse::Data>]
         required :data,
-                 -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::ContractGetSubscriptionSeatsScheduleHistoryResponse::Data] }
+                 -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::ContractGetSubscriptionSeatsHistoryResponse::Data] }
 
         # @!attribute next_page
         #   Cursor for the next page of results
@@ -18,7 +18,7 @@ module MetronomeSDK
         required :next_page, String, nil?: true
 
         # @!method initialize(data:, next_page:)
-        #   @param data [Array<MetronomeSDK::Models::V1::ContractGetSubscriptionSeatsScheduleHistoryResponse::Data>]
+        #   @param data [Array<MetronomeSDK::Models::V1::ContractGetSubscriptionSeatsHistoryResponse::Data>]
         #
         #   @param next_page [String, nil] Cursor for the next page of results
 

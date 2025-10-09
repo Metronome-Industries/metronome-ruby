@@ -477,8 +477,8 @@ module MetronomeSDK
         end
 
         # Some parameter documentations has been truncated, see
-        # {MetronomeSDK::Models::V1::ContractGetSubscriptionSeatsScheduleHistoryParams}
-        # for more details.
+        # {MetronomeSDK::Models::V1::ContractGetSubscriptionSeatsHistoryParams} for more
+        # details.
         #
         # Get the history of subscription seats schedule over time for a given
         # `subscription_id`. This endpoint provides information about seat assignments and
@@ -507,7 +507,7 @@ module MetronomeSDK
         # - Maximum limit is 10 seat schedule entries per request
         # - Results are ordered by `starting_at` timestamp
         #
-        # @overload get_subscription_seats_schedule_history(contract_id:, customer_id:, subscription_id:, covering_date: nil, cursor: nil, ending_before: nil, limit: nil, starting_at: nil, request_options: {})
+        # @overload get_subscription_seats_history(contract_id:, customer_id:, subscription_id:, covering_date: nil, cursor: nil, ending_before: nil, limit: nil, starting_at: nil, request_options: {})
         #
         # @param contract_id [String]
         #
@@ -527,17 +527,16 @@ module MetronomeSDK
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [MetronomeSDK::Models::V1::ContractGetSubscriptionSeatsScheduleHistoryResponse]
+        # @return [MetronomeSDK::Models::V1::ContractGetSubscriptionSeatsHistoryResponse]
         #
-        # @see MetronomeSDK::Models::V1::ContractGetSubscriptionSeatsScheduleHistoryParams
-        def get_subscription_seats_schedule_history(params)
-          parsed, options =
-            MetronomeSDK::V1::ContractGetSubscriptionSeatsScheduleHistoryParams.dump_request(params)
+        # @see MetronomeSDK::Models::V1::ContractGetSubscriptionSeatsHistoryParams
+        def get_subscription_seats_history(params)
+          parsed, options = MetronomeSDK::V1::ContractGetSubscriptionSeatsHistoryParams.dump_request(params)
           @client.request(
             method: :post,
-            path: "v1/contracts/getSubscriptionSeatsScheduleHistory",
+            path: "v1/contracts/getSubscriptionSeatsHistory",
             body: parsed,
-            model: MetronomeSDK::Models::V1::ContractGetSubscriptionSeatsScheduleHistoryResponse,
+            model: MetronomeSDK::Models::V1::ContractGetSubscriptionSeatsHistoryResponse,
             options: options
           )
         end

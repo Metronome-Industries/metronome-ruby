@@ -551,10 +551,10 @@ module MetronomeSDK
             starting_at: T.nilable(Time),
             request_options: MetronomeSDK::RequestOptions::OrHash
           ).returns(
-            MetronomeSDK::Models::V1::ContractGetSubscriptionSeatsScheduleHistoryResponse
+            MetronomeSDK::Models::V1::ContractGetSubscriptionSeatsHistoryResponse
           )
         end
-        def get_subscription_seats_schedule_history(
+        def get_subscription_seats_history(
           contract_id:,
           customer_id:,
           subscription_id:,

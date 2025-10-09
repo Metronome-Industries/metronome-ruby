@@ -1,24 +1,24 @@
 module MetronomeSDK
   module Models
     module V1
-      type contract_get_subscription_seats_schedule_history_response =
+      type contract_get_subscription_seats_history_response =
         {
-          data: ::Array[MetronomeSDK::Models::V1::ContractGetSubscriptionSeatsScheduleHistoryResponse::Data],
+          data: ::Array[MetronomeSDK::Models::V1::ContractGetSubscriptionSeatsHistoryResponse::Data],
           next_page: String?
         }
 
-      class ContractGetSubscriptionSeatsScheduleHistoryResponse < MetronomeSDK::Internal::Type::BaseModel
-        attr_accessor data: ::Array[MetronomeSDK::Models::V1::ContractGetSubscriptionSeatsScheduleHistoryResponse::Data]
+      class ContractGetSubscriptionSeatsHistoryResponse < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor data: ::Array[MetronomeSDK::Models::V1::ContractGetSubscriptionSeatsHistoryResponse::Data]
 
         attr_accessor next_page: String?
 
         def initialize: (
-          data: ::Array[MetronomeSDK::Models::V1::ContractGetSubscriptionSeatsScheduleHistoryResponse::Data],
+          data: ::Array[MetronomeSDK::Models::V1::ContractGetSubscriptionSeatsHistoryResponse::Data],
           next_page: String?
         ) -> void
 
         def to_hash: -> {
-          data: ::Array[MetronomeSDK::Models::V1::ContractGetSubscriptionSeatsScheduleHistoryResponse::Data],
+          data: ::Array[MetronomeSDK::Models::V1::ContractGetSubscriptionSeatsHistoryResponse::Data],
           next_page: String?
         }
 
