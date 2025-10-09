@@ -151,7 +151,7 @@ class MetronomeSDK::Test::Resources::V1::CustomersTest < MetronomeSDK::Test::Res
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::V1::Customers::Invoice
+        data: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::Invoice])
       }
     end
   end

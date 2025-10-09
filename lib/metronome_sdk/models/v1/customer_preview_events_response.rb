@@ -7,11 +7,11 @@ module MetronomeSDK
       class CustomerPreviewEventsResponse < MetronomeSDK::Internal::Type::BaseModel
         # @!attribute data
         #
-        #   @return [MetronomeSDK::Models::V1::Customers::Invoice]
-        required :data, -> { MetronomeSDK::V1::Customers::Invoice }
+        #   @return [Array<MetronomeSDK::Models::V1::Customers::Invoice>]
+        required :data, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::Invoice] }
 
         # @!method initialize(data:)
-        #   @param data [MetronomeSDK::Models::V1::Customers::Invoice]
+        #   @param data [Array<MetronomeSDK::Models::V1::Customers::Invoice>]
       end
     end
   end

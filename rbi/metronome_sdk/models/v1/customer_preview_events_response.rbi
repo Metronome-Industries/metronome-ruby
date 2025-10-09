@@ -12,21 +12,22 @@ module MetronomeSDK
             )
           end
 
-        sig { returns(MetronomeSDK::V1::Customers::Invoice) }
-        attr_reader :data
-
-        sig { params(data: MetronomeSDK::V1::Customers::Invoice::OrHash).void }
-        attr_writer :data
+        sig { returns(T::Array[MetronomeSDK::V1::Customers::Invoice]) }
+        attr_accessor :data
 
         sig do
-          params(data: MetronomeSDK::V1::Customers::Invoice::OrHash).returns(
-            T.attached_class
-          )
+          params(
+            data: T::Array[MetronomeSDK::V1::Customers::Invoice::OrHash]
+          ).returns(T.attached_class)
         end
         def self.new(data:)
         end
 
-        sig { override.returns({ data: MetronomeSDK::V1::Customers::Invoice }) }
+        sig do
+          override.returns(
+            { data: T::Array[MetronomeSDK::V1::Customers::Invoice] }
+          )
+        end
         def to_hash
         end
       end

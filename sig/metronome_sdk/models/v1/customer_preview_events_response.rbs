@@ -2,14 +2,16 @@ module MetronomeSDK
   module Models
     module V1
       type customer_preview_events_response =
-        { data: MetronomeSDK::V1::Customers::Invoice }
+        { data: ::Array[MetronomeSDK::V1::Customers::Invoice] }
 
       class CustomerPreviewEventsResponse < MetronomeSDK::Internal::Type::BaseModel
-        attr_accessor data: MetronomeSDK::V1::Customers::Invoice
+        attr_accessor data: ::Array[MetronomeSDK::V1::Customers::Invoice]
 
-        def initialize: (data: MetronomeSDK::V1::Customers::Invoice) -> void
+        def initialize: (
+          data: ::Array[MetronomeSDK::V1::Customers::Invoice]
+        ) -> void
 
-        def to_hash: -> { data: MetronomeSDK::V1::Customers::Invoice }
+        def to_hash: -> { data: ::Array[MetronomeSDK::V1::Customers::Invoice] }
       end
     end
   end

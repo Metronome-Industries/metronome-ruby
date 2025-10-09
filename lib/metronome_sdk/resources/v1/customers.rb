@@ -278,10 +278,10 @@ module MetronomeSDK
         # Some parameter documentations has been truncated, see
         # {MetronomeSDK::Models::V1::CustomerPreviewEventsParams} for more details.
         #
-        # Preview how a set of events will affect a customer's invoice. Generates a draft
-        # invoice for a customer using their current contract configuration and the
+        # Preview how a set of events will affect a customer's invoices. Generates draft
+        # invoices for a customer using their current contract configuration and the
         # provided events. This is useful for testing how new events will affect the
-        # customer's invoice before they are actually processed.
+        # customer's invoices before they are actually processed.
         #
         # @overload preview_events(customer_id:, events:, mode: nil, skip_zero_qty_line_items: nil, request_options: {})
         #
