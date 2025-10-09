@@ -922,12 +922,19 @@ module MetronomeSDK
             attr_writer :hierarchy_configuration
 
             # The schedule that the customer will be invoiced for this commit.
-            sig { returns(T.nilable(MetronomeSDK::SchedulePointInTime)) }
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule
+                )
+              )
+            end
             attr_reader :invoice_schedule
 
             sig do
               params(
-                invoice_schedule: MetronomeSDK::SchedulePointInTime::OrHash
+                invoice_schedule:
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule::OrHash
               ).void
             end
             attr_writer :invoice_schedule
@@ -1014,7 +1021,8 @@ module MetronomeSDK
                 description: String,
                 hierarchy_configuration:
                   MetronomeSDK::CommitHierarchyConfiguration::OrHash,
-                invoice_schedule: MetronomeSDK::SchedulePointInTime::OrHash,
+                invoice_schedule:
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule::OrHash,
                 name: String,
                 netsuite_sales_order_id: String,
                 priority: Float,
@@ -1073,7 +1081,8 @@ module MetronomeSDK
                   description: String,
                   hierarchy_configuration:
                     MetronomeSDK::CommitHierarchyConfiguration,
-                  invoice_schedule: MetronomeSDK::SchedulePointInTime,
+                  invoice_schedule:
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule,
                   name: String,
                   netsuite_sales_order_id: String,
                   priority: Float,
@@ -1143,6 +1152,158 @@ module MetronomeSDK
                 )
               end
               def self.values
+              end
+            end
+
+            class InvoiceSchedule < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig { returns(T.nilable(MetronomeSDK::CreditTypeData)) }
+              attr_reader :credit_type
+
+              sig do
+                params(credit_type: MetronomeSDK::CreditTypeData::OrHash).void
+              end
+              attr_writer :credit_type
+
+              # If true, this schedule will not generate an invoice.
+              sig { returns(T.nilable(T::Boolean)) }
+              attr_reader :do_not_invoice
+
+              sig { params(do_not_invoice: T::Boolean).void }
+              attr_writer :do_not_invoice
+
+              sig do
+                returns(
+                  T.nilable(
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule::ScheduleItem
+                    ]
+                  )
+                )
+              end
+              attr_reader :schedule_items
+
+              sig do
+                params(
+                  schedule_items:
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule::ScheduleItem::OrHash
+                    ]
+                ).void
+              end
+              attr_writer :schedule_items
+
+              # The schedule that the customer will be invoiced for this commit.
+              sig do
+                params(
+                  credit_type: MetronomeSDK::CreditTypeData::OrHash,
+                  do_not_invoice: T::Boolean,
+                  schedule_items:
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule::ScheduleItem::OrHash
+                    ]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                credit_type: nil,
+                # If true, this schedule will not generate an invoice.
+                do_not_invoice: nil,
+                schedule_items: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    credit_type: MetronomeSDK::CreditTypeData,
+                    do_not_invoice: T::Boolean,
+                    schedule_items:
+                      T::Array[
+                        MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule::ScheduleItem
+                      ]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCommit::InvoiceSchedule::ScheduleItem,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig { returns(String) }
+                attr_accessor :id
+
+                sig { returns(Time) }
+                attr_accessor :timestamp
+
+                sig { returns(T.nilable(Float)) }
+                attr_reader :amount
+
+                sig { params(amount: Float).void }
+                attr_writer :amount
+
+                sig { returns(T.nilable(String)) }
+                attr_accessor :invoice_id
+
+                sig { returns(T.nilable(Float)) }
+                attr_reader :quantity
+
+                sig { params(quantity: Float).void }
+                attr_writer :quantity
+
+                sig { returns(T.nilable(Float)) }
+                attr_reader :unit_price
+
+                sig { params(unit_price: Float).void }
+                attr_writer :unit_price
+
+                sig do
+                  params(
+                    id: String,
+                    timestamp: Time,
+                    amount: Float,
+                    invoice_id: T.nilable(String),
+                    quantity: Float,
+                    unit_price: Float
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  id:,
+                  timestamp:,
+                  amount: nil,
+                  invoice_id: nil,
+                  quantity: nil,
+                  unit_price: nil
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      id: String,
+                      timestamp: Time,
+                      amount: Float,
+                      invoice_id: T.nilable(String),
+                      quantity: Float,
+                      unit_price: Float
+                    }
+                  )
+                end
+                def to_hash
+                end
               end
             end
 
