@@ -3,11 +3,11 @@
 module MetronomeSDK
   module Models
     module V1
-      class ContractGetSubscriptionSeatsScheduleHistoryResponse < MetronomeSDK::Internal::Type::BaseModel
+      class ContractGetSubscriptionSeatsHistoryResponse < MetronomeSDK::Internal::Type::BaseModel
         OrHash =
           T.type_alias do
             T.any(
-              MetronomeSDK::Models::V1::ContractGetSubscriptionSeatsScheduleHistoryResponse,
+              MetronomeSDK::Models::V1::ContractGetSubscriptionSeatsHistoryResponse,
               MetronomeSDK::Internal::AnyHash
             )
           end
@@ -15,7 +15,7 @@ module MetronomeSDK
         sig do
           returns(
             T::Array[
-              MetronomeSDK::Models::V1::ContractGetSubscriptionSeatsScheduleHistoryResponse::Data
+              MetronomeSDK::Models::V1::ContractGetSubscriptionSeatsHistoryResponse::Data
             ]
           )
         end
@@ -29,7 +29,7 @@ module MetronomeSDK
           params(
             data:
               T::Array[
-                MetronomeSDK::Models::V1::ContractGetSubscriptionSeatsScheduleHistoryResponse::Data::OrHash
+                MetronomeSDK::Models::V1::ContractGetSubscriptionSeatsHistoryResponse::Data::OrHash
               ],
             next_page: T.nilable(String)
           ).returns(T.attached_class)
@@ -46,7 +46,7 @@ module MetronomeSDK
             {
               data:
                 T::Array[
-                  MetronomeSDK::Models::V1::ContractGetSubscriptionSeatsScheduleHistoryResponse::Data
+                  MetronomeSDK::Models::V1::ContractGetSubscriptionSeatsHistoryResponse::Data
                 ],
               next_page: T.nilable(String)
             }
@@ -59,7 +59,7 @@ module MetronomeSDK
           OrHash =
             T.type_alias do
               T.any(
-                MetronomeSDK::Models::V1::ContractGetSubscriptionSeatsScheduleHistoryResponse::Data,
+                MetronomeSDK::Models::V1::ContractGetSubscriptionSeatsHistoryResponse::Data,
                 MetronomeSDK::Internal::AnyHash
               )
             end

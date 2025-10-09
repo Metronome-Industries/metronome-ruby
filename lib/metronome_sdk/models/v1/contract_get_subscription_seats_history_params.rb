@@ -3,8 +3,8 @@
 module MetronomeSDK
   module Models
     module V1
-      # @see MetronomeSDK::Resources::V1::Contracts#get_subscription_seats_schedule_history
-      class ContractGetSubscriptionSeatsScheduleHistoryParams < MetronomeSDK::Internal::Type::BaseModel
+      # @see MetronomeSDK::Resources::V1::Contracts#get_subscription_seats_history
+      class ContractGetSubscriptionSeatsHistoryParams < MetronomeSDK::Internal::Type::BaseModel
         extend MetronomeSDK::Internal::Type::RequestParameters::Converter
         include MetronomeSDK::Internal::Type::RequestParameters
 
@@ -62,8 +62,8 @@ module MetronomeSDK
 
         # @!method initialize(contract_id:, customer_id:, subscription_id:, covering_date: nil, cursor: nil, ending_before: nil, limit: nil, starting_at: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
-        #   {MetronomeSDK::Models::V1::ContractGetSubscriptionSeatsScheduleHistoryParams}
-        #   for more details.
+        #   {MetronomeSDK::Models::V1::ContractGetSubscriptionSeatsHistoryParams} for more
+        #   details.
         #
         #   @param contract_id [String]
         #

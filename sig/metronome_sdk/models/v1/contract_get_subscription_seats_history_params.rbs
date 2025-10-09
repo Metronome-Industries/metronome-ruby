@@ -1,7 +1,7 @@
 module MetronomeSDK
   module Models
     module V1
-      type contract_get_subscription_seats_schedule_history_params =
+      type contract_get_subscription_seats_history_params =
         {
           contract_id: String,
           customer_id: String,
@@ -14,7 +14,7 @@ module MetronomeSDK
         }
         & MetronomeSDK::Internal::Type::request_parameters
 
-      class ContractGetSubscriptionSeatsScheduleHistoryParams < MetronomeSDK::Internal::Type::BaseModel
+      class ContractGetSubscriptionSeatsHistoryParams < MetronomeSDK::Internal::Type::BaseModel
         extend MetronomeSDK::Internal::Type::RequestParameters::Converter
         include MetronomeSDK::Internal::Type::RequestParameters
 

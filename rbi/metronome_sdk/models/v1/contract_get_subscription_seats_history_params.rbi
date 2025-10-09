@@ -3,14 +3,14 @@
 module MetronomeSDK
   module Models
     module V1
-      class ContractGetSubscriptionSeatsScheduleHistoryParams < MetronomeSDK::Internal::Type::BaseModel
+      class ContractGetSubscriptionSeatsHistoryParams < MetronomeSDK::Internal::Type::BaseModel
         extend MetronomeSDK::Internal::Type::RequestParameters::Converter
         include MetronomeSDK::Internal::Type::RequestParameters
 
         OrHash =
           T.type_alias do
             T.any(
-              MetronomeSDK::V1::ContractGetSubscriptionSeatsScheduleHistoryParams,
+              MetronomeSDK::V1::ContractGetSubscriptionSeatsHistoryParams,
               MetronomeSDK::Internal::AnyHash
             )
           end
