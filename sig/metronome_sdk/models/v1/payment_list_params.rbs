@@ -1,0 +1,56 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type payment_list_params =
+        {
+          customer_id: String,
+          invoice_id: String,
+          limit: Integer,
+          next_page: String,
+          statuses: ::Array[MetronomeSDK::Models::V1::payment_status]
+        }
+        & MetronomeSDK::Internal::Type::request_parameters
+
+      class PaymentListParams < MetronomeSDK::Internal::Type::BaseModel
+        extend MetronomeSDK::Internal::Type::RequestParameters::Converter
+        include MetronomeSDK::Internal::Type::RequestParameters
+
+        attr_accessor customer_id: String
+
+        attr_accessor invoice_id: String
+
+        attr_reader limit: Integer?
+
+        def limit=: (Integer) -> Integer
+
+        attr_reader next_page: String?
+
+        def next_page=: (String) -> String
+
+        attr_reader statuses: ::Array[MetronomeSDK::Models::V1::payment_status]?
+
+        def statuses=: (
+          ::Array[MetronomeSDK::Models::V1::payment_status]
+        ) -> ::Array[MetronomeSDK::Models::V1::payment_status]
+
+        def initialize: (
+          customer_id: String,
+          invoice_id: String,
+          ?limit: Integer,
+          ?next_page: String,
+          ?statuses: ::Array[MetronomeSDK::Models::V1::payment_status],
+          ?request_options: MetronomeSDK::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          customer_id: String,
+          invoice_id: String,
+          limit: Integer,
+          next_page: String,
+          statuses: ::Array[MetronomeSDK::Models::V1::payment_status],
+          request_options: MetronomeSDK::RequestOptions
+        }
+      end
+    end
+  end
+end

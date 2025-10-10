@@ -1,0 +1,19 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type payment_status =
+        :pending | :requires_intervention | :paid | :canceled
+
+      module PaymentStatus
+        extend MetronomeSDK::Internal::Type::Enum
+
+        PENDING: :pending
+        REQUIRES_INTERVENTION: :requires_intervention
+        PAID: :paid
+        CANCELED: :canceled
+
+        def self?.values: -> ::Array[MetronomeSDK::Models::V1::payment_status]
+      end
+    end
+  end
+end
