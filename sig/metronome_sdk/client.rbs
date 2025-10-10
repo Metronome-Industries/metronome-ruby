@@ -14,12 +14,6 @@ module MetronomeSDK
 
     attr_reader v1: MetronomeSDK::Resources::V1
 
-    attr_reader packages: MetronomeSDK::Resources::Packages
-
-    attr_reader notifications: MetronomeSDK::Resources::Notifications
-
-    attr_reader payments: MetronomeSDK::Resources::Payments
-
     private def auth_headers: -> ::Hash[String, String]
 
     def initialize: (

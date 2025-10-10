@@ -287,6 +287,42 @@ module MetronomeSDK
           )
           end
 
+          # Retrieve a PDF version of a specific invoice by its unique identifier. This
+          # endpoint generates a professionally formatted invoice document suitable for
+          # sharing with customers, accounting teams, or for record-keeping purposes.
+          #
+          # ### Use this endpoint to:
+          #
+          # - Provide customers with downloadable or emailable copies of their invoices
+          # - Support accounting and finance teams with official billing documents
+          # - Maintain accurate records of billing transactions for audits and compliance
+          #
+          # ### Key response details:
+          #
+          # - The response is a binary PDF file representing the full invoice
+          # - The PDF includes all standard invoice information such as line items, totals,
+          #   billing period, and customer details
+          # - The document is formatted for clarity and professionalism, suitable for
+          #   official use
+          #
+          # ### Usage guidelines:
+          #
+          # - Ensure the `invoice_id` corresponds to an existing invoice for the specified
+          #   `customer_id`
+          # - The PDF is generated on-demand; frequent requests for the same invoice may
+          #   impact performance
+          # - Use appropriate headers to handle the binary response in your application
+          #   (e.g., setting `Content-Type: application/pdf`)
+          sig do
+            params(
+              customer_id: String,
+              invoice_id: String,
+              request_options: MetronomeSDK::RequestOptions::OrHash
+            ).returns(StringIO)
+          end
+          def retrieve_pdf(customer_id:, invoice_id:, request_options: {})
+          end
+
           # @api private
           sig { params(client: MetronomeSDK::Client).returns(T.attached_class) }
           def self.new(client:)
