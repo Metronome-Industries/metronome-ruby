@@ -56,4 +56,22 @@ class MetronomeSDK::Test::Resources::PaymentsTest < MetronomeSDK::Test::Resource
       }
     end
   end
+
+  def test_cancel_required_params
+    response =
+      @metronome.payments.cancel(
+        customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d",
+        invoice_id: "6162d87b-e5db-4a33-b7f2-76ce6ead4e85"
+      )
+
+    assert_pattern do
+      response => MetronomeSDK::Models::PaymentCancelResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: MetronomeSDK::Models::PaymentCancelResponse::Data
+      }
+    end
+  end
 end

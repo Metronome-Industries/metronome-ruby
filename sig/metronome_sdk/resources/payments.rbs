@@ -16,6 +16,12 @@ module MetronomeSDK
         ?request_options: MetronomeSDK::request_opts
       ) -> MetronomeSDK::Models::PaymentAttemptResponse
 
+      def cancel: (
+        customer_id: String,
+        invoice_id: String,
+        ?request_options: MetronomeSDK::request_opts
+      ) -> MetronomeSDK::Models::PaymentCancelResponse
+
       def initialize: (client: MetronomeSDK::Client) -> void
     end
   end
