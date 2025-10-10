@@ -52,6 +52,17 @@ module MetronomeSDK
       def attempt(customer_id:, invoice_id:, request_options: {})
       end
 
+      # Cancel an existing payment attempt for an invoice.
+      sig do
+        params(
+          customer_id: String,
+          invoice_id: String,
+          request_options: MetronomeSDK::RequestOptions::OrHash
+        ).returns(MetronomeSDK::Models::PaymentCancelResponse)
+      end
+      def cancel(customer_id:, invoice_id:, request_options: {})
+      end
+
       # @api private
       sig { params(client: MetronomeSDK::Client).returns(T.attached_class) }
       def self.new(client:)

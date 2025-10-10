@@ -67,6 +67,28 @@ module MetronomeSDK
         )
       end
 
+      # Cancel an existing payment attempt for an invoice.
+      #
+      # @overload cancel(customer_id:, invoice_id:, request_options: {})
+      #
+      # @param customer_id [String]
+      # @param invoice_id [String]
+      # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [MetronomeSDK::Models::PaymentCancelResponse]
+      #
+      # @see MetronomeSDK::Models::PaymentCancelParams
+      def cancel(params)
+        parsed, options = MetronomeSDK::PaymentCancelParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: "v1/payments/cancel",
+          body: parsed,
+          model: MetronomeSDK::Models::PaymentCancelResponse,
+          options: options
+        )
+      end
+
       # @api private
       #
       # @param client [MetronomeSDK::Client]

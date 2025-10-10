@@ -51,6 +51,8 @@ module MetronomeSDK
 
   class PaymentAttemptParams = MetronomeSDK::Models::PaymentAttemptParams
 
+  class PaymentCancelParams = MetronomeSDK::Models::PaymentCancelParams
+
   class PaymentGateConfig = MetronomeSDK::Models::PaymentGateConfig
 
   class PaymentGateConfigV2 = MetronomeSDK::Models::PaymentGateConfigV2

@@ -54,6 +54,8 @@ module MetronomeSDK
 
   PaymentAttemptParams = MetronomeSDK::Models::PaymentAttemptParams
 
+  PaymentCancelParams = MetronomeSDK::Models::PaymentCancelParams
+
   PaymentGateConfig = MetronomeSDK::Models::PaymentGateConfig
 
   PaymentGateConfigV2 = MetronomeSDK::Models::PaymentGateConfigV2
