@@ -113,7 +113,7 @@ class MetronomeSDK::Test::Resources::V1::Customers::InvoicesTest < MetronomeSDK:
   end
 
   def test_retrieve_pdf_required_params
-    skip("Prism doesn't support application/pdf responses")
+    skip("prism mocking library in JS SDK doesnt support application/pdf")
 
     response =
       @metronome.v1.customers.invoices.retrieve_pdf(
