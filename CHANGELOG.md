@@ -1,5 +1,60 @@
 # Changelog
 
+## 2.0.0 (2025-10-16)
+
+Full Changelog: [v1.0.0...v2.0.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v1.0.0...v2.0.0)
+
+### ⚠ BREAKING CHANGES
+
+* **api:** Remove customer_id from preview events payload
+* **api:** in getEditHistory endpoint, commit invoice schedule amount, unit price, and quantity are now optional values
+* **api:** Added optional archive_filter param to /notifications/offset/list endpoint
+
+### Features
+
+* Add empty handler for cancelPayment ([7e99149](https://github.com/Metronome-Industries/metronome-ruby/commit/7e99149c22a82550ec373c0727351c4b70c852eb))
+* Add payment APIs to the SDK ([616d0df](https://github.com/Metronome-Industries/metronome-ruby/commit/616d0df5ded63e16bb817733c839196ac9033074))
+* **api:** add billing_periods to Subscription ([fadf0b8](https://github.com/Metronome-Industries/metronome-ruby/commit/fadf0b8e5db369baefffa0a7e30602da594eff03))
+* **api:** add new payments/attempt v1 api endpoint ([da865e7](https://github.com/Metronome-Industries/metronome-ruby/commit/da865e7efa8e041a6e84f3482ec786fb9ae0bb91))
+* **api:** Added optional archive_filter param to /notifications/offset/list endpoint ([2fdc9f4](https://github.com/Metronome-Industries/metronome-ruby/commit/2fdc9f4e905b00e8bdfcfc7c364d08bb60b40c5f))
+* **api:** Remove customer_id from preview events payload ([20ca72d](https://github.com/Metronome-Industries/metronome-ruby/commit/20ca72d41c6793058ab236e67b29bc2e0d2b4143))
+* Bump graphql version and fix type errors ([13a12b1](https://github.com/Metronome-Industries/metronome-ruby/commit/13a12b145a0cf9889315ebf05bb147943632e520))
+* elia/orch 128 add external apis for payments ([91fb616](https://github.com/Metronome-Industries/metronome-ruby/commit/91fb6167790ec522698bdbdb22ccd370f1bddcc2))
+* expose response headers for both streams and errors ([9f0e87e](https://github.com/Metronome-Industries/metronome-ruby/commit/9f0e87e8df28a54ccc7a913d687205dee5ccf9cb))
+* feat(api):Allow clients retrieve archived config via `/notifications/get` ([466033c](https://github.com/Metronome-Industries/metronome-ruby/commit/466033c55325bd066a9a8c6669955bbec1328ce1))
+* internal: releasing x-mint ([d14a332](https://github.com/Metronome-Industries/metronome-ruby/commit/d14a33277f46d61ab13a26e22dd88f343583d9d6))
+* internal: Skip retrieve_pdf API SDK tests ([c079dc3](https://github.com/Metronome-Industries/metronome-ruby/commit/c079dc32fddf4862e271cf60fd0192cca3cb0ce1))
+* internal(docs): adding confluent endpoints ([79bb81b](https://github.com/Metronome-Industries/metronome-ruby/commit/79bb81b1b17ebd05349fac0279bc17b0a71f9245))
+* LAUNCH-516 add getSubscriptionSeatsScheduleHistory api ([bcc34f8](https://github.com/Metronome-Industries/metronome-ruby/commit/bcc34f8dd2fe1be818ecbd1dbf9108020a15f2f7))
+* rename getSubscriptionSeatsScheduleHistory to getSubscriptionSeatsHistory ([68ef0a3](https://github.com/Metronome-Industries/metronome-ruby/commit/68ef0a3ddd9771fa4d810d750f37483d24d2d3f0))
+* Return array of invoices instead of single invoice and handle multipl… ([129d95e](https://github.com/Metronome-Industries/metronome-ruby/commit/129d95ef9c26cd35adb9b493aa07f610f53c2a89))
+* Set up contract get and create with new AH info ([9a174d7](https://github.com/Metronome-Industries/metronome-ruby/commit/9a174d758368c63f563b26e840afa7385c7040cc))
+* update api docs ([e9ef5a1](https://github.com/Metronome-Industries/metronome-ruby/commit/e9ef5a1e3aa60612c73d0bb7f88fe95382e81549))
+
+
+### Bug Fixes
+
+* absolutely qualified uris should always override the default ([d2a34bf](https://github.com/Metronome-Industries/metronome-ruby/commit/d2a34bf32891e8e9938f939c53971cf8c824406b))
+* always send `filename=...` for multipart requests where a file is expected ([618065e](https://github.com/Metronome-Industries/metronome-ruby/commit/618065efd1dfc5f78842f26047c63f8f8214d922))
+* **api:** in getEditHistory endpoint, commit invoice schedule amount, unit price, and quantity are now optional values ([d2a37fb](https://github.com/Metronome-Industries/metronome-ruby/commit/d2a37fb61ca0bd828868a2b7d86ddd0d5a12f311))
+* coroutine leaks from connection pool ([f44d189](https://github.com/Metronome-Industries/metronome-ruby/commit/f44d18933e585e241d04277911be69eedbb72be8))
+* **internal:** use null byte as file separator in the fast formatting script ([dec574a](https://github.com/Metronome-Industries/metronome-ruby/commit/dec574a038c9a81c43efd52fadbe9ed4b41d9465))
+* LAUNCH-1130 remove min and max in api spec for better valiation error message ([1e2282c](https://github.com/Metronome-Industries/metronome-ruby/commit/1e2282cd8b3feab83f0b487e29509a7591d854b1))
+* shorten multipart boundary sep to less than RFC specificed max length ([b49e6f1](https://github.com/Metronome-Industries/metronome-ruby/commit/b49e6f16e1836ddb330d3bb22ed5cbe70ebe435d))
+* should not reuse buffers for `IO.copy_stream` interop ([c80da18](https://github.com/Metronome-Industries/metronome-ruby/commit/c80da18b2978ee09675a8031db122a04450fcd24))
+
+
+### Performance Improvements
+
+* faster code formatting ([1a84007](https://github.com/Metronome-Industries/metronome-ruby/commit/1a8400771228e75a50f7003f8864740da000f583))
+
+
+### Chores
+
+* allow fast-format to use bsd sed as well ([10fad42](https://github.com/Metronome-Industries/metronome-ruby/commit/10fad42d511c0a696c22b4f94b5c6c828b855980))
+* do not install brew dependencies in ./scripts/bootstrap by default ([92ff30c](https://github.com/Metronome-Industries/metronome-ruby/commit/92ff30cd9332917e0f465525ccf2ac809d8de48b))
+* ignore linter error for tests having large collections ([785a441](https://github.com/Metronome-Industries/metronome-ruby/commit/785a441f773283af8731625e50de3ea7d67bdc81))
+
 ## 1.0.0 (2025-09-15)
 
 Full Changelog: [v0.3.0...v1.0.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v0.3.0...v1.0.0)
