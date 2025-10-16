@@ -47,7 +47,6 @@ module MetronomeSDK
         type event =
           {
             event_type: String,
-            customer_id: String,
             properties: ::Hash[Symbol, top],
             timestamp: String,
             transaction_id: String
@@ -55,10 +54,6 @@ module MetronomeSDK
 
         class Event < MetronomeSDK::Internal::Type::BaseModel
           attr_accessor event_type: String
-
-          attr_reader customer_id: String?
-
-          def customer_id=: (String) -> String
 
           attr_reader properties: ::Hash[Symbol, top]?
 
@@ -74,7 +69,6 @@ module MetronomeSDK
 
           def initialize: (
             event_type: String,
-            ?customer_id: String,
             ?properties: ::Hash[Symbol, top],
             ?timestamp: String,
             ?transaction_id: String
@@ -82,7 +76,6 @@ module MetronomeSDK
 
           def to_hash: -> {
             event_type: String,
-            customer_id: String,
             properties: ::Hash[Symbol, top],
             timestamp: String,
             transaction_id: String
