@@ -48,6 +48,10 @@ module MetronomeSDK
         sig { returns(String) }
         attr_accessor :name
 
+        # RFC 3339 timestamp indicating when the customer was last updated.
+        sig { returns(Time) }
+        attr_accessor :updated_at
+
         # RFC 3339 timestamp indicating when the customer was archived. Null if the
         # customer is active.
         sig { returns(T.nilable(Time)) }
@@ -79,6 +83,7 @@ module MetronomeSDK
             external_id: String,
             ingest_aliases: T::Array[String],
             name: String,
+            updated_at: Time,
             archived_at: T.nilable(Time),
             current_billable_status:
               MetronomeSDK::V1::CustomerDetail::CurrentBillableStatus::OrHash
@@ -99,6 +104,8 @@ module MetronomeSDK
           # in usage events
           ingest_aliases:,
           name:,
+          # RFC 3339 timestamp indicating when the customer was last updated.
+          updated_at:,
           # RFC 3339 timestamp indicating when the customer was archived. Null if the
           # customer is active.
           archived_at: nil,
@@ -117,6 +124,7 @@ module MetronomeSDK
               external_id: String,
               ingest_aliases: T::Array[String],
               name: String,
+              updated_at: Time,
               archived_at: T.nilable(Time),
               current_billable_status:
                 MetronomeSDK::V1::CustomerDetail::CurrentBillableStatus

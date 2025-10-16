@@ -15,11 +15,12 @@ module MetronomeSDK
             )
           end
 
-        # The Metronome ID of the alert
+        # The Metronome ID of the threshold notification
         sig { returns(String) }
         attr_accessor :id
 
-        # If true, resets the uniqueness key on this alert so it can be re-used
+        # If true, resets the uniqueness key on this threshold notification so it can be
+        # re-used
         sig { returns(T.nilable(T::Boolean)) }
         attr_reader :release_uniqueness_key
 
@@ -34,9 +35,10 @@ module MetronomeSDK
           ).returns(T.attached_class)
         end
         def self.new(
-          # The Metronome ID of the alert
+          # The Metronome ID of the threshold notification
           id:,
-          # If true, resets the uniqueness key on this alert so it can be re-used
+          # If true, resets the uniqueness key on this threshold notification so it can be
+          # re-used
           release_uniqueness_key: nil,
           request_options: {}
         )

@@ -156,7 +156,7 @@ module MetronomeSDK
         # - Ingest aliases remain idempotent for archived customers. In order to reuse an
         #   ingest alias, first remove the ingest alias from the customer prior to
         #   archiving.
-        # - Any alerts associated with the customer will no longer be triggered.
+        # - Any notifications associated with the customer will no longer be triggered.
         sig do
           params(
             id: String,
@@ -232,10 +232,10 @@ module MetronomeSDK
         )
         end
 
-        # Preview how a set of events will affect a customer's invoice. Generates a draft
-        # invoice for a customer using their current contract configuration and the
+        # Preview how a set of events will affect a customer's invoices. Generates draft
+        # invoices for a customer using their current contract configuration and the
         # provided events. This is useful for testing how new events will affect the
-        # customer's invoice before they are actually processed.
+        # customer's invoices before they are actually processed.
         sig do
           params(
             customer_id: String,
@@ -300,6 +300,9 @@ module MetronomeSDK
         #   through system A (e.g. Stripe) but will now be billed through system B (e.g.
         #   AWS). Once created, the new configuration can then be associated to the
         #   customer's contract.
+        # - Multiple configurations can be added per destination. For example, you can
+        #   create two Stripe billing configurations for a Metronome customer that each
+        #   have a distinct `collection_method`.
         #
         # ### Delivery method options:
         #

@@ -1,0 +1,15 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type payment_attempt_response = { data: MetronomeSDK::V1::Payment }
+
+      class PaymentAttemptResponse < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor data: MetronomeSDK::V1::Payment
+
+        def initialize: (data: MetronomeSDK::V1::Payment) -> void
+
+        def to_hash: -> { data: MetronomeSDK::V1::Payment }
+      end
+    end
+  end
+end

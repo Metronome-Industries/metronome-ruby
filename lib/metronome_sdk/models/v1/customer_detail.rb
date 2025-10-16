@@ -47,6 +47,12 @@ module MetronomeSDK
         #   @return [String]
         required :name, String
 
+        # @!attribute updated_at
+        #   RFC 3339 timestamp indicating when the customer was last updated.
+        #
+        #   @return [Time]
+        required :updated_at, Time
+
         # @!attribute archived_at
         #   RFC 3339 timestamp indicating when the customer was archived. Null if the
         #   customer is active.
@@ -60,7 +66,7 @@ module MetronomeSDK
         #   @return [MetronomeSDK::Models::V1::CustomerDetail::CurrentBillableStatus, nil]
         optional :current_billable_status, -> { MetronomeSDK::V1::CustomerDetail::CurrentBillableStatus }
 
-        # @!method initialize(id:, created_at:, custom_fields:, customer_config:, external_id:, ingest_aliases:, name:, archived_at: nil, current_billable_status: nil)
+        # @!method initialize(id:, created_at:, custom_fields:, customer_config:, external_id:, ingest_aliases:, name:, updated_at:, archived_at: nil, current_billable_status: nil)
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::V1::CustomerDetail} for more details.
         #
@@ -77,6 +83,8 @@ module MetronomeSDK
         #   @param ingest_aliases [Array<String>] aliases for this customer that can be used instead of the Metronome customer ID
         #
         #   @param name [String]
+        #
+        #   @param updated_at [Time] RFC 3339 timestamp indicating when the customer was last updated.
         #
         #   @param archived_at [Time, nil] RFC 3339 timestamp indicating when the customer was archived. Null if the custom
         #

@@ -12,7 +12,7 @@ module MetronomeSDK
             total: Float,
             type: String,
             amendment_id: String,
-            billable_status: MetronomeSDK::Models::V1::Customers::Invoice::billable_status,
+            billable_status: top,
             contract_custom_fields: ::Hash[Symbol, String],
             contract_id: String,
             correction_record: MetronomeSDK::V1::Customers::Invoice::CorrectionRecord,
@@ -53,11 +53,9 @@ module MetronomeSDK
 
           def amendment_id=: (String) -> String
 
-          attr_reader billable_status: MetronomeSDK::Models::V1::Customers::Invoice::billable_status?
+          attr_reader billable_status: top?
 
-          def billable_status=: (
-            MetronomeSDK::Models::V1::Customers::Invoice::billable_status
-          ) -> MetronomeSDK::Models::V1::Customers::Invoice::billable_status
+          def billable_status=: (top) -> top
 
           attr_reader contract_custom_fields: ::Hash[Symbol, String]?
 
@@ -154,7 +152,7 @@ module MetronomeSDK
             total: Float,
             type: String,
             ?amendment_id: String,
-            ?billable_status: MetronomeSDK::Models::V1::Customers::Invoice::billable_status,
+            ?billable_status: top,
             ?contract_custom_fields: ::Hash[Symbol, String],
             ?contract_id: String,
             ?correction_record: MetronomeSDK::V1::Customers::Invoice::CorrectionRecord,
@@ -185,7 +183,7 @@ module MetronomeSDK
             total: Float,
             type: String,
             amendment_id: String,
-            billable_status: MetronomeSDK::Models::V1::Customers::Invoice::billable_status,
+            billable_status: top,
             contract_custom_fields: ::Hash[Symbol, String],
             contract_id: String,
             correction_record: MetronomeSDK::V1::Customers::Invoice::CorrectionRecord,
@@ -738,17 +736,6 @@ module MetronomeSDK
             end
           end
 
-          type billable_status = :billable | :unbillable
-
-          module BillableStatus
-            extend MetronomeSDK::Internal::Type::Enum
-
-            BILLABLE: :billable
-            UNBILLABLE: :unbillable
-
-            def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::Invoice::billable_status]
-          end
-
           type correction_record =
             {
               corrected_invoice_id: String,
@@ -789,7 +776,11 @@ module MetronomeSDK
                 billing_provider_type: MetronomeSDK::Models::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::billing_provider_type,
                 external_status: MetronomeSDK::Models::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::external_status,
                 invoice_id: String,
-                issued_at_timestamp: Time
+                invoiced_sub_total: Float,
+                invoiced_total: Float,
+                issued_at_timestamp: Time,
+                pdf_url: String,
+                tax: MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::Tax
               }
 
             class CorrectedExternalInvoice < MetronomeSDK::Internal::Type::BaseModel
@@ -805,22 +796,48 @@ module MetronomeSDK
 
               def invoice_id=: (String) -> String
 
+              attr_reader invoiced_sub_total: Float?
+
+              def invoiced_sub_total=: (Float) -> Float
+
+              attr_reader invoiced_total: Float?
+
+              def invoiced_total=: (Float) -> Float
+
               attr_reader issued_at_timestamp: Time?
 
               def issued_at_timestamp=: (Time) -> Time
+
+              attr_reader pdf_url: String?
+
+              def pdf_url=: (String) -> String
+
+              attr_reader tax: MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::Tax?
+
+              def tax=: (
+                MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::Tax
+              ) -> MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::Tax
 
               def initialize: (
                 billing_provider_type: MetronomeSDK::Models::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::billing_provider_type,
                 ?external_status: MetronomeSDK::Models::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::external_status,
                 ?invoice_id: String,
-                ?issued_at_timestamp: Time
+                ?invoiced_sub_total: Float,
+                ?invoiced_total: Float,
+                ?issued_at_timestamp: Time,
+                ?pdf_url: String,
+                ?tax: MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::Tax
               ) -> void
 
               def to_hash: -> {
                 billing_provider_type: MetronomeSDK::Models::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::billing_provider_type,
                 external_status: MetronomeSDK::Models::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::external_status,
                 invoice_id: String,
-                issued_at_timestamp: Time
+                invoiced_sub_total: Float,
+                invoiced_total: Float,
+                issued_at_timestamp: Time,
+                pdf_url: String,
+                tax: MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::Tax
               }
 
               type billing_provider_type =
@@ -878,6 +895,39 @@ module MetronomeSDK
 
                 def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::external_status]
               end
+
+              type tax =
+                {
+                  total_tax_amount: Float,
+                  total_taxable_amount: Float,
+                  transaction_id: String
+                }
+
+              class Tax < MetronomeSDK::Internal::Type::BaseModel
+                attr_reader total_tax_amount: Float?
+
+                def total_tax_amount=: (Float) -> Float
+
+                attr_reader total_taxable_amount: Float?
+
+                def total_taxable_amount=: (Float) -> Float
+
+                attr_reader transaction_id: String?
+
+                def transaction_id=: (String) -> String
+
+                def initialize: (
+                  ?total_tax_amount: Float,
+                  ?total_taxable_amount: Float,
+                  ?transaction_id: String
+                ) -> void
+
+                def to_hash: -> {
+                  total_tax_amount: Float,
+                  total_taxable_amount: Float,
+                  transaction_id: String
+                }
+              end
             end
           end
 
@@ -886,7 +936,11 @@ module MetronomeSDK
               billing_provider_type: MetronomeSDK::Models::V1::Customers::Invoice::ExternalInvoice::billing_provider_type,
               external_status: MetronomeSDK::Models::V1::Customers::Invoice::ExternalInvoice::external_status,
               invoice_id: String,
-              issued_at_timestamp: Time
+              invoiced_sub_total: Float,
+              invoiced_total: Float,
+              issued_at_timestamp: Time,
+              pdf_url: String,
+              tax: MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::Tax
             }
 
           class ExternalInvoice < MetronomeSDK::Internal::Type::BaseModel
@@ -902,22 +956,48 @@ module MetronomeSDK
 
             def invoice_id=: (String) -> String
 
+            attr_reader invoiced_sub_total: Float?
+
+            def invoiced_sub_total=: (Float) -> Float
+
+            attr_reader invoiced_total: Float?
+
+            def invoiced_total=: (Float) -> Float
+
             attr_reader issued_at_timestamp: Time?
 
             def issued_at_timestamp=: (Time) -> Time
+
+            attr_reader pdf_url: String?
+
+            def pdf_url=: (String) -> String
+
+            attr_reader tax: MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::Tax?
+
+            def tax=: (
+              MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::Tax
+            ) -> MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::Tax
 
             def initialize: (
               billing_provider_type: MetronomeSDK::Models::V1::Customers::Invoice::ExternalInvoice::billing_provider_type,
               ?external_status: MetronomeSDK::Models::V1::Customers::Invoice::ExternalInvoice::external_status,
               ?invoice_id: String,
-              ?issued_at_timestamp: Time
+              ?invoiced_sub_total: Float,
+              ?invoiced_total: Float,
+              ?issued_at_timestamp: Time,
+              ?pdf_url: String,
+              ?tax: MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::Tax
             ) -> void
 
             def to_hash: -> {
               billing_provider_type: MetronomeSDK::Models::V1::Customers::Invoice::ExternalInvoice::billing_provider_type,
               external_status: MetronomeSDK::Models::V1::Customers::Invoice::ExternalInvoice::external_status,
               invoice_id: String,
-              issued_at_timestamp: Time
+              invoiced_sub_total: Float,
+              invoiced_total: Float,
+              issued_at_timestamp: Time,
+              pdf_url: String,
+              tax: MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::Tax
             }
 
             type billing_provider_type =
@@ -974,6 +1054,39 @@ module MetronomeSDK
               QUEUED: :QUEUED
 
               def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::Invoice::ExternalInvoice::external_status]
+            end
+
+            type tax =
+              {
+                total_tax_amount: Float,
+                total_taxable_amount: Float,
+                transaction_id: String
+              }
+
+            class Tax < MetronomeSDK::Internal::Type::BaseModel
+              attr_reader total_tax_amount: Float?
+
+              def total_tax_amount=: (Float) -> Float
+
+              attr_reader total_taxable_amount: Float?
+
+              def total_taxable_amount=: (Float) -> Float
+
+              attr_reader transaction_id: String?
+
+              def transaction_id=: (String) -> String
+
+              def initialize: (
+                ?total_tax_amount: Float,
+                ?total_taxable_amount: Float,
+                ?transaction_id: String
+              ) -> void
+
+              def to_hash: -> {
+                total_tax_amount: Float,
+                total_taxable_amount: Float,
+                transaction_id: String
+              }
             end
           end
 

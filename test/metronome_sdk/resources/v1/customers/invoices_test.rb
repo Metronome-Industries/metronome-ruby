@@ -45,7 +45,7 @@ class MetronomeSDK::Test::Resources::V1::Customers::InvoicesTest < MetronomeSDK:
         total: Float,
         type: String,
         amendment_id: String | nil,
-        billable_status: MetronomeSDK::V1::Customers::Invoice::BillableStatus | nil,
+        billable_status: MetronomeSDK::Internal::Type::Unknown | nil,
         contract_custom_fields: ^(MetronomeSDK::Internal::Type::HashOf[String]) | nil,
         contract_id: String | nil,
         correction_record: MetronomeSDK::V1::Customers::Invoice::CorrectionRecord | nil,
@@ -109,6 +109,20 @@ class MetronomeSDK::Test::Resources::V1::Customers::InvoicesTest < MetronomeSDK:
 
     assert_pattern do
       row => MetronomeSDK::Models::V1::Customers::InvoiceListBreakdownsResponse
+    end
+  end
+
+  def test_retrieve_pdf_required_params
+    skip("prism mocking library in JS SDK doesnt support application/pdf")
+
+    response =
+      @metronome.v1.customers.invoices.retrieve_pdf(
+        customer_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc",
+        invoice_id: "6a37bb88-8538-48c5-b37b-a41c836328bd"
+      )
+
+    assert_pattern do
+      response => StringIO
     end
   end
 end

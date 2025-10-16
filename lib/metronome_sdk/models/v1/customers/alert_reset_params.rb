@@ -10,7 +10,7 @@ module MetronomeSDK
           include MetronomeSDK::Internal::Type::RequestParameters
 
           # @!attribute alert_id
-          #   The Metronome ID of the alert
+          #   The Metronome ID of the threshold notification
           #
           #   @return [String]
           required :alert_id, String
@@ -22,7 +22,7 @@ module MetronomeSDK
           required :customer_id, String
 
           # @!method initialize(alert_id:, customer_id:, request_options: {})
-          #   @param alert_id [String] The Metronome ID of the alert
+          #   @param alert_id [String] The Metronome ID of the threshold notification
           #
           #   @param customer_id [String] The Metronome ID of the customer
           #

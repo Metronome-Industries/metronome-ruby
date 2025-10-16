@@ -39,6 +39,12 @@ module MetronomeSDK
         #   @return [Array<String>, nil]
         optional :applicable_product_tags, MetronomeSDK::Internal::Type::ArrayOf[String], nil?: true
 
+        # @!attribute hierarchy_configuration
+        #   Optional configuration for credit hierarchy access control
+        #
+        #   @return [MetronomeSDK::Models::CommitHierarchyConfiguration, nil]
+        optional :hierarchy_configuration, -> { MetronomeSDK::CommitHierarchyConfiguration }
+
         # @!attribute priority
         #   If multiple commits are applicable, the one with the lower priority will apply
         #   first.
@@ -72,7 +78,7 @@ module MetronomeSDK
                  -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::CommitSpecifierInput] },
                  nil?: true
 
-        # @!method initialize(credit_id:, customer_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, priority: nil, product_id: nil, rate_type: nil, specifiers: nil, request_options: {})
+        # @!method initialize(credit_id:, customer_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, hierarchy_configuration: nil, priority: nil, product_id: nil, rate_type: nil, specifiers: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::V2::ContractEditCreditParams} for more details.
         #
@@ -85,6 +91,8 @@ module MetronomeSDK
         #   @param applicable_product_ids [Array<String>, nil] Which products the credit applies to. If both applicable_product_ids and applica
         #
         #   @param applicable_product_tags [Array<String>, nil] Which tags the credit applies to. If both applicable*product_ids and applicable*
+        #
+        #   @param hierarchy_configuration [MetronomeSDK::Models::CommitHierarchyConfiguration] Optional configuration for credit hierarchy access control
         #
         #   @param priority [Float, nil] If multiple commits are applicable, the one with the lower priority will apply f
         #

@@ -2011,6 +2011,11 @@ module MetronomeSDK
                   :ANROK,
                   MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::TaxType::TaggedSymbol
                 )
+              AVALARA =
+                T.let(
+                  :AVALARA,
+                  MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::TaxType::TaggedSymbol
+                )
               PRECALCULATED =
                 T.let(
                   :PRECALCULATED,
@@ -2888,7 +2893,9 @@ module MetronomeSDK
 
           sig do
             returns(
-              MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::Parent
+              T.nilable(
+                MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::Parent
+              )
             )
           end
           attr_reader :parent
@@ -2902,19 +2909,97 @@ module MetronomeSDK
           attr_writer :parent
 
           sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::ParentBehavior
+              )
+            )
+          end
+          attr_reader :parent_behavior
+
+          sig do
+            params(
+              parent_behavior:
+                MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::ParentBehavior::OrHash
+            ).void
+          end
+          attr_writer :parent_behavior
+
+          # Indicates whether the parent should pay for the child's invoice charges
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::Payer::OrSymbol
+              )
+            )
+          end
+          attr_reader :payer
+
+          sig do
+            params(
+              payer:
+                MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::Payer::OrSymbol
+            ).void
+          end
+          attr_writer :payer
+
+          # Indicates the behavior of the child's invoice statements on the parent's
+          # invoices **CONSOLIDATE**: Child's invoice statements will be added to parent's
+          # consolidated invoices **SEPARATE**: Child's invoice statements will appear not
+          # appear on parent's consolidated invoices
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::UsageStatementBehavior::OrSymbol
+              )
+            )
+          end
+          attr_reader :usage_statement_behavior
+
+          sig do
+            params(
+              usage_statement_behavior:
+                MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::UsageStatementBehavior::OrSymbol
+            ).void
+          end
+          attr_writer :usage_statement_behavior
+
+          sig do
             params(
               parent:
-                MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::Parent::OrHash
+                MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::Parent::OrHash,
+              parent_behavior:
+                MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::ParentBehavior::OrHash,
+              payer:
+                MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::Payer::OrSymbol,
+              usage_statement_behavior:
+                MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::UsageStatementBehavior::OrSymbol
             ).returns(T.attached_class)
           end
-          def self.new(parent:)
+          def self.new(
+            parent: nil,
+            parent_behavior: nil,
+            # Indicates whether the parent should pay for the child's invoice charges
+            payer: nil,
+            # Indicates the behavior of the child's invoice statements on the parent's
+            # invoices **CONSOLIDATE**: Child's invoice statements will be added to parent's
+            # consolidated invoices **SEPARATE**: Child's invoice statements will appear not
+            # appear on parent's consolidated invoices
+            usage_statement_behavior: nil
+          )
           end
 
           sig do
             override.returns(
               {
                 parent:
-                  MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::Parent
+                  MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::Parent,
+                parent_behavior:
+                  MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::ParentBehavior,
+                payer:
+                  MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::Payer::OrSymbol,
+                usage_statement_behavior:
+                  MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::UsageStatementBehavior::OrSymbol
               }
             )
           end
@@ -2948,6 +3033,174 @@ module MetronomeSDK
               override.returns({ contract_id: String, customer_id: String })
             end
             def to_hash
+            end
+          end
+
+          class ParentBehavior < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::ParentBehavior,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            # Indicates the desired behavior of consolidated invoices generated by the parent
+            # in a customer hierarchy **CONCATENATE**: Statements on the invoices of child
+            # customers will be appended to the consolidated invoice **NONE**: Do not generate
+            # consolidated invoices
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::ParentBehavior::InvoiceConsolidationType::OrSymbol
+                )
+              )
+            end
+            attr_reader :invoice_consolidation_type
+
+            sig do
+              params(
+                invoice_consolidation_type:
+                  MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::ParentBehavior::InvoiceConsolidationType::OrSymbol
+              ).void
+            end
+            attr_writer :invoice_consolidation_type
+
+            sig do
+              params(
+                invoice_consolidation_type:
+                  MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::ParentBehavior::InvoiceConsolidationType::OrSymbol
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # Indicates the desired behavior of consolidated invoices generated by the parent
+              # in a customer hierarchy **CONCATENATE**: Statements on the invoices of child
+              # customers will be appended to the consolidated invoice **NONE**: Do not generate
+              # consolidated invoices
+              invoice_consolidation_type: nil
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  invoice_consolidation_type:
+                    MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::ParentBehavior::InvoiceConsolidationType::OrSymbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            # Indicates the desired behavior of consolidated invoices generated by the parent
+            # in a customer hierarchy **CONCATENATE**: Statements on the invoices of child
+            # customers will be appended to the consolidated invoice **NONE**: Do not generate
+            # consolidated invoices
+            module InvoiceConsolidationType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::ParentBehavior::InvoiceConsolidationType
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              CONCATENATE =
+                T.let(
+                  :CONCATENATE,
+                  MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::ParentBehavior::InvoiceConsolidationType::TaggedSymbol
+                )
+              NONE =
+                T.let(
+                  :NONE,
+                  MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::ParentBehavior::InvoiceConsolidationType::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::ParentBehavior::InvoiceConsolidationType::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+          end
+
+          # Indicates whether the parent should pay for the child's invoice charges
+          module Payer
+            extend MetronomeSDK::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::Payer
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            SELF =
+              T.let(
+                :SELF,
+                MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::Payer::TaggedSymbol
+              )
+            PARENT =
+              T.let(
+                :PARENT,
+                MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::Payer::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::Payer::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Indicates the behavior of the child's invoice statements on the parent's
+          # invoices **CONSOLIDATE**: Child's invoice statements will be added to parent's
+          # consolidated invoices **SEPARATE**: Child's invoice statements will appear not
+          # appear on parent's consolidated invoices
+          module UsageStatementBehavior
+            extend MetronomeSDK::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::UsageStatementBehavior
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            CONSOLIDATE =
+              T.let(
+                :CONSOLIDATE,
+                MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::UsageStatementBehavior::TaggedSymbol
+              )
+            SEPARATE =
+              T.let(
+                :SEPARATE,
+                MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::UsageStatementBehavior::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  MetronomeSDK::V1::ContractCreateParams::HierarchyConfiguration::UsageStatementBehavior::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
             end
           end
         end

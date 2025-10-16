@@ -16,7 +16,7 @@ module MetronomeSDK
               )
             end
 
-          # The Metronome ID of the alert
+          # The Metronome ID of the threshold notification
           sig { returns(String) }
           attr_accessor :alert_id
 
@@ -32,7 +32,7 @@ module MetronomeSDK
             ).returns(T.attached_class)
           end
           def self.new(
-            # The Metronome ID of the alert
+            # The Metronome ID of the threshold notification
             alert_id:,
             # The Metronome ID of the customer
             customer_id:,

@@ -8,6 +8,17 @@ module MetronomeSDK
           T.any(MetronomeSDK::Subscription, MetronomeSDK::Internal::AnyHash)
         end
 
+      # Previous, current, and next billing periods for the subscription.
+      sig { returns(MetronomeSDK::Subscription::BillingPeriods) }
+      attr_reader :billing_periods
+
+      sig do
+        params(
+          billing_periods: MetronomeSDK::Subscription::BillingPeriods::OrHash
+        ).void
+      end
+      attr_writer :billing_periods
+
       sig do
         returns(MetronomeSDK::Subscription::CollectionSchedule::TaggedSymbol)
       end
@@ -90,6 +101,7 @@ module MetronomeSDK
 
       sig do
         params(
+          billing_periods: MetronomeSDK::Subscription::BillingPeriods::OrHash,
           collection_schedule:
             MetronomeSDK::Subscription::CollectionSchedule::OrSymbol,
           proration: MetronomeSDK::Subscription::Proration::OrHash,
@@ -109,6 +121,8 @@ module MetronomeSDK
         ).returns(T.attached_class)
       end
       def self.new(
+        # Previous, current, and next billing periods for the subscription.
+        billing_periods:,
         collection_schedule:,
         proration:,
         # Determines how the subscription's quantity is controlled. Defaults to
@@ -134,6 +148,7 @@ module MetronomeSDK
       sig do
         override.returns(
           {
+            billing_periods: MetronomeSDK::Subscription::BillingPeriods,
             collection_schedule:
               MetronomeSDK::Subscription::CollectionSchedule::TaggedSymbol,
             proration: MetronomeSDK::Subscription::Proration,
@@ -153,6 +168,166 @@ module MetronomeSDK
         )
       end
       def to_hash
+      end
+
+      class BillingPeriods < MetronomeSDK::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              MetronomeSDK::Subscription::BillingPeriods,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
+
+        sig do
+          returns(
+            T.nilable(MetronomeSDK::Subscription::BillingPeriods::Current)
+          )
+        end
+        attr_reader :current
+
+        sig do
+          params(
+            current: MetronomeSDK::Subscription::BillingPeriods::Current::OrHash
+          ).void
+        end
+        attr_writer :current
+
+        sig do
+          returns(T.nilable(MetronomeSDK::Subscription::BillingPeriods::Next))
+        end
+        attr_reader :next_
+
+        sig do
+          params(
+            next_: MetronomeSDK::Subscription::BillingPeriods::Next::OrHash
+          ).void
+        end
+        attr_writer :next_
+
+        sig do
+          returns(
+            T.nilable(MetronomeSDK::Subscription::BillingPeriods::Previous)
+          )
+        end
+        attr_reader :previous
+
+        sig do
+          params(
+            previous:
+              MetronomeSDK::Subscription::BillingPeriods::Previous::OrHash
+          ).void
+        end
+        attr_writer :previous
+
+        # Previous, current, and next billing periods for the subscription.
+        sig do
+          params(
+            current:
+              MetronomeSDK::Subscription::BillingPeriods::Current::OrHash,
+            next_: MetronomeSDK::Subscription::BillingPeriods::Next::OrHash,
+            previous:
+              MetronomeSDK::Subscription::BillingPeriods::Previous::OrHash
+          ).returns(T.attached_class)
+        end
+        def self.new(current: nil, next_: nil, previous: nil)
+        end
+
+        sig do
+          override.returns(
+            {
+              current: MetronomeSDK::Subscription::BillingPeriods::Current,
+              next_: MetronomeSDK::Subscription::BillingPeriods::Next,
+              previous: MetronomeSDK::Subscription::BillingPeriods::Previous
+            }
+          )
+        end
+        def to_hash
+        end
+
+        class Current < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::Subscription::BillingPeriods::Current,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
+          sig { returns(Time) }
+          attr_accessor :ending_before
+
+          sig { returns(Time) }
+          attr_accessor :starting_at
+
+          sig do
+            params(ending_before: Time, starting_at: Time).returns(
+              T.attached_class
+            )
+          end
+          def self.new(ending_before:, starting_at:)
+          end
+
+          sig { override.returns({ ending_before: Time, starting_at: Time }) }
+          def to_hash
+          end
+        end
+
+        class Next < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::Subscription::BillingPeriods::Next,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
+          sig { returns(Time) }
+          attr_accessor :ending_before
+
+          sig { returns(Time) }
+          attr_accessor :starting_at
+
+          sig do
+            params(ending_before: Time, starting_at: Time).returns(
+              T.attached_class
+            )
+          end
+          def self.new(ending_before:, starting_at:)
+          end
+
+          sig { override.returns({ ending_before: Time, starting_at: Time }) }
+          def to_hash
+          end
+        end
+
+        class Previous < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::Subscription::BillingPeriods::Previous,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
+          sig { returns(Time) }
+          attr_accessor :ending_before
+
+          sig { returns(Time) }
+          attr_accessor :starting_at
+
+          sig do
+            params(ending_before: Time, starting_at: Time).returns(
+              T.attached_class
+            )
+          end
+          def self.new(ending_before:, starting_at:)
+          end
+
+          sig { override.returns({ ending_before: Time, starting_at: Time }) }
+          def to_hash
+          end
+        end
       end
 
       module CollectionSchedule

@@ -53,14 +53,6 @@ module MetronomeSDK
           #   @return [String]
           required :event_type, String
 
-          # @!attribute customer_id
-          #   This has no effect for preview events, but may be set for consistency with Event
-          #   objects. They will be processed even if they do not match the customer's ID or
-          #   ingest aliases.
-          #
-          #   @return [String, nil]
-          optional :customer_id, String
-
           # @!attribute properties
           #
           #   @return [Hash{Symbol=>Object}, nil]
@@ -73,26 +65,24 @@ module MetronomeSDK
           optional :timestamp, String
 
           # @!attribute transaction_id
-          #   This has no effect for preview events, but may be set for consistency with Event
-          #   objects. Duplicate transaction_ids are NOT filtered out, even within the same
-          #   request.
+          #   Optional unique identifier for event deduplication. When provided, preview
+          #   events are automatically deduplicated against historical events from the past 34
+          #   days. Duplicate transaction IDs within the same request will return an error.
           #
           #   @return [String, nil]
           optional :transaction_id, String
 
-          # @!method initialize(event_type:, customer_id: nil, properties: nil, timestamp: nil, transaction_id: nil)
+          # @!method initialize(event_type:, properties: nil, timestamp: nil, transaction_id: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V1::CustomerPreviewEventsParams::Event} for more details.
           #
           #   @param event_type [String]
           #
-          #   @param customer_id [String] This has no effect for preview events, but may be set for consistency with Event
-          #
           #   @param properties [Hash{Symbol=>Object}]
           #
           #   @param timestamp [String] RFC 3339 formatted. If not provided, the current time will be used.
           #
-          #   @param transaction_id [String] This has no effect for preview events, but may be set for consistency with Event
+          #   @param transaction_id [String] Optional unique identifier for event deduplication. When provided, preview event
         end
 
         # If set to "replace", the preview will be generated as if those were the only

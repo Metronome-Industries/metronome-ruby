@@ -24,6 +24,7 @@ module MetronomeSDK
         def edit: (
           contract_id: String,
           customer_id: String,
+          ?add_billing_provider_configuration_update: MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate,
           ?add_commits: ::Array[MetronomeSDK::V2::ContractEditParams::AddCommit],
           ?add_credits: ::Array[MetronomeSDK::V2::ContractEditParams::AddCredit],
           ?add_discounts: ::Array[MetronomeSDK::V2::ContractEditParams::AddDiscount],
@@ -61,6 +62,7 @@ module MetronomeSDK
           ?access_schedule: MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule,
           ?applicable_product_ids: ::Array[String]?,
           ?applicable_product_tags: ::Array[String]?,
+          ?hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,
           ?invoice_contract_id: String,
           ?invoice_schedule: MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule,
           ?priority: Float?,
@@ -76,6 +78,7 @@ module MetronomeSDK
           ?access_schedule: MetronomeSDK::V2::ContractEditCreditParams::AccessSchedule,
           ?applicable_product_ids: ::Array[String]?,
           ?applicable_product_tags: ::Array[String]?,
+          ?hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,
           ?priority: Float?,
           ?product_id: String,
           ?rate_type: MetronomeSDK::Models::V2::ContractEditCreditParams::rate_type,

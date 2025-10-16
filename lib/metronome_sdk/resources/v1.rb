@@ -42,6 +42,9 @@ module MetronomeSDK
       # @return [MetronomeSDK::Resources::V1::Contracts]
       attr_reader :contracts
 
+      # @return [MetronomeSDK::Resources::V1::Payments]
+      attr_reader :payments
+
       # @api private
       #
       # @param client [MetronomeSDK::Client]
@@ -60,6 +63,7 @@ module MetronomeSDK
         @services = MetronomeSDK::Resources::V1::Services.new(client: client)
         @invoices = MetronomeSDK::Resources::V1::Invoices.new(client: client)
         @contracts = MetronomeSDK::Resources::V1::Contracts.new(client: client)
+        @payments = MetronomeSDK::Resources::V1::Payments.new(client: client)
       end
     end
   end

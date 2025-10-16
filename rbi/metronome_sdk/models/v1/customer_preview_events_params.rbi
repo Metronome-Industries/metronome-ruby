@@ -104,15 +104,6 @@ module MetronomeSDK
           sig { returns(String) }
           attr_accessor :event_type
 
-          # This has no effect for preview events, but may be set for consistency with Event
-          # objects. They will be processed even if they do not match the customer's ID or
-          # ingest aliases.
-          sig { returns(T.nilable(String)) }
-          attr_reader :customer_id
-
-          sig { params(customer_id: String).void }
-          attr_writer :customer_id
-
           sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
           attr_reader :properties
 
@@ -126,9 +117,9 @@ module MetronomeSDK
           sig { params(timestamp: String).void }
           attr_writer :timestamp
 
-          # This has no effect for preview events, but may be set for consistency with Event
-          # objects. Duplicate transaction_ids are NOT filtered out, even within the same
-          # request.
+          # Optional unique identifier for event deduplication. When provided, preview
+          # events are automatically deduplicated against historical events from the past 34
+          # days. Duplicate transaction IDs within the same request will return an error.
           sig { returns(T.nilable(String)) }
           attr_reader :transaction_id
 
@@ -138,7 +129,6 @@ module MetronomeSDK
           sig do
             params(
               event_type: String,
-              customer_id: String,
               properties: T::Hash[Symbol, T.anything],
               timestamp: String,
               transaction_id: String
@@ -146,16 +136,12 @@ module MetronomeSDK
           end
           def self.new(
             event_type:,
-            # This has no effect for preview events, but may be set for consistency with Event
-            # objects. They will be processed even if they do not match the customer's ID or
-            # ingest aliases.
-            customer_id: nil,
             properties: nil,
             # RFC 3339 formatted. If not provided, the current time will be used.
             timestamp: nil,
-            # This has no effect for preview events, but may be set for consistency with Event
-            # objects. Duplicate transaction_ids are NOT filtered out, even within the same
-            # request.
+            # Optional unique identifier for event deduplication. When provided, preview
+            # events are automatically deduplicated against historical events from the past 34
+            # days. Duplicate transaction IDs within the same request will return an error.
             transaction_id: nil
           )
           end
@@ -164,7 +150,6 @@ module MetronomeSDK
             override.returns(
               {
                 event_type: String,
-                customer_id: String,
                 properties: T::Hash[Symbol, T.anything],
                 timestamp: String,
                 transaction_id: String

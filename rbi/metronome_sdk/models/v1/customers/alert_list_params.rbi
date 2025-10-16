@@ -27,8 +27,8 @@ module MetronomeSDK
           sig { params(next_page: String).void }
           attr_writer :next_page
 
-          # Optionally filter by alert status. If absent, only enabled alerts will be
-          # returned.
+          # Optionally filter by threshold notification status. If absent, only enabled
+          # notifications will be returned.
           sig do
             returns(
               T.nilable(
@@ -66,8 +66,8 @@ module MetronomeSDK
             customer_id:,
             # Cursor that indicates where the next page of results should start.
             next_page: nil,
-            # Optionally filter by alert status. If absent, only enabled alerts will be
-            # returned.
+            # Optionally filter by threshold notification status. If absent, only enabled
+            # notifications will be returned.
             alert_statuses: nil,
             request_options: {}
           )

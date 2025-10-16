@@ -9,41 +9,43 @@ module MetronomeSDK
         include MetronomeSDK::Internal::Type::RequestParameters
 
         # @!attribute alert_type
-        #   Type of the alert
+        #   Type of the threshold notification
         #
         #   @return [Symbol, MetronomeSDK::Models::V1::AlertCreateParams::AlertType]
         required :alert_type, enum: -> { MetronomeSDK::V1::AlertCreateParams::AlertType }
 
         # @!attribute name
-        #   Name of the alert
+        #   Name of the threshold notification
         #
         #   @return [String]
         required :name, String
 
         # @!attribute threshold
-        #   Threshold value of the alert policy. Depending upon the alert type, this number
-        #   may represent a financial amount, the days remaining, or a percentage reached.
+        #   Threshold value of the notification policy. Depending upon the notification
+        #   type, this number may represent a financial amount, the days remaining, or a
+        #   percentage reached.
         #
         #   @return [Float]
         required :threshold, Float
 
         # @!attribute billable_metric_id
-        #   For alerts of type `usage_threshold_reached`, specifies which billable metric to
-        #   track the usage for.
+        #   For threshold notifications of type `usage_threshold_reached`, specifies which
+        #   billable metric to track the usage for.
         #
         #   @return [String, nil]
         optional :billable_metric_id, String
 
         # @!attribute credit_grant_type_filters
-        #   An array of strings, representing a way to filter the credit grant this alert
-        #   applies to, by looking at the credit_grant_type field on the credit grant. This
-        #   field is only defined for CreditPercentage and CreditBalance alerts
+        #   An array of strings, representing a way to filter the credit grant this
+        #   threshold notification applies to, by looking at the credit_grant_type field on
+        #   the credit grant. This field is only defined for CreditPercentage and
+        #   CreditBalance notifications
         #
         #   @return [Array<String>, nil]
         optional :credit_grant_type_filters, MetronomeSDK::Internal::Type::ArrayOf[String]
 
         # @!attribute credit_type_id
-        #   ID of the credit's currency, defaults to USD. If the specific alert type
+        #   ID of the credit's currency, defaults to USD. If the specific notification type
         #   requires a pricing unit/currency, find the ID in the
         #   [Metronome app](https://app.metronome.com/offering/pricing-units).
         #
@@ -51,46 +53,46 @@ module MetronomeSDK
         optional :credit_type_id, String
 
         # @!attribute custom_field_filters
-        #   A list of custom field filters for alert types that support advanced filtering.
-        #   Only present for contract invoices.
+        #   A list of custom field filters for threshold notification types that support
+        #   advanced filtering. Only present for contract invoices.
         #
         #   @return [Array<MetronomeSDK::Models::V1::AlertCreateParams::CustomFieldFilter>, nil]
         optional :custom_field_filters,
                  -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::AlertCreateParams::CustomFieldFilter] }
 
         # @!attribute customer_id
-        #   If provided, will create this alert for this specific customer. To create an
-        #   alert for all customers, do not specify a `customer_id`.
+        #   If provided, will create this threshold notification for this specific customer.
+        #   To create a notification for all customers, do not specify a `customer_id`.
         #
         #   @return [String, nil]
         optional :customer_id, String
 
         # @!attribute evaluate_on_create
-        #   If true, the alert will evaluate immediately on customers that already meet the
-        #   alert threshold. If false, it will only evaluate on future customers that
-        #   trigger the alert threshold. Defaults to true.
+        #   If true, the threshold notification will evaluate immediately on customers that
+        #   already meet the notification threshold. If false, it will only evaluate on
+        #   future customers that trigger the threshold. Defaults to true.
         #
         #   @return [Boolean, nil]
         optional :evaluate_on_create, MetronomeSDK::Internal::Type::Boolean
 
         # @!attribute group_values
-        #   Only present for `spend_threshold_reached` alerts. Scope alert to a specific
-        #   group key on individual line items.
+        #   Only present for `spend_threshold_reached` notifications. Scope notification to
+        #   a specific group key on individual line items.
         #
         #   @return [Array<MetronomeSDK::Models::V1::AlertCreateParams::GroupValue>, nil]
         optional :group_values,
                  -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::AlertCreateParams::GroupValue] }
 
         # @!attribute invoice_types_filter
-        #   Only supported for invoice_total_reached alerts. A list of invoice types to
-        #   evaluate.
+        #   Only supported for invoice_total_reached threshold notifications. A list of
+        #   invoice types to evaluate.
         #
         #   @return [Array<String>, nil]
         optional :invoice_types_filter, MetronomeSDK::Internal::Type::ArrayOf[String]
 
         # @!attribute plan_id
-        #   If provided, will create this alert for this specific plan. To create an alert
-        #   for all customers, do not specify a `plan_id`.
+        #   If provided, will create this threshold notification for this specific plan. To
+        #   create a notification for all customers, do not specify a `plan_id`.
         #
         #   @return [String, nil]
         optional :plan_id, String
@@ -107,35 +109,35 @@ module MetronomeSDK
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::V1::AlertCreateParams} for more details.
         #
-        #   @param alert_type [Symbol, MetronomeSDK::Models::V1::AlertCreateParams::AlertType] Type of the alert
+        #   @param alert_type [Symbol, MetronomeSDK::Models::V1::AlertCreateParams::AlertType] Type of the threshold notification
         #
-        #   @param name [String] Name of the alert
+        #   @param name [String] Name of the threshold notification
         #
-        #   @param threshold [Float] Threshold value of the alert policy. Depending upon the alert type, this number
+        #   @param threshold [Float] Threshold value of the notification policy. Depending upon the notification typ
         #
-        #   @param billable_metric_id [String] For alerts of type `usage_threshold_reached`, specifies which billable metric to
+        #   @param billable_metric_id [String] For threshold notifications of type `usage_threshold_reached`, specifies which b
         #
-        #   @param credit_grant_type_filters [Array<String>] An array of strings, representing a way to filter the credit grant this alert ap
+        #   @param credit_grant_type_filters [Array<String>] An array of strings, representing a way to filter the credit grant this threshol
         #
-        #   @param credit_type_id [String] ID of the credit's currency, defaults to USD. If the specific alert type require
+        #   @param credit_type_id [String] ID of the credit's currency, defaults to USD. If the specific notification type
         #
-        #   @param custom_field_filters [Array<MetronomeSDK::Models::V1::AlertCreateParams::CustomFieldFilter>] A list of custom field filters for alert types that support advanced filtering.
+        #   @param custom_field_filters [Array<MetronomeSDK::Models::V1::AlertCreateParams::CustomFieldFilter>] A list of custom field filters for threshold notification types that support adv
         #
-        #   @param customer_id [String] If provided, will create this alert for this specific customer. To create an ale
+        #   @param customer_id [String] If provided, will create this threshold notification for this specific customer.
         #
-        #   @param evaluate_on_create [Boolean] If true, the alert will evaluate immediately on customers that already meet the
+        #   @param evaluate_on_create [Boolean] If true, the threshold notification will evaluate immediately on customers that
         #
-        #   @param group_values [Array<MetronomeSDK::Models::V1::AlertCreateParams::GroupValue>] Only present for `spend_threshold_reached` alerts. Scope alert to a specific gro
+        #   @param group_values [Array<MetronomeSDK::Models::V1::AlertCreateParams::GroupValue>] Only present for `spend_threshold_reached` notifications. Scope notification to
         #
-        #   @param invoice_types_filter [Array<String>] Only supported for invoice_total_reached alerts. A list of invoice types to eval
+        #   @param invoice_types_filter [Array<String>] Only supported for invoice_total_reached threshold notifications. A list of invo
         #
-        #   @param plan_id [String] If provided, will create this alert for this specific plan. To create an alert f
+        #   @param plan_id [String] If provided, will create this threshold notification for this specific plan. To
         #
         #   @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a record is made wit
         #
         #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
 
-        # Type of the alert
+        # Type of the threshold notification
         module AlertType
           extend MetronomeSDK::Internal::Type::Enum
 

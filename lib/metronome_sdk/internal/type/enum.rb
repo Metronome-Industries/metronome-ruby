@@ -15,6 +15,31 @@ module MetronomeSDK
       #
       # We can therefore convert string values to Symbols, but can't convert other
       # values safely.
+      #
+      # @example
+      #   # `payment_status` is a `MetronomeSDK::V1::PaymentStatus`
+      #   case payment_status
+      #   when MetronomeSDK::V1::PaymentStatus::PENDING
+      #     # ...
+      #   when MetronomeSDK::V1::PaymentStatus::REQUIRES_INTERVENTION
+      #     # ...
+      #   when MetronomeSDK::V1::PaymentStatus::PAID
+      #     # ...
+      #   else
+      #     puts(payment_status)
+      #   end
+      #
+      # @example
+      #   case payment_status
+      #   in :pending
+      #     # ...
+      #   in :requires_intervention
+      #     # ...
+      #   in :paid
+      #     # ...
+      #   else
+      #     puts(payment_status)
+      #   end
       module Enum
         include MetronomeSDK::Internal::Type::Converter
         include MetronomeSDK::Internal::Util::SorbetRuntimeSupport

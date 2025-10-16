@@ -1,0 +1,32 @@
+module MetronomeSDK
+  module Models
+    module V1
+      module Customers
+        type invoice_retrieve_pdf_params =
+          { customer_id: String, invoice_id: String }
+          & MetronomeSDK::Internal::Type::request_parameters
+
+        class InvoiceRetrievePdfParams < MetronomeSDK::Internal::Type::BaseModel
+          extend MetronomeSDK::Internal::Type::RequestParameters::Converter
+          include MetronomeSDK::Internal::Type::RequestParameters
+
+          attr_accessor customer_id: String
+
+          attr_accessor invoice_id: String
+
+          def initialize: (
+            customer_id: String,
+            invoice_id: String,
+            ?request_options: MetronomeSDK::request_opts
+          ) -> void
+
+          def to_hash: -> {
+            customer_id: String,
+            invoice_id: String,
+            request_options: MetronomeSDK::RequestOptions
+          }
+        end
+      end
+    end
+  end
+end

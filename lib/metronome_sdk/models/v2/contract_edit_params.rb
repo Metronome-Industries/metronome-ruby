@@ -20,6 +20,15 @@ module MetronomeSDK
         #   @return [String]
         required :customer_id, String
 
+        # @!attribute add_billing_provider_configuration_update
+        #   Update the billing provider configuration on the contract. Currently only
+        #   supports adding a billing provider configuration to a contract that does not
+        #   already have one.
+        #
+        #   @return [MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate, nil]
+        optional :add_billing_provider_configuration_update,
+                 -> { MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate }
+
         # @!attribute add_commits
         #
         #   @return [Array<MetronomeSDK::Models::V2::ContractEditParams::AddCommit>, nil]
@@ -206,13 +215,15 @@ module MetronomeSDK
         optional :update_subscriptions,
                  -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V2::ContractEditParams::UpdateSubscription] }
 
-        # @!method initialize(contract_id:, customer_id:, add_commits: nil, add_credits: nil, add_discounts: nil, add_overrides: nil, add_prepaid_balance_threshold_configuration: nil, add_professional_services: nil, add_recurring_commits: nil, add_recurring_credits: nil, add_reseller_royalties: nil, add_scheduled_charges: nil, add_spend_threshold_configuration: nil, add_subscriptions: nil, allow_contract_ending_before_finalized_invoice: nil, archive_commits: nil, archive_credits: nil, archive_scheduled_charges: nil, remove_overrides: nil, uniqueness_key: nil, update_commits: nil, update_contract_end_date: nil, update_contract_name: nil, update_credits: nil, update_prepaid_balance_threshold_configuration: nil, update_recurring_commits: nil, update_recurring_credits: nil, update_scheduled_charges: nil, update_spend_threshold_configuration: nil, update_subscriptions: nil, request_options: {})
+        # @!method initialize(contract_id:, customer_id:, add_billing_provider_configuration_update: nil, add_commits: nil, add_credits: nil, add_discounts: nil, add_overrides: nil, add_prepaid_balance_threshold_configuration: nil, add_professional_services: nil, add_recurring_commits: nil, add_recurring_credits: nil, add_reseller_royalties: nil, add_scheduled_charges: nil, add_spend_threshold_configuration: nil, add_subscriptions: nil, allow_contract_ending_before_finalized_invoice: nil, archive_commits: nil, archive_credits: nil, archive_scheduled_charges: nil, remove_overrides: nil, uniqueness_key: nil, update_commits: nil, update_contract_end_date: nil, update_contract_name: nil, update_credits: nil, update_prepaid_balance_threshold_configuration: nil, update_recurring_commits: nil, update_recurring_credits: nil, update_scheduled_charges: nil, update_spend_threshold_configuration: nil, update_subscriptions: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::V2::ContractEditParams} for more details.
         #
         #   @param contract_id [String] ID of the contract being edited
         #
         #   @param customer_id [String] ID of the customer whose contract is being edited
+        #
+        #   @param add_billing_provider_configuration_update [MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate] Update the billing provider configuration on the contract. Currently only suppor
         #
         #   @param add_commits [Array<MetronomeSDK::Models::V2::ContractEditParams::AddCommit>]
         #
@@ -271,6 +282,118 @@ module MetronomeSDK
         #   @param update_subscriptions [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdateSubscription>] Optional list of subscriptions to update.
         #
         #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
+
+        class AddBillingProviderConfigurationUpdate < MetronomeSDK::Internal::Type::BaseModel
+          # @!attribute billing_provider_configuration
+          #
+          #   @return [MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration]
+          required :billing_provider_configuration,
+                   -> { MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration }
+
+          # @!attribute schedule
+          #   Indicates when the billing provider will be active on the contract. Any charges
+          #   accrued during the schedule will be billed to the indicated billing provider.
+          #
+          #   @return [MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::Schedule]
+          required :schedule,
+                   -> { MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::Schedule }
+
+          # @!method initialize(billing_provider_configuration:, schedule:)
+          #   Some parameter documentations has been truncated, see
+          #   {MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate}
+          #   for more details.
+          #
+          #   Update the billing provider configuration on the contract. Currently only
+          #   supports adding a billing provider configuration to a contract that does not
+          #   already have one.
+          #
+          #   @param billing_provider_configuration [MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration]
+          #
+          #   @param schedule [MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::Schedule] Indicates when the billing provider will be active on the contract. Any charges
+
+          # @see MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate#billing_provider_configuration
+          class BillingProviderConfiguration < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute billing_provider
+            #
+            #   @return [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::BillingProvider, nil]
+            optional :billing_provider,
+                     enum: -> { MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::BillingProvider }
+
+            # @!attribute billing_provider_configuration_id
+            #
+            #   @return [String, nil]
+            optional :billing_provider_configuration_id, String
+
+            # @!attribute delivery_method
+            #
+            #   @return [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::DeliveryMethod, nil]
+            optional :delivery_method,
+                     enum: -> { MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::DeliveryMethod }
+
+            # @!method initialize(billing_provider: nil, billing_provider_configuration_id: nil, delivery_method: nil)
+            #   @param billing_provider [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::BillingProvider]
+            #   @param billing_provider_configuration_id [String]
+            #   @param delivery_method [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::DeliveryMethod]
+
+            # @see MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration#billing_provider
+            module BillingProvider
+              extend MetronomeSDK::Internal::Type::Enum
+
+              AWS_MARKETPLACE = :aws_marketplace
+              STRIPE = :stripe
+              NETSUITE = :netsuite
+              CUSTOM = :custom
+              AZURE_MARKETPLACE = :azure_marketplace
+              QUICKBOOKS_ONLINE = :quickbooks_online
+              WORKDAY = :workday
+              GCP_MARKETPLACE = :gcp_marketplace
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # @see MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration#delivery_method
+            module DeliveryMethod
+              extend MetronomeSDK::Internal::Type::Enum
+
+              DIRECT_TO_BILLING_PROVIDER = :direct_to_billing_provider
+              AWS_SQS = :aws_sqs
+              TACKLE = :tackle
+              AWS_SNS = :aws_sns
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
+
+          # @see MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate#schedule
+          class Schedule < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute effective_at
+            #   When the billing provider update will take effect.
+            #
+            #   @return [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::Schedule::EffectiveAt]
+            required :effective_at,
+                     enum: -> { MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::Schedule::EffectiveAt }
+
+            # @!method initialize(effective_at:)
+            #   Indicates when the billing provider will be active on the contract. Any charges
+            #   accrued during the schedule will be billed to the indicated billing provider.
+            #
+            #   @param effective_at [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::Schedule::EffectiveAt] When the billing provider update will take effect.
+
+            # When the billing provider update will take effect.
+            #
+            # @see MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::Schedule#effective_at
+            module EffectiveAt
+              extend MetronomeSDK::Internal::Type::Enum
+
+              START_OF_CURRENT_PERIOD = :START_OF_CURRENT_PERIOD
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
+        end
 
         class AddCommit < MetronomeSDK::Internal::Type::BaseModel
           # @!attribute product_id
@@ -850,6 +973,7 @@ module MetronomeSDK
               NONE = :NONE
               STRIPE = :STRIPE
               ANROK = :ANROK
+              AVALARA = :AVALARA
               PRECALCULATED = :PRECALCULATED
 
               # @!method self.values
@@ -3607,11 +3731,27 @@ module MetronomeSDK
           optional :invoice_amount,
                    -> { MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::InvoiceAmount }
 
-          # @!method initialize(recurring_commit_id:, access_amount: nil, ending_before: nil, invoice_amount: nil)
+          # @!attribute rate_type
+          #   If provided, updates the recurring commit to use the specified rate type when
+          #   generating future commits.
+          #
+          #   @return [Symbol, MetronomeSDK::Models::V2::ContractEditParams::UpdateRecurringCommit::RateType, nil]
+          optional :rate_type, enum: -> { MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit::RateType }
+
+          # @!method initialize(recurring_commit_id:, access_amount: nil, ending_before: nil, invoice_amount: nil, rate_type: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {MetronomeSDK::Models::V2::ContractEditParams::UpdateRecurringCommit} for more
+          #   details.
+          #
           #   @param recurring_commit_id [String]
+          #
           #   @param access_amount [MetronomeSDK::Models::V2::ContractEditParams::UpdateRecurringCommit::AccessAmount]
+          #
           #   @param ending_before [Time, nil]
+          #
           #   @param invoice_amount [MetronomeSDK::Models::V2::ContractEditParams::UpdateRecurringCommit::InvoiceAmount]
+          #
+          #   @param rate_type [Symbol, MetronomeSDK::Models::V2::ContractEditParams::UpdateRecurringCommit::RateType] If provided, updates the recurring commit to use the specified rate type when ge
 
           # @see MetronomeSDK::Models::V2::ContractEditParams::UpdateRecurringCommit#access_amount
           class AccessAmount < MetronomeSDK::Internal::Type::BaseModel
@@ -3646,6 +3786,20 @@ module MetronomeSDK
             #   @param quantity [Float]
             #   @param unit_price [Float]
           end
+
+          # If provided, updates the recurring commit to use the specified rate type when
+          # generating future commits.
+          #
+          # @see MetronomeSDK::Models::V2::ContractEditParams::UpdateRecurringCommit#rate_type
+          module RateType
+            extend MetronomeSDK::Internal::Type::Enum
+
+            LIST_RATE = :LIST_RATE
+            COMMIT_RATE = :COMMIT_RATE
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
         end
 
         class UpdateRecurringCredit < MetronomeSDK::Internal::Type::BaseModel
@@ -3664,10 +3818,25 @@ module MetronomeSDK
           #   @return [Time, nil]
           optional :ending_before, Time, nil?: true
 
-          # @!method initialize(recurring_credit_id:, access_amount: nil, ending_before: nil)
+          # @!attribute rate_type
+          #   If provided, updates the recurring credit to use the specified rate type when
+          #   generating future credits.
+          #
+          #   @return [Symbol, MetronomeSDK::Models::V2::ContractEditParams::UpdateRecurringCredit::RateType, nil]
+          optional :rate_type, enum: -> { MetronomeSDK::V2::ContractEditParams::UpdateRecurringCredit::RateType }
+
+          # @!method initialize(recurring_credit_id:, access_amount: nil, ending_before: nil, rate_type: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {MetronomeSDK::Models::V2::ContractEditParams::UpdateRecurringCredit} for more
+          #   details.
+          #
           #   @param recurring_credit_id [String]
+          #
           #   @param access_amount [MetronomeSDK::Models::V2::ContractEditParams::UpdateRecurringCredit::AccessAmount]
+          #
           #   @param ending_before [Time, nil]
+          #
+          #   @param rate_type [Symbol, MetronomeSDK::Models::V2::ContractEditParams::UpdateRecurringCredit::RateType] If provided, updates the recurring credit to use the specified rate type when ge
 
           # @see MetronomeSDK::Models::V2::ContractEditParams::UpdateRecurringCredit#access_amount
           class AccessAmount < MetronomeSDK::Internal::Type::BaseModel
@@ -3684,6 +3853,20 @@ module MetronomeSDK
             # @!method initialize(quantity: nil, unit_price: nil)
             #   @param quantity [Float]
             #   @param unit_price [Float]
+          end
+
+          # If provided, updates the recurring credit to use the specified rate type when
+          # generating future credits.
+          #
+          # @see MetronomeSDK::Models::V2::ContractEditParams::UpdateRecurringCredit#rate_type
+          module RateType
+            extend MetronomeSDK::Internal::Type::Enum
+
+            LIST_RATE = :LIST_RATE
+            COMMIT_RATE = :COMMIT_RATE
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 

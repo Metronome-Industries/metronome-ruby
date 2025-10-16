@@ -1,0 +1,30 @@
+module MetronomeSDK
+  module Resources
+    class V1
+      class Payments
+        def list: (
+          customer_id: String,
+          invoice_id: String,
+          ?limit: Integer,
+          ?next_page: String,
+          ?statuses: ::Array[MetronomeSDK::Models::V1::payment_status],
+          ?request_options: MetronomeSDK::request_opts
+        ) -> MetronomeSDK::Internal::BodyCursorPage[MetronomeSDK::V1::Payment]
+
+        def attempt: (
+          customer_id: String,
+          invoice_id: String,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> MetronomeSDK::Models::V1::PaymentAttemptResponse
+
+        def cancel: (
+          customer_id: String,
+          invoice_id: String,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> MetronomeSDK::Models::V1::PaymentCancelResponse
+
+        def initialize: (client: MetronomeSDK::Client) -> void
+      end
+    end
+  end
+end
