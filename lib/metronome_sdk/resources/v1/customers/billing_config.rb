@@ -23,7 +23,7 @@ module MetronomeSDK
           #
           # @param aws_region [Symbol, MetronomeSDK::Models::V1::Customers::BillingConfigCreateParams::AwsRegion] Body param:
           #
-          # @param stripe_collection_method [Symbol, MetronomeSDK::Models::V1::Customers::BillingConfigCreateParams::StripeCollectionMethod] Body param:
+          # @param stripe_collection_method [Symbol, MetronomeSDK::Models::V1::Customers::BillingConfigCreateParams::StripeCollectionMethod] Body param: The collection method for the customer's invoices.
           #
           # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
           #

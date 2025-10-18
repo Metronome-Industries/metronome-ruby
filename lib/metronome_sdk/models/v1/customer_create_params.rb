@@ -91,12 +91,18 @@ module MetronomeSDK
           optional :aws_region, enum: -> { MetronomeSDK::V1::CustomerCreateParams::BillingConfig::AwsRegion }
 
           # @!attribute stripe_collection_method
+          #   The collection method for the customer's invoices. NOTE:
+          #   `auto_charge_payment_intent` and `manually_charge_payment_intent` are in beta.
           #
           #   @return [Symbol, MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig::StripeCollectionMethod, nil]
           optional :stripe_collection_method,
                    enum: -> { MetronomeSDK::V1::CustomerCreateParams::BillingConfig::StripeCollectionMethod }
 
           # @!method initialize(billing_provider_customer_id:, billing_provider_type:, aws_is_subscription_product: nil, aws_product_code: nil, aws_region: nil, stripe_collection_method: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig} for more
+          #   details.
+          #
           #   @param billing_provider_customer_id [String]
           #
           #   @param billing_provider_type [Symbol, MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig::BillingProviderType]
@@ -107,7 +113,7 @@ module MetronomeSDK
           #
           #   @param aws_region [Symbol, MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig::AwsRegion]
           #
-          #   @param stripe_collection_method [Symbol, MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig::StripeCollectionMethod]
+          #   @param stripe_collection_method [Symbol, MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig::StripeCollectionMethod] The collection method for the customer's invoices.
 
           # @see MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig#billing_provider_type
           module BillingProviderType
@@ -160,6 +166,9 @@ module MetronomeSDK
             #   @return [Array<Symbol>]
           end
 
+          # The collection method for the customer's invoices. NOTE:
+          # `auto_charge_payment_intent` and `manually_charge_payment_intent` are in beta.
+          #
           # @see MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig#stripe_collection_method
           module StripeCollectionMethod
             extend MetronomeSDK::Internal::Type::Enum
