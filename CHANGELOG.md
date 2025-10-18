@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.1.0 (2025-10-18)
+
+Full Changelog: [v2.0.0...v2.1.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v2.0.0...v2.1.0)
+
+### Features
+
+* add beta tag to stripe auto charge items ([652727e](https://github.com/Metronome-Industries/metronome-ruby/commit/652727e1f6df7269a3b6db00f401460aab32ce6d))
+
 ## 2.0.0 (2025-10-16)
 
 Full Changelog: [v1.0.0...v2.0.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v1.0.0...v2.0.0)
