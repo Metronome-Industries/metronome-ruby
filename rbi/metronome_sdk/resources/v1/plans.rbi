@@ -4,7 +4,8 @@ module MetronomeSDK
   module Resources
     class V1
       class Plans
-        # List all available plans.
+        # List all available plans. This is a Plans (deprecated) endpoint. New clients
+        # should implement using Contracts.
         sig do
           params(
             limit: Integer,
@@ -25,7 +26,8 @@ module MetronomeSDK
         )
         end
 
-        # Fetch high level details of a specific plan.
+        # Fetch high level details of a specific plan. This is a Plans (deprecated)
+        # endpoint. New clients should implement using Contracts.
         sig do
           params(
             plan_id: String,
@@ -35,7 +37,8 @@ module MetronomeSDK
         def get_details(plan_id:, request_options: {})
         end
 
-        # Fetches a list of charges of a specific plan.
+        # Fetches a list of charges of a specific plan. This is a Plans (deprecated)
+        # endpoint. New clients should implement using Contracts.
         sig do
           params(
             plan_id: String,
@@ -60,7 +63,8 @@ module MetronomeSDK
         end
 
         # Fetches a list of customers on a specific plan (by default, only currently
-        # active plans are included)
+        # active plans are included). This is a Plans (deprecated) endpoint. New clients
+        # should implement using Contracts.
         sig do
           params(
             plan_id: String,

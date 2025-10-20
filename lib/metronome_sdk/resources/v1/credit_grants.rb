@@ -7,7 +7,8 @@ module MetronomeSDK
         # Some parameter documentations has been truncated, see
         # {MetronomeSDK::Models::V1::CreditGrantCreateParams} for more details.
         #
-        # Create a new credit grant
+        # Create a new credit grant. This is a Plans (deprecated) endpoint. New clients
+        # should implement using Contracts.
         #
         # @overload create(customer_id:, expires_at:, grant_amount:, name:, paid_amount:, priority:, credit_grant_type: nil, custom_fields: nil, effective_at: nil, invoice_date: nil, product_ids: nil, reason: nil, rollover_settings: nil, uniqueness_key: nil, request_options: {})
         #
@@ -58,7 +59,8 @@ module MetronomeSDK
         # Some parameter documentations has been truncated, see
         # {MetronomeSDK::Models::V1::CreditGrantListParams} for more details.
         #
-        # List credit grants. This list does not included voided grants.
+        # List credit grants. This list does not included voided grants. This is a Plans
+        # (deprecated) endpoint. New clients should implement using Contracts.
         #
         # @overload list(limit: nil, next_page: nil, credit_grant_ids: nil, credit_type_ids: nil, customer_ids: nil, effective_before: nil, not_expiring_before: nil, request_options: {})
         #
@@ -95,7 +97,8 @@ module MetronomeSDK
           )
         end
 
-        # Edit an existing credit grant
+        # Edit an existing credit grant. This is a Plans (deprecated) endpoint. New
+        # clients should implement using Contracts.
         #
         # @overload edit(id:, credit_grant_type: nil, expires_at: nil, name: nil, request_options: {})
         #
@@ -128,7 +131,8 @@ module MetronomeSDK
         #
         # Fetches a list of credit ledger entries. Returns lists of ledgers per customer.
         # Ledger entries are returned in chronological order. Ledger entries associated
-        # with voided credit grants are not included.
+        # with voided credit grants are not included. This is a Plans (deprecated)
+        # endpoint. New clients should implement using Contracts.
         #
         # @overload list_entries(next_page: nil, sort: nil, credit_type_ids: nil, customer_ids: nil, ending_before: nil, starting_on: nil, request_options: {})
         #
@@ -164,7 +168,8 @@ module MetronomeSDK
           )
         end
 
-        # Void a credit grant
+        # Void a credit grant. This is a Plans (deprecated) endpoint. New clients should
+        # implement using Contracts.
         #
         # @overload void(id:, release_uniqueness_key: nil, void_credit_purchase_invoice: nil, request_options: {})
         #

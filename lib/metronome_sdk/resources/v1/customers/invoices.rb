@@ -175,7 +175,8 @@ module MetronomeSDK
           # Some parameter documentations has been truncated, see
           # {MetronomeSDK::Models::V1::Customers::InvoiceAddChargeParams} for more details.
           #
-          # Add a one time charge to the specified invoice
+          # Add a one time charge to the specified invoice. This is a Plans (deprecated)
+          # endpoint. New clients should implement using Contracts.
           #
           # @overload add_charge(customer_id:, charge_id:, customer_plan_id:, description:, invoice_start_timestamp:, price:, quantity:, request_options: {})
           #

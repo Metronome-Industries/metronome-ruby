@@ -5,7 +5,8 @@ module MetronomeSDK
     class V1
       class Customers
         class BillingConfig
-          # Set the billing configuration for a given customer.
+          # Set the billing configuration for a given customer. This is a Plans (deprecated)
+          # endpoint. New clients should implement using Contracts.
           sig do
             params(
               customer_id: String,
@@ -39,7 +40,8 @@ module MetronomeSDK
           )
           end
 
-          # Fetch the billing configuration for the given customer.
+          # Fetch the billing configuration for the given customer. This is a Plans
+          # (deprecated) endpoint. New clients should implement using Contracts.
           sig do
             params(
               customer_id: String,
@@ -59,7 +61,8 @@ module MetronomeSDK
           end
 
           # Delete the billing configuration for a given customer. Note: this is unsupported
-          # for Azure and AWS Marketplace customers.
+          # for Azure and AWS Marketplace customers. This is a Plans (deprecated) endpoint.
+          # New clients should implement using Contracts.
           sig do
             params(
               customer_id: String,
