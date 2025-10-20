@@ -4,7 +4,8 @@ module MetronomeSDK
   module Resources
     class V1
       class Plans
-        # List all available plans.
+        # List all available plans. This is a Plans (deprecated) endpoint. New clients
+        # should implement using Contracts.
         #
         # @overload list(limit: nil, next_page: nil, request_options: {})
         #
@@ -29,7 +30,8 @@ module MetronomeSDK
           )
         end
 
-        # Fetch high level details of a specific plan.
+        # Fetch high level details of a specific plan. This is a Plans (deprecated)
+        # endpoint. New clients should implement using Contracts.
         #
         # @overload get_details(plan_id:, request_options: {})
         #
@@ -53,7 +55,8 @@ module MetronomeSDK
           )
         end
 
-        # Fetches a list of charges of a specific plan.
+        # Fetches a list of charges of a specific plan. This is a Plans (deprecated)
+        # endpoint. New clients should implement using Contracts.
         #
         # @overload list_charges(plan_id:, limit: nil, next_page: nil, request_options: {})
         #
@@ -88,7 +91,8 @@ module MetronomeSDK
         # {MetronomeSDK::Models::V1::PlanListCustomersParams} for more details.
         #
         # Fetches a list of customers on a specific plan (by default, only currently
-        # active plans are included)
+        # active plans are included). This is a Plans (deprecated) endpoint. New clients
+        # should implement using Contracts.
         #
         # @overload list_customers(plan_id:, limit: nil, next_page: nil, status: nil, request_options: {})
         #
