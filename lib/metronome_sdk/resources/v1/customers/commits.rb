@@ -37,7 +37,8 @@ module MetronomeSDK
           # #### Billing configuration:
           #
           # - invoice_contract_id is required for postpaid commits and for prepaid commits
-          #   with billing (only optional for free prepaid commits)
+          #   with billing (only optional for free prepaid commits) unless do_not_invoice is
+          #   set to true
           # - For postpaid commits: access_schedule and invoice_schedule must have matching
           #   amounts
           # - For postpaid commits: only one schedule item is allowed in both schedules.

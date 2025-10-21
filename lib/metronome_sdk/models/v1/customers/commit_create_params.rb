@@ -78,7 +78,7 @@ module MetronomeSDK
           # @!attribute invoice_contract_id
           #   The contract that this commit will be billed on. This is required for "POSTPAID"
           #   commits and for "PREPAID" commits unless there is no invoice schedule above
-          #   (i.e., the commit is 'free').
+          #   (i.e., the commit is 'free'), or if do_not_invoice is set to true.
           #
           #   @return [String, nil]
           optional :invoice_contract_id, String
