@@ -95,7 +95,7 @@ module MetronomeSDK
 
           # The contract that this commit will be billed on. This is required for "POSTPAID"
           # commits and for "PREPAID" commits unless there is no invoice schedule above
-          # (i.e., the commit is 'free').
+          # (i.e., the commit is 'free'), or if do_not_invoice is set to true.
           sig { returns(T.nilable(String)) }
           attr_reader :invoice_contract_id
 
@@ -243,7 +243,7 @@ module MetronomeSDK
             description: nil,
             # The contract that this commit will be billed on. This is required for "POSTPAID"
             # commits and for "PREPAID" commits unless there is no invoice schedule above
-            # (i.e., the commit is 'free').
+            # (i.e., the commit is 'free'), or if do_not_invoice is set to true.
             invoice_contract_id: nil,
             # Required for "POSTPAID" commits: the true up invoice will be generated at this
             # time and only one schedule item is allowed; the total must match
