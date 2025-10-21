@@ -109,6 +109,7 @@ module MetronomeSDK
           ?id: String,
           ?covering_date: Time,
           ?effective_before: Time,
+          ?exclude_zero_balances: bool,
           ?include_archived: bool,
           ?include_balance: bool,
           ?include_contract_balances: bool,

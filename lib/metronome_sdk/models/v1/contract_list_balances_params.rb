@@ -30,6 +30,12 @@ module MetronomeSDK
         #   @return [Time, nil]
         optional :effective_before, Time
 
+        # @!attribute exclude_zero_balances
+        #   Exclude balances with zero amounts from the response.
+        #
+        #   @return [Boolean, nil]
+        optional :exclude_zero_balances, MetronomeSDK::Internal::Type::Boolean
+
         # @!attribute include_archived
         #   Include archived credits and credits from archived contracts.
         #
@@ -74,7 +80,7 @@ module MetronomeSDK
         #   @return [Time, nil]
         optional :starting_at, Time
 
-        # @!method initialize(customer_id:, id: nil, covering_date: nil, effective_before: nil, include_archived: nil, include_balance: nil, include_contract_balances: nil, include_ledgers: nil, limit: nil, next_page: nil, starting_at: nil, request_options: {})
+        # @!method initialize(customer_id:, id: nil, covering_date: nil, effective_before: nil, exclude_zero_balances: nil, include_archived: nil, include_balance: nil, include_contract_balances: nil, include_ledgers: nil, limit: nil, next_page: nil, starting_at: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::V1::ContractListBalancesParams} for more details.
         #
@@ -85,6 +91,8 @@ module MetronomeSDK
         #   @param covering_date [Time] Return only balances that have access schedules that "cover" the provided date
         #
         #   @param effective_before [Time] Include only balances that have any access before the provided date (exclusive)
+        #
+        #   @param exclude_zero_balances [Boolean] Exclude balances with zero amounts from the response.
         #
         #   @param include_archived [Boolean] Include archived credits and credits from archived contracts.
         #
