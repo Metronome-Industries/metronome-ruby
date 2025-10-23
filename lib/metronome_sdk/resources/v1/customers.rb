@@ -288,11 +288,11 @@ module MetronomeSDK
         #
         # @param customer_id [String] Path param:
         #
-        # @param events [Array<MetronomeSDK::Models::V1::CustomerPreviewEventsParams::Event>] Body param:
+        # @param events [Array<MetronomeSDK::Models::V1::CustomerPreviewEventsParams::Event>] Body param: Array of usage events to include in the preview calculation. Must co
         #
-        # @param mode [Symbol, MetronomeSDK::Models::V1::CustomerPreviewEventsParams::Mode] Body param: If set to "replace", the preview will be generated as if those were
+        # @param mode [Symbol, MetronomeSDK::Models::V1::CustomerPreviewEventsParams::Mode] Body param: Controls how the provided events are combined with existing usage da
         #
-        # @param skip_zero_qty_line_items [Boolean] Body param: If set, all zero quantity line items will be filtered out of the res
+        # @param skip_zero_qty_line_items [Boolean] Body param: When `true`, line items with zero quantity are excluded from the res
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
