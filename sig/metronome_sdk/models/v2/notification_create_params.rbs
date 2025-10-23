@@ -1,0 +1,40 @@
+module MetronomeSDK
+  module Models
+    module V2
+      type notification_create_params =
+        {
+          name: String,
+          policy: MetronomeSDK::V2::LifecycleEventOffsetPolicy,
+          uniqueness_key: String
+        }
+        & MetronomeSDK::Internal::Type::request_parameters
+
+      class NotificationCreateParams < MetronomeSDK::Internal::Type::BaseModel
+        extend MetronomeSDK::Internal::Type::RequestParameters::Converter
+        include MetronomeSDK::Internal::Type::RequestParameters
+
+        attr_accessor name: String
+
+        attr_accessor policy: MetronomeSDK::V2::LifecycleEventOffsetPolicy
+
+        attr_reader uniqueness_key: String?
+
+        def uniqueness_key=: (String) -> String
+
+        def initialize: (
+          name: String,
+          policy: MetronomeSDK::V2::LifecycleEventOffsetPolicy,
+          ?uniqueness_key: String,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          name: String,
+          policy: MetronomeSDK::V2::LifecycleEventOffsetPolicy,
+          uniqueness_key: String,
+          request_options: MetronomeSDK::RequestOptions
+        }
+      end
+    end
+  end
+end

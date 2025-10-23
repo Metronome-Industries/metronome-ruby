@@ -1,0 +1,67 @@
+module MetronomeSDK
+  module Models
+    module V2
+      type lifecycle_event_offset_notification_config =
+        {
+          id: String,
+          archived_at: Time?,
+          created_at: Time,
+          created_by: String,
+          environment_type: String,
+          name: String,
+          policy: MetronomeSDK::V2::LifecycleEventOffsetPolicy,
+          type: MetronomeSDK::Models::V2::LifecycleEventOffsetNotificationConfig::type_
+        }
+
+      class LifecycleEventOffsetNotificationConfig < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor archived_at: Time?
+
+        attr_accessor created_at: Time
+
+        attr_accessor created_by: String
+
+        attr_accessor environment_type: String
+
+        attr_accessor name: String
+
+        attr_accessor policy: MetronomeSDK::V2::LifecycleEventOffsetPolicy
+
+        attr_accessor type: MetronomeSDK::Models::V2::LifecycleEventOffsetNotificationConfig::type_
+
+        def initialize: (
+          id: String,
+          archived_at: Time?,
+          created_at: Time,
+          created_by: String,
+          environment_type: String,
+          name: String,
+          policy: MetronomeSDK::V2::LifecycleEventOffsetPolicy,
+          type: MetronomeSDK::Models::V2::LifecycleEventOffsetNotificationConfig::type_
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          archived_at: Time?,
+          created_at: Time,
+          created_by: String,
+          environment_type: String,
+          name: String,
+          policy: MetronomeSDK::V2::LifecycleEventOffsetPolicy,
+          type: MetronomeSDK::Models::V2::LifecycleEventOffsetNotificationConfig::type_
+        }
+
+        type type_ = :OFFSET_LIFECYCLE_EVENT
+
+        module Type
+          extend MetronomeSDK::Internal::Type::Enum
+
+          OFFSET_LIFECYCLE_EVENT: :OFFSET_LIFECYCLE_EVENT
+
+          def self?.values: -> ::Array[MetronomeSDK::Models::V2::LifecycleEventOffsetNotificationConfig::type_]
+        end
+      end
+    end
+  end
+end
