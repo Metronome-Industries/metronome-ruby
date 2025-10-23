@@ -2227,20 +2227,26 @@ module MetronomeSDK
             required :subscription_id, String
 
             # @!attribute allocation
-            #   If set to POOLED, allocation added per seat is pooled across the account.
+            #   If set to POOLED, allocation added per seat is pooled across the account. (BETA)
+            #   If set to INDIVIDUAL, each seat in the subscription will have its own
+            #   allocation.
             #
             #   @return [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::SubscriptionConfig::Allocation, nil]
             optional :allocation,
                      enum: -> { MetronomeSDK::V1::ContractCreateParams::RecurringCommit::SubscriptionConfig::Allocation }
 
             # @!method initialize(apply_seat_increase_config:, subscription_id:, allocation: nil)
+            #   Some parameter documentations has been truncated, see
+            #   {MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::SubscriptionConfig}
+            #   for more details.
+            #
             #   Attach a subscription to the recurring commit/credit.
             #
             #   @param apply_seat_increase_config [MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::SubscriptionConfig::ApplySeatIncreaseConfig]
             #
             #   @param subscription_id [String] ID of the subscription to configure on the recurring commit/credit.
             #
-            #   @param allocation [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::SubscriptionConfig::Allocation] If set to POOLED, allocation added per seat is pooled across the account.
+            #   @param allocation [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::SubscriptionConfig::Allocation] If set to POOLED, allocation added per seat is pooled across the account. (BETA)
 
             # @see MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::SubscriptionConfig#apply_seat_increase_config
             class ApplySeatIncreaseConfig < MetronomeSDK::Internal::Type::BaseModel
@@ -2254,7 +2260,9 @@ module MetronomeSDK
               #   @param is_prorated [Boolean] Indicates whether a mid-period seat increase should be prorated.
             end
 
-            # If set to POOLED, allocation added per seat is pooled across the account.
+            # If set to POOLED, allocation added per seat is pooled across the account. (BETA)
+            # If set to INDIVIDUAL, each seat in the subscription will have its own
+            # allocation.
             #
             # @see MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::SubscriptionConfig#allocation
             module Allocation
@@ -2568,20 +2576,26 @@ module MetronomeSDK
             required :subscription_id, String
 
             # @!attribute allocation
-            #   If set to POOLED, allocation added per seat is pooled across the account.
+            #   If set to POOLED, allocation added per seat is pooled across the account. (BETA)
+            #   If set to INDIVIDUAL, each seat in the subscription will have its own
+            #   allocation.
             #
             #   @return [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::SubscriptionConfig::Allocation, nil]
             optional :allocation,
                      enum: -> { MetronomeSDK::V1::ContractCreateParams::RecurringCredit::SubscriptionConfig::Allocation }
 
             # @!method initialize(apply_seat_increase_config:, subscription_id:, allocation: nil)
+            #   Some parameter documentations has been truncated, see
+            #   {MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::SubscriptionConfig}
+            #   for more details.
+            #
             #   Attach a subscription to the recurring commit/credit.
             #
             #   @param apply_seat_increase_config [MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::SubscriptionConfig::ApplySeatIncreaseConfig]
             #
             #   @param subscription_id [String] ID of the subscription to configure on the recurring commit/credit.
             #
-            #   @param allocation [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::SubscriptionConfig::Allocation] If set to POOLED, allocation added per seat is pooled across the account.
+            #   @param allocation [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::SubscriptionConfig::Allocation] If set to POOLED, allocation added per seat is pooled across the account. (BETA)
 
             # @see MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::SubscriptionConfig#apply_seat_increase_config
             class ApplySeatIncreaseConfig < MetronomeSDK::Internal::Type::BaseModel
@@ -2595,7 +2609,9 @@ module MetronomeSDK
               #   @param is_prorated [Boolean] Indicates whether a mid-period seat increase should be prorated.
             end
 
-            # If set to POOLED, allocation added per seat is pooled across the account.
+            # If set to POOLED, allocation added per seat is pooled across the account. (BETA)
+            # If set to INDIVIDUAL, each seat in the subscription will have its own
+            # allocation.
             #
             # @see MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::SubscriptionConfig#allocation
             module Allocation
@@ -3038,6 +3054,11 @@ module MetronomeSDK
           #   QUANTITY_ONLY. **QUANTITY_ONLY**: The subscription quantity is specified
           #   directly on the subscription. `initial_quantity` must be provided with this
           #   option. Compatible with recurring commits/credits that use POOLED allocation.
+          #   **SEAT_BASED**: (BETA) Use when you want to pass specific seat identifiers (e.g.
+          #   add user_123) to increment and decrement a subscription quantity, rather than
+          #   directly providing the quantity. You must use a **SEAT_BASED** subscription to
+          #   use a linked recurring credit with an allocation per seat. `seat_config` must be
+          #   provided with this option.
           #
           #   @return [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::Subscription::QuantityManagementMode, nil]
           optional :quantity_management_mode,
@@ -3186,6 +3207,11 @@ module MetronomeSDK
           # QUANTITY_ONLY. **QUANTITY_ONLY**: The subscription quantity is specified
           # directly on the subscription. `initial_quantity` must be provided with this
           # option. Compatible with recurring commits/credits that use POOLED allocation.
+          # **SEAT_BASED**: (BETA) Use when you want to pass specific seat identifiers (e.g.
+          # add user_123) to increment and decrement a subscription quantity, rather than
+          # directly providing the quantity. You must use a **SEAT_BASED** subscription to
+          # use a linked recurring credit with an allocation per seat. `seat_config` must be
+          # provided with this option.
           #
           # @see MetronomeSDK::Models::V1::ContractCreateParams::Subscription#quantity_management_mode
           module QuantityManagementMode
