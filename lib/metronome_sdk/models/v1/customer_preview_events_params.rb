@@ -14,21 +14,24 @@ module MetronomeSDK
         required :customer_id, String
 
         # @!attribute events
+        #   Array of usage events to include in the preview calculation. Must contain at
+        #   least one event in `merge` mode.
         #
         #   @return [Array<MetronomeSDK::Models::V1::CustomerPreviewEventsParams::Event>]
         required :events,
                  -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::CustomerPreviewEventsParams::Event] }
 
         # @!attribute mode
-        #   If set to "replace", the preview will be generated as if those were the only
-        #   events for the specified customer. If set to "merge", the events will be merged
-        #   with any existing events for the specified customer. Defaults to "replace".
+        #   Controls how the provided events are combined with existing usage data. Use
+        #   `replace` to calculate the preview as if these are the only events for the
+        #   customer, ignoring all historical usage. Use `merge` to combine these events
+        #   with the customer's existing usage. Defaults to `replace`.
         #
         #   @return [Symbol, MetronomeSDK::Models::V1::CustomerPreviewEventsParams::Mode, nil]
         optional :mode, enum: -> { MetronomeSDK::V1::CustomerPreviewEventsParams::Mode }
 
         # @!attribute skip_zero_qty_line_items
-        #   If set, all zero quantity line items will be filtered out of the response.
+        #   When `true`, line items with zero quantity are excluded from the response.
         #
         #   @return [Boolean, nil]
         optional :skip_zero_qty_line_items, MetronomeSDK::Internal::Type::Boolean
@@ -39,11 +42,11 @@ module MetronomeSDK
         #
         #   @param customer_id [String]
         #
-        #   @param events [Array<MetronomeSDK::Models::V1::CustomerPreviewEventsParams::Event>]
+        #   @param events [Array<MetronomeSDK::Models::V1::CustomerPreviewEventsParams::Event>] Array of usage events to include in the preview calculation. Must contain at lea
         #
-        #   @param mode [Symbol, MetronomeSDK::Models::V1::CustomerPreviewEventsParams::Mode] If set to "replace", the preview will be generated as if those were the only eve
+        #   @param mode [Symbol, MetronomeSDK::Models::V1::CustomerPreviewEventsParams::Mode] Controls how the provided events are combined with existing usage data. Use `rep
         #
-        #   @param skip_zero_qty_line_items [Boolean] If set, all zero quantity line items will be filtered out of the response.
+        #   @param skip_zero_qty_line_items [Boolean] When `true`, line items with zero quantity are excluded from the response.
         #
         #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
 
@@ -85,9 +88,10 @@ module MetronomeSDK
           #   @param transaction_id [String] Optional unique identifier for event deduplication. When provided, preview event
         end
 
-        # If set to "replace", the preview will be generated as if those were the only
-        # events for the specified customer. If set to "merge", the events will be merged
-        # with any existing events for the specified customer. Defaults to "replace".
+        # Controls how the provided events are combined with existing usage data. Use
+        # `replace` to calculate the preview as if these are the only events for the
+        # customer, ignoring all historical usage. Use `merge` to combine these events
+        # with the customer's existing usage. Defaults to `replace`.
         module Mode
           extend MetronomeSDK::Internal::Type::Enum
 
