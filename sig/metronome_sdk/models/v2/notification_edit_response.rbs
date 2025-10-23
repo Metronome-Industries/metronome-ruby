@@ -1,0 +1,30 @@
+module MetronomeSDK
+  module Models
+    module V2
+      type notification_edit_response =
+        { data: MetronomeSDK::Models::V2::NotificationEditResponse::data }
+
+      class NotificationEditResponse < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor data: MetronomeSDK::Models::V2::NotificationEditResponse::data
+
+        def initialize: (
+          data: MetronomeSDK::Models::V2::NotificationEditResponse::data
+        ) -> void
+
+        def to_hash: -> {
+          data: MetronomeSDK::Models::V2::NotificationEditResponse::data
+        }
+
+        type data =
+          MetronomeSDK::V2::LifecycleEventSystemNotificationConfig
+          | MetronomeSDK::V2::LifecycleEventOffsetNotificationConfig
+
+        module Data
+          extend MetronomeSDK::Internal::Type::Union
+
+          def self?.variants: -> ::Array[MetronomeSDK::Models::V2::NotificationEditResponse::data]
+        end
+      end
+    end
+  end
+end

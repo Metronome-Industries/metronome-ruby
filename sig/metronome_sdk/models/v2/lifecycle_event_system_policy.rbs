@@ -1,0 +1,15 @@
+module MetronomeSDK
+  module Models
+    module V2
+      type lifecycle_event_system_policy = { type: String }
+
+      class LifecycleEventSystemPolicy < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor type: String
+
+        def initialize: (type: String) -> void
+
+        def to_hash: -> { type: String }
+      end
+    end
+  end
+end

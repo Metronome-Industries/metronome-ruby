@@ -1,0 +1,45 @@
+module MetronomeSDK
+  module Resources
+    class V2
+      class Notifications
+        def create: (
+          name: String,
+          policy: MetronomeSDK::V2::LifecycleEventOffsetPolicy,
+          ?uniqueness_key: String,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> MetronomeSDK::Models::V2::NotificationCreateResponse
+
+        def retrieve: (
+          id: String,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> MetronomeSDK::Models::V2::NotificationRetrieveResponse
+
+        def archive: (
+          id: String,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> MetronomeSDK::Models::V2::NotificationArchiveResponse
+
+        def edit: (
+          policy: MetronomeSDK::V2::LifecycleEventOffsetPolicy,
+          type: MetronomeSDK::Models::V2::NotificationEditParams::type_,
+          id: String,
+          ?is_enabled: bool,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> MetronomeSDK::Models::V2::NotificationEditResponse
+
+        def list_offset: (
+          ?archive_filter: MetronomeSDK::Models::V2::NotificationListOffsetParams::archive_filter,
+          ?cursor: String,
+          ?limit: Float,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> MetronomeSDK::Models::V2::NotificationListOffsetResponse
+
+        def list_system: (
+          ?request_options: MetronomeSDK::request_opts
+        ) -> MetronomeSDK::Models::V2::NotificationListSystemResponse
+
+        def initialize: (client: MetronomeSDK::Client) -> void
+      end
+    end
+  end
+end
