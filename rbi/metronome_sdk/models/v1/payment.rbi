@@ -215,14 +215,21 @@ module MetronomeSDK
             end
             attr_writer :error
 
+            sig { returns(T.nilable(String)) }
+            attr_reader :payment_method_id
+
+            sig { params(payment_method_id: String).void }
+            attr_writer :payment_method_id
+
             sig do
               params(
                 payment_intent_id: String,
                 error:
-                  MetronomeSDK::V1::Payment::PaymentGateway::Stripe::Error::OrHash
+                  MetronomeSDK::V1::Payment::PaymentGateway::Stripe::Error::OrHash,
+                payment_method_id: String
               ).returns(T.attached_class)
             end
-            def self.new(payment_intent_id:, error: nil)
+            def self.new(payment_intent_id:, error: nil, payment_method_id: nil)
             end
 
             sig do
@@ -230,7 +237,8 @@ module MetronomeSDK
                 {
                   payment_intent_id: String,
                   error:
-                    MetronomeSDK::V1::Payment::PaymentGateway::Stripe::Error
+                    MetronomeSDK::V1::Payment::PaymentGateway::Stripe::Error,
+                  payment_method_id: String
                 }
               )
             end

@@ -124,7 +124,8 @@ module MetronomeSDK
           type stripe =
             {
               payment_intent_id: String,
-              error: MetronomeSDK::V1::Payment::PaymentGateway::Stripe::Error
+              error: MetronomeSDK::V1::Payment::PaymentGateway::Stripe::Error,
+              payment_method_id: String
             }
 
           class Stripe < MetronomeSDK::Internal::Type::BaseModel
@@ -136,14 +137,20 @@ module MetronomeSDK
               MetronomeSDK::V1::Payment::PaymentGateway::Stripe::Error
             ) -> MetronomeSDK::V1::Payment::PaymentGateway::Stripe::Error
 
+            attr_reader payment_method_id: String?
+
+            def payment_method_id=: (String) -> String
+
             def initialize: (
               payment_intent_id: String,
-              ?error: MetronomeSDK::V1::Payment::PaymentGateway::Stripe::Error
+              ?error: MetronomeSDK::V1::Payment::PaymentGateway::Stripe::Error,
+              ?payment_method_id: String
             ) -> void
 
             def to_hash: -> {
               payment_intent_id: String,
-              error: MetronomeSDK::V1::Payment::PaymentGateway::Stripe::Error
+              error: MetronomeSDK::V1::Payment::PaymentGateway::Stripe::Error,
+              payment_method_id: String
             }
 
             type error = { code: String, decline_code: String, type: String }
