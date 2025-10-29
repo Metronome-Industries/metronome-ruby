@@ -1,0 +1,28 @@
+module MetronomeSDK
+  module Models
+    module V1
+      module Settings
+        type billing_provider_list_params =
+          { next_page: String? }
+          & MetronomeSDK::Internal::Type::request_parameters
+
+        class BillingProviderListParams < MetronomeSDK::Internal::Type::BaseModel
+          extend MetronomeSDK::Internal::Type::RequestParameters::Converter
+          include MetronomeSDK::Internal::Type::RequestParameters
+
+          attr_accessor next_page: String?
+
+          def initialize: (
+            ?next_page: String?,
+            ?request_options: MetronomeSDK::request_opts
+          ) -> void
+
+          def to_hash: -> {
+            next_page: String?,
+            request_options: MetronomeSDK::RequestOptions
+          }
+        end
+      end
+    end
+  end
+end

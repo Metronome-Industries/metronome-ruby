@@ -45,6 +45,9 @@ module MetronomeSDK
       sig { returns(MetronomeSDK::Resources::V1::Payments) }
       attr_reader :payments
 
+      sig { returns(MetronomeSDK::Resources::V1::Settings) }
+      attr_reader :settings
+
       # @api private
       sig { params(client: MetronomeSDK::Client).returns(T.attached_class) }
       def self.new(client:)
