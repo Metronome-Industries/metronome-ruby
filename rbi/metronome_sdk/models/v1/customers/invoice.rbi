@@ -1812,6 +1812,11 @@ module MetronomeSDK
                     :gcp_marketplace,
                     MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType::TaggedSymbol
                   )
+                METRONOME =
+                  T.let(
+                    :metronome,
+                    MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType::TaggedSymbol
+                  )
 
                 sig do
                   override.returns(
@@ -2151,6 +2156,11 @@ module MetronomeSDK
               GCP_MARKETPLACE =
                 T.let(
                   :gcp_marketplace,
+                  MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::BillingProviderType::TaggedSymbol
+                )
+              METRONOME =
+                T.let(
+                  :metronome,
                   MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::BillingProviderType::TaggedSymbol
                 )
 

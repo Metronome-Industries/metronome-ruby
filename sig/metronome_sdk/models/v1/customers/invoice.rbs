@@ -931,6 +931,7 @@ module MetronomeSDK
                 | :quickbooks_online
                 | :workday
                 | :gcp_marketplace
+                | :metronome
 
               module BillingProviderType
                 extend MetronomeSDK::Internal::Type::Enum
@@ -943,6 +944,7 @@ module MetronomeSDK
                 QUICKBOOKS_ONLINE: :quickbooks_online
                 WORKDAY: :workday
                 GCP_MARKETPLACE: :gcp_marketplace
+                METRONOME: :metronome
 
                 def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::billing_provider_type]
               end
@@ -1091,6 +1093,7 @@ module MetronomeSDK
               | :quickbooks_online
               | :workday
               | :gcp_marketplace
+              | :metronome
 
             module BillingProviderType
               extend MetronomeSDK::Internal::Type::Enum
@@ -1103,6 +1106,7 @@ module MetronomeSDK
               QUICKBOOKS_ONLINE: :quickbooks_online
               WORKDAY: :workday
               GCP_MARKETPLACE: :gcp_marketplace
+              METRONOME: :metronome
 
               def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::Invoice::ExternalInvoice::billing_provider_type]
             end
