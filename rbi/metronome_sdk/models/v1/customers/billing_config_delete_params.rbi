@@ -106,6 +106,11 @@ module MetronomeSDK
                 :gcp_marketplace,
                 MetronomeSDK::V1::Customers::BillingConfigDeleteParams::BillingProviderType::TaggedSymbol
               )
+            METRONOME =
+              T.let(
+                :metronome,
+                MetronomeSDK::V1::Customers::BillingConfigDeleteParams::BillingProviderType::TaggedSymbol
+              )
 
             sig do
               override.returns(

@@ -2148,6 +2148,7 @@ module MetronomeSDK
           QUICKBOOKS_ONLINE = :quickbooks_online
           WORKDAY = :workday
           GCP_MARKETPLACE = :gcp_marketplace
+          METRONOME = :metronome
 
           # @!method self.values
           #   @return [Array<Symbol>]

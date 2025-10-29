@@ -292,6 +292,11 @@ module MetronomeSDK
                 :gcp_marketplace,
                 MetronomeSDK::V1::CustomerCreateParams::BillingConfig::BillingProviderType::TaggedSymbol
               )
+            METRONOME =
+              T.let(
+                :metronome,
+                MetronomeSDK::V1::CustomerCreateParams::BillingConfig::BillingProviderType::TaggedSymbol
+              )
 
             sig do
               override.returns(

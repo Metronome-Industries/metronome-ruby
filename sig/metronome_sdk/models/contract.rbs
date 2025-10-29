@@ -353,6 +353,7 @@ module MetronomeSDK
           | :quickbooks_online
           | :workday
           | :gcp_marketplace
+          | :metronome
 
         module BillingProvider
           extend MetronomeSDK::Internal::Type::Enum
@@ -365,6 +366,7 @@ module MetronomeSDK
           QUICKBOOKS_ONLINE: :quickbooks_online
           WORKDAY: :workday
           GCP_MARKETPLACE: :gcp_marketplace
+          METRONOME: :metronome
 
           def self?.values: -> ::Array[MetronomeSDK::Models::Contract::CustomerBillingProviderConfiguration::billing_provider]
         end
