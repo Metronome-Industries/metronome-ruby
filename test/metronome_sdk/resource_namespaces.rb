@@ -14,6 +14,9 @@ module MetronomeSDK
       module RateCards
       end
 
+      module Settings
+      end
+
       module V1
         module Contracts
           module RateCards
@@ -21,6 +24,9 @@ module MetronomeSDK
         end
 
         module Customers
+        end
+
+        module Settings
         end
       end
 

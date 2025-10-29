@@ -1,0 +1,34 @@
+module MetronomeSDK
+  module Models
+    module V1
+      module Settings
+        type billing_provider_create_response =
+          {
+            data: MetronomeSDK::Models::V1::Settings::BillingProviderCreateResponse::Data
+          }
+
+        class BillingProviderCreateResponse < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor data: MetronomeSDK::Models::V1::Settings::BillingProviderCreateResponse::Data
+
+          def initialize: (
+            data: MetronomeSDK::Models::V1::Settings::BillingProviderCreateResponse::Data
+          ) -> void
+
+          def to_hash: -> {
+            data: MetronomeSDK::Models::V1::Settings::BillingProviderCreateResponse::Data
+          }
+
+          type data = { delivery_method_id: String }
+
+          class Data < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor delivery_method_id: String
+
+            def initialize: (delivery_method_id: String) -> void
+
+            def to_hash: -> { delivery_method_id: String }
+          end
+        end
+      end
+    end
+  end
+end

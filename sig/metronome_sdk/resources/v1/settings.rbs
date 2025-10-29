@@ -1,0 +1,19 @@
+module MetronomeSDK
+  module Resources
+    class V1
+      class Settings
+        attr_reader billing_providers: MetronomeSDK::Resources::V1::Settings::BillingProviders
+
+        def upsert_avalara_credentials: (
+          avalara_environment: MetronomeSDK::Models::V1::SettingUpsertAvalaraCredentialsParams::avalara_environment,
+          avalara_password: String,
+          avalara_username: String,
+          delivery_method_ids: ::Array[String],
+          ?request_options: MetronomeSDK::request_opts
+        ) -> MetronomeSDK::Models::V1::SettingUpsertAvalaraCredentialsResponse
+
+        def initialize: (client: MetronomeSDK::Client) -> void
+      end
+    end
+  end
+end

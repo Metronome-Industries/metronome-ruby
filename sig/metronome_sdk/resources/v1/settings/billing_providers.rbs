@@ -1,0 +1,23 @@
+module MetronomeSDK
+  module Resources
+    class V1
+      class Settings
+        class BillingProviders
+          def create: (
+            billing_provider: MetronomeSDK::Models::V1::Settings::BillingProviderCreateParams::billing_provider,
+            configuration: ::Hash[Symbol, top],
+            delivery_method: MetronomeSDK::Models::V1::Settings::BillingProviderCreateParams::delivery_method,
+            ?request_options: MetronomeSDK::request_opts
+          ) -> MetronomeSDK::Models::V1::Settings::BillingProviderCreateResponse
+
+          def list: (
+            ?next_page: String?,
+            ?request_options: MetronomeSDK::request_opts
+          ) -> MetronomeSDK::Models::V1::Settings::BillingProviderListResponse
+
+          def initialize: (client: MetronomeSDK::Client) -> void
+        end
+      end
+    end
+  end
+end
