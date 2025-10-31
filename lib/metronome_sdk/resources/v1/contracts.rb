@@ -352,7 +352,7 @@ module MetronomeSDK
 
         # Amendments will be replaced by Contract editing. New clients should implement
         # using the `editContract` endpoint. Read more about the migration to contract
-        # editing [here](https://docs.metronome.com/migrate-amendments-to-edits/) and
+        # editing [here](/guides/implement-metronome/migrate-amendments-to-edits/) and
         # reach out to your Metronome representative for more details. Once contract
         # editing is enabled, access to this endpoint will be removed.
         #
@@ -514,7 +514,7 @@ module MetronomeSDK
         #   segments
         # - Manual adjustments: Includes all manual ledger entries, even future-dated ones
         #
-        # @overload list_balances(customer_id:, id: nil, covering_date: nil, effective_before: nil, include_archived: nil, include_balance: nil, include_contract_balances: nil, include_ledgers: nil, limit: nil, next_page: nil, starting_at: nil, request_options: {})
+        # @overload list_balances(customer_id:, id: nil, covering_date: nil, effective_before: nil, exclude_zero_balances: nil, include_archived: nil, include_balance: nil, include_contract_balances: nil, include_ledgers: nil, limit: nil, next_page: nil, starting_at: nil, request_options: {})
         #
         # @param customer_id [String]
         #
@@ -523,6 +523,8 @@ module MetronomeSDK
         # @param covering_date [Time] Return only balances that have access schedules that "cover" the provided date
         #
         # @param effective_before [Time] Include only balances that have any access before the provided date (exclusive)
+        #
+        # @param exclude_zero_balances [Boolean] Exclude balances with zero amounts from the response.
         #
         # @param include_archived [Boolean] Include archived credits and credits from archived contracts.
         #

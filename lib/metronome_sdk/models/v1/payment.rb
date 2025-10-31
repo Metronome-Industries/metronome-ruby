@@ -107,9 +107,15 @@ module MetronomeSDK
             #   @return [MetronomeSDK::Models::V1::Payment::PaymentGateway::Stripe::Error, nil]
             optional :error, -> { MetronomeSDK::V1::Payment::PaymentGateway::Stripe::Error }
 
-            # @!method initialize(payment_intent_id:, error: nil)
+            # @!attribute payment_method_id
+            #
+            #   @return [String, nil]
+            optional :payment_method_id, String
+
+            # @!method initialize(payment_intent_id:, error: nil, payment_method_id: nil)
             #   @param payment_intent_id [String]
             #   @param error [MetronomeSDK::Models::V1::Payment::PaymentGateway::Stripe::Error]
+            #   @param payment_method_id [String]
 
             # @see MetronomeSDK::Models::V1::Payment::PaymentGateway::Stripe#error
             class Error < MetronomeSDK::Internal::Type::BaseModel

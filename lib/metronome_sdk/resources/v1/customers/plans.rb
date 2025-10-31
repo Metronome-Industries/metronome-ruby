@@ -5,7 +5,8 @@ module MetronomeSDK
     class V1
       class Customers
         class Plans
-          # List the given customer's plans in reverse-chronological order.
+          # List the given customer's plans in reverse-chronological order. This is a Plans
+          # (deprecated) endpoint. New clients should implement using Contracts.
           #
           # @overload list(customer_id:, limit: nil, next_page: nil, request_options: {})
           #
@@ -41,7 +42,8 @@ module MetronomeSDK
           #
           # Associate an existing customer with a plan for a specified date range. See the
           # [price adjustments documentation](https://plans-docs.metronome.com/pricing/managing-plans/#price-adjustments)
-          # for details on the price adjustments.
+          # for details on the price adjustments. This is a Plans (deprecated) endpoint. New
+          # clients should implement using Contracts.
           #
           # @overload add(customer_id:, plan_id:, starting_on:, ending_before: nil, net_payment_terms_days: nil, overage_rate_adjustments: nil, price_adjustments: nil, trial_spec: nil, request_options: {})
           #
@@ -84,7 +86,8 @@ module MetronomeSDK
           # Some parameter documentations has been truncated, see
           # {MetronomeSDK::Models::V1::Customers::PlanEndParams} for more details.
           #
-          # Change the end date of a customer's plan.
+          # Change the end date of a customer's plan. This is a Plans (deprecated) endpoint.
+          # New clients should implement using Contracts.
           #
           # @overload end_(customer_id:, customer_plan_id:, ending_before: nil, void_invoices: nil, void_stripe_invoices: nil, request_options: {})
           #
@@ -124,7 +127,8 @@ module MetronomeSDK
 
           # Lists a customer plans adjustments. See the
           # [price adjustments documentation](https://plans-docs.metronome.com/pricing/managing-plans/#price-adjustments)
-          # for details.
+          # for details. This is a Plans (deprecated) endpoint. New clients should implement
+          # using Contracts.
           #
           # @overload list_price_adjustments(customer_id:, customer_plan_id:, limit: nil, next_page: nil, request_options: {})
           #

@@ -18,6 +18,8 @@ module MetronomeSDK
         sig { returns(String) }
         attr_accessor :customer_id
 
+        # Array of usage events to include in the preview calculation. Must contain at
+        # least one event in `merge` mode.
         sig do
           returns(
             T::Array[MetronomeSDK::V1::CustomerPreviewEventsParams::Event]
@@ -25,9 +27,10 @@ module MetronomeSDK
         end
         attr_accessor :events
 
-        # If set to "replace", the preview will be generated as if those were the only
-        # events for the specified customer. If set to "merge", the events will be merged
-        # with any existing events for the specified customer. Defaults to "replace".
+        # Controls how the provided events are combined with existing usage data. Use
+        # `replace` to calculate the preview as if these are the only events for the
+        # customer, ignoring all historical usage. Use `merge` to combine these events
+        # with the customer's existing usage. Defaults to `replace`.
         sig do
           returns(
             T.nilable(
@@ -44,7 +47,7 @@ module MetronomeSDK
         end
         attr_writer :mode
 
-        # If set, all zero quantity line items will be filtered out of the response.
+        # When `true`, line items with zero quantity are excluded from the response.
         sig { returns(T.nilable(T::Boolean)) }
         attr_reader :skip_zero_qty_line_items
 
@@ -65,12 +68,15 @@ module MetronomeSDK
         end
         def self.new(
           customer_id:,
+          # Array of usage events to include in the preview calculation. Must contain at
+          # least one event in `merge` mode.
           events:,
-          # If set to "replace", the preview will be generated as if those were the only
-          # events for the specified customer. If set to "merge", the events will be merged
-          # with any existing events for the specified customer. Defaults to "replace".
+          # Controls how the provided events are combined with existing usage data. Use
+          # `replace` to calculate the preview as if these are the only events for the
+          # customer, ignoring all historical usage. Use `merge` to combine these events
+          # with the customer's existing usage. Defaults to `replace`.
           mode: nil,
-          # If set, all zero quantity line items will be filtered out of the response.
+          # When `true`, line items with zero quantity are excluded from the response.
           skip_zero_qty_line_items: nil,
           request_options: {}
         )
@@ -160,9 +166,10 @@ module MetronomeSDK
           end
         end
 
-        # If set to "replace", the preview will be generated as if those were the only
-        # events for the specified customer. If set to "merge", the events will be merged
-        # with any existing events for the specified customer. Defaults to "replace".
+        # Controls how the provided events are combined with existing usage data. Use
+        # `replace` to calculate the preview as if these are the only events for the
+        # customer, ignoring all historical usage. Use `merge` to combine these events
+        # with the customer's existing usage. Defaults to `replace`.
         module Mode
           extend MetronomeSDK::Internal::Type::Enum
 

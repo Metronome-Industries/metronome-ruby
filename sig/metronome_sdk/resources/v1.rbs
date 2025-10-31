@@ -29,6 +29,8 @@ module MetronomeSDK
 
       attr_reader payments: MetronomeSDK::Resources::V1::Payments
 
+      attr_reader settings: MetronomeSDK::Resources::V1::Settings
+
       def initialize: (client: MetronomeSDK::Client) -> void
     end
   end

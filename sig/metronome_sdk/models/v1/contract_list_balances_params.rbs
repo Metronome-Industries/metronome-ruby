@@ -7,6 +7,7 @@ module MetronomeSDK
           id: String,
           covering_date: Time,
           effective_before: Time,
+          exclude_zero_balances: bool,
           include_archived: bool,
           include_balance: bool,
           include_contract_balances: bool,
@@ -34,6 +35,10 @@ module MetronomeSDK
         attr_reader effective_before: Time?
 
         def effective_before=: (Time) -> Time
+
+        attr_reader exclude_zero_balances: bool?
+
+        def exclude_zero_balances=: (bool) -> bool
 
         attr_reader include_archived: bool?
 
@@ -68,6 +73,7 @@ module MetronomeSDK
           ?id: String,
           ?covering_date: Time,
           ?effective_before: Time,
+          ?exclude_zero_balances: bool,
           ?include_archived: bool,
           ?include_balance: bool,
           ?include_contract_balances: bool,
@@ -83,6 +89,7 @@ module MetronomeSDK
           id: String,
           covering_date: Time,
           effective_before: Time,
+          exclude_zero_balances: bool,
           include_archived: bool,
           include_balance: bool,
           include_contract_balances: bool,

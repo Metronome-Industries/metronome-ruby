@@ -13,6 +13,7 @@ module MetronomeSDK
             type: String,
             amendment_id: String,
             billable_status: top,
+            constituent_invoices: ::Array[MetronomeSDK::V1::Customers::Invoice::ConstituentInvoice],
             contract_custom_fields: ::Hash[Symbol, String],
             contract_id: String,
             correction_record: MetronomeSDK::V1::Customers::Invoice::CorrectionRecord,
@@ -25,6 +26,7 @@ module MetronomeSDK
             issued_at: Time,
             net_payment_terms_days: Float,
             netsuite_sales_order_id: String,
+            payer: MetronomeSDK::V1::Customers::Invoice::Payer,
             plan_custom_fields: ::Hash[Symbol, String],
             plan_id: String,
             plan_name: String,
@@ -56,6 +58,12 @@ module MetronomeSDK
           attr_reader billable_status: top?
 
           def billable_status=: (top) -> top
+
+          attr_reader constituent_invoices: ::Array[MetronomeSDK::V1::Customers::Invoice::ConstituentInvoice]?
+
+          def constituent_invoices=: (
+            ::Array[MetronomeSDK::V1::Customers::Invoice::ConstituentInvoice]
+          ) -> ::Array[MetronomeSDK::V1::Customers::Invoice::ConstituentInvoice]
 
           attr_reader contract_custom_fields: ::Hash[Symbol, String]?
 
@@ -111,6 +119,12 @@ module MetronomeSDK
 
           def netsuite_sales_order_id=: (String) -> String
 
+          attr_reader payer: MetronomeSDK::V1::Customers::Invoice::Payer?
+
+          def payer=: (
+            MetronomeSDK::V1::Customers::Invoice::Payer
+          ) -> MetronomeSDK::V1::Customers::Invoice::Payer
+
           attr_reader plan_custom_fields: ::Hash[Symbol, String]?
 
           def plan_custom_fields=: (
@@ -153,6 +167,7 @@ module MetronomeSDK
             type: String,
             ?amendment_id: String,
             ?billable_status: top,
+            ?constituent_invoices: ::Array[MetronomeSDK::V1::Customers::Invoice::ConstituentInvoice],
             ?contract_custom_fields: ::Hash[Symbol, String],
             ?contract_id: String,
             ?correction_record: MetronomeSDK::V1::Customers::Invoice::CorrectionRecord,
@@ -165,6 +180,7 @@ module MetronomeSDK
             ?issued_at: Time,
             ?net_payment_terms_days: Float,
             ?netsuite_sales_order_id: String,
+            ?payer: MetronomeSDK::V1::Customers::Invoice::Payer,
             ?plan_custom_fields: ::Hash[Symbol, String],
             ?plan_id: String,
             ?plan_name: String,
@@ -184,6 +200,7 @@ module MetronomeSDK
             type: String,
             amendment_id: String,
             billable_status: top,
+            constituent_invoices: ::Array[MetronomeSDK::V1::Customers::Invoice::ConstituentInvoice],
             contract_custom_fields: ::Hash[Symbol, String],
             contract_id: String,
             correction_record: MetronomeSDK::V1::Customers::Invoice::CorrectionRecord,
@@ -196,6 +213,7 @@ module MetronomeSDK
             issued_at: Time,
             net_payment_terms_days: Float,
             netsuite_sales_order_id: String,
+            payer: MetronomeSDK::V1::Customers::Invoice::Payer,
             plan_custom_fields: ::Hash[Symbol, String],
             plan_id: String,
             plan_name: String,
@@ -230,6 +248,7 @@ module MetronomeSDK
               netsuite_invoice_billing_end: Time,
               netsuite_invoice_billing_start: Time,
               netsuite_item_id: String,
+              origin: MetronomeSDK::V1::Customers::Invoice::LineItem::Origin,
               postpaid_commit: MetronomeSDK::V1::Customers::Invoice::LineItem::PostpaidCommit,
               presentation_group_values: ::Hash[Symbol, String?],
               pricing_group_values: ::Hash[Symbol, String],
@@ -340,6 +359,12 @@ module MetronomeSDK
             attr_reader netsuite_item_id: String?
 
             def netsuite_item_id=: (String) -> String
+
+            attr_reader origin: MetronomeSDK::V1::Customers::Invoice::LineItem::Origin?
+
+            def origin=: (
+              MetronomeSDK::V1::Customers::Invoice::LineItem::Origin
+            ) -> MetronomeSDK::V1::Customers::Invoice::LineItem::Origin
 
             attr_reader postpaid_commit: MetronomeSDK::V1::Customers::Invoice::LineItem::PostpaidCommit?
 
@@ -457,6 +482,7 @@ module MetronomeSDK
               ?netsuite_invoice_billing_end: Time,
               ?netsuite_invoice_billing_start: Time,
               ?netsuite_item_id: String,
+              ?origin: MetronomeSDK::V1::Customers::Invoice::LineItem::Origin,
               ?postpaid_commit: MetronomeSDK::V1::Customers::Invoice::LineItem::PostpaidCommit,
               ?presentation_group_values: ::Hash[Symbol, String?],
               ?pricing_group_values: ::Hash[Symbol, String],
@@ -501,6 +527,7 @@ module MetronomeSDK
               netsuite_invoice_billing_end: Time,
               netsuite_invoice_billing_start: Time,
               netsuite_item_id: String,
+              origin: MetronomeSDK::V1::Customers::Invoice::LineItem::Origin,
               postpaid_commit: MetronomeSDK::V1::Customers::Invoice::LineItem::PostpaidCommit,
               presentation_group_values: ::Hash[Symbol, String?],
               pricing_group_values: ::Hash[Symbol, String],
@@ -553,6 +580,38 @@ module MetronomeSDK
 
                 def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::type_]
               end
+            end
+
+            type origin =
+              {
+                contract_id: String,
+                customer_id: String,
+                invoice_id: String,
+                line_item_id: String
+              }
+
+            class Origin < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor contract_id: String
+
+              attr_accessor customer_id: String
+
+              attr_accessor invoice_id: String
+
+              attr_accessor line_item_id: String
+
+              def initialize: (
+                contract_id: String,
+                customer_id: String,
+                invoice_id: String,
+                line_item_id: String
+              ) -> void
+
+              def to_hash: -> {
+                contract_id: String,
+                customer_id: String,
+                invoice_id: String,
+                line_item_id: String
+              }
             end
 
             type postpaid_commit = { id: String }
@@ -736,6 +795,29 @@ module MetronomeSDK
             end
           end
 
+          type constituent_invoice =
+            { contract_id: String, customer_id: String, invoice_id: String }
+
+          class ConstituentInvoice < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor contract_id: String
+
+            attr_accessor customer_id: String
+
+            attr_accessor invoice_id: String
+
+            def initialize: (
+              contract_id: String,
+              customer_id: String,
+              invoice_id: String
+            ) -> void
+
+            def to_hash: -> {
+              contract_id: String,
+              customer_id: String,
+              invoice_id: String
+            }
+          end
+
           type correction_record =
             {
               corrected_invoice_id: String,
@@ -774,6 +856,7 @@ module MetronomeSDK
             type corrected_external_invoice =
               {
                 billing_provider_type: MetronomeSDK::Models::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::billing_provider_type,
+                billing_provider_error: String,
                 external_status: MetronomeSDK::Models::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::external_status,
                 invoice_id: String,
                 invoiced_sub_total: Float,
@@ -785,6 +868,10 @@ module MetronomeSDK
 
             class CorrectedExternalInvoice < MetronomeSDK::Internal::Type::BaseModel
               attr_accessor billing_provider_type: MetronomeSDK::Models::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::billing_provider_type
+
+              attr_reader billing_provider_error: String?
+
+              def billing_provider_error=: (String) -> String
 
               attr_reader external_status: MetronomeSDK::Models::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::external_status?
 
@@ -820,6 +907,7 @@ module MetronomeSDK
 
               def initialize: (
                 billing_provider_type: MetronomeSDK::Models::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::billing_provider_type,
+                ?billing_provider_error: String,
                 ?external_status: MetronomeSDK::Models::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::external_status,
                 ?invoice_id: String,
                 ?invoiced_sub_total: Float,
@@ -831,6 +919,7 @@ module MetronomeSDK
 
               def to_hash: -> {
                 billing_provider_type: MetronomeSDK::Models::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::billing_provider_type,
+                billing_provider_error: String,
                 external_status: MetronomeSDK::Models::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::external_status,
                 invoice_id: String,
                 invoiced_sub_total: Float,
@@ -849,6 +938,7 @@ module MetronomeSDK
                 | :quickbooks_online
                 | :workday
                 | :gcp_marketplace
+                | :metronome
 
               module BillingProviderType
                 extend MetronomeSDK::Internal::Type::Enum
@@ -861,6 +951,7 @@ module MetronomeSDK
                 QUICKBOOKS_ONLINE: :quickbooks_online
                 WORKDAY: :workday
                 GCP_MARKETPLACE: :gcp_marketplace
+                METRONOME: :metronome
 
                 def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::billing_provider_type]
               end
@@ -934,6 +1025,7 @@ module MetronomeSDK
           type external_invoice =
             {
               billing_provider_type: MetronomeSDK::Models::V1::Customers::Invoice::ExternalInvoice::billing_provider_type,
+              billing_provider_error: String,
               external_status: MetronomeSDK::Models::V1::Customers::Invoice::ExternalInvoice::external_status,
               invoice_id: String,
               invoiced_sub_total: Float,
@@ -945,6 +1037,10 @@ module MetronomeSDK
 
           class ExternalInvoice < MetronomeSDK::Internal::Type::BaseModel
             attr_accessor billing_provider_type: MetronomeSDK::Models::V1::Customers::Invoice::ExternalInvoice::billing_provider_type
+
+            attr_reader billing_provider_error: String?
+
+            def billing_provider_error=: (String) -> String
 
             attr_reader external_status: MetronomeSDK::Models::V1::Customers::Invoice::ExternalInvoice::external_status?
 
@@ -980,6 +1076,7 @@ module MetronomeSDK
 
             def initialize: (
               billing_provider_type: MetronomeSDK::Models::V1::Customers::Invoice::ExternalInvoice::billing_provider_type,
+              ?billing_provider_error: String,
               ?external_status: MetronomeSDK::Models::V1::Customers::Invoice::ExternalInvoice::external_status,
               ?invoice_id: String,
               ?invoiced_sub_total: Float,
@@ -991,6 +1088,7 @@ module MetronomeSDK
 
             def to_hash: -> {
               billing_provider_type: MetronomeSDK::Models::V1::Customers::Invoice::ExternalInvoice::billing_provider_type,
+              billing_provider_error: String,
               external_status: MetronomeSDK::Models::V1::Customers::Invoice::ExternalInvoice::external_status,
               invoice_id: String,
               invoiced_sub_total: Float,
@@ -1009,6 +1107,7 @@ module MetronomeSDK
               | :quickbooks_online
               | :workday
               | :gcp_marketplace
+              | :metronome
 
             module BillingProviderType
               extend MetronomeSDK::Internal::Type::Enum
@@ -1021,6 +1120,7 @@ module MetronomeSDK
               QUICKBOOKS_ONLINE: :quickbooks_online
               WORKDAY: :workday
               GCP_MARKETPLACE: :gcp_marketplace
+              METRONOME: :metronome
 
               def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::Invoice::ExternalInvoice::billing_provider_type]
             end
@@ -1131,6 +1231,18 @@ module MetronomeSDK
               credit_grant_custom_fields: ::Hash[Symbol, String],
               credit_grant_id: String
             }
+          end
+
+          type payer = { contract_id: String, customer_id: String }
+
+          class Payer < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor contract_id: String
+
+            attr_accessor customer_id: String
+
+            def initialize: (contract_id: String, customer_id: String) -> void
+
+            def to_hash: -> { contract_id: String, customer_id: String }
           end
 
           type reseller_royalty =

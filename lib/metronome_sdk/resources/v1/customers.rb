@@ -240,7 +240,8 @@ module MetronomeSDK
 
         # Fetch daily pending costs for the specified customer, broken down by credit type
         # and line items. Note: this is not supported for customers whose plan includes a
-        # UNIQUE-type billable metric.
+        # UNIQUE-type billable metric. This is a Plans (deprecated) endpoint. New clients
+        # should implement using Contracts.
         #
         # @overload list_costs(customer_id:, ending_before:, starting_on:, limit: nil, next_page: nil, request_options: {})
         #
@@ -281,17 +282,18 @@ module MetronomeSDK
         # Preview how a set of events will affect a customer's invoices. Generates draft
         # invoices for a customer using their current contract configuration and the
         # provided events. This is useful for testing how new events will affect the
-        # customer's invoices before they are actually processed.
+        # customer's invoices before they are actually processed. Customers on contracts
+        # with SQL billable metrics are not supported.
         #
         # @overload preview_events(customer_id:, events:, mode: nil, skip_zero_qty_line_items: nil, request_options: {})
         #
         # @param customer_id [String] Path param:
         #
-        # @param events [Array<MetronomeSDK::Models::V1::CustomerPreviewEventsParams::Event>] Body param:
+        # @param events [Array<MetronomeSDK::Models::V1::CustomerPreviewEventsParams::Event>] Body param: Array of usage events to include in the preview calculation. Must co
         #
-        # @param mode [Symbol, MetronomeSDK::Models::V1::CustomerPreviewEventsParams::Mode] Body param: If set to "replace", the preview will be generated as if those were
+        # @param mode [Symbol, MetronomeSDK::Models::V1::CustomerPreviewEventsParams::Mode] Body param: Controls how the provided events are combined with existing usage da
         #
-        # @param skip_zero_qty_line_items [Boolean] Body param: If set, all zero quantity line items will be filtered out of the res
+        # @param skip_zero_qty_line_items [Boolean] Body param: When `true`, line items with zero quantity are excluded from the res
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #

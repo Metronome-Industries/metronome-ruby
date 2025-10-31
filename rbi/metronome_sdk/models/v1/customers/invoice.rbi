@@ -52,6 +52,29 @@ module MetronomeSDK
           sig { params(billable_status: T.anything).void }
           attr_writer :billable_status
 
+          # Account hierarchy M3 - Required on invoices with type USAGE_CONSOLIDATED. List
+          # of constituent invoices that were consolidated to create this invoice.
+          sig do
+            returns(
+              T.nilable(
+                T::Array[
+                  MetronomeSDK::V1::Customers::Invoice::ConstituentInvoice
+                ]
+              )
+            )
+          end
+          attr_reader :constituent_invoices
+
+          sig do
+            params(
+              constituent_invoices:
+                T::Array[
+                  MetronomeSDK::V1::Customers::Invoice::ConstituentInvoice::OrHash
+                ]
+            ).void
+          end
+          attr_writer :constituent_invoices
+
           # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           sig { returns(T.nilable(T::Hash[Symbol, String])) }
           attr_reader :contract_custom_fields
@@ -166,6 +189,20 @@ module MetronomeSDK
           sig { params(netsuite_sales_order_id: String).void }
           attr_writer :netsuite_sales_order_id
 
+          # Account hierarchy M3 - Required for account hierarchy usage invoices. An object
+          # containing the contract and customer UUIDs that pay for this invoice.
+          sig do
+            returns(T.nilable(MetronomeSDK::V1::Customers::Invoice::Payer))
+          end
+          attr_reader :payer
+
+          sig do
+            params(
+              payer: MetronomeSDK::V1::Customers::Invoice::Payer::OrHash
+            ).void
+          end
+          attr_writer :payer
+
           # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           sig { returns(T.nilable(T::Hash[Symbol, String])) }
           attr_reader :plan_custom_fields
@@ -235,6 +272,10 @@ module MetronomeSDK
               type: String,
               amendment_id: String,
               billable_status: T.anything,
+              constituent_invoices:
+                T::Array[
+                  MetronomeSDK::V1::Customers::Invoice::ConstituentInvoice::OrHash
+                ],
               contract_custom_fields: T::Hash[Symbol, String],
               contract_id: String,
               correction_record:
@@ -254,6 +295,7 @@ module MetronomeSDK
               issued_at: Time,
               net_payment_terms_days: Float,
               netsuite_sales_order_id: String,
+              payer: MetronomeSDK::V1::Customers::Invoice::Payer::OrHash,
               plan_custom_fields: T::Hash[Symbol, String],
               plan_id: String,
               plan_name: String,
@@ -275,6 +317,9 @@ module MetronomeSDK
             amendment_id: nil,
             # This field's availability is dependent on your client's configuration.
             billable_status: nil,
+            # Account hierarchy M3 - Required on invoices with type USAGE_CONSOLIDATED. List
+            # of constituent invoices that were consolidated to create this invoice.
+            constituent_invoices: nil,
             # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             contract_custom_fields: nil,
             contract_id: nil,
@@ -294,6 +339,9 @@ module MetronomeSDK
             net_payment_terms_days: nil,
             # This field's availability is dependent on your client's configuration.
             netsuite_sales_order_id: nil,
+            # Account hierarchy M3 - Required for account hierarchy usage invoices. An object
+            # containing the contract and customer UUIDs that pay for this invoice.
+            payer: nil,
             # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             plan_custom_fields: nil,
             plan_id: nil,
@@ -321,6 +369,10 @@ module MetronomeSDK
                 type: String,
                 amendment_id: String,
                 billable_status: T.anything,
+                constituent_invoices:
+                  T::Array[
+                    MetronomeSDK::V1::Customers::Invoice::ConstituentInvoice
+                  ],
                 contract_custom_fields: T::Hash[Symbol, String],
                 contract_id: String,
                 correction_record:
@@ -340,6 +392,7 @@ module MetronomeSDK
                 issued_at: Time,
                 net_payment_terms_days: Float,
                 netsuite_sales_order_id: String,
+                payer: MetronomeSDK::V1::Customers::Invoice::Payer,
                 plan_custom_fields: T::Hash[Symbol, String],
                 plan_id: String,
                 plan_name: String,
@@ -544,6 +597,26 @@ module MetronomeSDK
 
             sig { params(netsuite_item_id: String).void }
             attr_writer :netsuite_item_id
+
+            # Account hierarchy M3 - Present on line items from invoices with type
+            # USAGE_CONSOLIDATED. Indicates the original customer, contract, invoice and line
+            # item from which this line item was copied.
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::V1::Customers::Invoice::LineItem::Origin
+                )
+              )
+            end
+            attr_reader :origin
+
+            sig do
+              params(
+                origin:
+                  MetronomeSDK::V1::Customers::Invoice::LineItem::Origin::OrHash
+              ).void
+            end
+            attr_writer :origin
 
             # Only present for line items paying for a postpaid commit true-up.
             sig do
@@ -760,6 +833,8 @@ module MetronomeSDK
                 netsuite_invoice_billing_end: Time,
                 netsuite_invoice_billing_start: Time,
                 netsuite_item_id: String,
+                origin:
+                  MetronomeSDK::V1::Customers::Invoice::LineItem::Origin::OrHash,
                 postpaid_commit:
                   MetronomeSDK::V1::Customers::Invoice::LineItem::PostpaidCommit::OrHash,
                 presentation_group_values: T::Hash[Symbol, T.nilable(String)],
@@ -853,6 +928,10 @@ module MetronomeSDK
               # The start date for the billing period on the invoice.
               netsuite_invoice_billing_start: nil,
               netsuite_item_id: nil,
+              # Account hierarchy M3 - Present on line items from invoices with type
+              # USAGE_CONSOLIDATED. Indicates the original customer, contract, invoice and line
+              # item from which this line item was copied.
+              origin: nil,
               # Only present for line items paying for a postpaid commit true-up.
               postpaid_commit: nil,
               # Includes the presentation group values associated with this line item if
@@ -922,6 +1001,8 @@ module MetronomeSDK
                   netsuite_invoice_billing_end: Time,
                   netsuite_invoice_billing_start: Time,
                   netsuite_item_id: String,
+                  origin:
+                    MetronomeSDK::V1::Customers::Invoice::LineItem::Origin,
                   postpaid_commit:
                     MetronomeSDK::V1::Customers::Invoice::LineItem::PostpaidCommit,
                   presentation_group_values: T::Hash[Symbol, T.nilable(String)],
@@ -1032,6 +1113,60 @@ module MetronomeSDK
                 end
                 def self.values
                 end
+              end
+            end
+
+            class Origin < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::V1::Customers::Invoice::LineItem::Origin,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig { returns(String) }
+              attr_accessor :contract_id
+
+              sig { returns(String) }
+              attr_accessor :customer_id
+
+              sig { returns(String) }
+              attr_accessor :invoice_id
+
+              sig { returns(String) }
+              attr_accessor :line_item_id
+
+              # Account hierarchy M3 - Present on line items from invoices with type
+              # USAGE_CONSOLIDATED. Indicates the original customer, contract, invoice and line
+              # item from which this line item was copied.
+              sig do
+                params(
+                  contract_id: String,
+                  customer_id: String,
+                  invoice_id: String,
+                  line_item_id: String
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                contract_id:,
+                customer_id:,
+                invoice_id:,
+                line_item_id:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    contract_id: String,
+                    customer_id: String,
+                    invoice_id: String,
+                    line_item_id: String
+                  }
+                )
+              end
+              def to_hash
               end
             end
 
@@ -1387,6 +1522,43 @@ module MetronomeSDK
             end
           end
 
+          class ConstituentInvoice < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V1::Customers::Invoice::ConstituentInvoice,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            sig { returns(String) }
+            attr_accessor :contract_id
+
+            sig { returns(String) }
+            attr_accessor :customer_id
+
+            sig { returns(String) }
+            attr_accessor :invoice_id
+
+            sig do
+              params(
+                contract_id: String,
+                customer_id: String,
+                invoice_id: String
+              ).returns(T.attached_class)
+            end
+            def self.new(contract_id:, customer_id:, invoice_id:)
+            end
+
+            sig do
+              override.returns(
+                { contract_id: String, customer_id: String, invoice_id: String }
+              )
+            end
+            def to_hash
+            end
+          end
+
           class CorrectionRecord < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
@@ -1469,6 +1641,13 @@ module MetronomeSDK
               end
               attr_accessor :billing_provider_type
 
+              # Error message from the billing provider, if available.
+              sig { returns(T.nilable(String)) }
+              attr_reader :billing_provider_error
+
+              sig { params(billing_provider_error: String).void }
+              attr_writer :billing_provider_error
+
               sig do
                 returns(
                   T.nilable(
@@ -1541,6 +1720,7 @@ module MetronomeSDK
                 params(
                   billing_provider_type:
                     MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType::OrSymbol,
+                  billing_provider_error: String,
                   external_status:
                     MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus::OrSymbol,
                   invoice_id: String,
@@ -1554,6 +1734,8 @@ module MetronomeSDK
               end
               def self.new(
                 billing_provider_type:,
+                # Error message from the billing provider, if available.
+                billing_provider_error: nil,
                 external_status: nil,
                 invoice_id: nil,
                 # The subtotal amount invoiced, if available from the billing provider.
@@ -1573,6 +1755,7 @@ module MetronomeSDK
                   {
                     billing_provider_type:
                       MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType::TaggedSymbol,
+                    billing_provider_error: String,
                     external_status:
                       MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus::TaggedSymbol,
                     invoice_id: String,
@@ -1638,6 +1821,11 @@ module MetronomeSDK
                 GCP_MARKETPLACE =
                   T.let(
                     :gcp_marketplace,
+                    MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType::TaggedSymbol
+                  )
+                METRONOME =
+                  T.let(
+                    :metronome,
                     MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType::TaggedSymbol
                   )
 
@@ -1810,6 +1998,13 @@ module MetronomeSDK
             end
             attr_accessor :billing_provider_type
 
+            # Error message from the billing provider, if available.
+            sig { returns(T.nilable(String)) }
+            attr_reader :billing_provider_error
+
+            sig { params(billing_provider_error: String).void }
+            attr_writer :billing_provider_error
+
             sig do
               returns(
                 T.nilable(
@@ -1882,6 +2077,7 @@ module MetronomeSDK
               params(
                 billing_provider_type:
                   MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::BillingProviderType::OrSymbol,
+                billing_provider_error: String,
                 external_status:
                   MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::ExternalStatus::OrSymbol,
                 invoice_id: String,
@@ -1895,6 +2091,8 @@ module MetronomeSDK
             end
             def self.new(
               billing_provider_type:,
+              # Error message from the billing provider, if available.
+              billing_provider_error: nil,
               external_status: nil,
               invoice_id: nil,
               # The subtotal amount invoiced, if available from the billing provider.
@@ -1914,6 +2112,7 @@ module MetronomeSDK
                 {
                   billing_provider_type:
                     MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::BillingProviderType::TaggedSymbol,
+                  billing_provider_error: String,
                   external_status:
                     MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::ExternalStatus::TaggedSymbol,
                   invoice_id: String,
@@ -1979,6 +2178,11 @@ module MetronomeSDK
               GCP_MARKETPLACE =
                 T.let(
                   :gcp_marketplace,
+                  MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::BillingProviderType::TaggedSymbol
+                )
+              METRONOME =
+                T.let(
+                  :metronome,
                   MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::BillingProviderType::TaggedSymbol
                 )
 
@@ -2201,6 +2405,38 @@ module MetronomeSDK
                   credit_grant_id: String
                 }
               )
+            end
+            def to_hash
+            end
+          end
+
+          class Payer < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V1::Customers::Invoice::Payer,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            sig { returns(String) }
+            attr_accessor :contract_id
+
+            sig { returns(String) }
+            attr_accessor :customer_id
+
+            # Account hierarchy M3 - Required for account hierarchy usage invoices. An object
+            # containing the contract and customer UUIDs that pay for this invoice.
+            sig do
+              params(contract_id: String, customer_id: String).returns(
+                T.attached_class
+              )
+            end
+            def self.new(contract_id:, customer_id:)
+            end
+
+            sig do
+              override.returns({ contract_id: String, customer_id: String })
             end
             def to_hash
             end

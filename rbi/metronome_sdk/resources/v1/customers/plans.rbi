@@ -5,7 +5,8 @@ module MetronomeSDK
     class V1
       class Customers
         class Plans
-          # List the given customer's plans in reverse-chronological order.
+          # List the given customer's plans in reverse-chronological order. This is a Plans
+          # (deprecated) endpoint. New clients should implement using Contracts.
           sig do
             params(
               customer_id: String,
@@ -31,7 +32,8 @@ module MetronomeSDK
 
           # Associate an existing customer with a plan for a specified date range. See the
           # [price adjustments documentation](https://plans-docs.metronome.com/pricing/managing-plans/#price-adjustments)
-          # for details on the price adjustments.
+          # for details on the price adjustments. This is a Plans (deprecated) endpoint. New
+          # clients should implement using Contracts.
           sig do
             params(
               customer_id: String,
@@ -82,7 +84,8 @@ module MetronomeSDK
           )
           end
 
-          # Change the end date of a customer's plan.
+          # Change the end date of a customer's plan. This is a Plans (deprecated) endpoint.
+          # New clients should implement using Contracts.
           sig do
             params(
               customer_id: String,
@@ -116,7 +119,8 @@ module MetronomeSDK
 
           # Lists a customer plans adjustments. See the
           # [price adjustments documentation](https://plans-docs.metronome.com/pricing/managing-plans/#price-adjustments)
-          # for details.
+          # for details. This is a Plans (deprecated) endpoint. New clients should implement
+          # using Contracts.
           sig do
             params(
               customer_id: String,

@@ -38,6 +38,13 @@ module MetronomeSDK
         sig { params(effective_before: Time).void }
         attr_writer :effective_before
 
+        # Exclude balances with zero amounts from the response.
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :exclude_zero_balances
+
+        sig { params(exclude_zero_balances: T::Boolean).void }
+        attr_writer :exclude_zero_balances
+
         # Include archived credits and credits from archived contracts.
         sig { returns(T.nilable(T::Boolean)) }
         attr_reader :include_archived
@@ -95,6 +102,7 @@ module MetronomeSDK
             id: String,
             covering_date: Time,
             effective_before: Time,
+            exclude_zero_balances: T::Boolean,
             include_archived: T::Boolean,
             include_balance: T::Boolean,
             include_contract_balances: T::Boolean,
@@ -112,6 +120,8 @@ module MetronomeSDK
           covering_date: nil,
           # Include only balances that have any access before the provided date (exclusive)
           effective_before: nil,
+          # Exclude balances with zero amounts from the response.
+          exclude_zero_balances: nil,
           # Include archived credits and credits from archived contracts.
           include_archived: nil,
           # Include the balance of credits and commits in the response. Setting this flag
@@ -139,6 +149,7 @@ module MetronomeSDK
               id: String,
               covering_date: Time,
               effective_before: Time,
+              exclude_zero_balances: T::Boolean,
               include_archived: T::Boolean,
               include_balance: T::Boolean,
               include_contract_balances: T::Boolean,

@@ -53,6 +53,14 @@ module MetronomeSDK
           #   @return [Object, nil]
           optional :billable_status, MetronomeSDK::Internal::Type::Unknown
 
+          # @!attribute constituent_invoices
+          #   Account hierarchy M3 - Required on invoices with type USAGE_CONSOLIDATED. List
+          #   of constituent invoices that were consolidated to create this invoice.
+          #
+          #   @return [Array<MetronomeSDK::Models::V1::Customers::Invoice::ConstituentInvoice>, nil]
+          optional :constituent_invoices,
+                   -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::Invoice::ConstituentInvoice] }
+
           # @!attribute contract_custom_fields
           #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           #
@@ -121,6 +129,13 @@ module MetronomeSDK
           #   @return [String, nil]
           optional :netsuite_sales_order_id, String
 
+          # @!attribute payer
+          #   Account hierarchy M3 - Required for account hierarchy usage invoices. An object
+          #   containing the contract and customer UUIDs that pay for this invoice.
+          #
+          #   @return [MetronomeSDK::Models::V1::Customers::Invoice::Payer, nil]
+          optional :payer, -> { MetronomeSDK::V1::Customers::Invoice::Payer }
+
           # @!attribute plan_custom_fields
           #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           #
@@ -160,7 +175,7 @@ module MetronomeSDK
           #   @return [Float, nil]
           optional :subtotal, Float
 
-          # @!method initialize(id:, credit_type:, customer_id:, line_items:, status:, total:, type:, amendment_id: nil, billable_status: nil, contract_custom_fields: nil, contract_id: nil, correction_record: nil, created_at: nil, custom_fields: nil, customer_custom_fields: nil, end_timestamp: nil, external_invoice: nil, invoice_adjustments: nil, issued_at: nil, net_payment_terms_days: nil, netsuite_sales_order_id: nil, plan_custom_fields: nil, plan_id: nil, plan_name: nil, reseller_royalty: nil, salesforce_opportunity_id: nil, start_timestamp: nil, subtotal: nil)
+          # @!method initialize(id:, credit_type:, customer_id:, line_items:, status:, total:, type:, amendment_id: nil, billable_status: nil, constituent_invoices: nil, contract_custom_fields: nil, contract_id: nil, correction_record: nil, created_at: nil, custom_fields: nil, customer_custom_fields: nil, end_timestamp: nil, external_invoice: nil, invoice_adjustments: nil, issued_at: nil, net_payment_terms_days: nil, netsuite_sales_order_id: nil, payer: nil, plan_custom_fields: nil, plan_id: nil, plan_name: nil, reseller_royalty: nil, salesforce_opportunity_id: nil, start_timestamp: nil, subtotal: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V1::Customers::Invoice} for more details.
           #
@@ -181,6 +196,8 @@ module MetronomeSDK
           #   @param amendment_id [String]
           #
           #   @param billable_status [Object] This field's availability is dependent on your client's configuration.
+          #
+          #   @param constituent_invoices [Array<MetronomeSDK::Models::V1::Customers::Invoice::ConstituentInvoice>] Account hierarchy M3 - Required on invoices with type USAGE_CONSOLIDATED. List o
           #
           #   @param contract_custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           #
@@ -205,6 +222,8 @@ module MetronomeSDK
           #   @param net_payment_terms_days [Float]
           #
           #   @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
+          #
+          #   @param payer [MetronomeSDK::Models::V1::Customers::Invoice::Payer] Account hierarchy M3 - Required for account hierarchy usage invoices. An object
           #
           #   @param plan_custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           #
@@ -380,6 +399,14 @@ module MetronomeSDK
             #   @return [String, nil]
             optional :netsuite_item_id, String
 
+            # @!attribute origin
+            #   Account hierarchy M3 - Present on line items from invoices with type
+            #   USAGE_CONSOLIDATED. Indicates the original customer, contract, invoice and line
+            #   item from which this line item was copied.
+            #
+            #   @return [MetronomeSDK::Models::V1::Customers::Invoice::LineItem::Origin, nil]
+            optional :origin, -> { MetronomeSDK::V1::Customers::Invoice::LineItem::Origin }
+
             # @!attribute postpaid_commit
             #   Only present for line items paying for a postpaid commit true-up.
             #
@@ -492,7 +519,7 @@ module MetronomeSDK
             #   @return [Float, nil]
             optional :unit_price, Float
 
-            # @!method initialize(credit_type:, name:, total:, type:, applied_commit_or_credit: nil, commit_custom_fields: nil, commit_id: nil, commit_netsuite_item_id: nil, commit_netsuite_sales_order_id: nil, commit_segment_id: nil, commit_type: nil, custom_fields: nil, discount_custom_fields: nil, discount_id: nil, ending_before: nil, group_key: nil, group_value: nil, is_prorated: nil, list_price: nil, metadata: nil, netsuite_invoice_billing_end: nil, netsuite_invoice_billing_start: nil, netsuite_item_id: nil, postpaid_commit: nil, presentation_group_values: nil, pricing_group_values: nil, product_custom_fields: nil, product_id: nil, product_tags: nil, product_type: nil, professional_service_custom_fields: nil, professional_service_id: nil, quantity: nil, reseller_type: nil, scheduled_charge_custom_fields: nil, scheduled_charge_id: nil, starting_at: nil, sub_line_items: nil, subscription_custom_fields: nil, tier: nil, unit_price: nil)
+            # @!method initialize(credit_type:, name:, total:, type:, applied_commit_or_credit: nil, commit_custom_fields: nil, commit_id: nil, commit_netsuite_item_id: nil, commit_netsuite_sales_order_id: nil, commit_segment_id: nil, commit_type: nil, custom_fields: nil, discount_custom_fields: nil, discount_id: nil, ending_before: nil, group_key: nil, group_value: nil, is_prorated: nil, list_price: nil, metadata: nil, netsuite_invoice_billing_end: nil, netsuite_invoice_billing_start: nil, netsuite_item_id: nil, origin: nil, postpaid_commit: nil, presentation_group_values: nil, pricing_group_values: nil, product_custom_fields: nil, product_id: nil, product_tags: nil, product_type: nil, professional_service_custom_fields: nil, professional_service_id: nil, quantity: nil, reseller_type: nil, scheduled_charge_custom_fields: nil, scheduled_charge_id: nil, starting_at: nil, sub_line_items: nil, subscription_custom_fields: nil, tier: nil, unit_price: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V1::Customers::Invoice::LineItem} for more details.
             #
@@ -541,6 +568,8 @@ module MetronomeSDK
             #   @param netsuite_invoice_billing_start [Time] The start date for the billing period on the invoice.
             #
             #   @param netsuite_item_id [String]
+            #
+            #   @param origin [MetronomeSDK::Models::V1::Customers::Invoice::LineItem::Origin] Account hierarchy M3 - Present on line items from invoices with type USAGE_CONSO
             #
             #   @param postpaid_commit [MetronomeSDK::Models::V1::Customers::Invoice::LineItem::PostpaidCommit] Only present for line items paying for a postpaid commit true-up.
             #
@@ -609,6 +638,39 @@ module MetronomeSDK
                 # @!method self.values
                 #   @return [Array<Symbol>]
               end
+            end
+
+            # @see MetronomeSDK::Models::V1::Customers::Invoice::LineItem#origin
+            class Origin < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute contract_id
+              #
+              #   @return [String]
+              required :contract_id, String
+
+              # @!attribute customer_id
+              #
+              #   @return [String]
+              required :customer_id, String
+
+              # @!attribute invoice_id
+              #
+              #   @return [String]
+              required :invoice_id, String
+
+              # @!attribute line_item_id
+              #
+              #   @return [String]
+              required :line_item_id, String
+
+              # @!method initialize(contract_id:, customer_id:, invoice_id:, line_item_id:)
+              #   Account hierarchy M3 - Present on line items from invoices with type
+              #   USAGE_CONSOLIDATED. Indicates the original customer, contract, invoice and line
+              #   item from which this line item was copied.
+              #
+              #   @param contract_id [String]
+              #   @param customer_id [String]
+              #   @param invoice_id [String]
+              #   @param line_item_id [String]
             end
 
             # @see MetronomeSDK::Models::V1::Customers::Invoice::LineItem#postpaid_commit
@@ -805,6 +867,28 @@ module MetronomeSDK
             end
           end
 
+          class ConstituentInvoice < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute contract_id
+            #
+            #   @return [String]
+            required :contract_id, String
+
+            # @!attribute customer_id
+            #
+            #   @return [String]
+            required :customer_id, String
+
+            # @!attribute invoice_id
+            #
+            #   @return [String]
+            required :invoice_id, String
+
+            # @!method initialize(contract_id:, customer_id:, invoice_id:)
+            #   @param contract_id [String]
+            #   @param customer_id [String]
+            #   @param invoice_id [String]
+          end
+
           # @see MetronomeSDK::Models::V1::Customers::Invoice#correction_record
           class CorrectionRecord < MetronomeSDK::Internal::Type::BaseModel
             # @!attribute corrected_invoice_id
@@ -841,6 +925,12 @@ module MetronomeSDK
               #   @return [Symbol, MetronomeSDK::Models::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType]
               required :billing_provider_type,
                        enum: -> { MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType }
+
+              # @!attribute billing_provider_error
+              #   Error message from the billing provider, if available.
+              #
+              #   @return [String, nil]
+              optional :billing_provider_error, String
 
               # @!attribute external_status
               #
@@ -883,8 +973,10 @@ module MetronomeSDK
               optional :tax,
                        -> { MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::Tax }
 
-              # @!method initialize(billing_provider_type:, external_status: nil, invoice_id: nil, invoiced_sub_total: nil, invoiced_total: nil, issued_at_timestamp: nil, pdf_url: nil, tax: nil)
+              # @!method initialize(billing_provider_type:, billing_provider_error: nil, external_status: nil, invoice_id: nil, invoiced_sub_total: nil, invoiced_total: nil, issued_at_timestamp: nil, pdf_url: nil, tax: nil)
               #   @param billing_provider_type [Symbol, MetronomeSDK::Models::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType]
+              #
+              #   @param billing_provider_error [String] Error message from the billing provider, if available.
               #
               #   @param external_status [Symbol, MetronomeSDK::Models::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus]
               #
@@ -912,6 +1004,7 @@ module MetronomeSDK
                 QUICKBOOKS_ONLINE = :quickbooks_online
                 WORKDAY = :workday
                 GCP_MARKETPLACE = :gcp_marketplace
+                METRONOME = :metronome
 
                 # @!method self.values
                 #   @return [Array<Symbol>]
@@ -977,6 +1070,12 @@ module MetronomeSDK
             required :billing_provider_type,
                      enum: -> { MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::BillingProviderType }
 
+            # @!attribute billing_provider_error
+            #   Error message from the billing provider, if available.
+            #
+            #   @return [String, nil]
+            optional :billing_provider_error, String
+
             # @!attribute external_status
             #
             #   @return [Symbol, MetronomeSDK::Models::V1::Customers::Invoice::ExternalInvoice::ExternalStatus, nil]
@@ -1017,8 +1116,10 @@ module MetronomeSDK
             #   @return [MetronomeSDK::Models::V1::Customers::Invoice::ExternalInvoice::Tax, nil]
             optional :tax, -> { MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::Tax }
 
-            # @!method initialize(billing_provider_type:, external_status: nil, invoice_id: nil, invoiced_sub_total: nil, invoiced_total: nil, issued_at_timestamp: nil, pdf_url: nil, tax: nil)
+            # @!method initialize(billing_provider_type:, billing_provider_error: nil, external_status: nil, invoice_id: nil, invoiced_sub_total: nil, invoiced_total: nil, issued_at_timestamp: nil, pdf_url: nil, tax: nil)
             #   @param billing_provider_type [Symbol, MetronomeSDK::Models::V1::Customers::Invoice::ExternalInvoice::BillingProviderType]
+            #
+            #   @param billing_provider_error [String] Error message from the billing provider, if available.
             #
             #   @param external_status [Symbol, MetronomeSDK::Models::V1::Customers::Invoice::ExternalInvoice::ExternalStatus]
             #
@@ -1046,6 +1147,7 @@ module MetronomeSDK
               QUICKBOOKS_ONLINE = :quickbooks_online
               WORKDAY = :workday
               GCP_MARKETPLACE = :gcp_marketplace
+              METRONOME = :metronome
 
               # @!method self.values
               #   @return [Array<Symbol>]
@@ -1139,6 +1241,26 @@ module MetronomeSDK
             #   @param credit_grant_custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             #
             #   @param credit_grant_id [String]
+          end
+
+          # @see MetronomeSDK::Models::V1::Customers::Invoice#payer
+          class Payer < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute contract_id
+            #
+            #   @return [String]
+            required :contract_id, String
+
+            # @!attribute customer_id
+            #
+            #   @return [String]
+            required :customer_id, String
+
+            # @!method initialize(contract_id:, customer_id:)
+            #   Account hierarchy M3 - Required for account hierarchy usage invoices. An object
+            #   containing the contract and customer UUIDs that pay for this invoice.
+            #
+            #   @param contract_id [String]
+            #   @param customer_id [String]
           end
 
           # @see MetronomeSDK::Models::V1::Customers::Invoice#reseller_royalty

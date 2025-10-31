@@ -4,7 +4,8 @@ module MetronomeSDK
   module Resources
     class V1
       class CreditGrants
-        # Create a new credit grant
+        # Create a new credit grant. This is a Plans (deprecated) endpoint. New clients
+        # should implement using Contracts.
         sig do
           params(
             customer_id: String,
@@ -65,7 +66,8 @@ module MetronomeSDK
         )
         end
 
-        # List credit grants. This list does not included voided grants.
+        # List credit grants. This list does not included voided grants. This is a Plans
+        # (deprecated) endpoint. New clients should implement using Contracts.
         sig do
           params(
             limit: Integer,
@@ -105,7 +107,8 @@ module MetronomeSDK
         )
         end
 
-        # Edit an existing credit grant
+        # Edit an existing credit grant. This is a Plans (deprecated) endpoint. New
+        # clients should implement using Contracts.
         sig do
           params(
             id: String,
@@ -130,7 +133,8 @@ module MetronomeSDK
 
         # Fetches a list of credit ledger entries. Returns lists of ledgers per customer.
         # Ledger entries are returned in chronological order. Ledger entries associated
-        # with voided credit grants are not included.
+        # with voided credit grants are not included. This is a Plans (deprecated)
+        # endpoint. New clients should implement using Contracts.
         sig do
           params(
             next_page: String,
@@ -170,7 +174,8 @@ module MetronomeSDK
         )
         end
 
-        # Void a credit grant
+        # Void a credit grant. This is a Plans (deprecated) endpoint. New clients should
+        # implement using Contracts.
         sig do
           params(
             id: String,

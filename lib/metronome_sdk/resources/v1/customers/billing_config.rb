@@ -9,7 +9,8 @@ module MetronomeSDK
           # {MetronomeSDK::Models::V1::Customers::BillingConfigCreateParams} for more
           # details.
           #
-          # Set the billing configuration for a given customer.
+          # Set the billing configuration for a given customer. This is a Plans (deprecated)
+          # endpoint. New clients should implement using Contracts.
           #
           # @overload create(customer_id:, billing_provider_type:, billing_provider_customer_id:, aws_product_code: nil, aws_region: nil, stripe_collection_method: nil, request_options: {})
           #
@@ -23,7 +24,7 @@ module MetronomeSDK
           #
           # @param aws_region [Symbol, MetronomeSDK::Models::V1::Customers::BillingConfigCreateParams::AwsRegion] Body param:
           #
-          # @param stripe_collection_method [Symbol, MetronomeSDK::Models::V1::Customers::BillingConfigCreateParams::StripeCollectionMethod] Body param:
+          # @param stripe_collection_method [Symbol, MetronomeSDK::Models::V1::Customers::BillingConfigCreateParams::StripeCollectionMethod] Body param: The collection method for the customer's invoices.
           #
           # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
           #
@@ -49,7 +50,8 @@ module MetronomeSDK
             )
           end
 
-          # Fetch the billing configuration for the given customer.
+          # Fetch the billing configuration for the given customer. This is a Plans
+          # (deprecated) endpoint. New clients should implement using Contracts.
           #
           # @overload retrieve(customer_id:, billing_provider_type:, request_options: {})
           #
@@ -81,7 +83,8 @@ module MetronomeSDK
           end
 
           # Delete the billing configuration for a given customer. Note: this is unsupported
-          # for Azure and AWS Marketplace customers.
+          # for Azure and AWS Marketplace customers. This is a Plans (deprecated) endpoint.
+          # New clients should implement using Contracts.
           #
           # @overload delete(customer_id:, billing_provider_type:, request_options: {})
           #

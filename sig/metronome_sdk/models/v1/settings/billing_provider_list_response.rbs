@@ -1,0 +1,102 @@
+module MetronomeSDK
+  module Models
+    module V1
+      module Settings
+        type billing_provider_list_response =
+          {
+            data: ::Array[MetronomeSDK::Models::V1::Settings::BillingProviderListResponse::Data],
+            next_page: String?
+          }
+
+        class BillingProviderListResponse < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor data: ::Array[MetronomeSDK::Models::V1::Settings::BillingProviderListResponse::Data]
+
+          attr_accessor next_page: String?
+
+          def initialize: (
+            data: ::Array[MetronomeSDK::Models::V1::Settings::BillingProviderListResponse::Data],
+            ?next_page: String?
+          ) -> void
+
+          def to_hash: -> {
+            data: ::Array[MetronomeSDK::Models::V1::Settings::BillingProviderListResponse::Data],
+            next_page: String?
+          }
+
+          type data =
+            {
+              billing_provider: MetronomeSDK::Models::V1::Settings::BillingProviderListResponse::Data::billing_provider,
+              delivery_method: MetronomeSDK::Models::V1::Settings::BillingProviderListResponse::Data::delivery_method,
+              delivery_method_configuration: ::Hash[Symbol, top],
+              delivery_method_id: String
+            }
+
+          class Data < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor billing_provider: MetronomeSDK::Models::V1::Settings::BillingProviderListResponse::Data::billing_provider
+
+            attr_accessor delivery_method: MetronomeSDK::Models::V1::Settings::BillingProviderListResponse::Data::delivery_method
+
+            attr_accessor delivery_method_configuration: ::Hash[Symbol, top]
+
+            attr_accessor delivery_method_id: String
+
+            def initialize: (
+              billing_provider: MetronomeSDK::Models::V1::Settings::BillingProviderListResponse::Data::billing_provider,
+              delivery_method: MetronomeSDK::Models::V1::Settings::BillingProviderListResponse::Data::delivery_method,
+              delivery_method_configuration: ::Hash[Symbol, top],
+              delivery_method_id: String
+            ) -> void
+
+            def to_hash: -> {
+              billing_provider: MetronomeSDK::Models::V1::Settings::BillingProviderListResponse::Data::billing_provider,
+              delivery_method: MetronomeSDK::Models::V1::Settings::BillingProviderListResponse::Data::delivery_method,
+              delivery_method_configuration: ::Hash[Symbol, top],
+              delivery_method_id: String
+            }
+
+            type billing_provider =
+              :aws_marketplace
+              | :stripe
+              | :netsuite
+              | :custom
+              | :azure_marketplace
+              | :quickbooks_online
+              | :workday
+              | :gcp_marketplace
+              | :metronome
+
+            module BillingProvider
+              extend MetronomeSDK::Internal::Type::Enum
+
+              AWS_MARKETPLACE: :aws_marketplace
+              STRIPE: :stripe
+              NETSUITE: :netsuite
+              CUSTOM: :custom
+              AZURE_MARKETPLACE: :azure_marketplace
+              QUICKBOOKS_ONLINE: :quickbooks_online
+              WORKDAY: :workday
+              GCP_MARKETPLACE: :gcp_marketplace
+              METRONOME: :metronome
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::Settings::BillingProviderListResponse::Data::billing_provider]
+            end
+
+            type delivery_method =
+              :direct_to_billing_provider | :aws_sqs | :tackle | :aws_sns
+
+            module DeliveryMethod
+              extend MetronomeSDK::Internal::Type::Enum
+
+              DIRECT_TO_BILLING_PROVIDER: :direct_to_billing_provider
+              AWS_SQS: :aws_sqs
+              TACKLE: :tackle
+              AWS_SNS: :aws_sns
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::Settings::BillingProviderListResponse::Data::delivery_method]
+            end
+          end
+        end
+      end
+    end
+  end
+end
