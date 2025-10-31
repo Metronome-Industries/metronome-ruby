@@ -1641,6 +1641,13 @@ module MetronomeSDK
               end
               attr_accessor :billing_provider_type
 
+              # Error message from the billing provider, if available.
+              sig { returns(T.nilable(String)) }
+              attr_reader :billing_provider_error
+
+              sig { params(billing_provider_error: String).void }
+              attr_writer :billing_provider_error
+
               sig do
                 returns(
                   T.nilable(
@@ -1713,6 +1720,7 @@ module MetronomeSDK
                 params(
                   billing_provider_type:
                     MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType::OrSymbol,
+                  billing_provider_error: String,
                   external_status:
                     MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus::OrSymbol,
                   invoice_id: String,
@@ -1726,6 +1734,8 @@ module MetronomeSDK
               end
               def self.new(
                 billing_provider_type:,
+                # Error message from the billing provider, if available.
+                billing_provider_error: nil,
                 external_status: nil,
                 invoice_id: nil,
                 # The subtotal amount invoiced, if available from the billing provider.
@@ -1745,6 +1755,7 @@ module MetronomeSDK
                   {
                     billing_provider_type:
                       MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType::TaggedSymbol,
+                    billing_provider_error: String,
                     external_status:
                       MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus::TaggedSymbol,
                     invoice_id: String,
@@ -1987,6 +1998,13 @@ module MetronomeSDK
             end
             attr_accessor :billing_provider_type
 
+            # Error message from the billing provider, if available.
+            sig { returns(T.nilable(String)) }
+            attr_reader :billing_provider_error
+
+            sig { params(billing_provider_error: String).void }
+            attr_writer :billing_provider_error
+
             sig do
               returns(
                 T.nilable(
@@ -2059,6 +2077,7 @@ module MetronomeSDK
               params(
                 billing_provider_type:
                   MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::BillingProviderType::OrSymbol,
+                billing_provider_error: String,
                 external_status:
                   MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::ExternalStatus::OrSymbol,
                 invoice_id: String,
@@ -2072,6 +2091,8 @@ module MetronomeSDK
             end
             def self.new(
               billing_provider_type:,
+              # Error message from the billing provider, if available.
+              billing_provider_error: nil,
               external_status: nil,
               invoice_id: nil,
               # The subtotal amount invoiced, if available from the billing provider.
@@ -2091,6 +2112,7 @@ module MetronomeSDK
                 {
                   billing_provider_type:
                     MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::BillingProviderType::TaggedSymbol,
+                  billing_provider_error: String,
                   external_status:
                     MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::ExternalStatus::TaggedSymbol,
                   invoice_id: String,
