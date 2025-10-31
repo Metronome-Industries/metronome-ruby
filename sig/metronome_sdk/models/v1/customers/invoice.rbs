@@ -856,6 +856,7 @@ module MetronomeSDK
             type corrected_external_invoice =
               {
                 billing_provider_type: MetronomeSDK::Models::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::billing_provider_type,
+                billing_provider_error: String,
                 external_status: MetronomeSDK::Models::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::external_status,
                 invoice_id: String,
                 invoiced_sub_total: Float,
@@ -867,6 +868,10 @@ module MetronomeSDK
 
             class CorrectedExternalInvoice < MetronomeSDK::Internal::Type::BaseModel
               attr_accessor billing_provider_type: MetronomeSDK::Models::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::billing_provider_type
+
+              attr_reader billing_provider_error: String?
+
+              def billing_provider_error=: (String) -> String
 
               attr_reader external_status: MetronomeSDK::Models::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::external_status?
 
@@ -902,6 +907,7 @@ module MetronomeSDK
 
               def initialize: (
                 billing_provider_type: MetronomeSDK::Models::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::billing_provider_type,
+                ?billing_provider_error: String,
                 ?external_status: MetronomeSDK::Models::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::external_status,
                 ?invoice_id: String,
                 ?invoiced_sub_total: Float,
@@ -913,6 +919,7 @@ module MetronomeSDK
 
               def to_hash: -> {
                 billing_provider_type: MetronomeSDK::Models::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::billing_provider_type,
+                billing_provider_error: String,
                 external_status: MetronomeSDK::Models::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::external_status,
                 invoice_id: String,
                 invoiced_sub_total: Float,
@@ -1018,6 +1025,7 @@ module MetronomeSDK
           type external_invoice =
             {
               billing_provider_type: MetronomeSDK::Models::V1::Customers::Invoice::ExternalInvoice::billing_provider_type,
+              billing_provider_error: String,
               external_status: MetronomeSDK::Models::V1::Customers::Invoice::ExternalInvoice::external_status,
               invoice_id: String,
               invoiced_sub_total: Float,
@@ -1029,6 +1037,10 @@ module MetronomeSDK
 
           class ExternalInvoice < MetronomeSDK::Internal::Type::BaseModel
             attr_accessor billing_provider_type: MetronomeSDK::Models::V1::Customers::Invoice::ExternalInvoice::billing_provider_type
+
+            attr_reader billing_provider_error: String?
+
+            def billing_provider_error=: (String) -> String
 
             attr_reader external_status: MetronomeSDK::Models::V1::Customers::Invoice::ExternalInvoice::external_status?
 
@@ -1064,6 +1076,7 @@ module MetronomeSDK
 
             def initialize: (
               billing_provider_type: MetronomeSDK::Models::V1::Customers::Invoice::ExternalInvoice::billing_provider_type,
+              ?billing_provider_error: String,
               ?external_status: MetronomeSDK::Models::V1::Customers::Invoice::ExternalInvoice::external_status,
               ?invoice_id: String,
               ?invoiced_sub_total: Float,
@@ -1075,6 +1088,7 @@ module MetronomeSDK
 
             def to_hash: -> {
               billing_provider_type: MetronomeSDK::Models::V1::Customers::Invoice::ExternalInvoice::billing_provider_type,
+              billing_provider_error: String,
               external_status: MetronomeSDK::Models::V1::Customers::Invoice::ExternalInvoice::external_status,
               invoice_id: String,
               invoiced_sub_total: Float,

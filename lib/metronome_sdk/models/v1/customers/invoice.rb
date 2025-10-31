@@ -926,6 +926,12 @@ module MetronomeSDK
               required :billing_provider_type,
                        enum: -> { MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType }
 
+              # @!attribute billing_provider_error
+              #   Error message from the billing provider, if available.
+              #
+              #   @return [String, nil]
+              optional :billing_provider_error, String
+
               # @!attribute external_status
               #
               #   @return [Symbol, MetronomeSDK::Models::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus, nil]
@@ -967,8 +973,10 @@ module MetronomeSDK
               optional :tax,
                        -> { MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::Tax }
 
-              # @!method initialize(billing_provider_type:, external_status: nil, invoice_id: nil, invoiced_sub_total: nil, invoiced_total: nil, issued_at_timestamp: nil, pdf_url: nil, tax: nil)
+              # @!method initialize(billing_provider_type:, billing_provider_error: nil, external_status: nil, invoice_id: nil, invoiced_sub_total: nil, invoiced_total: nil, issued_at_timestamp: nil, pdf_url: nil, tax: nil)
               #   @param billing_provider_type [Symbol, MetronomeSDK::Models::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType]
+              #
+              #   @param billing_provider_error [String] Error message from the billing provider, if available.
               #
               #   @param external_status [Symbol, MetronomeSDK::Models::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus]
               #
@@ -1062,6 +1070,12 @@ module MetronomeSDK
             required :billing_provider_type,
                      enum: -> { MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::BillingProviderType }
 
+            # @!attribute billing_provider_error
+            #   Error message from the billing provider, if available.
+            #
+            #   @return [String, nil]
+            optional :billing_provider_error, String
+
             # @!attribute external_status
             #
             #   @return [Symbol, MetronomeSDK::Models::V1::Customers::Invoice::ExternalInvoice::ExternalStatus, nil]
@@ -1102,8 +1116,10 @@ module MetronomeSDK
             #   @return [MetronomeSDK::Models::V1::Customers::Invoice::ExternalInvoice::Tax, nil]
             optional :tax, -> { MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::Tax }
 
-            # @!method initialize(billing_provider_type:, external_status: nil, invoice_id: nil, invoiced_sub_total: nil, invoiced_total: nil, issued_at_timestamp: nil, pdf_url: nil, tax: nil)
+            # @!method initialize(billing_provider_type:, billing_provider_error: nil, external_status: nil, invoice_id: nil, invoiced_sub_total: nil, invoiced_total: nil, issued_at_timestamp: nil, pdf_url: nil, tax: nil)
             #   @param billing_provider_type [Symbol, MetronomeSDK::Models::V1::Customers::Invoice::ExternalInvoice::BillingProviderType]
+            #
+            #   @param billing_provider_error [String] Error message from the billing provider, if available.
             #
             #   @param external_status [Symbol, MetronomeSDK::Models::V1::Customers::Invoice::ExternalInvoice::ExternalStatus]
             #
