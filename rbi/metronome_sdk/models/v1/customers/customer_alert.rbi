@@ -431,6 +431,11 @@ module MetronomeSDK
                   :low_remaining_contract_credit_and_commit_balance_reached,
                   MetronomeSDK::V1::Customers::CustomerAlert::Alert::Type::TaggedSymbol
                 )
+              LOW_REMAINING_SEAT_BALANCE_REACHED =
+                T.let(
+                  :low_remaining_seat_balance_reached,
+                  MetronomeSDK::V1::Customers::CustomerAlert::Alert::Type::TaggedSymbol
+                )
               INVOICE_TOTAL_REACHED =
                 T.let(
                   :invoice_total_reached,

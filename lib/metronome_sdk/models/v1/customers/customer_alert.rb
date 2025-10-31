@@ -191,6 +191,7 @@ module MetronomeSDK
               LOW_REMAINING_CONTRACT_CREDIT_PERCENTAGE_REACHED = :low_remaining_contract_credit_percentage_reached
               LOW_REMAINING_CONTRACT_CREDIT_AND_COMMIT_BALANCE_REACHED =
                 :low_remaining_contract_credit_and_commit_balance_reached
+              LOW_REMAINING_SEAT_BALANCE_REACHED = :low_remaining_seat_balance_reached
               INVOICE_TOTAL_REACHED = :invoice_total_reached
 
               # @!method self.values
