@@ -1,5 +1,41 @@
 # Changelog
 
+## 2.1.0 (2025-10-31)
+
+Full Changelog: [v2.0.0...v2.1.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v2.0.0...v2.1.0)
+
+### Features
+
+* [ORCH-282] plumb `payment_method_id` to the payment gateway object ([bba092f](https://github.com/Metronome-Industries/metronome-ruby/commit/bba092fbe0b66d2f2df6187c579bdc0458375a65))
+* [ORCH-797] add billing_provider_error to invoice.external_invoice ([7f77e42](https://github.com/Metronome-Industries/metronome-ruby/commit/7f77e42d219f720783d480096248bf153e771336))
+* Add avalara creds + billing provider APIs to SDK. Add avalara creds API to docs. ([9808e39](https://github.com/Metronome-Industries/metronome-ruby/commit/9808e39003df39e50183c64e806ef4589819353d))
+* add beta tag to stripe auto charge items ([652727e](https://github.com/Metronome-Industries/metronome-ruby/commit/652727e1f6df7269a3b6db00f401460aab32ce6d))
+* add exclude_zero_balances field behind a FF for anthropic ([9e7b1a4](https://github.com/Metronome-Industries/metronome-ruby/commit/9e7b1a461fe7eb13fd846f18f0ea329f6b1083b7))
+* add METRONOME to BillingProvider type ([2f7e988](https://github.com/Metronome-Industries/metronome-ruby/commit/2f7e9882bf53acae0356e748be68e37067ef9bd9))
+* docs(api) Documentation for seat-based subscription linked recurring commits beta release ([2e53b04](https://github.com/Metronome-Industries/metronome-ruby/commit/2e53b04d23b9e49184bd91d32c712a4c59a73f0a))
+* handle thread interrupts in the core HTTP client ([db696fe](https://github.com/Metronome-Industries/metronome-ruby/commit/db696fe074207b842d076aaafa549c5695c87dd5))
+* ignore_duplicates ([cd50ce6](https://github.com/Metronome-Industries/metronome-ruby/commit/cd50ce63586d55d98557e050024cad863be60b99))
+* internal: moving plans docs to deprecated section of new docs site ([f5f12b4](https://github.com/Metronome-Industries/metronome-ruby/commit/f5f12b4af2bbc39d892b885b6b6f768128330806))
+* not ready for review ([efabbf6](https://github.com/Metronome-Industries/metronome-ruby/commit/efabbf64195a0575e5136ba7de0a0552a11a7592))
+* not ready for review ([624dd4f](https://github.com/Metronome-Industries/metronome-ruby/commit/624dd4f2c827279317bb7ac53cb9c8ab9aa4dde8))
+* Relax requirement on customer level commits for invoice_contract_id if do_not_invoice is set to true ([af4a8a7](https://github.com/Metronome-Industries/metronome-ruby/commit/af4a8a72d376d709a69b9cd248e54ef12eaa8124))
+* update get customer alerts api to include low seat balance type ([1e08e6d](https://github.com/Metronome-Industries/metronome-ruby/commit/1e08e6d2f1186dd47e17a6bf986d8732ec9801b3))
+
+
+### Bug Fixes
+
+* **api:** Make id field required in /v2/notifications/edit ([34c16c6](https://github.com/Metronome-Industries/metronome-ruby/commit/34c16c6bcebdfc18765883b017708225cf6d312c))
+
+
+### Chores
+
+* **api:** Note SQL BM is not supported in previewCustomerEvents description ([1bb482c](https://github.com/Metronome-Industries/metronome-ruby/commit/1bb482c536bc70849b425b45a073431cf4dff009))
+
+
+### Documentation
+
+* add migrate amendments to edits page ([6b10754](https://github.com/Metronome-Industries/metronome-ruby/commit/6b1075422730cb9b1b254ac7549c76b8f5f8d475))
+
 ## 2.0.0 (2025-10-16)
 
 Full Changelog: [v1.0.0...v2.0.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v1.0.0...v2.0.0)
