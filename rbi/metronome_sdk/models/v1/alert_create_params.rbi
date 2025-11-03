@@ -317,6 +317,11 @@ module MetronomeSDK
               :invoice_total_reached,
               MetronomeSDK::V1::AlertCreateParams::AlertType::TaggedSymbol
             )
+          LOW_REMAINING_SEAT_BALANCE_REACHED =
+            T.let(
+              :low_remaining_seat_balance_reached,
+              MetronomeSDK::V1::AlertCreateParams::AlertType::TaggedSymbol
+            )
 
           sig do
             override.returns(
