@@ -50,6 +50,7 @@ module MetronomeSDK
 
             AWS_MARKETPLACE = :aws_marketplace
             AZURE_MARKETPLACE = :azure_marketplace
+            GCP_MARKETPLACE = :gcp_marketplace
 
             # @!method self.values
             #   @return [Array<Symbol>]

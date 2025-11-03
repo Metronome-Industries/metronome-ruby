@@ -99,6 +99,11 @@ module MetronomeSDK
                 :azure_marketplace,
                 MetronomeSDK::V1::Settings::BillingProviderCreateParams::BillingProvider::TaggedSymbol
               )
+            GCP_MARKETPLACE =
+              T.let(
+                :gcp_marketplace,
+                MetronomeSDK::V1::Settings::BillingProviderCreateParams::BillingProvider::TaggedSymbol
+              )
 
             sig do
               override.returns(
