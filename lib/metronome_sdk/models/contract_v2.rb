@@ -445,7 +445,13 @@ module MetronomeSDK
         #   @return [Array<MetronomeSDK::Models::CommitSpecifier>, nil]
         optional :specifiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::CommitSpecifier] }
 
-        # @!method initialize(id:, created_at:, product:, type:, access_schedule: nil, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, archived_at: nil, balance: nil, contract: nil, custom_fields: nil, description: nil, hierarchy_configuration: nil, invoice_contract: nil, invoice_schedule: nil, ledger: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil, rolled_over_from: nil, rollover_fraction: nil, salesforce_opportunity_id: nil, specifiers: nil)
+        # @!attribute subscription_config
+        #   Attach a subscription to the recurring commit/credit.
+        #
+        #   @return [MetronomeSDK::Models::RecurringCommitSubscriptionConfig, nil]
+        optional :subscription_config, -> { MetronomeSDK::RecurringCommitSubscriptionConfig }
+
+        # @!method initialize(id:, created_at:, product:, type:, access_schedule: nil, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, archived_at: nil, balance: nil, contract: nil, custom_fields: nil, description: nil, hierarchy_configuration: nil, invoice_contract: nil, invoice_schedule: nil, ledger: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil, rolled_over_from: nil, rollover_fraction: nil, salesforce_opportunity_id: nil, specifiers: nil, subscription_config: nil)
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::ContractV2::Commit} for more details.
         #
@@ -498,6 +504,8 @@ module MetronomeSDK
         #   @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
         #
         #   @param specifiers [Array<MetronomeSDK::Models::CommitSpecifier>] List of filters that determine what kind of customer usage draws down a commit o
+        #
+        #   @param subscription_config [MetronomeSDK::Models::RecurringCommitSubscriptionConfig] Attach a subscription to the recurring commit/credit.
 
         # @see MetronomeSDK::Models::ContractV2::Commit#product
         class Product < MetronomeSDK::Internal::Type::BaseModel
@@ -1646,6 +1654,15 @@ module MetronomeSDK
         #   @return [MetronomeSDK::Models::ContractV2::Credit::Contract, nil]
         optional :contract, -> { MetronomeSDK::ContractV2::Credit::Contract }
 
+        # @!attribute created_at
+        #   Timestamp of when the credit was created.
+        #
+        #   - Recurring credits: latter of credit service period date and parent credit
+        #     start date
+        #
+        #   @return [Time, nil]
+        optional :created_at, Time
+
         # @!attribute custom_fields
         #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         #
@@ -1703,7 +1720,13 @@ module MetronomeSDK
         #   @return [Array<MetronomeSDK::Models::CommitSpecifier>, nil]
         optional :specifiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::CommitSpecifier] }
 
-        # @!method initialize(id:, product:, type:, access_schedule: nil, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, balance: nil, contract: nil, custom_fields: nil, description: nil, hierarchy_configuration: nil, ledger: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, salesforce_opportunity_id: nil, specifiers: nil)
+        # @!attribute subscription_config
+        #   Attach a subscription to the recurring commit/credit.
+        #
+        #   @return [MetronomeSDK::Models::RecurringCommitSubscriptionConfig, nil]
+        optional :subscription_config, -> { MetronomeSDK::RecurringCommitSubscriptionConfig }
+
+        # @!method initialize(id:, product:, type:, access_schedule: nil, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, balance: nil, contract: nil, created_at: nil, custom_fields: nil, description: nil, hierarchy_configuration: nil, ledger: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, salesforce_opportunity_id: nil, specifiers: nil, subscription_config: nil)
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::ContractV2::Credit} for more details.
         #
@@ -1725,6 +1748,8 @@ module MetronomeSDK
         #
         #   @param contract [MetronomeSDK::Models::ContractV2::Credit::Contract]
         #
+        #   @param created_at [Time] Timestamp of when the credit was created.
+        #
         #   @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         #
         #   @param description [String]
@@ -1742,6 +1767,8 @@ module MetronomeSDK
         #   @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
         #
         #   @param specifiers [Array<MetronomeSDK::Models::CommitSpecifier>] List of filters that determine what kind of customer usage draws down a commit o
+        #
+        #   @param subscription_config [MetronomeSDK::Models::RecurringCommitSubscriptionConfig] Attach a subscription to the recurring commit/credit.
 
         # @see MetronomeSDK::Models::ContractV2::Credit#product
         class Product < MetronomeSDK::Internal::Type::BaseModel
