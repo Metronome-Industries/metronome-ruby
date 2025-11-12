@@ -21,6 +21,7 @@ module MetronomeSDK
           ?billing_config: MetronomeSDK::V1::CustomerCreateParams::BillingConfig,
           ?custom_fields: ::Hash[Symbol, String],
           ?customer_billing_provider_configurations: ::Array[MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration],
+          ?customer_revenue_system_configurations: ::Array[MetronomeSDK::V1::CustomerCreateParams::CustomerRevenueSystemConfiguration],
           ?external_id: String,
           ?ingest_aliases: ::Array[String],
           ?request_options: MetronomeSDK::request_opts

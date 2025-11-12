@@ -63,7 +63,7 @@ module MetronomeSDK
         # For details on different billing configurations for different systems, review
         # the `/setCustomerBillingConfiguration` end-point.
         #
-        # @overload create(name:, billing_config: nil, custom_fields: nil, customer_billing_provider_configurations: nil, external_id: nil, ingest_aliases: nil, request_options: {})
+        # @overload create(name:, billing_config: nil, custom_fields: nil, customer_billing_provider_configurations: nil, customer_revenue_system_configurations: nil, external_id: nil, ingest_aliases: nil, request_options: {})
         #
         # @param name [String] This will be truncated to 160 characters if the provided name is longer.
         #
@@ -72,6 +72,8 @@ module MetronomeSDK
         # @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         #
         # @param customer_billing_provider_configurations [Array<MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration>]
+        #
+        # @param customer_revenue_system_configurations [Array<MetronomeSDK::Models::V1::CustomerCreateParams::CustomerRevenueSystemConfiguration>]
         #
         # @param external_id [String] (deprecated, use ingest_aliases instead) an alias that can be used to refer to t
         #
