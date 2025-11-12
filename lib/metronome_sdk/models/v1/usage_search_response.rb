@@ -110,7 +110,8 @@ module MetronomeSDK
           optional :aggregation_key, String
 
           # @!attribute aggregation_type
-          #   Specifies the type of aggregation performed on matching events.
+          #   Specifies the type of aggregation performed on matching events. Includes
+          #   "custom_sql" for events search endpoint responses.
           #
           #   @return [Symbol, MetronomeSDK::Models::V1::UsageSearchResponseItem::MatchedBillableMetric::AggregationType, nil]
           optional :aggregation_type,
@@ -183,7 +184,7 @@ module MetronomeSDK
           #
           #   @param aggregation_key [String] A key that specifies which property of the event is used to aggregate data. This
           #
-          #   @param aggregation_type [Symbol, MetronomeSDK::Models::V1::UsageSearchResponseItem::MatchedBillableMetric::AggregationType] Specifies the type of aggregation performed on matching events.
+          #   @param aggregation_type [Symbol, MetronomeSDK::Models::V1::UsageSearchResponseItem::MatchedBillableMetric::AggregationType] Specifies the type of aggregation performed on matching events. Includes "custom
           #
           #   @param archived_at [Time] RFC 3339 timestamp indicating when the billable metric was archived. If not prov
           #
@@ -201,7 +202,8 @@ module MetronomeSDK
           #
           #   @param sql [String] The SQL query associated with the billable metric
 
-          # Specifies the type of aggregation performed on matching events.
+          # Specifies the type of aggregation performed on matching events. Includes
+          # "custom_sql" for events search endpoint responses.
           #
           # @see MetronomeSDK::Models::V1::UsageSearchResponseItem::MatchedBillableMetric#aggregation_type
           module AggregationType
@@ -212,6 +214,7 @@ module MetronomeSDK
             MAX = :MAX
             SUM = :SUM
             UNIQUE = :UNIQUE
+            CUSTOM_SQL = :custom_sql
 
             # @!method self.values
             #   @return [Array<Symbol>]
