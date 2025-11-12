@@ -291,6 +291,25 @@ module MetronomeSDK
         end
         attr_writer :reseller_royalties
 
+        # The revenue system configuration associated with a contract. Provide either an
+        # ID or the provider and delivery method.
+        sig do
+          returns(
+            T.nilable(
+              MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration
+            )
+          )
+        end
+        attr_reader :revenue_system_configuration
+
+        sig do
+          params(
+            revenue_system_configuration:
+              MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration::OrHash
+          ).void
+        end
+        attr_writer :revenue_system_configuration
+
         # This field's availability is dependent on your client's configuration.
         sig { returns(T.nilable(String)) }
         attr_reader :salesforce_opportunity_id
@@ -472,6 +491,8 @@ module MetronomeSDK
               T::Array[
                 MetronomeSDK::V1::ContractCreateParams::ResellerRoyalty::OrHash
               ],
+            revenue_system_configuration:
+              MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration::OrHash,
             salesforce_opportunity_id: String,
             scheduled_charges:
               T::Array[
@@ -534,6 +555,9 @@ module MetronomeSDK
           recurring_credits: nil,
           # This field's availability is dependent on your client's configuration.
           reseller_royalties: nil,
+          # The revenue system configuration associated with a contract. Provide either an
+          # ID or the provider and delivery method.
+          revenue_system_configuration: nil,
           # This field's availability is dependent on your client's configuration.
           salesforce_opportunity_id: nil,
           scheduled_charges: nil,
@@ -604,6 +628,8 @@ module MetronomeSDK
                 T::Array[
                   MetronomeSDK::V1::ContractCreateParams::ResellerRoyalty
                 ],
+              revenue_system_configuration:
+                MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration,
               salesforce_opportunity_id: String,
               scheduled_charges:
                 T::Array[
@@ -5925,6 +5951,158 @@ module MetronomeSDK
               override.returns({ gcp_account_id: String, gcp_offer_id: String })
             end
             def to_hash
+            end
+          end
+        end
+
+        class RevenueSystemConfiguration < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
+          # Do not specify if using revenue_system_configuration_id.
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration::DeliveryMethod::OrSymbol
+              )
+            )
+          end
+          attr_reader :delivery_method
+
+          sig do
+            params(
+              delivery_method:
+                MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration::DeliveryMethod::OrSymbol
+            ).void
+          end
+          attr_writer :delivery_method
+
+          # Do not specify if using revenue_system_configuration_id.
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration::Provider::OrSymbol
+              )
+            )
+          end
+          attr_reader :provider
+
+          sig do
+            params(
+              provider:
+                MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration::Provider::OrSymbol
+            ).void
+          end
+          attr_writer :provider
+
+          # The Metronome ID of the revenue system configuration. Use when a customer has
+          # multiple configurations with the same provider and delivery method. Otherwise,
+          # specify the provider and delivery_method.
+          sig { returns(T.nilable(String)) }
+          attr_reader :revenue_system_configuration_id
+
+          sig { params(revenue_system_configuration_id: String).void }
+          attr_writer :revenue_system_configuration_id
+
+          # The revenue system configuration associated with a contract. Provide either an
+          # ID or the provider and delivery method.
+          sig do
+            params(
+              delivery_method:
+                MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration::DeliveryMethod::OrSymbol,
+              provider:
+                MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration::Provider::OrSymbol,
+              revenue_system_configuration_id: String
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # Do not specify if using revenue_system_configuration_id.
+            delivery_method: nil,
+            # Do not specify if using revenue_system_configuration_id.
+            provider: nil,
+            # The Metronome ID of the revenue system configuration. Use when a customer has
+            # multiple configurations with the same provider and delivery method. Otherwise,
+            # specify the provider and delivery_method.
+            revenue_system_configuration_id: nil
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                delivery_method:
+                  MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration::DeliveryMethod::OrSymbol,
+                provider:
+                  MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration::Provider::OrSymbol,
+                revenue_system_configuration_id: String
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # Do not specify if using revenue_system_configuration_id.
+          module DeliveryMethod
+            extend MetronomeSDK::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration::DeliveryMethod
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            DIRECT_TO_BILLING_PROVIDER =
+              T.let(
+                :direct_to_billing_provider,
+                MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration::DeliveryMethod::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration::DeliveryMethod::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Do not specify if using revenue_system_configuration_id.
+          module Provider
+            extend MetronomeSDK::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration::Provider
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            NETSUITE =
+              T.let(
+                :netsuite,
+                MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration::Provider::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration::Provider::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
             end
           end
         end

@@ -145,6 +145,14 @@ module MetronomeSDK
         optional :reseller_royalties,
                  -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractCreateParams::ResellerRoyalty] }
 
+        # @!attribute revenue_system_configuration
+        #   The revenue system configuration associated with a contract. Provide either an
+        #   ID or the provider and delivery method.
+        #
+        #   @return [MetronomeSDK::Models::V1::ContractCreateParams::RevenueSystemConfiguration, nil]
+        optional :revenue_system_configuration,
+                 -> { MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration }
+
         # @!attribute salesforce_opportunity_id
         #   This field's availability is dependent on your client's configuration.
         #
@@ -211,7 +219,7 @@ module MetronomeSDK
         #   @return [MetronomeSDK::Models::V1::ContractCreateParams::UsageStatementSchedule, nil]
         optional :usage_statement_schedule, -> { MetronomeSDK::V1::ContractCreateParams::UsageStatementSchedule }
 
-        # @!method initialize(customer_id:, starting_at:, billing_provider_configuration: nil, commits: nil, credits: nil, custom_fields: nil, discounts: nil, ending_before: nil, hierarchy_configuration: nil, multiplier_override_prioritization: nil, name: nil, net_payment_terms_days: nil, netsuite_sales_order_id: nil, overrides: nil, prepaid_balance_threshold_configuration: nil, priority: nil, professional_services: nil, rate_card_alias: nil, rate_card_id: nil, recurring_commits: nil, recurring_credits: nil, reseller_royalties: nil, salesforce_opportunity_id: nil, scheduled_charges: nil, scheduled_charges_on_usage_invoices: nil, spend_threshold_configuration: nil, subscriptions: nil, total_contract_value: nil, transition: nil, uniqueness_key: nil, usage_filter: nil, usage_statement_schedule: nil, request_options: {})
+        # @!method initialize(customer_id:, starting_at:, billing_provider_configuration: nil, commits: nil, credits: nil, custom_fields: nil, discounts: nil, ending_before: nil, hierarchy_configuration: nil, multiplier_override_prioritization: nil, name: nil, net_payment_terms_days: nil, netsuite_sales_order_id: nil, overrides: nil, prepaid_balance_threshold_configuration: nil, priority: nil, professional_services: nil, rate_card_alias: nil, rate_card_id: nil, recurring_commits: nil, recurring_credits: nil, reseller_royalties: nil, revenue_system_configuration: nil, salesforce_opportunity_id: nil, scheduled_charges: nil, scheduled_charges_on_usage_invoices: nil, spend_threshold_configuration: nil, subscriptions: nil, total_contract_value: nil, transition: nil, uniqueness_key: nil, usage_filter: nil, usage_statement_schedule: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::V1::ContractCreateParams} for more details.
         #
@@ -258,6 +266,8 @@ module MetronomeSDK
         #   @param recurring_credits [Array<MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit>]
         #
         #   @param reseller_royalties [Array<MetronomeSDK::Models::V1::ContractCreateParams::ResellerRoyalty>] This field's availability is dependent on your client's configuration.
+        #
+        #   @param revenue_system_configuration [MetronomeSDK::Models::V1::ContractCreateParams::RevenueSystemConfiguration] The revenue system configuration associated with a contract. Provide either an I
         #
         #   @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
         #
@@ -2772,6 +2782,68 @@ module MetronomeSDK
             # @!method initialize(gcp_account_id: nil, gcp_offer_id: nil)
             #   @param gcp_account_id [String]
             #   @param gcp_offer_id [String]
+          end
+        end
+
+        class RevenueSystemConfiguration < MetronomeSDK::Internal::Type::BaseModel
+          # @!attribute delivery_method
+          #   Do not specify if using revenue_system_configuration_id.
+          #
+          #   @return [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RevenueSystemConfiguration::DeliveryMethod, nil]
+          optional :delivery_method,
+                   enum: -> { MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration::DeliveryMethod }
+
+          # @!attribute provider
+          #   Do not specify if using revenue_system_configuration_id.
+          #
+          #   @return [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RevenueSystemConfiguration::Provider, nil]
+          optional :provider,
+                   enum: -> { MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration::Provider }
+
+          # @!attribute revenue_system_configuration_id
+          #   The Metronome ID of the revenue system configuration. Use when a customer has
+          #   multiple configurations with the same provider and delivery method. Otherwise,
+          #   specify the provider and delivery_method.
+          #
+          #   @return [String, nil]
+          optional :revenue_system_configuration_id, String
+
+          # @!method initialize(delivery_method: nil, provider: nil, revenue_system_configuration_id: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {MetronomeSDK::Models::V1::ContractCreateParams::RevenueSystemConfiguration} for
+          #   more details.
+          #
+          #   The revenue system configuration associated with a contract. Provide either an
+          #   ID or the provider and delivery method.
+          #
+          #   @param delivery_method [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RevenueSystemConfiguration::DeliveryMethod] Do not specify if using revenue_system_configuration_id.
+          #
+          #   @param provider [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RevenueSystemConfiguration::Provider] Do not specify if using revenue_system_configuration_id.
+          #
+          #   @param revenue_system_configuration_id [String] The Metronome ID of the revenue system configuration. Use when a customer has mu
+
+          # Do not specify if using revenue_system_configuration_id.
+          #
+          # @see MetronomeSDK::Models::V1::ContractCreateParams::RevenueSystemConfiguration#delivery_method
+          module DeliveryMethod
+            extend MetronomeSDK::Internal::Type::Enum
+
+            DIRECT_TO_BILLING_PROVIDER = :direct_to_billing_provider
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Do not specify if using revenue_system_configuration_id.
+          #
+          # @see MetronomeSDK::Models::V1::ContractCreateParams::RevenueSystemConfiguration#provider
+          module Provider
+            extend MetronomeSDK::Internal::Type::Enum
+
+            NETSUITE = :netsuite
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
