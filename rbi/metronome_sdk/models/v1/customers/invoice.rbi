@@ -1648,6 +1648,13 @@ module MetronomeSDK
               sig { params(billing_provider_error: String).void }
               attr_writer :billing_provider_error
 
+              # The ID of the payment in the external system, if available.
+              sig { returns(T.nilable(String)) }
+              attr_reader :external_payment_id
+
+              sig { params(external_payment_id: String).void }
+              attr_writer :external_payment_id
+
               sig do
                 returns(
                   T.nilable(
@@ -1721,6 +1728,7 @@ module MetronomeSDK
                   billing_provider_type:
                     MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType::OrSymbol,
                   billing_provider_error: String,
+                  external_payment_id: String,
                   external_status:
                     MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus::OrSymbol,
                   invoice_id: String,
@@ -1736,6 +1744,8 @@ module MetronomeSDK
                 billing_provider_type:,
                 # Error message from the billing provider, if available.
                 billing_provider_error: nil,
+                # The ID of the payment in the external system, if available.
+                external_payment_id: nil,
                 external_status: nil,
                 invoice_id: nil,
                 # The subtotal amount invoiced, if available from the billing provider.
@@ -1756,6 +1766,7 @@ module MetronomeSDK
                     billing_provider_type:
                       MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::BillingProviderType::TaggedSymbol,
                     billing_provider_error: String,
+                    external_payment_id: String,
                     external_status:
                       MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus::TaggedSymbol,
                     invoice_id: String,
@@ -2005,6 +2016,13 @@ module MetronomeSDK
             sig { params(billing_provider_error: String).void }
             attr_writer :billing_provider_error
 
+            # The ID of the payment in the external system, if available.
+            sig { returns(T.nilable(String)) }
+            attr_reader :external_payment_id
+
+            sig { params(external_payment_id: String).void }
+            attr_writer :external_payment_id
+
             sig do
               returns(
                 T.nilable(
@@ -2078,6 +2096,7 @@ module MetronomeSDK
                 billing_provider_type:
                   MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::BillingProviderType::OrSymbol,
                 billing_provider_error: String,
+                external_payment_id: String,
                 external_status:
                   MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::ExternalStatus::OrSymbol,
                 invoice_id: String,
@@ -2093,6 +2112,8 @@ module MetronomeSDK
               billing_provider_type:,
               # Error message from the billing provider, if available.
               billing_provider_error: nil,
+              # The ID of the payment in the external system, if available.
+              external_payment_id: nil,
               external_status: nil,
               invoice_id: nil,
               # The subtotal amount invoiced, if available from the billing provider.
@@ -2113,6 +2134,7 @@ module MetronomeSDK
                   billing_provider_type:
                     MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::BillingProviderType::TaggedSymbol,
                   billing_provider_error: String,
+                  external_payment_id: String,
                   external_status:
                     MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::ExternalStatus::TaggedSymbol,
                   invoice_id: String,
