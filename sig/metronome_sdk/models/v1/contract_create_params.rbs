@@ -25,6 +25,7 @@ module MetronomeSDK
           recurring_commits: ::Array[MetronomeSDK::V1::ContractCreateParams::RecurringCommit],
           recurring_credits: ::Array[MetronomeSDK::V1::ContractCreateParams::RecurringCredit],
           reseller_royalties: ::Array[MetronomeSDK::V1::ContractCreateParams::ResellerRoyalty],
+          revenue_system_configuration: MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration,
           salesforce_opportunity_id: String,
           scheduled_charges: ::Array[MetronomeSDK::V1::ContractCreateParams::ScheduledCharge],
           scheduled_charges_on_usage_invoices: MetronomeSDK::Models::V1::ContractCreateParams::scheduled_charges_on_usage_invoices,
@@ -150,6 +151,12 @@ module MetronomeSDK
           ::Array[MetronomeSDK::V1::ContractCreateParams::ResellerRoyalty]
         ) -> ::Array[MetronomeSDK::V1::ContractCreateParams::ResellerRoyalty]
 
+        attr_reader revenue_system_configuration: MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration?
+
+        def revenue_system_configuration=: (
+          MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration
+        ) -> MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration
+
         attr_reader salesforce_opportunity_id: String?
 
         def salesforce_opportunity_id=: (String) -> String
@@ -227,6 +234,7 @@ module MetronomeSDK
           ?recurring_commits: ::Array[MetronomeSDK::V1::ContractCreateParams::RecurringCommit],
           ?recurring_credits: ::Array[MetronomeSDK::V1::ContractCreateParams::RecurringCredit],
           ?reseller_royalties: ::Array[MetronomeSDK::V1::ContractCreateParams::ResellerRoyalty],
+          ?revenue_system_configuration: MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration,
           ?salesforce_opportunity_id: String,
           ?scheduled_charges: ::Array[MetronomeSDK::V1::ContractCreateParams::ScheduledCharge],
           ?scheduled_charges_on_usage_invoices: MetronomeSDK::Models::V1::ContractCreateParams::scheduled_charges_on_usage_invoices,
@@ -263,6 +271,7 @@ module MetronomeSDK
           recurring_commits: ::Array[MetronomeSDK::V1::ContractCreateParams::RecurringCommit],
           recurring_credits: ::Array[MetronomeSDK::V1::ContractCreateParams::RecurringCredit],
           reseller_royalties: ::Array[MetronomeSDK::V1::ContractCreateParams::ResellerRoyalty],
+          revenue_system_configuration: MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration,
           salesforce_opportunity_id: String,
           scheduled_charges: ::Array[MetronomeSDK::V1::ContractCreateParams::ScheduledCharge],
           scheduled_charges_on_usage_invoices: MetronomeSDK::Models::V1::ContractCreateParams::scheduled_charges_on_usage_invoices,
@@ -2464,6 +2473,63 @@ module MetronomeSDK
             ) -> void
 
             def to_hash: -> { gcp_account_id: String, gcp_offer_id: String }
+          end
+        end
+
+        type revenue_system_configuration =
+          {
+            delivery_method: MetronomeSDK::Models::V1::ContractCreateParams::RevenueSystemConfiguration::delivery_method,
+            provider: MetronomeSDK::Models::V1::ContractCreateParams::RevenueSystemConfiguration::provider,
+            revenue_system_configuration_id: String
+          }
+
+        class RevenueSystemConfiguration < MetronomeSDK::Internal::Type::BaseModel
+          attr_reader delivery_method: MetronomeSDK::Models::V1::ContractCreateParams::RevenueSystemConfiguration::delivery_method?
+
+          def delivery_method=: (
+            MetronomeSDK::Models::V1::ContractCreateParams::RevenueSystemConfiguration::delivery_method
+          ) -> MetronomeSDK::Models::V1::ContractCreateParams::RevenueSystemConfiguration::delivery_method
+
+          attr_reader provider: MetronomeSDK::Models::V1::ContractCreateParams::RevenueSystemConfiguration::provider?
+
+          def provider=: (
+            MetronomeSDK::Models::V1::ContractCreateParams::RevenueSystemConfiguration::provider
+          ) -> MetronomeSDK::Models::V1::ContractCreateParams::RevenueSystemConfiguration::provider
+
+          attr_reader revenue_system_configuration_id: String?
+
+          def revenue_system_configuration_id=: (String) -> String
+
+          def initialize: (
+            ?delivery_method: MetronomeSDK::Models::V1::ContractCreateParams::RevenueSystemConfiguration::delivery_method,
+            ?provider: MetronomeSDK::Models::V1::ContractCreateParams::RevenueSystemConfiguration::provider,
+            ?revenue_system_configuration_id: String
+          ) -> void
+
+          def to_hash: -> {
+            delivery_method: MetronomeSDK::Models::V1::ContractCreateParams::RevenueSystemConfiguration::delivery_method,
+            provider: MetronomeSDK::Models::V1::ContractCreateParams::RevenueSystemConfiguration::provider,
+            revenue_system_configuration_id: String
+          }
+
+          type delivery_method = :direct_to_billing_provider
+
+          module DeliveryMethod
+            extend MetronomeSDK::Internal::Type::Enum
+
+            DIRECT_TO_BILLING_PROVIDER: :direct_to_billing_provider
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::RevenueSystemConfiguration::delivery_method]
+          end
+
+          type provider = :netsuite
+
+          module Provider
+            extend MetronomeSDK::Internal::Type::Enum
+
+            NETSUITE: :netsuite
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::RevenueSystemConfiguration::provider]
           end
         end
 

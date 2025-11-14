@@ -180,7 +180,8 @@ class MetronomeSDK::Test::Resources::V1::CustomersTest < MetronomeSDK::Test::Res
           {billing_provider: :stripe, customer_id: "4db51251-61de-4bfe-b9ce-495e244f3491"},
           {billing_provider: :aws_marketplace, customer_id: "4db51251-61de-4bfe-b9ce-495e244f3491"},
           {billing_provider: :azure_marketplace, customer_id: "4db51251-61de-4bfe-b9ce-495e244f3491"},
-          {billing_provider: :aws_marketplace, customer_id: "4db51251-61de-4bfe-b9ce-495e244f3491"}
+          {billing_provider: :aws_marketplace, customer_id: "4db51251-61de-4bfe-b9ce-495e244f3491"},
+          {billing_provider: :gcp_marketplace, customer_id: "4db51251-61de-4bfe-b9ce-495e244f3491"}
         ]
       )
 

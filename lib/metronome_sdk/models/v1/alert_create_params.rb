@@ -157,6 +157,7 @@ module MetronomeSDK
           LOW_REMAINING_CONTRACT_CREDIT_AND_COMMIT_BALANCE_REACHED =
             :low_remaining_contract_credit_and_commit_balance_reached
           INVOICE_TOTAL_REACHED = :invoice_total_reached
+          LOW_REMAINING_SEAT_BALANCE_REACHED = :low_remaining_seat_balance_reached
 
           # @!method self.values
           #   @return [Array<Symbol>]

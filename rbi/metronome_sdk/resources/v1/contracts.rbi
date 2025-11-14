@@ -184,6 +184,8 @@ module MetronomeSDK
               T::Array[
                 MetronomeSDK::V1::ContractCreateParams::ResellerRoyalty::OrHash
               ],
+            revenue_system_configuration:
+              MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration::OrHash,
             salesforce_opportunity_id: String,
             scheduled_charges:
               T::Array[
@@ -246,6 +248,9 @@ module MetronomeSDK
           recurring_credits: nil,
           # This field's availability is dependent on your client's configuration.
           reseller_royalties: nil,
+          # The revenue system configuration associated with a contract. Provide either an
+          # ID or the provider and delivery method.
+          revenue_system_configuration: nil,
           # This field's availability is dependent on your client's configuration.
           salesforce_opportunity_id: nil,
           scheduled_charges: nil,

@@ -122,6 +122,7 @@ module MetronomeSDK
           | :low_remaining_contract_credit_percentage_reached
           | :low_remaining_contract_credit_and_commit_balance_reached
           | :invoice_total_reached
+          | :low_remaining_seat_balance_reached
 
         module AlertType
           extend MetronomeSDK::Internal::Type::Enum
@@ -140,6 +141,7 @@ module MetronomeSDK
           LOW_REMAINING_CONTRACT_CREDIT_PERCENTAGE_REACHED: :low_remaining_contract_credit_percentage_reached
           LOW_REMAINING_CONTRACT_CREDIT_AND_COMMIT_BALANCE_REACHED: :low_remaining_contract_credit_and_commit_balance_reached
           INVOICE_TOTAL_REACHED: :invoice_total_reached
+          LOW_REMAINING_SEAT_BALANCE_REACHED: :low_remaining_seat_balance_reached
 
           def self?.values: -> ::Array[MetronomeSDK::Models::V1::AlertCreateParams::alert_type]
         end
