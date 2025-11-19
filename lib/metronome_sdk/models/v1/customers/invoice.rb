@@ -1025,6 +1025,7 @@ module MetronomeSDK
                 DRAFT = :DRAFT
                 FINALIZED = :FINALIZED
                 PAID = :PAID
+                PARTIALLY_PAID = :PARTIALLY_PAID
                 UNCOLLECTIBLE = :UNCOLLECTIBLE
                 VOID = :VOID
                 DELETED = :DELETED
@@ -1176,6 +1177,7 @@ module MetronomeSDK
               DRAFT = :DRAFT
               FINALIZED = :FINALIZED
               PAID = :PAID
+              PARTIALLY_PAID = :PARTIALLY_PAID
               UNCOLLECTIBLE = :UNCOLLECTIBLE
               VOID = :VOID
               DELETED = :DELETED
