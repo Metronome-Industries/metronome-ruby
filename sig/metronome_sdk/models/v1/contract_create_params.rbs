@@ -2757,6 +2757,7 @@ module MetronomeSDK
             initial_quantity: Float,
             name: String,
             quantity_management_mode: MetronomeSDK::Models::V1::ContractCreateParams::Subscription::quantity_management_mode,
+            seat_config: MetronomeSDK::V1::ContractCreateParams::Subscription::SeatConfig,
             starting_at: Time,
             temporary_id: String
           }
@@ -2794,6 +2795,12 @@ module MetronomeSDK
             MetronomeSDK::Models::V1::ContractCreateParams::Subscription::quantity_management_mode
           ) -> MetronomeSDK::Models::V1::ContractCreateParams::Subscription::quantity_management_mode
 
+          attr_reader seat_config: MetronomeSDK::V1::ContractCreateParams::Subscription::SeatConfig?
+
+          def seat_config=: (
+            MetronomeSDK::V1::ContractCreateParams::Subscription::SeatConfig
+          ) -> MetronomeSDK::V1::ContractCreateParams::Subscription::SeatConfig
+
           attr_reader starting_at: Time?
 
           def starting_at=: (Time) -> Time
@@ -2812,6 +2819,7 @@ module MetronomeSDK
             ?initial_quantity: Float,
             ?name: String,
             ?quantity_management_mode: MetronomeSDK::Models::V1::ContractCreateParams::Subscription::quantity_management_mode,
+            ?seat_config: MetronomeSDK::V1::ContractCreateParams::Subscription::SeatConfig,
             ?starting_at: Time,
             ?temporary_id: String
           ) -> void
@@ -2826,6 +2834,7 @@ module MetronomeSDK
             initial_quantity: Float,
             name: String,
             quantity_management_mode: MetronomeSDK::Models::V1::ContractCreateParams::Subscription::quantity_management_mode,
+            seat_config: MetronomeSDK::V1::ContractCreateParams::Subscription::SeatConfig,
             starting_at: Time,
             temporary_id: String
           }
@@ -2925,6 +2934,35 @@ module MetronomeSDK
             QUANTITY_ONLY: :QUANTITY_ONLY
 
             def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::Subscription::quantity_management_mode]
+          end
+
+          type seat_config =
+            {
+              initial_seat_ids: ::Array[String],
+              seat_group_key: String,
+              initial_unassigned_seats: Float
+            }
+
+          class SeatConfig < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor initial_seat_ids: ::Array[String]
+
+            attr_accessor seat_group_key: String
+
+            attr_reader initial_unassigned_seats: Float?
+
+            def initial_unassigned_seats=: (Float) -> Float
+
+            def initialize: (
+              initial_seat_ids: ::Array[String],
+              seat_group_key: String,
+              ?initial_unassigned_seats: Float
+            ) -> void
+
+            def to_hash: -> {
+              initial_seat_ids: ::Array[String],
+              seat_group_key: String,
+              initial_unassigned_seats: Float
+            }
           end
         end
 

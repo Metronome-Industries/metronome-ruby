@@ -4701,9 +4701,8 @@ module MetronomeSDK
             sig { returns(String) }
             attr_accessor :subscription_id
 
-            # If set to POOLED, allocation added per seat is pooled across the account. (BETA)
-            # If set to INDIVIDUAL, each seat in the subscription will have its own
-            # allocation.
+            # If set to POOLED, allocation added per seat is pooled across the account. If set
+            # to INDIVIDUAL, each seat in the subscription will have its own allocation.
             sig do
               returns(
                 T.nilable(
@@ -4735,9 +4734,8 @@ module MetronomeSDK
               apply_seat_increase_config:,
               # ID of the subscription to configure on the recurring commit/credit.
               subscription_id:,
-              # If set to POOLED, allocation added per seat is pooled across the account. (BETA)
-              # If set to INDIVIDUAL, each seat in the subscription will have its own
-              # allocation.
+              # If set to POOLED, allocation added per seat is pooled across the account. If set
+              # to INDIVIDUAL, each seat in the subscription will have its own allocation.
               allocation: nil
             )
             end
@@ -4781,9 +4779,8 @@ module MetronomeSDK
               end
             end
 
-            # If set to POOLED, allocation added per seat is pooled across the account. (BETA)
-            # If set to INDIVIDUAL, each seat in the subscription will have its own
-            # allocation.
+            # If set to POOLED, allocation added per seat is pooled across the account. If set
+            # to INDIVIDUAL, each seat in the subscription will have its own allocation.
             module Allocation
               extend MetronomeSDK::Internal::Type::Enum
 
@@ -5452,9 +5449,8 @@ module MetronomeSDK
             sig { returns(String) }
             attr_accessor :subscription_id
 
-            # If set to POOLED, allocation added per seat is pooled across the account. (BETA)
-            # If set to INDIVIDUAL, each seat in the subscription will have its own
-            # allocation.
+            # If set to POOLED, allocation added per seat is pooled across the account. If set
+            # to INDIVIDUAL, each seat in the subscription will have its own allocation.
             sig do
               returns(
                 T.nilable(
@@ -5486,9 +5482,8 @@ module MetronomeSDK
               apply_seat_increase_config:,
               # ID of the subscription to configure on the recurring commit/credit.
               subscription_id:,
-              # If set to POOLED, allocation added per seat is pooled across the account. (BETA)
-              # If set to INDIVIDUAL, each seat in the subscription will have its own
-              # allocation.
+              # If set to POOLED, allocation added per seat is pooled across the account. If set
+              # to INDIVIDUAL, each seat in the subscription will have its own allocation.
               allocation: nil
             )
             end
@@ -5532,9 +5527,8 @@ module MetronomeSDK
               end
             end
 
-            # If set to POOLED, allocation added per seat is pooled across the account. (BETA)
-            # If set to INDIVIDUAL, each seat in the subscription will have its own
-            # allocation.
+            # If set to POOLED, allocation added per seat is pooled across the account. If set
+            # to INDIVIDUAL, each seat in the subscription will have its own allocation.
             module Allocation
               extend MetronomeSDK::Internal::Type::Enum
 
@@ -6422,8 +6416,8 @@ module MetronomeSDK
           # QUANTITY_ONLY. **QUANTITY_ONLY**: The subscription quantity is specified
           # directly on the subscription. `initial_quantity` must be provided with this
           # option. Compatible with recurring commits/credits that use POOLED allocation.
-          # **SEAT_BASED**: (BETA) Use when you want to pass specific seat identifiers (e.g.
-          # add user_123) to increment and decrement a subscription quantity, rather than
+          # **SEAT_BASED**: Use when you want to pass specific seat identifiers (e.g. add
+          # user_123) to increment and decrement a subscription quantity, rather than
           # directly providing the quantity. You must use a **SEAT_BASED** subscription to
           # use a linked recurring credit with an allocation per seat. `seat_config` must be
           # provided with this option.
@@ -6443,6 +6437,23 @@ module MetronomeSDK
             ).void
           end
           attr_writer :quantity_management_mode
+
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::V2::ContractEditParams::AddSubscription::SeatConfig
+              )
+            )
+          end
+          attr_reader :seat_config
+
+          sig do
+            params(
+              seat_config:
+                MetronomeSDK::V2::ContractEditParams::AddSubscription::SeatConfig::OrHash
+            ).void
+          end
+          attr_writer :seat_config
 
           # Inclusive start time for the subscription. If not provided, defaults to contract
           # start date
@@ -6475,6 +6486,8 @@ module MetronomeSDK
               name: String,
               quantity_management_mode:
                 MetronomeSDK::V2::ContractEditParams::AddSubscription::QuantityManagementMode::OrSymbol,
+              seat_config:
+                MetronomeSDK::V2::ContractEditParams::AddSubscription::SeatConfig::OrHash,
               starting_at: Time,
               temporary_id: String
             ).returns(T.attached_class)
@@ -6497,12 +6510,13 @@ module MetronomeSDK
             # QUANTITY_ONLY. **QUANTITY_ONLY**: The subscription quantity is specified
             # directly on the subscription. `initial_quantity` must be provided with this
             # option. Compatible with recurring commits/credits that use POOLED allocation.
-            # **SEAT_BASED**: (BETA) Use when you want to pass specific seat identifiers (e.g.
-            # add user_123) to increment and decrement a subscription quantity, rather than
+            # **SEAT_BASED**: Use when you want to pass specific seat identifiers (e.g. add
+            # user_123) to increment and decrement a subscription quantity, rather than
             # directly providing the quantity. You must use a **SEAT_BASED** subscription to
             # use a linked recurring credit with an allocation per seat. `seat_config` must be
             # provided with this option.
             quantity_management_mode: nil,
+            seat_config: nil,
             # Inclusive start time for the subscription. If not provided, defaults to contract
             # start date
             starting_at: nil,
@@ -6528,6 +6542,8 @@ module MetronomeSDK
                 name: String,
                 quantity_management_mode:
                   MetronomeSDK::V2::ContractEditParams::AddSubscription::QuantityManagementMode::OrSymbol,
+                seat_config:
+                  MetronomeSDK::V2::ContractEditParams::AddSubscription::SeatConfig,
                 starting_at: Time,
                 temporary_id: String
               }
@@ -6780,8 +6796,8 @@ module MetronomeSDK
           # QUANTITY_ONLY. **QUANTITY_ONLY**: The subscription quantity is specified
           # directly on the subscription. `initial_quantity` must be provided with this
           # option. Compatible with recurring commits/credits that use POOLED allocation.
-          # **SEAT_BASED**: (BETA) Use when you want to pass specific seat identifiers (e.g.
-          # add user_123) to increment and decrement a subscription quantity, rather than
+          # **SEAT_BASED**: Use when you want to pass specific seat identifiers (e.g. add
+          # user_123) to increment and decrement a subscription quantity, rather than
           # directly providing the quantity. You must use a **SEAT_BASED** subscription to
           # use a linked recurring credit with an allocation per seat. `seat_config` must be
           # provided with this option.
@@ -6816,6 +6832,70 @@ module MetronomeSDK
               )
             end
             def self.values
+            end
+          end
+
+          class SeatConfig < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V2::ContractEditParams::AddSubscription::SeatConfig,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            # The initial assigned seats on this subscription.
+            sig { returns(T::Array[String]) }
+            attr_accessor :initial_seat_ids
+
+            # The property name, sent on usage events, that identifies the seat ID associated
+            # with the usage event. For example, the property name might be seat_id or
+            # user_id. The property must be set as a group key on billable metrics and a
+            # presentation/pricing group key on contract products. This allows linked
+            # recurring credits with an allocation per seat to be consumed by only one seat's
+            # usage.
+            sig { returns(String) }
+            attr_accessor :seat_group_key
+
+            # The initial amount of unassigned seats on this subscription.
+            sig { returns(T.nilable(Float)) }
+            attr_reader :initial_unassigned_seats
+
+            sig { params(initial_unassigned_seats: Float).void }
+            attr_writer :initial_unassigned_seats
+
+            sig do
+              params(
+                initial_seat_ids: T::Array[String],
+                seat_group_key: String,
+                initial_unassigned_seats: Float
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # The initial assigned seats on this subscription.
+              initial_seat_ids:,
+              # The property name, sent on usage events, that identifies the seat ID associated
+              # with the usage event. For example, the property name might be seat_id or
+              # user_id. The property must be set as a group key on billable metrics and a
+              # presentation/pricing group key on contract products. This allows linked
+              # recurring credits with an allocation per seat to be consumed by only one seat's
+              # usage.
+              seat_group_key:,
+              # The initial amount of unassigned seats on this subscription.
+              initial_unassigned_seats: nil
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  initial_seat_ids: T::Array[String],
+                  seat_group_key: String,
+                  initial_unassigned_seats: Float
+                }
+              )
+            end
+            def to_hash
             end
           end
         end
@@ -9036,13 +9116,32 @@ module MetronomeSDK
           attr_writer :quantity_updates
 
           sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates
+              )
+            )
+          end
+          attr_reader :seat_updates
+
+          sig do
+            params(
+              seat_updates:
+                MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates::OrHash
+            ).void
+          end
+          attr_writer :seat_updates
+
+          sig do
             params(
               subscription_id: String,
               ending_before: T.nilable(Time),
               quantity_updates:
                 T::Array[
                   MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityUpdate::OrHash
-                ]
+                ],
+              seat_updates:
+                MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates::OrHash
             ).returns(T.attached_class)
           end
           def self.new(
@@ -9051,7 +9150,8 @@ module MetronomeSDK
             # Quantity changes are applied on the effective date based on the order which they
             # are sent. For example, if I scheduled the quantity to be 12 on May 21 and then
             # scheduled a quantity delta change of -1, the result from that day would be 11.
-            quantity_updates: nil
+            quantity_updates: nil,
+            seat_updates: nil
           )
           end
 
@@ -9063,7 +9163,9 @@ module MetronomeSDK
                 quantity_updates:
                   T::Array[
                     MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityUpdate
-                  ]
+                  ],
+                seat_updates:
+                  MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates
               }
             )
           end
@@ -9124,6 +9226,323 @@ module MetronomeSDK
               )
             end
             def to_hash
+            end
+          end
+
+          class SeatUpdates < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            # Adds seat IDs to the subscription. If there are unassigned seats, the new seat
+            # IDs will fill these unassigned seats and not increase the total subscription
+            # quantity. Otherwise, if there are more new seat IDs than unassigned seats, the
+            # total subscription quantity will increase.
+            sig do
+              returns(
+                T.nilable(
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates::AddSeatID
+                  ]
+                )
+              )
+            end
+            attr_reader :add_seat_ids
+
+            sig do
+              params(
+                add_seat_ids:
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates::AddSeatID::OrHash
+                  ]
+              ).void
+            end
+            attr_writer :add_seat_ids
+
+            # Adds unassigned seats to the subscription. This will increase the total
+            # subscription quantity.
+            sig do
+              returns(
+                T.nilable(
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates::AddUnassignedSeat
+                  ]
+                )
+              )
+            end
+            attr_reader :add_unassigned_seats
+
+            sig do
+              params(
+                add_unassigned_seats:
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates::AddUnassignedSeat::OrHash
+                  ]
+              ).void
+            end
+            attr_writer :add_unassigned_seats
+
+            # Removes seat IDs from the subscription, if possible. If a seat ID is removed,
+            # the total subscription quantity will decrease. Otherwise, if the seat ID is not
+            # found on the subscription, this is a no-op.
+            sig do
+              returns(
+                T.nilable(
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates::RemoveSeatID
+                  ]
+                )
+              )
+            end
+            attr_reader :remove_seat_ids
+
+            sig do
+              params(
+                remove_seat_ids:
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates::RemoveSeatID::OrHash
+                  ]
+              ).void
+            end
+            attr_writer :remove_seat_ids
+
+            # Removes unassigned seats from the subscription. This will decrease the total
+            # subscription quantity if there are are unassigned seats.
+            sig do
+              returns(
+                T.nilable(
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates::RemoveUnassignedSeat
+                  ]
+                )
+              )
+            end
+            attr_reader :remove_unassigned_seats
+
+            sig do
+              params(
+                remove_unassigned_seats:
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates::RemoveUnassignedSeat::OrHash
+                  ]
+              ).void
+            end
+            attr_writer :remove_unassigned_seats
+
+            sig do
+              params(
+                add_seat_ids:
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates::AddSeatID::OrHash
+                  ],
+                add_unassigned_seats:
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates::AddUnassignedSeat::OrHash
+                  ],
+                remove_seat_ids:
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates::RemoveSeatID::OrHash
+                  ],
+                remove_unassigned_seats:
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates::RemoveUnassignedSeat::OrHash
+                  ]
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # Adds seat IDs to the subscription. If there are unassigned seats, the new seat
+              # IDs will fill these unassigned seats and not increase the total subscription
+              # quantity. Otherwise, if there are more new seat IDs than unassigned seats, the
+              # total subscription quantity will increase.
+              add_seat_ids: nil,
+              # Adds unassigned seats to the subscription. This will increase the total
+              # subscription quantity.
+              add_unassigned_seats: nil,
+              # Removes seat IDs from the subscription, if possible. If a seat ID is removed,
+              # the total subscription quantity will decrease. Otherwise, if the seat ID is not
+              # found on the subscription, this is a no-op.
+              remove_seat_ids: nil,
+              # Removes unassigned seats from the subscription. This will decrease the total
+              # subscription quantity if there are are unassigned seats.
+              remove_unassigned_seats: nil
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  add_seat_ids:
+                    T::Array[
+                      MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates::AddSeatID
+                    ],
+                  add_unassigned_seats:
+                    T::Array[
+                      MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates::AddUnassignedSeat
+                    ],
+                  remove_seat_ids:
+                    T::Array[
+                      MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates::RemoveSeatID
+                    ],
+                  remove_unassigned_seats:
+                    T::Array[
+                      MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates::RemoveUnassignedSeat
+                    ]
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class AddSeatID < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates::AddSeatID,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig { returns(T::Array[String]) }
+              attr_accessor :seat_ids
+
+              # Assigned seats will be added/removed starting at this date.
+              sig { returns(Time) }
+              attr_accessor :starting_at
+
+              sig do
+                params(seat_ids: T::Array[String], starting_at: Time).returns(
+                  T.attached_class
+                )
+              end
+              def self.new(
+                seat_ids:,
+                # Assigned seats will be added/removed starting at this date.
+                starting_at:
+              )
+              end
+
+              sig do
+                override.returns(
+                  { seat_ids: T::Array[String], starting_at: Time }
+                )
+              end
+              def to_hash
+              end
+            end
+
+            class AddUnassignedSeat < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates::AddUnassignedSeat,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              # The number of unassigned seats on the subscription will increase/decrease by
+              # this delta. Must be greater than 0.
+              sig { returns(Float) }
+              attr_accessor :quantity
+
+              # Unassigned seats will be updated starting at this date.
+              sig { returns(Time) }
+              attr_accessor :starting_at
+
+              sig do
+                params(quantity: Float, starting_at: Time).returns(
+                  T.attached_class
+                )
+              end
+              def self.new(
+                # The number of unassigned seats on the subscription will increase/decrease by
+                # this delta. Must be greater than 0.
+                quantity:,
+                # Unassigned seats will be updated starting at this date.
+                starting_at:
+              )
+              end
+
+              sig { override.returns({ quantity: Float, starting_at: Time }) }
+              def to_hash
+              end
+            end
+
+            class RemoveSeatID < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates::RemoveSeatID,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig { returns(T::Array[String]) }
+              attr_accessor :seat_ids
+
+              # Assigned seats will be added/removed starting at this date.
+              sig { returns(Time) }
+              attr_accessor :starting_at
+
+              sig do
+                params(seat_ids: T::Array[String], starting_at: Time).returns(
+                  T.attached_class
+                )
+              end
+              def self.new(
+                seat_ids:,
+                # Assigned seats will be added/removed starting at this date.
+                starting_at:
+              )
+              end
+
+              sig do
+                override.returns(
+                  { seat_ids: T::Array[String], starting_at: Time }
+                )
+              end
+              def to_hash
+              end
+            end
+
+            class RemoveUnassignedSeat < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates::RemoveUnassignedSeat,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              # The number of unassigned seats on the subscription will increase/decrease by
+              # this delta. Must be greater than 0.
+              sig { returns(Float) }
+              attr_accessor :quantity
+
+              # Unassigned seats will be updated starting at this date.
+              sig { returns(Time) }
+              attr_accessor :starting_at
+
+              sig do
+                params(quantity: Float, starting_at: Time).returns(
+                  T.attached_class
+                )
+              end
+              def self.new(
+                # The number of unassigned seats on the subscription will increase/decrease by
+                # this delta. Must be greater than 0.
+                quantity:,
+                # Unassigned seats will be updated starting at this date.
+                starting_at:
+              )
+              end
+
+              sig { override.returns({ quantity: Float, starting_at: Time }) }
+              def to_hash
+              end
             end
           end
         end

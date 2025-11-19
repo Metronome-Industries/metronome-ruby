@@ -1878,6 +1878,11 @@ module MetronomeSDK
                     :PAID,
                     MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus::TaggedSymbol
                   )
+                PARTIALLY_PAID =
+                  T.let(
+                    :PARTIALLY_PAID,
+                    MetronomeSDK::V1::Customers::Invoice::CorrectionRecord::CorrectedExternalInvoice::ExternalStatus::TaggedSymbol
+                  )
                 UNCOLLECTIBLE =
                   T.let(
                     :UNCOLLECTIBLE,
@@ -2244,6 +2249,11 @@ module MetronomeSDK
               PAID =
                 T.let(
                   :PAID,
+                  MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::ExternalStatus::TaggedSymbol
+                )
+              PARTIALLY_PAID =
+                T.let(
+                  :PARTIALLY_PAID,
                   MetronomeSDK::V1::Customers::Invoice::ExternalInvoice::ExternalStatus::TaggedSymbol
                 )
               UNCOLLECTIBLE =
