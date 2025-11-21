@@ -4109,6 +4109,14 @@ module MetronomeSDK
           #   @return [Time, nil]
           optional :ending_before, Time, nil?: true
 
+          # @!attribute quantity_management_mode_update
+          #   Update the subscription's quantity management mode from QUANTITY_ONLY to
+          #   SEAT_BASED with the provided seat_group_key.
+          #
+          #   @return [MetronomeSDK::Models::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate, nil]
+          optional :quantity_management_mode_update,
+                   -> { MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate }
+
           # @!attribute quantity_updates
           #   Quantity changes are applied on the effective date based on the order which they
           #   are sent. For example, if I scheduled the quantity to be 12 on May 21 and then
@@ -4123,7 +4131,7 @@ module MetronomeSDK
           #   @return [MetronomeSDK::Models::V2::ContractEditParams::UpdateSubscription::SeatUpdates, nil]
           optional :seat_updates, -> { MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates }
 
-          # @!method initialize(subscription_id:, ending_before: nil, quantity_updates: nil, seat_updates: nil)
+          # @!method initialize(subscription_id:, ending_before: nil, quantity_management_mode_update: nil, quantity_updates: nil, seat_updates: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V2::ContractEditParams::UpdateSubscription} for more
           #   details.
@@ -4132,9 +4140,54 @@ module MetronomeSDK
           #
           #   @param ending_before [Time, nil]
           #
+          #   @param quantity_management_mode_update [MetronomeSDK::Models::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate] Update the subscription's quantity management mode from QUANTITY_ONLY to SEAT_BA
+          #
           #   @param quantity_updates [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdateSubscription::QuantityUpdate>] Quantity changes are applied on the effective date based on the order which they
           #
           #   @param seat_updates [MetronomeSDK::Models::V2::ContractEditParams::UpdateSubscription::SeatUpdates]
+
+          # @see MetronomeSDK::Models::V2::ContractEditParams::UpdateSubscription#quantity_management_mode_update
+          class QuantityManagementModeUpdate < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute quantity_management_mode
+            #
+            #   @return [Symbol, MetronomeSDK::Models::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate::QuantityManagementMode]
+            required :quantity_management_mode,
+                     enum: -> { MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate::QuantityManagementMode }
+
+            # @!attribute seat_config
+            #
+            #   @return [MetronomeSDK::Models::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate::SeatConfig]
+            required :seat_config,
+                     -> { MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate::SeatConfig }
+
+            # @!method initialize(quantity_management_mode:, seat_config:)
+            #   Update the subscription's quantity management mode from QUANTITY_ONLY to
+            #   SEAT_BASED with the provided seat_group_key.
+            #
+            #   @param quantity_management_mode [Symbol, MetronomeSDK::Models::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate::QuantityManagementMode]
+            #   @param seat_config [MetronomeSDK::Models::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate::SeatConfig]
+
+            # @see MetronomeSDK::Models::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate#quantity_management_mode
+            module QuantityManagementMode
+              extend MetronomeSDK::Internal::Type::Enum
+
+              SEAT_BASED = :SEAT_BASED
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # @see MetronomeSDK::Models::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate#seat_config
+            class SeatConfig < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute seat_group_key
+              #
+              #   @return [String]
+              required :seat_group_key, String
+
+              # @!method initialize(seat_group_key:)
+              #   @param seat_group_key [String]
+            end
+          end
 
           class QuantityUpdate < MetronomeSDK::Internal::Type::BaseModel
             # @!attribute starting_at
