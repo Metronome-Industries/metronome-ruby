@@ -53,7 +53,7 @@ module MetronomeSDK
         #   threshold notification evaluations in real-time as usage events stream in,
         #   unlike competitors who rely on periodic polling or batch evaluation cycles
         #
-        # @overload create(alert_type:, name:, threshold:, billable_metric_id: nil, credit_grant_type_filters: nil, credit_type_id: nil, custom_field_filters: nil, customer_id: nil, evaluate_on_create: nil, group_values: nil, invoice_types_filter: nil, plan_id: nil, uniqueness_key: nil, request_options: {})
+        # @overload create(alert_type:, name:, threshold:, billable_metric_id: nil, credit_grant_type_filters: nil, credit_type_id: nil, custom_field_filters: nil, customer_id: nil, evaluate_on_create: nil, group_values: nil, invoice_types_filter: nil, plan_id: nil, seat_filter: nil, uniqueness_key: nil, request_options: {})
         #
         # @param alert_type [Symbol, MetronomeSDK::Models::V1::AlertCreateParams::AlertType] Type of the threshold notification
         #
@@ -78,6 +78,8 @@ module MetronomeSDK
         # @param invoice_types_filter [Array<String>] Only supported for invoice_total_reached threshold notifications. A list of invo
         #
         # @param plan_id [String] If provided, will create this threshold notification for this specific plan. To
+        #
+        # @param seat_filter [MetronomeSDK::Models::V1::AlertCreateParams::SeatFilter] Required for `low_remaining_seat_balance_reached` notifications. The alert is sc
         #
         # @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a record is made wit
         #

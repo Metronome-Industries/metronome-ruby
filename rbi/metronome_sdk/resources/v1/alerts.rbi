@@ -68,6 +68,8 @@ module MetronomeSDK
               T::Array[MetronomeSDK::V1::AlertCreateParams::GroupValue::OrHash],
             invoice_types_filter: T::Array[String],
             plan_id: String,
+            seat_filter:
+              MetronomeSDK::V1::AlertCreateParams::SeatFilter::OrHash,
             uniqueness_key: String,
             request_options: MetronomeSDK::RequestOptions::OrHash
           ).returns(MetronomeSDK::Models::V1::AlertCreateResponse)
@@ -112,6 +114,9 @@ module MetronomeSDK
           # If provided, will create this threshold notification for this specific plan. To
           # create a notification for all customers, do not specify a `plan_id`.
           plan_id: nil,
+          # Required for `low_remaining_seat_balance_reached` notifications. The alert is
+          # scoped to this seat group key-value pair.
+          seat_filter: nil,
           # Prevents the creation of duplicates. If a request to create a record is made
           # with a previously used uniqueness key, a new record will not be created and the
           # request will fail with a 409 error.

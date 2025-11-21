@@ -184,6 +184,8 @@ module MetronomeSDK
               T::Array[
                 MetronomeSDK::V1::ContractCreateParams::ResellerRoyalty::OrHash
               ],
+            revenue_system_configuration:
+              MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration::OrHash,
             salesforce_opportunity_id: String,
             scheduled_charges:
               T::Array[
@@ -246,6 +248,9 @@ module MetronomeSDK
           recurring_credits: nil,
           # This field's availability is dependent on your client's configuration.
           reseller_royalties: nil,
+          # The revenue system configuration associated with a contract. Provide either an
+          # ID or the provider and delivery method.
+          revenue_system_configuration: nil,
           # This field's availability is dependent on your client's configuration.
           salesforce_opportunity_id: nil,
           scheduled_charges: nil,
@@ -363,6 +368,7 @@ module MetronomeSDK
             reason: String,
             segment_id: String,
             contract_id: String,
+            per_group_amounts: T::Hash[Symbol, Float],
             timestamp: Time,
             request_options: MetronomeSDK::RequestOptions::OrHash
           ).void
@@ -380,6 +386,9 @@ module MetronomeSDK
           segment_id:,
           # ID of the contract to update. Leave blank to update a customer level balance.
           contract_id: nil,
+          # If using individually configured commits/credits attached to seat managed
+          # subscriptions, the amount to add for each seat. Must sum to total amount.
+          per_group_amounts: nil,
           # RFC 3339 timestamp indicating when the manual adjustment takes place. If not
           # provided, it will default to the start of the segment.
           timestamp: nil,

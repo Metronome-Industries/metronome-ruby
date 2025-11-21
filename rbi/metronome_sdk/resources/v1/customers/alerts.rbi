@@ -70,6 +70,8 @@ module MetronomeSDK
                 ],
               plans_or_contracts:
                 MetronomeSDK::V1::Customers::AlertRetrieveParams::PlansOrContracts::OrSymbol,
+              seat_filter:
+                MetronomeSDK::V1::Customers::AlertRetrieveParams::SeatFilter::OrHash,
               request_options: MetronomeSDK::RequestOptions::OrHash
             ).returns(
               MetronomeSDK::Models::V1::Customers::AlertRetrieveResponse
@@ -86,6 +88,9 @@ module MetronomeSDK
             # When parallel threshold notifications are enabled during migration, this flag
             # denotes whether to fetch notifications for plans or contracts.
             plans_or_contracts: nil,
+            # Only allowed for `low_remaining_seat_balance_reached` notifications. This
+            # filters alerts by the seat group key-value pair.
+            seat_filter: nil,
             request_options: {}
           )
           end

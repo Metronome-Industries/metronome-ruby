@@ -31,6 +31,12 @@ module MetronomeSDK
         optional :customer_billing_provider_configurations,
                  -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration] }
 
+        # @!attribute customer_revenue_system_configurations
+        #
+        #   @return [Array<MetronomeSDK::Models::V1::CustomerCreateParams::CustomerRevenueSystemConfiguration>, nil]
+        optional :customer_revenue_system_configurations,
+                 -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::CustomerCreateParams::CustomerRevenueSystemConfiguration] }
+
         # @!attribute external_id
         #   (deprecated, use ingest_aliases instead) an alias that can be used to refer to
         #   this customer in usage events
@@ -44,7 +50,7 @@ module MetronomeSDK
         #   @return [Array<String>, nil]
         optional :ingest_aliases, MetronomeSDK::Internal::Type::ArrayOf[String]
 
-        # @!method initialize(name:, billing_config: nil, custom_fields: nil, customer_billing_provider_configurations: nil, external_id: nil, ingest_aliases: nil, request_options: {})
+        # @!method initialize(name:, billing_config: nil, custom_fields: nil, customer_billing_provider_configurations: nil, customer_revenue_system_configurations: nil, external_id: nil, ingest_aliases: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::V1::CustomerCreateParams} for more details.
         #
@@ -55,6 +61,8 @@ module MetronomeSDK
         #   @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         #
         #   @param customer_billing_provider_configurations [Array<MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration>]
+        #
+        #   @param customer_revenue_system_configurations [Array<MetronomeSDK::Models::V1::CustomerCreateParams::CustomerRevenueSystemConfiguration>]
         #
         #   @param external_id [String] (deprecated, use ingest_aliases instead) an alias that can be used to refer to t
         #
@@ -285,6 +293,76 @@ module MetronomeSDK
             ANROK = :anrok
             AVALARA = :avalara
             STRIPE = :stripe
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
+
+        class CustomerRevenueSystemConfiguration < MetronomeSDK::Internal::Type::BaseModel
+          # @!attribute provider
+          #   The revenue system provider set for this configuration.
+          #
+          #   @return [Symbol, MetronomeSDK::Models::V1::CustomerCreateParams::CustomerRevenueSystemConfiguration::Provider]
+          required :provider,
+                   enum: -> { MetronomeSDK::V1::CustomerCreateParams::CustomerRevenueSystemConfiguration::Provider }
+
+          # @!attribute configuration
+          #   Configuration for the revenue system provider. The structure of this object is
+          #   specific to the revenue system provider. For NetSuite, this should contain
+          #   `netsuite_customer_id`.
+          #
+          #   @return [Hash{Symbol=>Object}, nil]
+          optional :configuration, MetronomeSDK::Internal::Type::HashOf[MetronomeSDK::Internal::Type::Unknown]
+
+          # @!attribute delivery_method
+          #   The method to use for delivering invoices to this customer. If not provided, the
+          #   `delivery_method_id` must be provided.
+          #
+          #   @return [Symbol, MetronomeSDK::Models::V1::CustomerCreateParams::CustomerRevenueSystemConfiguration::DeliveryMethod, nil]
+          optional :delivery_method,
+                   enum: -> { MetronomeSDK::V1::CustomerCreateParams::CustomerRevenueSystemConfiguration::DeliveryMethod }
+
+          # @!attribute delivery_method_id
+          #   ID of the delivery method to use for this customer. If not provided, the
+          #   `delivery_method` must be provided.
+          #
+          #   @return [String, nil]
+          optional :delivery_method_id, String
+
+          # @!method initialize(provider:, configuration: nil, delivery_method: nil, delivery_method_id: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {MetronomeSDK::Models::V1::CustomerCreateParams::CustomerRevenueSystemConfiguration}
+          #   for more details.
+          #
+          #   @param provider [Symbol, MetronomeSDK::Models::V1::CustomerCreateParams::CustomerRevenueSystemConfiguration::Provider] The revenue system provider set for this configuration.
+          #
+          #   @param configuration [Hash{Symbol=>Object}] Configuration for the revenue system provider. The structure of this object is s
+          #
+          #   @param delivery_method [Symbol, MetronomeSDK::Models::V1::CustomerCreateParams::CustomerRevenueSystemConfiguration::DeliveryMethod] The method to use for delivering invoices to this customer. If not provided, the
+          #
+          #   @param delivery_method_id [String] ID of the delivery method to use for this customer. If not provided, the `delive
+
+          # The revenue system provider set for this configuration.
+          #
+          # @see MetronomeSDK::Models::V1::CustomerCreateParams::CustomerRevenueSystemConfiguration#provider
+          module Provider
+            extend MetronomeSDK::Internal::Type::Enum
+
+            NETSUITE = :netsuite
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # The method to use for delivering invoices to this customer. If not provided, the
+          # `delivery_method_id` must be provided.
+          #
+          # @see MetronomeSDK::Models::V1::CustomerCreateParams::CustomerRevenueSystemConfiguration#delivery_method
+          module DeliveryMethod
+            extend MetronomeSDK::Internal::Type::Enum
+
+            DIRECT_TO_BILLING_PROVIDER = :direct_to_billing_provider
 
             # @!method self.values
             #   @return [Array<Symbol>]
