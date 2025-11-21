@@ -3868,6 +3868,7 @@ module MetronomeSDK
           {
             subscription_id: String,
             ending_before: Time?,
+            quantity_management_mode_update: MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate,
             quantity_updates: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityUpdate],
             seat_updates: MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates
           }
@@ -3876,6 +3877,12 @@ module MetronomeSDK
           attr_accessor subscription_id: String
 
           attr_accessor ending_before: Time?
+
+          attr_reader quantity_management_mode_update: MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate?
+
+          def quantity_management_mode_update=: (
+            MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate
+          ) -> MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate
 
           attr_reader quantity_updates: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityUpdate]?
 
@@ -3892,6 +3899,7 @@ module MetronomeSDK
           def initialize: (
             subscription_id: String,
             ?ending_before: Time?,
+            ?quantity_management_mode_update: MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate,
             ?quantity_updates: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityUpdate],
             ?seat_updates: MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates
           ) -> void
@@ -3899,9 +3907,52 @@ module MetronomeSDK
           def to_hash: -> {
             subscription_id: String,
             ending_before: Time?,
+            quantity_management_mode_update: MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate,
             quantity_updates: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityUpdate],
             seat_updates: MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates
           }
+
+          type quantity_management_mode_update =
+            {
+              quantity_management_mode: MetronomeSDK::Models::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate::quantity_management_mode,
+              seat_config: MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate::SeatConfig
+            }
+
+          class QuantityManagementModeUpdate < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor quantity_management_mode: MetronomeSDK::Models::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate::quantity_management_mode
+
+            attr_accessor seat_config: MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate::SeatConfig
+
+            def initialize: (
+              quantity_management_mode: MetronomeSDK::Models::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate::quantity_management_mode,
+              seat_config: MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate::SeatConfig
+            ) -> void
+
+            def to_hash: -> {
+              quantity_management_mode: MetronomeSDK::Models::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate::quantity_management_mode,
+              seat_config: MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate::SeatConfig
+            }
+
+            type quantity_management_mode = :SEAT_BASED
+
+            module QuantityManagementMode
+              extend MetronomeSDK::Internal::Type::Enum
+
+              SEAT_BASED: :SEAT_BASED
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate::quantity_management_mode]
+            end
+
+            type seat_config = { seat_group_key: String }
+
+            class SeatConfig < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor seat_group_key: String
+
+              def initialize: (seat_group_key: String) -> void
+
+              def to_hash: -> { seat_group_key: String }
+            end
+          end
 
           type quantity_update =
             { starting_at: Time, quantity: Float, quantity_delta: Float }

@@ -320,7 +320,7 @@ module MetronomeSDK
         # upstream of the commit, whether that is via contract editing, rate editing, or
         # other actions that cause an invoice to be recalculated.
         #
-        # @overload add_manual_balance_entry(id:, amount:, customer_id:, reason:, segment_id:, contract_id: nil, timestamp: nil, request_options: {})
+        # @overload add_manual_balance_entry(id:, amount:, customer_id:, reason:, segment_id:, contract_id: nil, per_group_amounts: nil, timestamp: nil, request_options: {})
         #
         # @param id [String] ID of the balance (commit or credit) to update.
         #
@@ -333,6 +333,8 @@ module MetronomeSDK
         # @param segment_id [String] ID of the segment to update.
         #
         # @param contract_id [String] ID of the contract to update. Leave blank to update a customer level balance.
+        #
+        # @param per_group_amounts [Hash{Symbol=>Float}] If using individually configured commits/credits attached to seat managed subscr
         #
         # @param timestamp [Time] RFC 3339 timestamp indicating when the manual adjustment takes place. If not pro
         #

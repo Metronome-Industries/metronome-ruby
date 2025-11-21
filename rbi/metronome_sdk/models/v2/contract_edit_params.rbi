@@ -9091,6 +9091,25 @@ module MetronomeSDK
           sig { returns(T.nilable(Time)) }
           attr_accessor :ending_before
 
+          # Update the subscription's quantity management mode from QUANTITY_ONLY to
+          # SEAT_BASED with the provided seat_group_key.
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate
+              )
+            )
+          end
+          attr_reader :quantity_management_mode_update
+
+          sig do
+            params(
+              quantity_management_mode_update:
+                MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate::OrHash
+            ).void
+          end
+          attr_writer :quantity_management_mode_update
+
           # Quantity changes are applied on the effective date based on the order which they
           # are sent. For example, if I scheduled the quantity to be 12 on May 21 and then
           # scheduled a quantity delta change of -1, the result from that day would be 11.
@@ -9136,6 +9155,8 @@ module MetronomeSDK
             params(
               subscription_id: String,
               ending_before: T.nilable(Time),
+              quantity_management_mode_update:
+                MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate::OrHash,
               quantity_updates:
                 T::Array[
                   MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityUpdate::OrHash
@@ -9147,6 +9168,9 @@ module MetronomeSDK
           def self.new(
             subscription_id:,
             ending_before: nil,
+            # Update the subscription's quantity management mode from QUANTITY_ONLY to
+            # SEAT_BASED with the provided seat_group_key.
+            quantity_management_mode_update: nil,
             # Quantity changes are applied on the effective date based on the order which they
             # are sent. For example, if I scheduled the quantity to be 12 on May 21 and then
             # scheduled a quantity delta change of -1, the result from that day would be 11.
@@ -9160,6 +9184,8 @@ module MetronomeSDK
               {
                 subscription_id: String,
                 ending_before: T.nilable(Time),
+                quantity_management_mode_update:
+                  MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate,
                 quantity_updates:
                   T::Array[
                     MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityUpdate
@@ -9170,6 +9196,114 @@ module MetronomeSDK
             )
           end
           def to_hash
+          end
+
+          class QuantityManagementModeUpdate < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            sig do
+              returns(
+                MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate::QuantityManagementMode::OrSymbol
+              )
+            end
+            attr_accessor :quantity_management_mode
+
+            sig do
+              returns(
+                MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate::SeatConfig
+              )
+            end
+            attr_reader :seat_config
+
+            sig do
+              params(
+                seat_config:
+                  MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate::SeatConfig::OrHash
+              ).void
+            end
+            attr_writer :seat_config
+
+            # Update the subscription's quantity management mode from QUANTITY_ONLY to
+            # SEAT_BASED with the provided seat_group_key.
+            sig do
+              params(
+                quantity_management_mode:
+                  MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate::QuantityManagementMode::OrSymbol,
+                seat_config:
+                  MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate::SeatConfig::OrHash
+              ).returns(T.attached_class)
+            end
+            def self.new(quantity_management_mode:, seat_config:)
+            end
+
+            sig do
+              override.returns(
+                {
+                  quantity_management_mode:
+                    MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate::QuantityManagementMode::OrSymbol,
+                  seat_config:
+                    MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate::SeatConfig
+                }
+              )
+            end
+            def to_hash
+            end
+
+            module QuantityManagementMode
+              extend MetronomeSDK::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate::QuantityManagementMode
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              SEAT_BASED =
+                T.let(
+                  :SEAT_BASED,
+                  MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate::QuantityManagementMode::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate::QuantityManagementMode::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+
+            class SeatConfig < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate::SeatConfig,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig { returns(String) }
+              attr_accessor :seat_group_key
+
+              sig { params(seat_group_key: String).returns(T.attached_class) }
+              def self.new(seat_group_key:)
+              end
+
+              sig { override.returns({ seat_group_key: String }) }
+              def to_hash
+              end
+            end
           end
 
           class QuantityUpdate < MetronomeSDK::Internal::Type::BaseModel

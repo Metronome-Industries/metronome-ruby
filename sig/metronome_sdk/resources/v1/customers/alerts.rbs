@@ -8,6 +8,7 @@ module MetronomeSDK
             customer_id: String,
             ?group_values: ::Array[MetronomeSDK::V1::Customers::AlertRetrieveParams::GroupValue],
             ?plans_or_contracts: MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::plans_or_contracts,
+            ?seat_filter: MetronomeSDK::V1::Customers::AlertRetrieveParams::SeatFilter,
             ?request_options: MetronomeSDK::request_opts
           ) -> MetronomeSDK::Models::V1::Customers::AlertRetrieveResponse
 
