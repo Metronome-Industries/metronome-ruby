@@ -41,6 +41,12 @@ module MetronomeSDK
         #   @return [Array<String>, nil]
         optional :applicable_product_tags, MetronomeSDK::Internal::Type::ArrayOf[String], nil?: true
 
+        # @!attribute description
+        #   Updated description for the commit
+        #
+        #   @return [String, nil]
+        optional :description, String
+
         # @!attribute hierarchy_configuration
         #   Optional configuration for commit hierarchy access control
         #
@@ -57,6 +63,12 @@ module MetronomeSDK
         #
         #   @return [MetronomeSDK::Models::V2::ContractEditCommitParams::InvoiceSchedule, nil]
         optional :invoice_schedule, -> { MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule }
+
+        # @!attribute name
+        #   Updated name for the commit
+        #
+        #   @return [String, nil]
+        optional :name, String
 
         # @!attribute priority
         #   If multiple commits are applicable, the one with the lower priority will apply
@@ -91,7 +103,7 @@ module MetronomeSDK
                  -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::CommitSpecifierInput] },
                  nil?: true
 
-        # @!method initialize(commit_id:, customer_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, hierarchy_configuration: nil, invoice_contract_id: nil, invoice_schedule: nil, priority: nil, product_id: nil, rate_type: nil, specifiers: nil, request_options: {})
+        # @!method initialize(commit_id:, customer_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, hierarchy_configuration: nil, invoice_contract_id: nil, invoice_schedule: nil, name: nil, priority: nil, product_id: nil, rate_type: nil, specifiers: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::V2::ContractEditCommitParams} for more details.
         #
@@ -105,11 +117,15 @@ module MetronomeSDK
         #
         #   @param applicable_product_tags [Array<String>, nil] Which tags the commit applies to. If applicable*product_ids, applicable_product*
         #
+        #   @param description [String] Updated description for the commit
+        #
         #   @param hierarchy_configuration [MetronomeSDK::Models::CommitHierarchyConfiguration] Optional configuration for commit hierarchy access control
         #
         #   @param invoice_contract_id [String] ID of contract to use for invoicing
         #
         #   @param invoice_schedule [MetronomeSDK::Models::V2::ContractEditCommitParams::InvoiceSchedule]
+        #
+        #   @param name [String] Updated name for the commit
         #
         #   @param priority [Float, nil] If multiple commits are applicable, the one with the lower priority will apply f
         #

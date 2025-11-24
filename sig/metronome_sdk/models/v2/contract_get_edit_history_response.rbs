@@ -1812,6 +1812,7 @@ module MetronomeSDK
               access_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::AccessSchedule,
               applicable_product_ids: ::Array[String]?,
               applicable_product_tags: ::Array[String]?,
+              description: String,
               hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,
               invoice_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::InvoiceSchedule,
               name: String,
@@ -1835,6 +1836,10 @@ module MetronomeSDK
             attr_accessor applicable_product_ids: ::Array[String]?
 
             attr_accessor applicable_product_tags: ::Array[String]?
+
+            attr_reader description: String?
+
+            def description=: (String) -> String
 
             attr_reader hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration?
 
@@ -1875,6 +1880,7 @@ module MetronomeSDK
               ?access_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::AccessSchedule,
               ?applicable_product_ids: ::Array[String]?,
               ?applicable_product_tags: ::Array[String]?,
+              ?description: String,
               ?hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,
               ?invoice_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::InvoiceSchedule,
               ?name: String,
@@ -1891,6 +1897,7 @@ module MetronomeSDK
               access_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::AccessSchedule,
               applicable_product_ids: ::Array[String]?,
               applicable_product_tags: ::Array[String]?,
+              description: String,
               hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,
               invoice_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::InvoiceSchedule,
               name: String,
@@ -2160,6 +2167,7 @@ module MetronomeSDK
             {
               id: String,
               access_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::AccessSchedule,
+              description: String,
               hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,
               name: String,
               netsuite_sales_order_id: String?,
@@ -2176,6 +2184,10 @@ module MetronomeSDK
             def access_schedule=: (
               MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::AccessSchedule
             ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::AccessSchedule
+
+            attr_reader description: String?
+
+            def description=: (String) -> String
 
             attr_reader hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration?
 
@@ -2202,6 +2214,7 @@ module MetronomeSDK
             def initialize: (
               id: String,
               ?access_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::AccessSchedule,
+              ?description: String,
               ?hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,
               ?name: String,
               ?netsuite_sales_order_id: String?,
@@ -2213,6 +2226,7 @@ module MetronomeSDK
             def to_hash: -> {
               id: String,
               access_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::AccessSchedule,
+              description: String,
               hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,
               name: String,
               netsuite_sales_order_id: String?,

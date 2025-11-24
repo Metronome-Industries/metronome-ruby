@@ -2879,8 +2879,10 @@ module MetronomeSDK
             access_schedule: MetronomeSDK::V2::ContractEditParams::UpdateCommit::AccessSchedule,
             applicable_product_ids: ::Array[String]?,
             applicable_product_tags: ::Array[String]?,
+            description: String,
             hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,
             invoice_schedule: MetronomeSDK::V2::ContractEditParams::UpdateCommit::InvoiceSchedule,
+            name: String,
             netsuite_sales_order_id: String?,
             priority: Float?,
             product_id: String,
@@ -2901,6 +2903,10 @@ module MetronomeSDK
 
           attr_accessor applicable_product_tags: ::Array[String]?
 
+          attr_reader description: String?
+
+          def description=: (String) -> String
+
           attr_reader hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration?
 
           def hierarchy_configuration=: (
@@ -2912,6 +2918,10 @@ module MetronomeSDK
           def invoice_schedule=: (
             MetronomeSDK::V2::ContractEditParams::UpdateCommit::InvoiceSchedule
           ) -> MetronomeSDK::V2::ContractEditParams::UpdateCommit::InvoiceSchedule
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
 
           attr_accessor netsuite_sales_order_id: String?
 
@@ -2934,8 +2944,10 @@ module MetronomeSDK
             ?access_schedule: MetronomeSDK::V2::ContractEditParams::UpdateCommit::AccessSchedule,
             ?applicable_product_ids: ::Array[String]?,
             ?applicable_product_tags: ::Array[String]?,
+            ?description: String,
             ?hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,
             ?invoice_schedule: MetronomeSDK::V2::ContractEditParams::UpdateCommit::InvoiceSchedule,
+            ?name: String,
             ?netsuite_sales_order_id: String?,
             ?priority: Float?,
             ?product_id: String,
@@ -2948,8 +2960,10 @@ module MetronomeSDK
             access_schedule: MetronomeSDK::V2::ContractEditParams::UpdateCommit::AccessSchedule,
             applicable_product_ids: ::Array[String]?,
             applicable_product_tags: ::Array[String]?,
+            description: String,
             hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,
             invoice_schedule: MetronomeSDK::V2::ContractEditParams::UpdateCommit::InvoiceSchedule,
+            name: String,
             netsuite_sales_order_id: String?,
             priority: Float?,
             product_id: String,
@@ -3217,7 +3231,9 @@ module MetronomeSDK
             access_schedule: MetronomeSDK::V2::ContractEditParams::UpdateCredit::AccessSchedule,
             applicable_product_ids: ::Array[String]?,
             applicable_product_tags: ::Array[String]?,
+            description: String,
             hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,
+            name: String,
             netsuite_sales_order_id: String?,
             priority: Float?,
             product_id: String,
@@ -3237,11 +3253,19 @@ module MetronomeSDK
 
           attr_accessor applicable_product_tags: ::Array[String]?
 
+          attr_reader description: String?
+
+          def description=: (String) -> String
+
           attr_reader hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration?
 
           def hierarchy_configuration=: (
             MetronomeSDK::CommitHierarchyConfiguration
           ) -> MetronomeSDK::CommitHierarchyConfiguration
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
 
           attr_accessor netsuite_sales_order_id: String?
 
@@ -3262,7 +3286,9 @@ module MetronomeSDK
             ?access_schedule: MetronomeSDK::V2::ContractEditParams::UpdateCredit::AccessSchedule,
             ?applicable_product_ids: ::Array[String]?,
             ?applicable_product_tags: ::Array[String]?,
+            ?description: String,
             ?hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,
+            ?name: String,
             ?netsuite_sales_order_id: String?,
             ?priority: Float?,
             ?product_id: String,
@@ -3274,7 +3300,9 @@ module MetronomeSDK
             access_schedule: MetronomeSDK::V2::ContractEditParams::UpdateCredit::AccessSchedule,
             applicable_product_ids: ::Array[String]?,
             applicable_product_tags: ::Array[String]?,
+            description: String,
             hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,
+            name: String,
             netsuite_sales_order_id: String?,
             priority: Float?,
             product_id: String,

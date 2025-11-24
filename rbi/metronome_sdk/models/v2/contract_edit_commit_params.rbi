@@ -52,6 +52,13 @@ module MetronomeSDK
         sig { returns(T.nilable(T::Array[String])) }
         attr_accessor :applicable_product_tags
 
+        # Updated description for the commit
+        sig { returns(T.nilable(String)) }
+        attr_reader :description
+
+        sig { params(description: String).void }
+        attr_writer :description
+
         # Optional configuration for commit hierarchy access control
         sig { returns(T.nilable(MetronomeSDK::CommitHierarchyConfiguration)) }
         attr_reader :hierarchy_configuration
@@ -87,6 +94,13 @@ module MetronomeSDK
           ).void
         end
         attr_writer :invoice_schedule
+
+        # Updated name for the commit
+        sig { returns(T.nilable(String)) }
+        attr_reader :name
+
+        sig { params(name: String).void }
+        attr_writer :name
 
         # If multiple commits are applicable, the one with the lower priority will apply
         # first.
@@ -136,11 +150,13 @@ module MetronomeSDK
               MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule::OrHash,
             applicable_product_ids: T.nilable(T::Array[String]),
             applicable_product_tags: T.nilable(T::Array[String]),
+            description: String,
             hierarchy_configuration:
               MetronomeSDK::CommitHierarchyConfiguration::OrHash,
             invoice_contract_id: String,
             invoice_schedule:
               MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule::OrHash,
+            name: String,
             priority: T.nilable(Float),
             product_id: String,
             rate_type:
@@ -164,11 +180,15 @@ module MetronomeSDK
           # applicable_product_tags or specifiers are not provided, the commit applies to
           # all products.
           applicable_product_tags: nil,
+          # Updated description for the commit
+          description: nil,
           # Optional configuration for commit hierarchy access control
           hierarchy_configuration: nil,
           # ID of contract to use for invoicing
           invoice_contract_id: nil,
           invoice_schedule: nil,
+          # Updated name for the commit
+          name: nil,
           # If multiple commits are applicable, the one with the lower priority will apply
           # first.
           priority: nil,
@@ -197,11 +217,13 @@ module MetronomeSDK
                 MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule,
               applicable_product_ids: T.nilable(T::Array[String]),
               applicable_product_tags: T.nilable(T::Array[String]),
+              description: String,
               hierarchy_configuration:
                 MetronomeSDK::CommitHierarchyConfiguration,
               invoice_contract_id: String,
               invoice_schedule:
                 MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule,
+              name: String,
               priority: T.nilable(Float),
               product_id: String,
               rate_type:
