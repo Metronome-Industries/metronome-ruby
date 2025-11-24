@@ -62,6 +62,11 @@ module MetronomeSDK
             required :adjustment_type,
                      enum: -> { MetronomeSDK::Models::V1::Customers::PlanListPriceAdjustmentsResponse::Price::AdjustmentType }
 
+            # @!attribute quantity
+            #
+            #   @return [Float, nil]
+            optional :quantity, Float
+
             # @!attribute tier
             #   Used in pricing tiers. Indicates at what metric value the price applies.
             #
@@ -73,8 +78,10 @@ module MetronomeSDK
             #   @return [Float, nil]
             optional :value, Float
 
-            # @!method initialize(adjustment_type:, tier: nil, value: nil)
+            # @!method initialize(adjustment_type:, quantity: nil, tier: nil, value: nil)
             #   @param adjustment_type [Symbol, MetronomeSDK::Models::V1::Customers::PlanListPriceAdjustmentsResponse::Price::AdjustmentType] Determines how the value will be applied.
+            #
+            #   @param quantity [Float]
             #
             #   @param tier [Float] Used in pricing tiers. Indicates at what metric value the price applies.
             #
