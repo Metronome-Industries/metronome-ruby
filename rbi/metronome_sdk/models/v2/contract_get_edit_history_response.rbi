@@ -4076,6 +4076,12 @@ module MetronomeSDK
             sig { returns(T.nilable(T::Array[String])) }
             attr_accessor :applicable_product_tags
 
+            sig { returns(T.nilable(String)) }
+            attr_reader :description
+
+            sig { params(description: String).void }
+            attr_writer :description
+
             # Optional configuration for commit hierarchy access control
             sig do
               returns(T.nilable(MetronomeSDK::CommitHierarchyConfiguration))
@@ -4166,6 +4172,7 @@ module MetronomeSDK
                   MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::AccessSchedule::OrHash,
                 applicable_product_ids: T.nilable(T::Array[String]),
                 applicable_product_tags: T.nilable(T::Array[String]),
+                description: String,
                 hierarchy_configuration:
                   MetronomeSDK::CommitHierarchyConfiguration::OrHash,
                 invoice_schedule:
@@ -4194,6 +4201,7 @@ module MetronomeSDK
               # applicable_product_tags or specifiers are not provided, the commit applies to
               # all products.
               applicable_product_tags: nil,
+              description: nil,
               # Optional configuration for commit hierarchy access control
               hierarchy_configuration: nil,
               invoice_schedule: nil,
@@ -4224,6 +4232,7 @@ module MetronomeSDK
                     MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit::AccessSchedule,
                   applicable_product_ids: T.nilable(T::Array[String]),
                   applicable_product_tags: T.nilable(T::Array[String]),
+                  description: String,
                   hierarchy_configuration:
                     MetronomeSDK::CommitHierarchyConfiguration,
                   invoice_schedule:
@@ -4822,6 +4831,12 @@ module MetronomeSDK
             end
             attr_writer :access_schedule
 
+            sig { returns(T.nilable(String)) }
+            attr_reader :description
+
+            sig { params(description: String).void }
+            attr_writer :description
+
             # Optional configuration for credit hierarchy access control
             sig do
               returns(T.nilable(MetronomeSDK::CommitHierarchyConfiguration))
@@ -4876,6 +4891,7 @@ module MetronomeSDK
                 id: String,
                 access_schedule:
                   MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::AccessSchedule::OrHash,
+                description: String,
                 hierarchy_configuration:
                   MetronomeSDK::CommitHierarchyConfiguration::OrHash,
                 name: String,
@@ -4889,6 +4905,7 @@ module MetronomeSDK
             def self.new(
               id:,
               access_schedule: nil,
+              description: nil,
               # Optional configuration for credit hierarchy access control
               hierarchy_configuration: nil,
               name: nil,
@@ -4908,6 +4925,7 @@ module MetronomeSDK
                   id: String,
                   access_schedule:
                     MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::AccessSchedule,
+                  description: String,
                   hierarchy_configuration:
                     MetronomeSDK::CommitHierarchyConfiguration,
                   name: String,

@@ -3231,6 +3231,11 @@ module MetronomeSDK
           #   @return [Array<String>, nil]
           optional :applicable_product_tags, MetronomeSDK::Internal::Type::ArrayOf[String], nil?: true
 
+          # @!attribute description
+          #
+          #   @return [String, nil]
+          optional :description, String
+
           # @!attribute hierarchy_configuration
           #   Optional configuration for commit hierarchy access control
           #
@@ -3241,6 +3246,11 @@ module MetronomeSDK
           #
           #   @return [MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit::InvoiceSchedule, nil]
           optional :invoice_schedule, -> { MetronomeSDK::V2::ContractEditParams::UpdateCommit::InvoiceSchedule }
+
+          # @!attribute name
+          #
+          #   @return [String, nil]
+          optional :name, String
 
           # @!attribute netsuite_sales_order_id
           #
@@ -3270,7 +3280,7 @@ module MetronomeSDK
           #   @return [Float, nil]
           optional :rollover_fraction, Float, nil?: true
 
-          # @!method initialize(commit_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, hierarchy_configuration: nil, invoice_schedule: nil, netsuite_sales_order_id: nil, priority: nil, product_id: nil, rate_type: nil, rollover_fraction: nil)
+          # @!method initialize(commit_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, hierarchy_configuration: nil, invoice_schedule: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, product_id: nil, rate_type: nil, rollover_fraction: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit} for more details.
           #
@@ -3282,9 +3292,13 @@ module MetronomeSDK
           #
           #   @param applicable_product_tags [Array<String>, nil] Which tags the commit applies to. If applicable*product_ids, applicable_product*
           #
+          #   @param description [String]
+          #
           #   @param hierarchy_configuration [MetronomeSDK::Models::CommitHierarchyConfiguration] Optional configuration for commit hierarchy access control
           #
           #   @param invoice_schedule [MetronomeSDK::Models::V2::ContractEditParams::UpdateCommit::InvoiceSchedule]
+          #
+          #   @param name [String]
           #
           #   @param netsuite_sales_order_id [String, nil]
           #
@@ -3523,11 +3537,21 @@ module MetronomeSDK
           #   @return [Array<String>, nil]
           optional :applicable_product_tags, MetronomeSDK::Internal::Type::ArrayOf[String], nil?: true
 
+          # @!attribute description
+          #
+          #   @return [String, nil]
+          optional :description, String
+
           # @!attribute hierarchy_configuration
           #   Optional configuration for commit hierarchy access control
           #
           #   @return [MetronomeSDK::Models::CommitHierarchyConfiguration, nil]
           optional :hierarchy_configuration, -> { MetronomeSDK::CommitHierarchyConfiguration }
+
+          # @!attribute name
+          #
+          #   @return [String, nil]
+          optional :name, String
 
           # @!attribute netsuite_sales_order_id
           #
@@ -3552,7 +3576,7 @@ module MetronomeSDK
           #   @return [Symbol, MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit::RateType, nil]
           optional :rate_type, enum: -> { MetronomeSDK::V2::ContractEditParams::UpdateCredit::RateType }
 
-          # @!method initialize(credit_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, hierarchy_configuration: nil, netsuite_sales_order_id: nil, priority: nil, product_id: nil, rate_type: nil)
+          # @!method initialize(credit_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, hierarchy_configuration: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, product_id: nil, rate_type: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit} for more details.
           #
@@ -3564,7 +3588,11 @@ module MetronomeSDK
           #
           #   @param applicable_product_tags [Array<String>, nil] Which tags the commit applies to. If applicable*product_ids, applicable_product*
           #
+          #   @param description [String]
+          #
           #   @param hierarchy_configuration [MetronomeSDK::Models::CommitHierarchyConfiguration] Optional configuration for commit hierarchy access control
+          #
+          #   @param name [String]
           #
           #   @param netsuite_sales_order_id [String, nil]
           #

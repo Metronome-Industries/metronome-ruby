@@ -300,11 +300,13 @@ module MetronomeSDK
               MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule::OrHash,
             applicable_product_ids: T.nilable(T::Array[String]),
             applicable_product_tags: T.nilable(T::Array[String]),
+            description: String,
             hierarchy_configuration:
               MetronomeSDK::CommitHierarchyConfiguration::OrHash,
             invoice_contract_id: String,
             invoice_schedule:
               MetronomeSDK::V2::ContractEditCommitParams::InvoiceSchedule::OrHash,
+            name: String,
             priority: T.nilable(Float),
             product_id: String,
             rate_type:
@@ -328,11 +330,15 @@ module MetronomeSDK
           # applicable_product_tags or specifiers are not provided, the commit applies to
           # all products.
           applicable_product_tags: nil,
+          # Updated description for the commit
+          description: nil,
           # Optional configuration for commit hierarchy access control
           hierarchy_configuration: nil,
           # ID of contract to use for invoicing
           invoice_contract_id: nil,
           invoice_schedule: nil,
+          # Updated name for the commit
+          name: nil,
           # If multiple commits are applicable, the one with the lower priority will apply
           # first.
           priority: nil,
@@ -376,8 +382,10 @@ module MetronomeSDK
               MetronomeSDK::V2::ContractEditCreditParams::AccessSchedule::OrHash,
             applicable_product_ids: T.nilable(T::Array[String]),
             applicable_product_tags: T.nilable(T::Array[String]),
+            description: String,
             hierarchy_configuration:
               MetronomeSDK::CommitHierarchyConfiguration::OrHash,
+            name: String,
             priority: T.nilable(Float),
             product_id: String,
             rate_type:
@@ -399,8 +407,12 @@ module MetronomeSDK
           # Which tags the credit applies to. If both applicable_product_ids and
           # applicable_product_tags are not provided, the credit applies to all products.
           applicable_product_tags: nil,
+          # Updated description for the credit
+          description: nil,
           # Optional configuration for credit hierarchy access control
           hierarchy_configuration: nil,
+          # Updated name for the credit
+          name: nil,
           # If multiple commits are applicable, the one with the lower priority will apply
           # first.
           priority: nil,
