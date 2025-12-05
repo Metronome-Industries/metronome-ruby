@@ -57,12 +57,17 @@ module MetronomeSDK
           type price =
             {
               adjustment_type: MetronomeSDK::Models::V1::Customers::PlanListPriceAdjustmentsResponse::Price::adjustment_type,
+              quantity: Float,
               tier: Float,
               value: Float
             }
 
           class Price < MetronomeSDK::Internal::Type::BaseModel
             attr_accessor adjustment_type: MetronomeSDK::Models::V1::Customers::PlanListPriceAdjustmentsResponse::Price::adjustment_type
+
+            attr_reader quantity: Float?
+
+            def quantity=: (Float) -> Float
 
             attr_reader tier: Float?
 
@@ -74,12 +79,14 @@ module MetronomeSDK
 
             def initialize: (
               adjustment_type: MetronomeSDK::Models::V1::Customers::PlanListPriceAdjustmentsResponse::Price::adjustment_type,
+              ?quantity: Float,
               ?tier: Float,
               ?value: Float
             ) -> void
 
             def to_hash: -> {
               adjustment_type: MetronomeSDK::Models::V1::Customers::PlanListPriceAdjustmentsResponse::Price::adjustment_type,
+              quantity: Float,
               tier: Float,
               value: Float
             }

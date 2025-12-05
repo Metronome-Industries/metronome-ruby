@@ -15,6 +15,7 @@ module MetronomeSDK
           ?group_values: ::Array[MetronomeSDK::V1::AlertCreateParams::GroupValue],
           ?invoice_types_filter: ::Array[String],
           ?plan_id: String,
+          ?seat_filter: MetronomeSDK::V1::AlertCreateParams::SeatFilter,
           ?uniqueness_key: String,
           ?request_options: MetronomeSDK::request_opts
         ) -> MetronomeSDK::Models::V1::AlertCreateResponse

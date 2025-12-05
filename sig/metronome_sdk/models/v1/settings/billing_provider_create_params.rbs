@@ -34,13 +34,15 @@ module MetronomeSDK
             request_options: MetronomeSDK::RequestOptions
           }
 
-          type billing_provider = :aws_marketplace | :azure_marketplace
+          type billing_provider =
+            :aws_marketplace | :azure_marketplace | :gcp_marketplace
 
           module BillingProvider
             extend MetronomeSDK::Internal::Type::Enum
 
             AWS_MARKETPLACE: :aws_marketplace
             AZURE_MARKETPLACE: :azure_marketplace
+            GCP_MARKETPLACE: :gcp_marketplace
 
             def self?.values: -> ::Array[MetronomeSDK::Models::V1::Settings::BillingProviderCreateParams::billing_provider]
           end

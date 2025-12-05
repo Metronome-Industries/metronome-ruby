@@ -31,6 +31,7 @@ module MetronomeSDK
           ?recurring_commits: ::Array[MetronomeSDK::V1::ContractCreateParams::RecurringCommit],
           ?recurring_credits: ::Array[MetronomeSDK::V1::ContractCreateParams::RecurringCredit],
           ?reseller_royalties: ::Array[MetronomeSDK::V1::ContractCreateParams::ResellerRoyalty],
+          ?revenue_system_configuration: MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration,
           ?salesforce_opportunity_id: String,
           ?scheduled_charges: ::Array[MetronomeSDK::V1::ContractCreateParams::ScheduledCharge],
           ?scheduled_charges_on_usage_invoices: MetronomeSDK::Models::V1::ContractCreateParams::scheduled_charges_on_usage_invoices,
@@ -69,6 +70,7 @@ module MetronomeSDK
           reason: String,
           segment_id: String,
           ?contract_id: String,
+          ?per_group_amounts: ::Hash[Symbol, Float],
           ?timestamp: Time,
           ?request_options: MetronomeSDK::request_opts
         ) -> nil

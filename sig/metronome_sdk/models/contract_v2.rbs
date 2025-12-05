@@ -295,7 +295,8 @@ module MetronomeSDK
           rolled_over_from: MetronomeSDK::ContractV2::Commit::RolledOverFrom,
           rollover_fraction: Float,
           salesforce_opportunity_id: String,
-          specifiers: ::Array[MetronomeSDK::CommitSpecifier]
+          specifiers: ::Array[MetronomeSDK::CommitSpecifier],
+          subscription_config: MetronomeSDK::RecurringCommitSubscriptionConfig
         }
 
       class Commit < MetronomeSDK::Internal::Type::BaseModel
@@ -409,6 +410,12 @@ module MetronomeSDK
           ::Array[MetronomeSDK::CommitSpecifier]
         ) -> ::Array[MetronomeSDK::CommitSpecifier]
 
+        attr_reader subscription_config: MetronomeSDK::RecurringCommitSubscriptionConfig?
+
+        def subscription_config=: (
+          MetronomeSDK::RecurringCommitSubscriptionConfig
+        ) -> MetronomeSDK::RecurringCommitSubscriptionConfig
+
         def initialize: (
           id: String,
           created_at: Time,
@@ -434,7 +441,8 @@ module MetronomeSDK
           ?rolled_over_from: MetronomeSDK::ContractV2::Commit::RolledOverFrom,
           ?rollover_fraction: Float,
           ?salesforce_opportunity_id: String,
-          ?specifiers: ::Array[MetronomeSDK::CommitSpecifier]
+          ?specifiers: ::Array[MetronomeSDK::CommitSpecifier],
+          ?subscription_config: MetronomeSDK::RecurringCommitSubscriptionConfig
         ) -> void
 
         def to_hash: -> {
@@ -462,7 +470,8 @@ module MetronomeSDK
           rolled_over_from: MetronomeSDK::ContractV2::Commit::RolledOverFrom,
           rollover_fraction: Float,
           salesforce_opportunity_id: String,
-          specifiers: ::Array[MetronomeSDK::CommitSpecifier]
+          specifiers: ::Array[MetronomeSDK::CommitSpecifier],
+          subscription_config: MetronomeSDK::RecurringCommitSubscriptionConfig
         }
 
         type product = { id: String, name: String }
@@ -1633,6 +1642,7 @@ module MetronomeSDK
           applicable_product_tags: ::Array[String],
           balance: Float,
           contract: MetronomeSDK::ContractV2::Credit::Contract,
+          created_at: Time,
           custom_fields: ::Hash[Symbol, String],
           description: String,
           hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,
@@ -1641,7 +1651,8 @@ module MetronomeSDK
           netsuite_sales_order_id: String,
           priority: Float,
           salesforce_opportunity_id: String,
-          specifiers: ::Array[MetronomeSDK::CommitSpecifier]
+          specifiers: ::Array[MetronomeSDK::CommitSpecifier],
+          subscription_config: MetronomeSDK::RecurringCommitSubscriptionConfig
         }
 
       class Credit < MetronomeSDK::Internal::Type::BaseModel
@@ -1678,6 +1689,10 @@ module MetronomeSDK
         def contract=: (
           MetronomeSDK::ContractV2::Credit::Contract
         ) -> MetronomeSDK::ContractV2::Credit::Contract
+
+        attr_reader created_at: Time?
+
+        def created_at=: (Time) -> Time
 
         attr_reader custom_fields: ::Hash[Symbol, String]?
 
@@ -1721,6 +1736,12 @@ module MetronomeSDK
           ::Array[MetronomeSDK::CommitSpecifier]
         ) -> ::Array[MetronomeSDK::CommitSpecifier]
 
+        attr_reader subscription_config: MetronomeSDK::RecurringCommitSubscriptionConfig?
+
+        def subscription_config=: (
+          MetronomeSDK::RecurringCommitSubscriptionConfig
+        ) -> MetronomeSDK::RecurringCommitSubscriptionConfig
+
         def initialize: (
           id: String,
           product: MetronomeSDK::ContractV2::Credit::Product,
@@ -1731,6 +1752,7 @@ module MetronomeSDK
           ?applicable_product_tags: ::Array[String],
           ?balance: Float,
           ?contract: MetronomeSDK::ContractV2::Credit::Contract,
+          ?created_at: Time,
           ?custom_fields: ::Hash[Symbol, String],
           ?description: String,
           ?hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,
@@ -1739,7 +1761,8 @@ module MetronomeSDK
           ?netsuite_sales_order_id: String,
           ?priority: Float,
           ?salesforce_opportunity_id: String,
-          ?specifiers: ::Array[MetronomeSDK::CommitSpecifier]
+          ?specifiers: ::Array[MetronomeSDK::CommitSpecifier],
+          ?subscription_config: MetronomeSDK::RecurringCommitSubscriptionConfig
         ) -> void
 
         def to_hash: -> {
@@ -1752,6 +1775,7 @@ module MetronomeSDK
           applicable_product_tags: ::Array[String],
           balance: Float,
           contract: MetronomeSDK::ContractV2::Credit::Contract,
+          created_at: Time,
           custom_fields: ::Hash[Symbol, String],
           description: String,
           hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,
@@ -1760,7 +1784,8 @@ module MetronomeSDK
           netsuite_sales_order_id: String,
           priority: Float,
           salesforce_opportunity_id: String,
-          specifiers: ::Array[MetronomeSDK::CommitSpecifier]
+          specifiers: ::Array[MetronomeSDK::CommitSpecifier],
+          subscription_config: MetronomeSDK::RecurringCommitSubscriptionConfig
         }
 
         type product = { id: String, name: String }

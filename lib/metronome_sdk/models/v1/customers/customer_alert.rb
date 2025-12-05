@@ -118,6 +118,13 @@ module MetronomeSDK
             #   @return [Array<String>, nil]
             optional :invoice_types_filter, MetronomeSDK::Internal::Type::ArrayOf[String]
 
+            # @!attribute seat_filter
+            #   Only present for low_remaining_seat_balance_reached notifications. The seat
+            #   group key or seat group key-value pair the alert is scoped to.
+            #
+            #   @return [MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::SeatFilter, nil]
+            optional :seat_filter, -> { MetronomeSDK::V1::Customers::CustomerAlert::Alert::SeatFilter }
+
             # @!attribute uniqueness_key
             #   Prevents the creation of duplicates. If a request to create a record is made
             #   with a previously used uniqueness key, a new record will not be created and the
@@ -126,7 +133,7 @@ module MetronomeSDK
             #   @return [String, nil]
             optional :uniqueness_key, String
 
-            # @!method initialize(id:, name:, status:, threshold:, type:, updated_at:, credit_grant_type_filters: nil, credit_type: nil, custom_field_filters: nil, group_key_filter: nil, group_values: nil, invoice_types_filter: nil, uniqueness_key: nil)
+            # @!method initialize(id:, name:, status:, threshold:, type:, updated_at:, credit_grant_type_filters: nil, credit_type: nil, custom_field_filters: nil, group_key_filter: nil, group_values: nil, invoice_types_filter: nil, seat_filter: nil, uniqueness_key: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert} for more details.
             #
@@ -153,6 +160,8 @@ module MetronomeSDK
             #   @param group_values [Array<MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::GroupValue>] Only present for `spend_threshold_reached` notifications. Scope notification to
             #
             #   @param invoice_types_filter [Array<String>] Only supported for invoice_total_reached threshold notifications. A list of invo
+            #
+            #   @param seat_filter [MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::SeatFilter] Only present for low_remaining_seat_balance_reached notifications. The seat grou
             #
             #   @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a record is made wit
 
@@ -267,6 +276,29 @@ module MetronomeSDK
               # @!method initialize(key:, value: nil)
               #   @param key [String]
               #   @param value [String]
+            end
+
+            # @see MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert#seat_filter
+            class SeatFilter < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute seat_group_key
+              #   The seat group key (e.g., "seat_id", "user_id") that the alert is scoped to.
+              #
+              #   @return [String]
+              required :seat_group_key, String
+
+              # @!attribute seat_group_value
+              #   The seat group value that the alert is scoped to.
+              #
+              #   @return [String, nil]
+              optional :seat_group_value, String
+
+              # @!method initialize(seat_group_key:, seat_group_value: nil)
+              #   Only present for low_remaining_seat_balance_reached notifications. The seat
+              #   group key or seat group key-value pair the alert is scoped to.
+              #
+              #   @param seat_group_key [String] The seat group key (e.g., "seat_id", "user_id") that the alert is scoped to.
+              #
+              #   @param seat_group_value [String] The seat group value that the alert is scoped to.
             end
           end
 

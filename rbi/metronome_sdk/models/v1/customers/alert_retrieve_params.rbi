@@ -66,6 +66,25 @@ module MetronomeSDK
           end
           attr_writer :plans_or_contracts
 
+          # Only allowed for `low_remaining_seat_balance_reached` notifications. This
+          # filters alerts by the seat group key-value pair.
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::V1::Customers::AlertRetrieveParams::SeatFilter
+              )
+            )
+          end
+          attr_reader :seat_filter
+
+          sig do
+            params(
+              seat_filter:
+                MetronomeSDK::V1::Customers::AlertRetrieveParams::SeatFilter::OrHash
+            ).void
+          end
+          attr_writer :seat_filter
+
           sig do
             params(
               alert_id: String,
@@ -76,6 +95,8 @@ module MetronomeSDK
                 ],
               plans_or_contracts:
                 MetronomeSDK::V1::Customers::AlertRetrieveParams::PlansOrContracts::OrSymbol,
+              seat_filter:
+                MetronomeSDK::V1::Customers::AlertRetrieveParams::SeatFilter::OrHash,
               request_options: MetronomeSDK::RequestOptions::OrHash
             ).returns(T.attached_class)
           end
@@ -90,6 +111,9 @@ module MetronomeSDK
             # When parallel threshold notifications are enabled during migration, this flag
             # denotes whether to fetch notifications for plans or contracts.
             plans_or_contracts: nil,
+            # Only allowed for `low_remaining_seat_balance_reached` notifications. This
+            # filters alerts by the seat group key-value pair.
+            seat_filter: nil,
             request_options: {}
           )
           end
@@ -105,6 +129,8 @@ module MetronomeSDK
                   ],
                 plans_or_contracts:
                   MetronomeSDK::V1::Customers::AlertRetrieveParams::PlansOrContracts::OrSymbol,
+                seat_filter:
+                  MetronomeSDK::V1::Customers::AlertRetrieveParams::SeatFilter,
                 request_options: MetronomeSDK::RequestOptions
               }
             )
@@ -171,6 +197,47 @@ module MetronomeSDK
               )
             end
             def self.values
+            end
+          end
+
+          class SeatFilter < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V1::Customers::AlertRetrieveParams::SeatFilter,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            # The seat group key (e.g., "seat_id", "user_id")
+            sig { returns(String) }
+            attr_accessor :seat_group_key
+
+            # The specific seat identifier to filter by
+            sig { returns(String) }
+            attr_accessor :seat_group_value
+
+            # Only allowed for `low_remaining_seat_balance_reached` notifications. This
+            # filters alerts by the seat group key-value pair.
+            sig do
+              params(seat_group_key: String, seat_group_value: String).returns(
+                T.attached_class
+              )
+            end
+            def self.new(
+              # The seat group key (e.g., "seat_id", "user_id")
+              seat_group_key:,
+              # The specific seat identifier to filter by
+              seat_group_value:
+            )
+            end
+
+            sig do
+              override.returns(
+                { seat_group_key: String, seat_group_value: String }
+              )
+            end
+            def to_hash
             end
           end
         end

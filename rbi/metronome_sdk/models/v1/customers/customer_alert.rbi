@@ -209,6 +209,25 @@ module MetronomeSDK
             sig { params(invoice_types_filter: T::Array[String]).void }
             attr_writer :invoice_types_filter
 
+            # Only present for low_remaining_seat_balance_reached notifications. The seat
+            # group key or seat group key-value pair the alert is scoped to.
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::V1::Customers::CustomerAlert::Alert::SeatFilter
+                )
+              )
+            end
+            attr_reader :seat_filter
+
+            sig do
+              params(
+                seat_filter:
+                  MetronomeSDK::V1::Customers::CustomerAlert::Alert::SeatFilter::OrHash
+              ).void
+            end
+            attr_writer :seat_filter
+
             # Prevents the creation of duplicates. If a request to create a record is made
             # with a previously used uniqueness key, a new record will not be created and the
             # request will fail with a 409 error.
@@ -241,6 +260,8 @@ module MetronomeSDK
                     MetronomeSDK::V1::Customers::CustomerAlert::Alert::GroupValue::OrHash
                   ],
                 invoice_types_filter: T::Array[String],
+                seat_filter:
+                  MetronomeSDK::V1::Customers::CustomerAlert::Alert::SeatFilter::OrHash,
                 uniqueness_key: String
               ).returns(T.attached_class)
             end
@@ -275,6 +296,9 @@ module MetronomeSDK
               # Only supported for invoice_total_reached threshold notifications. A list of
               # invoice types to evaluate.
               invoice_types_filter: nil,
+              # Only present for low_remaining_seat_balance_reached notifications. The seat
+              # group key or seat group key-value pair the alert is scoped to.
+              seat_filter: nil,
               # Prevents the creation of duplicates. If a request to create a record is made
               # with a previously used uniqueness key, a new record will not be created and the
               # request will fail with a 409 error.
@@ -306,6 +330,8 @@ module MetronomeSDK
                       MetronomeSDK::V1::Customers::CustomerAlert::Alert::GroupValue
                     ],
                   invoice_types_filter: T::Array[String],
+                  seat_filter:
+                    MetronomeSDK::V1::Customers::CustomerAlert::Alert::SeatFilter,
                   uniqueness_key: String
                 }
               )
@@ -592,6 +618,51 @@ module MetronomeSDK
               end
 
               sig { override.returns({ key: String, value: String }) }
+              def to_hash
+              end
+            end
+
+            class SeatFilter < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::V1::Customers::CustomerAlert::Alert::SeatFilter,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              # The seat group key (e.g., "seat_id", "user_id") that the alert is scoped to.
+              sig { returns(String) }
+              attr_accessor :seat_group_key
+
+              # The seat group value that the alert is scoped to.
+              sig { returns(T.nilable(String)) }
+              attr_reader :seat_group_value
+
+              sig { params(seat_group_value: String).void }
+              attr_writer :seat_group_value
+
+              # Only present for low_remaining_seat_balance_reached notifications. The seat
+              # group key or seat group key-value pair the alert is scoped to.
+              sig do
+                params(
+                  seat_group_key: String,
+                  seat_group_value: String
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # The seat group key (e.g., "seat_id", "user_id") that the alert is scoped to.
+                seat_group_key:,
+                # The seat group value that the alert is scoped to.
+                seat_group_value: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  { seat_group_key: String, seat_group_value: String }
+                )
+              end
               def to_hash
               end
             end

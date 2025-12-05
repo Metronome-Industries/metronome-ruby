@@ -50,6 +50,13 @@ module MetronomeSDK
         sig { returns(T.nilable(T::Array[String])) }
         attr_accessor :applicable_product_tags
 
+        # Updated description for the credit
+        sig { returns(T.nilable(String)) }
+        attr_reader :description
+
+        sig { params(description: String).void }
+        attr_writer :description
+
         # Optional configuration for credit hierarchy access control
         sig { returns(T.nilable(MetronomeSDK::CommitHierarchyConfiguration)) }
         attr_reader :hierarchy_configuration
@@ -61,6 +68,13 @@ module MetronomeSDK
           ).void
         end
         attr_writer :hierarchy_configuration
+
+        # Updated name for the credit
+        sig { returns(T.nilable(String)) }
+        attr_reader :name
+
+        sig { params(name: String).void }
+        attr_writer :name
 
         # If multiple commits are applicable, the one with the lower priority will apply
         # first.
@@ -110,8 +124,10 @@ module MetronomeSDK
               MetronomeSDK::V2::ContractEditCreditParams::AccessSchedule::OrHash,
             applicable_product_ids: T.nilable(T::Array[String]),
             applicable_product_tags: T.nilable(T::Array[String]),
+            description: String,
             hierarchy_configuration:
               MetronomeSDK::CommitHierarchyConfiguration::OrHash,
+            name: String,
             priority: T.nilable(Float),
             product_id: String,
             rate_type:
@@ -133,8 +149,12 @@ module MetronomeSDK
           # Which tags the credit applies to. If both applicable_product_ids and
           # applicable_product_tags are not provided, the credit applies to all products.
           applicable_product_tags: nil,
+          # Updated description for the credit
+          description: nil,
           # Optional configuration for credit hierarchy access control
           hierarchy_configuration: nil,
+          # Updated name for the credit
+          name: nil,
           # If multiple commits are applicable, the one with the lower priority will apply
           # first.
           priority: nil,
@@ -163,8 +183,10 @@ module MetronomeSDK
                 MetronomeSDK::V2::ContractEditCreditParams::AccessSchedule,
               applicable_product_ids: T.nilable(T::Array[String]),
               applicable_product_tags: T.nilable(T::Array[String]),
+              description: String,
               hierarchy_configuration:
                 MetronomeSDK::CommitHierarchyConfiguration,
+              name: String,
               priority: T.nilable(Float),
               product_id: String,
               rate_type:
