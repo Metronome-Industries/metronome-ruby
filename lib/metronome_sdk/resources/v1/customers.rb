@@ -388,7 +388,7 @@ module MetronomeSDK
         # @param data [Array<MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data>]
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [nil]
+        # @return [MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsResponse]
         #
         # @see MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams
         def set_billing_configurations(params)
@@ -397,7 +397,7 @@ module MetronomeSDK
             method: :post,
             path: "v1/setCustomerBillingProviderConfigurations",
             body: parsed,
-            model: NilClass,
+            model: MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsResponse,
             options: options
           )
         end
