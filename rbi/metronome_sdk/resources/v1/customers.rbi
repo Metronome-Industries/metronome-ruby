@@ -340,7 +340,9 @@ module MetronomeSDK
                 MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::OrHash
               ],
             request_options: MetronomeSDK::RequestOptions::OrHash
-          ).void
+          ).returns(
+            MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsResponse
+          )
         end
         def set_billing_configurations(data:, request_options: {})
         end

@@ -82,7 +82,7 @@ module MetronomeSDK
         def set_billing_configurations: (
           data: ::Array[MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data],
           ?request_options: MetronomeSDK::request_opts
-        ) -> nil
+        ) -> MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsResponse
 
         def set_ingest_aliases: (
           customer_id: String,

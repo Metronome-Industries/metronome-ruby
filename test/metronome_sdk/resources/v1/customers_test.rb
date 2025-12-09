@@ -186,7 +186,13 @@ class MetronomeSDK::Test::Resources::V1::CustomersTest < MetronomeSDK::Test::Res
       )
 
     assert_pattern do
-      response => nil
+      response => MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsResponse::Data])
+      }
     end
   end
 
