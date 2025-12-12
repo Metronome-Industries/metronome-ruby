@@ -9,6 +9,7 @@ module MetronomeSDK
           avalara_password: String,
           avalara_username: String,
           delivery_method_ids: ::Array[String],
+          ?commit_transactions: bool,
           ?request_options: MetronomeSDK::request_opts
         ) -> MetronomeSDK::Models::V1::SettingUpsertAvalaraCredentialsResponse
 

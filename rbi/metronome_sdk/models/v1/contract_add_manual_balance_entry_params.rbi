@@ -42,6 +42,14 @@ module MetronomeSDK
         sig { params(contract_id: String).void }
         attr_writer :contract_id
 
+        # If using individually configured commits/credits attached to seat managed
+        # subscriptions, the amount to add for each seat. Must sum to total amount.
+        sig { returns(T.nilable(T::Hash[Symbol, Float])) }
+        attr_reader :per_group_amounts
+
+        sig { params(per_group_amounts: T::Hash[Symbol, Float]).void }
+        attr_writer :per_group_amounts
+
         # RFC 3339 timestamp indicating when the manual adjustment takes place. If not
         # provided, it will default to the start of the segment.
         sig { returns(T.nilable(Time)) }
@@ -58,6 +66,7 @@ module MetronomeSDK
             reason: String,
             segment_id: String,
             contract_id: String,
+            per_group_amounts: T::Hash[Symbol, Float],
             timestamp: Time,
             request_options: MetronomeSDK::RequestOptions::OrHash
           ).returns(T.attached_class)
@@ -75,6 +84,9 @@ module MetronomeSDK
           segment_id:,
           # ID of the contract to update. Leave blank to update a customer level balance.
           contract_id: nil,
+          # If using individually configured commits/credits attached to seat managed
+          # subscriptions, the amount to add for each seat. Must sum to total amount.
+          per_group_amounts: nil,
           # RFC 3339 timestamp indicating when the manual adjustment takes place. If not
           # provided, it will default to the start of the segment.
           timestamp: nil,
@@ -91,6 +103,7 @@ module MetronomeSDK
               reason: String,
               segment_id: String,
               contract_id: String,
+              per_group_amounts: T::Hash[Symbol, Float],
               timestamp: Time,
               request_options: MetronomeSDK::RequestOptions
             }

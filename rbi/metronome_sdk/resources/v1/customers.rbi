@@ -69,6 +69,10 @@ module MetronomeSDK
               T::Array[
                 MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::OrHash
               ],
+            customer_revenue_system_configurations:
+              T::Array[
+                MetronomeSDK::V1::CustomerCreateParams::CustomerRevenueSystemConfiguration::OrHash
+              ],
             external_id: String,
             ingest_aliases: T::Array[String],
             request_options: MetronomeSDK::RequestOptions::OrHash
@@ -81,6 +85,7 @@ module MetronomeSDK
           # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           custom_fields: nil,
           customer_billing_provider_configurations: nil,
+          customer_revenue_system_configurations: nil,
           # (deprecated, use ingest_aliases instead) an alias that can be used to refer to
           # this customer in usage events
           external_id: nil,
@@ -335,7 +340,9 @@ module MetronomeSDK
                 MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::OrHash
               ],
             request_options: MetronomeSDK::RequestOptions::OrHash
-          ).void
+          ).returns(
+            MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsResponse
+          )
         end
         def set_billing_configurations(data:, request_options: {})
         end

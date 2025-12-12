@@ -18,6 +18,7 @@ module MetronomeSDK
             avalara_password: String,
             avalara_username: String,
             delivery_method_ids: T::Array[String],
+            commit_transactions: T::Boolean,
             request_options: MetronomeSDK::RequestOptions::OrHash
           ).returns(
             MetronomeSDK::Models::V1::SettingUpsertAvalaraCredentialsResponse
@@ -33,6 +34,9 @@ module MetronomeSDK
           # The delivery method IDs of the billing provider configurations to update, can be
           # found in the response of the `/listConfiguredBillingProviders` endpoint.
           delivery_method_ids:,
+          # Commit transactions if you want Metronome tax calculations used for reporting
+          # and tax filings.
+          commit_transactions: nil,
           request_options: {}
         )
         end

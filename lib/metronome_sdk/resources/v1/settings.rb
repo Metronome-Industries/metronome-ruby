@@ -16,7 +16,7 @@ module MetronomeSDK
         # Avalara credentials to the appropriate billing entity. These credentials are
         # only used for PLG Invoicing today.
         #
-        # @overload upsert_avalara_credentials(avalara_environment:, avalara_password:, avalara_username:, delivery_method_ids:, request_options: {})
+        # @overload upsert_avalara_credentials(avalara_environment:, avalara_password:, avalara_username:, delivery_method_ids:, commit_transactions: nil, request_options: {})
         #
         # @param avalara_environment [Symbol, MetronomeSDK::Models::V1::SettingUpsertAvalaraCredentialsParams::AvalaraEnvironment] The Avalara environment to use (SANDBOX or PRODUCTION).
         #
@@ -25,6 +25,8 @@ module MetronomeSDK
         # @param avalara_username [String] The username for the Avalara account.
         #
         # @param delivery_method_ids [Array<String>] The delivery method IDs of the billing provider configurations to update, can be
+        #
+        # @param commit_transactions [Boolean] Commit transactions if you want Metronome tax calculations used for reporting an
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #

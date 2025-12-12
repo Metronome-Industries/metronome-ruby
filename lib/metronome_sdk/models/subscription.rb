@@ -24,8 +24,8 @@ module MetronomeSDK
       #   QUANTITY_ONLY. **QUANTITY_ONLY**: The subscription quantity is specified
       #   directly on the subscription. `initial_quantity` must be provided with this
       #   option. Compatible with recurring commits/credits that use POOLED allocation.
-      #   **SEAT_BASED**: (BETA) Use when you want to pass specific seat identifiers (e.g.
-      #   add user_123) to increment and decrement a subscription quantity, rather than
+      #   **SEAT_BASED**: Use when you want to pass specific seat identifiers (e.g. add
+      #   user_123) to increment and decrement a subscription quantity, rather than
       #   directly providing the quantity. You must use a **SEAT_BASED** subscription to
       #   use a linked recurring credit with an allocation per seat. `seat_config` must be
       #   provided with this option.
@@ -82,7 +82,12 @@ module MetronomeSDK
       #   @return [String, nil]
       optional :name, String
 
-      # @!method initialize(billing_periods:, collection_schedule:, proration:, quantity_management_mode:, quantity_schedule:, starting_at:, subscription_rate:, id: nil, custom_fields: nil, description: nil, ending_before: nil, fiat_credit_type_id: nil, name: nil)
+      # @!attribute seat_config
+      #
+      #   @return [MetronomeSDK::Models::Subscription::SeatConfig, nil]
+      optional :seat_config, -> { MetronomeSDK::Subscription::SeatConfig }
+
+      # @!method initialize(billing_periods:, collection_schedule:, proration:, quantity_management_mode:, quantity_schedule:, starting_at:, subscription_rate:, id: nil, custom_fields: nil, description: nil, ending_before: nil, fiat_credit_type_id: nil, name: nil, seat_config: nil)
       #   Some parameter documentations has been truncated, see
       #   {MetronomeSDK::Models::Subscription} for more details.
       #
@@ -111,6 +116,8 @@ module MetronomeSDK
       #   @param fiat_credit_type_id [String]
       #
       #   @param name [String]
+      #
+      #   @param seat_config [MetronomeSDK::Models::Subscription::SeatConfig]
 
       # @see MetronomeSDK::Models::Subscription#billing_periods
       class BillingPeriods < MetronomeSDK::Internal::Type::BaseModel
@@ -231,8 +238,8 @@ module MetronomeSDK
       # QUANTITY_ONLY. **QUANTITY_ONLY**: The subscription quantity is specified
       # directly on the subscription. `initial_quantity` must be provided with this
       # option. Compatible with recurring commits/credits that use POOLED allocation.
-      # **SEAT_BASED**: (BETA) Use when you want to pass specific seat identifiers (e.g.
-      # add user_123) to increment and decrement a subscription quantity, rather than
+      # **SEAT_BASED**: Use when you want to pass specific seat identifiers (e.g. add
+      # user_123) to increment and decrement a subscription quantity, rather than
       # directly providing the quantity. You must use a **SEAT_BASED** subscription to
       # use a linked recurring credit with an allocation per seat. `seat_config` must be
       # provided with this option.
@@ -315,6 +322,26 @@ module MetronomeSDK
           #   @param id [String]
           #   @param name [String]
         end
+      end
+
+      # @see MetronomeSDK::Models::Subscription#seat_config
+      class SeatConfig < MetronomeSDK::Internal::Type::BaseModel
+        # @!attribute seat_group_key
+        #   The property name, sent on usage events, that identifies the seat ID associated
+        #   with the usage event. For example, the property name might be seat_id or
+        #   user_id. The property must be set as a group key on billable metrics and a
+        #   presentation/pricing group key on contract products. This allows linked
+        #   recurring credits with an allocation per seat to be consumed by only one seat's
+        #   usage.
+        #
+        #   @return [String]
+        required :seat_group_key, String
+
+        # @!method initialize(seat_group_key:)
+        #   Some parameter documentations has been truncated, see
+        #   {MetronomeSDK::Models::Subscription::SeatConfig} for more details.
+        #
+        #   @param seat_group_key [String] The property name, sent on usage events, that identifies the seat ID associated
       end
     end
   end

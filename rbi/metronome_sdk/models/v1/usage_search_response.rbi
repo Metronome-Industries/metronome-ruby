@@ -180,7 +180,8 @@ module MetronomeSDK
           sig { params(aggregation_key: String).void }
           attr_writer :aggregation_key
 
-          # Specifies the type of aggregation performed on matching events.
+          # Specifies the type of aggregation performed on matching events. Includes
+          # "custom_sql" for events search endpoint responses.
           sig do
             returns(
               T.nilable(
@@ -296,7 +297,8 @@ module MetronomeSDK
             # key must be one of the property filter names and is not applicable when the
             # aggregation type is 'count'.
             aggregation_key: nil,
-            # Specifies the type of aggregation performed on matching events.
+            # Specifies the type of aggregation performed on matching events. Includes
+            # "custom_sql" for events search endpoint responses.
             aggregation_type: nil,
             # RFC 3339 timestamp indicating when the billable metric was archived. If not
             # provided, the billable metric is not archived.
@@ -345,7 +347,8 @@ module MetronomeSDK
           def to_hash
           end
 
-          # Specifies the type of aggregation performed on matching events.
+          # Specifies the type of aggregation performed on matching events. Includes
+          # "custom_sql" for events search endpoint responses.
           module AggregationType
             extend MetronomeSDK::Internal::Type::Enum
 
@@ -381,6 +384,11 @@ module MetronomeSDK
             UNIQUE =
               T.let(
                 :UNIQUE,
+                MetronomeSDK::Models::V1::UsageSearchResponseItem::MatchedBillableMetric::AggregationType::TaggedSymbol
+              )
+            CUSTOM_SQL =
+              T.let(
+                :custom_sql,
                 MetronomeSDK::Models::V1::UsageSearchResponseItem::MatchedBillableMetric::AggregationType::TaggedSymbol
               )
 

@@ -730,6 +730,20 @@ module MetronomeSDK
         end
         attr_writer :specifiers
 
+        # Attach a subscription to the recurring commit/credit.
+        sig do
+          returns(T.nilable(MetronomeSDK::RecurringCommitSubscriptionConfig))
+        end
+        attr_reader :subscription_config
+
+        sig do
+          params(
+            subscription_config:
+              MetronomeSDK::RecurringCommitSubscriptionConfig::OrHash
+          ).void
+        end
+        attr_writer :subscription_config
+
         sig do
           params(
             id: String,
@@ -777,7 +791,9 @@ module MetronomeSDK
               MetronomeSDK::ContractV2::Commit::RolledOverFrom::OrHash,
             rollover_fraction: Float,
             salesforce_opportunity_id: String,
-            specifiers: T::Array[MetronomeSDK::CommitSpecifier::OrHash]
+            specifiers: T::Array[MetronomeSDK::CommitSpecifier::OrHash],
+            subscription_config:
+              MetronomeSDK::RecurringCommitSubscriptionConfig::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
@@ -833,7 +849,9 @@ module MetronomeSDK
           # List of filters that determine what kind of customer usage draws down a commit
           # or credit. A customer's usage needs to meet the condition of at least one of the
           # specifiers to contribute to a commit's or credit's drawdown.
-          specifiers: nil
+          specifiers: nil,
+          # Attach a subscription to the recurring commit/credit.
+          subscription_config: nil
         )
         end
 
@@ -869,7 +887,9 @@ module MetronomeSDK
                 MetronomeSDK::ContractV2::Commit::RolledOverFrom,
               rollover_fraction: Float,
               salesforce_opportunity_id: String,
-              specifiers: T::Array[MetronomeSDK::CommitSpecifier]
+              specifiers: T::Array[MetronomeSDK::CommitSpecifier],
+              subscription_config:
+                MetronomeSDK::RecurringCommitSubscriptionConfig
             }
           )
         end
@@ -3202,6 +3222,16 @@ module MetronomeSDK
         end
         attr_writer :contract
 
+        # Timestamp of when the credit was created.
+        #
+        # - Recurring credits: latter of credit service period date and parent credit
+        #   start date
+        sig { returns(T.nilable(Time)) }
+        attr_reader :created_at
+
+        sig { params(created_at: Time).void }
+        attr_writer :created_at
+
         # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         sig { returns(T.nilable(T::Hash[Symbol, String])) }
         attr_reader :custom_fields
@@ -3297,6 +3327,20 @@ module MetronomeSDK
         end
         attr_writer :specifiers
 
+        # Attach a subscription to the recurring commit/credit.
+        sig do
+          returns(T.nilable(MetronomeSDK::RecurringCommitSubscriptionConfig))
+        end
+        attr_reader :subscription_config
+
+        sig do
+          params(
+            subscription_config:
+              MetronomeSDK::RecurringCommitSubscriptionConfig::OrHash
+          ).void
+        end
+        attr_writer :subscription_config
+
         sig do
           params(
             id: String,
@@ -3308,6 +3352,7 @@ module MetronomeSDK
             applicable_product_tags: T::Array[String],
             balance: Float,
             contract: MetronomeSDK::ContractV2::Credit::Contract::OrHash,
+            created_at: Time,
             custom_fields: T::Hash[Symbol, String],
             description: String,
             hierarchy_configuration:
@@ -3328,7 +3373,9 @@ module MetronomeSDK
             netsuite_sales_order_id: String,
             priority: Float,
             salesforce_opportunity_id: String,
-            specifiers: T::Array[MetronomeSDK::CommitSpecifier::OrHash]
+            specifiers: T::Array[MetronomeSDK::CommitSpecifier::OrHash],
+            subscription_config:
+              MetronomeSDK::RecurringCommitSubscriptionConfig::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
@@ -3350,6 +3397,11 @@ module MetronomeSDK
           # included in the balance, including future-dated manual ledger entries.
           balance: nil,
           contract: nil,
+          # Timestamp of when the credit was created.
+          #
+          # - Recurring credits: latter of credit service period date and parent credit
+          #   start date
+          created_at: nil,
           # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           custom_fields: nil,
           description: nil,
@@ -3369,7 +3421,9 @@ module MetronomeSDK
           # List of filters that determine what kind of customer usage draws down a commit
           # or credit. A customer's usage needs to meet the condition of at least one of the
           # specifiers to contribute to a commit's or credit's drawdown.
-          specifiers: nil
+          specifiers: nil,
+          # Attach a subscription to the recurring commit/credit.
+          subscription_config: nil
         )
         end
 
@@ -3385,6 +3439,7 @@ module MetronomeSDK
               applicable_product_tags: T::Array[String],
               balance: Float,
               contract: MetronomeSDK::ContractV2::Credit::Contract,
+              created_at: Time,
               custom_fields: T::Hash[Symbol, String],
               description: String,
               hierarchy_configuration:
@@ -3395,7 +3450,9 @@ module MetronomeSDK
               netsuite_sales_order_id: String,
               priority: Float,
               salesforce_opportunity_id: String,
-              specifiers: T::Array[MetronomeSDK::CommitSpecifier]
+              specifiers: T::Array[MetronomeSDK::CommitSpecifier],
+              subscription_config:
+                MetronomeSDK::RecurringCommitSubscriptionConfig
             }
           )
         end

@@ -1,0 +1,119 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type customer_set_billing_configurations_response =
+        {
+          data: ::Array[MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsResponse::Data]
+        }
+
+      class CustomerSetBillingConfigurationsResponse < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor data: ::Array[MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsResponse::Data]
+
+        def initialize: (
+          data: ::Array[MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsResponse::Data]
+        ) -> void
+
+        def to_hash: -> {
+          data: ::Array[MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsResponse::Data]
+        }
+
+        type data =
+          {
+            id: String,
+            billing_provider: MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsResponse::Data::billing_provider,
+            configuration: ::Hash[Symbol, top],
+            customer_id: String,
+            delivery_method_id: String,
+            tax_provider: MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsResponse::Data::tax_provider
+          }
+
+        class Data < MetronomeSDK::Internal::Type::BaseModel
+          attr_reader id: String?
+
+          def id=: (String) -> String
+
+          attr_reader billing_provider: MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsResponse::Data::billing_provider?
+
+          def billing_provider=: (
+            MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsResponse::Data::billing_provider
+          ) -> MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsResponse::Data::billing_provider
+
+          attr_reader configuration: ::Hash[Symbol, top]?
+
+          def configuration=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+
+          attr_reader customer_id: String?
+
+          def customer_id=: (String) -> String
+
+          attr_reader delivery_method_id: String?
+
+          def delivery_method_id=: (String) -> String
+
+          attr_reader tax_provider: MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsResponse::Data::tax_provider?
+
+          def tax_provider=: (
+            MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsResponse::Data::tax_provider
+          ) -> MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsResponse::Data::tax_provider
+
+          def initialize: (
+            ?id: String,
+            ?billing_provider: MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsResponse::Data::billing_provider,
+            ?configuration: ::Hash[Symbol, top],
+            ?customer_id: String,
+            ?delivery_method_id: String,
+            ?tax_provider: MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsResponse::Data::tax_provider
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            billing_provider: MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsResponse::Data::billing_provider,
+            configuration: ::Hash[Symbol, top],
+            customer_id: String,
+            delivery_method_id: String,
+            tax_provider: MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsResponse::Data::tax_provider
+          }
+
+          type billing_provider =
+            :aws_marketplace
+            | :stripe
+            | :netsuite
+            | :custom
+            | :azure_marketplace
+            | :quickbooks_online
+            | :workday
+            | :gcp_marketplace
+            | :metronome
+
+          module BillingProvider
+            extend MetronomeSDK::Internal::Type::Enum
+
+            AWS_MARKETPLACE: :aws_marketplace
+            STRIPE: :stripe
+            NETSUITE: :netsuite
+            CUSTOM: :custom
+            AZURE_MARKETPLACE: :azure_marketplace
+            QUICKBOOKS_ONLINE: :quickbooks_online
+            WORKDAY: :workday
+            GCP_MARKETPLACE: :gcp_marketplace
+            METRONOME: :metronome
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsResponse::Data::billing_provider]
+          end
+
+          type tax_provider = :anrok | :avalara | :stripe
+
+          module TaxProvider
+            extend MetronomeSDK::Internal::Type::Enum
+
+            ANROK: :anrok
+            AVALARA: :avalara
+            STRIPE: :stripe
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsResponse::Data::tax_provider]
+          end
+        end
+      end
+    end
+  end
+end

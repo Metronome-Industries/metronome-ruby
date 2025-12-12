@@ -2624,6 +2624,7 @@ module MetronomeSDK
             initial_quantity: Float,
             name: String,
             quantity_management_mode: MetronomeSDK::Models::V2::ContractEditParams::AddSubscription::quantity_management_mode,
+            seat_config: MetronomeSDK::V2::ContractEditParams::AddSubscription::SeatConfig,
             starting_at: Time,
             temporary_id: String
           }
@@ -2661,6 +2662,12 @@ module MetronomeSDK
             MetronomeSDK::Models::V2::ContractEditParams::AddSubscription::quantity_management_mode
           ) -> MetronomeSDK::Models::V2::ContractEditParams::AddSubscription::quantity_management_mode
 
+          attr_reader seat_config: MetronomeSDK::V2::ContractEditParams::AddSubscription::SeatConfig?
+
+          def seat_config=: (
+            MetronomeSDK::V2::ContractEditParams::AddSubscription::SeatConfig
+          ) -> MetronomeSDK::V2::ContractEditParams::AddSubscription::SeatConfig
+
           attr_reader starting_at: Time?
 
           def starting_at=: (Time) -> Time
@@ -2679,6 +2686,7 @@ module MetronomeSDK
             ?initial_quantity: Float,
             ?name: String,
             ?quantity_management_mode: MetronomeSDK::Models::V2::ContractEditParams::AddSubscription::quantity_management_mode,
+            ?seat_config: MetronomeSDK::V2::ContractEditParams::AddSubscription::SeatConfig,
             ?starting_at: Time,
             ?temporary_id: String
           ) -> void
@@ -2693,6 +2701,7 @@ module MetronomeSDK
             initial_quantity: Float,
             name: String,
             quantity_management_mode: MetronomeSDK::Models::V2::ContractEditParams::AddSubscription::quantity_management_mode,
+            seat_config: MetronomeSDK::V2::ContractEditParams::AddSubscription::SeatConfig,
             starting_at: Time,
             temporary_id: String
           }
@@ -2793,6 +2802,35 @@ module MetronomeSDK
 
             def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractEditParams::AddSubscription::quantity_management_mode]
           end
+
+          type seat_config =
+            {
+              initial_seat_ids: ::Array[String],
+              seat_group_key: String,
+              initial_unassigned_seats: Float
+            }
+
+          class SeatConfig < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor initial_seat_ids: ::Array[String]
+
+            attr_accessor seat_group_key: String
+
+            attr_reader initial_unassigned_seats: Float?
+
+            def initial_unassigned_seats=: (Float) -> Float
+
+            def initialize: (
+              initial_seat_ids: ::Array[String],
+              seat_group_key: String,
+              ?initial_unassigned_seats: Float
+            ) -> void
+
+            def to_hash: -> {
+              initial_seat_ids: ::Array[String],
+              seat_group_key: String,
+              initial_unassigned_seats: Float
+            }
+          end
         end
 
         type archive_commit = { id: String }
@@ -2841,8 +2879,10 @@ module MetronomeSDK
             access_schedule: MetronomeSDK::V2::ContractEditParams::UpdateCommit::AccessSchedule,
             applicable_product_ids: ::Array[String]?,
             applicable_product_tags: ::Array[String]?,
+            description: String,
             hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,
             invoice_schedule: MetronomeSDK::V2::ContractEditParams::UpdateCommit::InvoiceSchedule,
+            name: String,
             netsuite_sales_order_id: String?,
             priority: Float?,
             product_id: String,
@@ -2863,6 +2903,10 @@ module MetronomeSDK
 
           attr_accessor applicable_product_tags: ::Array[String]?
 
+          attr_reader description: String?
+
+          def description=: (String) -> String
+
           attr_reader hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration?
 
           def hierarchy_configuration=: (
@@ -2874,6 +2918,10 @@ module MetronomeSDK
           def invoice_schedule=: (
             MetronomeSDK::V2::ContractEditParams::UpdateCommit::InvoiceSchedule
           ) -> MetronomeSDK::V2::ContractEditParams::UpdateCommit::InvoiceSchedule
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
 
           attr_accessor netsuite_sales_order_id: String?
 
@@ -2896,8 +2944,10 @@ module MetronomeSDK
             ?access_schedule: MetronomeSDK::V2::ContractEditParams::UpdateCommit::AccessSchedule,
             ?applicable_product_ids: ::Array[String]?,
             ?applicable_product_tags: ::Array[String]?,
+            ?description: String,
             ?hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,
             ?invoice_schedule: MetronomeSDK::V2::ContractEditParams::UpdateCommit::InvoiceSchedule,
+            ?name: String,
             ?netsuite_sales_order_id: String?,
             ?priority: Float?,
             ?product_id: String,
@@ -2910,8 +2960,10 @@ module MetronomeSDK
             access_schedule: MetronomeSDK::V2::ContractEditParams::UpdateCommit::AccessSchedule,
             applicable_product_ids: ::Array[String]?,
             applicable_product_tags: ::Array[String]?,
+            description: String,
             hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,
             invoice_schedule: MetronomeSDK::V2::ContractEditParams::UpdateCommit::InvoiceSchedule,
+            name: String,
             netsuite_sales_order_id: String?,
             priority: Float?,
             product_id: String,
@@ -3179,7 +3231,9 @@ module MetronomeSDK
             access_schedule: MetronomeSDK::V2::ContractEditParams::UpdateCredit::AccessSchedule,
             applicable_product_ids: ::Array[String]?,
             applicable_product_tags: ::Array[String]?,
+            description: String,
             hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,
+            name: String,
             netsuite_sales_order_id: String?,
             priority: Float?,
             product_id: String,
@@ -3199,11 +3253,19 @@ module MetronomeSDK
 
           attr_accessor applicable_product_tags: ::Array[String]?
 
+          attr_reader description: String?
+
+          def description=: (String) -> String
+
           attr_reader hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration?
 
           def hierarchy_configuration=: (
             MetronomeSDK::CommitHierarchyConfiguration
           ) -> MetronomeSDK::CommitHierarchyConfiguration
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
 
           attr_accessor netsuite_sales_order_id: String?
 
@@ -3224,7 +3286,9 @@ module MetronomeSDK
             ?access_schedule: MetronomeSDK::V2::ContractEditParams::UpdateCredit::AccessSchedule,
             ?applicable_product_ids: ::Array[String]?,
             ?applicable_product_tags: ::Array[String]?,
+            ?description: String,
             ?hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,
+            ?name: String,
             ?netsuite_sales_order_id: String?,
             ?priority: Float?,
             ?product_id: String,
@@ -3236,7 +3300,9 @@ module MetronomeSDK
             access_schedule: MetronomeSDK::V2::ContractEditParams::UpdateCredit::AccessSchedule,
             applicable_product_ids: ::Array[String]?,
             applicable_product_tags: ::Array[String]?,
+            description: String,
             hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,
+            name: String,
             netsuite_sales_order_id: String?,
             priority: Float?,
             product_id: String,
@@ -3830,7 +3896,9 @@ module MetronomeSDK
           {
             subscription_id: String,
             ending_before: Time?,
-            quantity_updates: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityUpdate]
+            quantity_management_mode_update: MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate,
+            quantity_updates: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityUpdate],
+            seat_updates: MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates
           }
 
         class UpdateSubscription < MetronomeSDK::Internal::Type::BaseModel
@@ -3838,23 +3906,81 @@ module MetronomeSDK
 
           attr_accessor ending_before: Time?
 
+          attr_reader quantity_management_mode_update: MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate?
+
+          def quantity_management_mode_update=: (
+            MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate
+          ) -> MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate
+
           attr_reader quantity_updates: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityUpdate]?
 
           def quantity_updates=: (
             ::Array[MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityUpdate]
           ) -> ::Array[MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityUpdate]
 
+          attr_reader seat_updates: MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates?
+
+          def seat_updates=: (
+            MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates
+          ) -> MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates
+
           def initialize: (
             subscription_id: String,
             ?ending_before: Time?,
-            ?quantity_updates: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityUpdate]
+            ?quantity_management_mode_update: MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate,
+            ?quantity_updates: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityUpdate],
+            ?seat_updates: MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates
           ) -> void
 
           def to_hash: -> {
             subscription_id: String,
             ending_before: Time?,
-            quantity_updates: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityUpdate]
+            quantity_management_mode_update: MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate,
+            quantity_updates: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityUpdate],
+            seat_updates: MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates
           }
+
+          type quantity_management_mode_update =
+            {
+              quantity_management_mode: MetronomeSDK::Models::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate::quantity_management_mode,
+              seat_config: MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate::SeatConfig
+            }
+
+          class QuantityManagementModeUpdate < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor quantity_management_mode: MetronomeSDK::Models::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate::quantity_management_mode
+
+            attr_accessor seat_config: MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate::SeatConfig
+
+            def initialize: (
+              quantity_management_mode: MetronomeSDK::Models::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate::quantity_management_mode,
+              seat_config: MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate::SeatConfig
+            ) -> void
+
+            def to_hash: -> {
+              quantity_management_mode: MetronomeSDK::Models::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate::quantity_management_mode,
+              seat_config: MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate::SeatConfig
+            }
+
+            type quantity_management_mode = :SEAT_BASED
+
+            module QuantityManagementMode
+              extend MetronomeSDK::Internal::Type::Enum
+
+              SEAT_BASED: :SEAT_BASED
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate::quantity_management_mode]
+            end
+
+            type seat_config = { seat_group_key: String }
+
+            class SeatConfig < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor seat_group_key: String
+
+              def initialize: (seat_group_key: String) -> void
+
+              def to_hash: -> { seat_group_key: String }
+            end
+          end
 
           type quantity_update =
             { starting_at: Time, quantity: Float, quantity_delta: Float }
@@ -3881,6 +4007,109 @@ module MetronomeSDK
               quantity: Float,
               quantity_delta: Float
             }
+          end
+
+          type seat_updates =
+            {
+              add_seat_ids: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates::AddSeatID],
+              add_unassigned_seats: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates::AddUnassignedSeat],
+              remove_seat_ids: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates::RemoveSeatID],
+              remove_unassigned_seats: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates::RemoveUnassignedSeat]
+            }
+
+          class SeatUpdates < MetronomeSDK::Internal::Type::BaseModel
+            attr_reader add_seat_ids: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates::AddSeatID]?
+
+            def add_seat_ids=: (
+              ::Array[MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates::AddSeatID]
+            ) -> ::Array[MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates::AddSeatID]
+
+            attr_reader add_unassigned_seats: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates::AddUnassignedSeat]?
+
+            def add_unassigned_seats=: (
+              ::Array[MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates::AddUnassignedSeat]
+            ) -> ::Array[MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates::AddUnassignedSeat]
+
+            attr_reader remove_seat_ids: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates::RemoveSeatID]?
+
+            def remove_seat_ids=: (
+              ::Array[MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates::RemoveSeatID]
+            ) -> ::Array[MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates::RemoveSeatID]
+
+            attr_reader remove_unassigned_seats: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates::RemoveUnassignedSeat]?
+
+            def remove_unassigned_seats=: (
+              ::Array[MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates::RemoveUnassignedSeat]
+            ) -> ::Array[MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates::RemoveUnassignedSeat]
+
+            def initialize: (
+              ?add_seat_ids: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates::AddSeatID],
+              ?add_unassigned_seats: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates::AddUnassignedSeat],
+              ?remove_seat_ids: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates::RemoveSeatID],
+              ?remove_unassigned_seats: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates::RemoveUnassignedSeat]
+            ) -> void
+
+            def to_hash: -> {
+              add_seat_ids: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates::AddSeatID],
+              add_unassigned_seats: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates::AddUnassignedSeat],
+              remove_seat_ids: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates::RemoveSeatID],
+              remove_unassigned_seats: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates::RemoveUnassignedSeat]
+            }
+
+            type add_seat_id = { seat_ids: ::Array[String], starting_at: Time }
+
+            class AddSeatID < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor seat_ids: ::Array[String]
+
+              attr_accessor starting_at: Time
+
+              def initialize: (
+                seat_ids: ::Array[String],
+                starting_at: Time
+              ) -> void
+
+              def to_hash: -> { seat_ids: ::Array[String], starting_at: Time }
+            end
+
+            type add_unassigned_seat = { quantity: Float, starting_at: Time }
+
+            class AddUnassignedSeat < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor quantity: Float
+
+              attr_accessor starting_at: Time
+
+              def initialize: (quantity: Float, starting_at: Time) -> void
+
+              def to_hash: -> { quantity: Float, starting_at: Time }
+            end
+
+            type remove_seat_id =
+              { seat_ids: ::Array[String], starting_at: Time }
+
+            class RemoveSeatID < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor seat_ids: ::Array[String]
+
+              attr_accessor starting_at: Time
+
+              def initialize: (
+                seat_ids: ::Array[String],
+                starting_at: Time
+              ) -> void
+
+              def to_hash: -> { seat_ids: ::Array[String], starting_at: Time }
+            end
+
+            type remove_unassigned_seat = { quantity: Float, starting_at: Time }
+
+            class RemoveUnassignedSeat < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor quantity: Float
+
+              attr_accessor starting_at: Time
+
+              def initialize: (quantity: Float, starting_at: Time) -> void
+
+              def to_hash: -> { quantity: Float, starting_at: Time }
+            end
           end
         end
       end

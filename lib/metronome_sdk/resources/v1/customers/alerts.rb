@@ -64,7 +64,7 @@ module MetronomeSDK
           # - Error handling: Returns 404 if either the customer or alert_id doesn't exist
           #   or isn't accessible to your organization
           #
-          # @overload retrieve(alert_id:, customer_id:, group_values: nil, plans_or_contracts: nil, request_options: {})
+          # @overload retrieve(alert_id:, customer_id:, group_values: nil, plans_or_contracts: nil, seat_filter: nil, request_options: {})
           #
           # @param alert_id [String] The Metronome ID of the threshold notification
           #
@@ -73,6 +73,8 @@ module MetronomeSDK
           # @param group_values [Array<MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::GroupValue>] Only present for `spend_threshold_reached` notifications. Retrieve the notificat
           #
           # @param plans_or_contracts [Symbol, MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::PlansOrContracts] When parallel threshold notifications are enabled during migration, this flag de
+          #
+          # @param seat_filter [MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::SeatFilter] Only allowed for `low_remaining_seat_balance_reached` notifications. This filter
           #
           # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
           #

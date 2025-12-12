@@ -34,7 +34,14 @@ module MetronomeSDK
         #   @return [Array<String>]
         required :delivery_method_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
 
-        # @!method initialize(avalara_environment:, avalara_password:, avalara_username:, delivery_method_ids:, request_options: {})
+        # @!attribute commit_transactions
+        #   Commit transactions if you want Metronome tax calculations used for reporting
+        #   and tax filings.
+        #
+        #   @return [Boolean, nil]
+        optional :commit_transactions, MetronomeSDK::Internal::Type::Boolean
+
+        # @!method initialize(avalara_environment:, avalara_password:, avalara_username:, delivery_method_ids:, commit_transactions: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::V1::SettingUpsertAvalaraCredentialsParams} for more
         #   details.
@@ -46,6 +53,8 @@ module MetronomeSDK
         #   @param avalara_username [String] The username for the Avalara account.
         #
         #   @param delivery_method_ids [Array<String>] The delivery method IDs of the billing provider configurations to update, can be
+        #
+        #   @param commit_transactions [Boolean] Commit transactions if you want Metronome tax calculations used for reporting an
         #
         #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
 

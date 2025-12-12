@@ -27,6 +27,16 @@ module MetronomeSDK
           #   @return [String]
           required :billing_provider_customer_id, String
 
+          # @!attribute aws_customer_account_id
+          #
+          #   @return [String, nil]
+          optional :aws_customer_account_id, String
+
+          # @!attribute aws_customer_id
+          #
+          #   @return [String, nil]
+          optional :aws_customer_id, String
+
           # @!attribute aws_product_code
           #
           #   @return [String, nil]
@@ -45,7 +55,7 @@ module MetronomeSDK
           optional :stripe_collection_method,
                    enum: -> { MetronomeSDK::V1::Customers::BillingConfigCreateParams::StripeCollectionMethod }
 
-          # @!method initialize(customer_id:, billing_provider_type:, billing_provider_customer_id:, aws_product_code: nil, aws_region: nil, stripe_collection_method: nil, request_options: {})
+          # @!method initialize(customer_id:, billing_provider_type:, billing_provider_customer_id:, aws_customer_account_id: nil, aws_customer_id: nil, aws_product_code: nil, aws_region: nil, stripe_collection_method: nil, request_options: {})
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V1::Customers::BillingConfigCreateParams} for more
           #   details.
@@ -55,6 +65,10 @@ module MetronomeSDK
           #   @param billing_provider_type [Symbol, MetronomeSDK::Models::V1::Customers::BillingConfigCreateParams::BillingProviderType]
           #
           #   @param billing_provider_customer_id [String] The customer ID in the billing provider's system. For Azure, this is the subscri
+          #
+          #   @param aws_customer_account_id [String]
+          #
+          #   @param aws_customer_id [String]
           #
           #   @param aws_product_code [String]
           #

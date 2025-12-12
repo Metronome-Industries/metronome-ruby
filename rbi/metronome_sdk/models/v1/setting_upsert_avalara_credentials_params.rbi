@@ -36,6 +36,14 @@ module MetronomeSDK
         sig { returns(T::Array[String]) }
         attr_accessor :delivery_method_ids
 
+        # Commit transactions if you want Metronome tax calculations used for reporting
+        # and tax filings.
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :commit_transactions
+
+        sig { params(commit_transactions: T::Boolean).void }
+        attr_writer :commit_transactions
+
         sig do
           params(
             avalara_environment:
@@ -43,6 +51,7 @@ module MetronomeSDK
             avalara_password: String,
             avalara_username: String,
             delivery_method_ids: T::Array[String],
+            commit_transactions: T::Boolean,
             request_options: MetronomeSDK::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
@@ -56,6 +65,9 @@ module MetronomeSDK
           # The delivery method IDs of the billing provider configurations to update, can be
           # found in the response of the `/listConfiguredBillingProviders` endpoint.
           delivery_method_ids:,
+          # Commit transactions if you want Metronome tax calculations used for reporting
+          # and tax filings.
+          commit_transactions: nil,
           request_options: {}
         )
         end
@@ -68,6 +80,7 @@ module MetronomeSDK
               avalara_password: String,
               avalara_username: String,
               delivery_method_ids: T::Array[String],
+              commit_transactions: T::Boolean,
               request_options: MetronomeSDK::RequestOptions
             }
           )

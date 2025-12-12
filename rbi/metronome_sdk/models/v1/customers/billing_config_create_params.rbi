@@ -32,6 +32,18 @@ module MetronomeSDK
           attr_accessor :billing_provider_customer_id
 
           sig { returns(T.nilable(String)) }
+          attr_reader :aws_customer_account_id
+
+          sig { params(aws_customer_account_id: String).void }
+          attr_writer :aws_customer_account_id
+
+          sig { returns(T.nilable(String)) }
+          attr_reader :aws_customer_id
+
+          sig { params(aws_customer_id: String).void }
+          attr_writer :aws_customer_id
+
+          sig { returns(T.nilable(String)) }
           attr_reader :aws_product_code
 
           sig { params(aws_product_code: String).void }
@@ -79,6 +91,8 @@ module MetronomeSDK
               billing_provider_type:
                 MetronomeSDK::V1::Customers::BillingConfigCreateParams::BillingProviderType::OrSymbol,
               billing_provider_customer_id: String,
+              aws_customer_account_id: String,
+              aws_customer_id: String,
               aws_product_code: String,
               aws_region:
                 MetronomeSDK::V1::Customers::BillingConfigCreateParams::AwsRegion::OrSymbol,
@@ -93,6 +107,8 @@ module MetronomeSDK
             # The customer ID in the billing provider's system. For Azure, this is the
             # subscription ID.
             billing_provider_customer_id:,
+            aws_customer_account_id: nil,
+            aws_customer_id: nil,
             aws_product_code: nil,
             aws_region: nil,
             # The collection method for the customer's invoices. NOTE:
@@ -109,6 +125,8 @@ module MetronomeSDK
                 billing_provider_type:
                   MetronomeSDK::V1::Customers::BillingConfigCreateParams::BillingProviderType::OrSymbol,
                 billing_provider_customer_id: String,
+                aws_customer_account_id: String,
+                aws_customer_id: String,
                 aws_product_code: String,
                 aws_region:
                   MetronomeSDK::V1::Customers::BillingConfigCreateParams::AwsRegion::OrSymbol,

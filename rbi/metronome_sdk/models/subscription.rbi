@@ -36,8 +36,8 @@ module MetronomeSDK
       # QUANTITY_ONLY. **QUANTITY_ONLY**: The subscription quantity is specified
       # directly on the subscription. `initial_quantity` must be provided with this
       # option. Compatible with recurring commits/credits that use POOLED allocation.
-      # **SEAT_BASED**: (BETA) Use when you want to pass specific seat identifiers (e.g.
-      # add user_123) to increment and decrement a subscription quantity, rather than
+      # **SEAT_BASED**: Use when you want to pass specific seat identifiers (e.g. add
+      # user_123) to increment and decrement a subscription quantity, rather than
       # directly providing the quantity. You must use a **SEAT_BASED** subscription to
       # use a linked recurring credit with an allocation per seat. `seat_config` must be
       # provided with this option.
@@ -104,6 +104,14 @@ module MetronomeSDK
       sig { params(name: String).void }
       attr_writer :name
 
+      sig { returns(T.nilable(MetronomeSDK::Subscription::SeatConfig)) }
+      attr_reader :seat_config
+
+      sig do
+        params(seat_config: MetronomeSDK::Subscription::SeatConfig::OrHash).void
+      end
+      attr_writer :seat_config
+
       sig do
         params(
           billing_periods: MetronomeSDK::Subscription::BillingPeriods::OrHash,
@@ -122,7 +130,8 @@ module MetronomeSDK
           description: String,
           ending_before: Time,
           fiat_credit_type_id: String,
-          name: String
+          name: String,
+          seat_config: MetronomeSDK::Subscription::SeatConfig::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
@@ -134,8 +143,8 @@ module MetronomeSDK
         # QUANTITY_ONLY. **QUANTITY_ONLY**: The subscription quantity is specified
         # directly on the subscription. `initial_quantity` must be provided with this
         # option. Compatible with recurring commits/credits that use POOLED allocation.
-        # **SEAT_BASED**: (BETA) Use when you want to pass specific seat identifiers (e.g.
-        # add user_123) to increment and decrement a subscription quantity, rather than
+        # **SEAT_BASED**: Use when you want to pass specific seat identifiers (e.g. add
+        # user_123) to increment and decrement a subscription quantity, rather than
         # directly providing the quantity. You must use a **SEAT_BASED** subscription to
         # use a linked recurring credit with an allocation per seat. `seat_config` must be
         # provided with this option.
@@ -151,7 +160,8 @@ module MetronomeSDK
         description: nil,
         ending_before: nil,
         fiat_credit_type_id: nil,
-        name: nil
+        name: nil,
+        seat_config: nil
       )
       end
 
@@ -173,7 +183,8 @@ module MetronomeSDK
             description: String,
             ending_before: Time,
             fiat_credit_type_id: String,
-            name: String
+            name: String,
+            seat_config: MetronomeSDK::Subscription::SeatConfig
           }
         )
       end
@@ -451,8 +462,8 @@ module MetronomeSDK
       # QUANTITY_ONLY. **QUANTITY_ONLY**: The subscription quantity is specified
       # directly on the subscription. `initial_quantity` must be provided with this
       # option. Compatible with recurring commits/credits that use POOLED allocation.
-      # **SEAT_BASED**: (BETA) Use when you want to pass specific seat identifiers (e.g.
-      # add user_123) to increment and decrement a subscription quantity, rather than
+      # **SEAT_BASED**: Use when you want to pass specific seat identifiers (e.g. add
+      # user_123) to increment and decrement a subscription quantity, rather than
       # directly providing the quantity. You must use a **SEAT_BASED** subscription to
       # use a linked recurring credit with an allocation per seat. `seat_config` must be
       # provided with this option.
@@ -643,6 +654,41 @@ module MetronomeSDK
           sig { override.returns({ id: String, name: String }) }
           def to_hash
           end
+        end
+      end
+
+      class SeatConfig < MetronomeSDK::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              MetronomeSDK::Subscription::SeatConfig,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
+
+        # The property name, sent on usage events, that identifies the seat ID associated
+        # with the usage event. For example, the property name might be seat_id or
+        # user_id. The property must be set as a group key on billable metrics and a
+        # presentation/pricing group key on contract products. This allows linked
+        # recurring credits with an allocation per seat to be consumed by only one seat's
+        # usage.
+        sig { returns(String) }
+        attr_accessor :seat_group_key
+
+        sig { params(seat_group_key: String).returns(T.attached_class) }
+        def self.new(
+          # The property name, sent on usage events, that identifies the seat ID associated
+          # with the usage event. For example, the property name might be seat_id or
+          # user_id. The property must be set as a group key on billable metrics and a
+          # presentation/pricing group key on contract products. This allows linked
+          # recurring credits with an allocation per seat to be consumed by only one seat's
+          # usage.
+          seat_group_key:
+        )
+        end
+
+        sig { override.returns({ seat_group_key: String }) }
+        def to_hash
         end
       end
     end

@@ -13,6 +13,8 @@ module MetronomeSDK
               billing_provider_type:
                 MetronomeSDK::V1::Customers::BillingConfigCreateParams::BillingProviderType::OrSymbol,
               billing_provider_customer_id: String,
+              aws_customer_account_id: String,
+              aws_customer_id: String,
               aws_product_code: String,
               aws_region:
                 MetronomeSDK::V1::Customers::BillingConfigCreateParams::AwsRegion::OrSymbol,
@@ -29,6 +31,10 @@ module MetronomeSDK
             # Body param: The customer ID in the billing provider's system. For Azure, this is
             # the subscription ID.
             billing_provider_customer_id:,
+            # Body param:
+            aws_customer_account_id: nil,
+            # Body param:
+            aws_customer_id: nil,
             # Body param:
             aws_product_code: nil,
             # Body param:
