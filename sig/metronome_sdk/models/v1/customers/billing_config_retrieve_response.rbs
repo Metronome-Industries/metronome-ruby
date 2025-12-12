@@ -20,6 +20,8 @@ module MetronomeSDK
 
           type data =
             {
+              aws_customer_account_id: String,
+              aws_customer_id: String,
               aws_expiration_date: Time,
               aws_is_subscription_product: bool,
               aws_product_code: String,
@@ -33,6 +35,14 @@ module MetronomeSDK
             }
 
           class Data < MetronomeSDK::Internal::Type::BaseModel
+            attr_reader aws_customer_account_id: String?
+
+            def aws_customer_account_id=: (String) -> String
+
+            attr_reader aws_customer_id: String?
+
+            def aws_customer_id=: (String) -> String
+
             attr_reader aws_expiration_date: Time?
 
             def aws_expiration_date=: (Time) -> Time
@@ -80,6 +90,8 @@ module MetronomeSDK
             ) -> MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::stripe_collection_method
 
             def initialize: (
+              ?aws_customer_account_id: String,
+              ?aws_customer_id: String,
               ?aws_expiration_date: Time,
               ?aws_is_subscription_product: bool,
               ?aws_product_code: String,
@@ -93,6 +105,8 @@ module MetronomeSDK
             ) -> void
 
             def to_hash: -> {
+              aws_customer_account_id: String,
+              aws_customer_id: String,
               aws_expiration_date: Time,
               aws_is_subscription_product: bool,
               aws_product_code: String,

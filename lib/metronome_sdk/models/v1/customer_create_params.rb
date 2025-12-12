@@ -82,6 +82,16 @@ module MetronomeSDK
           required :billing_provider_type,
                    enum: -> { MetronomeSDK::V1::CustomerCreateParams::BillingConfig::BillingProviderType }
 
+          # @!attribute aws_customer_account_id
+          #
+          #   @return [String, nil]
+          optional :aws_customer_account_id, String
+
+          # @!attribute aws_customer_id
+          #
+          #   @return [String, nil]
+          optional :aws_customer_id, String
+
           # @!attribute aws_is_subscription_product
           #   True if the aws_product_code is a SAAS subscription product, false otherwise.
           #
@@ -106,7 +116,7 @@ module MetronomeSDK
           optional :stripe_collection_method,
                    enum: -> { MetronomeSDK::V1::CustomerCreateParams::BillingConfig::StripeCollectionMethod }
 
-          # @!method initialize(billing_provider_customer_id:, billing_provider_type:, aws_is_subscription_product: nil, aws_product_code: nil, aws_region: nil, stripe_collection_method: nil)
+          # @!method initialize(billing_provider_customer_id:, billing_provider_type:, aws_customer_account_id: nil, aws_customer_id: nil, aws_is_subscription_product: nil, aws_product_code: nil, aws_region: nil, stripe_collection_method: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig} for more
           #   details.
@@ -114,6 +124,10 @@ module MetronomeSDK
           #   @param billing_provider_customer_id [String]
           #
           #   @param billing_provider_type [Symbol, MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig::BillingProviderType]
+          #
+          #   @param aws_customer_account_id [String]
+          #
+          #   @param aws_customer_id [String]
           #
           #   @param aws_is_subscription_product [Boolean] True if the aws_product_code is a SAAS subscription product, false otherwise.
           #

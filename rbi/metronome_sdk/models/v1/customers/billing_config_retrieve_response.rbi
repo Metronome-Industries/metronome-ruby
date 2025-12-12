@@ -57,6 +57,18 @@ module MetronomeSDK
                 )
               end
 
+            sig { returns(T.nilable(String)) }
+            attr_reader :aws_customer_account_id
+
+            sig { params(aws_customer_account_id: String).void }
+            attr_writer :aws_customer_account_id
+
+            sig { returns(T.nilable(String)) }
+            attr_reader :aws_customer_id
+
+            sig { params(aws_customer_id: String).void }
+            attr_writer :aws_customer_id
+
             # Contract expiration date for the customer. The expected format is RFC 3339 and
             # can be retrieved from
             # [AWS's GetEntitlements API](https://docs.aws.amazon.com/marketplaceentitlement/latest/APIReference/API_GetEntitlements.html).
@@ -164,6 +176,8 @@ module MetronomeSDK
 
             sig do
               params(
+                aws_customer_account_id: String,
+                aws_customer_id: String,
                 aws_expiration_date: Time,
                 aws_is_subscription_product: T::Boolean,
                 aws_product_code: String,
@@ -180,6 +194,8 @@ module MetronomeSDK
               ).returns(T.attached_class)
             end
             def self.new(
+              aws_customer_account_id: nil,
+              aws_customer_id: nil,
               # Contract expiration date for the customer. The expected format is RFC 3339 and
               # can be retrieved from
               # [AWS's GetEntitlements API](https://docs.aws.amazon.com/marketplaceentitlement/latest/APIReference/API_GetEntitlements.html).
@@ -208,6 +224,8 @@ module MetronomeSDK
             sig do
               override.returns(
                 {
+                  aws_customer_account_id: String,
+                  aws_customer_id: String,
                   aws_expiration_date: Time,
                   aws_is_subscription_product: T::Boolean,
                   aws_product_code: String,

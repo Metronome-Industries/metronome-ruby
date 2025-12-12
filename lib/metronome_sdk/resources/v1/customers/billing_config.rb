@@ -12,13 +12,17 @@ module MetronomeSDK
           # Set the billing configuration for a given customer. This is a Plans (deprecated)
           # endpoint. New clients should implement using Contracts.
           #
-          # @overload create(customer_id:, billing_provider_type:, billing_provider_customer_id:, aws_product_code: nil, aws_region: nil, stripe_collection_method: nil, request_options: {})
+          # @overload create(customer_id:, billing_provider_type:, billing_provider_customer_id:, aws_customer_account_id: nil, aws_customer_id: nil, aws_product_code: nil, aws_region: nil, stripe_collection_method: nil, request_options: {})
           #
           # @param customer_id [String] Path param:
           #
           # @param billing_provider_type [Symbol, MetronomeSDK::Models::V1::Customers::BillingConfigCreateParams::BillingProviderType] Path param: The billing provider (e.g. stripe)
           #
           # @param billing_provider_customer_id [String] Body param: The customer ID in the billing provider's system. For Azure, this is
+          #
+          # @param aws_customer_account_id [String] Body param:
+          #
+          # @param aws_customer_id [String] Body param:
           #
           # @param aws_product_code [String] Body param:
           #
