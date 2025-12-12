@@ -16,6 +16,16 @@ module MetronomeSDK
 
           # @see MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse#data
           class Data < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute aws_customer_account_id
+            #
+            #   @return [String, nil]
+            optional :aws_customer_account_id, String
+
+            # @!attribute aws_customer_id
+            #
+            #   @return [String, nil]
+            optional :aws_customer_id, String
+
             # @!attribute aws_expiration_date
             #   Contract expiration date for the customer. The expected format is RFC 3339 and
             #   can be retrieved from
@@ -81,10 +91,14 @@ module MetronomeSDK
             optional :stripe_collection_method,
                      enum: -> { MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::StripeCollectionMethod }
 
-            # @!method initialize(aws_expiration_date: nil, aws_is_subscription_product: nil, aws_product_code: nil, aws_region: nil, azure_expiration_date: nil, azure_plan_id: nil, azure_start_date: nil, azure_subscription_status: nil, billing_provider_customer_id: nil, stripe_collection_method: nil)
+            # @!method initialize(aws_customer_account_id: nil, aws_customer_id: nil, aws_expiration_date: nil, aws_is_subscription_product: nil, aws_product_code: nil, aws_region: nil, azure_expiration_date: nil, azure_plan_id: nil, azure_start_date: nil, azure_subscription_status: nil, billing_provider_customer_id: nil, stripe_collection_method: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data} for
             #   more details.
+            #
+            #   @param aws_customer_account_id [String]
+            #
+            #   @param aws_customer_id [String]
             #
             #   @param aws_expiration_date [Time] Contract expiration date for the customer. The expected format is RFC 3339 and c
             #

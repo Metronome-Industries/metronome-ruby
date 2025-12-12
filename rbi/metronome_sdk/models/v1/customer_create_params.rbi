@@ -177,6 +177,18 @@ module MetronomeSDK
           end
           attr_accessor :billing_provider_type
 
+          sig { returns(T.nilable(String)) }
+          attr_reader :aws_customer_account_id
+
+          sig { params(aws_customer_account_id: String).void }
+          attr_writer :aws_customer_account_id
+
+          sig { returns(T.nilable(String)) }
+          attr_reader :aws_customer_id
+
+          sig { params(aws_customer_id: String).void }
+          attr_writer :aws_customer_id
+
           # True if the aws_product_code is a SAAS subscription product, false otherwise.
           sig { returns(T.nilable(T::Boolean)) }
           attr_reader :aws_is_subscription_product
@@ -231,6 +243,8 @@ module MetronomeSDK
               billing_provider_customer_id: String,
               billing_provider_type:
                 MetronomeSDK::V1::CustomerCreateParams::BillingConfig::BillingProviderType::OrSymbol,
+              aws_customer_account_id: String,
+              aws_customer_id: String,
               aws_is_subscription_product: T::Boolean,
               aws_product_code: String,
               aws_region:
@@ -242,6 +256,8 @@ module MetronomeSDK
           def self.new(
             billing_provider_customer_id:,
             billing_provider_type:,
+            aws_customer_account_id: nil,
+            aws_customer_id: nil,
             # True if the aws_product_code is a SAAS subscription product, false otherwise.
             aws_is_subscription_product: nil,
             aws_product_code: nil,
@@ -258,6 +274,8 @@ module MetronomeSDK
                 billing_provider_customer_id: String,
                 billing_provider_type:
                   MetronomeSDK::V1::CustomerCreateParams::BillingConfig::BillingProviderType::OrSymbol,
+                aws_customer_account_id: String,
+                aws_customer_id: String,
                 aws_is_subscription_product: T::Boolean,
                 aws_product_code: String,
                 aws_region:
