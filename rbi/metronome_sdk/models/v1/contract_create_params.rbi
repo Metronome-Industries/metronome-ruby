@@ -5958,7 +5958,8 @@ module MetronomeSDK
               )
             end
 
-          # Do not specify if using revenue_system_configuration_id.
+          # How revenue recognition records should be delivered to the revenue system. Do
+          # not specify if using revenue_system_configuration_id.
           sig do
             returns(
               T.nilable(
@@ -5976,7 +5977,8 @@ module MetronomeSDK
           end
           attr_writer :delivery_method
 
-          # Do not specify if using revenue_system_configuration_id.
+          # The system that is providing services for revenue recognition. Do not specify if
+          # using revenue_system_configuration_id.
           sig do
             returns(
               T.nilable(
@@ -6015,9 +6017,11 @@ module MetronomeSDK
             ).returns(T.attached_class)
           end
           def self.new(
-            # Do not specify if using revenue_system_configuration_id.
+            # How revenue recognition records should be delivered to the revenue system. Do
+            # not specify if using revenue_system_configuration_id.
             delivery_method: nil,
-            # Do not specify if using revenue_system_configuration_id.
+            # The system that is providing services for revenue recognition. Do not specify if
+            # using revenue_system_configuration_id.
             provider: nil,
             # The Metronome ID of the revenue system configuration. Use when a customer has
             # multiple configurations with the same provider and delivery method. Otherwise,
@@ -6040,7 +6044,8 @@ module MetronomeSDK
           def to_hash
           end
 
-          # Do not specify if using revenue_system_configuration_id.
+          # How revenue recognition records should be delivered to the revenue system. Do
+          # not specify if using revenue_system_configuration_id.
           module DeliveryMethod
             extend MetronomeSDK::Internal::Type::Enum
 
@@ -6070,7 +6075,8 @@ module MetronomeSDK
             end
           end
 
-          # Do not specify if using revenue_system_configuration_id.
+          # The system that is providing services for revenue recognition. Do not specify if
+          # using revenue_system_configuration_id.
           module Provider
             extend MetronomeSDK::Internal::Type::Enum
 

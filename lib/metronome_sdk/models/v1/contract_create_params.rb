@@ -2783,14 +2783,16 @@ module MetronomeSDK
 
         class RevenueSystemConfiguration < MetronomeSDK::Internal::Type::BaseModel
           # @!attribute delivery_method
-          #   Do not specify if using revenue_system_configuration_id.
+          #   How revenue recognition records should be delivered to the revenue system. Do
+          #   not specify if using revenue_system_configuration_id.
           #
           #   @return [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RevenueSystemConfiguration::DeliveryMethod, nil]
           optional :delivery_method,
                    enum: -> { MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration::DeliveryMethod }
 
           # @!attribute provider
-          #   Do not specify if using revenue_system_configuration_id.
+          #   The system that is providing services for revenue recognition. Do not specify if
+          #   using revenue_system_configuration_id.
           #
           #   @return [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RevenueSystemConfiguration::Provider, nil]
           optional :provider,
@@ -2812,13 +2814,14 @@ module MetronomeSDK
           #   The revenue system configuration associated with a contract. Provide either an
           #   ID or the provider and delivery method.
           #
-          #   @param delivery_method [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RevenueSystemConfiguration::DeliveryMethod] Do not specify if using revenue_system_configuration_id.
+          #   @param delivery_method [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RevenueSystemConfiguration::DeliveryMethod] How revenue recognition records should be delivered to the revenue system. Do no
           #
-          #   @param provider [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RevenueSystemConfiguration::Provider] Do not specify if using revenue_system_configuration_id.
+          #   @param provider [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RevenueSystemConfiguration::Provider] The system that is providing services for revenue recognition. Do not specify if
           #
           #   @param revenue_system_configuration_id [String] The Metronome ID of the revenue system configuration. Use when a customer has mu
 
-          # Do not specify if using revenue_system_configuration_id.
+          # How revenue recognition records should be delivered to the revenue system. Do
+          # not specify if using revenue_system_configuration_id.
           #
           # @see MetronomeSDK::Models::V1::ContractCreateParams::RevenueSystemConfiguration#delivery_method
           module DeliveryMethod
@@ -2830,7 +2833,8 @@ module MetronomeSDK
             #   @return [Array<Symbol>]
           end
 
-          # Do not specify if using revenue_system_configuration_id.
+          # The system that is providing services for revenue recognition. Do not specify if
+          # using revenue_system_configuration_id.
           #
           # @see MetronomeSDK::Models::V1::ContractCreateParams::RevenueSystemConfiguration#provider
           module Provider
