@@ -15,6 +15,7 @@ module MetronomeSDK
           group_values: ::Array[MetronomeSDK::V1::AlertCreateParams::GroupValue],
           invoice_types_filter: ::Array[String],
           plan_id: String,
+          seat_filter: MetronomeSDK::V1::AlertCreateParams::SeatFilter,
           uniqueness_key: String
         }
         & MetronomeSDK::Internal::Type::request_parameters
@@ -69,6 +70,12 @@ module MetronomeSDK
 
         def plan_id=: (String) -> String
 
+        attr_reader seat_filter: MetronomeSDK::V1::AlertCreateParams::SeatFilter?
+
+        def seat_filter=: (
+          MetronomeSDK::V1::AlertCreateParams::SeatFilter
+        ) -> MetronomeSDK::V1::AlertCreateParams::SeatFilter
+
         attr_reader uniqueness_key: String?
 
         def uniqueness_key=: (String) -> String
@@ -86,6 +93,7 @@ module MetronomeSDK
           ?group_values: ::Array[MetronomeSDK::V1::AlertCreateParams::GroupValue],
           ?invoice_types_filter: ::Array[String],
           ?plan_id: String,
+          ?seat_filter: MetronomeSDK::V1::AlertCreateParams::SeatFilter,
           ?uniqueness_key: String,
           ?request_options: MetronomeSDK::request_opts
         ) -> void
@@ -103,6 +111,7 @@ module MetronomeSDK
           group_values: ::Array[MetronomeSDK::V1::AlertCreateParams::GroupValue],
           invoice_types_filter: ::Array[String],
           plan_id: String,
+          seat_filter: MetronomeSDK::V1::AlertCreateParams::SeatFilter,
           uniqueness_key: String,
           request_options: MetronomeSDK::RequestOptions
         }
@@ -122,6 +131,7 @@ module MetronomeSDK
           | :low_remaining_contract_credit_percentage_reached
           | :low_remaining_contract_credit_and_commit_balance_reached
           | :invoice_total_reached
+          | :low_remaining_seat_balance_reached
 
         module AlertType
           extend MetronomeSDK::Internal::Type::Enum
@@ -140,6 +150,7 @@ module MetronomeSDK
           LOW_REMAINING_CONTRACT_CREDIT_PERCENTAGE_REACHED: :low_remaining_contract_credit_percentage_reached
           LOW_REMAINING_CONTRACT_CREDIT_AND_COMMIT_BALANCE_REACHED: :low_remaining_contract_credit_and_commit_balance_reached
           INVOICE_TOTAL_REACHED: :invoice_total_reached
+          LOW_REMAINING_SEAT_BALANCE_REACHED: :low_remaining_seat_balance_reached
 
           def self?.values: -> ::Array[MetronomeSDK::Models::V1::AlertCreateParams::alert_type]
         end
@@ -195,6 +206,23 @@ module MetronomeSDK
           def initialize: (key: String, ?value: String) -> void
 
           def to_hash: -> { key: String, value: String }
+        end
+
+        type seat_filter = { seat_group_key: String, seat_group_value: String }
+
+        class SeatFilter < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor seat_group_key: String
+
+          attr_reader seat_group_value: String?
+
+          def seat_group_value=: (String) -> String
+
+          def initialize: (
+            seat_group_key: String,
+            ?seat_group_value: String
+          ) -> void
+
+          def to_hash: -> { seat_group_key: String, seat_group_value: String }
         end
       end
     end

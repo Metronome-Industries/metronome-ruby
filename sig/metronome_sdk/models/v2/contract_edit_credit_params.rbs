@@ -8,7 +8,9 @@ module MetronomeSDK
           access_schedule: MetronomeSDK::V2::ContractEditCreditParams::AccessSchedule,
           applicable_product_ids: ::Array[String]?,
           applicable_product_tags: ::Array[String]?,
+          description: String,
           hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,
+          name: String,
           priority: Float?,
           product_id: String,
           rate_type: MetronomeSDK::Models::V2::ContractEditCreditParams::rate_type,
@@ -34,11 +36,19 @@ module MetronomeSDK
 
         attr_accessor applicable_product_tags: ::Array[String]?
 
+        attr_reader description: String?
+
+        def description=: (String) -> String
+
         attr_reader hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration?
 
         def hierarchy_configuration=: (
           MetronomeSDK::CommitHierarchyConfiguration
         ) -> MetronomeSDK::CommitHierarchyConfiguration
+
+        attr_reader name: String?
+
+        def name=: (String) -> String
 
         attr_accessor priority: Float?
 
@@ -60,7 +70,9 @@ module MetronomeSDK
           ?access_schedule: MetronomeSDK::V2::ContractEditCreditParams::AccessSchedule,
           ?applicable_product_ids: ::Array[String]?,
           ?applicable_product_tags: ::Array[String]?,
+          ?description: String,
           ?hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,
+          ?name: String,
           ?priority: Float?,
           ?product_id: String,
           ?rate_type: MetronomeSDK::Models::V2::ContractEditCreditParams::rate_type,
@@ -74,7 +86,9 @@ module MetronomeSDK
           access_schedule: MetronomeSDK::V2::ContractEditCreditParams::AccessSchedule,
           applicable_product_ids: ::Array[String]?,
           applicable_product_tags: ::Array[String]?,
+          description: String,
           hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,
+          name: String,
           priority: Float?,
           product_id: String,
           rate_type: MetronomeSDK::Models::V2::ContractEditCreditParams::rate_type,

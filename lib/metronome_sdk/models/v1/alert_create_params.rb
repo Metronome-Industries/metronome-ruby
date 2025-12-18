@@ -97,6 +97,13 @@ module MetronomeSDK
         #   @return [String, nil]
         optional :plan_id, String
 
+        # @!attribute seat_filter
+        #   Required for `low_remaining_seat_balance_reached` notifications. The alert is
+        #   scoped to this seat group key-value pair.
+        #
+        #   @return [MetronomeSDK::Models::V1::AlertCreateParams::SeatFilter, nil]
+        optional :seat_filter, -> { MetronomeSDK::V1::AlertCreateParams::SeatFilter }
+
         # @!attribute uniqueness_key
         #   Prevents the creation of duplicates. If a request to create a record is made
         #   with a previously used uniqueness key, a new record will not be created and the
@@ -105,7 +112,7 @@ module MetronomeSDK
         #   @return [String, nil]
         optional :uniqueness_key, String
 
-        # @!method initialize(alert_type:, name:, threshold:, billable_metric_id: nil, credit_grant_type_filters: nil, credit_type_id: nil, custom_field_filters: nil, customer_id: nil, evaluate_on_create: nil, group_values: nil, invoice_types_filter: nil, plan_id: nil, uniqueness_key: nil, request_options: {})
+        # @!method initialize(alert_type:, name:, threshold:, billable_metric_id: nil, credit_grant_type_filters: nil, credit_type_id: nil, custom_field_filters: nil, customer_id: nil, evaluate_on_create: nil, group_values: nil, invoice_types_filter: nil, plan_id: nil, seat_filter: nil, uniqueness_key: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::V1::AlertCreateParams} for more details.
         #
@@ -133,6 +140,8 @@ module MetronomeSDK
         #
         #   @param plan_id [String] If provided, will create this threshold notification for this specific plan. To
         #
+        #   @param seat_filter [MetronomeSDK::Models::V1::AlertCreateParams::SeatFilter] Required for `low_remaining_seat_balance_reached` notifications. The alert is sc
+        #
         #   @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a record is made wit
         #
         #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
@@ -157,6 +166,7 @@ module MetronomeSDK
           LOW_REMAINING_CONTRACT_CREDIT_AND_COMMIT_BALANCE_REACHED =
             :low_remaining_contract_credit_and_commit_balance_reached
           INVOICE_TOTAL_REACHED = :invoice_total_reached
+          LOW_REMAINING_SEAT_BALANCE_REACHED = :low_remaining_seat_balance_reached
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -210,6 +220,28 @@ module MetronomeSDK
           # @!method initialize(key:, value: nil)
           #   @param key [String]
           #   @param value [String]
+        end
+
+        class SeatFilter < MetronomeSDK::Internal::Type::BaseModel
+          # @!attribute seat_group_key
+          #   The seat group key (e.g., "seat_id", "user_id")
+          #
+          #   @return [String]
+          required :seat_group_key, String
+
+          # @!attribute seat_group_value
+          #   Optional seat identifier the alert is scoped to.
+          #
+          #   @return [String, nil]
+          optional :seat_group_value, String
+
+          # @!method initialize(seat_group_key:, seat_group_value: nil)
+          #   Required for `low_remaining_seat_balance_reached` notifications. The alert is
+          #   scoped to this seat group key-value pair.
+          #
+          #   @param seat_group_key [String] The seat group key (e.g., "seat_id", "user_id")
+          #
+          #   @param seat_group_value [String] Optional seat identifier the alert is scoped to.
         end
       end
     end

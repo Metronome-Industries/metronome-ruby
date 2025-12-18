@@ -7,7 +7,8 @@ module MetronomeSDK
             alert_id: String,
             customer_id: String,
             group_values: ::Array[MetronomeSDK::V1::Customers::AlertRetrieveParams::GroupValue],
-            plans_or_contracts: MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::plans_or_contracts
+            plans_or_contracts: MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::plans_or_contracts,
+            seat_filter: MetronomeSDK::V1::Customers::AlertRetrieveParams::SeatFilter
           }
           & MetronomeSDK::Internal::Type::request_parameters
 
@@ -31,11 +32,18 @@ module MetronomeSDK
             MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::plans_or_contracts
           ) -> MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::plans_or_contracts
 
+          attr_reader seat_filter: MetronomeSDK::V1::Customers::AlertRetrieveParams::SeatFilter?
+
+          def seat_filter=: (
+            MetronomeSDK::V1::Customers::AlertRetrieveParams::SeatFilter
+          ) -> MetronomeSDK::V1::Customers::AlertRetrieveParams::SeatFilter
+
           def initialize: (
             alert_id: String,
             customer_id: String,
             ?group_values: ::Array[MetronomeSDK::V1::Customers::AlertRetrieveParams::GroupValue],
             ?plans_or_contracts: MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::plans_or_contracts,
+            ?seat_filter: MetronomeSDK::V1::Customers::AlertRetrieveParams::SeatFilter,
             ?request_options: MetronomeSDK::request_opts
           ) -> void
 
@@ -44,6 +52,7 @@ module MetronomeSDK
             customer_id: String,
             group_values: ::Array[MetronomeSDK::V1::Customers::AlertRetrieveParams::GroupValue],
             plans_or_contracts: MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::plans_or_contracts,
+            seat_filter: MetronomeSDK::V1::Customers::AlertRetrieveParams::SeatFilter,
             request_options: MetronomeSDK::RequestOptions
           }
 
@@ -68,6 +77,22 @@ module MetronomeSDK
             CONTRACTS: :CONTRACTS
 
             def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::plans_or_contracts]
+          end
+
+          type seat_filter =
+            { seat_group_key: String, seat_group_value: String }
+
+          class SeatFilter < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor seat_group_key: String
+
+            attr_accessor seat_group_value: String
+
+            def initialize: (
+              seat_group_key: String,
+              seat_group_value: String
+            ) -> void
+
+            def to_hash: -> { seat_group_key: String, seat_group_value: String }
           end
         end
       end

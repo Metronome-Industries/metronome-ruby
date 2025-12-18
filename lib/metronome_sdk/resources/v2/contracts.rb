@@ -228,7 +228,7 @@ module MetronomeSDK
         #   finalized invoice. You can void the invoice beforehand and then remove the
         #   access schedule segment.
         #
-        # @overload edit_commit(commit_id:, customer_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, hierarchy_configuration: nil, invoice_contract_id: nil, invoice_schedule: nil, priority: nil, product_id: nil, rate_type: nil, specifiers: nil, request_options: {})
+        # @overload edit_commit(commit_id:, customer_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, hierarchy_configuration: nil, invoice_contract_id: nil, invoice_schedule: nil, name: nil, priority: nil, product_id: nil, rate_type: nil, specifiers: nil, request_options: {})
         #
         # @param commit_id [String] ID of the commit to edit
         #
@@ -240,11 +240,15 @@ module MetronomeSDK
         #
         # @param applicable_product_tags [Array<String>, nil] Which tags the commit applies to. If applicable*product_ids, applicable_product*
         #
+        # @param description [String] Updated description for the commit
+        #
         # @param hierarchy_configuration [MetronomeSDK::Models::CommitHierarchyConfiguration] Optional configuration for commit hierarchy access control
         #
         # @param invoice_contract_id [String] ID of contract to use for invoicing
         #
         # @param invoice_schedule [MetronomeSDK::Models::V2::ContractEditCommitParams::InvoiceSchedule]
+        #
+        # @param name [String] Updated name for the commit
         #
         # @param priority [Float, nil] If multiple commits are applicable, the one with the lower priority will apply f
         #
@@ -290,7 +294,7 @@ module MetronomeSDK
         #   invoice. You can void the invoice beforehand and then remove the access
         #   schedule segment.
         #
-        # @overload edit_credit(credit_id:, customer_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, hierarchy_configuration: nil, priority: nil, product_id: nil, rate_type: nil, specifiers: nil, request_options: {})
+        # @overload edit_credit(credit_id:, customer_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, hierarchy_configuration: nil, name: nil, priority: nil, product_id: nil, rate_type: nil, specifiers: nil, request_options: {})
         #
         # @param credit_id [String] ID of the credit to edit
         #
@@ -302,7 +306,11 @@ module MetronomeSDK
         #
         # @param applicable_product_tags [Array<String>, nil] Which tags the credit applies to. If both applicable*product_ids and applicable*
         #
+        # @param description [String] Updated description for the credit
+        #
         # @param hierarchy_configuration [MetronomeSDK::Models::CommitHierarchyConfiguration] Optional configuration for credit hierarchy access control
+        #
+        # @param name [String] Updated name for the credit
         #
         # @param priority [Float, nil] If multiple commits are applicable, the one with the lower priority will apply f
         #

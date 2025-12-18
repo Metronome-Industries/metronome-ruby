@@ -14,7 +14,8 @@ module MetronomeSDK
         description: String,
         ending_before: Time,
         fiat_credit_type_id: String,
-        name: String
+        name: String,
+        seat_config: MetronomeSDK::Subscription::SeatConfig
       }
 
     class Subscription < MetronomeSDK::Internal::Type::BaseModel
@@ -56,6 +57,12 @@ module MetronomeSDK
 
       def name=: (String) -> String
 
+      attr_reader seat_config: MetronomeSDK::Subscription::SeatConfig?
+
+      def seat_config=: (
+        MetronomeSDK::Subscription::SeatConfig
+      ) -> MetronomeSDK::Subscription::SeatConfig
+
       def initialize: (
         billing_periods: MetronomeSDK::Subscription::BillingPeriods,
         collection_schedule: MetronomeSDK::Models::Subscription::collection_schedule,
@@ -69,7 +76,8 @@ module MetronomeSDK
         ?description: String,
         ?ending_before: Time,
         ?fiat_credit_type_id: String,
-        ?name: String
+        ?name: String,
+        ?seat_config: MetronomeSDK::Subscription::SeatConfig
       ) -> void
 
       def to_hash: -> {
@@ -85,7 +93,8 @@ module MetronomeSDK
         description: String,
         ending_before: Time,
         fiat_credit_type_id: String,
-        name: String
+        name: String,
+        seat_config: MetronomeSDK::Subscription::SeatConfig
       }
 
       type billing_periods =
@@ -289,6 +298,16 @@ module MetronomeSDK
 
           def to_hash: -> { id: String, name: String }
         end
+      end
+
+      type seat_config = { seat_group_key: String }
+
+      class SeatConfig < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor seat_group_key: String
+
+        def initialize: (seat_group_key: String) -> void
+
+        def to_hash: -> { seat_group_key: String }
       end
     end
   end

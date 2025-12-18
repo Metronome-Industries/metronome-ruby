@@ -44,6 +44,13 @@ module MetronomeSDK
         #   @return [String, nil]
         optional :contract_id, String
 
+        # @!attribute per_group_amounts
+        #   If using individually configured commits/credits attached to seat managed
+        #   subscriptions, the amount to add for each seat. Must sum to total amount.
+        #
+        #   @return [Hash{Symbol=>Float}, nil]
+        optional :per_group_amounts, MetronomeSDK::Internal::Type::HashOf[Float]
+
         # @!attribute timestamp
         #   RFC 3339 timestamp indicating when the manual adjustment takes place. If not
         #   provided, it will default to the start of the segment.
@@ -51,7 +58,7 @@ module MetronomeSDK
         #   @return [Time, nil]
         optional :timestamp, Time
 
-        # @!method initialize(id:, amount:, customer_id:, reason:, segment_id:, contract_id: nil, timestamp: nil, request_options: {})
+        # @!method initialize(id:, amount:, customer_id:, reason:, segment_id:, contract_id: nil, per_group_amounts: nil, timestamp: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::V1::ContractAddManualBalanceEntryParams} for more
         #   details.
@@ -67,6 +74,8 @@ module MetronomeSDK
         #   @param segment_id [String] ID of the segment to update.
         #
         #   @param contract_id [String] ID of the contract to update. Leave blank to update a customer level balance.
+        #
+        #   @param per_group_amounts [Hash{Symbol=>Float}] If using individually configured commits/credits attached to seat managed subscr
         #
         #   @param timestamp [Time] RFC 3339 timestamp indicating when the manual adjustment takes place. If not pro
         #

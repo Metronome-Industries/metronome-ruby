@@ -1854,6 +1854,11 @@ module MetronomeSDK
             #   @return [Array<String>, nil]
             optional :applicable_product_tags, MetronomeSDK::Internal::Type::ArrayOf[String], nil?: true
 
+            # @!attribute description
+            #
+            #   @return [String, nil]
+            optional :description, String
+
             # @!attribute hierarchy_configuration
             #   Optional configuration for commit hierarchy access control
             #
@@ -1913,7 +1918,7 @@ module MetronomeSDK
                      -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::CommitSpecifierInput] },
                      nil?: true
 
-            # @!method initialize(id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, hierarchy_configuration: nil, invoice_schedule: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, product_id: nil, rate_type: nil, rollover_fraction: nil, specifiers: nil)
+            # @!method initialize(id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, hierarchy_configuration: nil, invoice_schedule: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, product_id: nil, rate_type: nil, rollover_fraction: nil, specifiers: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCommit}
             #   for more details.
@@ -1925,6 +1930,8 @@ module MetronomeSDK
             #   @param applicable_product_ids [Array<String>, nil] Which products the commit applies to. If applicable_product_ids, applicable_prod
             #
             #   @param applicable_product_tags [Array<String>, nil] Which tags the commit applies to. If applicable*product_ids, applicable_product*
+            #
+            #   @param description [String]
             #
             #   @param hierarchy_configuration [MetronomeSDK::Models::CommitHierarchyConfiguration] Optional configuration for commit hierarchy access control
             #
@@ -2187,6 +2194,11 @@ module MetronomeSDK
             optional :access_schedule,
                      -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::AccessSchedule }
 
+            # @!attribute description
+            #
+            #   @return [String, nil]
+            optional :description, String
+
             # @!attribute hierarchy_configuration
             #   Optional configuration for credit hierarchy access control
             #
@@ -2222,7 +2234,7 @@ module MetronomeSDK
             #   @return [Float, nil]
             optional :rollover_fraction, Float, nil?: true
 
-            # @!method initialize(id:, access_schedule: nil, hierarchy_configuration: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil, rollover_fraction: nil)
+            # @!method initialize(id:, access_schedule: nil, description: nil, hierarchy_configuration: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil, rollover_fraction: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit}
             #   for more details.
@@ -2230,6 +2242,8 @@ module MetronomeSDK
             #   @param id [String]
             #
             #   @param access_schedule [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::AccessSchedule]
+            #
+            #   @param description [String]
             #
             #   @param hierarchy_configuration [MetronomeSDK::Models::CommitHierarchyConfiguration] Optional configuration for credit hierarchy access control
             #
@@ -3051,10 +3065,21 @@ module MetronomeSDK
             optional :quantity_updates,
                      -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSubscription::QuantityUpdate] }
 
-            # @!method initialize(id:, ending_before: nil, quantity_updates: nil)
+            # @!attribute seat_updates
+            #   Manage subscription seats for subscriptions in SEAT_BASED mode.
+            #
+            #   @return [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSubscription::SeatUpdates, nil]
+            optional :seat_updates,
+                     -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSubscription::SeatUpdates }
+
+            # @!method initialize(id:, ending_before: nil, quantity_updates: nil, seat_updates: nil)
             #   @param id [String]
+            #
             #   @param ending_before [Time]
+            #
             #   @param quantity_updates [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSubscription::QuantityUpdate>]
+            #
+            #   @param seat_updates [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSubscription::SeatUpdates] Manage subscription seats for subscriptions in SEAT_BASED mode.
 
             class QuantityUpdate < MetronomeSDK::Internal::Type::BaseModel
               # @!attribute starting_at
@@ -3076,6 +3101,155 @@ module MetronomeSDK
               #   @param starting_at [Time]
               #   @param quantity [Float]
               #   @param quantity_delta [Float]
+            end
+
+            # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSubscription#seat_updates
+            class SeatUpdates < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute add_seat_ids
+              #   Adds seat IDs to the subscription. If there are unassigned seats, the new seat
+              #   IDs will fill these unassigned seats and not increase the total subscription
+              #   quantity. Otherwise, if there are more new seat IDs than unassigned seats, the
+              #   total subscription quantity will increase.
+              #
+              #   @return [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSubscription::SeatUpdates::AddSeatID>, nil]
+              optional :add_seat_ids,
+                       -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSubscription::SeatUpdates::AddSeatID] }
+
+              # @!attribute add_unassigned_seats
+              #   Adds unassigned seats to the subscription. This will increase the total
+              #   subscription quantity.
+              #
+              #   @return [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSubscription::SeatUpdates::AddUnassignedSeat>, nil]
+              optional :add_unassigned_seats,
+                       -> do
+                         MetronomeSDK::Internal::Type::ArrayOf[
+                           MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSubscription::SeatUpdates::AddUnassignedSeat
+                         ]
+                       end
+
+              # @!attribute remove_seat_ids
+              #   Removes seat IDs from the subscription, if possible. If a seat ID is removed,
+              #   the total subscription quantity will decrease. Otherwise, if the seat ID is not
+              #   found on the subscription, this is a no-op.
+              #
+              #   @return [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSubscription::SeatUpdates::RemoveSeatID>, nil]
+              optional :remove_seat_ids,
+                       -> do
+                         MetronomeSDK::Internal::Type::ArrayOf[
+                           MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSubscription::SeatUpdates::RemoveSeatID
+                         ]
+                       end
+
+              # @!attribute remove_unassigned_seats
+              #   Removes unassigned seats from the subscription. This will decrease the total
+              #   subscription quantity if there are are unassigned seats.
+              #
+              #   @return [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSubscription::SeatUpdates::RemoveUnassignedSeat>, nil]
+              optional :remove_unassigned_seats,
+                       -> do
+                         MetronomeSDK::Internal::Type::ArrayOf[
+                           MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSubscription::SeatUpdates::RemoveUnassignedSeat
+                         ]
+                       end
+
+              # @!method initialize(add_seat_ids: nil, add_unassigned_seats: nil, remove_seat_ids: nil, remove_unassigned_seats: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSubscription::SeatUpdates}
+              #   for more details.
+              #
+              #   Manage subscription seats for subscriptions in SEAT_BASED mode.
+              #
+              #   @param add_seat_ids [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSubscription::SeatUpdates::AddSeatID>] Adds seat IDs to the subscription. If there are unassigned seats, the new seat
+              #
+              #   @param add_unassigned_seats [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSubscription::SeatUpdates::AddUnassignedSeat>] Adds unassigned seats to the subscription. This will increase the total subscrip
+              #
+              #   @param remove_seat_ids [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSubscription::SeatUpdates::RemoveSeatID>] Removes seat IDs from the subscription, if possible. If a seat ID is removed, t
+              #
+              #   @param remove_unassigned_seats [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSubscription::SeatUpdates::RemoveUnassignedSeat>] Removes unassigned seats from the subscription. This will decrease the total sub
+
+              class AddSeatID < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute seat_ids
+                #
+                #   @return [Array<String>]
+                required :seat_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
+
+                # @!attribute starting_at
+                #   Assigned seats will be added/removed starting at this date.
+                #
+                #   @return [Time]
+                required :starting_at, Time
+
+                # @!method initialize(seat_ids:, starting_at:)
+                #   @param seat_ids [Array<String>]
+                #
+                #   @param starting_at [Time] Assigned seats will be added/removed starting at this date.
+              end
+
+              class AddUnassignedSeat < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute quantity
+                #   The number of unassigned seats on the subscription will increase/decrease by
+                #   this delta. Must be greater than 0.
+                #
+                #   @return [Float]
+                required :quantity, Float
+
+                # @!attribute starting_at
+                #   Unassigned seats will be updated starting at this date.
+                #
+                #   @return [Time]
+                required :starting_at, Time
+
+                # @!method initialize(quantity:, starting_at:)
+                #   Some parameter documentations has been truncated, see
+                #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSubscription::SeatUpdates::AddUnassignedSeat}
+                #   for more details.
+                #
+                #   @param quantity [Float] The number of unassigned seats on the subscription will increase/decrease by thi
+                #
+                #   @param starting_at [Time] Unassigned seats will be updated starting at this date.
+              end
+
+              class RemoveSeatID < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute seat_ids
+                #
+                #   @return [Array<String>]
+                required :seat_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
+
+                # @!attribute starting_at
+                #   Assigned seats will be added/removed starting at this date.
+                #
+                #   @return [Time]
+                required :starting_at, Time
+
+                # @!method initialize(seat_ids:, starting_at:)
+                #   @param seat_ids [Array<String>]
+                #
+                #   @param starting_at [Time] Assigned seats will be added/removed starting at this date.
+              end
+
+              class RemoveUnassignedSeat < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute quantity
+                #   The number of unassigned seats on the subscription will increase/decrease by
+                #   this delta. Must be greater than 0.
+                #
+                #   @return [Float]
+                required :quantity, Float
+
+                # @!attribute starting_at
+                #   Unassigned seats will be updated starting at this date.
+                #
+                #   @return [Time]
+                required :starting_at, Time
+
+                # @!method initialize(quantity:, starting_at:)
+                #   Some parameter documentations has been truncated, see
+                #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSubscription::SeatUpdates::RemoveUnassignedSeat}
+                #   for more details.
+                #
+                #   @param quantity [Float] The number of unassigned seats on the subscription will increase/decrease by thi
+                #
+                #   @param starting_at [Time] Unassigned seats will be updated starting at this date.
+              end
             end
           end
         end

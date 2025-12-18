@@ -3,12 +3,14 @@
 # Standard libraries.
 # rubocop:disable Lint/RedundantRequireStatement
 require "English"
+require "base64"
 require "cgi"
 require "date"
 require "erb"
 require "etc"
 require "json"
 require "net/http"
+require "openssl"
 require "pathname"
 require "rbconfig"
 require "securerandom"
@@ -235,6 +237,7 @@ require_relative "metronome_sdk/models/v1/customers/plan_list_price_adjustments_
 require_relative "metronome_sdk/models/v1/customers/plan_list_price_adjustments_response"
 require_relative "metronome_sdk/models/v1/customers/plan_list_response"
 require_relative "metronome_sdk/models/v1/customer_set_billing_configurations_params"
+require_relative "metronome_sdk/models/v1/customer_set_billing_configurations_response"
 require_relative "metronome_sdk/models/v1/customer_set_ingest_aliases_params"
 require_relative "metronome_sdk/models/v1/customer_set_name_params"
 require_relative "metronome_sdk/models/v1/customer_set_name_response"

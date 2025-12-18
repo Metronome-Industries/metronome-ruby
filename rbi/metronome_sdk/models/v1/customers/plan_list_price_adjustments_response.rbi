@@ -147,6 +147,12 @@ module MetronomeSDK
             end
             attr_accessor :adjustment_type
 
+            sig { returns(T.nilable(Float)) }
+            attr_reader :quantity
+
+            sig { params(quantity: Float).void }
+            attr_writer :quantity
+
             # Used in pricing tiers. Indicates at what metric value the price applies.
             sig { returns(T.nilable(Float)) }
             attr_reader :tier
@@ -164,6 +170,7 @@ module MetronomeSDK
               params(
                 adjustment_type:
                   MetronomeSDK::Models::V1::Customers::PlanListPriceAdjustmentsResponse::Price::AdjustmentType::OrSymbol,
+                quantity: Float,
                 tier: Float,
                 value: Float
               ).returns(T.attached_class)
@@ -171,6 +178,7 @@ module MetronomeSDK
             def self.new(
               # Determines how the value will be applied.
               adjustment_type:,
+              quantity: nil,
               # Used in pricing tiers. Indicates at what metric value the price applies.
               tier: nil,
               value: nil
@@ -182,6 +190,7 @@ module MetronomeSDK
                 {
                   adjustment_type:
                     MetronomeSDK::Models::V1::Customers::PlanListPriceAdjustmentsResponse::Price::AdjustmentType::TaggedSymbol,
+                  quantity: Float,
                   tier: Float,
                   value: Float
                 }

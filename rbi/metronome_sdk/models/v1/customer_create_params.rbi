@@ -62,6 +62,27 @@ module MetronomeSDK
         end
         attr_writer :customer_billing_provider_configurations
 
+        sig do
+          returns(
+            T.nilable(
+              T::Array[
+                MetronomeSDK::V1::CustomerCreateParams::CustomerRevenueSystemConfiguration
+              ]
+            )
+          )
+        end
+        attr_reader :customer_revenue_system_configurations
+
+        sig do
+          params(
+            customer_revenue_system_configurations:
+              T::Array[
+                MetronomeSDK::V1::CustomerCreateParams::CustomerRevenueSystemConfiguration::OrHash
+              ]
+          ).void
+        end
+        attr_writer :customer_revenue_system_configurations
+
         # (deprecated, use ingest_aliases instead) an alias that can be used to refer to
         # this customer in usage events
         sig { returns(T.nilable(String)) }
@@ -87,6 +108,10 @@ module MetronomeSDK
               T::Array[
                 MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::OrHash
               ],
+            customer_revenue_system_configurations:
+              T::Array[
+                MetronomeSDK::V1::CustomerCreateParams::CustomerRevenueSystemConfiguration::OrHash
+              ],
             external_id: String,
             ingest_aliases: T::Array[String],
             request_options: MetronomeSDK::RequestOptions::OrHash
@@ -99,6 +124,7 @@ module MetronomeSDK
           # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           custom_fields: nil,
           customer_billing_provider_configurations: nil,
+          customer_revenue_system_configurations: nil,
           # (deprecated, use ingest_aliases instead) an alias that can be used to refer to
           # this customer in usage events
           external_id: nil,
@@ -118,6 +144,10 @@ module MetronomeSDK
               customer_billing_provider_configurations:
                 T::Array[
                   MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration
+                ],
+              customer_revenue_system_configurations:
+                T::Array[
+                  MetronomeSDK::V1::CustomerCreateParams::CustomerRevenueSystemConfiguration
                 ],
               external_id: String,
               ingest_aliases: T::Array[String],
@@ -146,6 +176,18 @@ module MetronomeSDK
             )
           end
           attr_accessor :billing_provider_type
+
+          sig { returns(T.nilable(String)) }
+          attr_reader :aws_customer_account_id
+
+          sig { params(aws_customer_account_id: String).void }
+          attr_writer :aws_customer_account_id
+
+          sig { returns(T.nilable(String)) }
+          attr_reader :aws_customer_id
+
+          sig { params(aws_customer_id: String).void }
+          attr_writer :aws_customer_id
 
           # True if the aws_product_code is a SAAS subscription product, false otherwise.
           sig { returns(T.nilable(T::Boolean)) }
@@ -201,6 +243,8 @@ module MetronomeSDK
               billing_provider_customer_id: String,
               billing_provider_type:
                 MetronomeSDK::V1::CustomerCreateParams::BillingConfig::BillingProviderType::OrSymbol,
+              aws_customer_account_id: String,
+              aws_customer_id: String,
               aws_is_subscription_product: T::Boolean,
               aws_product_code: String,
               aws_region:
@@ -212,6 +256,8 @@ module MetronomeSDK
           def self.new(
             billing_provider_customer_id:,
             billing_provider_type:,
+            aws_customer_account_id: nil,
+            aws_customer_id: nil,
             # True if the aws_product_code is a SAAS subscription product, false otherwise.
             aws_is_subscription_product: nil,
             aws_product_code: nil,
@@ -228,6 +274,8 @@ module MetronomeSDK
                 billing_provider_customer_id: String,
                 billing_provider_type:
                   MetronomeSDK::V1::CustomerCreateParams::BillingConfig::BillingProviderType::OrSymbol,
+                aws_customer_account_id: String,
+                aws_customer_id: String,
                 aws_is_subscription_product: T::Boolean,
                 aws_product_code: String,
                 aws_region:
@@ -763,6 +811,162 @@ module MetronomeSDK
               override.returns(
                 T::Array[
                   MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::TaxProvider::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+        end
+
+        class CustomerRevenueSystemConfiguration < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::CustomerCreateParams::CustomerRevenueSystemConfiguration,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
+          # The revenue system provider set for this configuration.
+          sig do
+            returns(
+              MetronomeSDK::V1::CustomerCreateParams::CustomerRevenueSystemConfiguration::Provider::OrSymbol
+            )
+          end
+          attr_accessor :provider
+
+          # Configuration for the revenue system provider. The structure of this object is
+          # specific to the revenue system provider. For NetSuite, this should contain
+          # `netsuite_customer_id`.
+          sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
+          attr_reader :configuration
+
+          sig { params(configuration: T::Hash[Symbol, T.anything]).void }
+          attr_writer :configuration
+
+          # The method to use for delivering invoices to this customer. If not provided, the
+          # `delivery_method_id` must be provided.
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::V1::CustomerCreateParams::CustomerRevenueSystemConfiguration::DeliveryMethod::OrSymbol
+              )
+            )
+          end
+          attr_reader :delivery_method
+
+          sig do
+            params(
+              delivery_method:
+                MetronomeSDK::V1::CustomerCreateParams::CustomerRevenueSystemConfiguration::DeliveryMethod::OrSymbol
+            ).void
+          end
+          attr_writer :delivery_method
+
+          # ID of the delivery method to use for this customer. If not provided, the
+          # `delivery_method` must be provided.
+          sig { returns(T.nilable(String)) }
+          attr_reader :delivery_method_id
+
+          sig { params(delivery_method_id: String).void }
+          attr_writer :delivery_method_id
+
+          sig do
+            params(
+              provider:
+                MetronomeSDK::V1::CustomerCreateParams::CustomerRevenueSystemConfiguration::Provider::OrSymbol,
+              configuration: T::Hash[Symbol, T.anything],
+              delivery_method:
+                MetronomeSDK::V1::CustomerCreateParams::CustomerRevenueSystemConfiguration::DeliveryMethod::OrSymbol,
+              delivery_method_id: String
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # The revenue system provider set for this configuration.
+            provider:,
+            # Configuration for the revenue system provider. The structure of this object is
+            # specific to the revenue system provider. For NetSuite, this should contain
+            # `netsuite_customer_id`.
+            configuration: nil,
+            # The method to use for delivering invoices to this customer. If not provided, the
+            # `delivery_method_id` must be provided.
+            delivery_method: nil,
+            # ID of the delivery method to use for this customer. If not provided, the
+            # `delivery_method` must be provided.
+            delivery_method_id: nil
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                provider:
+                  MetronomeSDK::V1::CustomerCreateParams::CustomerRevenueSystemConfiguration::Provider::OrSymbol,
+                configuration: T::Hash[Symbol, T.anything],
+                delivery_method:
+                  MetronomeSDK::V1::CustomerCreateParams::CustomerRevenueSystemConfiguration::DeliveryMethod::OrSymbol,
+                delivery_method_id: String
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # The revenue system provider set for this configuration.
+          module Provider
+            extend MetronomeSDK::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  MetronomeSDK::V1::CustomerCreateParams::CustomerRevenueSystemConfiguration::Provider
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            NETSUITE =
+              T.let(
+                :netsuite,
+                MetronomeSDK::V1::CustomerCreateParams::CustomerRevenueSystemConfiguration::Provider::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  MetronomeSDK::V1::CustomerCreateParams::CustomerRevenueSystemConfiguration::Provider::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # The method to use for delivering invoices to this customer. If not provided, the
+          # `delivery_method_id` must be provided.
+          module DeliveryMethod
+            extend MetronomeSDK::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  MetronomeSDK::V1::CustomerCreateParams::CustomerRevenueSystemConfiguration::DeliveryMethod
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            DIRECT_TO_BILLING_PROVIDER =
+              T.let(
+                :direct_to_billing_provider,
+                MetronomeSDK::V1::CustomerCreateParams::CustomerRevenueSystemConfiguration::DeliveryMethod::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  MetronomeSDK::V1::CustomerCreateParams::CustomerRevenueSystemConfiguration::DeliveryMethod::TaggedSymbol
                 ]
               )
             end

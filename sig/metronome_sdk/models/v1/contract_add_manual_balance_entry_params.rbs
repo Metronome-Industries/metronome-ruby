@@ -9,6 +9,7 @@ module MetronomeSDK
           reason: String,
           segment_id: String,
           contract_id: String,
+          per_group_amounts: ::Hash[Symbol, Float],
           timestamp: Time
         }
         & MetronomeSDK::Internal::Type::request_parameters
@@ -31,6 +32,10 @@ module MetronomeSDK
 
         def contract_id=: (String) -> String
 
+        attr_reader per_group_amounts: ::Hash[Symbol, Float]?
+
+        def per_group_amounts=: (::Hash[Symbol, Float]) -> ::Hash[Symbol, Float]
+
         attr_reader timestamp: Time?
 
         def timestamp=: (Time) -> Time
@@ -42,6 +47,7 @@ module MetronomeSDK
           reason: String,
           segment_id: String,
           ?contract_id: String,
+          ?per_group_amounts: ::Hash[Symbol, Float],
           ?timestamp: Time,
           ?request_options: MetronomeSDK::request_opts
         ) -> void
@@ -53,6 +59,7 @@ module MetronomeSDK
           reason: String,
           segment_id: String,
           contract_id: String,
+          per_group_amounts: ::Hash[Symbol, Float],
           timestamp: Time,
           request_options: MetronomeSDK::RequestOptions
         }

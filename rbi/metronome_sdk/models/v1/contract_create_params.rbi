@@ -291,6 +291,25 @@ module MetronomeSDK
         end
         attr_writer :reseller_royalties
 
+        # The revenue system configuration associated with a contract. Provide either an
+        # ID or the provider and delivery method.
+        sig do
+          returns(
+            T.nilable(
+              MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration
+            )
+          )
+        end
+        attr_reader :revenue_system_configuration
+
+        sig do
+          params(
+            revenue_system_configuration:
+              MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration::OrHash
+          ).void
+        end
+        attr_writer :revenue_system_configuration
+
         # This field's availability is dependent on your client's configuration.
         sig { returns(T.nilable(String)) }
         attr_reader :salesforce_opportunity_id
@@ -472,6 +491,8 @@ module MetronomeSDK
               T::Array[
                 MetronomeSDK::V1::ContractCreateParams::ResellerRoyalty::OrHash
               ],
+            revenue_system_configuration:
+              MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration::OrHash,
             salesforce_opportunity_id: String,
             scheduled_charges:
               T::Array[
@@ -534,6 +555,9 @@ module MetronomeSDK
           recurring_credits: nil,
           # This field's availability is dependent on your client's configuration.
           reseller_royalties: nil,
+          # The revenue system configuration associated with a contract. Provide either an
+          # ID or the provider and delivery method.
+          revenue_system_configuration: nil,
           # This field's availability is dependent on your client's configuration.
           salesforce_opportunity_id: nil,
           scheduled_charges: nil,
@@ -604,6 +628,8 @@ module MetronomeSDK
                 T::Array[
                   MetronomeSDK::V1::ContractCreateParams::ResellerRoyalty
                 ],
+              revenue_system_configuration:
+                MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration,
               salesforce_opportunity_id: String,
               scheduled_charges:
                 T::Array[
@@ -4788,9 +4814,8 @@ module MetronomeSDK
             sig { returns(String) }
             attr_accessor :subscription_id
 
-            # If set to POOLED, allocation added per seat is pooled across the account. (BETA)
-            # If set to INDIVIDUAL, each seat in the subscription will have its own
-            # allocation.
+            # If set to POOLED, allocation added per seat is pooled across the account. If set
+            # to INDIVIDUAL, each seat in the subscription will have its own allocation.
             sig do
               returns(
                 T.nilable(
@@ -4822,9 +4847,8 @@ module MetronomeSDK
               apply_seat_increase_config:,
               # ID of the subscription to configure on the recurring commit/credit.
               subscription_id:,
-              # If set to POOLED, allocation added per seat is pooled across the account. (BETA)
-              # If set to INDIVIDUAL, each seat in the subscription will have its own
-              # allocation.
+              # If set to POOLED, allocation added per seat is pooled across the account. If set
+              # to INDIVIDUAL, each seat in the subscription will have its own allocation.
               allocation: nil
             )
             end
@@ -4868,9 +4892,8 @@ module MetronomeSDK
               end
             end
 
-            # If set to POOLED, allocation added per seat is pooled across the account. (BETA)
-            # If set to INDIVIDUAL, each seat in the subscription will have its own
-            # allocation.
+            # If set to POOLED, allocation added per seat is pooled across the account. If set
+            # to INDIVIDUAL, each seat in the subscription will have its own allocation.
             module Allocation
               extend MetronomeSDK::Internal::Type::Enum
 
@@ -5535,9 +5558,8 @@ module MetronomeSDK
             sig { returns(String) }
             attr_accessor :subscription_id
 
-            # If set to POOLED, allocation added per seat is pooled across the account. (BETA)
-            # If set to INDIVIDUAL, each seat in the subscription will have its own
-            # allocation.
+            # If set to POOLED, allocation added per seat is pooled across the account. If set
+            # to INDIVIDUAL, each seat in the subscription will have its own allocation.
             sig do
               returns(
                 T.nilable(
@@ -5569,9 +5591,8 @@ module MetronomeSDK
               apply_seat_increase_config:,
               # ID of the subscription to configure on the recurring commit/credit.
               subscription_id:,
-              # If set to POOLED, allocation added per seat is pooled across the account. (BETA)
-              # If set to INDIVIDUAL, each seat in the subscription will have its own
-              # allocation.
+              # If set to POOLED, allocation added per seat is pooled across the account. If set
+              # to INDIVIDUAL, each seat in the subscription will have its own allocation.
               allocation: nil
             )
             end
@@ -5615,9 +5636,8 @@ module MetronomeSDK
               end
             end
 
-            # If set to POOLED, allocation added per seat is pooled across the account. (BETA)
-            # If set to INDIVIDUAL, each seat in the subscription will have its own
-            # allocation.
+            # If set to POOLED, allocation added per seat is pooled across the account. If set
+            # to INDIVIDUAL, each seat in the subscription will have its own allocation.
             module Allocation
               extend MetronomeSDK::Internal::Type::Enum
 
@@ -5925,6 +5945,164 @@ module MetronomeSDK
               override.returns({ gcp_account_id: String, gcp_offer_id: String })
             end
             def to_hash
+            end
+          end
+        end
+
+        class RevenueSystemConfiguration < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
+          # How revenue recognition records should be delivered to the revenue system. Do
+          # not specify if using revenue_system_configuration_id.
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration::DeliveryMethod::OrSymbol
+              )
+            )
+          end
+          attr_reader :delivery_method
+
+          sig do
+            params(
+              delivery_method:
+                MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration::DeliveryMethod::OrSymbol
+            ).void
+          end
+          attr_writer :delivery_method
+
+          # The system that is providing services for revenue recognition. Do not specify if
+          # using revenue_system_configuration_id.
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration::Provider::OrSymbol
+              )
+            )
+          end
+          attr_reader :provider
+
+          sig do
+            params(
+              provider:
+                MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration::Provider::OrSymbol
+            ).void
+          end
+          attr_writer :provider
+
+          # The Metronome ID of the revenue system configuration. Use when a customer has
+          # multiple configurations with the same provider and delivery method. Otherwise,
+          # specify the provider and delivery_method.
+          sig { returns(T.nilable(String)) }
+          attr_reader :revenue_system_configuration_id
+
+          sig { params(revenue_system_configuration_id: String).void }
+          attr_writer :revenue_system_configuration_id
+
+          # The revenue system configuration associated with a contract. Provide either an
+          # ID or the provider and delivery method.
+          sig do
+            params(
+              delivery_method:
+                MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration::DeliveryMethod::OrSymbol,
+              provider:
+                MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration::Provider::OrSymbol,
+              revenue_system_configuration_id: String
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # How revenue recognition records should be delivered to the revenue system. Do
+            # not specify if using revenue_system_configuration_id.
+            delivery_method: nil,
+            # The system that is providing services for revenue recognition. Do not specify if
+            # using revenue_system_configuration_id.
+            provider: nil,
+            # The Metronome ID of the revenue system configuration. Use when a customer has
+            # multiple configurations with the same provider and delivery method. Otherwise,
+            # specify the provider and delivery_method.
+            revenue_system_configuration_id: nil
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                delivery_method:
+                  MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration::DeliveryMethod::OrSymbol,
+                provider:
+                  MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration::Provider::OrSymbol,
+                revenue_system_configuration_id: String
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # How revenue recognition records should be delivered to the revenue system. Do
+          # not specify if using revenue_system_configuration_id.
+          module DeliveryMethod
+            extend MetronomeSDK::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration::DeliveryMethod
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            DIRECT_TO_BILLING_PROVIDER =
+              T.let(
+                :direct_to_billing_provider,
+                MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration::DeliveryMethod::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration::DeliveryMethod::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # The system that is providing services for revenue recognition. Do not specify if
+          # using revenue_system_configuration_id.
+          module Provider
+            extend MetronomeSDK::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration::Provider
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            NETSUITE =
+              T.let(
+                :netsuite,
+                MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration::Provider::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  MetronomeSDK::V1::ContractCreateParams::RevenueSystemConfiguration::Provider::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
             end
           end
         end
@@ -6526,8 +6704,8 @@ module MetronomeSDK
           # QUANTITY_ONLY. **QUANTITY_ONLY**: The subscription quantity is specified
           # directly on the subscription. `initial_quantity` must be provided with this
           # option. Compatible with recurring commits/credits that use POOLED allocation.
-          # **SEAT_BASED**: (BETA) Use when you want to pass specific seat identifiers (e.g.
-          # add user_123) to increment and decrement a subscription quantity, rather than
+          # **SEAT_BASED**: Use when you want to pass specific seat identifiers (e.g. add
+          # user_123) to increment and decrement a subscription quantity, rather than
           # directly providing the quantity. You must use a **SEAT_BASED** subscription to
           # use a linked recurring credit with an allocation per seat. `seat_config` must be
           # provided with this option.
@@ -6547,6 +6725,23 @@ module MetronomeSDK
             ).void
           end
           attr_writer :quantity_management_mode
+
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::V1::ContractCreateParams::Subscription::SeatConfig
+              )
+            )
+          end
+          attr_reader :seat_config
+
+          sig do
+            params(
+              seat_config:
+                MetronomeSDK::V1::ContractCreateParams::Subscription::SeatConfig::OrHash
+            ).void
+          end
+          attr_writer :seat_config
 
           # Inclusive start time for the subscription. If not provided, defaults to contract
           # start date
@@ -6579,6 +6774,8 @@ module MetronomeSDK
               name: String,
               quantity_management_mode:
                 MetronomeSDK::V1::ContractCreateParams::Subscription::QuantityManagementMode::OrSymbol,
+              seat_config:
+                MetronomeSDK::V1::ContractCreateParams::Subscription::SeatConfig::OrHash,
               starting_at: Time,
               temporary_id: String
             ).returns(T.attached_class)
@@ -6601,12 +6798,13 @@ module MetronomeSDK
             # QUANTITY_ONLY. **QUANTITY_ONLY**: The subscription quantity is specified
             # directly on the subscription. `initial_quantity` must be provided with this
             # option. Compatible with recurring commits/credits that use POOLED allocation.
-            # **SEAT_BASED**: (BETA) Use when you want to pass specific seat identifiers (e.g.
-            # add user_123) to increment and decrement a subscription quantity, rather than
+            # **SEAT_BASED**: Use when you want to pass specific seat identifiers (e.g. add
+            # user_123) to increment and decrement a subscription quantity, rather than
             # directly providing the quantity. You must use a **SEAT_BASED** subscription to
             # use a linked recurring credit with an allocation per seat. `seat_config` must be
             # provided with this option.
             quantity_management_mode: nil,
+            seat_config: nil,
             # Inclusive start time for the subscription. If not provided, defaults to contract
             # start date
             starting_at: nil,
@@ -6632,6 +6830,8 @@ module MetronomeSDK
                 name: String,
                 quantity_management_mode:
                   MetronomeSDK::V1::ContractCreateParams::Subscription::QuantityManagementMode::OrSymbol,
+                seat_config:
+                  MetronomeSDK::V1::ContractCreateParams::Subscription::SeatConfig,
                 starting_at: Time,
                 temporary_id: String
               }
@@ -6884,8 +7084,8 @@ module MetronomeSDK
           # QUANTITY_ONLY. **QUANTITY_ONLY**: The subscription quantity is specified
           # directly on the subscription. `initial_quantity` must be provided with this
           # option. Compatible with recurring commits/credits that use POOLED allocation.
-          # **SEAT_BASED**: (BETA) Use when you want to pass specific seat identifiers (e.g.
-          # add user_123) to increment and decrement a subscription quantity, rather than
+          # **SEAT_BASED**: Use when you want to pass specific seat identifiers (e.g. add
+          # user_123) to increment and decrement a subscription quantity, rather than
           # directly providing the quantity. You must use a **SEAT_BASED** subscription to
           # use a linked recurring credit with an allocation per seat. `seat_config` must be
           # provided with this option.
@@ -6920,6 +7120,70 @@ module MetronomeSDK
               )
             end
             def self.values
+            end
+          end
+
+          class SeatConfig < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V1::ContractCreateParams::Subscription::SeatConfig,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            # The initial assigned seats on this subscription.
+            sig { returns(T::Array[String]) }
+            attr_accessor :initial_seat_ids
+
+            # The property name, sent on usage events, that identifies the seat ID associated
+            # with the usage event. For example, the property name might be seat_id or
+            # user_id. The property must be set as a group key on billable metrics and a
+            # presentation/pricing group key on contract products. This allows linked
+            # recurring credits with an allocation per seat to be consumed by only one seat's
+            # usage.
+            sig { returns(String) }
+            attr_accessor :seat_group_key
+
+            # The initial amount of unassigned seats on this subscription.
+            sig { returns(T.nilable(Float)) }
+            attr_reader :initial_unassigned_seats
+
+            sig { params(initial_unassigned_seats: Float).void }
+            attr_writer :initial_unassigned_seats
+
+            sig do
+              params(
+                initial_seat_ids: T::Array[String],
+                seat_group_key: String,
+                initial_unassigned_seats: Float
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # The initial assigned seats on this subscription.
+              initial_seat_ids:,
+              # The property name, sent on usage events, that identifies the seat ID associated
+              # with the usage event. For example, the property name might be seat_id or
+              # user_id. The property must be set as a group key on billable metrics and a
+              # presentation/pricing group key on contract products. This allows linked
+              # recurring credits with an allocation per seat to be consumed by only one seat's
+              # usage.
+              seat_group_key:,
+              # The initial amount of unassigned seats on this subscription.
+              initial_unassigned_seats: nil
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  initial_seat_ids: T::Array[String],
+                  seat_group_key: String,
+                  initial_unassigned_seats: Float
+                }
+              )
+            end
+            def to_hash
             end
           end
         end

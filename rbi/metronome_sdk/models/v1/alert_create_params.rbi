@@ -129,6 +129,20 @@ module MetronomeSDK
         sig { params(plan_id: String).void }
         attr_writer :plan_id
 
+        # Required for `low_remaining_seat_balance_reached` notifications. The alert is
+        # scoped to this seat group key-value pair.
+        sig do
+          returns(T.nilable(MetronomeSDK::V1::AlertCreateParams::SeatFilter))
+        end
+        attr_reader :seat_filter
+
+        sig do
+          params(
+            seat_filter: MetronomeSDK::V1::AlertCreateParams::SeatFilter::OrHash
+          ).void
+        end
+        attr_writer :seat_filter
+
         # Prevents the creation of duplicates. If a request to create a record is made
         # with a previously used uniqueness key, a new record will not be created and the
         # request will fail with a 409 error.
@@ -157,6 +171,8 @@ module MetronomeSDK
               T::Array[MetronomeSDK::V1::AlertCreateParams::GroupValue::OrHash],
             invoice_types_filter: T::Array[String],
             plan_id: String,
+            seat_filter:
+              MetronomeSDK::V1::AlertCreateParams::SeatFilter::OrHash,
             uniqueness_key: String,
             request_options: MetronomeSDK::RequestOptions::OrHash
           ).returns(T.attached_class)
@@ -201,6 +217,9 @@ module MetronomeSDK
           # If provided, will create this threshold notification for this specific plan. To
           # create a notification for all customers, do not specify a `plan_id`.
           plan_id: nil,
+          # Required for `low_remaining_seat_balance_reached` notifications. The alert is
+          # scoped to this seat group key-value pair.
+          seat_filter: nil,
           # Prevents the creation of duplicates. If a request to create a record is made
           # with a previously used uniqueness key, a new record will not be created and the
           # request will fail with a 409 error.
@@ -229,6 +248,7 @@ module MetronomeSDK
                 T::Array[MetronomeSDK::V1::AlertCreateParams::GroupValue],
               invoice_types_filter: T::Array[String],
               plan_id: String,
+              seat_filter: MetronomeSDK::V1::AlertCreateParams::SeatFilter,
               uniqueness_key: String,
               request_options: MetronomeSDK::RequestOptions
             }
@@ -315,6 +335,11 @@ module MetronomeSDK
           INVOICE_TOTAL_REACHED =
             T.let(
               :invoice_total_reached,
+              MetronomeSDK::V1::AlertCreateParams::AlertType::TaggedSymbol
+            )
+          LOW_REMAINING_SEAT_BALANCE_REACHED =
+            T.let(
+              :low_remaining_seat_balance_reached,
               MetronomeSDK::V1::AlertCreateParams::AlertType::TaggedSymbol
             )
 
@@ -438,6 +463,50 @@ module MetronomeSDK
           end
 
           sig { override.returns({ key: String, value: String }) }
+          def to_hash
+          end
+        end
+
+        class SeatFilter < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::AlertCreateParams::SeatFilter,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
+          # The seat group key (e.g., "seat_id", "user_id")
+          sig { returns(String) }
+          attr_accessor :seat_group_key
+
+          # Optional seat identifier the alert is scoped to.
+          sig { returns(T.nilable(String)) }
+          attr_reader :seat_group_value
+
+          sig { params(seat_group_value: String).void }
+          attr_writer :seat_group_value
+
+          # Required for `low_remaining_seat_balance_reached` notifications. The alert is
+          # scoped to this seat group key-value pair.
+          sig do
+            params(seat_group_key: String, seat_group_value: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # The seat group key (e.g., "seat_id", "user_id")
+            seat_group_key:,
+            # Optional seat identifier the alert is scoped to.
+            seat_group_value: nil
+          )
+          end
+
+          sig do
+            override.returns(
+              { seat_group_key: String, seat_group_value: String }
+            )
+          end
           def to_hash
           end
         end

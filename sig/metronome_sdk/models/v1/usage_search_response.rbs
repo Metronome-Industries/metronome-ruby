@@ -189,7 +189,8 @@ module MetronomeSDK
             sql: String
           }
 
-          type aggregation_type = :COUNT | :LATEST | :MAX | :SUM | :UNIQUE
+          type aggregation_type =
+            :COUNT | :LATEST | :MAX | :SUM | :UNIQUE | :custom_sql
 
           module AggregationType
             extend MetronomeSDK::Internal::Type::Enum
@@ -199,6 +200,7 @@ module MetronomeSDK
             MAX: :MAX
             SUM: :SUM
             UNIQUE: :UNIQUE
+            CUSTOM_SQL: :custom_sql
 
             def self?.values: -> ::Array[MetronomeSDK::Models::V1::UsageSearchResponseItem::MatchedBillableMetric::aggregation_type]
           end

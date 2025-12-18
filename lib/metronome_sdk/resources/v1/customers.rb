@@ -63,7 +63,7 @@ module MetronomeSDK
         # For details on different billing configurations for different systems, review
         # the `/setCustomerBillingConfiguration` end-point.
         #
-        # @overload create(name:, billing_config: nil, custom_fields: nil, customer_billing_provider_configurations: nil, external_id: nil, ingest_aliases: nil, request_options: {})
+        # @overload create(name:, billing_config: nil, custom_fields: nil, customer_billing_provider_configurations: nil, customer_revenue_system_configurations: nil, external_id: nil, ingest_aliases: nil, request_options: {})
         #
         # @param name [String] This will be truncated to 160 characters if the provided name is longer.
         #
@@ -72,6 +72,8 @@ module MetronomeSDK
         # @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         #
         # @param customer_billing_provider_configurations [Array<MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration>]
+        #
+        # @param customer_revenue_system_configurations [Array<MetronomeSDK::Models::V1::CustomerCreateParams::CustomerRevenueSystemConfiguration>]
         #
         # @param external_id [String] (deprecated, use ingest_aliases instead) an alias that can be used to refer to t
         #
@@ -386,7 +388,7 @@ module MetronomeSDK
         # @param data [Array<MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data>]
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [nil]
+        # @return [MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsResponse]
         #
         # @see MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams
         def set_billing_configurations(params)
@@ -395,7 +397,7 @@ module MetronomeSDK
             method: :post,
             path: "v1/setCustomerBillingProviderConfigurations",
             body: parsed,
-            model: NilClass,
+            model: MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsResponse,
             options: options
           )
         end

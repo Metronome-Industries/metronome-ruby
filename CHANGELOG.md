@@ -1,5 +1,44 @@
 # Changelog
 
+## 2.2.0 (2025-12-18)
+
+Full Changelog: [v2.1.0...v2.2.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v2.1.0...v2.2.0)
+
+### Features
+
+* [ORCH-605] uses x-mint groups to enable conditional rendering of gated revenue system config apis ([22ceee8](https://github.com/Metronome-Industries/metronome-ruby/commit/22ceee870bf6b1642ff4283b37485be599658e47))
+* [ORCH-752] Update contract creation endpoints to allow setting revenue system configuration ([c2ca4f7](https://github.com/Metronome-Industries/metronome-ruby/commit/c2ca4f7ef46b0ead89b74a6e75a37a2ba55d9dc8))
+* Add `commit_transactions` to the body of `/upsertAvalaraCredentials` endpoint ([d99cab3](https://github.com/Metronome-Industries/metronome-ruby/commit/d99cab3cda4f2da4f80ec925c76583e31ea1763a))
+* Add `seat_filter` field to creation request and response parameters of the alert object ([165e3f0](https://github.com/Metronome-Industries/metronome-ruby/commit/165e3f0deab903b00fb7b4b235179b52a4f8093f))
+* add quantity to plan pricing adjustment response ([cbf2539](https://github.com/Metronome-Industries/metronome-ruby/commit/cbf2539bbab6fac9f0d4984cd0f88c9f6b0ceea2))
+* adds external_payment_id to ExternalInvoice ([ff5f18f](https://github.com/Metronome-Industries/metronome-ruby/commit/ff5f18f6b14e08b4c499689ca329b357a03177a9))
+* everything ([6188141](https://github.com/Metronome-Industries/metronome-ruby/commit/618814115adbe126a1b0b5a330244034a14c98f7))
+* GET-6845 get openapi specs ready for GA ([dc48f09](https://github.com/Metronome-Industries/metronome-ruby/commit/dc48f094c3283251a7f452aa4cc3db917ee7eba6))
+* include aggregation BM info from searchEvents ([ea0dfc0](https://github.com/Metronome-Industries/metronome-ruby/commit/ea0dfc021a244b0e0d3ebfbcdacfc053f5194b61))
+* ORCH-833/948/946/947 - updated the API to accept aws_customer_account_id all gated behind a feature flag ([4c2e292](https://github.com/Metronome-Industries/metronome-ruby/commit/4c2e2926ed8b6d0844b3670312f9780f14df2beb))
+* remove beta language, FF, stainless skip ([b504def](https://github.com/Metronome-Industries/metronome-ruby/commit/b504defa5b97aa3f622bbc746e76ac12691d1e90))
+* Return values for set customer billing configuration endpoint ([1641a74](https://github.com/Metronome-Industries/metronome-ruby/commit/1641a74439ebf507fb85f0478bbd056f6047c173))
+* update create alert api to allow LowRemainingSeatBalanceReached alert ([54a60e6](https://github.com/Metronome-Industries/metronome-ruby/commit/54a60e6027b889e61554b7a006c780e3a9fc4815))
+
+
+### Bug Fixes
+
+* better thread safety via early initializing SSL store during HTTP client creation ([341992d](https://github.com/Metronome-Industries/metronome-ruby/commit/341992d633b9191d24209713f5f6a734d2229601))
+* calling `break` out of streams should be instantaneous ([0db918b](https://github.com/Metronome-Industries/metronome-ruby/commit/0db918bb075b3420715faf0e73ef96cc01d58697))
+* issue where json.parse errors when receiving HTTP 204 with nobody ([7a27bb6](https://github.com/Metronome-Industries/metronome-ruby/commit/7a27bb648e886deaf33358cde8f5c3c5d80ccf42))
+
+
+### Chores
+
+* **client:** send user-agent header ([379e4e4](https://github.com/Metronome-Industries/metronome-ruby/commit/379e4e46eb858bce94633dd193fbc1526ea1c42c))
+* explicitly require "base64" gem ([5d4a7dc](https://github.com/Metronome-Industries/metronome-ruby/commit/5d4a7dc568346f2fc33ab39cf1517582923d98d5))
+* **internal:** codegen related update ([9878983](https://github.com/Metronome-Industries/metronome-ruby/commit/9878983e4d67b0d04d543d7a49afdd14e9eb4f73))
+
+
+### Documentation
+
+* document missing fields for schemas related to recurring credits and commits ([d848e15](https://github.com/Metronome-Industries/metronome-ruby/commit/d848e159b2046aebccea5d2b3915779adf891791))
+
 ## 2.1.0 (2025-10-31)
 
 Full Changelog: [v2.0.0...v2.1.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v2.0.0...v2.1.0)
