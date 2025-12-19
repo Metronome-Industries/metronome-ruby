@@ -151,6 +151,26 @@ module MetronomeSDK
               :subscription,
               MetronomeSDK::Models::V1::CustomFieldListKeysResponse::Entity::TaggedSymbol
             )
+          PACKAGE_COMMIT =
+            T.let(
+              :package_commit,
+              MetronomeSDK::Models::V1::CustomFieldListKeysResponse::Entity::TaggedSymbol
+            )
+          PACKAGE_CREDIT =
+            T.let(
+              :package_credit,
+              MetronomeSDK::Models::V1::CustomFieldListKeysResponse::Entity::TaggedSymbol
+            )
+          PACKAGE_SUBSCRIPTION =
+            T.let(
+              :package_subscription,
+              MetronomeSDK::Models::V1::CustomFieldListKeysResponse::Entity::TaggedSymbol
+            )
+          PACKAGE_SCHEDULED_CHARGE =
+            T.let(
+              :package_scheduled_charge,
+              MetronomeSDK::Models::V1::CustomFieldListKeysResponse::Entity::TaggedSymbol
+            )
 
           sig do
             override.returns(

@@ -156,6 +156,26 @@ module MetronomeSDK
               :subscription,
               MetronomeSDK::V1::CustomFieldDeleteValuesParams::Entity::TaggedSymbol
             )
+          PACKAGE_COMMIT =
+            T.let(
+              :package_commit,
+              MetronomeSDK::V1::CustomFieldDeleteValuesParams::Entity::TaggedSymbol
+            )
+          PACKAGE_CREDIT =
+            T.let(
+              :package_credit,
+              MetronomeSDK::V1::CustomFieldDeleteValuesParams::Entity::TaggedSymbol
+            )
+          PACKAGE_SUBSCRIPTION =
+            T.let(
+              :package_subscription,
+              MetronomeSDK::V1::CustomFieldDeleteValuesParams::Entity::TaggedSymbol
+            )
+          PACKAGE_SCHEDULED_CHARGE =
+            T.let(
+              :package_scheduled_charge,
+              MetronomeSDK::V1::CustomFieldDeleteValuesParams::Entity::TaggedSymbol
+            )
 
           sig do
             override.returns(

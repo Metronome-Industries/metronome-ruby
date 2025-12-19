@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.3.0 (2025-12-19)
+
+Full Changelog: [v2.2.0...v2.3.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v2.2.0...v2.3.0)
+
+### Features
+
+* Add support for custom fields on package terms ([e6ca46b](https://github.com/Metronome-Industries/metronome-ruby/commit/e6ca46b3d30e047799c76d5b6e9407622c94f027))
+
 ## 2.2.0 (2025-12-18)
 
 Full Changelog: [v2.1.0...v2.2.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v2.1.0...v2.2.0)
