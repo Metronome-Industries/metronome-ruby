@@ -50,6 +50,10 @@ module MetronomeSDK
           RATE_CARD = :rate_card
           SCHEDULED_CHARGE = :scheduled_charge
           SUBSCRIPTION = :subscription
+          PACKAGE_COMMIT = :package_commit
+          PACKAGE_CREDIT = :package_credit
+          PACKAGE_SUBSCRIPTION = :package_subscription
+          PACKAGE_SCHEDULED_CHARGE = :package_scheduled_charge
 
           # @!method self.values
           #   @return [Array<Symbol>]
