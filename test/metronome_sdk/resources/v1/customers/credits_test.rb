@@ -64,8 +64,10 @@ class MetronomeSDK::Test::Resources::V1::Customers::CreditsTest < MetronomeSDK::
         netsuite_sales_order_id: String | nil,
         priority: Float | nil,
         rate_type: MetronomeSDK::Credit::RateType | nil,
+        recurring_credit_id: String | nil,
         salesforce_opportunity_id: String | nil,
         specifiers: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::CommitSpecifier]) | nil,
+        subscription_config: MetronomeSDK::Credit::SubscriptionConfig | nil,
         uniqueness_key: String | nil
       }
     end
