@@ -1,5 +1,27 @@
 # Changelog
 
+## 2.3.0 (2026-01-08)
+
+Full Changelog: [v2.2.0...v2.3.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v2.2.0...v2.3.0)
+
+### Features
+
+* [ORCH-739] expose rev rec data in api ([1e5912a](https://github.com/Metronome-Industries/metronome-ruby/commit/1e5912a60dd3bbfb37740057beac9055f96911e4))
+* [ORCH-739] expose rev rec data in api ([ea99ea2](https://github.com/Metronome-Industries/metronome-ruby/commit/ea99ea27275244d1854395b0906bf1402f09308f))
+* add recurring commit ID and subscription config to commit/credit response schema ([87a38ed](https://github.com/Metronome-Industries/metronome-ruby/commit/87a38ed2828cac15073a4650347ff2b6d3c14935))
+* Add support for custom fields on package terms ([e6ca46b](https://github.com/Metronome-Industries/metronome-ruby/commit/e6ca46b3d30e047799c76d5b6e9407622c94f027))
+* Revert [ORCH-739] expose rev rec data in api ([656d322](https://github.com/Metronome-Industries/metronome-ruby/commit/656d322008021add127b8b6a76e70f3576090e2b))
+
+
+### Chores
+
+* **internal:** codegen related update ([3237dc8](https://github.com/Metronome-Industries/metronome-ruby/commit/3237dc894931f5a4a4504f545f46be1a0d9b8841))
+
+
+### Documentation
+
+* prominently feature MCP server setup in root SDK readmes ([353dc18](https://github.com/Metronome-Industries/metronome-ruby/commit/353dc181c9ce9b55c3e588849391c257ca6e79d8))
+
 ## 2.2.0 (2025-12-18)
 
 Full Changelog: [v2.1.0...v2.2.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v2.1.0...v2.2.0)
