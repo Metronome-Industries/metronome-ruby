@@ -13,6 +13,7 @@ module MetronomeSDK
           fiat_credit_type: MetronomeSDK::CreditTypeData,
           invoice_id: String,
           payment_gateway: MetronomeSDK::V1::Payment::PaymentGateway,
+          revenue_system_payments: ::Array[MetronomeSDK::V1::Payment::RevenueSystemPayment],
           status: MetronomeSDK::Models::V1::payment_status,
           updated_at: Time
         }
@@ -60,6 +61,12 @@ module MetronomeSDK
           MetronomeSDK::V1::Payment::PaymentGateway
         ) -> MetronomeSDK::V1::Payment::PaymentGateway
 
+        attr_reader revenue_system_payments: ::Array[MetronomeSDK::V1::Payment::RevenueSystemPayment]?
+
+        def revenue_system_payments=: (
+          ::Array[MetronomeSDK::V1::Payment::RevenueSystemPayment]
+        ) -> ::Array[MetronomeSDK::V1::Payment::RevenueSystemPayment]
+
         attr_reader status: MetronomeSDK::Models::V1::payment_status?
 
         def status=: (
@@ -81,6 +88,7 @@ module MetronomeSDK
           ?fiat_credit_type: MetronomeSDK::CreditTypeData,
           ?invoice_id: String,
           ?payment_gateway: MetronomeSDK::V1::Payment::PaymentGateway,
+          ?revenue_system_payments: ::Array[MetronomeSDK::V1::Payment::RevenueSystemPayment],
           ?status: MetronomeSDK::Models::V1::payment_status,
           ?updated_at: Time
         ) -> void
@@ -96,6 +104,7 @@ module MetronomeSDK
           fiat_credit_type: MetronomeSDK::CreditTypeData,
           invoice_id: String,
           payment_gateway: MetronomeSDK::V1::Payment::PaymentGateway,
+          revenue_system_payments: ::Array[MetronomeSDK::V1::Payment::RevenueSystemPayment],
           status: MetronomeSDK::Models::V1::payment_status,
           updated_at: Time
         }
@@ -191,6 +200,42 @@ module MetronomeSDK
 
             def self?.values: -> ::Array[MetronomeSDK::Models::V1::Payment::PaymentGateway::type_]
           end
+        end
+
+        type revenue_system_payment =
+          {
+            revenue_system_provider: String,
+            sync_status: String,
+            error_message: String,
+            revenue_system_external_payment_id: String
+          }
+
+        class RevenueSystemPayment < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor revenue_system_provider: String
+
+          attr_accessor sync_status: String
+
+          attr_reader error_message: String?
+
+          def error_message=: (String) -> String
+
+          attr_reader revenue_system_external_payment_id: String?
+
+          def revenue_system_external_payment_id=: (String) -> String
+
+          def initialize: (
+            revenue_system_provider: String,
+            sync_status: String,
+            ?error_message: String,
+            ?revenue_system_external_payment_id: String
+          ) -> void
+
+          def to_hash: -> {
+            revenue_system_provider: String,
+            sync_status: String,
+            error_message: String,
+            revenue_system_external_payment_id: String
+          }
         end
       end
     end

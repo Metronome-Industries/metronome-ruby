@@ -70,10 +70,12 @@ class MetronomeSDK::Test::Resources::V1::Customers::CommitsTest < MetronomeSDK::
         netsuite_sales_order_id: String | nil,
         priority: Float | nil,
         rate_type: MetronomeSDK::Commit::RateType | nil,
+        recurring_commit_id: String | nil,
         rolled_over_from: MetronomeSDK::Commit::RolledOverFrom | nil,
         rollover_fraction: Float | nil,
         salesforce_opportunity_id: String | nil,
         specifiers: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::CommitSpecifier]) | nil,
+        subscription_config: MetronomeSDK::Commit::SubscriptionConfig | nil,
         uniqueness_key: String | nil
       }
     end

@@ -33,6 +33,7 @@ class MetronomeSDK::Test::Resources::V1::PaymentsTest < MetronomeSDK::Test::Reso
         fiat_credit_type: MetronomeSDK::CreditTypeData | nil,
         invoice_id: String | nil,
         payment_gateway: MetronomeSDK::V1::Payment::PaymentGateway | nil,
+        revenue_system_payments: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Payment::RevenueSystemPayment]) | nil,
         status: MetronomeSDK::V1::PaymentStatus | nil,
         updated_at: Time | nil
       }

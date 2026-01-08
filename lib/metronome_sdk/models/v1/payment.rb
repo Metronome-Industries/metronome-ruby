@@ -55,6 +55,12 @@ module MetronomeSDK
         #   @return [MetronomeSDK::Models::V1::Payment::PaymentGateway, nil]
         optional :payment_gateway, -> { MetronomeSDK::V1::Payment::PaymentGateway }
 
+        # @!attribute revenue_system_payments
+        #
+        #   @return [Array<MetronomeSDK::Models::V1::Payment::RevenueSystemPayment>, nil]
+        optional :revenue_system_payments,
+                 -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Payment::RevenueSystemPayment] }
+
         # @!attribute status
         #
         #   @return [Symbol, MetronomeSDK::Models::V1::PaymentStatus, nil]
@@ -65,7 +71,7 @@ module MetronomeSDK
         #   @return [Time, nil]
         optional :updated_at, Time
 
-        # @!method initialize(id:, amount: nil, amount_paid: nil, contract_id: nil, created_at: nil, customer_id: nil, error_message: nil, fiat_credit_type: nil, invoice_id: nil, payment_gateway: nil, status: nil, updated_at: nil)
+        # @!method initialize(id:, amount: nil, amount_paid: nil, contract_id: nil, created_at: nil, customer_id: nil, error_message: nil, fiat_credit_type: nil, invoice_id: nil, payment_gateway: nil, revenue_system_payments: nil, status: nil, updated_at: nil)
         #   @param id [String]
         #   @param amount [Float]
         #   @param amount_paid [Float]
@@ -76,6 +82,7 @@ module MetronomeSDK
         #   @param fiat_credit_type [MetronomeSDK::Models::CreditTypeData]
         #   @param invoice_id [String]
         #   @param payment_gateway [MetronomeSDK::Models::V1::Payment::PaymentGateway]
+        #   @param revenue_system_payments [Array<MetronomeSDK::Models::V1::Payment::RevenueSystemPayment>]
         #   @param status [Symbol, MetronomeSDK::Models::V1::PaymentStatus]
         #   @param updated_at [Time]
 
@@ -150,6 +157,38 @@ module MetronomeSDK
             # @!method self.values
             #   @return [Array<Symbol>]
           end
+        end
+
+        class RevenueSystemPayment < MetronomeSDK::Internal::Type::BaseModel
+          # @!attribute revenue_system_provider
+          #
+          #   @return [String]
+          required :revenue_system_provider, String
+
+          # @!attribute sync_status
+          #
+          #   @return [String]
+          required :sync_status, String
+
+          # @!attribute error_message
+          #   The error message from the revenue system, if available.
+          #
+          #   @return [String, nil]
+          optional :error_message, String
+
+          # @!attribute revenue_system_external_payment_id
+          #
+          #   @return [String, nil]
+          optional :revenue_system_external_payment_id, String
+
+          # @!method initialize(revenue_system_provider:, sync_status:, error_message: nil, revenue_system_external_payment_id: nil)
+          #   @param revenue_system_provider [String]
+          #
+          #   @param sync_status [String]
+          #
+          #   @param error_message [String] The error message from the revenue system, if available.
+          #
+          #   @param revenue_system_external_payment_id [String]
         end
       end
     end

@@ -19,8 +19,10 @@ module MetronomeSDK
         netsuite_sales_order_id: String,
         priority: Float,
         rate_type: MetronomeSDK::Models::Credit::rate_type,
+        recurring_credit_id: String,
         salesforce_opportunity_id: String,
         specifiers: ::Array[MetronomeSDK::CommitSpecifier],
+        subscription_config: MetronomeSDK::Credit::SubscriptionConfig,
         uniqueness_key: String
       }
 
@@ -97,6 +99,10 @@ module MetronomeSDK
         MetronomeSDK::Models::Credit::rate_type
       ) -> MetronomeSDK::Models::Credit::rate_type
 
+      attr_reader recurring_credit_id: String?
+
+      def recurring_credit_id=: (String) -> String
+
       attr_reader salesforce_opportunity_id: String?
 
       def salesforce_opportunity_id=: (String) -> String
@@ -106,6 +112,12 @@ module MetronomeSDK
       def specifiers=: (
         ::Array[MetronomeSDK::CommitSpecifier]
       ) -> ::Array[MetronomeSDK::CommitSpecifier]
+
+      attr_reader subscription_config: MetronomeSDK::Credit::SubscriptionConfig?
+
+      def subscription_config=: (
+        MetronomeSDK::Credit::SubscriptionConfig
+      ) -> MetronomeSDK::Credit::SubscriptionConfig
 
       attr_reader uniqueness_key: String?
 
@@ -129,8 +141,10 @@ module MetronomeSDK
         ?netsuite_sales_order_id: String,
         ?priority: Float,
         ?rate_type: MetronomeSDK::Models::Credit::rate_type,
+        ?recurring_credit_id: String,
         ?salesforce_opportunity_id: String,
         ?specifiers: ::Array[MetronomeSDK::CommitSpecifier],
+        ?subscription_config: MetronomeSDK::Credit::SubscriptionConfig,
         ?uniqueness_key: String
       ) -> void
 
@@ -152,8 +166,10 @@ module MetronomeSDK
         netsuite_sales_order_id: String,
         priority: Float,
         rate_type: MetronomeSDK::Models::Credit::rate_type,
+        recurring_credit_id: String,
         salesforce_opportunity_id: String,
         specifiers: ::Array[MetronomeSDK::CommitSpecifier],
+        subscription_config: MetronomeSDK::Credit::SubscriptionConfig,
         uniqueness_key: String
       }
 
@@ -543,6 +559,64 @@ module MetronomeSDK
         LIST_RATE: :LIST_RATE
 
         def self?.values: -> ::Array[MetronomeSDK::Models::Credit::rate_type]
+      end
+
+      type subscription_config =
+        {
+          allocation: MetronomeSDK::Models::Credit::SubscriptionConfig::allocation,
+          apply_seat_increase_config: MetronomeSDK::Credit::SubscriptionConfig::ApplySeatIncreaseConfig,
+          subscription_id: String
+        }
+
+      class SubscriptionConfig < MetronomeSDK::Internal::Type::BaseModel
+        attr_reader allocation: MetronomeSDK::Models::Credit::SubscriptionConfig::allocation?
+
+        def allocation=: (
+          MetronomeSDK::Models::Credit::SubscriptionConfig::allocation
+        ) -> MetronomeSDK::Models::Credit::SubscriptionConfig::allocation
+
+        attr_reader apply_seat_increase_config: MetronomeSDK::Credit::SubscriptionConfig::ApplySeatIncreaseConfig?
+
+        def apply_seat_increase_config=: (
+          MetronomeSDK::Credit::SubscriptionConfig::ApplySeatIncreaseConfig
+        ) -> MetronomeSDK::Credit::SubscriptionConfig::ApplySeatIncreaseConfig
+
+        attr_reader subscription_id: String?
+
+        def subscription_id=: (String) -> String
+
+        def initialize: (
+          ?allocation: MetronomeSDK::Models::Credit::SubscriptionConfig::allocation,
+          ?apply_seat_increase_config: MetronomeSDK::Credit::SubscriptionConfig::ApplySeatIncreaseConfig,
+          ?subscription_id: String
+        ) -> void
+
+        def to_hash: -> {
+          allocation: MetronomeSDK::Models::Credit::SubscriptionConfig::allocation,
+          apply_seat_increase_config: MetronomeSDK::Credit::SubscriptionConfig::ApplySeatIncreaseConfig,
+          subscription_id: String
+        }
+
+        type allocation = :INDIVIDUAL | :POOLED
+
+        module Allocation
+          extend MetronomeSDK::Internal::Type::Enum
+
+          INDIVIDUAL: :INDIVIDUAL
+          POOLED: :POOLED
+
+          def self?.values: -> ::Array[MetronomeSDK::Models::Credit::SubscriptionConfig::allocation]
+        end
+
+        type apply_seat_increase_config = { is_prorated: bool }
+
+        class ApplySeatIncreaseConfig < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor is_prorated: bool
+
+          def initialize: (is_prorated: bool) -> void
+
+          def to_hash: -> { is_prorated: bool }
+        end
       end
     end
   end

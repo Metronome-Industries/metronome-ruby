@@ -31,6 +31,7 @@ module MetronomeSDK
             plan_id: String,
             plan_name: String,
             reseller_royalty: MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty,
+            revenue_system_invoices: ::Array[MetronomeSDK::V1::Customers::Invoice::RevenueSystemInvoice]?,
             salesforce_opportunity_id: String,
             start_timestamp: Time,
             subtotal: Float
@@ -145,6 +146,8 @@ module MetronomeSDK
             MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty
           ) -> MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty
 
+          attr_accessor revenue_system_invoices: ::Array[MetronomeSDK::V1::Customers::Invoice::RevenueSystemInvoice]?
+
           attr_reader salesforce_opportunity_id: String?
 
           def salesforce_opportunity_id=: (String) -> String
@@ -185,6 +188,7 @@ module MetronomeSDK
             ?plan_id: String,
             ?plan_name: String,
             ?reseller_royalty: MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty,
+            ?revenue_system_invoices: ::Array[MetronomeSDK::V1::Customers::Invoice::RevenueSystemInvoice]?,
             ?salesforce_opportunity_id: String,
             ?start_timestamp: Time,
             ?subtotal: Float
@@ -218,6 +222,7 @@ module MetronomeSDK
             plan_id: String,
             plan_name: String,
             reseller_royalty: MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty,
+            revenue_system_invoices: ::Array[MetronomeSDK::V1::Customers::Invoice::RevenueSystemInvoice]?,
             salesforce_opportunity_id: String,
             start_timestamp: Time,
             subtotal: Float
@@ -1372,6 +1377,47 @@ module MetronomeSDK
 
               def to_hash: -> { gcp_account_id: String, gcp_offer_id: String }
             end
+          end
+
+          type revenue_system_invoice =
+            {
+              revenue_system_external_entity_type: String,
+              revenue_system_provider: String,
+              sync_status: String,
+              error_message: String,
+              revenue_system_external_entity_id: String
+            }
+
+          class RevenueSystemInvoice < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor revenue_system_external_entity_type: String
+
+            attr_accessor revenue_system_provider: String
+
+            attr_accessor sync_status: String
+
+            attr_reader error_message: String?
+
+            def error_message=: (String) -> String
+
+            attr_reader revenue_system_external_entity_id: String?
+
+            def revenue_system_external_entity_id=: (String) -> String
+
+            def initialize: (
+              revenue_system_external_entity_type: String,
+              revenue_system_provider: String,
+              sync_status: String,
+              ?error_message: String,
+              ?revenue_system_external_entity_id: String
+            ) -> void
+
+            def to_hash: -> {
+              revenue_system_external_entity_type: String,
+              revenue_system_provider: String,
+              sync_status: String,
+              error_message: String,
+              revenue_system_external_entity_id: String
+            }
           end
         end
       end

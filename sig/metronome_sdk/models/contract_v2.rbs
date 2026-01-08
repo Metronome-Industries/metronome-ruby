@@ -292,6 +292,7 @@ module MetronomeSDK
           netsuite_sales_order_id: String,
           priority: Float,
           rate_type: MetronomeSDK::Models::ContractV2::Commit::rate_type,
+          recurring_commit_id: String,
           rolled_over_from: MetronomeSDK::ContractV2::Commit::RolledOverFrom,
           rollover_fraction: Float,
           salesforce_opportunity_id: String,
@@ -390,6 +391,10 @@ module MetronomeSDK
           MetronomeSDK::Models::ContractV2::Commit::rate_type
         ) -> MetronomeSDK::Models::ContractV2::Commit::rate_type
 
+        attr_reader recurring_commit_id: String?
+
+        def recurring_commit_id=: (String) -> String
+
         attr_reader rolled_over_from: MetronomeSDK::ContractV2::Commit::RolledOverFrom?
 
         def rolled_over_from=: (
@@ -438,6 +443,7 @@ module MetronomeSDK
           ?netsuite_sales_order_id: String,
           ?priority: Float,
           ?rate_type: MetronomeSDK::Models::ContractV2::Commit::rate_type,
+          ?recurring_commit_id: String,
           ?rolled_over_from: MetronomeSDK::ContractV2::Commit::RolledOverFrom,
           ?rollover_fraction: Float,
           ?salesforce_opportunity_id: String,
@@ -467,6 +473,7 @@ module MetronomeSDK
           netsuite_sales_order_id: String,
           priority: Float,
           rate_type: MetronomeSDK::Models::ContractV2::Commit::rate_type,
+          recurring_commit_id: String,
           rolled_over_from: MetronomeSDK::ContractV2::Commit::RolledOverFrom,
           rollover_fraction: Float,
           salesforce_opportunity_id: String,
@@ -1650,6 +1657,7 @@ module MetronomeSDK
           name: String,
           netsuite_sales_order_id: String,
           priority: Float,
+          recurring_credit_id: String,
           salesforce_opportunity_id: String,
           specifiers: ::Array[MetronomeSDK::CommitSpecifier],
           subscription_config: MetronomeSDK::RecurringCommitSubscriptionConfig
@@ -1726,6 +1734,10 @@ module MetronomeSDK
 
         def priority=: (Float) -> Float
 
+        attr_reader recurring_credit_id: String?
+
+        def recurring_credit_id=: (String) -> String
+
         attr_reader salesforce_opportunity_id: String?
 
         def salesforce_opportunity_id=: (String) -> String
@@ -1760,6 +1772,7 @@ module MetronomeSDK
           ?name: String,
           ?netsuite_sales_order_id: String,
           ?priority: Float,
+          ?recurring_credit_id: String,
           ?salesforce_opportunity_id: String,
           ?specifiers: ::Array[MetronomeSDK::CommitSpecifier],
           ?subscription_config: MetronomeSDK::RecurringCommitSubscriptionConfig
@@ -1783,6 +1796,7 @@ module MetronomeSDK
           name: String,
           netsuite_sales_order_id: String,
           priority: Float,
+          recurring_credit_id: String,
           salesforce_opportunity_id: String,
           specifiers: ::Array[MetronomeSDK::CommitSpecifier],
           subscription_config: MetronomeSDK::RecurringCommitSubscriptionConfig

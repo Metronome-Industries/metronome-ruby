@@ -691,6 +691,13 @@ module MetronomeSDK
         end
         attr_writer :rate_type
 
+        # The ID of the recurring commit that created this commit
+        sig { returns(T.nilable(String)) }
+        attr_reader :recurring_commit_id
+
+        sig { params(recurring_commit_id: String).void }
+        attr_writer :recurring_commit_id
+
         sig do
           returns(T.nilable(MetronomeSDK::ContractV2::Commit::RolledOverFrom))
         end
@@ -787,6 +794,7 @@ module MetronomeSDK
             netsuite_sales_order_id: String,
             priority: Float,
             rate_type: MetronomeSDK::ContractV2::Commit::RateType::OrSymbol,
+            recurring_commit_id: String,
             rolled_over_from:
               MetronomeSDK::ContractV2::Commit::RolledOverFrom::OrHash,
             rollover_fraction: Float,
@@ -842,6 +850,8 @@ module MetronomeSDK
           # will apply first.
           priority: nil,
           rate_type: nil,
+          # The ID of the recurring commit that created this commit
+          recurring_commit_id: nil,
           rolled_over_from: nil,
           rollover_fraction: nil,
           # This field's availability is dependent on your client's configuration.
@@ -883,6 +893,7 @@ module MetronomeSDK
               priority: Float,
               rate_type:
                 MetronomeSDK::ContractV2::Commit::RateType::TaggedSymbol,
+              recurring_commit_id: String,
               rolled_over_from:
                 MetronomeSDK::ContractV2::Commit::RolledOverFrom,
               rollover_fraction: Float,
@@ -3307,6 +3318,13 @@ module MetronomeSDK
         sig { params(priority: Float).void }
         attr_writer :priority
 
+        # The ID of the recurring credit that created this credit
+        sig { returns(T.nilable(String)) }
+        attr_reader :recurring_credit_id
+
+        sig { params(recurring_credit_id: String).void }
+        attr_writer :recurring_credit_id
+
         # This field's availability is dependent on your client's configuration.
         sig { returns(T.nilable(String)) }
         attr_reader :salesforce_opportunity_id
@@ -3372,6 +3390,7 @@ module MetronomeSDK
             name: String,
             netsuite_sales_order_id: String,
             priority: Float,
+            recurring_credit_id: String,
             salesforce_opportunity_id: String,
             specifiers: T::Array[MetronomeSDK::CommitSpecifier::OrHash],
             subscription_config:
@@ -3416,6 +3435,8 @@ module MetronomeSDK
           # If multiple credits or commits are applicable, the one with the lower priority
           # will apply first.
           priority: nil,
+          # The ID of the recurring credit that created this credit
+          recurring_credit_id: nil,
           # This field's availability is dependent on your client's configuration.
           salesforce_opportunity_id: nil,
           # List of filters that determine what kind of customer usage draws down a commit
@@ -3449,6 +3470,7 @@ module MetronomeSDK
               name: String,
               netsuite_sales_order_id: String,
               priority: Float,
+              recurring_credit_id: String,
               salesforce_opportunity_id: String,
               specifiers: T::Array[MetronomeSDK::CommitSpecifier],
               subscription_config:

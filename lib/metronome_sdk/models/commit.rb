@@ -140,6 +140,13 @@ module MetronomeSDK
       #   @return [Symbol, MetronomeSDK::Models::Commit::RateType, nil]
       optional :rate_type, enum: -> { MetronomeSDK::Commit::RateType }
 
+      # @!attribute recurring_commit_id
+      #   The ID of the recurring commit that this commit was generated from, if
+      #   applicable.
+      #
+      #   @return [String, nil]
+      optional :recurring_commit_id, String
+
       # @!attribute rolled_over_from
       #
       #   @return [MetronomeSDK::Models::Commit::RolledOverFrom, nil]
@@ -164,6 +171,13 @@ module MetronomeSDK
       #   @return [Array<MetronomeSDK::Models::CommitSpecifier>, nil]
       optional :specifiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::CommitSpecifier] }
 
+      # @!attribute subscription_config
+      #   The subscription configuration for this commit, if it was generated from a
+      #   recurring commit with a subscription attached.
+      #
+      #   @return [MetronomeSDK::Models::Commit::SubscriptionConfig, nil]
+      optional :subscription_config, -> { MetronomeSDK::Commit::SubscriptionConfig }
+
       # @!attribute uniqueness_key
       #   Prevents the creation of duplicates. If a request to create a commit or credit
       #   is made with a uniqueness key that was previously used to create a commit or
@@ -173,7 +187,7 @@ module MetronomeSDK
       #   @return [String, nil]
       optional :uniqueness_key, String
 
-      # @!method initialize(id:, created_at:, product:, type:, access_schedule: nil, amount: nil, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, archived_at: nil, balance: nil, contract: nil, custom_fields: nil, description: nil, hierarchy_configuration: nil, invoice_contract: nil, invoice_schedule: nil, ledger: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil, rolled_over_from: nil, rollover_fraction: nil, salesforce_opportunity_id: nil, specifiers: nil, uniqueness_key: nil)
+      # @!method initialize(id:, created_at:, product:, type:, access_schedule: nil, amount: nil, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, archived_at: nil, balance: nil, contract: nil, custom_fields: nil, description: nil, hierarchy_configuration: nil, invoice_contract: nil, invoice_schedule: nil, ledger: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil, recurring_commit_id: nil, rolled_over_from: nil, rollover_fraction: nil, salesforce_opportunity_id: nil, specifiers: nil, subscription_config: nil, uniqueness_key: nil)
       #   Some parameter documentations has been truncated, see
       #   {MetronomeSDK::Models::Commit} for more details.
       #
@@ -221,6 +235,8 @@ module MetronomeSDK
       #
       #   @param rate_type [Symbol, MetronomeSDK::Models::Commit::RateType]
       #
+      #   @param recurring_commit_id [String] The ID of the recurring commit that this commit was generated from, if applicabl
+      #
       #   @param rolled_over_from [MetronomeSDK::Models::Commit::RolledOverFrom]
       #
       #   @param rollover_fraction [Float]
@@ -228,6 +244,8 @@ module MetronomeSDK
       #   @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
       #
       #   @param specifiers [Array<MetronomeSDK::Models::CommitSpecifier>] List of filters that determine what kind of customer usage draws down a commit o
+      #
+      #   @param subscription_config [MetronomeSDK::Models::Commit::SubscriptionConfig] The subscription configuration for this commit, if it was generated from a recur
       #
       #   @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a commit or credit i
 
@@ -933,6 +951,56 @@ module MetronomeSDK
         # @!method initialize(commit_id:, contract_id:)
         #   @param commit_id [String]
         #   @param contract_id [String]
+      end
+
+      # @see MetronomeSDK::Models::Commit#subscription_config
+      class SubscriptionConfig < MetronomeSDK::Internal::Type::BaseModel
+        # @!attribute allocation
+        #
+        #   @return [Symbol, MetronomeSDK::Models::Commit::SubscriptionConfig::Allocation, nil]
+        optional :allocation, enum: -> { MetronomeSDK::Commit::SubscriptionConfig::Allocation }
+
+        # @!attribute apply_seat_increase_config
+        #
+        #   @return [MetronomeSDK::Models::Commit::SubscriptionConfig::ApplySeatIncreaseConfig, nil]
+        optional :apply_seat_increase_config,
+                 -> { MetronomeSDK::Commit::SubscriptionConfig::ApplySeatIncreaseConfig }
+
+        # @!attribute subscription_id
+        #
+        #   @return [String, nil]
+        optional :subscription_id, String
+
+        # @!method initialize(allocation: nil, apply_seat_increase_config: nil, subscription_id: nil)
+        #   The subscription configuration for this commit, if it was generated from a
+        #   recurring commit with a subscription attached.
+        #
+        #   @param allocation [Symbol, MetronomeSDK::Models::Commit::SubscriptionConfig::Allocation]
+        #   @param apply_seat_increase_config [MetronomeSDK::Models::Commit::SubscriptionConfig::ApplySeatIncreaseConfig]
+        #   @param subscription_id [String]
+
+        # @see MetronomeSDK::Models::Commit::SubscriptionConfig#allocation
+        module Allocation
+          extend MetronomeSDK::Internal::Type::Enum
+
+          INDIVIDUAL = :INDIVIDUAL
+          POOLED = :POOLED
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        # @see MetronomeSDK::Models::Commit::SubscriptionConfig#apply_seat_increase_config
+        class ApplySeatIncreaseConfig < MetronomeSDK::Internal::Type::BaseModel
+          # @!attribute is_prorated
+          #   Indicates whether a mid-period seat increase should be prorated.
+          #
+          #   @return [Boolean]
+          required :is_prorated, MetronomeSDK::Internal::Type::Boolean
+
+          # @!method initialize(is_prorated:)
+          #   @param is_prorated [Boolean] Indicates whether a mid-period seat increase should be prorated.
+        end
       end
     end
   end

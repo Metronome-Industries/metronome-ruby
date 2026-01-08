@@ -195,6 +195,14 @@ module MetronomeSDK
       sig { params(rate_type: MetronomeSDK::Commit::RateType::OrSymbol).void }
       attr_writer :rate_type
 
+      # The ID of the recurring commit that this commit was generated from, if
+      # applicable.
+      sig { returns(T.nilable(String)) }
+      attr_reader :recurring_commit_id
+
+      sig { params(recurring_commit_id: String).void }
+      attr_writer :recurring_commit_id
+
       sig { returns(T.nilable(MetronomeSDK::Commit::RolledOverFrom)) }
       attr_reader :rolled_over_from
 
@@ -228,6 +236,18 @@ module MetronomeSDK
         params(specifiers: T::Array[MetronomeSDK::CommitSpecifier::OrHash]).void
       end
       attr_writer :specifiers
+
+      # The subscription configuration for this commit, if it was generated from a
+      # recurring commit with a subscription attached.
+      sig { returns(T.nilable(MetronomeSDK::Commit::SubscriptionConfig)) }
+      attr_reader :subscription_config
+
+      sig do
+        params(
+          subscription_config: MetronomeSDK::Commit::SubscriptionConfig::OrHash
+        ).void
+      end
+      attr_writer :subscription_config
 
       # Prevents the creation of duplicates. If a request to create a commit or credit
       # is made with a uniqueness key that was previously used to create a commit or
@@ -282,10 +302,12 @@ module MetronomeSDK
           netsuite_sales_order_id: String,
           priority: Float,
           rate_type: MetronomeSDK::Commit::RateType::OrSymbol,
+          recurring_commit_id: String,
           rolled_over_from: MetronomeSDK::Commit::RolledOverFrom::OrHash,
           rollover_fraction: Float,
           salesforce_opportunity_id: String,
           specifiers: T::Array[MetronomeSDK::CommitSpecifier::OrHash],
+          subscription_config: MetronomeSDK::Commit::SubscriptionConfig::OrHash,
           uniqueness_key: String
         ).returns(T.attached_class)
       end
@@ -339,6 +361,9 @@ module MetronomeSDK
         # will apply first.
         priority: nil,
         rate_type: nil,
+        # The ID of the recurring commit that this commit was generated from, if
+        # applicable.
+        recurring_commit_id: nil,
         rolled_over_from: nil,
         rollover_fraction: nil,
         # This field's availability is dependent on your client's configuration.
@@ -347,6 +372,9 @@ module MetronomeSDK
         # or credit. A customer's usage needs to meet the condition of at least one of the
         # specifiers to contribute to a commit's or credit's drawdown.
         specifiers: nil,
+        # The subscription configuration for this commit, if it was generated from a
+        # recurring commit with a subscription attached.
+        subscription_config: nil,
         # Prevents the creation of duplicates. If a request to create a commit or credit
         # is made with a uniqueness key that was previously used to create a commit or
         # credit, a new record will not be created and the request will fail with a 409
@@ -380,10 +408,12 @@ module MetronomeSDK
             netsuite_sales_order_id: String,
             priority: Float,
             rate_type: MetronomeSDK::Commit::RateType::TaggedSymbol,
+            recurring_commit_id: String,
             rolled_over_from: MetronomeSDK::Commit::RolledOverFrom,
             rollover_fraction: Float,
             salesforce_opportunity_id: String,
             specifiers: T::Array[MetronomeSDK::CommitSpecifier],
+            subscription_config: MetronomeSDK::Commit::SubscriptionConfig,
             uniqueness_key: String
           }
         )
@@ -1791,6 +1821,147 @@ module MetronomeSDK
 
         sig { override.returns({ commit_id: String, contract_id: String }) }
         def to_hash
+        end
+      end
+
+      class SubscriptionConfig < MetronomeSDK::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              MetronomeSDK::Commit::SubscriptionConfig,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
+
+        sig do
+          returns(
+            T.nilable(
+              MetronomeSDK::Commit::SubscriptionConfig::Allocation::TaggedSymbol
+            )
+          )
+        end
+        attr_reader :allocation
+
+        sig do
+          params(
+            allocation:
+              MetronomeSDK::Commit::SubscriptionConfig::Allocation::OrSymbol
+          ).void
+        end
+        attr_writer :allocation
+
+        sig do
+          returns(
+            T.nilable(
+              MetronomeSDK::Commit::SubscriptionConfig::ApplySeatIncreaseConfig
+            )
+          )
+        end
+        attr_reader :apply_seat_increase_config
+
+        sig do
+          params(
+            apply_seat_increase_config:
+              MetronomeSDK::Commit::SubscriptionConfig::ApplySeatIncreaseConfig::OrHash
+          ).void
+        end
+        attr_writer :apply_seat_increase_config
+
+        sig { returns(T.nilable(String)) }
+        attr_reader :subscription_id
+
+        sig { params(subscription_id: String).void }
+        attr_writer :subscription_id
+
+        # The subscription configuration for this commit, if it was generated from a
+        # recurring commit with a subscription attached.
+        sig do
+          params(
+            allocation:
+              MetronomeSDK::Commit::SubscriptionConfig::Allocation::OrSymbol,
+            apply_seat_increase_config:
+              MetronomeSDK::Commit::SubscriptionConfig::ApplySeatIncreaseConfig::OrHash,
+            subscription_id: String
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          allocation: nil,
+          apply_seat_increase_config: nil,
+          subscription_id: nil
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              allocation:
+                MetronomeSDK::Commit::SubscriptionConfig::Allocation::TaggedSymbol,
+              apply_seat_increase_config:
+                MetronomeSDK::Commit::SubscriptionConfig::ApplySeatIncreaseConfig,
+              subscription_id: String
+            }
+          )
+        end
+        def to_hash
+        end
+
+        module Allocation
+          extend MetronomeSDK::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                MetronomeSDK::Commit::SubscriptionConfig::Allocation
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          INDIVIDUAL =
+            T.let(
+              :INDIVIDUAL,
+              MetronomeSDK::Commit::SubscriptionConfig::Allocation::TaggedSymbol
+            )
+          POOLED =
+            T.let(
+              :POOLED,
+              MetronomeSDK::Commit::SubscriptionConfig::Allocation::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                MetronomeSDK::Commit::SubscriptionConfig::Allocation::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+
+        class ApplySeatIncreaseConfig < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::Commit::SubscriptionConfig::ApplySeatIncreaseConfig,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
+          # Indicates whether a mid-period seat increase should be prorated.
+          sig { returns(T::Boolean) }
+          attr_accessor :is_prorated
+
+          sig { params(is_prorated: T::Boolean).returns(T.attached_class) }
+          def self.new(
+            # Indicates whether a mid-period seat increase should be prorated.
+            is_prorated:
+          )
+          end
+
+          sig { override.returns({ is_prorated: T::Boolean }) }
+          def to_hash
+          end
         end
       end
     end

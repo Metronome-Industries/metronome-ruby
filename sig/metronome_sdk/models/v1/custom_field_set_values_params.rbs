@@ -52,6 +52,10 @@ module MetronomeSDK
           | :rate_card
           | :scheduled_charge
           | :subscription
+          | :package_commit
+          | :package_credit
+          | :package_subscription
+          | :package_scheduled_charge
 
         module Entity
           extend MetronomeSDK::Internal::Type::Enum
@@ -74,6 +78,10 @@ module MetronomeSDK
           RATE_CARD: :rate_card
           SCHEDULED_CHARGE: :scheduled_charge
           SUBSCRIPTION: :subscription
+          PACKAGE_COMMIT: :package_commit
+          PACKAGE_CREDIT: :package_credit
+          PACKAGE_SUBSCRIPTION: :package_subscription
+          PACKAGE_SCHEDULED_CHARGE: :package_scheduled_charge
 
           def self?.values: -> ::Array[MetronomeSDK::Models::V1::CustomFieldSetValuesParams::entity]
         end

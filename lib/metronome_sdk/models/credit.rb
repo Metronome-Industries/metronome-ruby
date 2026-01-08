@@ -104,6 +104,13 @@ module MetronomeSDK
       #   @return [Symbol, MetronomeSDK::Models::Credit::RateType, nil]
       optional :rate_type, enum: -> { MetronomeSDK::Credit::RateType }
 
+      # @!attribute recurring_credit_id
+      #   The ID of the recurring credit that this credit was generated from, if
+      #   applicable.
+      #
+      #   @return [String, nil]
+      optional :recurring_credit_id, String
+
       # @!attribute salesforce_opportunity_id
       #   This field's availability is dependent on your client's configuration.
       #
@@ -118,6 +125,13 @@ module MetronomeSDK
       #   @return [Array<MetronomeSDK::Models::CommitSpecifier>, nil]
       optional :specifiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::CommitSpecifier] }
 
+      # @!attribute subscription_config
+      #   The subscription configuration for this credit, if it was generated from a
+      #   recurring credit with a subscription attached.
+      #
+      #   @return [MetronomeSDK::Models::Credit::SubscriptionConfig, nil]
+      optional :subscription_config, -> { MetronomeSDK::Credit::SubscriptionConfig }
+
       # @!attribute uniqueness_key
       #   Prevents the creation of duplicates. If a request to create a commit or credit
       #   is made with a uniqueness key that was previously used to create a commit or
@@ -127,7 +141,7 @@ module MetronomeSDK
       #   @return [String, nil]
       optional :uniqueness_key, String
 
-      # @!method initialize(id:, product:, type:, access_schedule: nil, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, balance: nil, contract: nil, custom_fields: nil, description: nil, hierarchy_configuration: nil, ledger: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil, salesforce_opportunity_id: nil, specifiers: nil, uniqueness_key: nil)
+      # @!method initialize(id:, product:, type:, access_schedule: nil, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, balance: nil, contract: nil, custom_fields: nil, description: nil, hierarchy_configuration: nil, ledger: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil, recurring_credit_id: nil, salesforce_opportunity_id: nil, specifiers: nil, subscription_config: nil, uniqueness_key: nil)
       #   Some parameter documentations has been truncated, see
       #   {MetronomeSDK::Models::Credit} for more details.
       #
@@ -165,9 +179,13 @@ module MetronomeSDK
       #
       #   @param rate_type [Symbol, MetronomeSDK::Models::Credit::RateType]
       #
+      #   @param recurring_credit_id [String] The ID of the recurring credit that this credit was generated from, if applicabl
+      #
       #   @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
       #
       #   @param specifiers [Array<MetronomeSDK::Models::CommitSpecifier>] List of filters that determine what kind of customer usage draws down a commit o
+      #
+      #   @param subscription_config [MetronomeSDK::Models::Credit::SubscriptionConfig] The subscription configuration for this credit, if it was generated from a recur
       #
       #   @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a commit or credit i
 
@@ -542,6 +560,56 @@ module MetronomeSDK
 
         # @!method self.values
         #   @return [Array<Symbol>]
+      end
+
+      # @see MetronomeSDK::Models::Credit#subscription_config
+      class SubscriptionConfig < MetronomeSDK::Internal::Type::BaseModel
+        # @!attribute allocation
+        #
+        #   @return [Symbol, MetronomeSDK::Models::Credit::SubscriptionConfig::Allocation, nil]
+        optional :allocation, enum: -> { MetronomeSDK::Credit::SubscriptionConfig::Allocation }
+
+        # @!attribute apply_seat_increase_config
+        #
+        #   @return [MetronomeSDK::Models::Credit::SubscriptionConfig::ApplySeatIncreaseConfig, nil]
+        optional :apply_seat_increase_config,
+                 -> { MetronomeSDK::Credit::SubscriptionConfig::ApplySeatIncreaseConfig }
+
+        # @!attribute subscription_id
+        #
+        #   @return [String, nil]
+        optional :subscription_id, String
+
+        # @!method initialize(allocation: nil, apply_seat_increase_config: nil, subscription_id: nil)
+        #   The subscription configuration for this credit, if it was generated from a
+        #   recurring credit with a subscription attached.
+        #
+        #   @param allocation [Symbol, MetronomeSDK::Models::Credit::SubscriptionConfig::Allocation]
+        #   @param apply_seat_increase_config [MetronomeSDK::Models::Credit::SubscriptionConfig::ApplySeatIncreaseConfig]
+        #   @param subscription_id [String]
+
+        # @see MetronomeSDK::Models::Credit::SubscriptionConfig#allocation
+        module Allocation
+          extend MetronomeSDK::Internal::Type::Enum
+
+          INDIVIDUAL = :INDIVIDUAL
+          POOLED = :POOLED
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        # @see MetronomeSDK::Models::Credit::SubscriptionConfig#apply_seat_increase_config
+        class ApplySeatIncreaseConfig < MetronomeSDK::Internal::Type::BaseModel
+          # @!attribute is_prorated
+          #   Indicates whether a mid-period seat increase should be prorated.
+          #
+          #   @return [Boolean]
+          required :is_prorated, MetronomeSDK::Internal::Type::Boolean
+
+          # @!method initialize(is_prorated:)
+          #   @param is_prorated [Boolean] Indicates whether a mid-period seat increase should be prorated.
+        end
       end
     end
   end

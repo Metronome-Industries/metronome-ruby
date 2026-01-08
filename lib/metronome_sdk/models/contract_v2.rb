@@ -421,6 +421,12 @@ module MetronomeSDK
         #   @return [Symbol, MetronomeSDK::Models::ContractV2::Commit::RateType, nil]
         optional :rate_type, enum: -> { MetronomeSDK::ContractV2::Commit::RateType }
 
+        # @!attribute recurring_commit_id
+        #   The ID of the recurring commit that created this commit
+        #
+        #   @return [String, nil]
+        optional :recurring_commit_id, String
+
         # @!attribute rolled_over_from
         #
         #   @return [MetronomeSDK::Models::ContractV2::Commit::RolledOverFrom, nil]
@@ -451,7 +457,7 @@ module MetronomeSDK
         #   @return [MetronomeSDK::Models::RecurringCommitSubscriptionConfig, nil]
         optional :subscription_config, -> { MetronomeSDK::RecurringCommitSubscriptionConfig }
 
-        # @!method initialize(id:, created_at:, product:, type:, access_schedule: nil, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, archived_at: nil, balance: nil, contract: nil, custom_fields: nil, description: nil, hierarchy_configuration: nil, invoice_contract: nil, invoice_schedule: nil, ledger: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil, rolled_over_from: nil, rollover_fraction: nil, salesforce_opportunity_id: nil, specifiers: nil, subscription_config: nil)
+        # @!method initialize(id:, created_at:, product:, type:, access_schedule: nil, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, archived_at: nil, balance: nil, contract: nil, custom_fields: nil, description: nil, hierarchy_configuration: nil, invoice_contract: nil, invoice_schedule: nil, ledger: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil, recurring_commit_id: nil, rolled_over_from: nil, rollover_fraction: nil, salesforce_opportunity_id: nil, specifiers: nil, subscription_config: nil)
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::ContractV2::Commit} for more details.
         #
@@ -496,6 +502,8 @@ module MetronomeSDK
         #   @param priority [Float] If multiple credits or commits are applicable, the one with the lower priority w
         #
         #   @param rate_type [Symbol, MetronomeSDK::Models::ContractV2::Commit::RateType]
+        #
+        #   @param recurring_commit_id [String] The ID of the recurring commit that created this commit
         #
         #   @param rolled_over_from [MetronomeSDK::Models::ContractV2::Commit::RolledOverFrom]
         #
@@ -1706,6 +1714,12 @@ module MetronomeSDK
         #   @return [Float, nil]
         optional :priority, Float
 
+        # @!attribute recurring_credit_id
+        #   The ID of the recurring credit that created this credit
+        #
+        #   @return [String, nil]
+        optional :recurring_credit_id, String
+
         # @!attribute salesforce_opportunity_id
         #   This field's availability is dependent on your client's configuration.
         #
@@ -1726,7 +1740,7 @@ module MetronomeSDK
         #   @return [MetronomeSDK::Models::RecurringCommitSubscriptionConfig, nil]
         optional :subscription_config, -> { MetronomeSDK::RecurringCommitSubscriptionConfig }
 
-        # @!method initialize(id:, product:, type:, access_schedule: nil, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, balance: nil, contract: nil, created_at: nil, custom_fields: nil, description: nil, hierarchy_configuration: nil, ledger: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, salesforce_opportunity_id: nil, specifiers: nil, subscription_config: nil)
+        # @!method initialize(id:, product:, type:, access_schedule: nil, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, balance: nil, contract: nil, created_at: nil, custom_fields: nil, description: nil, hierarchy_configuration: nil, ledger: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, recurring_credit_id: nil, salesforce_opportunity_id: nil, specifiers: nil, subscription_config: nil)
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::ContractV2::Credit} for more details.
         #
@@ -1763,6 +1777,8 @@ module MetronomeSDK
         #   @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
         #
         #   @param priority [Float] If multiple credits or commits are applicable, the one with the lower priority w
+        #
+        #   @param recurring_credit_id [String] The ID of the recurring credit that created this credit
         #
         #   @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
         #
