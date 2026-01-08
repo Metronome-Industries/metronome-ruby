@@ -158,15 +158,6 @@ module MetronomeSDK
           #   @return [MetronomeSDK::Models::V1::Customers::Invoice::ResellerRoyalty, nil]
           optional :reseller_royalty, -> { MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty }
 
-          # @!attribute revenue_system_invoices
-          #
-          #   @return [Array<MetronomeSDK::Models::V1::Customers::Invoice::RevenueSystemInvoice>, nil]
-          optional :revenue_system_invoices,
-                   -> {
-                     MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::Invoice::RevenueSystemInvoice]
-                   },
-                   nil?: true
-
           # @!attribute salesforce_opportunity_id
           #   This field's availability is dependent on your client's configuration.
           #
@@ -184,7 +175,7 @@ module MetronomeSDK
           #   @return [Float, nil]
           optional :subtotal, Float
 
-          # @!method initialize(id:, credit_type:, customer_id:, line_items:, status:, total:, type:, amendment_id: nil, billable_status: nil, constituent_invoices: nil, contract_custom_fields: nil, contract_id: nil, correction_record: nil, created_at: nil, custom_fields: nil, customer_custom_fields: nil, end_timestamp: nil, external_invoice: nil, invoice_adjustments: nil, issued_at: nil, net_payment_terms_days: nil, netsuite_sales_order_id: nil, payer: nil, plan_custom_fields: nil, plan_id: nil, plan_name: nil, reseller_royalty: nil, revenue_system_invoices: nil, salesforce_opportunity_id: nil, start_timestamp: nil, subtotal: nil)
+          # @!method initialize(id:, credit_type:, customer_id:, line_items:, status:, total:, type:, amendment_id: nil, billable_status: nil, constituent_invoices: nil, contract_custom_fields: nil, contract_id: nil, correction_record: nil, created_at: nil, custom_fields: nil, customer_custom_fields: nil, end_timestamp: nil, external_invoice: nil, invoice_adjustments: nil, issued_at: nil, net_payment_terms_days: nil, netsuite_sales_order_id: nil, payer: nil, plan_custom_fields: nil, plan_id: nil, plan_name: nil, reseller_royalty: nil, salesforce_opportunity_id: nil, start_timestamp: nil, subtotal: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V1::Customers::Invoice} for more details.
           #
@@ -241,8 +232,6 @@ module MetronomeSDK
           #   @param plan_name [String]
           #
           #   @param reseller_royalty [MetronomeSDK::Models::V1::Customers::Invoice::ResellerRoyalty] Only present for contract invoices with reseller royalties.
-          #
-          #   @param revenue_system_invoices [Array<MetronomeSDK::Models::V1::Customers::Invoice::RevenueSystemInvoice>, nil]
           #
           #   @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
           #
@@ -1380,45 +1369,6 @@ module MetronomeSDK
               #   @param gcp_account_id [String]
               #   @param gcp_offer_id [String]
             end
-          end
-
-          class RevenueSystemInvoice < MetronomeSDK::Internal::Type::BaseModel
-            # @!attribute revenue_system_external_entity_type
-            #
-            #   @return [String]
-            required :revenue_system_external_entity_type, String
-
-            # @!attribute revenue_system_provider
-            #
-            #   @return [String]
-            required :revenue_system_provider, String
-
-            # @!attribute sync_status
-            #
-            #   @return [String]
-            required :sync_status, String
-
-            # @!attribute error_message
-            #   The error message from the revenue system, if available.
-            #
-            #   @return [String, nil]
-            optional :error_message, String
-
-            # @!attribute revenue_system_external_entity_id
-            #
-            #   @return [String, nil]
-            optional :revenue_system_external_entity_id, String
-
-            # @!method initialize(revenue_system_external_entity_type:, revenue_system_provider:, sync_status:, error_message: nil, revenue_system_external_entity_id: nil)
-            #   @param revenue_system_external_entity_type [String]
-            #
-            #   @param revenue_system_provider [String]
-            #
-            #   @param sync_status [String]
-            #
-            #   @param error_message [String] The error message from the revenue system, if available.
-            #
-            #   @param revenue_system_external_entity_id [String]
           end
         end
       end
