@@ -238,17 +238,6 @@ module MetronomeSDK
           end
           attr_writer :reseller_royalty
 
-          sig do
-            returns(
-              T.nilable(
-                T::Array[
-                  MetronomeSDK::V1::Customers::Invoice::RevenueSystemInvoice
-                ]
-              )
-            )
-          end
-          attr_accessor :revenue_system_invoices
-
           # This field's availability is dependent on your client's configuration.
           sig { returns(T.nilable(String)) }
           attr_reader :salesforce_opportunity_id
@@ -312,12 +301,6 @@ module MetronomeSDK
               plan_name: String,
               reseller_royalty:
                 MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty::OrHash,
-              revenue_system_invoices:
-                T.nilable(
-                  T::Array[
-                    MetronomeSDK::V1::Customers::Invoice::RevenueSystemInvoice::OrHash
-                  ]
-                ),
               salesforce_opportunity_id: String,
               start_timestamp: Time,
               subtotal: Float
@@ -365,7 +348,6 @@ module MetronomeSDK
             plan_name: nil,
             # Only present for contract invoices with reseller royalties.
             reseller_royalty: nil,
-            revenue_system_invoices: nil,
             # This field's availability is dependent on your client's configuration.
             salesforce_opportunity_id: nil,
             # Beginning of the usage period this invoice covers (UTC)
@@ -416,12 +398,6 @@ module MetronomeSDK
                 plan_name: String,
                 reseller_royalty:
                   MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty,
-                revenue_system_invoices:
-                  T.nilable(
-                    T::Array[
-                      MetronomeSDK::V1::Customers::Invoice::RevenueSystemInvoice
-                    ]
-                  ),
                 salesforce_opportunity_id: String,
                 start_timestamp: Time,
                 subtotal: Float
@@ -2727,71 +2703,6 @@ module MetronomeSDK
               end
               def to_hash
               end
-            end
-          end
-
-          class RevenueSystemInvoice < MetronomeSDK::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  MetronomeSDK::V1::Customers::Invoice::RevenueSystemInvoice,
-                  MetronomeSDK::Internal::AnyHash
-                )
-              end
-
-            sig { returns(String) }
-            attr_accessor :revenue_system_external_entity_type
-
-            sig { returns(String) }
-            attr_accessor :revenue_system_provider
-
-            sig { returns(String) }
-            attr_accessor :sync_status
-
-            # The error message from the revenue system, if available.
-            sig { returns(T.nilable(String)) }
-            attr_reader :error_message
-
-            sig { params(error_message: String).void }
-            attr_writer :error_message
-
-            sig { returns(T.nilable(String)) }
-            attr_reader :revenue_system_external_entity_id
-
-            sig { params(revenue_system_external_entity_id: String).void }
-            attr_writer :revenue_system_external_entity_id
-
-            sig do
-              params(
-                revenue_system_external_entity_type: String,
-                revenue_system_provider: String,
-                sync_status: String,
-                error_message: String,
-                revenue_system_external_entity_id: String
-              ).returns(T.attached_class)
-            end
-            def self.new(
-              revenue_system_external_entity_type:,
-              revenue_system_provider:,
-              sync_status:,
-              # The error message from the revenue system, if available.
-              error_message: nil,
-              revenue_system_external_entity_id: nil
-            )
-            end
-
-            sig do
-              override.returns(
-                {
-                  revenue_system_external_entity_type: String,
-                  revenue_system_provider: String,
-                  sync_status: String,
-                  error_message: String,
-                  revenue_system_external_entity_id: String
-                }
-              )
-            end
-            def to_hash
             end
           end
         end

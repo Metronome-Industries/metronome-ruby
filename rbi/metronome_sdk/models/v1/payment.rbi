@@ -73,21 +73,6 @@ module MetronomeSDK
         attr_writer :payment_gateway
 
         sig do
-          returns(
-            T.nilable(T::Array[MetronomeSDK::V1::Payment::RevenueSystemPayment])
-          )
-        end
-        attr_reader :revenue_system_payments
-
-        sig do
-          params(
-            revenue_system_payments:
-              T::Array[MetronomeSDK::V1::Payment::RevenueSystemPayment::OrHash]
-          ).void
-        end
-        attr_writer :revenue_system_payments
-
-        sig do
           returns(T.nilable(MetronomeSDK::V1::PaymentStatus::TaggedSymbol))
         end
         attr_reader :status
@@ -113,8 +98,6 @@ module MetronomeSDK
             fiat_credit_type: MetronomeSDK::CreditTypeData::OrHash,
             invoice_id: String,
             payment_gateway: MetronomeSDK::V1::Payment::PaymentGateway::OrHash,
-            revenue_system_payments:
-              T::Array[MetronomeSDK::V1::Payment::RevenueSystemPayment::OrHash],
             status: MetronomeSDK::V1::PaymentStatus::OrSymbol,
             updated_at: Time
           ).returns(T.attached_class)
@@ -130,7 +113,6 @@ module MetronomeSDK
           fiat_credit_type: nil,
           invoice_id: nil,
           payment_gateway: nil,
-          revenue_system_payments: nil,
           status: nil,
           updated_at: nil
         )
@@ -149,8 +131,6 @@ module MetronomeSDK
               fiat_credit_type: MetronomeSDK::CreditTypeData,
               invoice_id: String,
               payment_gateway: MetronomeSDK::V1::Payment::PaymentGateway,
-              revenue_system_payments:
-                T::Array[MetronomeSDK::V1::Payment::RevenueSystemPayment],
               status: MetronomeSDK::V1::PaymentStatus::TaggedSymbol,
               updated_at: Time
             }
@@ -336,65 +316,6 @@ module MetronomeSDK
             end
             def self.values
             end
-          end
-        end
-
-        class RevenueSystemPayment < MetronomeSDK::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                MetronomeSDK::V1::Payment::RevenueSystemPayment,
-                MetronomeSDK::Internal::AnyHash
-              )
-            end
-
-          sig { returns(String) }
-          attr_accessor :revenue_system_provider
-
-          sig { returns(String) }
-          attr_accessor :sync_status
-
-          # The error message from the revenue system, if available.
-          sig { returns(T.nilable(String)) }
-          attr_reader :error_message
-
-          sig { params(error_message: String).void }
-          attr_writer :error_message
-
-          sig { returns(T.nilable(String)) }
-          attr_reader :revenue_system_external_payment_id
-
-          sig { params(revenue_system_external_payment_id: String).void }
-          attr_writer :revenue_system_external_payment_id
-
-          sig do
-            params(
-              revenue_system_provider: String,
-              sync_status: String,
-              error_message: String,
-              revenue_system_external_payment_id: String
-            ).returns(T.attached_class)
-          end
-          def self.new(
-            revenue_system_provider:,
-            sync_status:,
-            # The error message from the revenue system, if available.
-            error_message: nil,
-            revenue_system_external_payment_id: nil
-          )
-          end
-
-          sig do
-            override.returns(
-              {
-                revenue_system_provider: String,
-                sync_status: String,
-                error_message: String,
-                revenue_system_external_payment_id: String
-              }
-            )
-          end
-          def to_hash
           end
         end
       end
