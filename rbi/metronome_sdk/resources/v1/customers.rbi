@@ -190,7 +190,7 @@ module MetronomeSDK
           )
         end
         def list_billable_metrics(
-          # Path param:
+          # Path param
           customer_id:,
           # Query param: If true, the list of returned metrics will include archived metrics
           include_archived: nil,
@@ -224,7 +224,7 @@ module MetronomeSDK
           )
         end
         def list_costs(
-          # Path param:
+          # Path param
           customer_id:,
           # Query param: RFC 3339 timestamp (exclusive)
           ending_before:,
@@ -256,7 +256,7 @@ module MetronomeSDK
           ).returns(MetronomeSDK::Models::V1::CustomerPreviewEventsResponse)
         end
         def preview_events(
-          # Path param:
+          # Path param
           customer_id:,
           # Body param: Array of usage events to include in the preview calculation. Must
           # contain at least one event in `merge` mode.
@@ -368,9 +368,9 @@ module MetronomeSDK
           ).void
         end
         def set_ingest_aliases(
-          # Path param:
+          # Path param
           customer_id:,
-          # Body param:
+          # Body param
           ingest_aliases:,
           request_options: {}
         )
@@ -389,7 +389,7 @@ module MetronomeSDK
           ).returns(MetronomeSDK::Models::V1::CustomerSetNameResponse)
         end
         def set_name(
-          # Path param:
+          # Path param
           customer_id:,
           # Body param: The new name for the customer. This will be truncated to 160
           # characters if the provided name is longer.
@@ -411,7 +411,7 @@ module MetronomeSDK
           ).void
         end
         def update_config(
-          # Path param:
+          # Path param
           customer_id:,
           # Body param: Leave in draft or set to auto-advance on invoices sent to Stripe.
           # Falls back to the client-level config if unset, which defaults to true if unset.

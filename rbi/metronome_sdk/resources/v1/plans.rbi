@@ -52,7 +52,7 @@ module MetronomeSDK
           )
         end
         def list_charges(
-          # Path param:
+          # Path param
           plan_id:,
           # Query param: Max number of results that should be returned
           limit: nil,
@@ -79,7 +79,7 @@ module MetronomeSDK
           )
         end
         def list_customers(
-          # Path param:
+          # Path param
           plan_id:,
           # Query param: Max number of results that should be returned
           limit: nil,

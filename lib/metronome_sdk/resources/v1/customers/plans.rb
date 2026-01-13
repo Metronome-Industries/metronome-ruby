@@ -10,7 +10,7 @@ module MetronomeSDK
           #
           # @overload list(customer_id:, limit: nil, next_page: nil, request_options: {})
           #
-          # @param customer_id [String] Path param:
+          # @param customer_id [String] Path param
           #
           # @param limit [Integer] Query param: Max number of results that should be returned
           #
@@ -47,9 +47,9 @@ module MetronomeSDK
           #
           # @overload add(customer_id:, plan_id:, starting_on:, ending_before: nil, net_payment_terms_days: nil, overage_rate_adjustments: nil, price_adjustments: nil, trial_spec: nil, request_options: {})
           #
-          # @param customer_id [String] Path param:
+          # @param customer_id [String] Path param
           #
-          # @param plan_id [String] Body param:
+          # @param plan_id [String] Body param
           #
           # @param starting_on [Time] Body param: RFC 3339 timestamp for when the plan becomes active for this custome
           #
@@ -91,7 +91,7 @@ module MetronomeSDK
           #
           # @overload end_(customer_id:, customer_plan_id:, ending_before: nil, void_invoices: nil, void_stripe_invoices: nil, request_options: {})
           #
-          # @param customer_id [String] Path param:
+          # @param customer_id [String] Path param
           #
           # @param customer_plan_id [String] Path param: the ID of a customer-plan relationship
           #
@@ -132,7 +132,7 @@ module MetronomeSDK
           #
           # @overload list_price_adjustments(customer_id:, customer_plan_id:, limit: nil, next_page: nil, request_options: {})
           #
-          # @param customer_id [String] Path param:
+          # @param customer_id [String] Path param
           #
           # @param customer_plan_id [String] Path param: the ID of a customer-plan relationship
           #

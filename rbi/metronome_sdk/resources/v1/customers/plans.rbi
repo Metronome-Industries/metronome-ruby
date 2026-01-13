@@ -20,7 +20,7 @@ module MetronomeSDK
             )
           end
           def list(
-            # Path param:
+            # Path param
             customer_id:,
             # Query param: Max number of results that should be returned
             limit: nil,
@@ -55,9 +55,9 @@ module MetronomeSDK
             ).returns(MetronomeSDK::Models::V1::Customers::PlanAddResponse)
           end
           def add(
-            # Path param:
+            # Path param
             customer_id:,
-            # Body param:
+            # Body param
             plan_id:,
             # Body param: RFC 3339 timestamp for when the plan becomes active for this
             # customer. Must be at 0:00 UTC (midnight).
@@ -97,7 +97,7 @@ module MetronomeSDK
             ).returns(MetronomeSDK::Models::V1::Customers::PlanEndResponse)
           end
           def end_(
-            # Path param:
+            # Path param
             customer_id:,
             # Path param: the ID of a customer-plan relationship
             customer_plan_id:,
@@ -135,7 +135,7 @@ module MetronomeSDK
             )
           end
           def list_price_adjustments(
-            # Path param:
+            # Path param
             customer_id:,
             # Path param: the ID of a customer-plan relationship
             customer_plan_id:,
