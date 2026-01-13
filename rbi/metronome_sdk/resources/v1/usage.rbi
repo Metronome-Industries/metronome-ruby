@@ -57,9 +57,9 @@ module MetronomeSDK
           )
         end
         def list(
-          # Body param:
+          # Body param
           ending_before:,
-          # Body param:
+          # Body param
           starting_on:,
           # Body param: A window_size of "day" or "hour" will return the usage for the
           # specified period segmented into daily or hourly aggregates. A window_size of
@@ -228,9 +228,9 @@ module MetronomeSDK
           )
         end
         def list_with_groups(
-          # Body param:
+          # Body param
           billable_metric_id:,
-          # Body param:
+          # Body param
           customer_id:,
           # Body param: A window_size of "day" or "hour" will return the usage for the
           # specified period segmented into daily or hourly aggregates. A window_size of
@@ -245,11 +245,11 @@ module MetronomeSDK
           # return an error if the customer is currently uncontracted or starting_on and
           # ending_before are specified when this is true.
           current_period: nil,
-          # Body param:
+          # Body param
           ending_before: nil,
-          # Body param:
+          # Body param
           group_by: nil,
-          # Body param:
+          # Body param
           starting_on: nil,
           request_options: {}
         )

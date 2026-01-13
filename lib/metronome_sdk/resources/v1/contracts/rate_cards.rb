@@ -196,7 +196,7 @@ module MetronomeSDK
           #
           # @param next_page [String] Query param: Cursor that indicates where the next page of results should start.
           #
-          # @param body [Object] Body param:
+          # @param body [Object] Body param
           #
           # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
           #

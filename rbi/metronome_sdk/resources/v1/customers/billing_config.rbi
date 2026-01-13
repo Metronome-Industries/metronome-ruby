@@ -24,20 +24,20 @@ module MetronomeSDK
             ).void
           end
           def create(
-            # Path param:
+            # Path param
             customer_id:,
             # Path param: The billing provider (e.g. stripe)
             billing_provider_type:,
             # Body param: The customer ID in the billing provider's system. For Azure, this is
             # the subscription ID.
             billing_provider_customer_id:,
-            # Body param:
+            # Body param
             aws_customer_account_id: nil,
-            # Body param:
+            # Body param
             aws_customer_id: nil,
-            # Body param:
+            # Body param
             aws_product_code: nil,
-            # Body param:
+            # Body param
             aws_region: nil,
             # Body param: The collection method for the customer's invoices. NOTE:
             # `auto_charge_payment_intent` and `manually_charge_payment_intent` are in beta.

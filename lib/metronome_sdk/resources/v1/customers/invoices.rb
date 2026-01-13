@@ -51,9 +51,9 @@ module MetronomeSDK
           #
           # @overload retrieve(customer_id:, invoice_id:, skip_zero_qty_line_items: nil, request_options: {})
           #
-          # @param customer_id [String] Path param:
+          # @param customer_id [String] Path param
           #
-          # @param invoice_id [String] Path param:
+          # @param invoice_id [String] Path param
           #
           # @param skip_zero_qty_line_items [Boolean] Query param: If set, all zero quantity line items will be filtered out of the re
           #
@@ -133,7 +133,7 @@ module MetronomeSDK
           #
           # @overload list(customer_id:, credit_type_id: nil, ending_before: nil, limit: nil, next_page: nil, skip_zero_qty_line_items: nil, sort: nil, starting_on: nil, status: nil, request_options: {})
           #
-          # @param customer_id [String] Path param:
+          # @param customer_id [String] Path param
           #
           # @param credit_type_id [String] Query param: Only return invoices for the specified credit type
           #
@@ -180,19 +180,19 @@ module MetronomeSDK
           #
           # @overload add_charge(customer_id:, charge_id:, customer_plan_id:, description:, invoice_start_timestamp:, price:, quantity:, request_options: {})
           #
-          # @param customer_id [String] Path param:
+          # @param customer_id [String] Path param
           #
           # @param charge_id [String] Body param: The Metronome ID of the charge to add to the invoice. Note that the
           #
           # @param customer_plan_id [String] Body param: The Metronome ID of the customer plan to add the charge to.
           #
-          # @param description [String] Body param:
+          # @param description [String] Body param
           #
           # @param invoice_start_timestamp [Time] Body param: The start_timestamp of the invoice to add the charge to.
           #
           # @param price [Float] Body param: The price of the charge. This price will match the currency on the i
           #
-          # @param quantity [Float] Body param:
+          # @param quantity [Float] Body param
           #
           # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
           #
@@ -259,7 +259,7 @@ module MetronomeSDK
           #
           # @overload list_breakdowns(customer_id:, ending_before:, starting_on:, credit_type_id: nil, limit: nil, next_page: nil, skip_zero_qty_line_items: nil, sort: nil, status: nil, window_size: nil, request_options: {})
           #
-          # @param customer_id [String] Path param:
+          # @param customer_id [String] Path param
           #
           # @param ending_before [Time] Query param: RFC 3339 timestamp. Breakdowns will only be returned for time windo
           #

@@ -209,7 +209,7 @@ module MetronomeSDK
         #
         # @overload list_billable_metrics(customer_id:, include_archived: nil, limit: nil, next_page: nil, on_current_plan: nil, request_options: {})
         #
-        # @param customer_id [String] Path param:
+        # @param customer_id [String] Path param
         #
         # @param include_archived [Boolean] Query param: If true, the list of returned metrics will include archived metrics
         #
@@ -247,7 +247,7 @@ module MetronomeSDK
         #
         # @overload list_costs(customer_id:, ending_before:, starting_on:, limit: nil, next_page: nil, request_options: {})
         #
-        # @param customer_id [String] Path param:
+        # @param customer_id [String] Path param
         #
         # @param ending_before [Time] Query param: RFC 3339 timestamp (exclusive)
         #
@@ -289,7 +289,7 @@ module MetronomeSDK
         #
         # @overload preview_events(customer_id:, events:, mode: nil, skip_zero_qty_line_items: nil, request_options: {})
         #
-        # @param customer_id [String] Path param:
+        # @param customer_id [String] Path param
         #
         # @param events [Array<MetronomeSDK::Models::V1::CustomerPreviewEventsParams::Event>] Body param: Array of usage events to include in the preview calculation. Must co
         #
@@ -418,9 +418,9 @@ module MetronomeSDK
         #
         # @overload set_ingest_aliases(customer_id:, ingest_aliases:, request_options: {})
         #
-        # @param customer_id [String] Path param:
+        # @param customer_id [String] Path param
         #
-        # @param ingest_aliases [Array<String>] Body param:
+        # @param ingest_aliases [Array<String>] Body param
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -453,7 +453,7 @@ module MetronomeSDK
         #
         # @overload set_name(customer_id:, name:, request_options: {})
         #
-        # @param customer_id [String] Path param:
+        # @param customer_id [String] Path param
         #
         # @param name [String] Body param: The new name for the customer. This will be truncated to 160 charact
         #
@@ -487,7 +487,7 @@ module MetronomeSDK
         #
         # @overload update_config(customer_id:, leave_stripe_invoices_in_draft: nil, salesforce_account_id: nil, request_options: {})
         #
-        # @param customer_id [String] Path param:
+        # @param customer_id [String] Path param
         #
         # @param leave_stripe_invoices_in_draft [Boolean, nil] Body param: Leave in draft or set to auto-advance on invoices sent to Stripe. Fa
         #
