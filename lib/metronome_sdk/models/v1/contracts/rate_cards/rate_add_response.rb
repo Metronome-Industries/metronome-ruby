@@ -75,15 +75,7 @@ module MetronomeSDK
               #   @return [Array<MetronomeSDK::Models::Tier>, nil]
               optional :tiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Tier] }
 
-              # @!attribute use_list_prices
-              #   Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed
-              #   using list prices rather than the standard rates for this product on the
-              #   contract.
-              #
-              #   @return [Boolean, nil]
-              optional :use_list_prices, MetronomeSDK::Internal::Type::Boolean
-
-              # @!method initialize(rate_type:, commit_rate: nil, credit_type: nil, custom_rate: nil, is_prorated: nil, price: nil, pricing_group_values: nil, quantity: nil, tiers: nil, use_list_prices: nil)
+              # @!method initialize(rate_type:, commit_rate: nil, credit_type: nil, custom_rate: nil, is_prorated: nil, price: nil, pricing_group_values: nil, quantity: nil, tiers: nil)
               #   Some parameter documentations has been truncated, see
               #   {MetronomeSDK::Models::V1::Contracts::RateCards::RateAddResponse::Data} for more
               #   details.
@@ -105,8 +97,6 @@ module MetronomeSDK
               #   @param quantity [Float] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
               #
               #   @param tiers [Array<MetronomeSDK::Models::Tier>] Only set for TIERED rate_type.
-              #
-              #   @param use_list_prices [Boolean] Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed
 
               # @see MetronomeSDK::Models::V1::Contracts::RateCards::RateAddResponse::Data#rate_type
               module RateType

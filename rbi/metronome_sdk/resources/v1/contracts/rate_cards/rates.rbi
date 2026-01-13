@@ -69,7 +69,6 @@ module MetronomeSDK
                 pricing_group_values: T::Hash[Symbol, String],
                 quantity: Float,
                 tiers: T::Array[MetronomeSDK::Tier::OrHash],
-                use_list_prices: T::Boolean,
                 request_options: MetronomeSDK::RequestOptions::OrHash
               ).returns(
                 MetronomeSDK::Models::V1::Contracts::RateCards::RateAddResponse
@@ -113,10 +112,6 @@ module MetronomeSDK
               quantity: nil,
               # Only set for TIERED rate_type.
               tiers: nil,
-              # Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed
-              # using list prices rather than the standard rates for this product on the
-              # contract.
-              use_list_prices: nil,
               request_options: {}
             )
             end

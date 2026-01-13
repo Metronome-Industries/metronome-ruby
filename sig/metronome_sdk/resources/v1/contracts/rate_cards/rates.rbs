@@ -29,7 +29,6 @@ module MetronomeSDK
               ?pricing_group_values: ::Hash[Symbol, String],
               ?quantity: Float,
               ?tiers: ::Array[MetronomeSDK::Tier],
-              ?use_list_prices: bool,
               ?request_options: MetronomeSDK::request_opts
             ) -> MetronomeSDK::Models::V1::Contracts::RateCards::RateAddResponse
 

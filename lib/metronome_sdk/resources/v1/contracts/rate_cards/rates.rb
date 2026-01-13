@@ -57,7 +57,7 @@ module MetronomeSDK
             #
             # Add a new rate
             #
-            # @overload add(entitled:, product_id:, rate_card_id:, rate_type:, starting_at:, billing_frequency: nil, commit_rate: nil, credit_type_id: nil, custom_rate: nil, ending_before: nil, is_prorated: nil, price: nil, pricing_group_values: nil, quantity: nil, tiers: nil, use_list_prices: nil, request_options: {})
+            # @overload add(entitled:, product_id:, rate_card_id:, rate_type:, starting_at:, billing_frequency: nil, commit_rate: nil, credit_type_id: nil, custom_rate: nil, ending_before: nil, is_prorated: nil, price: nil, pricing_group_values: nil, quantity: nil, tiers: nil, request_options: {})
             #
             # @param entitled [Boolean]
             #
@@ -88,8 +88,6 @@ module MetronomeSDK
             # @param quantity [Float] Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
             #
             # @param tiers [Array<MetronomeSDK::Models::Tier>] Only set for TIERED rate_type.
-            #
-            # @param use_list_prices [Boolean] Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed
             #
             # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
             #
