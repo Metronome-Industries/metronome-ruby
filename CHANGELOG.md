@@ -1,5 +1,31 @@
 # Changelog
 
+## 3.0.0 (2026-01-17)
+
+Full Changelog: [v2.2.0...v3.0.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v2.2.0...v3.0.0)
+
+### Features
+
+* [ORCH-739] expose rev rec data in api ([1e5912a](https://github.com/Metronome-Industries/metronome-ruby/commit/1e5912a60dd3bbfb37740057beac9055f96911e4))
+* [ORCH-739] expose rev rec data in api ([ea99ea2](https://github.com/Metronome-Industries/metronome-ruby/commit/ea99ea27275244d1854395b0906bf1402f09308f))
+* add recurring commit ID and subscription config to commit/credit response schema ([87a38ed](https://github.com/Metronome-Industries/metronome-ruby/commit/87a38ed2828cac15073a4650347ff2b6d3c14935))
+* Add support for custom fields on package terms ([e6ca46b](https://github.com/Metronome-Industries/metronome-ruby/commit/e6ca46b3d30e047799c76d5b6e9407622c94f027))
+* remove use list prices config in requests and responses ([44e02d3](https://github.com/Metronome-Industries/metronome-ruby/commit/44e02d367bedd33dca17c34d45006d21ef630abd))
+* Revert [ORCH-739] expose rev rec data in api ([656d322](https://github.com/Metronome-Industries/metronome-ruby/commit/656d322008021add127b8b6a76e70f3576090e2b))
+
+
+### Chores
+
+* fix typo in descriptions ([fdce90d](https://github.com/Metronome-Industries/metronome-ruby/commit/fdce90df6ae0e1223005482011560ba7eb53821c))
+* **internal:** codegen related update ([64bba19](https://github.com/Metronome-Industries/metronome-ruby/commit/64bba1958c92d4d260271fffc212a7ac904fe881))
+* **internal:** codegen related update ([3237dc8](https://github.com/Metronome-Industries/metronome-ruby/commit/3237dc894931f5a4a4504f545f46be1a0d9b8841))
+* **internal:** update `actions/checkout` version ([5aa0985](https://github.com/Metronome-Industries/metronome-ruby/commit/5aa09854840915a76d003d2e94ea7b25478ca198))
+
+
+### Documentation
+
+* prominently feature MCP server setup in root SDK readmes ([353dc18](https://github.com/Metronome-Industries/metronome-ruby/commit/353dc181c9ce9b55c3e588849391c257ca6e79d8))
+
 ## 2.2.0 (2025-12-18)
 
 Full Changelog: [v2.1.0...v2.2.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v2.1.0...v2.2.0)
