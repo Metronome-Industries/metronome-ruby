@@ -11,7 +11,7 @@ GIT
 PATH
   remote: .
   specs:
-    metronome-sdk (2.2.0)
+    metronome-sdk (3.0.0)
       cgi
       connection_pool
 
