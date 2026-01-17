@@ -63,15 +63,6 @@ module MetronomeSDK
       sig { params(tiers: T::Array[MetronomeSDK::Tier::OrHash]).void }
       attr_writer :tiers
 
-      # Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed
-      # using list prices rather than the standard rates for this product on the
-      # contract.
-      sig { returns(T.nilable(T::Boolean)) }
-      attr_reader :use_list_prices
-
-      sig { params(use_list_prices: T::Boolean).void }
-      attr_writer :use_list_prices
-
       sig do
         params(
           rate_type: MetronomeSDK::Rate::RateType::OrSymbol,
@@ -81,8 +72,7 @@ module MetronomeSDK
           price: Float,
           pricing_group_values: T::Hash[Symbol, String],
           quantity: Float,
-          tiers: T::Array[MetronomeSDK::Tier::OrHash],
-          use_list_prices: T::Boolean
+          tiers: T::Array[MetronomeSDK::Tier::OrHash]
         ).returns(T.attached_class)
       end
       def self.new(
@@ -103,11 +93,7 @@ module MetronomeSDK
         # Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
         quantity: nil,
         # Only set for TIERED rate_type.
-        tiers: nil,
-        # Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed
-        # using list prices rather than the standard rates for this product on the
-        # contract.
-        use_list_prices: nil
+        tiers: nil
       )
       end
 
@@ -121,8 +107,7 @@ module MetronomeSDK
             price: Float,
             pricing_group_values: T::Hash[Symbol, String],
             quantity: Float,
-            tiers: T::Array[MetronomeSDK::Tier],
-            use_list_prices: T::Boolean
+            tiers: T::Array[MetronomeSDK::Tier]
           }
         )
       end

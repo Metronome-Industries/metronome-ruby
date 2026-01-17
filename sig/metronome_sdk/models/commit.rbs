@@ -24,10 +24,12 @@ module MetronomeSDK
         netsuite_sales_order_id: String,
         priority: Float,
         rate_type: MetronomeSDK::Models::Commit::rate_type,
+        recurring_commit_id: String,
         rolled_over_from: MetronomeSDK::Commit::RolledOverFrom,
         rollover_fraction: Float,
         salesforce_opportunity_id: String,
         specifiers: ::Array[MetronomeSDK::CommitSpecifier],
+        subscription_config: MetronomeSDK::Commit::SubscriptionConfig,
         uniqueness_key: String
       }
 
@@ -126,6 +128,10 @@ module MetronomeSDK
         MetronomeSDK::Models::Commit::rate_type
       ) -> MetronomeSDK::Models::Commit::rate_type
 
+      attr_reader recurring_commit_id: String?
+
+      def recurring_commit_id=: (String) -> String
+
       attr_reader rolled_over_from: MetronomeSDK::Commit::RolledOverFrom?
 
       def rolled_over_from=: (
@@ -145,6 +151,12 @@ module MetronomeSDK
       def specifiers=: (
         ::Array[MetronomeSDK::CommitSpecifier]
       ) -> ::Array[MetronomeSDK::CommitSpecifier]
+
+      attr_reader subscription_config: MetronomeSDK::Commit::SubscriptionConfig?
+
+      def subscription_config=: (
+        MetronomeSDK::Commit::SubscriptionConfig
+      ) -> MetronomeSDK::Commit::SubscriptionConfig
 
       attr_reader uniqueness_key: String?
 
@@ -173,10 +185,12 @@ module MetronomeSDK
         ?netsuite_sales_order_id: String,
         ?priority: Float,
         ?rate_type: MetronomeSDK::Models::Commit::rate_type,
+        ?recurring_commit_id: String,
         ?rolled_over_from: MetronomeSDK::Commit::RolledOverFrom,
         ?rollover_fraction: Float,
         ?salesforce_opportunity_id: String,
         ?specifiers: ::Array[MetronomeSDK::CommitSpecifier],
+        ?subscription_config: MetronomeSDK::Commit::SubscriptionConfig,
         ?uniqueness_key: String
       ) -> void
 
@@ -203,10 +217,12 @@ module MetronomeSDK
         netsuite_sales_order_id: String,
         priority: Float,
         rate_type: MetronomeSDK::Models::Commit::rate_type,
+        recurring_commit_id: String,
         rolled_over_from: MetronomeSDK::Commit::RolledOverFrom,
         rollover_fraction: Float,
         salesforce_opportunity_id: String,
         specifiers: ::Array[MetronomeSDK::CommitSpecifier],
+        subscription_config: MetronomeSDK::Commit::SubscriptionConfig,
         uniqueness_key: String
       }
 
@@ -939,6 +955,64 @@ module MetronomeSDK
         def initialize: (commit_id: String, contract_id: String) -> void
 
         def to_hash: -> { commit_id: String, contract_id: String }
+      end
+
+      type subscription_config =
+        {
+          allocation: MetronomeSDK::Models::Commit::SubscriptionConfig::allocation,
+          apply_seat_increase_config: MetronomeSDK::Commit::SubscriptionConfig::ApplySeatIncreaseConfig,
+          subscription_id: String
+        }
+
+      class SubscriptionConfig < MetronomeSDK::Internal::Type::BaseModel
+        attr_reader allocation: MetronomeSDK::Models::Commit::SubscriptionConfig::allocation?
+
+        def allocation=: (
+          MetronomeSDK::Models::Commit::SubscriptionConfig::allocation
+        ) -> MetronomeSDK::Models::Commit::SubscriptionConfig::allocation
+
+        attr_reader apply_seat_increase_config: MetronomeSDK::Commit::SubscriptionConfig::ApplySeatIncreaseConfig?
+
+        def apply_seat_increase_config=: (
+          MetronomeSDK::Commit::SubscriptionConfig::ApplySeatIncreaseConfig
+        ) -> MetronomeSDK::Commit::SubscriptionConfig::ApplySeatIncreaseConfig
+
+        attr_reader subscription_id: String?
+
+        def subscription_id=: (String) -> String
+
+        def initialize: (
+          ?allocation: MetronomeSDK::Models::Commit::SubscriptionConfig::allocation,
+          ?apply_seat_increase_config: MetronomeSDK::Commit::SubscriptionConfig::ApplySeatIncreaseConfig,
+          ?subscription_id: String
+        ) -> void
+
+        def to_hash: -> {
+          allocation: MetronomeSDK::Models::Commit::SubscriptionConfig::allocation,
+          apply_seat_increase_config: MetronomeSDK::Commit::SubscriptionConfig::ApplySeatIncreaseConfig,
+          subscription_id: String
+        }
+
+        type allocation = :INDIVIDUAL | :POOLED
+
+        module Allocation
+          extend MetronomeSDK::Internal::Type::Enum
+
+          INDIVIDUAL: :INDIVIDUAL
+          POOLED: :POOLED
+
+          def self?.values: -> ::Array[MetronomeSDK::Models::Commit::SubscriptionConfig::allocation]
+        end
+
+        type apply_seat_increase_config = { is_prorated: bool }
+
+        class ApplySeatIncreaseConfig < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor is_prorated: bool
+
+          def initialize: (is_prorated: bool) -> void
+
+          def to_hash: -> { is_prorated: bool }
+        end
       end
     end
   end

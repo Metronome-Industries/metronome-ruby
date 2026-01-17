@@ -43,9 +43,9 @@ module MetronomeSDK
         #
         # @overload list(ending_before:, starting_on:, window_size:, next_page: nil, billable_metrics: nil, customer_ids: nil, request_options: {})
         #
-        # @param ending_before [Time] Body param:
+        # @param ending_before [Time] Body param
         #
-        # @param starting_on [Time] Body param:
+        # @param starting_on [Time] Body param
         #
         # @param window_size [Symbol, MetronomeSDK::Models::V1::UsageListParams::WindowSize] Body param: A window_size of "day" or "hour" will return the usage for the speci
         #
@@ -220,9 +220,9 @@ module MetronomeSDK
         #
         # @overload list_with_groups(billable_metric_id:, customer_id:, window_size:, limit: nil, next_page: nil, current_period: nil, ending_before: nil, group_by: nil, starting_on: nil, request_options: {})
         #
-        # @param billable_metric_id [String] Body param:
+        # @param billable_metric_id [String] Body param
         #
-        # @param customer_id [String] Body param:
+        # @param customer_id [String] Body param
         #
         # @param window_size [Symbol, MetronomeSDK::Models::V1::UsageListWithGroupsParams::WindowSize] Body param: A window_size of "day" or "hour" will return the usage for the speci
         #
@@ -232,11 +232,11 @@ module MetronomeSDK
         #
         # @param current_period [Boolean] Body param: If true, will return the usage for the current billing period. Will
         #
-        # @param ending_before [Time] Body param:
+        # @param ending_before [Time] Body param
         #
-        # @param group_by [MetronomeSDK::Models::V1::UsageListWithGroupsParams::GroupBy] Body param:
+        # @param group_by [MetronomeSDK::Models::V1::UsageListWithGroupsParams::GroupBy] Body param
         #
-        # @param starting_on [Time] Body param:
+        # @param starting_on [Time] Body param
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #

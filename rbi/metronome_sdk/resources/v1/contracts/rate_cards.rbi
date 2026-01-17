@@ -209,7 +209,7 @@ module MetronomeSDK
             limit: nil,
             # Query param: Cursor that indicates where the next page of results should start.
             next_page: nil,
-            # Body param:
+            # Body param
             body: nil,
             request_options: {}
           )

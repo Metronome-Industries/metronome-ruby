@@ -56,9 +56,9 @@ module MetronomeSDK
             )
           end
           def retrieve(
-            # Path param:
+            # Path param
             customer_id:,
-            # Path param:
+            # Path param
             invoice_id:,
             # Query param: If set, all zero quantity line items will be filtered out of the
             # response
@@ -133,7 +133,7 @@ module MetronomeSDK
             )
           end
           def list(
-            # Path param:
+            # Path param
             customer_id:,
             # Query param: Only return invoices for the specified credit type
             credit_type_id: nil,
@@ -176,7 +176,7 @@ module MetronomeSDK
             )
           end
           def add_charge(
-            # Path param:
+            # Path param
             customer_id:,
             # Body param: The Metronome ID of the charge to add to the invoice. Note that the
             # charge must be on a product that is not on the current plan, and the product
@@ -184,14 +184,14 @@ module MetronomeSDK
             charge_id:,
             # Body param: The Metronome ID of the customer plan to add the charge to.
             customer_plan_id:,
-            # Body param:
+            # Body param
             description:,
             # Body param: The start_timestamp of the invoice to add the charge to.
             invoice_start_timestamp:,
             # Body param: The price of the charge. This price will match the currency on the
             # invoice, e.g. USD cents.
             price:,
-            # Body param:
+            # Body param
             quantity:,
             request_options: {}
           )
@@ -257,7 +257,7 @@ module MetronomeSDK
             )
           end
           def list_breakdowns(
-            # Path param:
+            # Path param
             customer_id:,
             # Query param: RFC 3339 timestamp. Breakdowns will only be returned for time
             # windows that end on or before this time.

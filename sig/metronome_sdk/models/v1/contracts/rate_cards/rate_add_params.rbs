@@ -19,8 +19,7 @@ module MetronomeSDK
               price: Float,
               pricing_group_values: ::Hash[Symbol, String],
               quantity: Float,
-              tiers: ::Array[MetronomeSDK::Tier],
-              use_list_prices: bool
+              tiers: ::Array[MetronomeSDK::Tier]
             }
             & MetronomeSDK::Internal::Type::request_parameters
 
@@ -86,10 +85,6 @@ module MetronomeSDK
               ::Array[MetronomeSDK::Tier]
             ) -> ::Array[MetronomeSDK::Tier]
 
-            attr_reader use_list_prices: bool?
-
-            def use_list_prices=: (bool) -> bool
-
             def initialize: (
               entitled: bool,
               product_id: String,
@@ -106,7 +101,6 @@ module MetronomeSDK
               ?pricing_group_values: ::Hash[Symbol, String],
               ?quantity: Float,
               ?tiers: ::Array[MetronomeSDK::Tier],
-              ?use_list_prices: bool,
               ?request_options: MetronomeSDK::request_opts
             ) -> void
 
@@ -126,7 +120,6 @@ module MetronomeSDK
               pricing_group_values: ::Hash[Symbol, String],
               quantity: Float,
               tiers: ::Array[MetronomeSDK::Tier],
-              use_list_prices: bool,
               request_options: MetronomeSDK::RequestOptions
             }
 

@@ -60,7 +60,7 @@ module MetronomeSDK
         #
         # @overload list_charges(plan_id:, limit: nil, next_page: nil, request_options: {})
         #
-        # @param plan_id [String] Path param:
+        # @param plan_id [String] Path param
         #
         # @param limit [Integer] Query param: Max number of results that should be returned
         #
@@ -96,7 +96,7 @@ module MetronomeSDK
         #
         # @overload list_customers(plan_id:, limit: nil, next_page: nil, status: nil, request_options: {})
         #
-        # @param plan_id [String] Path param:
+        # @param plan_id [String] Path param
         #
         # @param limit [Integer] Query param: Max number of results that should be returned
         #
