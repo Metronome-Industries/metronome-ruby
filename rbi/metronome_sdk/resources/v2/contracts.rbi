@@ -189,6 +189,7 @@ module MetronomeSDK
               T::Array[
                 MetronomeSDK::V2::ContractEditParams::UpdateCredit::OrHash
               ],
+            update_net_payment_terms_days: T.nilable(Float),
             update_prepaid_balance_threshold_configuration:
               MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::OrHash,
             update_recurring_commits:
@@ -259,6 +260,9 @@ module MetronomeSDK
           # remain unchanged.
           update_contract_name: nil,
           update_credits: nil,
+          # Number of days after issuance of invoice after which the invoice is due (e.g.
+          # Net 30).
+          update_net_payment_terms_days: nil,
           update_prepaid_balance_threshold_configuration: nil,
           # Edits to these recurring commits will only affect commits whose access schedules
           # has not started. Expired commits, and commits with an active access schedule

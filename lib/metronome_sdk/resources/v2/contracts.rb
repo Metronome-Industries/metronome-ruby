@@ -128,7 +128,7 @@ module MetronomeSDK
         # - Contract editing must be enabled to use this endpoint. Reach out to your
         #   Metronome representative to learn more.
         #
-        # @overload edit(contract_id:, customer_id:, add_billing_provider_configuration_update: nil, add_commits: nil, add_credits: nil, add_discounts: nil, add_overrides: nil, add_prepaid_balance_threshold_configuration: nil, add_professional_services: nil, add_recurring_commits: nil, add_recurring_credits: nil, add_reseller_royalties: nil, add_scheduled_charges: nil, add_spend_threshold_configuration: nil, add_subscriptions: nil, allow_contract_ending_before_finalized_invoice: nil, archive_commits: nil, archive_credits: nil, archive_scheduled_charges: nil, remove_overrides: nil, uniqueness_key: nil, update_commits: nil, update_contract_end_date: nil, update_contract_name: nil, update_credits: nil, update_prepaid_balance_threshold_configuration: nil, update_recurring_commits: nil, update_recurring_credits: nil, update_scheduled_charges: nil, update_spend_threshold_configuration: nil, update_subscriptions: nil, request_options: {})
+        # @overload edit(contract_id:, customer_id:, add_billing_provider_configuration_update: nil, add_commits: nil, add_credits: nil, add_discounts: nil, add_overrides: nil, add_prepaid_balance_threshold_configuration: nil, add_professional_services: nil, add_recurring_commits: nil, add_recurring_credits: nil, add_reseller_royalties: nil, add_scheduled_charges: nil, add_spend_threshold_configuration: nil, add_subscriptions: nil, allow_contract_ending_before_finalized_invoice: nil, archive_commits: nil, archive_credits: nil, archive_scheduled_charges: nil, remove_overrides: nil, uniqueness_key: nil, update_commits: nil, update_contract_end_date: nil, update_contract_name: nil, update_credits: nil, update_net_payment_terms_days: nil, update_prepaid_balance_threshold_configuration: nil, update_recurring_commits: nil, update_recurring_credits: nil, update_scheduled_charges: nil, update_spend_threshold_configuration: nil, update_subscriptions: nil, request_options: {})
         #
         # @param contract_id [String] ID of the contract being edited
         #
@@ -179,6 +179,8 @@ module MetronomeSDK
         # @param update_contract_name [String, nil] Value to update the contract name to. If not provided, the contract name will re
         #
         # @param update_credits [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit>]
+        #
+        # @param update_net_payment_terms_days [Float, nil] Number of days after issuance of invoice after which the invoice is due (e.g. Ne
         #
         # @param update_prepaid_balance_threshold_configuration [MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration]
         #
