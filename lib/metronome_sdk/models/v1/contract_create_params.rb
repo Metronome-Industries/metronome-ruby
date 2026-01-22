@@ -95,6 +95,21 @@ module MetronomeSDK
         optional :overrides,
                  -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractCreateParams::Override] }
 
+        # @!attribute package_alias
+        #   Selects the package linked to the specified alias as of the contract's start
+        #   date. Mutually exclusive with package_id.
+        #
+        #   @return [String, nil]
+        optional :package_alias, String
+
+        # @!attribute package_id
+        #   If provided, provisions a customer on a package instead of creating a
+        #   traditional contract. When specified, only customer_id, starting_at, package_id,
+        #   and uniqueness_key are allowed.
+        #
+        #   @return [String, nil]
+        optional :package_id, String
+
         # @!attribute prepaid_balance_threshold_configuration
         #
         #   @return [MetronomeSDK::Models::PrepaidBalanceThresholdConfiguration, nil]
@@ -219,7 +234,7 @@ module MetronomeSDK
         #   @return [MetronomeSDK::Models::V1::ContractCreateParams::UsageStatementSchedule, nil]
         optional :usage_statement_schedule, -> { MetronomeSDK::V1::ContractCreateParams::UsageStatementSchedule }
 
-        # @!method initialize(customer_id:, starting_at:, billing_provider_configuration: nil, commits: nil, credits: nil, custom_fields: nil, discounts: nil, ending_before: nil, hierarchy_configuration: nil, multiplier_override_prioritization: nil, name: nil, net_payment_terms_days: nil, netsuite_sales_order_id: nil, overrides: nil, prepaid_balance_threshold_configuration: nil, priority: nil, professional_services: nil, rate_card_alias: nil, rate_card_id: nil, recurring_commits: nil, recurring_credits: nil, reseller_royalties: nil, revenue_system_configuration: nil, salesforce_opportunity_id: nil, scheduled_charges: nil, scheduled_charges_on_usage_invoices: nil, spend_threshold_configuration: nil, subscriptions: nil, total_contract_value: nil, transition: nil, uniqueness_key: nil, usage_filter: nil, usage_statement_schedule: nil, request_options: {})
+        # @!method initialize(customer_id:, starting_at:, billing_provider_configuration: nil, commits: nil, credits: nil, custom_fields: nil, discounts: nil, ending_before: nil, hierarchy_configuration: nil, multiplier_override_prioritization: nil, name: nil, net_payment_terms_days: nil, netsuite_sales_order_id: nil, overrides: nil, package_alias: nil, package_id: nil, prepaid_balance_threshold_configuration: nil, priority: nil, professional_services: nil, rate_card_alias: nil, rate_card_id: nil, recurring_commits: nil, recurring_credits: nil, reseller_royalties: nil, revenue_system_configuration: nil, salesforce_opportunity_id: nil, scheduled_charges: nil, scheduled_charges_on_usage_invoices: nil, spend_threshold_configuration: nil, subscriptions: nil, total_contract_value: nil, transition: nil, uniqueness_key: nil, usage_filter: nil, usage_statement_schedule: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::V1::ContractCreateParams} for more details.
         #
@@ -250,6 +265,10 @@ module MetronomeSDK
         #   @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
         #
         #   @param overrides [Array<MetronomeSDK::Models::V1::ContractCreateParams::Override>]
+        #
+        #   @param package_alias [String] Selects the package linked to the specified alias as of the contract's start dat
+        #
+        #   @param package_id [String] If provided, provisions a customer on a package instead of creating a traditiona
         #
         #   @param prepaid_balance_threshold_configuration [MetronomeSDK::Models::PrepaidBalanceThresholdConfiguration]
         #

@@ -48,6 +48,12 @@ module MetronomeSDK
       optional :customer_billing_provider_configuration,
                -> { MetronomeSDK::Contract::CustomerBillingProviderConfiguration }
 
+      # @!attribute package_id
+      #   ID of the package this contract was created from, if applicable.
+      #
+      #   @return [String, nil]
+      optional :package_id, String
+
       # @!attribute prepaid_balance_threshold_configuration
       #
       #   @return [MetronomeSDK::Models::PrepaidBalanceThresholdConfiguration, nil]
@@ -90,7 +96,7 @@ module MetronomeSDK
       #   @return [String, nil]
       optional :uniqueness_key, String
 
-      # @!method initialize(id:, amendments:, current:, customer_id:, initial:, archived_at: nil, custom_fields: nil, customer_billing_provider_configuration: nil, prepaid_balance_threshold_configuration: nil, priority: nil, scheduled_charges_on_usage_invoices: nil, spend_threshold_configuration: nil, subscriptions: nil, uniqueness_key: nil)
+      # @!method initialize(id:, amendments:, current:, customer_id:, initial:, archived_at: nil, custom_fields: nil, customer_billing_provider_configuration: nil, package_id: nil, prepaid_balance_threshold_configuration: nil, priority: nil, scheduled_charges_on_usage_invoices: nil, spend_threshold_configuration: nil, subscriptions: nil, uniqueness_key: nil)
       #   Some parameter documentations has been truncated, see
       #   {MetronomeSDK::Models::Contract} for more details.
       #
@@ -109,6 +115,8 @@ module MetronomeSDK
       #   @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
       #
       #   @param customer_billing_provider_configuration [MetronomeSDK::Models::Contract::CustomerBillingProviderConfiguration] The billing provider configuration associated with a contract.
+      #
+      #   @param package_id [String] ID of the package this contract was created from, if applicable.
       #
       #   @param prepaid_balance_threshold_configuration [MetronomeSDK::Models::PrepaidBalanceThresholdConfiguration]
       #

@@ -23,6 +23,8 @@ module MetronomeSDK
           ?net_payment_terms_days: Float,
           ?netsuite_sales_order_id: String,
           ?overrides: ::Array[MetronomeSDK::V1::ContractCreateParams::Override],
+          ?package_alias: String,
+          ?package_id: String,
           ?prepaid_balance_threshold_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration,
           ?priority: Float,
           ?professional_services: ::Array[MetronomeSDK::V1::ContractCreateParams::ProfessionalService],

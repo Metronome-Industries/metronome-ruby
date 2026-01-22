@@ -10,6 +10,7 @@ module MetronomeSDK
         archived_at: Time,
         custom_fields: ::Hash[Symbol, String],
         customer_billing_provider_configuration: MetronomeSDK::Contract::CustomerBillingProviderConfiguration,
+        package_id: String,
         prepaid_balance_threshold_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration,
         priority: Float,
         scheduled_charges_on_usage_invoices: MetronomeSDK::Models::Contract::scheduled_charges_on_usage_invoices,
@@ -42,6 +43,10 @@ module MetronomeSDK
       def customer_billing_provider_configuration=: (
         MetronomeSDK::Contract::CustomerBillingProviderConfiguration
       ) -> MetronomeSDK::Contract::CustomerBillingProviderConfiguration
+
+      attr_reader package_id: String?
+
+      def package_id=: (String) -> String
 
       attr_reader prepaid_balance_threshold_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration?
 
@@ -84,6 +89,7 @@ module MetronomeSDK
         ?archived_at: Time,
         ?custom_fields: ::Hash[Symbol, String],
         ?customer_billing_provider_configuration: MetronomeSDK::Contract::CustomerBillingProviderConfiguration,
+        ?package_id: String,
         ?prepaid_balance_threshold_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration,
         ?priority: Float,
         ?scheduled_charges_on_usage_invoices: MetronomeSDK::Models::Contract::scheduled_charges_on_usage_invoices,
@@ -101,6 +107,7 @@ module MetronomeSDK
         archived_at: Time,
         custom_fields: ::Hash[Symbol, String],
         customer_billing_provider_configuration: MetronomeSDK::Contract::CustomerBillingProviderConfiguration,
+        package_id: String,
         prepaid_balance_threshold_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration,
         priority: Float,
         scheduled_charges_on_usage_invoices: MetronomeSDK::Models::Contract::scheduled_charges_on_usage_invoices,

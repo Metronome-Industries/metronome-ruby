@@ -177,6 +177,23 @@ module MetronomeSDK
         end
         attr_writer :overrides
 
+        # Selects the package linked to the specified alias as of the contract's start
+        # date. Mutually exclusive with package_id.
+        sig { returns(T.nilable(String)) }
+        attr_reader :package_alias
+
+        sig { params(package_alias: String).void }
+        attr_writer :package_alias
+
+        # If provided, provisions a customer on a package instead of creating a
+        # traditional contract. When specified, only customer_id, starting_at, package_id,
+        # and uniqueness_key are allowed.
+        sig { returns(T.nilable(String)) }
+        attr_reader :package_id
+
+        sig { params(package_id: String).void }
+        attr_writer :package_id
+
         sig do
           returns(T.nilable(MetronomeSDK::PrepaidBalanceThresholdConfiguration))
         end
@@ -470,6 +487,8 @@ module MetronomeSDK
               T::Array[
                 MetronomeSDK::V1::ContractCreateParams::Override::OrHash
               ],
+            package_alias: String,
+            package_id: String,
             prepaid_balance_threshold_configuration:
               MetronomeSDK::PrepaidBalanceThresholdConfiguration::OrHash,
             priority: Float,
@@ -542,6 +561,13 @@ module MetronomeSDK
           # This field's availability is dependent on your client's configuration.
           netsuite_sales_order_id: nil,
           overrides: nil,
+          # Selects the package linked to the specified alias as of the contract's start
+          # date. Mutually exclusive with package_id.
+          package_alias: nil,
+          # If provided, provisions a customer on a package instead of creating a
+          # traditional contract. When specified, only customer_id, starting_at, package_id,
+          # and uniqueness_key are allowed.
+          package_id: nil,
           prepaid_balance_threshold_configuration: nil,
           # Priority of the contract.
           priority: nil,
@@ -607,6 +633,8 @@ module MetronomeSDK
               netsuite_sales_order_id: String,
               overrides:
                 T::Array[MetronomeSDK::V1::ContractCreateParams::Override],
+              package_alias: String,
+              package_id: String,
               prepaid_balance_threshold_configuration:
                 MetronomeSDK::PrepaidBalanceThresholdConfiguration,
               priority: Float,
