@@ -290,6 +290,11 @@ module MetronomeSDK
                     :TIERED,
                     MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::RateType::TaggedSymbol
                   )
+                TIERED_PERCENTAGE =
+                  T.let(
+                    :TIERED_PERCENTAGE,
+                    MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::RateType::TaggedSymbol
+                  )
                 CUSTOM =
                   T.let(
                     :CUSTOM,

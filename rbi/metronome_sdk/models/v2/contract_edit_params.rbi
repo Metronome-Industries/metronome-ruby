@@ -3800,6 +3800,11 @@ module MetronomeSDK
                   :TIERED,
                   MetronomeSDK::V2::ContractEditParams::AddOverride::OverwriteRate::RateType::TaggedSymbol
                 )
+              TIERED_PERCENTAGE =
+                T.let(
+                  :TIERED_PERCENTAGE,
+                  MetronomeSDK::V2::ContractEditParams::AddOverride::OverwriteRate::RateType::TaggedSymbol
+                )
               CUSTOM =
                 T.let(
                   :CUSTOM,
