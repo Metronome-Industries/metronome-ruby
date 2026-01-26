@@ -128,6 +128,8 @@ module MetronomeSDK
           T.let(:SUBSCRIPTION, MetronomeSDK::Rate::RateType::TaggedSymbol)
         CUSTOM = T.let(:CUSTOM, MetronomeSDK::Rate::RateType::TaggedSymbol)
         TIERED = T.let(:TIERED, MetronomeSDK::Rate::RateType::TaggedSymbol)
+        TIERED_PERCENTAGE =
+          T.let(:TIERED_PERCENTAGE, MetronomeSDK::Rate::RateType::TaggedSymbol)
 
         sig do
           override.returns(T::Array[MetronomeSDK::Rate::RateType::TaggedSymbol])

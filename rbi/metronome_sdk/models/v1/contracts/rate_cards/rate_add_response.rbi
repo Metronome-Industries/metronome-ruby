@@ -222,6 +222,11 @@ module MetronomeSDK
                     :TIERED,
                     MetronomeSDK::Models::V1::Contracts::RateCards::RateAddResponse::Data::RateType::TaggedSymbol
                   )
+                TIERED_PERCENTAGE =
+                  T.let(
+                    :TIERED_PERCENTAGE,
+                    MetronomeSDK::Models::V1::Contracts::RateCards::RateAddResponse::Data::RateType::TaggedSymbol
+                  )
 
                 sig do
                   override.returns(

@@ -69,6 +69,11 @@ module MetronomeSDK
           T.let(:SUBSCRIPTION, MetronomeSDK::CommitRate::RateType::TaggedSymbol)
         TIERED =
           T.let(:TIERED, MetronomeSDK::CommitRate::RateType::TaggedSymbol)
+        TIERED_PERCENTAGE =
+          T.let(
+            :TIERED_PERCENTAGE,
+            MetronomeSDK::CommitRate::RateType::TaggedSymbol
+          )
         CUSTOM =
           T.let(:CUSTOM, MetronomeSDK::CommitRate::RateType::TaggedSymbol)
 

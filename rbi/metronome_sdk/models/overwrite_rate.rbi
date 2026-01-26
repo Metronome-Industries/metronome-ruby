@@ -121,6 +121,11 @@ module MetronomeSDK
           )
         TIERED =
           T.let(:TIERED, MetronomeSDK::OverwriteRate::RateType::TaggedSymbol)
+        TIERED_PERCENTAGE =
+          T.let(
+            :TIERED_PERCENTAGE,
+            MetronomeSDK::OverwriteRate::RateType::TaggedSymbol
+          )
         CUSTOM =
           T.let(:CUSTOM, MetronomeSDK::OverwriteRate::RateType::TaggedSymbol)
 
