@@ -205,6 +205,26 @@ module MetronomeSDK
         end
         attr_writer :add_reseller_royalties
 
+        # Update the revenue system configuration on the contract. Currently only supports
+        # adding a revenue system configuration to a contract that does not already have
+        # one.
+        sig do
+          returns(
+            T.nilable(
+              MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate
+            )
+          )
+        end
+        attr_reader :add_revenue_system_configuration_update
+
+        sig do
+          params(
+            add_revenue_system_configuration_update:
+              MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::OrHash
+          ).void
+        end
+        attr_writer :add_revenue_system_configuration_update
+
         sig do
           returns(
             T.nilable(
@@ -571,6 +591,8 @@ module MetronomeSDK
               T::Array[
                 MetronomeSDK::V2::ContractEditParams::AddResellerRoyalty::OrHash
               ],
+            add_revenue_system_configuration_update:
+              MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::OrHash,
             add_scheduled_charges:
               T::Array[
                 MetronomeSDK::V2::ContractEditParams::AddScheduledCharge::OrHash
@@ -652,6 +674,10 @@ module MetronomeSDK
           add_recurring_commits: nil,
           add_recurring_credits: nil,
           add_reseller_royalties: nil,
+          # Update the revenue system configuration on the contract. Currently only supports
+          # adding a revenue system configuration to a contract that does not already have
+          # one.
+          add_revenue_system_configuration_update: nil,
           add_scheduled_charges: nil,
           add_spend_threshold_configuration: nil,
           # Optional list of
@@ -733,6 +759,8 @@ module MetronomeSDK
                 T::Array[
                   MetronomeSDK::V2::ContractEditParams::AddResellerRoyalty
                 ],
+              add_revenue_system_configuration_update:
+                MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate,
               add_scheduled_charges:
                 T::Array[
                   MetronomeSDK::V2::ContractEditParams::AddScheduledCharge
@@ -5859,6 +5887,300 @@ module MetronomeSDK
               override.returns({ gcp_account_id: String, gcp_offer_id: String })
             end
             def to_hash
+            end
+          end
+        end
+
+        class AddRevenueSystemConfigurationUpdate < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
+          sig do
+            returns(
+              MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration
+            )
+          end
+          attr_reader :revenue_system_configuration
+
+          sig do
+            params(
+              revenue_system_configuration:
+                MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::OrHash
+            ).void
+          end
+          attr_writer :revenue_system_configuration
+
+          sig do
+            returns(
+              MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::Schedule
+            )
+          end
+          attr_reader :schedule
+
+          sig do
+            params(
+              schedule:
+                MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::Schedule::OrHash
+            ).void
+          end
+          attr_writer :schedule
+
+          # Update the revenue system configuration on the contract. Currently only supports
+          # adding a revenue system configuration to a contract that does not already have
+          # one.
+          sig do
+            params(
+              revenue_system_configuration:
+                MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::OrHash,
+              schedule:
+                MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::Schedule::OrHash
+            ).returns(T.attached_class)
+          end
+          def self.new(revenue_system_configuration:, schedule:)
+          end
+
+          sig do
+            override.returns(
+              {
+                revenue_system_configuration:
+                  MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration,
+                schedule:
+                  MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::Schedule
+              }
+            )
+          end
+          def to_hash
+          end
+
+          class RevenueSystemConfiguration < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::DeliveryMethod::OrSymbol
+                )
+              )
+            end
+            attr_reader :delivery_method
+
+            sig do
+              params(
+                delivery_method:
+                  MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::DeliveryMethod::OrSymbol
+              ).void
+            end
+            attr_writer :delivery_method
+
+            # The revenue system provider type.
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::Provider::OrSymbol
+                )
+              )
+            end
+            attr_reader :provider
+
+            sig do
+              params(
+                provider:
+                  MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::Provider::OrSymbol
+              ).void
+            end
+            attr_writer :provider
+
+            sig { returns(T.nilable(String)) }
+            attr_reader :revenue_system_configuration_id
+
+            sig { params(revenue_system_configuration_id: String).void }
+            attr_writer :revenue_system_configuration_id
+
+            sig do
+              params(
+                delivery_method:
+                  MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::DeliveryMethod::OrSymbol,
+                provider:
+                  MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::Provider::OrSymbol,
+                revenue_system_configuration_id: String
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              delivery_method: nil,
+              # The revenue system provider type.
+              provider: nil,
+              revenue_system_configuration_id: nil
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  delivery_method:
+                    MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::DeliveryMethod::OrSymbol,
+                  provider:
+                    MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::Provider::OrSymbol,
+                  revenue_system_configuration_id: String
+                }
+              )
+            end
+            def to_hash
+            end
+
+            module DeliveryMethod
+              extend MetronomeSDK::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::DeliveryMethod
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              DIRECT_TO_BILLING_PROVIDER =
+                T.let(
+                  :direct_to_billing_provider,
+                  MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::DeliveryMethod::TaggedSymbol
+                )
+              AWS_SQS =
+                T.let(
+                  :aws_sqs,
+                  MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::DeliveryMethod::TaggedSymbol
+                )
+              TACKLE =
+                T.let(
+                  :tackle,
+                  MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::DeliveryMethod::TaggedSymbol
+                )
+              AWS_SNS =
+                T.let(
+                  :aws_sns,
+                  MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::DeliveryMethod::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::DeliveryMethod::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+
+            # The revenue system provider type.
+            module Provider
+              extend MetronomeSDK::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::Provider
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              NETSUITE =
+                T.let(
+                  :netsuite,
+                  MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::Provider::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::Provider::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+          end
+
+          class Schedule < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::Schedule,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            # When the revenue system configuration update will take effect.
+            sig do
+              returns(
+                MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::Schedule::EffectiveAt::OrSymbol
+              )
+            end
+            attr_accessor :effective_at
+
+            sig do
+              params(
+                effective_at:
+                  MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::Schedule::EffectiveAt::OrSymbol
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # When the revenue system configuration update will take effect.
+              effective_at:
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  effective_at:
+                    MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::Schedule::EffectiveAt::OrSymbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            # When the revenue system configuration update will take effect.
+            module EffectiveAt
+              extend MetronomeSDK::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::Schedule::EffectiveAt
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              START_OF_CURRENT_PERIOD =
+                T.let(
+                  :START_OF_CURRENT_PERIOD,
+                  MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::Schedule::EffectiveAt::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::Schedule::EffectiveAt::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
             end
           end
         end
