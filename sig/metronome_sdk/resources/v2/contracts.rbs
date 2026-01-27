@@ -34,6 +34,7 @@ module MetronomeSDK
           ?add_recurring_commits: ::Array[MetronomeSDK::V2::ContractEditParams::AddRecurringCommit],
           ?add_recurring_credits: ::Array[MetronomeSDK::V2::ContractEditParams::AddRecurringCredit],
           ?add_reseller_royalties: ::Array[MetronomeSDK::V2::ContractEditParams::AddResellerRoyalty],
+          ?add_revenue_system_configuration_update: MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate,
           ?add_scheduled_charges: ::Array[MetronomeSDK::V2::ContractEditParams::AddScheduledCharge],
           ?add_spend_threshold_configuration: MetronomeSDK::SpendThresholdConfigurationV2,
           ?add_subscriptions: ::Array[MetronomeSDK::V2::ContractEditParams::AddSubscription],
