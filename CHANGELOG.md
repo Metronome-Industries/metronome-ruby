@@ -1,5 +1,26 @@
 # Changelog
 
+## 3.1.0 (2026-01-28)
+
+Full Changelog: [v3.0.0...v3.1.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v3.0.0...v3.1.0)
+
+### Features
+
+* bump schema version and update code to support TieredPercentage rate ([074cabf](https://github.com/Metronome-Industries/metronome-ruby/commit/074cabf0c588f01a35c0d3052ad8f5fae613d7d0))
+* Expose add revenue config in edit contract api ([0d2838f](https://github.com/Metronome-Industries/metronome-ruby/commit/0d2838fd40981b134a5458fd99fc4ebaf8bf85bb))
+* release account hierarchy ([a65ee30](https://github.com/Metronome-Industries/metronome-ruby/commit/a65ee30e99187f89918b22c8b57c16be395ff8cf))
+* update api to allow editing net payment terms ([07aebe1](https://github.com/Metronome-Industries/metronome-ruby/commit/07aebe12f24e87988d0100ed9f288eb12a6e21a2))
+
+
+### Bug Fixes
+
+* **docs:** fix mcp installation instructions for remote servers ([b1d0986](https://github.com/Metronome-Industries/metronome-ruby/commit/b1d098615709412d777dcbe4f261a14fa708bfe5))
+
+
+### Documentation
+
+* Update package docs for GA ([861c4a2](https://github.com/Metronome-Industries/metronome-ruby/commit/861c4a2ed4bb0521131079ba2e726b3725f6de0c))
+
 ## 3.0.0 (2026-01-17)
 
 Full Changelog: [v2.2.0...v3.0.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v2.2.0...v3.0.0)
