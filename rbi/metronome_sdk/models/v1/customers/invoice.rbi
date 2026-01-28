@@ -52,8 +52,8 @@ module MetronomeSDK
           sig { params(billable_status: T.anything).void }
           attr_writer :billable_status
 
-          # Account hierarchy M3 - Required on invoices with type USAGE_CONSOLIDATED. List
-          # of constituent invoices that were consolidated to create this invoice.
+          # Required on invoices with type USAGE_CONSOLIDATED. List of constituent invoices
+          # that were consolidated to create this invoice.
           sig do
             returns(
               T.nilable(
@@ -189,8 +189,8 @@ module MetronomeSDK
           sig { params(netsuite_sales_order_id: String).void }
           attr_writer :netsuite_sales_order_id
 
-          # Account hierarchy M3 - Required for account hierarchy usage invoices. An object
-          # containing the contract and customer UUIDs that pay for this invoice.
+          # Required for account hierarchy usage invoices. An object containing the contract
+          # and customer UUIDs that pay for this invoice.
           sig do
             returns(T.nilable(MetronomeSDK::V1::Customers::Invoice::Payer))
           end
@@ -334,8 +334,8 @@ module MetronomeSDK
             amendment_id: nil,
             # This field's availability is dependent on your client's configuration.
             billable_status: nil,
-            # Account hierarchy M3 - Required on invoices with type USAGE_CONSOLIDATED. List
-            # of constituent invoices that were consolidated to create this invoice.
+            # Required on invoices with type USAGE_CONSOLIDATED. List of constituent invoices
+            # that were consolidated to create this invoice.
             constituent_invoices: nil,
             # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             contract_custom_fields: nil,
@@ -356,8 +356,8 @@ module MetronomeSDK
             net_payment_terms_days: nil,
             # This field's availability is dependent on your client's configuration.
             netsuite_sales_order_id: nil,
-            # Account hierarchy M3 - Required for account hierarchy usage invoices. An object
-            # containing the contract and customer UUIDs that pay for this invoice.
+            # Required for account hierarchy usage invoices. An object containing the contract
+            # and customer UUIDs that pay for this invoice.
             payer: nil,
             # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             plan_custom_fields: nil,
@@ -622,9 +622,9 @@ module MetronomeSDK
             sig { params(netsuite_item_id: String).void }
             attr_writer :netsuite_item_id
 
-            # Account hierarchy M3 - Present on line items from invoices with type
-            # USAGE_CONSOLIDATED. Indicates the original customer, contract, invoice and line
-            # item from which this line item was copied.
+            # Present on line items from invoices with type USAGE_CONSOLIDATED. Indicates the
+            # original customer, contract, invoice and line item from which this line item was
+            # copied.
             sig do
               returns(
                 T.nilable(
@@ -952,9 +952,9 @@ module MetronomeSDK
               # The start date for the billing period on the invoice.
               netsuite_invoice_billing_start: nil,
               netsuite_item_id: nil,
-              # Account hierarchy M3 - Present on line items from invoices with type
-              # USAGE_CONSOLIDATED. Indicates the original customer, contract, invoice and line
-              # item from which this line item was copied.
+              # Present on line items from invoices with type USAGE_CONSOLIDATED. Indicates the
+              # original customer, contract, invoice and line item from which this line item was
+              # copied.
               origin: nil,
               # Only present for line items paying for a postpaid commit true-up.
               postpaid_commit: nil,
@@ -1161,9 +1161,9 @@ module MetronomeSDK
               sig { returns(String) }
               attr_accessor :line_item_id
 
-              # Account hierarchy M3 - Present on line items from invoices with type
-              # USAGE_CONSOLIDATED. Indicates the original customer, contract, invoice and line
-              # item from which this line item was copied.
+              # Present on line items from invoices with type USAGE_CONSOLIDATED. Indicates the
+              # original customer, contract, invoice and line item from which this line item was
+              # copied.
               sig do
                 params(
                   contract_id: String,
@@ -2481,8 +2481,8 @@ module MetronomeSDK
             sig { returns(String) }
             attr_accessor :customer_id
 
-            # Account hierarchy M3 - Required for account hierarchy usage invoices. An object
-            # containing the contract and customer UUIDs that pay for this invoice.
+            # Required for account hierarchy usage invoices. An object containing the contract
+            # and customer UUIDs that pay for this invoice.
             sig do
               params(contract_id: String, customer_id: String).returns(
                 T.attached_class
