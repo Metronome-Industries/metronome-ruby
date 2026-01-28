@@ -151,6 +151,8 @@ module MetronomeSDK
               T::Array[
                 MetronomeSDK::V2::ContractEditParams::AddResellerRoyalty::OrHash
               ],
+            add_revenue_system_configuration_update:
+              MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::OrHash,
             add_scheduled_charges:
               T::Array[
                 MetronomeSDK::V2::ContractEditParams::AddScheduledCharge::OrHash
@@ -189,6 +191,7 @@ module MetronomeSDK
               T::Array[
                 MetronomeSDK::V2::ContractEditParams::UpdateCredit::OrHash
               ],
+            update_net_payment_terms_days: T.nilable(Float),
             update_prepaid_balance_threshold_configuration:
               MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::OrHash,
             update_recurring_commits:
@@ -231,6 +234,10 @@ module MetronomeSDK
           add_recurring_commits: nil,
           add_recurring_credits: nil,
           add_reseller_royalties: nil,
+          # Update the revenue system configuration on the contract. Currently only supports
+          # adding a revenue system configuration to a contract that does not already have
+          # one.
+          add_revenue_system_configuration_update: nil,
           add_scheduled_charges: nil,
           add_spend_threshold_configuration: nil,
           # Optional list of
@@ -259,6 +266,9 @@ module MetronomeSDK
           # remain unchanged.
           update_contract_name: nil,
           update_credits: nil,
+          # Number of days after issuance of invoice after which the invoice is due (e.g.
+          # Net 30).
+          update_net_payment_terms_days: nil,
           update_prepaid_balance_threshold_configuration: nil,
           # Edits to these recurring commits will only affect commits whose access schedules
           # has not started. Expired commits, and commits with an active access schedule

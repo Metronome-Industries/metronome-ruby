@@ -15,6 +15,7 @@ module MetronomeSDK
           add_recurring_commits: ::Array[MetronomeSDK::V2::ContractEditParams::AddRecurringCommit],
           add_recurring_credits: ::Array[MetronomeSDK::V2::ContractEditParams::AddRecurringCredit],
           add_reseller_royalties: ::Array[MetronomeSDK::V2::ContractEditParams::AddResellerRoyalty],
+          add_revenue_system_configuration_update: MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate,
           add_scheduled_charges: ::Array[MetronomeSDK::V2::ContractEditParams::AddScheduledCharge],
           add_spend_threshold_configuration: MetronomeSDK::SpendThresholdConfigurationV2,
           add_subscriptions: ::Array[MetronomeSDK::V2::ContractEditParams::AddSubscription],
@@ -28,6 +29,7 @@ module MetronomeSDK
           update_contract_end_date: Time?,
           update_contract_name: String?,
           update_credits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateCredit],
+          update_net_payment_terms_days: Float?,
           update_prepaid_balance_threshold_configuration: MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration,
           update_recurring_commits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit],
           update_recurring_credits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateRecurringCredit],
@@ -105,6 +107,12 @@ module MetronomeSDK
           ::Array[MetronomeSDK::V2::ContractEditParams::AddResellerRoyalty]
         ) -> ::Array[MetronomeSDK::V2::ContractEditParams::AddResellerRoyalty]
 
+        attr_reader add_revenue_system_configuration_update: MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate?
+
+        def add_revenue_system_configuration_update=: (
+          MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate
+        ) -> MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate
+
         attr_reader add_scheduled_charges: ::Array[MetronomeSDK::V2::ContractEditParams::AddScheduledCharge]?
 
         def add_scheduled_charges=: (
@@ -171,6 +179,8 @@ module MetronomeSDK
           ::Array[MetronomeSDK::V2::ContractEditParams::UpdateCredit]
         ) -> ::Array[MetronomeSDK::V2::ContractEditParams::UpdateCredit]
 
+        attr_accessor update_net_payment_terms_days: Float?
+
         attr_reader update_prepaid_balance_threshold_configuration: MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration?
 
         def update_prepaid_balance_threshold_configuration=: (
@@ -220,6 +230,7 @@ module MetronomeSDK
           ?add_recurring_commits: ::Array[MetronomeSDK::V2::ContractEditParams::AddRecurringCommit],
           ?add_recurring_credits: ::Array[MetronomeSDK::V2::ContractEditParams::AddRecurringCredit],
           ?add_reseller_royalties: ::Array[MetronomeSDK::V2::ContractEditParams::AddResellerRoyalty],
+          ?add_revenue_system_configuration_update: MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate,
           ?add_scheduled_charges: ::Array[MetronomeSDK::V2::ContractEditParams::AddScheduledCharge],
           ?add_spend_threshold_configuration: MetronomeSDK::SpendThresholdConfigurationV2,
           ?add_subscriptions: ::Array[MetronomeSDK::V2::ContractEditParams::AddSubscription],
@@ -233,6 +244,7 @@ module MetronomeSDK
           ?update_contract_end_date: Time?,
           ?update_contract_name: String?,
           ?update_credits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateCredit],
+          ?update_net_payment_terms_days: Float?,
           ?update_prepaid_balance_threshold_configuration: MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration,
           ?update_recurring_commits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit],
           ?update_recurring_credits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateRecurringCredit],
@@ -255,6 +267,7 @@ module MetronomeSDK
           add_recurring_commits: ::Array[MetronomeSDK::V2::ContractEditParams::AddRecurringCommit],
           add_recurring_credits: ::Array[MetronomeSDK::V2::ContractEditParams::AddRecurringCredit],
           add_reseller_royalties: ::Array[MetronomeSDK::V2::ContractEditParams::AddResellerRoyalty],
+          add_revenue_system_configuration_update: MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate,
           add_scheduled_charges: ::Array[MetronomeSDK::V2::ContractEditParams::AddScheduledCharge],
           add_spend_threshold_configuration: MetronomeSDK::SpendThresholdConfigurationV2,
           add_subscriptions: ::Array[MetronomeSDK::V2::ContractEditParams::AddSubscription],
@@ -268,6 +281,7 @@ module MetronomeSDK
           update_contract_end_date: Time?,
           update_contract_name: String?,
           update_credits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateCredit],
+          update_net_payment_terms_days: Float?,
           update_prepaid_balance_threshold_configuration: MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration,
           update_recurring_commits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateRecurringCommit],
           update_recurring_credits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateRecurringCredit],
@@ -1529,7 +1543,12 @@ module MetronomeSDK
             }
 
             type rate_type =
-              :FLAT | :PERCENTAGE | :SUBSCRIPTION | :TIERED | :CUSTOM
+              :FLAT
+              | :PERCENTAGE
+              | :SUBSCRIPTION
+              | :TIERED
+              | :TIERED_PERCENTAGE
+              | :CUSTOM
 
             module RateType
               extend MetronomeSDK::Internal::Type::Enum
@@ -1538,6 +1557,7 @@ module MetronomeSDK
               PERCENTAGE: :PERCENTAGE
               SUBSCRIPTION: :SUBSCRIPTION
               TIERED: :TIERED
+              TIERED_PERCENTAGE: :TIERED_PERCENTAGE
               CUSTOM: :CUSTOM
 
               def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractEditParams::AddOverride::OverwriteRate::rate_type]
@@ -2405,6 +2425,116 @@ module MetronomeSDK
             ) -> void
 
             def to_hash: -> { gcp_account_id: String, gcp_offer_id: String }
+          end
+        end
+
+        type add_revenue_system_configuration_update =
+          {
+            revenue_system_configuration: MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration,
+            schedule: MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::Schedule
+          }
+
+        class AddRevenueSystemConfigurationUpdate < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor revenue_system_configuration: MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration
+
+          attr_accessor schedule: MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::Schedule
+
+          def initialize: (
+            revenue_system_configuration: MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration,
+            schedule: MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::Schedule
+          ) -> void
+
+          def to_hash: -> {
+            revenue_system_configuration: MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration,
+            schedule: MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::Schedule
+          }
+
+          type revenue_system_configuration =
+            {
+              delivery_method: MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::delivery_method,
+              provider: MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::provider,
+              revenue_system_configuration_id: String
+            }
+
+          class RevenueSystemConfiguration < MetronomeSDK::Internal::Type::BaseModel
+            attr_reader delivery_method: MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::delivery_method?
+
+            def delivery_method=: (
+              MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::delivery_method
+            ) -> MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::delivery_method
+
+            attr_reader provider: MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::provider?
+
+            def provider=: (
+              MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::provider
+            ) -> MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::provider
+
+            attr_reader revenue_system_configuration_id: String?
+
+            def revenue_system_configuration_id=: (String) -> String
+
+            def initialize: (
+              ?delivery_method: MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::delivery_method,
+              ?provider: MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::provider,
+              ?revenue_system_configuration_id: String
+            ) -> void
+
+            def to_hash: -> {
+              delivery_method: MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::delivery_method,
+              provider: MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::provider,
+              revenue_system_configuration_id: String
+            }
+
+            type delivery_method =
+              :direct_to_billing_provider | :aws_sqs | :tackle | :aws_sns
+
+            module DeliveryMethod
+              extend MetronomeSDK::Internal::Type::Enum
+
+              DIRECT_TO_BILLING_PROVIDER: :direct_to_billing_provider
+              AWS_SQS: :aws_sqs
+              TACKLE: :tackle
+              AWS_SNS: :aws_sns
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::delivery_method]
+            end
+
+            type provider = :netsuite
+
+            module Provider
+              extend MetronomeSDK::Internal::Type::Enum
+
+              NETSUITE: :netsuite
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::provider]
+            end
+          end
+
+          type schedule =
+            {
+              effective_at: MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::Schedule::effective_at
+            }
+
+          class Schedule < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor effective_at: MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::Schedule::effective_at
+
+            def initialize: (
+              effective_at: MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::Schedule::effective_at
+            ) -> void
+
+            def to_hash: -> {
+              effective_at: MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::Schedule::effective_at
+            }
+
+            type effective_at = :START_OF_CURRENT_PERIOD
+
+            module EffectiveAt
+              extend MetronomeSDK::Internal::Type::Enum
+
+              START_OF_CURRENT_PERIOD: :START_OF_CURRENT_PERIOD
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::Schedule::effective_at]
+            end
           end
         end
 
