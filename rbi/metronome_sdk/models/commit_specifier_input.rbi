@@ -11,12 +11,16 @@ module MetronomeSDK
           )
         end
 
+      # If provided, the specifier will apply to product usage with these set of
+      # presentation group values.
       sig { returns(T.nilable(T::Hash[Symbol, String])) }
       attr_reader :presentation_group_values
 
       sig { params(presentation_group_values: T::Hash[Symbol, String]).void }
       attr_writer :presentation_group_values
 
+      # If provided, the specifier will apply to product usage with these set of pricing
+      # group values.
       sig { returns(T.nilable(T::Hash[Symbol, String])) }
       attr_reader :pricing_group_values
 
@@ -47,7 +51,11 @@ module MetronomeSDK
         ).returns(T.attached_class)
       end
       def self.new(
+        # If provided, the specifier will apply to product usage with these set of
+        # presentation group values.
         presentation_group_values: nil,
+        # If provided, the specifier will apply to product usage with these set of pricing
+        # group values.
         pricing_group_values: nil,
         # If provided, the specifier will only apply to the product with the specified ID.
         product_id: nil,
