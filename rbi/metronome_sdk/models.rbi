@@ -1,6 +1,8 @@
 # typed: strong
 
 module MetronomeSDK
+  BalanceFilter = MetronomeSDK::Models::BalanceFilter
+
   BaseThresholdCommit = MetronomeSDK::Models::BaseThresholdCommit
 
   BaseUsageFilter = MetronomeSDK::Models::BaseUsageFilter
