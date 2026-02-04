@@ -17,6 +17,8 @@ module MetronomeSDK
           net_payment_terms_days: Float,
           netsuite_sales_order_id: String,
           overrides: ::Array[MetronomeSDK::V1::ContractCreateParams::Override],
+          package_alias: String,
+          package_id: String,
           prepaid_balance_threshold_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration,
           priority: Float,
           professional_services: ::Array[MetronomeSDK::V1::ContractCreateParams::ProfessionalService],
@@ -108,6 +110,14 @@ module MetronomeSDK
         def overrides=: (
           ::Array[MetronomeSDK::V1::ContractCreateParams::Override]
         ) -> ::Array[MetronomeSDK::V1::ContractCreateParams::Override]
+
+        attr_reader package_alias: String?
+
+        def package_alias=: (String) -> String
+
+        attr_reader package_id: String?
+
+        def package_id=: (String) -> String
 
         attr_reader prepaid_balance_threshold_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration?
 
@@ -226,6 +236,8 @@ module MetronomeSDK
           ?net_payment_terms_days: Float,
           ?netsuite_sales_order_id: String,
           ?overrides: ::Array[MetronomeSDK::V1::ContractCreateParams::Override],
+          ?package_alias: String,
+          ?package_id: String,
           ?prepaid_balance_threshold_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration,
           ?priority: Float,
           ?professional_services: ::Array[MetronomeSDK::V1::ContractCreateParams::ProfessionalService],
@@ -263,6 +275,8 @@ module MetronomeSDK
           net_payment_terms_days: Float,
           netsuite_sales_order_id: String,
           overrides: ::Array[MetronomeSDK::V1::ContractCreateParams::Override],
+          package_alias: String,
+          package_id: String,
           prepaid_balance_threshold_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration,
           priority: Float,
           professional_services: ::Array[MetronomeSDK::V1::ContractCreateParams::ProfessionalService],
@@ -1601,7 +1615,12 @@ module MetronomeSDK
             }
 
             type rate_type =
-              :FLAT | :PERCENTAGE | :SUBSCRIPTION | :TIERED | :CUSTOM
+              :FLAT
+              | :PERCENTAGE
+              | :SUBSCRIPTION
+              | :TIERED
+              | :TIERED_PERCENTAGE
+              | :CUSTOM
 
             module RateType
               extend MetronomeSDK::Internal::Type::Enum
@@ -1610,6 +1629,7 @@ module MetronomeSDK
               PERCENTAGE: :PERCENTAGE
               SUBSCRIPTION: :SUBSCRIPTION
               TIERED: :TIERED
+              TIERED_PERCENTAGE: :TIERED_PERCENTAGE
               CUSTOM: :CUSTOM
 
               def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::Override::OverwriteRate::rate_type]

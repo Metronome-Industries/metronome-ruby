@@ -434,6 +434,11 @@ module MetronomeSDK
         SUBSCRIPTION =
           T.let(:SUBSCRIPTION, MetronomeSDK::Override::RateType::TaggedSymbol)
         TIERED = T.let(:TIERED, MetronomeSDK::Override::RateType::TaggedSymbol)
+        TIERED_PERCENTAGE =
+          T.let(
+            :TIERED_PERCENTAGE,
+            MetronomeSDK::Override::RateType::TaggedSymbol
+          )
         CUSTOM = T.let(:CUSTOM, MetronomeSDK::Override::RateType::TaggedSymbol)
 
         sig do

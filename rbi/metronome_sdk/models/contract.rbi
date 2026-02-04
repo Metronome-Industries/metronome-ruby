@@ -66,6 +66,13 @@ module MetronomeSDK
       end
       attr_writer :customer_billing_provider_configuration
 
+      # ID of the package this contract was created from, if applicable.
+      sig { returns(T.nilable(String)) }
+      attr_reader :package_id
+
+      sig { params(package_id: String).void }
+      attr_writer :package_id
+
       sig do
         returns(T.nilable(MetronomeSDK::PrepaidBalanceThresholdConfiguration))
       end
@@ -148,6 +155,7 @@ module MetronomeSDK
           custom_fields: T::Hash[Symbol, String],
           customer_billing_provider_configuration:
             MetronomeSDK::Contract::CustomerBillingProviderConfiguration::OrHash,
+          package_id: String,
           prepaid_balance_threshold_configuration:
             MetronomeSDK::PrepaidBalanceThresholdConfiguration::OrHash,
           priority: Float,
@@ -172,6 +180,8 @@ module MetronomeSDK
         custom_fields: nil,
         # The billing provider configuration associated with a contract.
         customer_billing_provider_configuration: nil,
+        # ID of the package this contract was created from, if applicable.
+        package_id: nil,
         prepaid_balance_threshold_configuration: nil,
         # Priority of the contract.
         priority: nil,
@@ -203,6 +213,7 @@ module MetronomeSDK
             custom_fields: T::Hash[Symbol, String],
             customer_billing_provider_configuration:
               MetronomeSDK::Contract::CustomerBillingProviderConfiguration,
+            package_id: String,
             prepaid_balance_threshold_configuration:
               MetronomeSDK::PrepaidBalanceThresholdConfiguration,
             priority: Float,

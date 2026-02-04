@@ -140,6 +140,20 @@ class MetronomeSDK::Test::Resources::V1::ContractsTest < MetronomeSDK::Test::Res
     end
   end
 
+  def test_get_net_balance_required_params
+    response = @metronome.v1.contracts.get_net_balance(customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d")
+
+    assert_pattern do
+      response => MetronomeSDK::Models::V1::ContractGetNetBalanceResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: MetronomeSDK::Models::V1::ContractGetNetBalanceResponse::Data
+      }
+    end
+  end
+
   def test_list_balances_required_params
     response = @metronome.v1.contracts.list_balances(customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d")
 

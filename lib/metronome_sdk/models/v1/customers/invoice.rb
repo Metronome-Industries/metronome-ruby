@@ -54,8 +54,8 @@ module MetronomeSDK
           optional :billable_status, MetronomeSDK::Internal::Type::Unknown
 
           # @!attribute constituent_invoices
-          #   Account hierarchy M3 - Required on invoices with type USAGE_CONSOLIDATED. List
-          #   of constituent invoices that were consolidated to create this invoice.
+          #   Required on invoices with type USAGE_CONSOLIDATED. List of constituent invoices
+          #   that were consolidated to create this invoice.
           #
           #   @return [Array<MetronomeSDK::Models::V1::Customers::Invoice::ConstituentInvoice>, nil]
           optional :constituent_invoices,
@@ -130,8 +130,8 @@ module MetronomeSDK
           optional :netsuite_sales_order_id, String
 
           # @!attribute payer
-          #   Account hierarchy M3 - Required for account hierarchy usage invoices. An object
-          #   containing the contract and customer UUIDs that pay for this invoice.
+          #   Required for account hierarchy usage invoices. An object containing the contract
+          #   and customer UUIDs that pay for this invoice.
           #
           #   @return [MetronomeSDK::Models::V1::Customers::Invoice::Payer, nil]
           optional :payer, -> { MetronomeSDK::V1::Customers::Invoice::Payer }
@@ -206,7 +206,7 @@ module MetronomeSDK
           #
           #   @param billable_status [Object] This field's availability is dependent on your client's configuration.
           #
-          #   @param constituent_invoices [Array<MetronomeSDK::Models::V1::Customers::Invoice::ConstituentInvoice>] Account hierarchy M3 - Required on invoices with type USAGE_CONSOLIDATED. List o
+          #   @param constituent_invoices [Array<MetronomeSDK::Models::V1::Customers::Invoice::ConstituentInvoice>] Required on invoices with type USAGE_CONSOLIDATED. List of constituent invoices
           #
           #   @param contract_custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           #
@@ -232,7 +232,7 @@ module MetronomeSDK
           #
           #   @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
           #
-          #   @param payer [MetronomeSDK::Models::V1::Customers::Invoice::Payer] Account hierarchy M3 - Required for account hierarchy usage invoices. An object
+          #   @param payer [MetronomeSDK::Models::V1::Customers::Invoice::Payer] Required for account hierarchy usage invoices. An object containing the contract
           #
           #   @param plan_custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           #
@@ -411,9 +411,9 @@ module MetronomeSDK
             optional :netsuite_item_id, String
 
             # @!attribute origin
-            #   Account hierarchy M3 - Present on line items from invoices with type
-            #   USAGE_CONSOLIDATED. Indicates the original customer, contract, invoice and line
-            #   item from which this line item was copied.
+            #   Present on line items from invoices with type USAGE_CONSOLIDATED. Indicates the
+            #   original customer, contract, invoice and line item from which this line item was
+            #   copied.
             #
             #   @return [MetronomeSDK::Models::V1::Customers::Invoice::LineItem::Origin, nil]
             optional :origin, -> { MetronomeSDK::V1::Customers::Invoice::LineItem::Origin }
@@ -580,7 +580,7 @@ module MetronomeSDK
             #
             #   @param netsuite_item_id [String]
             #
-            #   @param origin [MetronomeSDK::Models::V1::Customers::Invoice::LineItem::Origin] Account hierarchy M3 - Present on line items from invoices with type USAGE_CONSO
+            #   @param origin [MetronomeSDK::Models::V1::Customers::Invoice::LineItem::Origin] Present on line items from invoices with type USAGE_CONSOLIDATED. Indicates the
             #
             #   @param postpaid_commit [MetronomeSDK::Models::V1::Customers::Invoice::LineItem::PostpaidCommit] Only present for line items paying for a postpaid commit true-up.
             #
@@ -674,9 +674,9 @@ module MetronomeSDK
               required :line_item_id, String
 
               # @!method initialize(contract_id:, customer_id:, invoice_id:, line_item_id:)
-              #   Account hierarchy M3 - Present on line items from invoices with type
-              #   USAGE_CONSOLIDATED. Indicates the original customer, contract, invoice and line
-              #   item from which this line item was copied.
+              #   Present on line items from invoices with type USAGE_CONSOLIDATED. Indicates the
+              #   original customer, contract, invoice and line item from which this line item was
+              #   copied.
               #
               #   @param contract_id [String]
               #   @param customer_id [String]
@@ -1285,8 +1285,8 @@ module MetronomeSDK
             required :customer_id, String
 
             # @!method initialize(contract_id:, customer_id:)
-            #   Account hierarchy M3 - Required for account hierarchy usage invoices. An object
-            #   containing the contract and customer UUIDs that pay for this invoice.
+            #   Required for account hierarchy usage invoices. An object containing the contract
+            #   and customer UUIDs that pay for this invoice.
             #
             #   @param contract_id [String]
             #   @param customer_id [String]

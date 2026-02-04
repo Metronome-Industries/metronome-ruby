@@ -1,0 +1,32 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type contract_get_net_balance_response =
+        { data: MetronomeSDK::Models::V1::ContractGetNetBalanceResponse::Data }
+
+      class ContractGetNetBalanceResponse < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor data: MetronomeSDK::Models::V1::ContractGetNetBalanceResponse::Data
+
+        def initialize: (
+          data: MetronomeSDK::Models::V1::ContractGetNetBalanceResponse::Data
+        ) -> void
+
+        def to_hash: -> {
+          data: MetronomeSDK::Models::V1::ContractGetNetBalanceResponse::Data
+        }
+
+        type data = { balance: Float, credit_type_id: String }
+
+        class Data < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor balance: Float
+
+          attr_accessor credit_type_id: String
+
+          def initialize: (balance: Float, credit_type_id: String) -> void
+
+          def to_hash: -> { balance: Float, credit_type_id: String }
+        end
+      end
+    end
+  end
+end

@@ -107,6 +107,7 @@ module MetronomeSDK
                 SUBSCRIPTION = :SUBSCRIPTION
                 CUSTOM = :CUSTOM
                 TIERED = :TIERED
+                TIERED_PERCENTAGE = :TIERED_PERCENTAGE
 
                 # @!method self.values
                 #   @return [Array<Symbol>]

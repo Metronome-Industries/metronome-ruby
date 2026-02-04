@@ -38,6 +38,7 @@ module MetronomeSDK
         PERCENTAGE = :PERCENTAGE
         SUBSCRIPTION = :SUBSCRIPTION
         TIERED = :TIERED
+        TIERED_PERCENTAGE = :TIERED_PERCENTAGE
         CUSTOM = :CUSTOM
 
         # @!method self.values

@@ -23,6 +23,8 @@ module MetronomeSDK
           ?net_payment_terms_days: Float,
           ?netsuite_sales_order_id: String,
           ?overrides: ::Array[MetronomeSDK::V1::ContractCreateParams::Override],
+          ?package_alias: String,
+          ?package_id: String,
           ?prepaid_balance_threshold_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration,
           ?priority: Float,
           ?professional_services: ::Array[MetronomeSDK::V1::ContractCreateParams::ProfessionalService],
@@ -105,6 +107,14 @@ module MetronomeSDK
           preview: bool,
           ?request_options: MetronomeSDK::request_opts
         ) -> MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse
+
+        def get_net_balance: (
+          customer_id: String,
+          ?credit_type_id: String,
+          ?filters: ::Array[MetronomeSDK::BalanceFilter],
+          ?invoice_inclusion_mode: MetronomeSDK::Models::V1::ContractGetNetBalanceParams::invoice_inclusion_mode,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> MetronomeSDK::Models::V1::ContractGetNetBalanceResponse
 
         def list_balances: (
           customer_id: String,

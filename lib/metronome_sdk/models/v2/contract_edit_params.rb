@@ -84,6 +84,15 @@ module MetronomeSDK
         optional :add_reseller_royalties,
                  -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V2::ContractEditParams::AddResellerRoyalty] }
 
+        # @!attribute add_revenue_system_configuration_update
+        #   Update the revenue system configuration on the contract. Currently only supports
+        #   adding a revenue system configuration to a contract that does not already have
+        #   one.
+        #
+        #   @return [MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate, nil]
+        optional :add_revenue_system_configuration_update,
+                 -> { MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate }
+
         # @!attribute add_scheduled_charges
         #
         #   @return [Array<MetronomeSDK::Models::V2::ContractEditParams::AddScheduledCharge>, nil]
@@ -172,6 +181,13 @@ module MetronomeSDK
         optional :update_credits,
                  -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V2::ContractEditParams::UpdateCredit] }
 
+        # @!attribute update_net_payment_terms_days
+        #   Number of days after issuance of invoice after which the invoice is due (e.g.
+        #   Net 30).
+        #
+        #   @return [Float, nil]
+        optional :update_net_payment_terms_days, Float, nil?: true
+
         # @!attribute update_prepaid_balance_threshold_configuration
         #
         #   @return [MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration, nil]
@@ -215,7 +231,7 @@ module MetronomeSDK
         optional :update_subscriptions,
                  -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V2::ContractEditParams::UpdateSubscription] }
 
-        # @!method initialize(contract_id:, customer_id:, add_billing_provider_configuration_update: nil, add_commits: nil, add_credits: nil, add_discounts: nil, add_overrides: nil, add_prepaid_balance_threshold_configuration: nil, add_professional_services: nil, add_recurring_commits: nil, add_recurring_credits: nil, add_reseller_royalties: nil, add_scheduled_charges: nil, add_spend_threshold_configuration: nil, add_subscriptions: nil, allow_contract_ending_before_finalized_invoice: nil, archive_commits: nil, archive_credits: nil, archive_scheduled_charges: nil, remove_overrides: nil, uniqueness_key: nil, update_commits: nil, update_contract_end_date: nil, update_contract_name: nil, update_credits: nil, update_prepaid_balance_threshold_configuration: nil, update_recurring_commits: nil, update_recurring_credits: nil, update_scheduled_charges: nil, update_spend_threshold_configuration: nil, update_subscriptions: nil, request_options: {})
+        # @!method initialize(contract_id:, customer_id:, add_billing_provider_configuration_update: nil, add_commits: nil, add_credits: nil, add_discounts: nil, add_overrides: nil, add_prepaid_balance_threshold_configuration: nil, add_professional_services: nil, add_recurring_commits: nil, add_recurring_credits: nil, add_reseller_royalties: nil, add_revenue_system_configuration_update: nil, add_scheduled_charges: nil, add_spend_threshold_configuration: nil, add_subscriptions: nil, allow_contract_ending_before_finalized_invoice: nil, archive_commits: nil, archive_credits: nil, archive_scheduled_charges: nil, remove_overrides: nil, uniqueness_key: nil, update_commits: nil, update_contract_end_date: nil, update_contract_name: nil, update_credits: nil, update_net_payment_terms_days: nil, update_prepaid_balance_threshold_configuration: nil, update_recurring_commits: nil, update_recurring_credits: nil, update_scheduled_charges: nil, update_spend_threshold_configuration: nil, update_subscriptions: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::V2::ContractEditParams} for more details.
         #
@@ -243,6 +259,8 @@ module MetronomeSDK
         #
         #   @param add_reseller_royalties [Array<MetronomeSDK::Models::V2::ContractEditParams::AddResellerRoyalty>]
         #
+        #   @param add_revenue_system_configuration_update [MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate] Update the revenue system configuration on the contract. Currently only supports
+        #
         #   @param add_scheduled_charges [Array<MetronomeSDK::Models::V2::ContractEditParams::AddScheduledCharge>]
         #
         #   @param add_spend_threshold_configuration [MetronomeSDK::Models::SpendThresholdConfigurationV2]
@@ -268,6 +286,8 @@ module MetronomeSDK
         #   @param update_contract_name [String, nil] Value to update the contract name to. If not provided, the contract name will re
         #
         #   @param update_credits [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit>]
+        #
+        #   @param update_net_payment_terms_days [Float, nil] Number of days after issuance of invoice after which the invoice is due (e.g. Ne
         #
         #   @param update_prepaid_balance_threshold_configuration [MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration]
         #
@@ -1682,6 +1702,7 @@ module MetronomeSDK
               PERCENTAGE = :PERCENTAGE
               SUBSCRIPTION = :SUBSCRIPTION
               TIERED = :TIERED
+              TIERED_PERCENTAGE = :TIERED_PERCENTAGE
               CUSTOM = :CUSTOM
 
               # @!method self.values
@@ -2658,6 +2679,106 @@ module MetronomeSDK
             # @!method initialize(gcp_account_id: nil, gcp_offer_id: nil)
             #   @param gcp_account_id [String]
             #   @param gcp_offer_id [String]
+          end
+        end
+
+        class AddRevenueSystemConfigurationUpdate < MetronomeSDK::Internal::Type::BaseModel
+          # @!attribute revenue_system_configuration
+          #
+          #   @return [MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration]
+          required :revenue_system_configuration,
+                   -> { MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration }
+
+          # @!attribute schedule
+          #
+          #   @return [MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::Schedule]
+          required :schedule,
+                   -> { MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::Schedule }
+
+          # @!method initialize(revenue_system_configuration:, schedule:)
+          #   Update the revenue system configuration on the contract. Currently only supports
+          #   adding a revenue system configuration to a contract that does not already have
+          #   one.
+          #
+          #   @param revenue_system_configuration [MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration]
+          #   @param schedule [MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::Schedule]
+
+          # @see MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate#revenue_system_configuration
+          class RevenueSystemConfiguration < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute delivery_method
+            #
+            #   @return [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::DeliveryMethod, nil]
+            optional :delivery_method,
+                     enum: -> { MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::DeliveryMethod }
+
+            # @!attribute provider
+            #   The revenue system provider type.
+            #
+            #   @return [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::Provider, nil]
+            optional :provider,
+                     enum: -> { MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::Provider }
+
+            # @!attribute revenue_system_configuration_id
+            #
+            #   @return [String, nil]
+            optional :revenue_system_configuration_id, String
+
+            # @!method initialize(delivery_method: nil, provider: nil, revenue_system_configuration_id: nil)
+            #   @param delivery_method [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::DeliveryMethod]
+            #
+            #   @param provider [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::Provider] The revenue system provider type.
+            #
+            #   @param revenue_system_configuration_id [String]
+
+            # @see MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration#delivery_method
+            module DeliveryMethod
+              extend MetronomeSDK::Internal::Type::Enum
+
+              DIRECT_TO_BILLING_PROVIDER = :direct_to_billing_provider
+              AWS_SQS = :aws_sqs
+              TACKLE = :tackle
+              AWS_SNS = :aws_sns
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # The revenue system provider type.
+            #
+            # @see MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration#provider
+            module Provider
+              extend MetronomeSDK::Internal::Type::Enum
+
+              NETSUITE = :netsuite
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
+
+          # @see MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate#schedule
+          class Schedule < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute effective_at
+            #   When the revenue system configuration update will take effect.
+            #
+            #   @return [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::Schedule::EffectiveAt]
+            required :effective_at,
+                     enum: -> { MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::Schedule::EffectiveAt }
+
+            # @!method initialize(effective_at:)
+            #   @param effective_at [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::Schedule::EffectiveAt] When the revenue system configuration update will take effect.
+
+            # When the revenue system configuration update will take effect.
+            #
+            # @see MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::Schedule#effective_at
+            module EffectiveAt
+              extend MetronomeSDK::Internal::Type::Enum
+
+              START_OF_CURRENT_PERIOD = :START_OF_CURRENT_PERIOD
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
           end
         end
 

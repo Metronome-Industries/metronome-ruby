@@ -1,0 +1,50 @@
+module MetronomeSDK
+  module Models
+    type balance_filter =
+      {
+        balance_types: ::Array[MetronomeSDK::Models::BalanceFilter::balance_type],
+        custom_fields: ::Hash[Symbol, String],
+        ids: ::Array[String]
+      }
+
+    class BalanceFilter < MetronomeSDK::Internal::Type::BaseModel
+      attr_reader balance_types: ::Array[MetronomeSDK::Models::BalanceFilter::balance_type]?
+
+      def balance_types=: (
+        ::Array[MetronomeSDK::Models::BalanceFilter::balance_type]
+      ) -> ::Array[MetronomeSDK::Models::BalanceFilter::balance_type]
+
+      attr_reader custom_fields: ::Hash[Symbol, String]?
+
+      def custom_fields=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
+
+      attr_reader ids: ::Array[String]?
+
+      def ids=: (::Array[String]) -> ::Array[String]
+
+      def initialize: (
+        ?balance_types: ::Array[MetronomeSDK::Models::BalanceFilter::balance_type],
+        ?custom_fields: ::Hash[Symbol, String],
+        ?ids: ::Array[String]
+      ) -> void
+
+      def to_hash: -> {
+        balance_types: ::Array[MetronomeSDK::Models::BalanceFilter::balance_type],
+        custom_fields: ::Hash[Symbol, String],
+        ids: ::Array[String]
+      }
+
+      type balance_type = :PREPAID_COMMIT | :POSTPAID_COMMIT | :CREDIT
+
+      module BalanceType
+        extend MetronomeSDK::Internal::Type::Enum
+
+        PREPAID_COMMIT: :PREPAID_COMMIT
+        POSTPAID_COMMIT: :POSTPAID_COMMIT
+        CREDIT: :CREDIT
+
+        def self?.values: -> ::Array[MetronomeSDK::Models::BalanceFilter::balance_type]
+      end
+    end
+  end
+end

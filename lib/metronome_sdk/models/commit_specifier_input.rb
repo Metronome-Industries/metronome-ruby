@@ -4,11 +4,15 @@ module MetronomeSDK
   module Models
     class CommitSpecifierInput < MetronomeSDK::Internal::Type::BaseModel
       # @!attribute presentation_group_values
+      #   If provided, the specifier will apply to product usage with these set of
+      #   presentation group values.
       #
       #   @return [Hash{Symbol=>String}, nil]
       optional :presentation_group_values, MetronomeSDK::Internal::Type::HashOf[String]
 
       # @!attribute pricing_group_values
+      #   If provided, the specifier will apply to product usage with these set of pricing
+      #   group values.
       #
       #   @return [Hash{Symbol=>String}, nil]
       optional :pricing_group_values, MetronomeSDK::Internal::Type::HashOf[String]
@@ -30,9 +34,9 @@ module MetronomeSDK
       #   Some parameter documentations has been truncated, see
       #   {MetronomeSDK::Models::CommitSpecifierInput} for more details.
       #
-      #   @param presentation_group_values [Hash{Symbol=>String}]
+      #   @param presentation_group_values [Hash{Symbol=>String}] If provided, the specifier will apply to product usage with these set of present
       #
-      #   @param pricing_group_values [Hash{Symbol=>String}]
+      #   @param pricing_group_values [Hash{Symbol=>String}] If provided, the specifier will apply to product usage with these set of pricing
       #
       #   @param product_id [String] If provided, the specifier will only apply to the product with the specified ID.
       #

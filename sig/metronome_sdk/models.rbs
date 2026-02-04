@@ -1,4 +1,6 @@
 module MetronomeSDK
+  class BalanceFilter = MetronomeSDK::Models::BalanceFilter
+
   class BaseThresholdCommit = MetronomeSDK::Models::BaseThresholdCommit
 
   class BaseUsageFilter = MetronomeSDK::Models::BaseUsageFilter

@@ -69,7 +69,13 @@ module MetronomeSDK
         tiers: ::Array[MetronomeSDK::Tier]
       }
 
-      type rate_type = :FLAT | :PERCENTAGE | :SUBSCRIPTION | :CUSTOM | :TIERED
+      type rate_type =
+        :FLAT
+        | :PERCENTAGE
+        | :SUBSCRIPTION
+        | :CUSTOM
+        | :TIERED
+        | :TIERED_PERCENTAGE
 
       module RateType
         extend MetronomeSDK::Internal::Type::Enum
@@ -79,6 +85,7 @@ module MetronomeSDK
         SUBSCRIPTION: :SUBSCRIPTION
         CUSTOM: :CUSTOM
         TIERED: :TIERED
+        TIERED_PERCENTAGE: :TIERED_PERCENTAGE
 
         def self?.values: -> ::Array[MetronomeSDK::Models::Rate::rate_type]
       end

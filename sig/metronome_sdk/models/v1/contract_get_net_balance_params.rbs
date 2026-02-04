@@ -1,0 +1,64 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type contract_get_net_balance_params =
+        {
+          customer_id: String,
+          credit_type_id: String,
+          filters: ::Array[MetronomeSDK::BalanceFilter],
+          invoice_inclusion_mode: MetronomeSDK::Models::V1::ContractGetNetBalanceParams::invoice_inclusion_mode
+        }
+        & MetronomeSDK::Internal::Type::request_parameters
+
+      class ContractGetNetBalanceParams < MetronomeSDK::Internal::Type::BaseModel
+        extend MetronomeSDK::Internal::Type::RequestParameters::Converter
+        include MetronomeSDK::Internal::Type::RequestParameters
+
+        attr_accessor customer_id: String
+
+        attr_reader credit_type_id: String?
+
+        def credit_type_id=: (String) -> String
+
+        attr_reader filters: ::Array[MetronomeSDK::BalanceFilter]?
+
+        def filters=: (
+          ::Array[MetronomeSDK::BalanceFilter]
+        ) -> ::Array[MetronomeSDK::BalanceFilter]
+
+        attr_reader invoice_inclusion_mode: MetronomeSDK::Models::V1::ContractGetNetBalanceParams::invoice_inclusion_mode?
+
+        def invoice_inclusion_mode=: (
+          MetronomeSDK::Models::V1::ContractGetNetBalanceParams::invoice_inclusion_mode
+        ) -> MetronomeSDK::Models::V1::ContractGetNetBalanceParams::invoice_inclusion_mode
+
+        def initialize: (
+          customer_id: String,
+          ?credit_type_id: String,
+          ?filters: ::Array[MetronomeSDK::BalanceFilter],
+          ?invoice_inclusion_mode: MetronomeSDK::Models::V1::ContractGetNetBalanceParams::invoice_inclusion_mode,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          customer_id: String,
+          credit_type_id: String,
+          filters: ::Array[MetronomeSDK::BalanceFilter],
+          invoice_inclusion_mode: MetronomeSDK::Models::V1::ContractGetNetBalanceParams::invoice_inclusion_mode,
+          request_options: MetronomeSDK::RequestOptions
+        }
+
+        type invoice_inclusion_mode = :FINALIZED | :FINALIZED_AND_DRAFT
+
+        module InvoiceInclusionMode
+          extend MetronomeSDK::Internal::Type::Enum
+
+          FINALIZED: :FINALIZED
+          FINALIZED_AND_DRAFT: :FINALIZED_AND_DRAFT
+
+          def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractGetNetBalanceParams::invoice_inclusion_mode]
+        end
+      end
+    end
+  end
+end
