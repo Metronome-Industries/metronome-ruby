@@ -39,6 +39,8 @@ module MetronomeSDK
     mod.define_sorbet_constant!(const) { T.type_alias { mod.to_sorbet_type } }
   end
 
+  BalanceFilter = MetronomeSDK::Models::BalanceFilter
+
   BaseThresholdCommit = MetronomeSDK::Models::BaseThresholdCommit
 
   BaseUsageFilter = MetronomeSDK::Models::BaseUsageFilter

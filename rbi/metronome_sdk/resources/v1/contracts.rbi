@@ -531,6 +531,79 @@ module MetronomeSDK
         def create_historical_invoices(invoices:, preview:, request_options: {})
         end
 
+        # Retrieve the combined current balance across any grouping of credits and commits
+        # for a customer in a single API call.
+        #
+        # - Display real-time available balance to customers in billing dashboards
+        # - Build finance dashboards showing credit utilization across customer segments
+        # - Validate expected vs. actual balance during billing reconciliation
+        #
+        # ### Key response fields:
+        #
+        # - `balance`: The combined net balance available to use at this moment across all
+        #   matching commits and credits
+        # - `credit_type_id`: The credit type (fiat or custom pricing unit) the balance is
+        #   denominated in
+        #
+        # ### Filtering options:
+        #
+        # Balance filters allow you to scope the calculation to specific subsets of
+        # commits and credits. When using multiple filter objects, they are OR'd together
+        # — if a commit or credit matches any filter, it's included in the net balance.
+        # Within a single filter object, all specified conditions are AND'd together.
+        #
+        # - **Balance types**: Include any combination of `PREPAID_COMMIT`,
+        #   `POSTPAID_COMMIT`, and `CREDIT` (e.g., `["PREPAID_COMMIT", "CREDIT"]` to
+        #   exclude postpaid commits). If not specified, all balance types are included.
+        # - **Specific IDs**: Target exact commit or credit IDs for precise balance
+        #   queries
+        # - **Custom fields**: Filter by custom field key-value pairs; when multiple pairs
+        #   are provided, commits must match all of them
+        #
+        # **Example**: To get the balance of all free-trial credits OR all
+        # signup-promotion commits, you'd pass two filter objects — one filtering for
+        # CREDIT with custom field campaign: free-trial, and another filtering for
+        # PREPAID_COMMIT with custom field campaign: signup-promotion.
+        #
+        # ### Usage guidelines:
+        #
+        # - **Draft invoice handling**: Use `invoice_inclusion_mode` to control whether
+        #   pending draft invoice deductions are included (`FINALIZED_AND_DRAFT`, the
+        #   default) or excluded (`FINALIZED`) from the balance calculation
+        # - **Account hierarchies**: When querying a child customer, shared commits from
+        #   parent contracts are not included — query the parent customer directly to see
+        #   shared commit balances
+        # - **Negative balances**: Manual ledger entries can cause negative segment
+        #   balances; these are treated as zero when calculating the net balance
+        # - **Credit types**: If `credit_type_id` is not specified, the balance defaults
+        #   to USD (cents)
+        sig do
+          params(
+            customer_id: String,
+            credit_type_id: String,
+            filters: T::Array[MetronomeSDK::BalanceFilter::OrHash],
+            invoice_inclusion_mode:
+              MetronomeSDK::V1::ContractGetNetBalanceParams::InvoiceInclusionMode::OrSymbol,
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(MetronomeSDK::Models::V1::ContractGetNetBalanceResponse)
+        end
+        def get_net_balance(
+          # The ID of the customer.
+          customer_id:,
+          # The ID of the credit type (can be fiat or a custom pricing unit) to get the
+          # balance for. Defaults to USD (cents) if not specified.
+          credit_type_id: nil,
+          # Balance filters are OR'd together, so if a given commit or credit matches any of
+          # the filters, it will be included in the net balance.
+          filters: nil,
+          # Controls which invoices are considered when calculating the remaining balance.
+          # `FINALIZED` considers only deductions from finalized invoices.
+          # `FINALIZED_AND_DRAFT` also includes deductions from pending draft invoices.
+          invoice_inclusion_mode: nil,
+          request_options: {}
+        )
+        end
+
         # Retrieve a comprehensive view of all available balances (commits and credits)
         # for a customer. This endpoint provides real-time visibility into prepaid funds,
         # postpaid commitments, promotional credits, and other balance types that can

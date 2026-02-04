@@ -108,6 +108,14 @@ module MetronomeSDK
           ?request_options: MetronomeSDK::request_opts
         ) -> MetronomeSDK::Models::V1::ContractCreateHistoricalInvoicesResponse
 
+        def get_net_balance: (
+          customer_id: String,
+          ?credit_type_id: String,
+          ?filters: ::Array[MetronomeSDK::BalanceFilter],
+          ?invoice_inclusion_mode: MetronomeSDK::Models::V1::ContractGetNetBalanceParams::invoice_inclusion_mode,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> MetronomeSDK::Models::V1::ContractGetNetBalanceResponse
+
         def list_balances: (
           customer_id: String,
           ?id: String,
