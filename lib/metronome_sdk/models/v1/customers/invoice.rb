@@ -518,6 +518,13 @@ module MetronomeSDK
             #   @return [Hash{Symbol=>String}, nil]
             optional :subscription_custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
 
+            # @!attribute subscription_id
+            #   ID of the subscription that this line item is associated with. Only present on
+            #   line items with product of `SUBSCRIPTION` type.
+            #
+            #   @return [String, nil]
+            optional :subscription_id, String
+
             # @!attribute tier
             #   Populated if the line item has a tiered price.
             #
@@ -530,7 +537,7 @@ module MetronomeSDK
             #   @return [Float, nil]
             optional :unit_price, Float
 
-            # @!method initialize(credit_type:, name:, total:, type:, applied_commit_or_credit: nil, commit_custom_fields: nil, commit_id: nil, commit_netsuite_item_id: nil, commit_netsuite_sales_order_id: nil, commit_segment_id: nil, commit_type: nil, custom_fields: nil, discount_custom_fields: nil, discount_id: nil, ending_before: nil, group_key: nil, group_value: nil, is_prorated: nil, list_price: nil, metadata: nil, netsuite_invoice_billing_end: nil, netsuite_invoice_billing_start: nil, netsuite_item_id: nil, origin: nil, postpaid_commit: nil, presentation_group_values: nil, pricing_group_values: nil, product_custom_fields: nil, product_id: nil, product_tags: nil, product_type: nil, professional_service_custom_fields: nil, professional_service_id: nil, quantity: nil, reseller_type: nil, scheduled_charge_custom_fields: nil, scheduled_charge_id: nil, starting_at: nil, sub_line_items: nil, subscription_custom_fields: nil, tier: nil, unit_price: nil)
+            # @!method initialize(credit_type:, name:, total:, type:, applied_commit_or_credit: nil, commit_custom_fields: nil, commit_id: nil, commit_netsuite_item_id: nil, commit_netsuite_sales_order_id: nil, commit_segment_id: nil, commit_type: nil, custom_fields: nil, discount_custom_fields: nil, discount_id: nil, ending_before: nil, group_key: nil, group_value: nil, is_prorated: nil, list_price: nil, metadata: nil, netsuite_invoice_billing_end: nil, netsuite_invoice_billing_start: nil, netsuite_item_id: nil, origin: nil, postpaid_commit: nil, presentation_group_values: nil, pricing_group_values: nil, product_custom_fields: nil, product_id: nil, product_tags: nil, product_type: nil, professional_service_custom_fields: nil, professional_service_id: nil, quantity: nil, reseller_type: nil, scheduled_charge_custom_fields: nil, scheduled_charge_id: nil, starting_at: nil, sub_line_items: nil, subscription_custom_fields: nil, subscription_id: nil, tier: nil, unit_price: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V1::Customers::Invoice::LineItem} for more details.
             #
@@ -613,6 +620,8 @@ module MetronomeSDK
             #   @param sub_line_items [Array<MetronomeSDK::Models::V1::Customers::Invoice::LineItem::SubLineItem>]
             #
             #   @param subscription_custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
+            #
+            #   @param subscription_id [String] ID of the subscription that this line item is associated with. Only present on l
             #
             #   @param tier [MetronomeSDK::Models::V1::Customers::Invoice::LineItem::Tier] Populated if the line item has a tiered price.
             #
