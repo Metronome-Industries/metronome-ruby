@@ -270,6 +270,7 @@ module MetronomeSDK
               starting_at: Time,
               sub_line_items: ::Array[MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem],
               subscription_custom_fields: ::Hash[Symbol, String],
+              subscription_id: String,
               tier: MetronomeSDK::V1::Customers::Invoice::LineItem::Tier,
               unit_price: Float
             }
@@ -453,6 +454,10 @@ module MetronomeSDK
               ::Hash[Symbol, String]
             ) -> ::Hash[Symbol, String]
 
+            attr_reader subscription_id: String?
+
+            def subscription_id=: (String) -> String
+
             attr_reader tier: MetronomeSDK::V1::Customers::Invoice::LineItem::Tier?
 
             def tier=: (
@@ -504,6 +509,7 @@ module MetronomeSDK
               ?starting_at: Time,
               ?sub_line_items: ::Array[MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem],
               ?subscription_custom_fields: ::Hash[Symbol, String],
+              ?subscription_id: String,
               ?tier: MetronomeSDK::V1::Customers::Invoice::LineItem::Tier,
               ?unit_price: Float
             ) -> void
@@ -549,6 +555,7 @@ module MetronomeSDK
               starting_at: Time,
               sub_line_items: ::Array[MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem],
               subscription_custom_fields: ::Hash[Symbol, String],
+              subscription_id: String,
               tier: MetronomeSDK::V1::Customers::Invoice::LineItem::Tier,
               unit_price: Float
             }
