@@ -86,13 +86,6 @@ module MetronomeSDK
       end
       attr_writer :prepaid_balance_threshold_configuration
 
-      # Priority of the contract.
-      sig { returns(T.nilable(Float)) }
-      attr_reader :priority
-
-      sig { params(priority: Float).void }
-      attr_writer :priority
-
       # Determines which scheduled and commit charges to consolidate onto the Contract's
       # usage invoice. The charge's `timestamp` must match the usage invoice's
       # `ending_before` date for consolidation to occur. This field cannot be modified
@@ -158,7 +151,6 @@ module MetronomeSDK
           package_id: String,
           prepaid_balance_threshold_configuration:
             MetronomeSDK::PrepaidBalanceThresholdConfiguration::OrHash,
-          priority: Float,
           scheduled_charges_on_usage_invoices:
             MetronomeSDK::Contract::ScheduledChargesOnUsageInvoices::OrSymbol,
           spend_threshold_configuration:
@@ -183,8 +175,6 @@ module MetronomeSDK
         # ID of the package this contract was created from, if applicable.
         package_id: nil,
         prepaid_balance_threshold_configuration: nil,
-        # Priority of the contract.
-        priority: nil,
         # Determines which scheduled and commit charges to consolidate onto the Contract's
         # usage invoice. The charge's `timestamp` must match the usage invoice's
         # `ending_before` date for consolidation to occur. This field cannot be modified
@@ -216,7 +206,6 @@ module MetronomeSDK
             package_id: String,
             prepaid_balance_threshold_configuration:
               MetronomeSDK::PrepaidBalanceThresholdConfiguration,
-            priority: Float,
             scheduled_charges_on_usage_invoices:
               MetronomeSDK::Contract::ScheduledChargesOnUsageInvoices::TaggedSymbol,
             spend_threshold_configuration:

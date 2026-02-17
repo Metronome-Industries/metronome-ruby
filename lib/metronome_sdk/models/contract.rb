@@ -60,12 +60,6 @@ module MetronomeSDK
       optional :prepaid_balance_threshold_configuration,
                -> { MetronomeSDK::PrepaidBalanceThresholdConfiguration }
 
-      # @!attribute priority
-      #   Priority of the contract.
-      #
-      #   @return [Float, nil]
-      optional :priority, Float
-
       # @!attribute scheduled_charges_on_usage_invoices
       #   Determines which scheduled and commit charges to consolidate onto the Contract's
       #   usage invoice. The charge's `timestamp` must match the usage invoice's
@@ -96,7 +90,7 @@ module MetronomeSDK
       #   @return [String, nil]
       optional :uniqueness_key, String
 
-      # @!method initialize(id:, amendments:, current:, customer_id:, initial:, archived_at: nil, custom_fields: nil, customer_billing_provider_configuration: nil, package_id: nil, prepaid_balance_threshold_configuration: nil, priority: nil, scheduled_charges_on_usage_invoices: nil, spend_threshold_configuration: nil, subscriptions: nil, uniqueness_key: nil)
+      # @!method initialize(id:, amendments:, current:, customer_id:, initial:, archived_at: nil, custom_fields: nil, customer_billing_provider_configuration: nil, package_id: nil, prepaid_balance_threshold_configuration: nil, scheduled_charges_on_usage_invoices: nil, spend_threshold_configuration: nil, subscriptions: nil, uniqueness_key: nil)
       #   Some parameter documentations has been truncated, see
       #   {MetronomeSDK::Models::Contract} for more details.
       #
@@ -119,8 +113,6 @@ module MetronomeSDK
       #   @param package_id [String] ID of the package this contract was created from, if applicable.
       #
       #   @param prepaid_balance_threshold_configuration [MetronomeSDK::Models::PrepaidBalanceThresholdConfiguration]
-      #
-      #   @param priority [Float] Priority of the contract.
       #
       #   @param scheduled_charges_on_usage_invoices [Symbol, MetronomeSDK::Models::Contract::ScheduledChargesOnUsageInvoices] Determines which scheduled and commit charges to consolidate onto the Contract's
       #
