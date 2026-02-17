@@ -167,7 +167,6 @@ module MetronomeSDK
             package_id: String,
             prepaid_balance_threshold_configuration:
               MetronomeSDK::PrepaidBalanceThresholdConfiguration::OrHash,
-            priority: Float,
             professional_services:
               T::Array[
                 MetronomeSDK::V1::ContractCreateParams::ProfessionalService::OrHash
@@ -245,8 +244,6 @@ module MetronomeSDK
           # and uniqueness_key are allowed.
           package_id: nil,
           prepaid_balance_threshold_configuration: nil,
-          # Priority of the contract.
-          priority: nil,
           # This field's availability is dependent on your client's configuration.
           professional_services: nil,
           # Selects the rate card linked to the specified alias as of the contract's start

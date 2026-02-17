@@ -20,7 +20,6 @@ module MetronomeSDK
           package_alias: String,
           package_id: String,
           prepaid_balance_threshold_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration,
-          priority: Float,
           professional_services: ::Array[MetronomeSDK::V1::ContractCreateParams::ProfessionalService],
           rate_card_alias: String,
           rate_card_id: String,
@@ -124,10 +123,6 @@ module MetronomeSDK
         def prepaid_balance_threshold_configuration=: (
           MetronomeSDK::PrepaidBalanceThresholdConfiguration
         ) -> MetronomeSDK::PrepaidBalanceThresholdConfiguration
-
-        attr_reader priority: Float?
-
-        def priority=: (Float) -> Float
 
         attr_reader professional_services: ::Array[MetronomeSDK::V1::ContractCreateParams::ProfessionalService]?
 
@@ -239,7 +234,6 @@ module MetronomeSDK
           ?package_alias: String,
           ?package_id: String,
           ?prepaid_balance_threshold_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration,
-          ?priority: Float,
           ?professional_services: ::Array[MetronomeSDK::V1::ContractCreateParams::ProfessionalService],
           ?rate_card_alias: String,
           ?rate_card_id: String,
@@ -278,7 +272,6 @@ module MetronomeSDK
           package_alias: String,
           package_id: String,
           prepaid_balance_threshold_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration,
-          priority: Float,
           professional_services: ::Array[MetronomeSDK::V1::ContractCreateParams::ProfessionalService],
           rate_card_alias: String,
           rate_card_id: String,
