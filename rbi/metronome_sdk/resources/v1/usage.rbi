@@ -190,8 +190,11 @@ module MetronomeSDK
         # An array of `PagedUsageAggregate` objects containing:
         #
         # - `starting_on` and `ending_before`: Time window boundaries
-        # - `group_key`: The dimension being grouped by (e.g., "region")
-        # - `group_value`: The specific value for this group (e.g., "US-East")
+        # - `group`: Object mapping group keys to their values
+        #   - For simple groups, this will be a map with a single key-value pair (e.g.,
+        #     `{"region": "US-East"}`)
+        #   - For compound groups, this will be a map with multiple key-value pairs (e.g.,
+        #     `{"region": "US-East", "team": "engineering"}`)
         # - `value`: Aggregated usage for this group and time window
         # - `next_page`: Pagination cursor for large datasets
         #
@@ -201,12 +204,13 @@ module MetronomeSDK
         #   `window_size`
         # - Time windows: Set `window_size` to hour, day, or none for different
         #   granularities
-        # - Group filtering: Use `group_by` to specify:
-        #   - key: The dimension to group by (must be set on the billable metric as a
-        #     group key)
-        #   - values: Optional array to filter to specific values only
+        # - Group filtering: Use `group_key` and `group_filters` to specify groups and
+        #   group filters
+        # - Limits: When using compound group keys (2+ keys in `group_key`), the default
+        #   and max limit is 100
         # - Pagination: Use limit and `next_page` for large result sets
-        # - Null handling: `group_value` may be null for unmatched data
+        # - Null handling: Group values may be null for events missing the group key
+        #   property
         sig do
           params(
             billable_metric_id: String,
@@ -219,6 +223,8 @@ module MetronomeSDK
             ending_before: Time,
             group_by:
               MetronomeSDK::V1::UsageListWithGroupsParams::GroupBy::OrHash,
+            group_filters: T::Hash[Symbol, T::Array[String]],
+            group_key: T::Array[String],
             starting_on: Time,
             request_options: MetronomeSDK::RequestOptions::OrHash
           ).returns(
@@ -247,8 +253,26 @@ module MetronomeSDK
           current_period: nil,
           # Body param
           ending_before: nil,
-          # Body param
+          # Body param: Use group_key and group_filters instead. Use a single group key to
+          # group by. Compound group keys are not supported.
           group_by: nil,
+          # Body param: Object mapping group keys to arrays of values to filter on. Only
+          # usage matching these filter values will be returned. Keys must be present in
+          # group_key. Omit a key or use an empty array to include all values for that
+          # dimension.
+          group_filters: nil,
+          # Body param: Group key to group usage by. Supports both simple (single key) and
+          # compound (multiple keys) group keys.
+          #
+          # For simple group keys, provide a single key e.g. `["region"]`. For compound
+          # group keys, provide multiple keys e.g. `["region", "team"]`.
+          #
+          # For streaming metrics, the keys must be defined as a simple or compound group
+          # key on the billable metric. For compound group keys, all keys must match an
+          # exact compound group key definition — partial matches are not allowed.
+          #
+          # Cannot be used together with `group_by`.
+          group_key: nil,
           # Body param
           starting_on: nil,
           request_options: {}

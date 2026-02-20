@@ -68,7 +68,8 @@ class MetronomeSDK::Test::Resources::V1::UsageTest < MetronomeSDK::Test::Resourc
         group_key: String | nil,
         group_value: String | nil,
         starting_on: Time,
-        value: Float | nil
+        value: Float | nil,
+        group: ^(MetronomeSDK::Internal::Type::HashOf[String]) | nil
       }
     end
   end
