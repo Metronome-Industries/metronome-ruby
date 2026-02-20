@@ -7,7 +7,8 @@ module MetronomeSDK
           group_key: String?,
           group_value: String?,
           starting_on: Time,
-          value: Float?
+          value: Float?,
+          group: ::Hash[Symbol, String]
         }
 
       class UsageListWithGroupsResponse < MetronomeSDK::Internal::Type::BaseModel
@@ -21,12 +22,17 @@ module MetronomeSDK
 
         attr_accessor value: Float?
 
+        attr_reader group: ::Hash[Symbol, String]?
+
+        def group=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
+
         def initialize: (
           ending_before: Time,
           group_key: String?,
           group_value: String?,
           starting_on: Time,
-          value: Float?
+          value: Float?,
+          ?group: ::Hash[Symbol, String]
         ) -> void
 
         def to_hash: -> {
@@ -34,7 +40,8 @@ module MetronomeSDK
           group_key: String?,
           group_value: String?,
           starting_on: Time,
-          value: Float?
+          value: Float?,
+          group: ::Hash[Symbol, String]
         }
       end
     end

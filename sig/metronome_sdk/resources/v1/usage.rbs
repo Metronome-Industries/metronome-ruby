@@ -26,6 +26,8 @@ module MetronomeSDK
           ?current_period: bool,
           ?ending_before: Time,
           ?group_by: MetronomeSDK::V1::UsageListWithGroupsParams::GroupBy,
+          ?group_filters: ::Hash[Symbol, ::Array[String]],
+          ?group_key: ::Array[String],
           ?starting_on: Time,
           ?request_options: MetronomeSDK::request_opts
         ) -> MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::UsageListWithGroupsResponse]

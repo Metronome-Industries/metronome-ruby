@@ -200,8 +200,11 @@ module MetronomeSDK
         # An array of `PagedUsageAggregate` objects containing:
         #
         # - `starting_on` and `ending_before`: Time window boundaries
-        # - `group_key`: The dimension being grouped by (e.g., "region")
-        # - `group_value`: The specific value for this group (e.g., "US-East")
+        # - `group`: Object mapping group keys to their values
+        #   - For simple groups, this will be a map with a single key-value pair (e.g.,
+        #     `{"region": "US-East"}`)
+        #   - For compound groups, this will be a map with multiple key-value pairs (e.g.,
+        #     `{"region": "US-East", "team": "engineering"}`)
         # - `value`: Aggregated usage for this group and time window
         # - `next_page`: Pagination cursor for large datasets
         #
@@ -211,14 +214,15 @@ module MetronomeSDK
         #   `window_size`
         # - Time windows: Set `window_size` to hour, day, or none for different
         #   granularities
-        # - Group filtering: Use `group_by` to specify:
-        #   - key: The dimension to group by (must be set on the billable metric as a
-        #     group key)
-        #   - values: Optional array to filter to specific values only
+        # - Group filtering: Use `group_key` and `group_filters` to specify groups and
+        #   group filters
+        # - Limits: When using compound group keys (2+ keys in `group_key`), the default
+        #   and max limit is 100
         # - Pagination: Use limit and `next_page` for large result sets
-        # - Null handling: `group_value` may be null for unmatched data
+        # - Null handling: Group values may be null for events missing the group key
+        #   property
         #
-        # @overload list_with_groups(billable_metric_id:, customer_id:, window_size:, limit: nil, next_page: nil, current_period: nil, ending_before: nil, group_by: nil, starting_on: nil, request_options: {})
+        # @overload list_with_groups(billable_metric_id:, customer_id:, window_size:, limit: nil, next_page: nil, current_period: nil, ending_before: nil, group_by: nil, group_filters: nil, group_key: nil, starting_on: nil, request_options: {})
         #
         # @param billable_metric_id [String] Body param
         #
@@ -234,7 +238,11 @@ module MetronomeSDK
         #
         # @param ending_before [Time] Body param
         #
-        # @param group_by [MetronomeSDK::Models::V1::UsageListWithGroupsParams::GroupBy] Body param
+        # @param group_by [MetronomeSDK::Models::V1::UsageListWithGroupsParams::GroupBy] Body param: Use group_key and group_filters instead. Use a single group key to g
+        #
+        # @param group_filters [Hash{Symbol=>Array<String>}] Body param: Object mapping group keys to arrays of values to filter on. Only usa
+        #
+        # @param group_key [Array<String>] Body param: Group key to group usage by. Supports both simple (single key) and c
         #
         # @param starting_on [Time] Body param
         #
