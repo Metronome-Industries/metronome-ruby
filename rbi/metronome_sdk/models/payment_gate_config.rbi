@@ -293,11 +293,6 @@ module MetronomeSDK
           T.let(:STRIPE, MetronomeSDK::PaymentGateConfig::TaxType::TaggedSymbol)
         ANROK =
           T.let(:ANROK, MetronomeSDK::PaymentGateConfig::TaxType::TaggedSymbol)
-        AVALARA =
-          T.let(
-            :AVALARA,
-            MetronomeSDK::PaymentGateConfig::TaxType::TaggedSymbol
-          )
         PRECALCULATED =
           T.let(
             :PRECALCULATED,
