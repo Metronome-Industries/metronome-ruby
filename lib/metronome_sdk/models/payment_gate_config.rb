@@ -139,7 +139,6 @@ module MetronomeSDK
         NONE = :NONE
         STRIPE = :STRIPE
         ANROK = :ANROK
-        AVALARA = :AVALARA
         PRECALCULATED = :PRECALCULATED
 
         # @!method self.values
