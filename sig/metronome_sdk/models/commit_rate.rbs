@@ -3,12 +3,19 @@ module MetronomeSDK
     type commit_rate =
       {
         rate_type: MetronomeSDK::Models::CommitRate::rate_type,
+        minimum_config: MetronomeSDK::CommitRate::MinimumConfig,
         price: Float,
         tiers: ::Array[MetronomeSDK::Tier]
       }
 
     class CommitRate < MetronomeSDK::Internal::Type::BaseModel
       attr_accessor rate_type: MetronomeSDK::Models::CommitRate::rate_type
+
+      attr_reader minimum_config: MetronomeSDK::CommitRate::MinimumConfig?
+
+      def minimum_config=: (
+        MetronomeSDK::CommitRate::MinimumConfig
+      ) -> MetronomeSDK::CommitRate::MinimumConfig
 
       attr_reader price: Float?
 
@@ -20,12 +27,14 @@ module MetronomeSDK
 
       def initialize: (
         rate_type: MetronomeSDK::Models::CommitRate::rate_type,
+        ?minimum_config: MetronomeSDK::CommitRate::MinimumConfig,
         ?price: Float,
         ?tiers: ::Array[MetronomeSDK::Tier]
       ) -> void
 
       def to_hash: -> {
         rate_type: MetronomeSDK::Models::CommitRate::rate_type,
+        minimum_config: MetronomeSDK::CommitRate::MinimumConfig,
         price: Float,
         tiers: ::Array[MetronomeSDK::Tier]
       }
@@ -49,6 +58,16 @@ module MetronomeSDK
         CUSTOM: :CUSTOM
 
         def self?.values: -> ::Array[MetronomeSDK::Models::CommitRate::rate_type]
+      end
+
+      type minimum_config = { minimum: Float }
+
+      class MinimumConfig < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor minimum: Float
+
+        def initialize: (minimum: Float) -> void
+
+        def to_hash: -> { minimum: Float }
       end
     end
   end
