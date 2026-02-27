@@ -84,12 +84,13 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::CreditGrantListParams
         def list(params = {})
-          parsed, options = MetronomeSDK::V1::CreditGrantListParams.dump_request(params)
           query_params = [:limit, :next_page]
+          parsed, options = MetronomeSDK::V1::CreditGrantListParams.dump_request(params)
+          query = MetronomeSDK::Internal::Util.encode_query_params(parsed.slice(*query_params))
           @client.request(
             method: :post,
             path: "v1/credits/listGrants",
-            query: parsed.slice(*query_params),
+            query: query,
             body: parsed.except(*query_params),
             page: MetronomeSDK::Internal::CursorPage,
             model: MetronomeSDK::Models::V1::CreditGrantListResponse,
@@ -155,12 +156,13 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::CreditGrantListEntriesParams
         def list_entries(params = {})
-          parsed, options = MetronomeSDK::V1::CreditGrantListEntriesParams.dump_request(params)
           query_params = [:next_page, :sort]
+          parsed, options = MetronomeSDK::V1::CreditGrantListEntriesParams.dump_request(params)
+          query = MetronomeSDK::Internal::Util.encode_query_params(parsed.slice(*query_params))
           @client.request(
             method: :post,
             path: "v1/credits/listEntries",
-            query: parsed.slice(*query_params),
+            query: query,
             body: parsed.except(*query_params),
             page: MetronomeSDK::Internal::CursorPageWithoutLimit,
             model: MetronomeSDK::Models::V1::CreditGrantListEntriesResponse,

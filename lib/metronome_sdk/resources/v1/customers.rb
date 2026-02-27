@@ -155,10 +155,11 @@ module MetronomeSDK
         # @see MetronomeSDK::Models::V1::CustomerListParams
         def list(params = {})
           parsed, options = MetronomeSDK::V1::CustomerListParams.dump_request(params)
+          query = MetronomeSDK::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "v1/customers",
-            query: parsed,
+            query: query,
             page: MetronomeSDK::Internal::CursorPage,
             model: MetronomeSDK::V1::CustomerDetail,
             options: options
@@ -226,6 +227,7 @@ module MetronomeSDK
         # @see MetronomeSDK::Models::V1::CustomerListBillableMetricsParams
         def list_billable_metrics(params)
           parsed, options = MetronomeSDK::V1::CustomerListBillableMetricsParams.dump_request(params)
+          query = MetronomeSDK::Internal::Util.encode_query_params(parsed)
           customer_id =
             parsed.delete(:customer_id) do
               raise ArgumentError.new("missing required path argument #{_1}")
@@ -233,7 +235,7 @@ module MetronomeSDK
           @client.request(
             method: :get,
             path: ["v1/customers/%1$s/billable-metrics", customer_id],
-            query: parsed,
+            query: query,
             page: MetronomeSDK::Internal::CursorPage,
             model: MetronomeSDK::Models::V1::CustomerListBillableMetricsResponse,
             options: options
@@ -264,6 +266,7 @@ module MetronomeSDK
         # @see MetronomeSDK::Models::V1::CustomerListCostsParams
         def list_costs(params)
           parsed, options = MetronomeSDK::V1::CustomerListCostsParams.dump_request(params)
+          query = MetronomeSDK::Internal::Util.encode_query_params(parsed)
           customer_id =
             parsed.delete(:customer_id) do
               raise ArgumentError.new("missing required path argument #{_1}")
@@ -271,7 +274,7 @@ module MetronomeSDK
           @client.request(
             method: :get,
             path: ["v1/customers/%1$s/costs", customer_id],
-            query: parsed,
+            query: query,
             page: MetronomeSDK::Internal::CursorPage,
             model: MetronomeSDK::Models::V1::CustomerListCostsResponse,
             options: options

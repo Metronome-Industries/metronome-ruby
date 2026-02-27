@@ -126,10 +126,11 @@ module MetronomeSDK
         # @see MetronomeSDK::Models::V1::BillableMetricListParams
         def list(params = {})
           parsed, options = MetronomeSDK::V1::BillableMetricListParams.dump_request(params)
+          query = MetronomeSDK::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "v1/billable-metrics",
-            query: parsed,
+            query: query,
             page: MetronomeSDK::Internal::CursorPage,
             model: MetronomeSDK::Models::V1::BillableMetricListResponse,
             options: options

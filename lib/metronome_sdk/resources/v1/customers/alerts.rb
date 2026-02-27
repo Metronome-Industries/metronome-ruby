@@ -141,12 +141,13 @@ module MetronomeSDK
           #
           # @see MetronomeSDK::Models::V1::Customers::AlertListParams
           def list(params)
-            parsed, options = MetronomeSDK::V1::Customers::AlertListParams.dump_request(params)
             query_params = [:next_page]
+            parsed, options = MetronomeSDK::V1::Customers::AlertListParams.dump_request(params)
+            query = MetronomeSDK::Internal::Util.encode_query_params(parsed.slice(*query_params))
             @client.request(
               method: :post,
               path: "v1/customer-alerts/list",
-              query: parsed.slice(*query_params),
+              query: query,
               body: parsed.except(*query_params),
               page: MetronomeSDK::Internal::CursorPageWithoutLimit,
               model: MetronomeSDK::V1::Customers::CustomerAlert,

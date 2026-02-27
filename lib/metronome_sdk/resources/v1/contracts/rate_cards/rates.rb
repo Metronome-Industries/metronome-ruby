@@ -38,12 +38,13 @@ module MetronomeSDK
             #
             # @see MetronomeSDK::Models::V1::Contracts::RateCards::RateListParams
             def list(params)
-              parsed, options = MetronomeSDK::V1::Contracts::RateCards::RateListParams.dump_request(params)
               query_params = [:limit, :next_page]
+              parsed, options = MetronomeSDK::V1::Contracts::RateCards::RateListParams.dump_request(params)
+              query = MetronomeSDK::Internal::Util.encode_query_params(parsed.slice(*query_params))
               @client.request(
                 method: :post,
                 path: "v1/contract-pricing/rate-cards/getRates",
-                query: parsed.slice(*query_params),
+                query: query,
                 body: parsed.except(*query_params),
                 page: MetronomeSDK::Internal::CursorPage,
                 model: MetronomeSDK::Models::V1::Contracts::RateCards::RateListResponse,

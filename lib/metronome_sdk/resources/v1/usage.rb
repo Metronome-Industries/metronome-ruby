@@ -61,12 +61,13 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::UsageListParams
         def list(params)
-          parsed, options = MetronomeSDK::V1::UsageListParams.dump_request(params)
           query_params = [:next_page]
+          parsed, options = MetronomeSDK::V1::UsageListParams.dump_request(params)
+          query = MetronomeSDK::Internal::Util.encode_query_params(parsed.slice(*query_params))
           @client.request(
             method: :post,
             path: "v1/usage",
-            query: parsed.slice(*query_params),
+            query: query,
             body: parsed.except(*query_params),
             page: MetronomeSDK::Internal::CursorPageWithoutLimit,
             model: MetronomeSDK::Models::V1::UsageListResponse,
@@ -252,12 +253,13 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::UsageListWithGroupsParams
         def list_with_groups(params)
-          parsed, options = MetronomeSDK::V1::UsageListWithGroupsParams.dump_request(params)
           query_params = [:limit, :next_page]
+          parsed, options = MetronomeSDK::V1::UsageListWithGroupsParams.dump_request(params)
+          query = MetronomeSDK::Internal::Util.encode_query_params(parsed.slice(*query_params))
           @client.request(
             method: :post,
             path: "v1/usage/groups",
-            query: parsed.slice(*query_params),
+            query: query,
             body: parsed.except(*query_params),
             page: MetronomeSDK::Internal::CursorPage,
             model: MetronomeSDK::Models::V1::UsageListWithGroupsResponse,
