@@ -20,10 +20,11 @@ module MetronomeSDK
         # @see MetronomeSDK::Models::V1::PlanListParams
         def list(params = {})
           parsed, options = MetronomeSDK::V1::PlanListParams.dump_request(params)
+          query = MetronomeSDK::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "v1/plans",
-            query: parsed,
+            query: query,
             page: MetronomeSDK::Internal::CursorPage,
             model: MetronomeSDK::Models::V1::PlanListResponse,
             options: options
@@ -73,6 +74,7 @@ module MetronomeSDK
         # @see MetronomeSDK::Models::V1::PlanListChargesParams
         def list_charges(params)
           parsed, options = MetronomeSDK::V1::PlanListChargesParams.dump_request(params)
+          query = MetronomeSDK::Internal::Util.encode_query_params(parsed)
           plan_id =
             parsed.delete(:plan_id) do
               raise ArgumentError.new("missing required path argument #{_1}")
@@ -80,7 +82,7 @@ module MetronomeSDK
           @client.request(
             method: :get,
             path: ["v1/planDetails/%1$s/charges", plan_id],
-            query: parsed,
+            query: query,
             page: MetronomeSDK::Internal::CursorPage,
             model: MetronomeSDK::Models::V1::PlanListChargesResponse,
             options: options
@@ -111,6 +113,7 @@ module MetronomeSDK
         # @see MetronomeSDK::Models::V1::PlanListCustomersParams
         def list_customers(params)
           parsed, options = MetronomeSDK::V1::PlanListCustomersParams.dump_request(params)
+          query = MetronomeSDK::Internal::Util.encode_query_params(parsed)
           plan_id =
             parsed.delete(:plan_id) do
               raise ArgumentError.new("missing required path argument #{_1}")
@@ -118,7 +121,7 @@ module MetronomeSDK
           @client.request(
             method: :get,
             path: ["v1/planDetails/%1$s/customers", plan_id],
-            query: parsed,
+            query: query,
             page: MetronomeSDK::Internal::CursorPage,
             model: MetronomeSDK::Models::V1::PlanListCustomersResponse,
             options: options

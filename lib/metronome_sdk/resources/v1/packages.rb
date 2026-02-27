@@ -162,12 +162,13 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::PackageListParams
         def list(params = {})
-          parsed, options = MetronomeSDK::V1::PackageListParams.dump_request(params)
           query_params = [:limit, :next_page]
+          parsed, options = MetronomeSDK::V1::PackageListParams.dump_request(params)
+          query = MetronomeSDK::Internal::Util.encode_query_params(parsed.slice(*query_params))
           @client.request(
             method: :post,
             path: "v1/packages/list",
-            query: parsed.slice(*query_params),
+            query: query,
             body: parsed.except(*query_params),
             page: MetronomeSDK::Internal::CursorPage,
             model: MetronomeSDK::Models::V1::PackageListResponse,
@@ -242,12 +243,13 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::PackageListContractsOnPackageParams
         def list_contracts_on_package(params)
-          parsed, options = MetronomeSDK::V1::PackageListContractsOnPackageParams.dump_request(params)
           query_params = [:limit, :next_page]
+          parsed, options = MetronomeSDK::V1::PackageListContractsOnPackageParams.dump_request(params)
+          query = MetronomeSDK::Internal::Util.encode_query_params(parsed.slice(*query_params))
           @client.request(
             method: :post,
             path: "v1/packages/listContractsOnPackage",
-            query: parsed.slice(*query_params),
+            query: query,
             body: parsed.except(*query_params),
             page: MetronomeSDK::Internal::CursorPage,
             model: MetronomeSDK::Models::V1::PackageListContractsOnPackageResponse,

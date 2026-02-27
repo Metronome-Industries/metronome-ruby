@@ -167,12 +167,13 @@ module MetronomeSDK
           #
           # @see MetronomeSDK::Models::V1::Contracts::ProductListParams
           def list(params = {})
-            parsed, options = MetronomeSDK::V1::Contracts::ProductListParams.dump_request(params)
             query_params = [:limit, :next_page]
+            parsed, options = MetronomeSDK::V1::Contracts::ProductListParams.dump_request(params)
+            query = MetronomeSDK::Internal::Util.encode_query_params(parsed.slice(*query_params))
             @client.request(
               method: :post,
               path: "v1/contract-pricing/products/list",
-              query: parsed.slice(*query_params),
+              query: query,
               body: parsed.except(*query_params),
               page: MetronomeSDK::Internal::CursorPage,
               model: MetronomeSDK::Models::V1::Contracts::ProductListResponse,

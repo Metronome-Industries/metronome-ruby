@@ -670,12 +670,13 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::ContractRetrieveRateScheduleParams
         def retrieve_rate_schedule(params)
-          parsed, options = MetronomeSDK::V1::ContractRetrieveRateScheduleParams.dump_request(params)
           query_params = [:limit, :next_page]
+          parsed, options = MetronomeSDK::V1::ContractRetrieveRateScheduleParams.dump_request(params)
+          query = MetronomeSDK::Internal::Util.encode_query_params(parsed.slice(*query_params))
           @client.request(
             method: :post,
             path: "v1/contracts/getContractRateSchedule",
-            query: parsed.slice(*query_params),
+            query: query,
             body: parsed.except(*query_params),
             model: MetronomeSDK::Models::V1::ContractRetrieveRateScheduleResponse,
             options: options
