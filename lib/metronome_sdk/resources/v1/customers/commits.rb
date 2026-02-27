@@ -4,6 +4,7 @@ module MetronomeSDK
   module Resources
     class V1
       class Customers
+        # Credits and commits are used to manage customer balances.
         class Commits
           # Some parameter documentations has been truncated, see
           # {MetronomeSDK::Models::V1::Customers::CommitCreateParams} for more details.

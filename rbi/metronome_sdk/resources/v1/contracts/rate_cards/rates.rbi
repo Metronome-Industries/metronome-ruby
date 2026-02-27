@@ -5,6 +5,7 @@ module MetronomeSDK
     class V1
       class Contracts
         class RateCards
+          # Rate cards are used to define default pricing for products.
           class Rates
             # Understand the rate schedule at a given timestamp, optionally filtering the list
             # of rates returned based on properties such as `product_id` and

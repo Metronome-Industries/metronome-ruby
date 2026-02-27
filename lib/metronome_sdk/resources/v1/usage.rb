@@ -3,6 +3,9 @@
 module MetronomeSDK
   module Resources
     class V1
+      # [Usage events](https://docs.metronome.com/connecting-metronome/send-usage-data/)
+      # are the basis for billable metrics. Use these endpoints to send usage events to
+      # Metronome and retrieve aggregated event data.
       class Usage
         # Some parameter documentations has been truncated, see
         # {MetronomeSDK::Models::V1::UsageListParams} for more details.

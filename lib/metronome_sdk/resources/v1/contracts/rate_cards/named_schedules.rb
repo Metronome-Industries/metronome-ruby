@@ -5,6 +5,8 @@ module MetronomeSDK
     class V1
       class Contracts
         class RateCards
+          # Named schedules are used for storing custom data that can change over time.
+          # Named schedules are often used in custom pricing logic.
           class NamedSchedules
             # Some parameter documentations has been truncated, see
             # {MetronomeSDK::Models::V1::Contracts::RateCards::NamedScheduleRetrieveParams}

@@ -4,6 +4,11 @@ module MetronomeSDK
   module Resources
     class V1
       class Customers
+        # [Alerts](https://docs.metronome.com/connecting-metronome/alerts/) monitor
+        # customer spending, balances, and other billing factors. Use these endpoints to
+        # create, retrieve, and archive customer alerts. To view sample alert payloads by
+        # alert type, navigate
+        # [here.](https://docs.metronome.com/manage-product-access/create-manage-alerts/#webhook-notifications)
         class Alerts
           # Some parameter documentations has been truncated, see
           # {MetronomeSDK::Models::V1::Customers::AlertRetrieveParams} for more details.

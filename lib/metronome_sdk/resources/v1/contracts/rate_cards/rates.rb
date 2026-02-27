@@ -5,6 +5,7 @@ module MetronomeSDK
     class V1
       class Contracts
         class RateCards
+          # Rate cards are used to define default pricing for products.
           class Rates
             # Some parameter documentations has been truncated, see
             # {MetronomeSDK::Models::V1::Contracts::RateCards::RateListParams} for more

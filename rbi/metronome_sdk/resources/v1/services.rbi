@@ -3,6 +3,8 @@
 module MetronomeSDK
   module Resources
     class V1
+      # [Security](https://docs.metronome.com/developer-resources/security/) endpoints
+      # allow you to retrieve security-related data.
       class Services
         # Gets Metronome's service registry with associated IP addresses for security
         # allowlisting and firewall configuration. Use this endpoint to maintain an

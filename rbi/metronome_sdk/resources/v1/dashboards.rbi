@@ -3,6 +3,10 @@
 module MetronomeSDK
   module Resources
     class V1
+      # [Customers](https://docs.metronome.com/provisioning/create-customers/) in
+      # Metronome represent your users for all billing and reporting. Use these
+      # endpoints to create, retrieve, update, and archive customers and their billing
+      # configuration.
       class Dashboards
         # Generate secure, embeddable dashboard URLs that allow you to seamlessly
         # integrate Metronome's billing visualizations directly into your application.

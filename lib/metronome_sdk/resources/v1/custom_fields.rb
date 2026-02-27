@@ -3,6 +3,9 @@
 module MetronomeSDK
   module Resources
     class V1
+      # [Custom fields](https://docs.metronome.com/integrations/custom-fields/) enable
+      # adding additional data to Metronome entities. Use these endpoints to create,
+      # retrieve, update, and delete custom fields.
       class CustomFields
         # Creates a new custom field key for a given entity (e.g. billable metric,
         # contract, alert).

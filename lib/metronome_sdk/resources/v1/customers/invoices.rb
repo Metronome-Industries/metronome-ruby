@@ -4,6 +4,10 @@ module MetronomeSDK
   module Resources
     class V1
       class Customers
+        # [Invoices](https://docs.metronome.com/invoicing/) reflect how much a customer
+        # spent during a period, which is the basis for billing. Metronome automatically
+        # generates invoices based upon your pricing, packaging, and usage events. Use
+        # these endpoints to retrieve invoices.
         class Invoices
           # Some parameter documentations has been truncated, see
           # {MetronomeSDK::Models::V1::Customers::InvoiceRetrieveParams} for more details.
