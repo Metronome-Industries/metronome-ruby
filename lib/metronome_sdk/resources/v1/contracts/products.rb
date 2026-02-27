@@ -4,6 +4,7 @@ module MetronomeSDK
   module Resources
     class V1
       class Contracts
+        # Products are the items that customers purchase.
         class Products
           # Some parameter documentations has been truncated, see
           # {MetronomeSDK::Models::V1::Contracts::ProductCreateParams} for more details.

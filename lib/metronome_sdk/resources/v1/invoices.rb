@@ -3,6 +3,10 @@
 module MetronomeSDK
   module Resources
     class V1
+      # [Invoices](https://docs.metronome.com/invoicing/) reflect how much a customer
+      # spent during a period, which is the basis for billing. Metronome automatically
+      # generates invoices based upon your pricing, packaging, and usage events. Use
+      # these endpoints to retrieve invoices.
       class Invoices
         # This endpoint regenerates a voided invoice and recalculates the invoice based on
         # up-to-date rates, available balances, and other fees regardless of the billing

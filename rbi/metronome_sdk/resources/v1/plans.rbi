@@ -3,6 +3,10 @@
 module MetronomeSDK
   module Resources
     class V1
+      # [Plans](https://docs.metronome.com/pricing-and-packaging/create-plans/)
+      # determine the base pricing for a customer. Use these endpoints to add a plan to
+      # a customer, end a customer plan, retrieve plans, and retrieve plan details.
+      # Create plans in the [Metronome app](https://app.metronome.com/plans).
       class Plans
         # List all available plans. This is a Plans (deprecated) endpoint. New clients
         # should implement using Contracts.

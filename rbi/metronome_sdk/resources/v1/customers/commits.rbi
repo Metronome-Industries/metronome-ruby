@@ -4,6 +4,7 @@ module MetronomeSDK
   module Resources
     class V1
       class Customers
+        # Credits and commits are used to manage customer balances.
         class Commits
           # Creates customer-level commits that establish spending commitments for customers
           # across their Metronome usage. Commits represent contracted spending obligations

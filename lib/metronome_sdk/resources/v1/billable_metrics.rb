@@ -3,6 +3,9 @@
 module MetronomeSDK
   module Resources
     class V1
+      # [Billable metrics](https://docs.metronome.com/understanding-metronome/how-metronome-works#billable-metrics)
+      # in Metronome represent the various consumption components that Metronome meters
+      # and aggregates.
       class BillableMetrics
         # Some parameter documentations has been truncated, see
         # {MetronomeSDK::Models::V1::BillableMetricCreateParams} for more details.

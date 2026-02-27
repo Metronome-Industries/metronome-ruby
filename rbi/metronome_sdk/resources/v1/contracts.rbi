@@ -4,12 +4,16 @@ module MetronomeSDK
   module Resources
     class V1
       class Contracts
+        # Products are the items that customers purchase.
         sig { returns(MetronomeSDK::Resources::V1::Contracts::Products) }
         attr_reader :products
 
+        # Rate cards are used to define default pricing for products.
         sig { returns(MetronomeSDK::Resources::V1::Contracts::RateCards) }
         attr_reader :rate_cards
 
+        # Named schedules are used for storing custom data that can change over time.
+        # Named schedules are often used in custom pricing logic.
         sig { returns(MetronomeSDK::Resources::V1::Contracts::NamedSchedules) }
         attr_reader :named_schedules
 

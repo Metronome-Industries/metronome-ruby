@@ -5,6 +5,7 @@ module MetronomeSDK
     class V1
       class Contracts
         class RateCards
+          # Rate cards are used to define default pricing for products.
           class ProductOrders
             # The ordering of products on a rate card determines the order in which the
             # products will appear on customers' invoices. Use this endpoint to set the order

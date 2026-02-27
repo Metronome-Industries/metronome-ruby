@@ -3,6 +3,8 @@
 module MetronomeSDK
   module Resources
     class V1
+      # [Security](https://docs.metronome.com/developer-resources/security/) endpoints
+      # allow you to retrieve security-related data.
       class AuditLogs
         # Some parameter documentations has been truncated, see
         # {MetronomeSDK::Models::V1::AuditLogListParams} for more details.

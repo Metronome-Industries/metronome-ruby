@@ -3,6 +3,8 @@
 module MetronomeSDK
   module Resources
     class V1
+      # Use these endpoints to configure a billing API key, a webhook secret, or invoice
+      # finalization behavior.
       class PricingUnits
         # List all pricing units. All fiat currency types (for example, USD or GBP) will
         # be included, as well as any custom pricing units that were configured. Custom

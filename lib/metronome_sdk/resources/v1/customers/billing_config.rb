@@ -4,6 +4,10 @@ module MetronomeSDK
   module Resources
     class V1
       class Customers
+        # [Customers](https://docs.metronome.com/provisioning/create-customers/) in
+        # Metronome represent your users for all billing and reporting. Use these
+        # endpoints to create, retrieve, update, and archive customers and their billing
+        # configuration.
         class BillingConfig
           # Some parameter documentations has been truncated, see
           # {MetronomeSDK::Models::V1::Customers::BillingConfigCreateParams} for more

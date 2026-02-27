@@ -3,6 +3,9 @@
 module MetronomeSDK
   module Resources
     class V1
+      # [Credit grants](https://docs.metronome.com/invoicing/how-billing-works/manage-credits/)
+      # adjust a customer balance for prepayments, reimbursements, promotions, and so
+      # on. Use these endpoints to create, retrieve, update, and delete credit grants.
       class CreditGrants
         # Some parameter documentations has been truncated, see
         # {MetronomeSDK::Models::V1::CreditGrantCreateParams} for more details.
