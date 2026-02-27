@@ -1,0 +1,58 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type package_list_params =
+        {
+          limit: Integer,
+          next_page: String,
+          archive_filter: MetronomeSDK::Models::V1::PackageListParams::archive_filter
+        }
+        & MetronomeSDK::Internal::Type::request_parameters
+
+      class PackageListParams < MetronomeSDK::Internal::Type::BaseModel
+        extend MetronomeSDK::Internal::Type::RequestParameters::Converter
+        include MetronomeSDK::Internal::Type::RequestParameters
+
+        attr_reader limit: Integer?
+
+        def limit=: (Integer) -> Integer
+
+        attr_reader next_page: String?
+
+        def next_page=: (String) -> String
+
+        attr_reader archive_filter: MetronomeSDK::Models::V1::PackageListParams::archive_filter?
+
+        def archive_filter=: (
+          MetronomeSDK::Models::V1::PackageListParams::archive_filter
+        ) -> MetronomeSDK::Models::V1::PackageListParams::archive_filter
+
+        def initialize: (
+          ?limit: Integer,
+          ?next_page: String,
+          ?archive_filter: MetronomeSDK::Models::V1::PackageListParams::archive_filter,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          limit: Integer,
+          next_page: String,
+          archive_filter: MetronomeSDK::Models::V1::PackageListParams::archive_filter,
+          request_options: MetronomeSDK::RequestOptions
+        }
+
+        type archive_filter = :ARCHIVED | :NOT_ARCHIVED | :ALL
+
+        module ArchiveFilter
+          extend MetronomeSDK::Internal::Type::Enum
+
+          ARCHIVED: :ARCHIVED
+          NOT_ARCHIVED: :NOT_ARCHIVED
+          ALL: :ALL
+
+          def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageListParams::archive_filter]
+        end
+      end
+    end
+  end
+end

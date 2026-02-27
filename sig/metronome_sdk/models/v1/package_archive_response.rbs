@@ -1,0 +1,15 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type package_archive_response = { data: MetronomeSDK::ID }
+
+      class PackageArchiveResponse < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor data: MetronomeSDK::ID
+
+        def initialize: (data: MetronomeSDK::ID) -> void
+
+        def to_hash: -> { data: MetronomeSDK::ID }
+      end
+    end
+  end
+end

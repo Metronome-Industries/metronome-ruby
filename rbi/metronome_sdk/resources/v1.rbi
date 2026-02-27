@@ -42,6 +42,9 @@ module MetronomeSDK
       sig { returns(MetronomeSDK::Resources::V1::Contracts) }
       attr_reader :contracts
 
+      sig { returns(MetronomeSDK::Resources::V1::Packages) }
+      attr_reader :packages
+
       sig { returns(MetronomeSDK::Resources::V1::Payments) }
       attr_reader :payments
 

@@ -1,0 +1,2467 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type package_retrieve_response =
+        { data: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data }
+
+      class PackageRetrieveResponse < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor data: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data
+
+        def initialize: (
+          data: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data
+        ) -> void
+
+        def to_hash: -> {
+          data: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data
+        }
+
+        type data =
+          {
+            id: String,
+            commits: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit],
+            created_at: Time,
+            created_by: String,
+            overrides: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override],
+            scheduled_charges: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::ScheduledCharge],
+            usage_statement_schedule: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::UsageStatementSchedule,
+            aliases: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Alias],
+            archived_at: Time,
+            billing_provider: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::billing_provider,
+            credits: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit],
+            delivery_method: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::delivery_method,
+            duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Duration,
+            multiplier_override_prioritization: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::multiplier_override_prioritization,
+            name: String,
+            net_payment_terms_days: Float,
+            prepaid_balance_threshold_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration,
+            rate_card_id: String,
+            recurring_commits: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit],
+            recurring_credits: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit],
+            scheduled_charges_on_usage_invoices: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::scheduled_charges_on_usage_invoices,
+            spend_threshold_configuration: MetronomeSDK::SpendThresholdConfiguration,
+            subscriptions: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription],
+            uniqueness_key: String
+          }
+
+        class Data < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor commits: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit]
+
+          attr_accessor created_at: Time
+
+          attr_accessor created_by: String
+
+          attr_accessor overrides: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override]
+
+          attr_accessor scheduled_charges: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::ScheduledCharge]
+
+          attr_accessor usage_statement_schedule: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::UsageStatementSchedule
+
+          attr_reader aliases: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Alias]?
+
+          def aliases=: (
+            ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Alias]
+          ) -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Alias]
+
+          attr_reader archived_at: Time?
+
+          def archived_at=: (Time) -> Time
+
+          attr_reader billing_provider: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::billing_provider?
+
+          def billing_provider=: (
+            MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::billing_provider
+          ) -> MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::billing_provider
+
+          attr_reader credits: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit]?
+
+          def credits=: (
+            ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit]
+          ) -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit]
+
+          attr_reader delivery_method: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::delivery_method?
+
+          def delivery_method=: (
+            MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::delivery_method
+          ) -> MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::delivery_method
+
+          attr_reader duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Duration?
+
+          def duration=: (
+            MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Duration
+          ) -> MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Duration
+
+          attr_reader multiplier_override_prioritization: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::multiplier_override_prioritization?
+
+          def multiplier_override_prioritization=: (
+            MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::multiplier_override_prioritization
+          ) -> MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::multiplier_override_prioritization
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          attr_reader net_payment_terms_days: Float?
+
+          def net_payment_terms_days=: (Float) -> Float
+
+          attr_reader prepaid_balance_threshold_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration?
+
+          def prepaid_balance_threshold_configuration=: (
+            MetronomeSDK::PrepaidBalanceThresholdConfiguration
+          ) -> MetronomeSDK::PrepaidBalanceThresholdConfiguration
+
+          attr_reader rate_card_id: String?
+
+          def rate_card_id=: (String) -> String
+
+          attr_reader recurring_commits: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit]?
+
+          def recurring_commits=: (
+            ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit]
+          ) -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit]
+
+          attr_reader recurring_credits: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit]?
+
+          def recurring_credits=: (
+            ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit]
+          ) -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit]
+
+          attr_reader scheduled_charges_on_usage_invoices: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::scheduled_charges_on_usage_invoices?
+
+          def scheduled_charges_on_usage_invoices=: (
+            MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::scheduled_charges_on_usage_invoices
+          ) -> MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::scheduled_charges_on_usage_invoices
+
+          attr_reader spend_threshold_configuration: MetronomeSDK::SpendThresholdConfiguration?
+
+          def spend_threshold_configuration=: (
+            MetronomeSDK::SpendThresholdConfiguration
+          ) -> MetronomeSDK::SpendThresholdConfiguration
+
+          attr_reader subscriptions: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription]?
+
+          def subscriptions=: (
+            ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription]
+          ) -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription]
+
+          attr_reader uniqueness_key: String?
+
+          def uniqueness_key=: (String) -> String
+
+          def initialize: (
+            id: String,
+            commits: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit],
+            created_at: Time,
+            created_by: String,
+            overrides: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override],
+            scheduled_charges: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::ScheduledCharge],
+            usage_statement_schedule: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::UsageStatementSchedule,
+            ?aliases: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Alias],
+            ?archived_at: Time,
+            ?billing_provider: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::billing_provider,
+            ?credits: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit],
+            ?delivery_method: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::delivery_method,
+            ?duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Duration,
+            ?multiplier_override_prioritization: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::multiplier_override_prioritization,
+            ?name: String,
+            ?net_payment_terms_days: Float,
+            ?prepaid_balance_threshold_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration,
+            ?rate_card_id: String,
+            ?recurring_commits: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit],
+            ?recurring_credits: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit],
+            ?scheduled_charges_on_usage_invoices: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::scheduled_charges_on_usage_invoices,
+            ?spend_threshold_configuration: MetronomeSDK::SpendThresholdConfiguration,
+            ?subscriptions: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription],
+            ?uniqueness_key: String
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            commits: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit],
+            created_at: Time,
+            created_by: String,
+            overrides: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override],
+            scheduled_charges: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::ScheduledCharge],
+            usage_statement_schedule: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::UsageStatementSchedule,
+            aliases: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Alias],
+            archived_at: Time,
+            billing_provider: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::billing_provider,
+            credits: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit],
+            delivery_method: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::delivery_method,
+            duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Duration,
+            multiplier_override_prioritization: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::multiplier_override_prioritization,
+            name: String,
+            net_payment_terms_days: Float,
+            prepaid_balance_threshold_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration,
+            rate_card_id: String,
+            recurring_commits: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit],
+            recurring_credits: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit],
+            scheduled_charges_on_usage_invoices: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::scheduled_charges_on_usage_invoices,
+            spend_threshold_configuration: MetronomeSDK::SpendThresholdConfiguration,
+            subscriptions: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription],
+            uniqueness_key: String
+          }
+
+          type commit =
+            {
+              id: String,
+              product: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::Product,
+              type: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::type_,
+              access_schedule: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::AccessSchedule,
+              applicable_product_ids: ::Array[String],
+              applicable_product_tags: ::Array[String],
+              custom_fields: ::Hash[Symbol, String],
+              description: String,
+              invoice_schedule: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::InvoiceSchedule,
+              name: String,
+              priority: Float,
+              rate_type: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::rate_type,
+              rollover_fraction: Float,
+              specifiers: ::Array[MetronomeSDK::CommitSpecifier]
+            }
+
+          class Commit < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_accessor product: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::Product
+
+            attr_accessor type: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::type_
+
+            attr_reader access_schedule: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::AccessSchedule?
+
+            def access_schedule=: (
+              MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::AccessSchedule
+            ) -> MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::AccessSchedule
+
+            attr_reader applicable_product_ids: ::Array[String]?
+
+            def applicable_product_ids=: (::Array[String]) -> ::Array[String]
+
+            attr_reader applicable_product_tags: ::Array[String]?
+
+            def applicable_product_tags=: (::Array[String]) -> ::Array[String]
+
+            attr_reader custom_fields: ::Hash[Symbol, String]?
+
+            def custom_fields=: (
+              ::Hash[Symbol, String]
+            ) -> ::Hash[Symbol, String]
+
+            attr_reader description: String?
+
+            def description=: (String) -> String
+
+            attr_reader invoice_schedule: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::InvoiceSchedule?
+
+            def invoice_schedule=: (
+              MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::InvoiceSchedule
+            ) -> MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::InvoiceSchedule
+
+            attr_reader name: String?
+
+            def name=: (String) -> String
+
+            attr_reader priority: Float?
+
+            def priority=: (Float) -> Float
+
+            attr_reader rate_type: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::rate_type?
+
+            def rate_type=: (
+              MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::rate_type
+            ) -> MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::rate_type
+
+            attr_reader rollover_fraction: Float?
+
+            def rollover_fraction=: (Float) -> Float
+
+            attr_reader specifiers: ::Array[MetronomeSDK::CommitSpecifier]?
+
+            def specifiers=: (
+              ::Array[MetronomeSDK::CommitSpecifier]
+            ) -> ::Array[MetronomeSDK::CommitSpecifier]
+
+            def initialize: (
+              id: String,
+              product: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::Product,
+              type: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::type_,
+              ?access_schedule: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::AccessSchedule,
+              ?applicable_product_ids: ::Array[String],
+              ?applicable_product_tags: ::Array[String],
+              ?custom_fields: ::Hash[Symbol, String],
+              ?description: String,
+              ?invoice_schedule: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::InvoiceSchedule,
+              ?name: String,
+              ?priority: Float,
+              ?rate_type: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::rate_type,
+              ?rollover_fraction: Float,
+              ?specifiers: ::Array[MetronomeSDK::CommitSpecifier]
+            ) -> void
+
+            def to_hash: -> {
+              id: String,
+              product: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::Product,
+              type: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::type_,
+              access_schedule: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::AccessSchedule,
+              applicable_product_ids: ::Array[String],
+              applicable_product_tags: ::Array[String],
+              custom_fields: ::Hash[Symbol, String],
+              description: String,
+              invoice_schedule: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::InvoiceSchedule,
+              name: String,
+              priority: Float,
+              rate_type: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::rate_type,
+              rollover_fraction: Float,
+              specifiers: ::Array[MetronomeSDK::CommitSpecifier]
+            }
+
+            type product = { id: String, name: String }
+
+            class Product < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor id: String
+
+              attr_accessor name: String
+
+              def initialize: (id: String, name: String) -> void
+
+              def to_hash: -> { id: String, name: String }
+            end
+
+            type type_ = :PREPAID | :POSTPAID
+
+            module Type
+              extend MetronomeSDK::Internal::Type::Enum
+
+              PREPAID: :PREPAID
+              POSTPAID: :POSTPAID
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::type_]
+            end
+
+            type access_schedule =
+              {
+                credit_type: MetronomeSDK::CreditTypeData,
+                schedule_items: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::AccessSchedule::ScheduleItem]
+              }
+
+            class AccessSchedule < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor credit_type: MetronomeSDK::CreditTypeData
+
+              attr_accessor schedule_items: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::AccessSchedule::ScheduleItem]
+
+              def initialize: (
+                credit_type: MetronomeSDK::CreditTypeData,
+                schedule_items: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::AccessSchedule::ScheduleItem]
+              ) -> void
+
+              def to_hash: -> {
+                credit_type: MetronomeSDK::CreditTypeData,
+                schedule_items: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::AccessSchedule::ScheduleItem]
+              }
+
+              type schedule_item =
+                {
+                  id: String,
+                  amount: Float,
+                  duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::AccessSchedule::ScheduleItem::Duration,
+                  starting_at_offset: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::AccessSchedule::ScheduleItem::StartingAtOffset
+                }
+
+              class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor id: String
+
+                attr_accessor amount: Float
+
+                attr_accessor duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::AccessSchedule::ScheduleItem::Duration
+
+                attr_accessor starting_at_offset: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::AccessSchedule::ScheduleItem::StartingAtOffset
+
+                def initialize: (
+                  id: String,
+                  amount: Float,
+                  duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::AccessSchedule::ScheduleItem::Duration,
+                  starting_at_offset: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::AccessSchedule::ScheduleItem::StartingAtOffset
+                ) -> void
+
+                def to_hash: -> {
+                  id: String,
+                  amount: Float,
+                  duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::AccessSchedule::ScheduleItem::Duration,
+                  starting_at_offset: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::AccessSchedule::ScheduleItem::StartingAtOffset
+                }
+
+                type duration =
+                  {
+                    unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::AccessSchedule::ScheduleItem::Duration::unit,
+                    value: Integer
+                  }
+
+                class Duration < MetronomeSDK::Internal::Type::BaseModel
+                  attr_accessor unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::AccessSchedule::ScheduleItem::Duration::unit
+
+                  attr_accessor value: Integer
+
+                  def initialize: (
+                    unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::AccessSchedule::ScheduleItem::Duration::unit,
+                    value: Integer
+                  ) -> void
+
+                  def to_hash: -> {
+                    unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::AccessSchedule::ScheduleItem::Duration::unit,
+                    value: Integer
+                  }
+
+                  type unit = :DAYS | :WEEKS | :MONTHS | :YEARS
+
+                  module Unit
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    DAYS: :DAYS
+                    WEEKS: :WEEKS
+                    MONTHS: :MONTHS
+                    YEARS: :YEARS
+
+                    def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::AccessSchedule::ScheduleItem::Duration::unit]
+                  end
+                end
+
+                type starting_at_offset =
+                  {
+                    unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::AccessSchedule::ScheduleItem::StartingAtOffset::unit,
+                    value: Integer
+                  }
+
+                class StartingAtOffset < MetronomeSDK::Internal::Type::BaseModel
+                  attr_accessor unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::AccessSchedule::ScheduleItem::StartingAtOffset::unit
+
+                  attr_accessor value: Integer
+
+                  def initialize: (
+                    unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::AccessSchedule::ScheduleItem::StartingAtOffset::unit,
+                    value: Integer
+                  ) -> void
+
+                  def to_hash: -> {
+                    unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::AccessSchedule::ScheduleItem::StartingAtOffset::unit,
+                    value: Integer
+                  }
+
+                  type unit = :DAYS | :WEEKS | :MONTHS | :YEARS
+
+                  module Unit
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    DAYS: :DAYS
+                    WEEKS: :WEEKS
+                    MONTHS: :MONTHS
+                    YEARS: :YEARS
+
+                    def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::AccessSchedule::ScheduleItem::StartingAtOffset::unit]
+                  end
+                end
+              end
+            end
+
+            type invoice_schedule =
+              {
+                credit_type: MetronomeSDK::CreditTypeData,
+                do_not_invoice: bool,
+                schedule_items: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::InvoiceSchedule::ScheduleItem]
+              }
+
+            class InvoiceSchedule < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor credit_type: MetronomeSDK::CreditTypeData
+
+              attr_accessor do_not_invoice: bool
+
+              attr_accessor schedule_items: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::InvoiceSchedule::ScheduleItem]
+
+              def initialize: (
+                credit_type: MetronomeSDK::CreditTypeData,
+                do_not_invoice: bool,
+                schedule_items: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::InvoiceSchedule::ScheduleItem]
+              ) -> void
+
+              def to_hash: -> {
+                credit_type: MetronomeSDK::CreditTypeData,
+                do_not_invoice: bool,
+                schedule_items: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::InvoiceSchedule::ScheduleItem]
+              }
+
+              type schedule_item =
+                {
+                  id: String,
+                  date_offset: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::InvoiceSchedule::ScheduleItem::DateOffset,
+                  quantity: Float,
+                  unit_price: Float
+                }
+
+              class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor id: String
+
+                attr_accessor date_offset: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::InvoiceSchedule::ScheduleItem::DateOffset
+
+                attr_accessor quantity: Float
+
+                attr_accessor unit_price: Float
+
+                def initialize: (
+                  id: String,
+                  date_offset: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::InvoiceSchedule::ScheduleItem::DateOffset,
+                  quantity: Float,
+                  unit_price: Float
+                ) -> void
+
+                def to_hash: -> {
+                  id: String,
+                  date_offset: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::InvoiceSchedule::ScheduleItem::DateOffset,
+                  quantity: Float,
+                  unit_price: Float
+                }
+
+                type date_offset =
+                  {
+                    unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::InvoiceSchedule::ScheduleItem::DateOffset::unit,
+                    value: Integer
+                  }
+
+                class DateOffset < MetronomeSDK::Internal::Type::BaseModel
+                  attr_accessor unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::InvoiceSchedule::ScheduleItem::DateOffset::unit
+
+                  attr_accessor value: Integer
+
+                  def initialize: (
+                    unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::InvoiceSchedule::ScheduleItem::DateOffset::unit,
+                    value: Integer
+                  ) -> void
+
+                  def to_hash: -> {
+                    unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::InvoiceSchedule::ScheduleItem::DateOffset::unit,
+                    value: Integer
+                  }
+
+                  type unit = :DAYS | :WEEKS | :MONTHS | :YEARS
+
+                  module Unit
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    DAYS: :DAYS
+                    WEEKS: :WEEKS
+                    MONTHS: :MONTHS
+                    YEARS: :YEARS
+
+                    def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::InvoiceSchedule::ScheduleItem::DateOffset::unit]
+                  end
+                end
+              end
+            end
+
+            type rate_type = :COMMIT_RATE | :LIST_RATE
+
+            module RateType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              COMMIT_RATE: :COMMIT_RATE
+              LIST_RATE: :LIST_RATE
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::rate_type]
+            end
+          end
+
+          type override =
+            {
+              id: String,
+              override_specifiers: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::OverrideSpecifier],
+              starting_at_offset: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::StartingAtOffset,
+              applicable_product_tags: ::Array[String],
+              duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::Duration,
+              entitled: bool,
+              is_commit_specific: bool,
+              multiplier: Float,
+              override_tiers: ::Array[MetronomeSDK::OverrideTier],
+              overwrite_rate: MetronomeSDK::OverwriteRate,
+              priority: Float,
+              product: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::Product,
+              target: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::target,
+              type: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::type_
+            }
+
+          class Override < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_accessor override_specifiers: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::OverrideSpecifier]
+
+            attr_accessor starting_at_offset: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::StartingAtOffset
+
+            attr_reader applicable_product_tags: ::Array[String]?
+
+            def applicable_product_tags=: (::Array[String]) -> ::Array[String]
+
+            attr_reader duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::Duration?
+
+            def duration=: (
+              MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::Duration
+            ) -> MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::Duration
+
+            attr_reader entitled: bool?
+
+            def entitled=: (bool) -> bool
+
+            attr_reader is_commit_specific: bool?
+
+            def is_commit_specific=: (bool) -> bool
+
+            attr_reader multiplier: Float?
+
+            def multiplier=: (Float) -> Float
+
+            attr_reader override_tiers: ::Array[MetronomeSDK::OverrideTier]?
+
+            def override_tiers=: (
+              ::Array[MetronomeSDK::OverrideTier]
+            ) -> ::Array[MetronomeSDK::OverrideTier]
+
+            attr_reader overwrite_rate: MetronomeSDK::OverwriteRate?
+
+            def overwrite_rate=: (
+              MetronomeSDK::OverwriteRate
+            ) -> MetronomeSDK::OverwriteRate
+
+            attr_reader priority: Float?
+
+            def priority=: (Float) -> Float
+
+            attr_reader product: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::Product?
+
+            def product=: (
+              MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::Product
+            ) -> MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::Product
+
+            attr_reader target: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::target?
+
+            def target=: (
+              MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::target
+            ) -> MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::target
+
+            attr_reader type: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::type_?
+
+            def type=: (
+              MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::type_
+            ) -> MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::type_
+
+            def initialize: (
+              id: String,
+              override_specifiers: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::OverrideSpecifier],
+              starting_at_offset: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::StartingAtOffset,
+              ?applicable_product_tags: ::Array[String],
+              ?duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::Duration,
+              ?entitled: bool,
+              ?is_commit_specific: bool,
+              ?multiplier: Float,
+              ?override_tiers: ::Array[MetronomeSDK::OverrideTier],
+              ?overwrite_rate: MetronomeSDK::OverwriteRate,
+              ?priority: Float,
+              ?product: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::Product,
+              ?target: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::target,
+              ?type: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::type_
+            ) -> void
+
+            def to_hash: -> {
+              id: String,
+              override_specifiers: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::OverrideSpecifier],
+              starting_at_offset: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::StartingAtOffset,
+              applicable_product_tags: ::Array[String],
+              duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::Duration,
+              entitled: bool,
+              is_commit_specific: bool,
+              multiplier: Float,
+              override_tiers: ::Array[MetronomeSDK::OverrideTier],
+              overwrite_rate: MetronomeSDK::OverwriteRate,
+              priority: Float,
+              product: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::Product,
+              target: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::target,
+              type: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::type_
+            }
+
+            type override_specifier =
+              {
+                billing_frequency: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::OverrideSpecifier::billing_frequency,
+                commit_template_ids: ::Array[String],
+                presentation_group_values: ::Hash[Symbol, String?],
+                pricing_group_values: ::Hash[Symbol, String],
+                product_id: String,
+                product_tags: ::Array[String],
+                recurring_commit_template_ids: ::Array[String],
+                recurring_credit_template_ids: ::Array[String]
+              }
+
+            class OverrideSpecifier < MetronomeSDK::Internal::Type::BaseModel
+              attr_reader billing_frequency: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::OverrideSpecifier::billing_frequency?
+
+              def billing_frequency=: (
+                MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::OverrideSpecifier::billing_frequency
+              ) -> MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::OverrideSpecifier::billing_frequency
+
+              attr_reader commit_template_ids: ::Array[String]?
+
+              def commit_template_ids=: (::Array[String]) -> ::Array[String]
+
+              attr_reader presentation_group_values: ::Hash[Symbol, String?]?
+
+              def presentation_group_values=: (
+                ::Hash[Symbol, String?]
+              ) -> ::Hash[Symbol, String?]
+
+              attr_reader pricing_group_values: ::Hash[Symbol, String]?
+
+              def pricing_group_values=: (
+                ::Hash[Symbol, String]
+              ) -> ::Hash[Symbol, String]
+
+              attr_reader product_id: String?
+
+              def product_id=: (String) -> String
+
+              attr_reader product_tags: ::Array[String]?
+
+              def product_tags=: (::Array[String]) -> ::Array[String]
+
+              attr_reader recurring_commit_template_ids: ::Array[String]?
+
+              def recurring_commit_template_ids=: (
+                ::Array[String]
+              ) -> ::Array[String]
+
+              attr_reader recurring_credit_template_ids: ::Array[String]?
+
+              def recurring_credit_template_ids=: (
+                ::Array[String]
+              ) -> ::Array[String]
+
+              def initialize: (
+                ?billing_frequency: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::OverrideSpecifier::billing_frequency,
+                ?commit_template_ids: ::Array[String],
+                ?presentation_group_values: ::Hash[Symbol, String?],
+                ?pricing_group_values: ::Hash[Symbol, String],
+                ?product_id: String,
+                ?product_tags: ::Array[String],
+                ?recurring_commit_template_ids: ::Array[String],
+                ?recurring_credit_template_ids: ::Array[String]
+              ) -> void
+
+              def to_hash: -> {
+                billing_frequency: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::OverrideSpecifier::billing_frequency,
+                commit_template_ids: ::Array[String],
+                presentation_group_values: ::Hash[Symbol, String?],
+                pricing_group_values: ::Hash[Symbol, String],
+                product_id: String,
+                product_tags: ::Array[String],
+                recurring_commit_template_ids: ::Array[String],
+                recurring_credit_template_ids: ::Array[String]
+              }
+
+              type billing_frequency = :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY
+
+              module BillingFrequency
+                extend MetronomeSDK::Internal::Type::Enum
+
+                MONTHLY: :MONTHLY
+                QUARTERLY: :QUARTERLY
+                ANNUAL: :ANNUAL
+                WEEKLY: :WEEKLY
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::OverrideSpecifier::billing_frequency]
+              end
+            end
+
+            type starting_at_offset =
+              {
+                unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::StartingAtOffset::unit,
+                value: Integer
+              }
+
+            class StartingAtOffset < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::StartingAtOffset::unit
+
+              attr_accessor value: Integer
+
+              def initialize: (
+                unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::StartingAtOffset::unit,
+                value: Integer
+              ) -> void
+
+              def to_hash: -> {
+                unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::StartingAtOffset::unit,
+                value: Integer
+              }
+
+              type unit = :DAYS | :WEEKS | :MONTHS | :YEARS
+
+              module Unit
+                extend MetronomeSDK::Internal::Type::Enum
+
+                DAYS: :DAYS
+                WEEKS: :WEEKS
+                MONTHS: :MONTHS
+                YEARS: :YEARS
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::StartingAtOffset::unit]
+              end
+            end
+
+            type duration =
+              {
+                unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::Duration::unit,
+                value: Integer
+              }
+
+            class Duration < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::Duration::unit
+
+              attr_accessor value: Integer
+
+              def initialize: (
+                unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::Duration::unit,
+                value: Integer
+              ) -> void
+
+              def to_hash: -> {
+                unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::Duration::unit,
+                value: Integer
+              }
+
+              type unit = :DAYS | :WEEKS | :MONTHS | :YEARS
+
+              module Unit
+                extend MetronomeSDK::Internal::Type::Enum
+
+                DAYS: :DAYS
+                WEEKS: :WEEKS
+                MONTHS: :MONTHS
+                YEARS: :YEARS
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::Duration::unit]
+              end
+            end
+
+            type product = { id: String, name: String }
+
+            class Product < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor id: String
+
+              attr_accessor name: String
+
+              def initialize: (id: String, name: String) -> void
+
+              def to_hash: -> { id: String, name: String }
+            end
+
+            type target = :COMMIT_RATE | :LIST_RATE
+
+            module Target
+              extend MetronomeSDK::Internal::Type::Enum
+
+              COMMIT_RATE: :COMMIT_RATE
+              LIST_RATE: :LIST_RATE
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::target]
+            end
+
+            type type_ = :OVERWRITE | :MULTIPLIER | :TIERED
+
+            module Type
+              extend MetronomeSDK::Internal::Type::Enum
+
+              OVERWRITE: :OVERWRITE
+              MULTIPLIER: :MULTIPLIER
+              TIERED: :TIERED
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::type_]
+            end
+          end
+
+          type scheduled_charge =
+            {
+              id: String,
+              product: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::ScheduledCharge::Product,
+              schedule: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::ScheduledCharge::Schedule,
+              custom_fields: ::Hash[Symbol, String],
+              description: String,
+              name: String
+            }
+
+          class ScheduledCharge < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_accessor product: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::ScheduledCharge::Product
+
+            attr_accessor schedule: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::ScheduledCharge::Schedule
+
+            attr_reader custom_fields: ::Hash[Symbol, String]?
+
+            def custom_fields=: (
+              ::Hash[Symbol, String]
+            ) -> ::Hash[Symbol, String]
+
+            attr_reader description: String?
+
+            def description=: (String) -> String
+
+            attr_reader name: String?
+
+            def name=: (String) -> String
+
+            def initialize: (
+              id: String,
+              product: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::ScheduledCharge::Product,
+              schedule: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::ScheduledCharge::Schedule,
+              ?custom_fields: ::Hash[Symbol, String],
+              ?description: String,
+              ?name: String
+            ) -> void
+
+            def to_hash: -> {
+              id: String,
+              product: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::ScheduledCharge::Product,
+              schedule: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::ScheduledCharge::Schedule,
+              custom_fields: ::Hash[Symbol, String],
+              description: String,
+              name: String
+            }
+
+            type product = { id: String, name: String }
+
+            class Product < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor id: String
+
+              attr_accessor name: String
+
+              def initialize: (id: String, name: String) -> void
+
+              def to_hash: -> { id: String, name: String }
+            end
+
+            type schedule =
+              {
+                credit_type: MetronomeSDK::CreditTypeData,
+                schedule_items: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::ScheduledCharge::Schedule::ScheduleItem]
+              }
+
+            class Schedule < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor credit_type: MetronomeSDK::CreditTypeData
+
+              attr_accessor schedule_items: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::ScheduledCharge::Schedule::ScheduleItem]
+
+              def initialize: (
+                credit_type: MetronomeSDK::CreditTypeData,
+                schedule_items: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::ScheduledCharge::Schedule::ScheduleItem]
+              ) -> void
+
+              def to_hash: -> {
+                credit_type: MetronomeSDK::CreditTypeData,
+                schedule_items: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::ScheduledCharge::Schedule::ScheduleItem]
+              }
+
+              type schedule_item =
+                {
+                  id: String,
+                  date_offset: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::ScheduledCharge::Schedule::ScheduleItem::DateOffset,
+                  quantity: Float,
+                  unit_price: Float
+                }
+
+              class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor id: String
+
+                attr_accessor date_offset: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::ScheduledCharge::Schedule::ScheduleItem::DateOffset
+
+                attr_accessor quantity: Float
+
+                attr_accessor unit_price: Float
+
+                def initialize: (
+                  id: String,
+                  date_offset: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::ScheduledCharge::Schedule::ScheduleItem::DateOffset,
+                  quantity: Float,
+                  unit_price: Float
+                ) -> void
+
+                def to_hash: -> {
+                  id: String,
+                  date_offset: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::ScheduledCharge::Schedule::ScheduleItem::DateOffset,
+                  quantity: Float,
+                  unit_price: Float
+                }
+
+                type date_offset =
+                  {
+                    unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::ScheduledCharge::Schedule::ScheduleItem::DateOffset::unit,
+                    value: Integer
+                  }
+
+                class DateOffset < MetronomeSDK::Internal::Type::BaseModel
+                  attr_accessor unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::ScheduledCharge::Schedule::ScheduleItem::DateOffset::unit
+
+                  attr_accessor value: Integer
+
+                  def initialize: (
+                    unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::ScheduledCharge::Schedule::ScheduleItem::DateOffset::unit,
+                    value: Integer
+                  ) -> void
+
+                  def to_hash: -> {
+                    unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::ScheduledCharge::Schedule::ScheduleItem::DateOffset::unit,
+                    value: Integer
+                  }
+
+                  type unit = :DAYS | :WEEKS | :MONTHS | :YEARS
+
+                  module Unit
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    DAYS: :DAYS
+                    WEEKS: :WEEKS
+                    MONTHS: :MONTHS
+                    YEARS: :YEARS
+
+                    def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::ScheduledCharge::Schedule::ScheduleItem::DateOffset::unit]
+                  end
+                end
+              end
+            end
+          end
+
+          type usage_statement_schedule =
+            {
+              frequency: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::UsageStatementSchedule::frequency
+            }
+
+          class UsageStatementSchedule < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor frequency: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::UsageStatementSchedule::frequency
+
+            def initialize: (
+              frequency: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::UsageStatementSchedule::frequency
+            ) -> void
+
+            def to_hash: -> {
+              frequency: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::UsageStatementSchedule::frequency
+            }
+
+            type frequency = :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY
+
+            module Frequency
+              extend MetronomeSDK::Internal::Type::Enum
+
+              MONTHLY: :MONTHLY
+              QUARTERLY: :QUARTERLY
+              ANNUAL: :ANNUAL
+              WEEKLY: :WEEKLY
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::UsageStatementSchedule::frequency]
+            end
+          end
+
+          type alias_ = { name: String, ending_before: Time, starting_at: Time }
+
+          class Alias < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor name: String
+
+            attr_reader ending_before: Time?
+
+            def ending_before=: (Time) -> Time
+
+            attr_reader starting_at: Time?
+
+            def starting_at=: (Time) -> Time
+
+            def initialize: (
+              name: String,
+              ?ending_before: Time,
+              ?starting_at: Time
+            ) -> void
+
+            def to_hash: -> {
+              name: String,
+              ending_before: Time,
+              starting_at: Time
+            }
+          end
+
+          type billing_provider =
+            :aws_marketplace
+            | :stripe
+            | :netsuite
+            | :custom
+            | :azure_marketplace
+            | :quickbooks_online
+            | :workday
+            | :gcp_marketplace
+            | :metronome
+
+          module BillingProvider
+            extend MetronomeSDK::Internal::Type::Enum
+
+            AWS_MARKETPLACE: :aws_marketplace
+            STRIPE: :stripe
+            NETSUITE: :netsuite
+            CUSTOM: :custom
+            AZURE_MARKETPLACE: :azure_marketplace
+            QUICKBOOKS_ONLINE: :quickbooks_online
+            WORKDAY: :workday
+            GCP_MARKETPLACE: :gcp_marketplace
+            METRONOME: :metronome
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::billing_provider]
+          end
+
+          type credit =
+            {
+              id: String,
+              product: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit::Product,
+              access_schedule: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit::AccessSchedule,
+              applicable_product_ids: ::Array[String],
+              applicable_product_tags: ::Array[String],
+              custom_fields: ::Hash[Symbol, String],
+              description: String,
+              name: String,
+              priority: Float,
+              rate_type: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit::rate_type,
+              specifiers: ::Array[MetronomeSDK::CommitSpecifier]
+            }
+
+          class Credit < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_accessor product: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit::Product
+
+            attr_reader access_schedule: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit::AccessSchedule?
+
+            def access_schedule=: (
+              MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit::AccessSchedule
+            ) -> MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit::AccessSchedule
+
+            attr_reader applicable_product_ids: ::Array[String]?
+
+            def applicable_product_ids=: (::Array[String]) -> ::Array[String]
+
+            attr_reader applicable_product_tags: ::Array[String]?
+
+            def applicable_product_tags=: (::Array[String]) -> ::Array[String]
+
+            attr_reader custom_fields: ::Hash[Symbol, String]?
+
+            def custom_fields=: (
+              ::Hash[Symbol, String]
+            ) -> ::Hash[Symbol, String]
+
+            attr_reader description: String?
+
+            def description=: (String) -> String
+
+            attr_reader name: String?
+
+            def name=: (String) -> String
+
+            attr_reader priority: Float?
+
+            def priority=: (Float) -> Float
+
+            attr_reader rate_type: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit::rate_type?
+
+            def rate_type=: (
+              MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit::rate_type
+            ) -> MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit::rate_type
+
+            attr_reader specifiers: ::Array[MetronomeSDK::CommitSpecifier]?
+
+            def specifiers=: (
+              ::Array[MetronomeSDK::CommitSpecifier]
+            ) -> ::Array[MetronomeSDK::CommitSpecifier]
+
+            def initialize: (
+              id: String,
+              product: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit::Product,
+              ?access_schedule: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit::AccessSchedule,
+              ?applicable_product_ids: ::Array[String],
+              ?applicable_product_tags: ::Array[String],
+              ?custom_fields: ::Hash[Symbol, String],
+              ?description: String,
+              ?name: String,
+              ?priority: Float,
+              ?rate_type: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit::rate_type,
+              ?specifiers: ::Array[MetronomeSDK::CommitSpecifier]
+            ) -> void
+
+            def to_hash: -> {
+              id: String,
+              product: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit::Product,
+              access_schedule: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit::AccessSchedule,
+              applicable_product_ids: ::Array[String],
+              applicable_product_tags: ::Array[String],
+              custom_fields: ::Hash[Symbol, String],
+              description: String,
+              name: String,
+              priority: Float,
+              rate_type: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit::rate_type,
+              specifiers: ::Array[MetronomeSDK::CommitSpecifier]
+            }
+
+            type product = { id: String, name: String }
+
+            class Product < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor id: String
+
+              attr_accessor name: String
+
+              def initialize: (id: String, name: String) -> void
+
+              def to_hash: -> { id: String, name: String }
+            end
+
+            type access_schedule =
+              {
+                credit_type: MetronomeSDK::CreditTypeData,
+                schedule_items: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit::AccessSchedule::ScheduleItem]
+              }
+
+            class AccessSchedule < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor credit_type: MetronomeSDK::CreditTypeData
+
+              attr_accessor schedule_items: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit::AccessSchedule::ScheduleItem]
+
+              def initialize: (
+                credit_type: MetronomeSDK::CreditTypeData,
+                schedule_items: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit::AccessSchedule::ScheduleItem]
+              ) -> void
+
+              def to_hash: -> {
+                credit_type: MetronomeSDK::CreditTypeData,
+                schedule_items: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit::AccessSchedule::ScheduleItem]
+              }
+
+              type schedule_item =
+                {
+                  id: String,
+                  amount: Float,
+                  duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit::AccessSchedule::ScheduleItem::Duration,
+                  starting_at_offset: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit::AccessSchedule::ScheduleItem::StartingAtOffset
+                }
+
+              class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor id: String
+
+                attr_accessor amount: Float
+
+                attr_accessor duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit::AccessSchedule::ScheduleItem::Duration
+
+                attr_accessor starting_at_offset: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit::AccessSchedule::ScheduleItem::StartingAtOffset
+
+                def initialize: (
+                  id: String,
+                  amount: Float,
+                  duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit::AccessSchedule::ScheduleItem::Duration,
+                  starting_at_offset: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit::AccessSchedule::ScheduleItem::StartingAtOffset
+                ) -> void
+
+                def to_hash: -> {
+                  id: String,
+                  amount: Float,
+                  duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit::AccessSchedule::ScheduleItem::Duration,
+                  starting_at_offset: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit::AccessSchedule::ScheduleItem::StartingAtOffset
+                }
+
+                type duration =
+                  {
+                    unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit::AccessSchedule::ScheduleItem::Duration::unit,
+                    value: Integer
+                  }
+
+                class Duration < MetronomeSDK::Internal::Type::BaseModel
+                  attr_accessor unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit::AccessSchedule::ScheduleItem::Duration::unit
+
+                  attr_accessor value: Integer
+
+                  def initialize: (
+                    unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit::AccessSchedule::ScheduleItem::Duration::unit,
+                    value: Integer
+                  ) -> void
+
+                  def to_hash: -> {
+                    unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit::AccessSchedule::ScheduleItem::Duration::unit,
+                    value: Integer
+                  }
+
+                  type unit = :DAYS | :WEEKS | :MONTHS | :YEARS
+
+                  module Unit
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    DAYS: :DAYS
+                    WEEKS: :WEEKS
+                    MONTHS: :MONTHS
+                    YEARS: :YEARS
+
+                    def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit::AccessSchedule::ScheduleItem::Duration::unit]
+                  end
+                end
+
+                type starting_at_offset =
+                  {
+                    unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit::AccessSchedule::ScheduleItem::StartingAtOffset::unit,
+                    value: Integer
+                  }
+
+                class StartingAtOffset < MetronomeSDK::Internal::Type::BaseModel
+                  attr_accessor unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit::AccessSchedule::ScheduleItem::StartingAtOffset::unit
+
+                  attr_accessor value: Integer
+
+                  def initialize: (
+                    unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit::AccessSchedule::ScheduleItem::StartingAtOffset::unit,
+                    value: Integer
+                  ) -> void
+
+                  def to_hash: -> {
+                    unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit::AccessSchedule::ScheduleItem::StartingAtOffset::unit,
+                    value: Integer
+                  }
+
+                  type unit = :DAYS | :WEEKS | :MONTHS | :YEARS
+
+                  module Unit
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    DAYS: :DAYS
+                    WEEKS: :WEEKS
+                    MONTHS: :MONTHS
+                    YEARS: :YEARS
+
+                    def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit::AccessSchedule::ScheduleItem::StartingAtOffset::unit]
+                  end
+                end
+              end
+            end
+
+            type rate_type = :COMMIT_RATE | :LIST_RATE
+
+            module RateType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              COMMIT_RATE: :COMMIT_RATE
+              LIST_RATE: :LIST_RATE
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit::rate_type]
+            end
+          end
+
+          type delivery_method =
+            :direct_to_billing_provider | :aws_sqs | :tackle | :aws_sns
+
+          module DeliveryMethod
+            extend MetronomeSDK::Internal::Type::Enum
+
+            DIRECT_TO_BILLING_PROVIDER: :direct_to_billing_provider
+            AWS_SQS: :aws_sqs
+            TACKLE: :tackle
+            AWS_SNS: :aws_sns
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::delivery_method]
+          end
+
+          type duration =
+            {
+              unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Duration::unit,
+              value: Integer
+            }
+
+          class Duration < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Duration::unit
+
+            attr_accessor value: Integer
+
+            def initialize: (
+              unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Duration::unit,
+              value: Integer
+            ) -> void
+
+            def to_hash: -> {
+              unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Duration::unit,
+              value: Integer
+            }
+
+            type unit = :DAYS | :WEEKS | :MONTHS | :YEARS
+
+            module Unit
+              extend MetronomeSDK::Internal::Type::Enum
+
+              DAYS: :DAYS
+              WEEKS: :WEEKS
+              MONTHS: :MONTHS
+              YEARS: :YEARS
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Duration::unit]
+            end
+          end
+
+          type multiplier_override_prioritization =
+            :LOWEST_MULTIPLIER | :EXPLICIT
+
+          module MultiplierOverridePrioritization
+            extend MetronomeSDK::Internal::Type::Enum
+
+            LOWEST_MULTIPLIER: :LOWEST_MULTIPLIER
+            EXPLICIT: :EXPLICIT
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::multiplier_override_prioritization]
+          end
+
+          type recurring_commit =
+            {
+              id: String,
+              access_amount: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::AccessAmount,
+              commit_duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::CommitDuration,
+              priority: Float,
+              product: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::Product,
+              rate_type: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::rate_type,
+              starting_at_offset: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::StartingAtOffset,
+              applicable_product_ids: ::Array[String],
+              applicable_product_tags: ::Array[String],
+              description: String,
+              duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::Duration,
+              invoice_amount: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::InvoiceAmount,
+              name: String,
+              proration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::proration,
+              recurrence_frequency: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::recurrence_frequency,
+              rollover_fraction: Float,
+              specifiers: ::Array[MetronomeSDK::CommitSpecifier],
+              subscription_config: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::SubscriptionConfig
+            }
+
+          class RecurringCommit < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_accessor access_amount: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::AccessAmount
+
+            attr_accessor commit_duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::CommitDuration
+
+            attr_accessor priority: Float
+
+            attr_accessor product: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::Product
+
+            attr_accessor rate_type: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::rate_type
+
+            attr_accessor starting_at_offset: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::StartingAtOffset
+
+            attr_reader applicable_product_ids: ::Array[String]?
+
+            def applicable_product_ids=: (::Array[String]) -> ::Array[String]
+
+            attr_reader applicable_product_tags: ::Array[String]?
+
+            def applicable_product_tags=: (::Array[String]) -> ::Array[String]
+
+            attr_reader description: String?
+
+            def description=: (String) -> String
+
+            attr_reader duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::Duration?
+
+            def duration=: (
+              MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::Duration
+            ) -> MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::Duration
+
+            attr_reader invoice_amount: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::InvoiceAmount?
+
+            def invoice_amount=: (
+              MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::InvoiceAmount
+            ) -> MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::InvoiceAmount
+
+            attr_reader name: String?
+
+            def name=: (String) -> String
+
+            attr_reader proration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::proration?
+
+            def proration=: (
+              MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::proration
+            ) -> MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::proration
+
+            attr_reader recurrence_frequency: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::recurrence_frequency?
+
+            def recurrence_frequency=: (
+              MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::recurrence_frequency
+            ) -> MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::recurrence_frequency
+
+            attr_reader rollover_fraction: Float?
+
+            def rollover_fraction=: (Float) -> Float
+
+            attr_reader specifiers: ::Array[MetronomeSDK::CommitSpecifier]?
+
+            def specifiers=: (
+              ::Array[MetronomeSDK::CommitSpecifier]
+            ) -> ::Array[MetronomeSDK::CommitSpecifier]
+
+            attr_reader subscription_config: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::SubscriptionConfig?
+
+            def subscription_config=: (
+              MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::SubscriptionConfig
+            ) -> MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::SubscriptionConfig
+
+            def initialize: (
+              id: String,
+              access_amount: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::AccessAmount,
+              commit_duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::CommitDuration,
+              priority: Float,
+              product: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::Product,
+              rate_type: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::rate_type,
+              starting_at_offset: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::StartingAtOffset,
+              ?applicable_product_ids: ::Array[String],
+              ?applicable_product_tags: ::Array[String],
+              ?description: String,
+              ?duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::Duration,
+              ?invoice_amount: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::InvoiceAmount,
+              ?name: String,
+              ?proration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::proration,
+              ?recurrence_frequency: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::recurrence_frequency,
+              ?rollover_fraction: Float,
+              ?specifiers: ::Array[MetronomeSDK::CommitSpecifier],
+              ?subscription_config: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::SubscriptionConfig
+            ) -> void
+
+            def to_hash: -> {
+              id: String,
+              access_amount: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::AccessAmount,
+              commit_duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::CommitDuration,
+              priority: Float,
+              product: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::Product,
+              rate_type: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::rate_type,
+              starting_at_offset: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::StartingAtOffset,
+              applicable_product_ids: ::Array[String],
+              applicable_product_tags: ::Array[String],
+              description: String,
+              duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::Duration,
+              invoice_amount: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::InvoiceAmount,
+              name: String,
+              proration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::proration,
+              recurrence_frequency: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::recurrence_frequency,
+              rollover_fraction: Float,
+              specifiers: ::Array[MetronomeSDK::CommitSpecifier],
+              subscription_config: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::SubscriptionConfig
+            }
+
+            type access_amount =
+              { credit_type_id: String, unit_price: Float, quantity: Float }
+
+            class AccessAmount < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor credit_type_id: String
+
+              attr_accessor unit_price: Float
+
+              attr_reader quantity: Float?
+
+              def quantity=: (Float) -> Float
+
+              def initialize: (
+                credit_type_id: String,
+                unit_price: Float,
+                ?quantity: Float
+              ) -> void
+
+              def to_hash: -> {
+                credit_type_id: String,
+                unit_price: Float,
+                quantity: Float
+              }
+            end
+
+            type commit_duration =
+              {
+                value: Float,
+                unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::CommitDuration::unit
+              }
+
+            class CommitDuration < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor value: Float
+
+              attr_reader unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::CommitDuration::unit?
+
+              def unit=: (
+                MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::CommitDuration::unit
+              ) -> MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::CommitDuration::unit
+
+              def initialize: (
+                value: Float,
+                ?unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::CommitDuration::unit
+              ) -> void
+
+              def to_hash: -> {
+                value: Float,
+                unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::CommitDuration::unit
+              }
+
+              type unit = :PERIODS
+
+              module Unit
+                extend MetronomeSDK::Internal::Type::Enum
+
+                PERIODS: :PERIODS
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::CommitDuration::unit]
+              end
+            end
+
+            type product = { id: String, name: String }
+
+            class Product < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor id: String
+
+              attr_accessor name: String
+
+              def initialize: (id: String, name: String) -> void
+
+              def to_hash: -> { id: String, name: String }
+            end
+
+            type rate_type = :COMMIT_RATE | :LIST_RATE
+
+            module RateType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              COMMIT_RATE: :COMMIT_RATE
+              LIST_RATE: :LIST_RATE
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::rate_type]
+            end
+
+            type starting_at_offset =
+              {
+                unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::StartingAtOffset::unit,
+                value: Integer
+              }
+
+            class StartingAtOffset < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::StartingAtOffset::unit
+
+              attr_accessor value: Integer
+
+              def initialize: (
+                unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::StartingAtOffset::unit,
+                value: Integer
+              ) -> void
+
+              def to_hash: -> {
+                unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::StartingAtOffset::unit,
+                value: Integer
+              }
+
+              type unit = :DAYS | :WEEKS | :MONTHS | :YEARS
+
+              module Unit
+                extend MetronomeSDK::Internal::Type::Enum
+
+                DAYS: :DAYS
+                WEEKS: :WEEKS
+                MONTHS: :MONTHS
+                YEARS: :YEARS
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::StartingAtOffset::unit]
+              end
+            end
+
+            type duration =
+              {
+                unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::Duration::unit,
+                value: Integer
+              }
+
+            class Duration < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::Duration::unit
+
+              attr_accessor value: Integer
+
+              def initialize: (
+                unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::Duration::unit,
+                value: Integer
+              ) -> void
+
+              def to_hash: -> {
+                unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::Duration::unit,
+                value: Integer
+              }
+
+              type unit = :DAYS | :WEEKS | :MONTHS | :YEARS
+
+              module Unit
+                extend MetronomeSDK::Internal::Type::Enum
+
+                DAYS: :DAYS
+                WEEKS: :WEEKS
+                MONTHS: :MONTHS
+                YEARS: :YEARS
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::Duration::unit]
+              end
+            end
+
+            type invoice_amount =
+              { credit_type_id: String, quantity: Float, unit_price: Float }
+
+            class InvoiceAmount < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor credit_type_id: String
+
+              attr_accessor quantity: Float
+
+              attr_accessor unit_price: Float
+
+              def initialize: (
+                credit_type_id: String,
+                quantity: Float,
+                unit_price: Float
+              ) -> void
+
+              def to_hash: -> {
+                credit_type_id: String,
+                quantity: Float,
+                unit_price: Float
+              }
+            end
+
+            type proration = :NONE | :FIRST | :LAST | :FIRST_AND_LAST
+
+            module Proration
+              extend MetronomeSDK::Internal::Type::Enum
+
+              NONE: :NONE
+              FIRST: :FIRST
+              LAST: :LAST
+              FIRST_AND_LAST: :FIRST_AND_LAST
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::proration]
+            end
+
+            type recurrence_frequency =
+              :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY
+
+            module RecurrenceFrequency
+              extend MetronomeSDK::Internal::Type::Enum
+
+              MONTHLY: :MONTHLY
+              QUARTERLY: :QUARTERLY
+              ANNUAL: :ANNUAL
+              WEEKLY: :WEEKLY
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::recurrence_frequency]
+            end
+
+            type subscription_config =
+              {
+                allocation: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::SubscriptionConfig::allocation,
+                apply_seat_increase_config: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::SubscriptionConfig::ApplySeatIncreaseConfig,
+                subscription_template_id: String
+              }
+
+            class SubscriptionConfig < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor allocation: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::SubscriptionConfig::allocation
+
+              attr_accessor apply_seat_increase_config: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::SubscriptionConfig::ApplySeatIncreaseConfig
+
+              attr_accessor subscription_template_id: String
+
+              def initialize: (
+                allocation: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::SubscriptionConfig::allocation,
+                apply_seat_increase_config: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::SubscriptionConfig::ApplySeatIncreaseConfig,
+                subscription_template_id: String
+              ) -> void
+
+              def to_hash: -> {
+                allocation: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::SubscriptionConfig::allocation,
+                apply_seat_increase_config: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::SubscriptionConfig::ApplySeatIncreaseConfig,
+                subscription_template_id: String
+              }
+
+              type allocation = :INDIVIDUAL | :POOLED
+
+              module Allocation
+                extend MetronomeSDK::Internal::Type::Enum
+
+                INDIVIDUAL: :INDIVIDUAL
+                POOLED: :POOLED
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::SubscriptionConfig::allocation]
+              end
+
+              type apply_seat_increase_config = { is_prorated: bool }
+
+              class ApplySeatIncreaseConfig < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor is_prorated: bool
+
+                def initialize: (is_prorated: bool) -> void
+
+                def to_hash: -> { is_prorated: bool }
+              end
+            end
+          end
+
+          type recurring_credit =
+            {
+              id: String,
+              access_amount: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::AccessAmount,
+              commit_duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::CommitDuration,
+              priority: Float,
+              product: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::Product,
+              rate_type: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::rate_type,
+              starting_at_offset: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::StartingAtOffset,
+              applicable_product_ids: ::Array[String],
+              applicable_product_tags: ::Array[String],
+              description: String,
+              duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::Duration,
+              name: String,
+              proration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::proration,
+              recurrence_frequency: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::recurrence_frequency,
+              rollover_fraction: Float,
+              specifiers: ::Array[MetronomeSDK::CommitSpecifier],
+              subscription_config: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::SubscriptionConfig
+            }
+
+          class RecurringCredit < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_accessor access_amount: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::AccessAmount
+
+            attr_accessor commit_duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::CommitDuration
+
+            attr_accessor priority: Float
+
+            attr_accessor product: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::Product
+
+            attr_accessor rate_type: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::rate_type
+
+            attr_accessor starting_at_offset: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::StartingAtOffset
+
+            attr_reader applicable_product_ids: ::Array[String]?
+
+            def applicable_product_ids=: (::Array[String]) -> ::Array[String]
+
+            attr_reader applicable_product_tags: ::Array[String]?
+
+            def applicable_product_tags=: (::Array[String]) -> ::Array[String]
+
+            attr_reader description: String?
+
+            def description=: (String) -> String
+
+            attr_reader duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::Duration?
+
+            def duration=: (
+              MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::Duration
+            ) -> MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::Duration
+
+            attr_reader name: String?
+
+            def name=: (String) -> String
+
+            attr_reader proration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::proration?
+
+            def proration=: (
+              MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::proration
+            ) -> MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::proration
+
+            attr_reader recurrence_frequency: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::recurrence_frequency?
+
+            def recurrence_frequency=: (
+              MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::recurrence_frequency
+            ) -> MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::recurrence_frequency
+
+            attr_reader rollover_fraction: Float?
+
+            def rollover_fraction=: (Float) -> Float
+
+            attr_reader specifiers: ::Array[MetronomeSDK::CommitSpecifier]?
+
+            def specifiers=: (
+              ::Array[MetronomeSDK::CommitSpecifier]
+            ) -> ::Array[MetronomeSDK::CommitSpecifier]
+
+            attr_reader subscription_config: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::SubscriptionConfig?
+
+            def subscription_config=: (
+              MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::SubscriptionConfig
+            ) -> MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::SubscriptionConfig
+
+            def initialize: (
+              id: String,
+              access_amount: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::AccessAmount,
+              commit_duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::CommitDuration,
+              priority: Float,
+              product: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::Product,
+              rate_type: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::rate_type,
+              starting_at_offset: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::StartingAtOffset,
+              ?applicable_product_ids: ::Array[String],
+              ?applicable_product_tags: ::Array[String],
+              ?description: String,
+              ?duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::Duration,
+              ?name: String,
+              ?proration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::proration,
+              ?recurrence_frequency: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::recurrence_frequency,
+              ?rollover_fraction: Float,
+              ?specifiers: ::Array[MetronomeSDK::CommitSpecifier],
+              ?subscription_config: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::SubscriptionConfig
+            ) -> void
+
+            def to_hash: -> {
+              id: String,
+              access_amount: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::AccessAmount,
+              commit_duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::CommitDuration,
+              priority: Float,
+              product: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::Product,
+              rate_type: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::rate_type,
+              starting_at_offset: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::StartingAtOffset,
+              applicable_product_ids: ::Array[String],
+              applicable_product_tags: ::Array[String],
+              description: String,
+              duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::Duration,
+              name: String,
+              proration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::proration,
+              recurrence_frequency: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::recurrence_frequency,
+              rollover_fraction: Float,
+              specifiers: ::Array[MetronomeSDK::CommitSpecifier],
+              subscription_config: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::SubscriptionConfig
+            }
+
+            type access_amount =
+              { credit_type_id: String, unit_price: Float, quantity: Float }
+
+            class AccessAmount < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor credit_type_id: String
+
+              attr_accessor unit_price: Float
+
+              attr_reader quantity: Float?
+
+              def quantity=: (Float) -> Float
+
+              def initialize: (
+                credit_type_id: String,
+                unit_price: Float,
+                ?quantity: Float
+              ) -> void
+
+              def to_hash: -> {
+                credit_type_id: String,
+                unit_price: Float,
+                quantity: Float
+              }
+            end
+
+            type commit_duration =
+              {
+                value: Float,
+                unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::CommitDuration::unit
+              }
+
+            class CommitDuration < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor value: Float
+
+              attr_reader unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::CommitDuration::unit?
+
+              def unit=: (
+                MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::CommitDuration::unit
+              ) -> MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::CommitDuration::unit
+
+              def initialize: (
+                value: Float,
+                ?unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::CommitDuration::unit
+              ) -> void
+
+              def to_hash: -> {
+                value: Float,
+                unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::CommitDuration::unit
+              }
+
+              type unit = :PERIODS
+
+              module Unit
+                extend MetronomeSDK::Internal::Type::Enum
+
+                PERIODS: :PERIODS
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::CommitDuration::unit]
+              end
+            end
+
+            type product = { id: String, name: String }
+
+            class Product < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor id: String
+
+              attr_accessor name: String
+
+              def initialize: (id: String, name: String) -> void
+
+              def to_hash: -> { id: String, name: String }
+            end
+
+            type rate_type = :COMMIT_RATE | :LIST_RATE
+
+            module RateType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              COMMIT_RATE: :COMMIT_RATE
+              LIST_RATE: :LIST_RATE
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::rate_type]
+            end
+
+            type starting_at_offset =
+              {
+                unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::StartingAtOffset::unit,
+                value: Integer
+              }
+
+            class StartingAtOffset < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::StartingAtOffset::unit
+
+              attr_accessor value: Integer
+
+              def initialize: (
+                unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::StartingAtOffset::unit,
+                value: Integer
+              ) -> void
+
+              def to_hash: -> {
+                unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::StartingAtOffset::unit,
+                value: Integer
+              }
+
+              type unit = :DAYS | :WEEKS | :MONTHS | :YEARS
+
+              module Unit
+                extend MetronomeSDK::Internal::Type::Enum
+
+                DAYS: :DAYS
+                WEEKS: :WEEKS
+                MONTHS: :MONTHS
+                YEARS: :YEARS
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::StartingAtOffset::unit]
+              end
+            end
+
+            type duration =
+              {
+                unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::Duration::unit,
+                value: Integer
+              }
+
+            class Duration < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::Duration::unit
+
+              attr_accessor value: Integer
+
+              def initialize: (
+                unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::Duration::unit,
+                value: Integer
+              ) -> void
+
+              def to_hash: -> {
+                unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::Duration::unit,
+                value: Integer
+              }
+
+              type unit = :DAYS | :WEEKS | :MONTHS | :YEARS
+
+              module Unit
+                extend MetronomeSDK::Internal::Type::Enum
+
+                DAYS: :DAYS
+                WEEKS: :WEEKS
+                MONTHS: :MONTHS
+                YEARS: :YEARS
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::Duration::unit]
+              end
+            end
+
+            type proration = :NONE | :FIRST | :LAST | :FIRST_AND_LAST
+
+            module Proration
+              extend MetronomeSDK::Internal::Type::Enum
+
+              NONE: :NONE
+              FIRST: :FIRST
+              LAST: :LAST
+              FIRST_AND_LAST: :FIRST_AND_LAST
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::proration]
+            end
+
+            type recurrence_frequency =
+              :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY
+
+            module RecurrenceFrequency
+              extend MetronomeSDK::Internal::Type::Enum
+
+              MONTHLY: :MONTHLY
+              QUARTERLY: :QUARTERLY
+              ANNUAL: :ANNUAL
+              WEEKLY: :WEEKLY
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::recurrence_frequency]
+            end
+
+            type subscription_config =
+              {
+                allocation: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::SubscriptionConfig::allocation,
+                apply_seat_increase_config: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::SubscriptionConfig::ApplySeatIncreaseConfig,
+                subscription_template_id: String
+              }
+
+            class SubscriptionConfig < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor allocation: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::SubscriptionConfig::allocation
+
+              attr_accessor apply_seat_increase_config: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::SubscriptionConfig::ApplySeatIncreaseConfig
+
+              attr_accessor subscription_template_id: String
+
+              def initialize: (
+                allocation: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::SubscriptionConfig::allocation,
+                apply_seat_increase_config: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::SubscriptionConfig::ApplySeatIncreaseConfig,
+                subscription_template_id: String
+              ) -> void
+
+              def to_hash: -> {
+                allocation: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::SubscriptionConfig::allocation,
+                apply_seat_increase_config: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::SubscriptionConfig::ApplySeatIncreaseConfig,
+                subscription_template_id: String
+              }
+
+              type allocation = :INDIVIDUAL | :POOLED
+
+              module Allocation
+                extend MetronomeSDK::Internal::Type::Enum
+
+                INDIVIDUAL: :INDIVIDUAL
+                POOLED: :POOLED
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::SubscriptionConfig::allocation]
+              end
+
+              type apply_seat_increase_config = { is_prorated: bool }
+
+              class ApplySeatIncreaseConfig < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor is_prorated: bool
+
+                def initialize: (is_prorated: bool) -> void
+
+                def to_hash: -> { is_prorated: bool }
+              end
+            end
+          end
+
+          type scheduled_charges_on_usage_invoices = :ALL
+
+          module ScheduledChargesOnUsageInvoices
+            extend MetronomeSDK::Internal::Type::Enum
+
+            ALL: :ALL
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::scheduled_charges_on_usage_invoices]
+          end
+
+          type subscription =
+            {
+              collection_schedule: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::collection_schedule,
+              proration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Proration,
+              subscription_rate: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::SubscriptionRate,
+              id: String,
+              custom_fields: ::Hash[Symbol, String],
+              description: String,
+              duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Duration,
+              fiat_credit_type_id: String,
+              initial_quantity: Float,
+              name: String,
+              quantity_management_mode: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::quantity_management_mode,
+              seat_config: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::SeatConfig,
+              starting_at_offset: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::StartingAtOffset
+            }
+
+          class Subscription < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor collection_schedule: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::collection_schedule
+
+            attr_accessor proration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Proration
+
+            attr_accessor subscription_rate: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::SubscriptionRate
+
+            attr_reader id: String?
+
+            def id=: (String) -> String
+
+            attr_reader custom_fields: ::Hash[Symbol, String]?
+
+            def custom_fields=: (
+              ::Hash[Symbol, String]
+            ) -> ::Hash[Symbol, String]
+
+            attr_reader description: String?
+
+            def description=: (String) -> String
+
+            attr_reader duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Duration?
+
+            def duration=: (
+              MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Duration
+            ) -> MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Duration
+
+            attr_reader fiat_credit_type_id: String?
+
+            def fiat_credit_type_id=: (String) -> String
+
+            attr_reader initial_quantity: Float?
+
+            def initial_quantity=: (Float) -> Float
+
+            attr_reader name: String?
+
+            def name=: (String) -> String
+
+            attr_reader quantity_management_mode: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::quantity_management_mode?
+
+            def quantity_management_mode=: (
+              MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::quantity_management_mode
+            ) -> MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::quantity_management_mode
+
+            attr_reader seat_config: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::SeatConfig?
+
+            def seat_config=: (
+              MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::SeatConfig
+            ) -> MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::SeatConfig
+
+            attr_reader starting_at_offset: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::StartingAtOffset?
+
+            def starting_at_offset=: (
+              MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::StartingAtOffset
+            ) -> MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::StartingAtOffset
+
+            def initialize: (
+              collection_schedule: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::collection_schedule,
+              proration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Proration,
+              subscription_rate: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::SubscriptionRate,
+              ?id: String,
+              ?custom_fields: ::Hash[Symbol, String],
+              ?description: String,
+              ?duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Duration,
+              ?fiat_credit_type_id: String,
+              ?initial_quantity: Float,
+              ?name: String,
+              ?quantity_management_mode: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::quantity_management_mode,
+              ?seat_config: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::SeatConfig,
+              ?starting_at_offset: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::StartingAtOffset
+            ) -> void
+
+            def to_hash: -> {
+              collection_schedule: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::collection_schedule,
+              proration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Proration,
+              subscription_rate: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::SubscriptionRate,
+              id: String,
+              custom_fields: ::Hash[Symbol, String],
+              description: String,
+              duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Duration,
+              fiat_credit_type_id: String,
+              initial_quantity: Float,
+              name: String,
+              quantity_management_mode: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::quantity_management_mode,
+              seat_config: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::SeatConfig,
+              starting_at_offset: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::StartingAtOffset
+            }
+
+            type collection_schedule = :ADVANCE | :ARREARS
+
+            module CollectionSchedule
+              extend MetronomeSDK::Internal::Type::Enum
+
+              ADVANCE: :ADVANCE
+              ARREARS: :ARREARS
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::collection_schedule]
+            end
+
+            type proration =
+              {
+                invoice_behavior: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Proration::invoice_behavior,
+                is_prorated: bool
+              }
+
+            class Proration < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor invoice_behavior: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Proration::invoice_behavior
+
+              attr_accessor is_prorated: bool
+
+              def initialize: (
+                invoice_behavior: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Proration::invoice_behavior,
+                is_prorated: bool
+              ) -> void
+
+              def to_hash: -> {
+                invoice_behavior: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Proration::invoice_behavior,
+                is_prorated: bool
+              }
+
+              type invoice_behavior =
+                :BILL_IMMEDIATELY | :BILL_ON_NEXT_COLLECTION_DATE
+
+              module InvoiceBehavior
+                extend MetronomeSDK::Internal::Type::Enum
+
+                BILL_IMMEDIATELY: :BILL_IMMEDIATELY
+                BILL_ON_NEXT_COLLECTION_DATE: :BILL_ON_NEXT_COLLECTION_DATE
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Proration::invoice_behavior]
+              end
+            end
+
+            type subscription_rate =
+              {
+                billing_frequency: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::SubscriptionRate::billing_frequency,
+                product: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::SubscriptionRate::Product
+              }
+
+            class SubscriptionRate < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor billing_frequency: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::SubscriptionRate::billing_frequency
+
+              attr_accessor product: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::SubscriptionRate::Product
+
+              def initialize: (
+                billing_frequency: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::SubscriptionRate::billing_frequency,
+                product: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::SubscriptionRate::Product
+              ) -> void
+
+              def to_hash: -> {
+                billing_frequency: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::SubscriptionRate::billing_frequency,
+                product: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::SubscriptionRate::Product
+              }
+
+              type billing_frequency = :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY
+
+              module BillingFrequency
+                extend MetronomeSDK::Internal::Type::Enum
+
+                MONTHLY: :MONTHLY
+                QUARTERLY: :QUARTERLY
+                ANNUAL: :ANNUAL
+                WEEKLY: :WEEKLY
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::SubscriptionRate::billing_frequency]
+              end
+
+              type product = { id: String, name: String }
+
+              class Product < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor id: String
+
+                attr_accessor name: String
+
+                def initialize: (id: String, name: String) -> void
+
+                def to_hash: -> { id: String, name: String }
+              end
+            end
+
+            type duration =
+              {
+                unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Duration::unit,
+                value: Integer
+              }
+
+            class Duration < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Duration::unit
+
+              attr_accessor value: Integer
+
+              def initialize: (
+                unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Duration::unit,
+                value: Integer
+              ) -> void
+
+              def to_hash: -> {
+                unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Duration::unit,
+                value: Integer
+              }
+
+              type unit = :DAYS | :WEEKS | :MONTHS | :YEARS
+
+              module Unit
+                extend MetronomeSDK::Internal::Type::Enum
+
+                DAYS: :DAYS
+                WEEKS: :WEEKS
+                MONTHS: :MONTHS
+                YEARS: :YEARS
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Duration::unit]
+              end
+            end
+
+            type quantity_management_mode = :SEAT_BASED | :QUANTITY_ONLY
+
+            module QuantityManagementMode
+              extend MetronomeSDK::Internal::Type::Enum
+
+              SEAT_BASED: :SEAT_BASED
+              QUANTITY_ONLY: :QUANTITY_ONLY
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::quantity_management_mode]
+            end
+
+            type seat_config = { seat_group_key: String }
+
+            class SeatConfig < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor seat_group_key: String
+
+              def initialize: (seat_group_key: String) -> void
+
+              def to_hash: -> { seat_group_key: String }
+            end
+
+            type starting_at_offset =
+              {
+                unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::StartingAtOffset::unit,
+                value: Integer
+              }
+
+            class StartingAtOffset < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::StartingAtOffset::unit
+
+              attr_accessor value: Integer
+
+              def initialize: (
+                unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::StartingAtOffset::unit,
+                value: Integer
+              ) -> void
+
+              def to_hash: -> {
+                unit: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::StartingAtOffset::unit,
+                value: Integer
+              }
+
+              type unit = :DAYS | :WEEKS | :MONTHS | :YEARS
+
+              module Unit
+                extend MetronomeSDK::Internal::Type::Enum
+
+                DAYS: :DAYS
+                WEEKS: :WEEKS
+                MONTHS: :MONTHS
+                YEARS: :YEARS
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::StartingAtOffset::unit]
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+end

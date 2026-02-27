@@ -1,0 +1,46 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type package_list_contracts_on_package_response =
+        {
+          contract_id: String,
+          customer_id: String,
+          starting_at: Time,
+          archived_at: Time,
+          ending_before: Time
+        }
+
+      class PackageListContractsOnPackageResponse < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor contract_id: String
+
+        attr_accessor customer_id: String
+
+        attr_accessor starting_at: Time
+
+        attr_reader archived_at: Time?
+
+        def archived_at=: (Time) -> Time
+
+        attr_reader ending_before: Time?
+
+        def ending_before=: (Time) -> Time
+
+        def initialize: (
+          contract_id: String,
+          customer_id: String,
+          starting_at: Time,
+          ?archived_at: Time,
+          ?ending_before: Time
+        ) -> void
+
+        def to_hash: -> {
+          contract_id: String,
+          customer_id: String,
+          starting_at: Time,
+          archived_at: Time,
+          ending_before: Time
+        }
+      end
+    end
+  end
+end
