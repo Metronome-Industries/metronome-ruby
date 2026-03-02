@@ -1,5 +1,35 @@
 # Changelog
 
+## 3.2.0 (2026-03-02)
+
+Full Changelog: [v3.1.0...v3.2.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v3.1.0...v3.2.0)
+
+### Features
+
+* [ORCH-1333] removes AVALARA enum value from PaymetGateConfig ([ae00dc5](https://github.com/Metronome-Industries/metronome-ruby/commit/ae00dc54be07aa638d65dba0d3ce410ba9ba51f4))
+* [orch-759] add `archiveCustomerRevenueSystemConfigurations` endpoint to API ([947cc3a](https://github.com/Metronome-Industries/metronome-ruby/commit/947cc3a597e726934a13f6493e5cc41c5333dd4b))
+* Add minimum config to percentage and tiered percentage overwrites ([e4f1ac6](https://github.com/Metronome-Industries/metronome-ruby/commit/e4f1ac694574df4b6ff541783a57ec755a39117a))
+* **api:** add minimum_config to rates/commits, specialized override tier types ([53c5cc8](https://github.com/Metronome-Industries/metronome-ruby/commit/53c5cc86ae5654a9a2052a01685f85763d344aaa))
+* **api:** add netsuite billing provider to customers ([612a0b4](https://github.com/Metronome-Industries/metronome-ruby/commit/612a0b415510439e8cab101f449b45560ee5ebcd))
+* **api:** add subscription_id field to invoice line items ([592027f](https://github.com/Metronome-Industries/metronome-ruby/commit/592027fcf304b460c86efdad5b60a62030a5d87f))
+* **api:** support compound group keys in `v1/usage/groups` endpoint ([71d6b72](https://github.com/Metronome-Industries/metronome-ruby/commit/71d6b720f413295fb3cc90611ff8511692ad9ebd))
+* update stainless sdk to include new package endpoints ([8599260](https://github.com/Metronome-Industries/metronome-ruby/commit/8599260388e5aaa5351af677cead0f5367273b5c))
+
+
+### Bug Fixes
+
+* **client:** loosen json header parsing ([b6a47c9](https://github.com/Metronome-Industries/metronome-ruby/commit/b6a47c9741309acba2d0fc7bcfeff7e8083108c3))
+* **client:** serialize query parameters properly ([b3487d5](https://github.com/Metronome-Industries/metronome-ruby/commit/b3487d50e0477ccc61fb918a607a12eae7b2580d))
+* properly mock time in ruby ci tests ([6469efe](https://github.com/Metronome-Industries/metronome-ruby/commit/6469efe98957025a21c45f8bea123f0862163037))
+
+
+### Chores
+
+* **api:** remove priority field from contracts ([8b768ca](https://github.com/Metronome-Industries/metronome-ruby/commit/8b768caf4b279de4f5f8e859a60baa1fae85bdea))
+* configure new SDK language ([d029725](https://github.com/Metronome-Industries/metronome-ruby/commit/d0297256192d340b338cb8928708d15b7daa934a))
+* **docs:** add missing descriptions ([67fc1c1](https://github.com/Metronome-Industries/metronome-ruby/commit/67fc1c199518a6e40923d1f31ddd3302980d451a))
+* update mock server docs ([9a1b8ff](https://github.com/Metronome-Industries/metronome-ruby/commit/9a1b8ffc1423b9b038b02c248cfdabb0899a71ca))
+
 ## 3.1.0 (2026-02-04)
 
 Full Changelog: [v3.0.0...v3.1.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v3.0.0...v3.1.0)
