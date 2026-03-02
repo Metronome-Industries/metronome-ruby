@@ -1552,6 +1552,7 @@ module MetronomeSDK
               credit_type_id: String,
               custom_rate: ::Hash[Symbol, top],
               is_prorated: bool,
+              minimum_config: MetronomeSDK::V1::ContractCreateParams::Override::OverwriteRate::MinimumConfig,
               price: Float,
               quantity: Float,
               tiers: ::Array[MetronomeSDK::Tier]
@@ -1572,6 +1573,12 @@ module MetronomeSDK
 
             def is_prorated=: (bool) -> bool
 
+            attr_reader minimum_config: MetronomeSDK::V1::ContractCreateParams::Override::OverwriteRate::MinimumConfig?
+
+            def minimum_config=: (
+              MetronomeSDK::V1::ContractCreateParams::Override::OverwriteRate::MinimumConfig
+            ) -> MetronomeSDK::V1::ContractCreateParams::Override::OverwriteRate::MinimumConfig
+
             attr_reader price: Float?
 
             def price=: (Float) -> Float
@@ -1591,6 +1598,7 @@ module MetronomeSDK
               ?credit_type_id: String,
               ?custom_rate: ::Hash[Symbol, top],
               ?is_prorated: bool,
+              ?minimum_config: MetronomeSDK::V1::ContractCreateParams::Override::OverwriteRate::MinimumConfig,
               ?price: Float,
               ?quantity: Float,
               ?tiers: ::Array[MetronomeSDK::Tier]
@@ -1601,6 +1609,7 @@ module MetronomeSDK
               credit_type_id: String,
               custom_rate: ::Hash[Symbol, top],
               is_prorated: bool,
+              minimum_config: MetronomeSDK::V1::ContractCreateParams::Override::OverwriteRate::MinimumConfig,
               price: Float,
               quantity: Float,
               tiers: ::Array[MetronomeSDK::Tier]
@@ -1625,6 +1634,16 @@ module MetronomeSDK
               CUSTOM: :CUSTOM
 
               def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::Override::OverwriteRate::rate_type]
+            end
+
+            type minimum_config = { minimum: Float }
+
+            class MinimumConfig < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor minimum: Float
+
+              def initialize: (minimum: Float) -> void
+
+              def to_hash: -> { minimum: Float }
             end
           end
 
