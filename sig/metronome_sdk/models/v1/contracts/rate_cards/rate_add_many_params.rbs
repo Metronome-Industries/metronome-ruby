@@ -42,6 +42,7 @@ module MetronomeSDK
                 custom_rate: ::Hash[Symbol, top],
                 ending_before: Time,
                 is_prorated: bool,
+                minimum_config: MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::MinimumConfig,
                 price: Float,
                 pricing_group_values: ::Hash[Symbol, String],
                 quantity: Float,
@@ -85,6 +86,12 @@ module MetronomeSDK
 
               def is_prorated=: (bool) -> bool
 
+              attr_reader minimum_config: MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::MinimumConfig?
+
+              def minimum_config=: (
+                MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::MinimumConfig
+              ) -> MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::MinimumConfig
+
               attr_reader price: Float?
 
               def price=: (Float) -> Float
@@ -116,6 +123,7 @@ module MetronomeSDK
                 ?custom_rate: ::Hash[Symbol, top],
                 ?ending_before: Time,
                 ?is_prorated: bool,
+                ?minimum_config: MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::MinimumConfig,
                 ?price: Float,
                 ?pricing_group_values: ::Hash[Symbol, String],
                 ?quantity: Float,
@@ -133,6 +141,7 @@ module MetronomeSDK
                 custom_rate: ::Hash[Symbol, top],
                 ending_before: Time,
                 is_prorated: bool,
+                minimum_config: MetronomeSDK::V1::Contracts::RateCards::RateAddManyParams::Rate::MinimumConfig,
                 price: Float,
                 pricing_group_values: ::Hash[Symbol, String],
                 quantity: Float,
@@ -171,6 +180,16 @@ module MetronomeSDK
                 WEEKLY: :WEEKLY
 
                 def self?.values: -> ::Array[MetronomeSDK::Models::V1::Contracts::RateCards::RateAddManyParams::Rate::billing_frequency]
+              end
+
+              type minimum_config = { minimum: Float }
+
+              class MinimumConfig < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor minimum: Float
+
+                def initialize: (minimum: Float) -> void
+
+                def to_hash: -> { minimum: Float }
               end
             end
           end

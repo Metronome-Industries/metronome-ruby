@@ -3,6 +3,9 @@
 module MetronomeSDK
   module Resources
     class V1
+      # [Custom fields](https://docs.metronome.com/integrations/custom-fields/) enable
+      # adding additional data to Metronome entities. Use these endpoints to create,
+      # retrieve, update, and delete custom fields.
       class CustomFields
         # Creates a new custom field key for a given entity (e.g. billable metric,
         # contract, alert).
@@ -98,12 +101,13 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::CustomFieldListKeysParams
         def list_keys(params = {})
-          parsed, options = MetronomeSDK::V1::CustomFieldListKeysParams.dump_request(params)
           query_params = [:next_page]
+          parsed, options = MetronomeSDK::V1::CustomFieldListKeysParams.dump_request(params)
+          query = MetronomeSDK::Internal::Util.encode_query_params(parsed.slice(*query_params))
           @client.request(
             method: :post,
             path: "v1/customFields/listKeys",
-            query: parsed.slice(*query_params),
+            query: query,
             body: parsed.except(*query_params),
             page: MetronomeSDK::Internal::CursorPageWithoutLimit,
             model: MetronomeSDK::Models::V1::CustomFieldListKeysResponse,

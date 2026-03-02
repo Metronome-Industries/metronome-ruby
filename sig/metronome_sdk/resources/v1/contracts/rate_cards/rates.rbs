@@ -25,6 +25,7 @@ module MetronomeSDK
               ?custom_rate: ::Hash[Symbol, top],
               ?ending_before: Time,
               ?is_prorated: bool,
+              ?minimum_config: MetronomeSDK::V1::Contracts::RateCards::RateAddParams::MinimumConfig,
               ?price: Float,
               ?pricing_group_values: ::Hash[Symbol, String],
               ?quantity: Float,

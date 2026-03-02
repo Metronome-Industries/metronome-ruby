@@ -3,6 +3,8 @@
 module MetronomeSDK
   module Resources
     class V1
+      # [Security](https://docs.metronome.com/developer-resources/security/) endpoints
+      # allow you to retrieve security-related data.
       class AuditLogs
         # Some parameter documentations has been truncated, see
         # {MetronomeSDK::Models::V1::AuditLogListParams} for more details.
@@ -70,10 +72,11 @@ module MetronomeSDK
         # @see MetronomeSDK::Models::V1::AuditLogListParams
         def list(params = {})
           parsed, options = MetronomeSDK::V1::AuditLogListParams.dump_request(params)
+          query = MetronomeSDK::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "v1/auditLogs",
-            query: parsed,
+            query: query,
             page: MetronomeSDK::Internal::CursorPage,
             model: MetronomeSDK::Models::V1::AuditLogListResponse,
             options: options

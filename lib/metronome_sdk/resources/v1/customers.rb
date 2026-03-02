@@ -4,24 +4,45 @@ module MetronomeSDK
   module Resources
     class V1
       class Customers
+        # [Alerts](https://docs.metronome.com/connecting-metronome/alerts/) monitor
+        # customer spending, balances, and other billing factors. Use these endpoints to
+        # create, retrieve, and archive customer alerts. To view sample alert payloads by
+        # alert type, navigate
+        # [here.](https://docs.metronome.com/manage-product-access/create-manage-alerts/#webhook-notifications)
         # @return [MetronomeSDK::Resources::V1::Customers::Alerts]
         attr_reader :alerts
 
+        # [Plans](https://docs.metronome.com/pricing-and-packaging/create-plans/)
+        # determine the base pricing for a customer. Use these endpoints to add a plan to
+        # a customer, end a customer plan, retrieve plans, and retrieve plan details.
+        # Create plans in the [Metronome app](https://app.metronome.com/plans).
         # @return [MetronomeSDK::Resources::V1::Customers::Plans]
         attr_reader :plans
 
+        # [Invoices](https://docs.metronome.com/invoicing/) reflect how much a customer
+        # spent during a period, which is the basis for billing. Metronome automatically
+        # generates invoices based upon your pricing, packaging, and usage events. Use
+        # these endpoints to retrieve invoices.
         # @return [MetronomeSDK::Resources::V1::Customers::Invoices]
         attr_reader :invoices
 
+        # [Customers](https://docs.metronome.com/provisioning/create-customers/) in
+        # Metronome represent your users for all billing and reporting. Use these
+        # endpoints to create, retrieve, update, and archive customers and their billing
+        # configuration.
         # @return [MetronomeSDK::Resources::V1::Customers::BillingConfig]
         attr_reader :billing_config
 
+        # Credits and commits are used to manage customer balances.
         # @return [MetronomeSDK::Resources::V1::Customers::Commits]
         attr_reader :commits
 
+        # Credits and commits are used to manage customer balances.
         # @return [MetronomeSDK::Resources::V1::Customers::Credits]
         attr_reader :credits
 
+        # Named schedules are used for storing custom data that can change over time.
+        # Named schedules are often used in custom pricing logic.
         # @return [MetronomeSDK::Resources::V1::Customers::NamedSchedules]
         attr_reader :named_schedules
 
@@ -155,10 +176,11 @@ module MetronomeSDK
         # @see MetronomeSDK::Models::V1::CustomerListParams
         def list(params = {})
           parsed, options = MetronomeSDK::V1::CustomerListParams.dump_request(params)
+          query = MetronomeSDK::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "v1/customers",
-            query: parsed,
+            query: query,
             page: MetronomeSDK::Internal::CursorPage,
             model: MetronomeSDK::V1::CustomerDetail,
             options: options
@@ -226,6 +248,7 @@ module MetronomeSDK
         # @see MetronomeSDK::Models::V1::CustomerListBillableMetricsParams
         def list_billable_metrics(params)
           parsed, options = MetronomeSDK::V1::CustomerListBillableMetricsParams.dump_request(params)
+          query = MetronomeSDK::Internal::Util.encode_query_params(parsed)
           customer_id =
             parsed.delete(:customer_id) do
               raise ArgumentError.new("missing required path argument #{_1}")
@@ -233,7 +256,7 @@ module MetronomeSDK
           @client.request(
             method: :get,
             path: ["v1/customers/%1$s/billable-metrics", customer_id],
-            query: parsed,
+            query: query,
             page: MetronomeSDK::Internal::CursorPage,
             model: MetronomeSDK::Models::V1::CustomerListBillableMetricsResponse,
             options: options
@@ -264,6 +287,7 @@ module MetronomeSDK
         # @see MetronomeSDK::Models::V1::CustomerListCostsParams
         def list_costs(params)
           parsed, options = MetronomeSDK::V1::CustomerListCostsParams.dump_request(params)
+          query = MetronomeSDK::Internal::Util.encode_query_params(parsed)
           customer_id =
             parsed.delete(:customer_id) do
               raise ArgumentError.new("missing required path argument #{_1}")
@@ -271,7 +295,7 @@ module MetronomeSDK
           @client.request(
             method: :get,
             path: ["v1/customers/%1$s/costs", customer_id],
-            query: parsed,
+            query: query,
             page: MetronomeSDK::Internal::CursorPage,
             model: MetronomeSDK::Models::V1::CustomerListCostsResponse,
             options: options

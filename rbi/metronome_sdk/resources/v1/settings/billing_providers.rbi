@@ -4,6 +4,8 @@ module MetronomeSDK
   module Resources
     class V1
       class Settings
+        # Use these endpoints to configure a billing API key, a webhook secret, or invoice
+        # finalization behavior.
         class BillingProviders
           # Set up account-level configuration for a billing provider. Once configured,
           # individual contracts across customers can be mapped to this configuration using

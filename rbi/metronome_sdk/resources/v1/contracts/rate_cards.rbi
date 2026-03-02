@@ -4,7 +4,9 @@ module MetronomeSDK
   module Resources
     class V1
       class Contracts
+        # Rate cards are used to define default pricing for products.
         class RateCards
+          # Rate cards are used to define default pricing for products.
           sig do
             returns(
               MetronomeSDK::Resources::V1::Contracts::RateCards::ProductOrders
@@ -12,11 +14,14 @@ module MetronomeSDK
           end
           attr_reader :product_orders
 
+          # Rate cards are used to define default pricing for products.
           sig do
             returns(MetronomeSDK::Resources::V1::Contracts::RateCards::Rates)
           end
           attr_reader :rates
 
+          # Named schedules are used for storing custom data that can change over time.
+          # Named schedules are often used in custom pricing logic.
           sig do
             returns(
               MetronomeSDK::Resources::V1::Contracts::RateCards::NamedSchedules

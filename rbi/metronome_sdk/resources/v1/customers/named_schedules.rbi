@@ -4,6 +4,8 @@ module MetronomeSDK
   module Resources
     class V1
       class Customers
+        # Named schedules are used for storing custom data that can change over time.
+        # Named schedules are often used in custom pricing logic.
         class NamedSchedules
           # Get a named schedule for the given customer. This endpoint's availability is
           # dependent on your client's configuration.

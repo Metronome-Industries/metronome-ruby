@@ -4,6 +4,10 @@ module MetronomeSDK
   module Resources
     class V1
       class Customers
+        # [Invoices](https://docs.metronome.com/invoicing/) reflect how much a customer
+        # spent during a period, which is the basis for billing. Metronome automatically
+        # generates invoices based upon your pricing, packaging, and usage events. Use
+        # these endpoints to retrieve invoices.
         class Invoices
           # Some parameter documentations has been truncated, see
           # {MetronomeSDK::Models::V1::Customers::InvoiceRetrieveParams} for more details.
@@ -64,6 +68,7 @@ module MetronomeSDK
           # @see MetronomeSDK::Models::V1::Customers::InvoiceRetrieveParams
           def retrieve(params)
             parsed, options = MetronomeSDK::V1::Customers::InvoiceRetrieveParams.dump_request(params)
+            query = MetronomeSDK::Internal::Util.encode_query_params(parsed)
             customer_id =
               parsed.delete(:customer_id) do
                 raise ArgumentError.new("missing required path argument #{_1}")
@@ -75,7 +80,7 @@ module MetronomeSDK
             @client.request(
               method: :get,
               path: ["v1/customers/%1$s/invoices/%2$s", customer_id, invoice_id],
-              query: parsed,
+              query: query,
               model: MetronomeSDK::Models::V1::Customers::InvoiceRetrieveResponse,
               options: options
             )
@@ -158,6 +163,7 @@ module MetronomeSDK
           # @see MetronomeSDK::Models::V1::Customers::InvoiceListParams
           def list(params)
             parsed, options = MetronomeSDK::V1::Customers::InvoiceListParams.dump_request(params)
+            query = MetronomeSDK::Internal::Util.encode_query_params(parsed)
             customer_id =
               parsed.delete(:customer_id) do
                 raise ArgumentError.new("missing required path argument #{_1}")
@@ -165,7 +171,7 @@ module MetronomeSDK
             @client.request(
               method: :get,
               path: ["v1/customers/%1$s/invoices", customer_id],
-              query: parsed,
+              query: query,
               page: MetronomeSDK::Internal::CursorPage,
               model: MetronomeSDK::V1::Customers::Invoice,
               options: options
@@ -286,6 +292,7 @@ module MetronomeSDK
           # @see MetronomeSDK::Models::V1::Customers::InvoiceListBreakdownsParams
           def list_breakdowns(params)
             parsed, options = MetronomeSDK::V1::Customers::InvoiceListBreakdownsParams.dump_request(params)
+            query = MetronomeSDK::Internal::Util.encode_query_params(parsed)
             customer_id =
               parsed.delete(:customer_id) do
                 raise ArgumentError.new("missing required path argument #{_1}")
@@ -293,7 +300,7 @@ module MetronomeSDK
             @client.request(
               method: :get,
               path: ["v1/customers/%1$s/invoices/breakdowns", customer_id],
-              query: parsed,
+              query: query,
               page: MetronomeSDK::Internal::CursorPage,
               model: MetronomeSDK::Models::V1::Customers::InvoiceListBreakdownsResponse,
               options: options

@@ -3,6 +3,10 @@
 module MetronomeSDK
   module Resources
     class V1
+      # [Plans](https://docs.metronome.com/pricing-and-packaging/create-plans/)
+      # determine the base pricing for a customer. Use these endpoints to add a plan to
+      # a customer, end a customer plan, retrieve plans, and retrieve plan details.
+      # Create plans in the [Metronome app](https://app.metronome.com/plans).
       class Plans
         # List all available plans. This is a Plans (deprecated) endpoint. New clients
         # should implement using Contracts.
@@ -20,10 +24,11 @@ module MetronomeSDK
         # @see MetronomeSDK::Models::V1::PlanListParams
         def list(params = {})
           parsed, options = MetronomeSDK::V1::PlanListParams.dump_request(params)
+          query = MetronomeSDK::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "v1/plans",
-            query: parsed,
+            query: query,
             page: MetronomeSDK::Internal::CursorPage,
             model: MetronomeSDK::Models::V1::PlanListResponse,
             options: options
@@ -73,6 +78,7 @@ module MetronomeSDK
         # @see MetronomeSDK::Models::V1::PlanListChargesParams
         def list_charges(params)
           parsed, options = MetronomeSDK::V1::PlanListChargesParams.dump_request(params)
+          query = MetronomeSDK::Internal::Util.encode_query_params(parsed)
           plan_id =
             parsed.delete(:plan_id) do
               raise ArgumentError.new("missing required path argument #{_1}")
@@ -80,7 +86,7 @@ module MetronomeSDK
           @client.request(
             method: :get,
             path: ["v1/planDetails/%1$s/charges", plan_id],
-            query: parsed,
+            query: query,
             page: MetronomeSDK::Internal::CursorPage,
             model: MetronomeSDK::Models::V1::PlanListChargesResponse,
             options: options
@@ -111,6 +117,7 @@ module MetronomeSDK
         # @see MetronomeSDK::Models::V1::PlanListCustomersParams
         def list_customers(params)
           parsed, options = MetronomeSDK::V1::PlanListCustomersParams.dump_request(params)
+          query = MetronomeSDK::Internal::Util.encode_query_params(parsed)
           plan_id =
             parsed.delete(:plan_id) do
               raise ArgumentError.new("missing required path argument #{_1}")
@@ -118,7 +125,7 @@ module MetronomeSDK
           @client.request(
             method: :get,
             path: ["v1/planDetails/%1$s/customers", plan_id],
-            query: parsed,
+            query: query,
             page: MetronomeSDK::Internal::CursorPage,
             model: MetronomeSDK::Models::V1::PlanListCustomersResponse,
             options: options

@@ -3,6 +3,8 @@
 module MetronomeSDK
   module Resources
     class V1
+      # Use these endpoints to configure a billing API key, a webhook secret, or invoice
+      # finalization behavior.
       class PricingUnits
         # List all pricing units. All fiat currency types (for example, USD or GBP) will
         # be included, as well as any custom pricing units that were configured. Custom
@@ -24,10 +26,11 @@ module MetronomeSDK
         # @see MetronomeSDK::Models::V1::PricingUnitListParams
         def list(params = {})
           parsed, options = MetronomeSDK::V1::PricingUnitListParams.dump_request(params)
+          query = MetronomeSDK::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "v1/credit-types/list",
-            query: parsed,
+            query: query,
             page: MetronomeSDK::Internal::CursorPage,
             model: MetronomeSDK::Models::V1::PricingUnitListResponse,
             options: options

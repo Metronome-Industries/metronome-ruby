@@ -12,7 +12,6 @@ module MetronomeSDK
         customer_billing_provider_configuration: MetronomeSDK::Contract::CustomerBillingProviderConfiguration,
         package_id: String,
         prepaid_balance_threshold_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration,
-        priority: Float,
         scheduled_charges_on_usage_invoices: MetronomeSDK::Models::Contract::scheduled_charges_on_usage_invoices,
         spend_threshold_configuration: MetronomeSDK::SpendThresholdConfiguration,
         subscriptions: ::Array[MetronomeSDK::Subscription],
@@ -54,10 +53,6 @@ module MetronomeSDK
         MetronomeSDK::PrepaidBalanceThresholdConfiguration
       ) -> MetronomeSDK::PrepaidBalanceThresholdConfiguration
 
-      attr_reader priority: Float?
-
-      def priority=: (Float) -> Float
-
       attr_reader scheduled_charges_on_usage_invoices: MetronomeSDK::Models::Contract::scheduled_charges_on_usage_invoices?
 
       def scheduled_charges_on_usage_invoices=: (
@@ -91,7 +86,6 @@ module MetronomeSDK
         ?customer_billing_provider_configuration: MetronomeSDK::Contract::CustomerBillingProviderConfiguration,
         ?package_id: String,
         ?prepaid_balance_threshold_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration,
-        ?priority: Float,
         ?scheduled_charges_on_usage_invoices: MetronomeSDK::Models::Contract::scheduled_charges_on_usage_invoices,
         ?spend_threshold_configuration: MetronomeSDK::SpendThresholdConfiguration,
         ?subscriptions: ::Array[MetronomeSDK::Subscription],
@@ -109,7 +103,6 @@ module MetronomeSDK
         customer_billing_provider_configuration: MetronomeSDK::Contract::CustomerBillingProviderConfiguration,
         package_id: String,
         prepaid_balance_threshold_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration,
-        priority: Float,
         scheduled_charges_on_usage_invoices: MetronomeSDK::Models::Contract::scheduled_charges_on_usage_invoices,
         spend_threshold_configuration: MetronomeSDK::SpendThresholdConfiguration,
         subscriptions: ::Array[MetronomeSDK::Subscription],

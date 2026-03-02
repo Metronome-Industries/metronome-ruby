@@ -4,12 +4,16 @@ module MetronomeSDK
   module Resources
     class V1
       class Contracts
+        # Products are the items that customers purchase.
         sig { returns(MetronomeSDK::Resources::V1::Contracts::Products) }
         attr_reader :products
 
+        # Rate cards are used to define default pricing for products.
         sig { returns(MetronomeSDK::Resources::V1::Contracts::RateCards) }
         attr_reader :rate_cards
 
+        # Named schedules are used for storing custom data that can change over time.
+        # Named schedules are often used in custom pricing logic.
         sig { returns(MetronomeSDK::Resources::V1::Contracts::NamedSchedules) }
         attr_reader :named_schedules
 
@@ -167,7 +171,6 @@ module MetronomeSDK
             package_id: String,
             prepaid_balance_threshold_configuration:
               MetronomeSDK::PrepaidBalanceThresholdConfiguration::OrHash,
-            priority: Float,
             professional_services:
               T::Array[
                 MetronomeSDK::V1::ContractCreateParams::ProfessionalService::OrHash
@@ -245,8 +248,6 @@ module MetronomeSDK
           # and uniqueness_key are allowed.
           package_id: nil,
           prepaid_balance_threshold_configuration: nil,
-          # Priority of the contract.
-          priority: nil,
           # This field's availability is dependent on your client's configuration.
           professional_services: nil,
           # Selects the rate card linked to the specified alias as of the contract's start

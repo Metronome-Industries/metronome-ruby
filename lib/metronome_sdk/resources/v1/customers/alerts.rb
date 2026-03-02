@@ -4,6 +4,11 @@ module MetronomeSDK
   module Resources
     class V1
       class Customers
+        # [Alerts](https://docs.metronome.com/connecting-metronome/alerts/) monitor
+        # customer spending, balances, and other billing factors. Use these endpoints to
+        # create, retrieve, and archive customer alerts. To view sample alert payloads by
+        # alert type, navigate
+        # [here.](https://docs.metronome.com/manage-product-access/create-manage-alerts/#webhook-notifications)
         class Alerts
           # Some parameter documentations has been truncated, see
           # {MetronomeSDK::Models::V1::Customers::AlertRetrieveParams} for more details.
@@ -141,12 +146,13 @@ module MetronomeSDK
           #
           # @see MetronomeSDK::Models::V1::Customers::AlertListParams
           def list(params)
-            parsed, options = MetronomeSDK::V1::Customers::AlertListParams.dump_request(params)
             query_params = [:next_page]
+            parsed, options = MetronomeSDK::V1::Customers::AlertListParams.dump_request(params)
+            query = MetronomeSDK::Internal::Util.encode_query_params(parsed.slice(*query_params))
             @client.request(
               method: :post,
               path: "v1/customer-alerts/list",
-              query: parsed.slice(*query_params),
+              query: query,
               body: parsed.except(*query_params),
               page: MetronomeSDK::Internal::CursorPageWithoutLimit,
               model: MetronomeSDK::V1::Customers::CustomerAlert,

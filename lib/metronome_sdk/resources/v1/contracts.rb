@@ -4,12 +4,16 @@ module MetronomeSDK
   module Resources
     class V1
       class Contracts
+        # Products are the items that customers purchase.
         # @return [MetronomeSDK::Resources::V1::Contracts::Products]
         attr_reader :products
 
+        # Rate cards are used to define default pricing for products.
         # @return [MetronomeSDK::Resources::V1::Contracts::RateCards]
         attr_reader :rate_cards
 
+        # Named schedules are used for storing custom data that can change over time.
+        # Named schedules are often used in custom pricing logic.
         # @return [MetronomeSDK::Resources::V1::Contracts::NamedSchedules]
         attr_reader :named_schedules
 
@@ -140,7 +144,7 @@ module MetronomeSDK
         #   `usage_filters` to route the correct usage to each contract.
         #   [Read more about usage filters](https://docs.metronome.com/manage-product-access/provision-customer/#create-a-usage-filter).
         #
-        # @overload create(customer_id:, starting_at:, billing_provider_configuration: nil, commits: nil, credits: nil, custom_fields: nil, discounts: nil, ending_before: nil, hierarchy_configuration: nil, multiplier_override_prioritization: nil, name: nil, net_payment_terms_days: nil, netsuite_sales_order_id: nil, overrides: nil, package_alias: nil, package_id: nil, prepaid_balance_threshold_configuration: nil, priority: nil, professional_services: nil, rate_card_alias: nil, rate_card_id: nil, recurring_commits: nil, recurring_credits: nil, reseller_royalties: nil, revenue_system_configuration: nil, salesforce_opportunity_id: nil, scheduled_charges: nil, scheduled_charges_on_usage_invoices: nil, spend_threshold_configuration: nil, subscriptions: nil, total_contract_value: nil, transition: nil, uniqueness_key: nil, usage_filter: nil, usage_statement_schedule: nil, request_options: {})
+        # @overload create(customer_id:, starting_at:, billing_provider_configuration: nil, commits: nil, credits: nil, custom_fields: nil, discounts: nil, ending_before: nil, hierarchy_configuration: nil, multiplier_override_prioritization: nil, name: nil, net_payment_terms_days: nil, netsuite_sales_order_id: nil, overrides: nil, package_alias: nil, package_id: nil, prepaid_balance_threshold_configuration: nil, professional_services: nil, rate_card_alias: nil, rate_card_id: nil, recurring_commits: nil, recurring_credits: nil, reseller_royalties: nil, revenue_system_configuration: nil, salesforce_opportunity_id: nil, scheduled_charges: nil, scheduled_charges_on_usage_invoices: nil, spend_threshold_configuration: nil, subscriptions: nil, total_contract_value: nil, transition: nil, uniqueness_key: nil, usage_filter: nil, usage_statement_schedule: nil, request_options: {})
         #
         # @param customer_id [String]
         #
@@ -175,8 +179,6 @@ module MetronomeSDK
         # @param package_id [String] If provided, provisions a customer on a package instead of creating a traditiona
         #
         # @param prepaid_balance_threshold_configuration [MetronomeSDK::Models::PrepaidBalanceThresholdConfiguration]
-        #
-        # @param priority [Float] Priority of the contract.
         #
         # @param professional_services [Array<MetronomeSDK::Models::V1::ContractCreateParams::ProfessionalService>] This field's availability is dependent on your client's configuration.
         #
@@ -672,12 +674,13 @@ module MetronomeSDK
         #
         # @see MetronomeSDK::Models::V1::ContractRetrieveRateScheduleParams
         def retrieve_rate_schedule(params)
-          parsed, options = MetronomeSDK::V1::ContractRetrieveRateScheduleParams.dump_request(params)
           query_params = [:limit, :next_page]
+          parsed, options = MetronomeSDK::V1::ContractRetrieveRateScheduleParams.dump_request(params)
+          query = MetronomeSDK::Internal::Util.encode_query_params(parsed.slice(*query_params))
           @client.request(
             method: :post,
             path: "v1/contracts/getContractRateSchedule",
-            query: parsed.slice(*query_params),
+            query: query,
             body: parsed.except(*query_params),
             model: MetronomeSDK::Models::V1::ContractRetrieveRateScheduleResponse,
             options: options

@@ -11,6 +11,8 @@ module MetronomeSDK
           current_period: bool,
           ending_before: Time,
           group_by: MetronomeSDK::V1::UsageListWithGroupsParams::GroupBy,
+          group_filters: ::Hash[Symbol, ::Array[String]],
+          group_key: ::Array[String],
           starting_on: Time
         }
         & MetronomeSDK::Internal::Type::request_parameters
@@ -47,6 +49,16 @@ module MetronomeSDK
           MetronomeSDK::V1::UsageListWithGroupsParams::GroupBy
         ) -> MetronomeSDK::V1::UsageListWithGroupsParams::GroupBy
 
+        attr_reader group_filters: ::Hash[Symbol, ::Array[String]]?
+
+        def group_filters=: (
+          ::Hash[Symbol, ::Array[String]]
+        ) -> ::Hash[Symbol, ::Array[String]]
+
+        attr_reader group_key: ::Array[String]?
+
+        def group_key=: (::Array[String]) -> ::Array[String]
+
         attr_reader starting_on: Time?
 
         def starting_on=: (Time) -> Time
@@ -60,6 +72,8 @@ module MetronomeSDK
           ?current_period: bool,
           ?ending_before: Time,
           ?group_by: MetronomeSDK::V1::UsageListWithGroupsParams::GroupBy,
+          ?group_filters: ::Hash[Symbol, ::Array[String]],
+          ?group_key: ::Array[String],
           ?starting_on: Time,
           ?request_options: MetronomeSDK::request_opts
         ) -> void
@@ -73,6 +87,8 @@ module MetronomeSDK
           current_period: bool,
           ending_before: Time,
           group_by: MetronomeSDK::V1::UsageListWithGroupsParams::GroupBy,
+          group_filters: ::Hash[Symbol, ::Array[String]],
+          group_key: ::Array[String],
           starting_on: Time,
           request_options: MetronomeSDK::RequestOptions
         }

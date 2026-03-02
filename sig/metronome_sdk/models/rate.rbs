@@ -6,6 +6,7 @@ module MetronomeSDK
         credit_type: MetronomeSDK::CreditTypeData,
         custom_rate: ::Hash[Symbol, top],
         is_prorated: bool,
+        minimum_config: MetronomeSDK::Rate::MinimumConfig,
         price: Float,
         pricing_group_values: ::Hash[Symbol, String],
         quantity: Float,
@@ -28,6 +29,12 @@ module MetronomeSDK
       attr_reader is_prorated: bool?
 
       def is_prorated=: (bool) -> bool
+
+      attr_reader minimum_config: MetronomeSDK::Rate::MinimumConfig?
+
+      def minimum_config=: (
+        MetronomeSDK::Rate::MinimumConfig
+      ) -> MetronomeSDK::Rate::MinimumConfig
 
       attr_reader price: Float?
 
@@ -52,6 +59,7 @@ module MetronomeSDK
         ?credit_type: MetronomeSDK::CreditTypeData,
         ?custom_rate: ::Hash[Symbol, top],
         ?is_prorated: bool,
+        ?minimum_config: MetronomeSDK::Rate::MinimumConfig,
         ?price: Float,
         ?pricing_group_values: ::Hash[Symbol, String],
         ?quantity: Float,
@@ -63,6 +71,7 @@ module MetronomeSDK
         credit_type: MetronomeSDK::CreditTypeData,
         custom_rate: ::Hash[Symbol, top],
         is_prorated: bool,
+        minimum_config: MetronomeSDK::Rate::MinimumConfig,
         price: Float,
         pricing_group_values: ::Hash[Symbol, String],
         quantity: Float,
@@ -88,6 +97,16 @@ module MetronomeSDK
         TIERED_PERCENTAGE: :TIERED_PERCENTAGE
 
         def self?.values: -> ::Array[MetronomeSDK::Models::Rate::rate_type]
+      end
+
+      type minimum_config = { minimum: Float }
+
+      class MinimumConfig < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor minimum: Float
+
+        def initialize: (minimum: Float) -> void
+
+        def to_hash: -> { minimum: Float }
       end
     end
   end

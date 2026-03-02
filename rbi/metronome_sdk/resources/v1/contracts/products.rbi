@@ -4,6 +4,7 @@ module MetronomeSDK
   module Resources
     class V1
       class Contracts
+        # Products are the items that customers purchase.
         class Products
           # Create a new product object. Products in Metronome represent your company's
           # individual product or service offerings. A Product can be thought of as the

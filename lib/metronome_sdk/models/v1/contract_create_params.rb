@@ -116,12 +116,6 @@ module MetronomeSDK
         optional :prepaid_balance_threshold_configuration,
                  -> { MetronomeSDK::PrepaidBalanceThresholdConfiguration }
 
-        # @!attribute priority
-        #   Priority of the contract.
-        #
-        #   @return [Float, nil]
-        optional :priority, Float
-
         # @!attribute professional_services
         #   This field's availability is dependent on your client's configuration.
         #
@@ -234,7 +228,7 @@ module MetronomeSDK
         #   @return [MetronomeSDK::Models::V1::ContractCreateParams::UsageStatementSchedule, nil]
         optional :usage_statement_schedule, -> { MetronomeSDK::V1::ContractCreateParams::UsageStatementSchedule }
 
-        # @!method initialize(customer_id:, starting_at:, billing_provider_configuration: nil, commits: nil, credits: nil, custom_fields: nil, discounts: nil, ending_before: nil, hierarchy_configuration: nil, multiplier_override_prioritization: nil, name: nil, net_payment_terms_days: nil, netsuite_sales_order_id: nil, overrides: nil, package_alias: nil, package_id: nil, prepaid_balance_threshold_configuration: nil, priority: nil, professional_services: nil, rate_card_alias: nil, rate_card_id: nil, recurring_commits: nil, recurring_credits: nil, reseller_royalties: nil, revenue_system_configuration: nil, salesforce_opportunity_id: nil, scheduled_charges: nil, scheduled_charges_on_usage_invoices: nil, spend_threshold_configuration: nil, subscriptions: nil, total_contract_value: nil, transition: nil, uniqueness_key: nil, usage_filter: nil, usage_statement_schedule: nil, request_options: {})
+        # @!method initialize(customer_id:, starting_at:, billing_provider_configuration: nil, commits: nil, credits: nil, custom_fields: nil, discounts: nil, ending_before: nil, hierarchy_configuration: nil, multiplier_override_prioritization: nil, name: nil, net_payment_terms_days: nil, netsuite_sales_order_id: nil, overrides: nil, package_alias: nil, package_id: nil, prepaid_balance_threshold_configuration: nil, professional_services: nil, rate_card_alias: nil, rate_card_id: nil, recurring_commits: nil, recurring_credits: nil, reseller_royalties: nil, revenue_system_configuration: nil, salesforce_opportunity_id: nil, scheduled_charges: nil, scheduled_charges_on_usage_invoices: nil, spend_threshold_configuration: nil, subscriptions: nil, total_contract_value: nil, transition: nil, uniqueness_key: nil, usage_filter: nil, usage_statement_schedule: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::V1::ContractCreateParams} for more details.
         #
@@ -271,8 +265,6 @@ module MetronomeSDK
         #   @param package_id [String] If provided, provisions a customer on a package instead of creating a traditiona
         #
         #   @param prepaid_balance_threshold_configuration [MetronomeSDK::Models::PrepaidBalanceThresholdConfiguration]
-        #
-        #   @param priority [Float] Priority of the contract.
         #
         #   @param professional_services [Array<MetronomeSDK::Models::V1::ContractCreateParams::ProfessionalService>] This field's availability is dependent on your client's configuration.
         #
@@ -956,7 +948,6 @@ module MetronomeSDK
               NONE = :NONE
               STRIPE = :STRIPE
               ANROK = :ANROK
-              AVALARA = :AVALARA
               PRECALCULATED = :PRECALCULATED
 
               # @!method self.values
@@ -1778,6 +1769,13 @@ module MetronomeSDK
             #   @return [Boolean, nil]
             optional :is_prorated, MetronomeSDK::Internal::Type::Boolean
 
+            # @!attribute minimum_config
+            #   Only set for TIERED_PERCENTAGE or PERCENTAGE rate_type.
+            #
+            #   @return [MetronomeSDK::Models::V1::ContractCreateParams::Override::OverwriteRate::MinimumConfig, nil]
+            optional :minimum_config,
+                     -> { MetronomeSDK::V1::ContractCreateParams::Override::OverwriteRate::MinimumConfig }
+
             # @!attribute price
             #   Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type,
             #   this is a decimal fraction, e.g. use 0.1 for 10%; this must be >=0 and <=1.
@@ -1797,7 +1795,7 @@ module MetronomeSDK
             #   @return [Array<MetronomeSDK::Models::Tier>, nil]
             optional :tiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Tier] }
 
-            # @!method initialize(rate_type:, credit_type_id: nil, custom_rate: nil, is_prorated: nil, price: nil, quantity: nil, tiers: nil)
+            # @!method initialize(rate_type:, credit_type_id: nil, custom_rate: nil, is_prorated: nil, minimum_config: nil, price: nil, quantity: nil, tiers: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V1::ContractCreateParams::Override::OverwriteRate} for
             #   more details.
@@ -1811,6 +1809,8 @@ module MetronomeSDK
             #   @param custom_rate [Hash{Symbol=>Object}] Only set for CUSTOM rate_type. This field is interpreted by custom rate processo
             #
             #   @param is_prorated [Boolean] Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be
+            #
+            #   @param minimum_config [MetronomeSDK::Models::V1::ContractCreateParams::Override::OverwriteRate::MinimumConfig] Only set for TIERED_PERCENTAGE or PERCENTAGE rate_type.
             #
             #   @param price [Float] Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type, t
             #
@@ -1831,6 +1831,19 @@ module MetronomeSDK
 
               # @!method self.values
               #   @return [Array<Symbol>]
+            end
+
+            # @see MetronomeSDK::Models::V1::ContractCreateParams::Override::OverwriteRate#minimum_config
+            class MinimumConfig < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute minimum
+              #
+              #   @return [Float]
+              required :minimum, Float
+
+              # @!method initialize(minimum:)
+              #   Only set for TIERED_PERCENTAGE or PERCENTAGE rate_type.
+              #
+              #   @param minimum [Float]
             end
           end
 

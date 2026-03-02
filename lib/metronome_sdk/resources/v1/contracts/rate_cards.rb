@@ -4,13 +4,18 @@ module MetronomeSDK
   module Resources
     class V1
       class Contracts
+        # Rate cards are used to define default pricing for products.
         class RateCards
+          # Rate cards are used to define default pricing for products.
           # @return [MetronomeSDK::Resources::V1::Contracts::RateCards::ProductOrders]
           attr_reader :product_orders
 
+          # Rate cards are used to define default pricing for products.
           # @return [MetronomeSDK::Resources::V1::Contracts::RateCards::Rates]
           attr_reader :rates
 
+          # Named schedules are used for storing custom data that can change over time.
+          # Named schedules are often used in custom pricing logic.
           # @return [MetronomeSDK::Resources::V1::Contracts::RateCards::NamedSchedules]
           attr_reader :named_schedules
 
@@ -205,10 +210,11 @@ module MetronomeSDK
           # @see MetronomeSDK::Models::V1::Contracts::RateCardListParams
           def list(params = {})
             parsed, options = MetronomeSDK::V1::Contracts::RateCardListParams.dump_request(params)
+            query = MetronomeSDK::Internal::Util.encode_query_params(parsed.except(:body))
             @client.request(
               method: :post,
               path: "v1/contract-pricing/rate-cards/list",
-              query: parsed.except(:body),
+              query: query,
               body: parsed[:body],
               page: MetronomeSDK::Internal::CursorPage,
               model: MetronomeSDK::Models::V1::Contracts::RateCardListResponse,
@@ -278,12 +284,13 @@ module MetronomeSDK
           #
           # @see MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleParams
           def retrieve_rate_schedule(params)
-            parsed, options = MetronomeSDK::V1::Contracts::RateCardRetrieveRateScheduleParams.dump_request(params)
             query_params = [:limit, :next_page]
+            parsed, options = MetronomeSDK::V1::Contracts::RateCardRetrieveRateScheduleParams.dump_request(params)
+            query = MetronomeSDK::Internal::Util.encode_query_params(parsed.slice(*query_params))
             @client.request(
               method: :post,
               path: "v1/contract-pricing/rate-cards/getRateSchedule",
-              query: parsed.slice(*query_params),
+              query: query,
               body: parsed.except(*query_params),
               model: MetronomeSDK::Models::V1::Contracts::RateCardRetrieveRateScheduleResponse,
               options: options

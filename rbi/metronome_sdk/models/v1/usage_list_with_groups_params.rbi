@@ -60,6 +60,8 @@ module MetronomeSDK
         sig { params(ending_before: Time).void }
         attr_writer :ending_before
 
+        # Use group_key and group_filters instead. Use a single group key to group by.
+        # Compound group keys are not supported.
         sig do
           returns(
             T.nilable(MetronomeSDK::V1::UsageListWithGroupsParams::GroupBy)
@@ -74,6 +76,32 @@ module MetronomeSDK
           ).void
         end
         attr_writer :group_by
+
+        # Object mapping group keys to arrays of values to filter on. Only usage matching
+        # these filter values will be returned. Keys must be present in group_key. Omit a
+        # key or use an empty array to include all values for that dimension.
+        sig { returns(T.nilable(T::Hash[Symbol, T::Array[String]])) }
+        attr_reader :group_filters
+
+        sig { params(group_filters: T::Hash[Symbol, T::Array[String]]).void }
+        attr_writer :group_filters
+
+        # Group key to group usage by. Supports both simple (single key) and compound
+        # (multiple keys) group keys.
+        #
+        # For simple group keys, provide a single key e.g. `["region"]`. For compound
+        # group keys, provide multiple keys e.g. `["region", "team"]`.
+        #
+        # For streaming metrics, the keys must be defined as a simple or compound group
+        # key on the billable metric. For compound group keys, all keys must match an
+        # exact compound group key definition — partial matches are not allowed.
+        #
+        # Cannot be used together with `group_by`.
+        sig { returns(T.nilable(T::Array[String])) }
+        attr_reader :group_key
+
+        sig { params(group_key: T::Array[String]).void }
+        attr_writer :group_key
 
         sig { returns(T.nilable(Time)) }
         attr_reader :starting_on
@@ -93,6 +121,8 @@ module MetronomeSDK
             ending_before: Time,
             group_by:
               MetronomeSDK::V1::UsageListWithGroupsParams::GroupBy::OrHash,
+            group_filters: T::Hash[Symbol, T::Array[String]],
+            group_key: T::Array[String],
             starting_on: Time,
             request_options: MetronomeSDK::RequestOptions::OrHash
           ).returns(T.attached_class)
@@ -113,7 +143,25 @@ module MetronomeSDK
           # are specified when this is true.
           current_period: nil,
           ending_before: nil,
+          # Use group_key and group_filters instead. Use a single group key to group by.
+          # Compound group keys are not supported.
           group_by: nil,
+          # Object mapping group keys to arrays of values to filter on. Only usage matching
+          # these filter values will be returned. Keys must be present in group_key. Omit a
+          # key or use an empty array to include all values for that dimension.
+          group_filters: nil,
+          # Group key to group usage by. Supports both simple (single key) and compound
+          # (multiple keys) group keys.
+          #
+          # For simple group keys, provide a single key e.g. `["region"]`. For compound
+          # group keys, provide multiple keys e.g. `["region", "team"]`.
+          #
+          # For streaming metrics, the keys must be defined as a simple or compound group
+          # key on the billable metric. For compound group keys, all keys must match an
+          # exact compound group key definition — partial matches are not allowed.
+          #
+          # Cannot be used together with `group_by`.
+          group_key: nil,
           starting_on: nil,
           request_options: {}
         )
@@ -131,6 +179,8 @@ module MetronomeSDK
               current_period: T::Boolean,
               ending_before: Time,
               group_by: MetronomeSDK::V1::UsageListWithGroupsParams::GroupBy,
+              group_filters: T::Hash[Symbol, T::Array[String]],
+              group_key: T::Array[String],
               starting_on: Time,
               request_options: MetronomeSDK::RequestOptions
             }
@@ -202,6 +252,8 @@ module MetronomeSDK
           sig { params(values: T::Array[String]).void }
           attr_writer :values
 
+          # Use group_key and group_filters instead. Use a single group key to group by.
+          # Compound group keys are not supported.
           sig do
             params(key: String, values: T::Array[String]).returns(
               T.attached_class

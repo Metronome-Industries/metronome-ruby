@@ -808,6 +808,14 @@ module MetronomeSDK
             end
             attr_writer :subscription_custom_fields
 
+            # ID of the subscription that this line item is associated with. Only present on
+            # line items with product of `SUBSCRIPTION` type.
+            sig { returns(T.nilable(String)) }
+            attr_reader :subscription_id
+
+            sig { params(subscription_id: String).void }
+            attr_writer :subscription_id
+
             # Populated if the line item has a tiered price.
             sig do
               returns(
@@ -880,6 +888,7 @@ module MetronomeSDK
                     MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem::OrHash
                   ],
                 subscription_custom_fields: T::Hash[Symbol, String],
+                subscription_id: String,
                 tier:
                   MetronomeSDK::V1::Customers::Invoice::LineItem::Tier::OrHash,
                 unit_price: Float
@@ -991,6 +1000,9 @@ module MetronomeSDK
               sub_line_items: nil,
               # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
               subscription_custom_fields: nil,
+              # ID of the subscription that this line item is associated with. Only present on
+              # line items with product of `SUBSCRIPTION` type.
+              subscription_id: nil,
               # Populated if the line item has a tiered price.
               tier: nil,
               # The unit price associated with the line item.
@@ -1048,6 +1060,7 @@ module MetronomeSDK
                       MetronomeSDK::V1::Customers::Invoice::LineItem::SubLineItem
                     ],
                   subscription_custom_fields: T::Hash[Symbol, String],
+                  subscription_id: String,
                   tier: MetronomeSDK::V1::Customers::Invoice::LineItem::Tier,
                   unit_price: Float
                 }

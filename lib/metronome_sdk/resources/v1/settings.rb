@@ -3,7 +3,11 @@
 module MetronomeSDK
   module Resources
     class V1
+      # Use these endpoints to configure a billing API key, a webhook secret, or invoice
+      # finalization behavior.
       class Settings
+        # Use these endpoints to configure a billing API key, a webhook secret, or invoice
+        # finalization behavior.
         # @return [MetronomeSDK::Resources::V1::Settings::BillingProviders]
         attr_reader :billing_providers
 

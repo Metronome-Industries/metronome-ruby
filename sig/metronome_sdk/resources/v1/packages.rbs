@@ -1,0 +1,63 @@
+module MetronomeSDK
+  module Resources
+    class V1
+      class Packages
+        def create: (
+          name: String,
+          ?aliases: ::Array[MetronomeSDK::V1::PackageCreateParams::Alias],
+          ?billing_anchor_date: MetronomeSDK::Models::V1::PackageCreateParams::billing_anchor_date,
+          ?billing_provider: MetronomeSDK::Models::V1::PackageCreateParams::billing_provider,
+          ?commits: ::Array[MetronomeSDK::V1::PackageCreateParams::Commit],
+          ?contract_name: String,
+          ?credits: ::Array[MetronomeSDK::V1::PackageCreateParams::Credit],
+          ?delivery_method: MetronomeSDK::Models::V1::PackageCreateParams::delivery_method,
+          ?duration: MetronomeSDK::V1::PackageCreateParams::Duration,
+          ?multiplier_override_prioritization: MetronomeSDK::Models::V1::PackageCreateParams::multiplier_override_prioritization,
+          ?net_payment_terms_days: Float,
+          ?overrides: ::Array[MetronomeSDK::V1::PackageCreateParams::Override],
+          ?prepaid_balance_threshold_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration,
+          ?rate_card_alias: String,
+          ?rate_card_id: String,
+          ?recurring_commits: ::Array[MetronomeSDK::V1::PackageCreateParams::RecurringCommit],
+          ?recurring_credits: ::Array[MetronomeSDK::V1::PackageCreateParams::RecurringCredit],
+          ?scheduled_charges: ::Array[MetronomeSDK::V1::PackageCreateParams::ScheduledCharge],
+          ?scheduled_charges_on_usage_invoices: MetronomeSDK::Models::V1::PackageCreateParams::scheduled_charges_on_usage_invoices,
+          ?spend_threshold_configuration: MetronomeSDK::SpendThresholdConfiguration,
+          ?subscriptions: ::Array[MetronomeSDK::V1::PackageCreateParams::Subscription],
+          ?uniqueness_key: String,
+          ?usage_statement_schedule: MetronomeSDK::V1::PackageCreateParams::UsageStatementSchedule,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> MetronomeSDK::Models::V1::PackageCreateResponse
+
+        def retrieve: (
+          package_id: String,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> MetronomeSDK::Models::V1::PackageRetrieveResponse
+
+        def list: (
+          ?limit: Integer,
+          ?next_page: String,
+          ?archive_filter: MetronomeSDK::Models::V1::PackageListParams::archive_filter,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::PackageListResponse]
+
+        def archive: (
+          package_id: String,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> MetronomeSDK::Models::V1::PackageArchiveResponse
+
+        def list_contracts_on_package: (
+          package_id: String,
+          ?limit: Integer,
+          ?next_page: String,
+          ?covering_date: Time,
+          ?include_archived: bool,
+          ?starting_at: Time,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> MetronomeSDK::Internal::CursorPage[MetronomeSDK::Models::V1::PackageListContractsOnPackageResponse]
+
+        def initialize: (client: MetronomeSDK::Client) -> void
+      end
+    end
+  end
+end

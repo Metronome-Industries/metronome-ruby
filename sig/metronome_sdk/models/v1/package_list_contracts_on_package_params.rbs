@@ -1,0 +1,63 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type package_list_contracts_on_package_params =
+        {
+          package_id: String,
+          limit: Integer,
+          next_page: String,
+          covering_date: Time,
+          include_archived: bool,
+          starting_at: Time
+        }
+        & MetronomeSDK::Internal::Type::request_parameters
+
+      class PackageListContractsOnPackageParams < MetronomeSDK::Internal::Type::BaseModel
+        extend MetronomeSDK::Internal::Type::RequestParameters::Converter
+        include MetronomeSDK::Internal::Type::RequestParameters
+
+        attr_accessor package_id: String
+
+        attr_reader limit: Integer?
+
+        def limit=: (Integer) -> Integer
+
+        attr_reader next_page: String?
+
+        def next_page=: (String) -> String
+
+        attr_reader covering_date: Time?
+
+        def covering_date=: (Time) -> Time
+
+        attr_reader include_archived: bool?
+
+        def include_archived=: (bool) -> bool
+
+        attr_reader starting_at: Time?
+
+        def starting_at=: (Time) -> Time
+
+        def initialize: (
+          package_id: String,
+          ?limit: Integer,
+          ?next_page: String,
+          ?covering_date: Time,
+          ?include_archived: bool,
+          ?starting_at: Time,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          package_id: String,
+          limit: Integer,
+          next_page: String,
+          covering_date: Time,
+          include_archived: bool,
+          starting_at: Time,
+          request_options: MetronomeSDK::RequestOptions
+        }
+      end
+    end
+  end
+end

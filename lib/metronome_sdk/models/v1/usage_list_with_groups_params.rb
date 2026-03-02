@@ -52,16 +52,45 @@ module MetronomeSDK
         optional :ending_before, Time
 
         # @!attribute group_by
+        #   @deprecated
+        #
+        #   Use group_key and group_filters instead. Use a single group key to group by.
+        #   Compound group keys are not supported.
         #
         #   @return [MetronomeSDK::Models::V1::UsageListWithGroupsParams::GroupBy, nil]
         optional :group_by, -> { MetronomeSDK::V1::UsageListWithGroupsParams::GroupBy }
+
+        # @!attribute group_filters
+        #   Object mapping group keys to arrays of values to filter on. Only usage matching
+        #   these filter values will be returned. Keys must be present in group_key. Omit a
+        #   key or use an empty array to include all values for that dimension.
+        #
+        #   @return [Hash{Symbol=>Array<String>}, nil]
+        optional :group_filters,
+                 MetronomeSDK::Internal::Type::HashOf[MetronomeSDK::Internal::Type::ArrayOf[String]]
+
+        # @!attribute group_key
+        #   Group key to group usage by. Supports both simple (single key) and compound
+        #   (multiple keys) group keys.
+        #
+        #   For simple group keys, provide a single key e.g. `["region"]`. For compound
+        #   group keys, provide multiple keys e.g. `["region", "team"]`.
+        #
+        #   For streaming metrics, the keys must be defined as a simple or compound group
+        #   key on the billable metric. For compound group keys, all keys must match an
+        #   exact compound group key definition — partial matches are not allowed.
+        #
+        #   Cannot be used together with `group_by`.
+        #
+        #   @return [Array<String>, nil]
+        optional :group_key, MetronomeSDK::Internal::Type::ArrayOf[String]
 
         # @!attribute starting_on
         #
         #   @return [Time, nil]
         optional :starting_on, Time
 
-        # @!method initialize(billable_metric_id:, customer_id:, window_size:, limit: nil, next_page: nil, current_period: nil, ending_before: nil, group_by: nil, starting_on: nil, request_options: {})
+        # @!method initialize(billable_metric_id:, customer_id:, window_size:, limit: nil, next_page: nil, current_period: nil, ending_before: nil, group_by: nil, group_filters: nil, group_key: nil, starting_on: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::V1::UsageListWithGroupsParams} for more details.
         #
@@ -79,7 +108,11 @@ module MetronomeSDK
         #
         #   @param ending_before [Time]
         #
-        #   @param group_by [MetronomeSDK::Models::V1::UsageListWithGroupsParams::GroupBy]
+        #   @param group_by [MetronomeSDK::Models::V1::UsageListWithGroupsParams::GroupBy] Use group_key and group_filters instead. Use a single group key to group by. Com
+        #
+        #   @param group_filters [Hash{Symbol=>Array<String>}] Object mapping group keys to arrays of values to filter on. Only usage matching
+        #
+        #   @param group_key [Array<String>] Group key to group usage by. Supports both simple (single key) and compound (mul
         #
         #   @param starting_on [Time]
         #
@@ -99,6 +132,7 @@ module MetronomeSDK
           #   @return [Array<Symbol>]
         end
 
+        # @deprecated
         class GroupBy < MetronomeSDK::Internal::Type::BaseModel
           # @!attribute key
           #   The name of the group_by key to use
@@ -116,6 +150,9 @@ module MetronomeSDK
           # @!method initialize(key:, values: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V1::UsageListWithGroupsParams::GroupBy} for more details.
+          #
+          #   Use group_key and group_filters instead. Use a single group key to group by.
+          #   Compound group keys are not supported.
           #
           #   @param key [String] The name of the group_by key to use
           #

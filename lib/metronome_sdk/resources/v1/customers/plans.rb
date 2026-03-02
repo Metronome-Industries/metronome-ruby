@@ -4,6 +4,10 @@ module MetronomeSDK
   module Resources
     class V1
       class Customers
+        # [Plans](https://docs.metronome.com/pricing-and-packaging/create-plans/)
+        # determine the base pricing for a customer. Use these endpoints to add a plan to
+        # a customer, end a customer plan, retrieve plans, and retrieve plan details.
+        # Create plans in the [Metronome app](https://app.metronome.com/plans).
         class Plans
           # List the given customer's plans in reverse-chronological order. This is a Plans
           # (deprecated) endpoint. New clients should implement using Contracts.
@@ -23,6 +27,7 @@ module MetronomeSDK
           # @see MetronomeSDK::Models::V1::Customers::PlanListParams
           def list(params)
             parsed, options = MetronomeSDK::V1::Customers::PlanListParams.dump_request(params)
+            query = MetronomeSDK::Internal::Util.encode_query_params(parsed)
             customer_id =
               parsed.delete(:customer_id) do
                 raise ArgumentError.new("missing required path argument #{_1}")
@@ -30,7 +35,7 @@ module MetronomeSDK
             @client.request(
               method: :get,
               path: ["v1/customers/%1$s/plans", customer_id],
-              query: parsed,
+              query: query,
               page: MetronomeSDK::Internal::CursorPage,
               model: MetronomeSDK::Models::V1::Customers::PlanListResponse,
               options: options
@@ -147,6 +152,7 @@ module MetronomeSDK
           # @see MetronomeSDK::Models::V1::Customers::PlanListPriceAdjustmentsParams
           def list_price_adjustments(params)
             parsed, options = MetronomeSDK::V1::Customers::PlanListPriceAdjustmentsParams.dump_request(params)
+            query = MetronomeSDK::Internal::Util.encode_query_params(parsed)
             customer_id =
               parsed.delete(:customer_id) do
                 raise ArgumentError.new("missing required path argument #{_1}")
@@ -158,7 +164,7 @@ module MetronomeSDK
             @client.request(
               method: :get,
               path: ["v1/customers/%1$s/plans/%2$s/priceAdjustments", customer_id, customer_plan_id],
-              query: parsed,
+              query: query,
               page: MetronomeSDK::Internal::CursorPage,
               model: MetronomeSDK::Models::V1::Customers::PlanListPriceAdjustmentsResponse,
               options: options

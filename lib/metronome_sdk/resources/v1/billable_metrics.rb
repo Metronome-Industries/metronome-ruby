@@ -3,6 +3,9 @@
 module MetronomeSDK
   module Resources
     class V1
+      # [Billable metrics](https://docs.metronome.com/understanding-metronome/how-metronome-works#billable-metrics)
+      # in Metronome represent the various consumption components that Metronome meters
+      # and aggregates.
       class BillableMetrics
         # Some parameter documentations has been truncated, see
         # {MetronomeSDK::Models::V1::BillableMetricCreateParams} for more details.
@@ -126,10 +129,11 @@ module MetronomeSDK
         # @see MetronomeSDK::Models::V1::BillableMetricListParams
         def list(params = {})
           parsed, options = MetronomeSDK::V1::BillableMetricListParams.dump_request(params)
+          query = MetronomeSDK::Internal::Util.encode_query_params(parsed)
           @client.request(
             method: :get,
             path: "v1/billable-metrics",
-            query: parsed,
+            query: query,
             page: MetronomeSDK::Internal::CursorPage,
             model: MetronomeSDK::Models::V1::BillableMetricListResponse,
             options: options
