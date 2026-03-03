@@ -66,8 +66,6 @@ module MetronomeSDK
                 custom_rate: T::Hash[Symbol, T.anything],
                 ending_before: Time,
                 is_prorated: T::Boolean,
-                minimum_config:
-                  MetronomeSDK::V1::Contracts::RateCards::RateAddParams::MinimumConfig::OrHash,
                 price: Float,
                 pricing_group_values: T::Hash[Symbol, String],
                 quantity: Float,
@@ -104,8 +102,6 @@ module MetronomeSDK
               # Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be
               # set to true.
               is_prorated: nil,
-              # Only set for TIERED_PERCENTAGE or PERCENTAGE rate_type.
-              minimum_config: nil,
               # Default price. For FLAT and SUBSCRIPTION rate_type, this must be >=0. For
               # PERCENTAGE rate_type, this is a decimal fraction, e.g. use 0.1 for 10%; this
               # must be >=0 and <=1.

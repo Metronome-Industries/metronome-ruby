@@ -884,7 +884,6 @@ module MetronomeSDK
                 credit_type: MetronomeSDK::CreditTypeData,
                 custom_rate: ::Hash[Symbol, top],
                 is_prorated: bool,
-                minimum_config: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::MinimumConfig,
                 price: Float,
                 quantity: Float,
                 tiers: ::Array[MetronomeSDK::Tier]
@@ -907,12 +906,6 @@ module MetronomeSDK
 
               def is_prorated=: (bool) -> bool
 
-              attr_reader minimum_config: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::MinimumConfig?
-
-              def minimum_config=: (
-                MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::MinimumConfig
-              ) -> MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::MinimumConfig
-
               attr_reader price: Float?
 
               def price=: (Float) -> Float
@@ -932,7 +925,6 @@ module MetronomeSDK
                 ?credit_type: MetronomeSDK::CreditTypeData,
                 ?custom_rate: ::Hash[Symbol, top],
                 ?is_prorated: bool,
-                ?minimum_config: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::MinimumConfig,
                 ?price: Float,
                 ?quantity: Float,
                 ?tiers: ::Array[MetronomeSDK::Tier]
@@ -943,7 +935,6 @@ module MetronomeSDK
                 credit_type: MetronomeSDK::CreditTypeData,
                 custom_rate: ::Hash[Symbol, top],
                 is_prorated: bool,
-                minimum_config: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::MinimumConfig,
                 price: Float,
                 quantity: Float,
                 tiers: ::Array[MetronomeSDK::Tier]
@@ -968,16 +959,6 @@ module MetronomeSDK
                 CUSTOM: :CUSTOM
 
                 def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverwriteRate::rate_type]
-              end
-
-              type minimum_config = { minimum: Float }
-
-              class MinimumConfig < MetronomeSDK::Internal::Type::BaseModel
-                attr_accessor minimum: Float
-
-                def initialize: (minimum: Float) -> void
-
-                def to_hash: -> { minimum: Float }
               end
             end
 
