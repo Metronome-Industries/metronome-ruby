@@ -1,5 +1,18 @@
 # Changelog
 
+## 3.3.0 (2026-03-03)
+
+Full Changelog: [v3.2.0...v3.3.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v3.2.0...v3.3.0)
+
+### Features
+
+* Skip stainless for non-GA's minimum config ([2205c30](https://github.com/Metronome-Industries/metronome-ruby/commit/2205c30516e9bff2446973db2590aace1e6a183a))
+
+
+### Chores
+
+* **ci:** add build step ([aac2ac7](https://github.com/Metronome-Industries/metronome-ruby/commit/aac2ac79783eaa45e1b4dd7486aae959f07231c4))
+
 ## 3.2.0 (2026-03-02)
 
 Full Changelog: [v3.1.0...v3.2.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v3.1.0...v3.2.0)

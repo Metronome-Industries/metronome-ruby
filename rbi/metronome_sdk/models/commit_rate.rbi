@@ -11,17 +11,6 @@ module MetronomeSDK
       sig { returns(MetronomeSDK::CommitRate::RateType::OrSymbol) }
       attr_accessor :rate_type
 
-      # Only set for TIERED_PERCENTAGE or PERCENTAGE rate_type.
-      sig { returns(T.nilable(MetronomeSDK::CommitRate::MinimumConfig)) }
-      attr_reader :minimum_config
-
-      sig do
-        params(
-          minimum_config: MetronomeSDK::CommitRate::MinimumConfig::OrHash
-        ).void
-      end
-      attr_writer :minimum_config
-
       # Commit rate price. For FLAT rate_type, this must be >=0. For PERCENTAGE
       # rate_type, this is a decimal fraction, e.g. use 0.1 for 10%; this must be >=0
       # and <=1.
@@ -43,15 +32,12 @@ module MetronomeSDK
       sig do
         params(
           rate_type: MetronomeSDK::CommitRate::RateType::OrSymbol,
-          minimum_config: MetronomeSDK::CommitRate::MinimumConfig::OrHash,
           price: Float,
           tiers: T::Array[MetronomeSDK::Tier::OrHash]
         ).returns(T.attached_class)
       end
       def self.new(
         rate_type:,
-        # Only set for TIERED_PERCENTAGE or PERCENTAGE rate_type.
-        minimum_config: nil,
         # Commit rate price. For FLAT rate_type, this must be >=0. For PERCENTAGE
         # rate_type, this is a decimal fraction, e.g. use 0.1 for 10%; this must be >=0
         # and <=1.
@@ -65,7 +51,6 @@ module MetronomeSDK
         override.returns(
           {
             rate_type: MetronomeSDK::CommitRate::RateType::OrSymbol,
-            minimum_config: MetronomeSDK::CommitRate::MinimumConfig,
             price: Float,
             tiers: T::Array[MetronomeSDK::Tier]
           }
@@ -102,28 +87,6 @@ module MetronomeSDK
           )
         end
         def self.values
-        end
-      end
-
-      class MinimumConfig < MetronomeSDK::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              MetronomeSDK::CommitRate::MinimumConfig,
-              MetronomeSDK::Internal::AnyHash
-            )
-          end
-
-        sig { returns(Float) }
-        attr_accessor :minimum
-
-        # Only set for TIERED_PERCENTAGE or PERCENTAGE rate_type.
-        sig { params(minimum: Float).returns(T.attached_class) }
-        def self.new(minimum:)
-        end
-
-        sig { override.returns({ minimum: Float }) }
-        def to_hash
         end
       end
     end

@@ -2834,24 +2834,6 @@ module MetronomeSDK
             sig { params(is_prorated: T::Boolean).void }
             attr_writer :is_prorated
 
-            # Only set for TIERED_PERCENTAGE or PERCENTAGE rate_type.
-            sig do
-              returns(
-                T.nilable(
-                  MetronomeSDK::V1::ContractAmendParams::Override::OverwriteRate::MinimumConfig
-                )
-              )
-            end
-            attr_reader :minimum_config
-
-            sig do
-              params(
-                minimum_config:
-                  MetronomeSDK::V1::ContractAmendParams::Override::OverwriteRate::MinimumConfig::OrHash
-              ).void
-            end
-            attr_writer :minimum_config
-
             # Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type,
             # this is a decimal fraction, e.g. use 0.1 for 10%; this must be >=0 and <=1.
             sig { returns(T.nilable(Float)) }
@@ -2882,8 +2864,6 @@ module MetronomeSDK
                 credit_type_id: String,
                 custom_rate: T::Hash[Symbol, T.anything],
                 is_prorated: T::Boolean,
-                minimum_config:
-                  MetronomeSDK::V1::ContractAmendParams::Override::OverwriteRate::MinimumConfig::OrHash,
                 price: Float,
                 quantity: Float,
                 tiers: T::Array[MetronomeSDK::Tier::OrHash]
@@ -2898,8 +2878,6 @@ module MetronomeSDK
               # Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be
               # set to true.
               is_prorated: nil,
-              # Only set for TIERED_PERCENTAGE or PERCENTAGE rate_type.
-              minimum_config: nil,
               # Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type,
               # this is a decimal fraction, e.g. use 0.1 for 10%; this must be >=0 and <=1.
               price: nil,
@@ -2918,8 +2896,6 @@ module MetronomeSDK
                   credit_type_id: String,
                   custom_rate: T::Hash[Symbol, T.anything],
                   is_prorated: T::Boolean,
-                  minimum_config:
-                    MetronomeSDK::V1::ContractAmendParams::Override::OverwriteRate::MinimumConfig,
                   price: Float,
                   quantity: Float,
                   tiers: T::Array[MetronomeSDK::Tier]
@@ -2980,28 +2956,6 @@ module MetronomeSDK
                 )
               end
               def self.values
-              end
-            end
-
-            class MinimumConfig < MetronomeSDK::Internal::Type::BaseModel
-              OrHash =
-                T.type_alias do
-                  T.any(
-                    MetronomeSDK::V1::ContractAmendParams::Override::OverwriteRate::MinimumConfig,
-                    MetronomeSDK::Internal::AnyHash
-                  )
-                end
-
-              sig { returns(Float) }
-              attr_accessor :minimum
-
-              # Only set for TIERED_PERCENTAGE or PERCENTAGE rate_type.
-              sig { params(minimum: Float).returns(T.attached_class) }
-              def self.new(minimum:)
-              end
-
-              sig { override.returns({ minimum: Float }) }
-              def to_hash
               end
             end
           end

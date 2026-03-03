@@ -81,12 +81,6 @@ module MetronomeSDK
             #   @return [Boolean, nil]
             optional :is_prorated, MetronomeSDK::Internal::Type::Boolean
 
-            # @!attribute minimum_config
-            #   Only set for TIERED_PERCENTAGE or PERCENTAGE rate_type.
-            #
-            #   @return [MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::MinimumConfig, nil]
-            optional :minimum_config, -> { MetronomeSDK::V1::Contracts::RateCards::RateAddParams::MinimumConfig }
-
             # @!attribute price
             #   Default price. For FLAT and SUBSCRIPTION rate_type, this must be >=0. For
             #   PERCENTAGE rate_type, this is a decimal fraction, e.g. use 0.1 for 10%; this
@@ -114,7 +108,7 @@ module MetronomeSDK
             #   @return [Array<MetronomeSDK::Models::Tier>, nil]
             optional :tiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Tier] }
 
-            # @!method initialize(entitled:, product_id:, rate_card_id:, rate_type:, starting_at:, billing_frequency: nil, commit_rate: nil, credit_type_id: nil, custom_rate: nil, ending_before: nil, is_prorated: nil, minimum_config: nil, price: nil, pricing_group_values: nil, quantity: nil, tiers: nil, request_options: {})
+            # @!method initialize(entitled:, product_id:, rate_card_id:, rate_type:, starting_at:, billing_frequency: nil, commit_rate: nil, credit_type_id: nil, custom_rate: nil, ending_before: nil, is_prorated: nil, price: nil, pricing_group_values: nil, quantity: nil, tiers: nil, request_options: {})
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams} for more
             #   details.
@@ -140,8 +134,6 @@ module MetronomeSDK
             #   @param ending_before [Time] exclusive end date
             #
             #   @param is_prorated [Boolean] Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be
-            #
-            #   @param minimum_config [MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::MinimumConfig] Only set for TIERED_PERCENTAGE or PERCENTAGE rate_type.
             #
             #   @param price [Float] Default price. For FLAT and SUBSCRIPTION rate_type, this must be >=0. For PERCEN
             #
@@ -179,18 +171,6 @@ module MetronomeSDK
 
               # @!method self.values
               #   @return [Array<Symbol>]
-            end
-
-            class MinimumConfig < MetronomeSDK::Internal::Type::BaseModel
-              # @!attribute minimum
-              #
-              #   @return [Float]
-              required :minimum, Float
-
-              # @!method initialize(minimum:)
-              #   Only set for TIERED_PERCENTAGE or PERCENTAGE rate_type.
-              #
-              #   @param minimum [Float]
             end
           end
         end
