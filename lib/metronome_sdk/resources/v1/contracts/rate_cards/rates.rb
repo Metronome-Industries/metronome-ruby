@@ -59,7 +59,7 @@ module MetronomeSDK
             #
             # Add a new rate
             #
-            # @overload add(entitled:, product_id:, rate_card_id:, rate_type:, starting_at:, billing_frequency: nil, commit_rate: nil, credit_type_id: nil, custom_rate: nil, ending_before: nil, is_prorated: nil, minimum_config: nil, price: nil, pricing_group_values: nil, quantity: nil, tiers: nil, request_options: {})
+            # @overload add(entitled:, product_id:, rate_card_id:, rate_type:, starting_at:, billing_frequency: nil, commit_rate: nil, credit_type_id: nil, custom_rate: nil, ending_before: nil, is_prorated: nil, price: nil, pricing_group_values: nil, quantity: nil, tiers: nil, request_options: {})
             #
             # @param entitled [Boolean]
             #
@@ -82,8 +82,6 @@ module MetronomeSDK
             # @param ending_before [Time] exclusive end date
             #
             # @param is_prorated [Boolean] Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be
-            #
-            # @param minimum_config [MetronomeSDK::Models::V1::Contracts::RateCards::RateAddParams::MinimumConfig] Only set for TIERED_PERCENTAGE or PERCENTAGE rate_type.
             #
             # @param price [Float] Default price. For FLAT and SUBSCRIPTION rate_type, this must be >=0. For PERCEN
             #
