@@ -192,6 +192,54 @@ module MetronomeSDK
         def archive(id:, request_options: {})
         end
 
+        # Deprecate an existing billing configuration for a customer to handle churn or
+        # billing and collection preference changes. Archiving a billing configuration
+        # takes effect immediately. If there are active contracts using the configuration,
+        # Metronome will archive the configuration on the contract and immediately stop
+        # metering to downstream systems.
+        #
+        # ### Use this endpoint to:
+        #
+        # - Remove billing provider customer data and configurations when no longer needed
+        # - Clean up test or deprecated billing provider configurations
+        # - Free up uniqueness keys for reuse with new billing provider configurations
+        # - Disable threshold recharge configurations associated with archived billing
+        #   providers
+        #
+        # ### Key response fields:
+        #
+        # A successful response returns:
+        #
+        # - `success`: Boolean indicating the operation completed successfully
+        # - `error`: Null on success, error message on failure
+        #
+        # ### Usage guidelines:
+        #
+        # - Archiving a contract configuration during a grace period will result in the
+        #   invoice not being sent to the customer
+        # - Automatically disables both spend-based and credit-based threshold recharge
+        #   configurations for contracts using the archived billing provider
+        # - You can archive multiple configurations for a single customer in a single
+        #   request, but any validation failures for an individual configuration will
+        #   prevent the entire operation from succeeding
+        sig do
+          params(
+            customer_billing_provider_configuration_ids: T::Array[String],
+            customer_id: String,
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(
+            MetronomeSDK::Models::V1::CustomerArchiveBillingConfigurationsResponse
+          )
+        end
+        def archive_billing_configurations(
+          # Array of billing provider configuration IDs to archive
+          customer_billing_provider_configuration_ids:,
+          # The customer ID the billing provider configurations belong to
+          customer_id:,
+          request_options: {}
+        )
+        end
+
         # Get all billable metrics available for a specific customer. Supports pagination
         # and filtering by current plan status or archived metrics. Use this endpoint to
         # see which metrics are being tracked for billing calculations for a given
