@@ -221,6 +221,59 @@ module MetronomeSDK
           )
         end
 
+        # Deprecate an existing billing configuration for a customer to handle churn or
+        # billing and collection preference changes. Archiving a billing configuration
+        # takes effect immediately. If there are active contracts using the configuration,
+        # Metronome will archive the configuration on the contract and immediately stop
+        # metering to downstream systems.
+        #
+        # ### Use this endpoint to:
+        #
+        # - Remove billing provider customer data and configurations when no longer needed
+        # - Clean up test or deprecated billing provider configurations
+        # - Free up uniqueness keys for reuse with new billing provider configurations
+        # - Disable threshold recharge configurations associated with archived billing
+        #   providers
+        #
+        # ### Key response fields:
+        #
+        # A successful response returns:
+        #
+        # - `success`: Boolean indicating the operation completed successfully
+        # - `error`: Null on success, error message on failure
+        #
+        # ### Usage guidelines:
+        #
+        # - Archiving a contract configuration during a grace period will result in the
+        #   invoice not being sent to the customer
+        # - Automatically disables both spend-based and credit-based threshold recharge
+        #   configurations for contracts using the archived billing provider
+        # - You can archive multiple configurations for a single customer in a single
+        #   request, but any validation failures for an individual configuration will
+        #   prevent the entire operation from succeeding
+        #
+        # @overload archive_billing_configurations(customer_billing_provider_configuration_ids:, customer_id:, request_options: {})
+        #
+        # @param customer_billing_provider_configuration_ids [Array<String>] Array of billing provider configuration IDs to archive
+        #
+        # @param customer_id [String] The customer ID the billing provider configurations belong to
+        #
+        # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [MetronomeSDK::Models::V1::CustomerArchiveBillingConfigurationsResponse]
+        #
+        # @see MetronomeSDK::Models::V1::CustomerArchiveBillingConfigurationsParams
+        def archive_billing_configurations(params)
+          parsed, options = MetronomeSDK::V1::CustomerArchiveBillingConfigurationsParams.dump_request(params)
+          @client.request(
+            method: :post,
+            path: "v1/archiveCustomerBillingProviderConfigurations",
+            body: parsed,
+            model: MetronomeSDK::Models::V1::CustomerArchiveBillingConfigurationsResponse,
+            options: options
+          )
+        end
+
         # Some parameter documentations has been truncated, see
         # {MetronomeSDK::Models::V1::CustomerListBillableMetricsParams} for more details.
         #
