@@ -789,6 +789,12 @@ module MetronomeSDK
           #   @return [Symbol, MetronomeSDK::Models::V1::ContractAmendParams::Credit::RateType, nil]
           optional :rate_type, enum: -> { MetronomeSDK::V1::ContractAmendParams::Credit::RateType }
 
+          # @!attribute rollover_fraction
+          #   Fraction of unused segments that will be rolled over. Must be between 0 and 1.
+          #
+          #   @return [Float, nil]
+          optional :rollover_fraction, Float
+
           # @!attribute specifiers
           #   List of filters that determine what kind of customer usage draws down a commit
           #   or credit. A customer's usage needs to meet the condition of at least one of the
@@ -798,7 +804,7 @@ module MetronomeSDK
           #   @return [Array<MetronomeSDK::Models::CommitSpecifierInput>, nil]
           optional :specifiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::CommitSpecifierInput] }
 
-          # @!method initialize(access_schedule:, product_id:, applicable_product_ids: nil, applicable_product_tags: nil, custom_fields: nil, description: nil, hierarchy_configuration: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil, specifiers: nil)
+          # @!method initialize(access_schedule:, product_id:, applicable_product_ids: nil, applicable_product_tags: nil, custom_fields: nil, description: nil, hierarchy_configuration: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil, rollover_fraction: nil, specifiers: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V1::ContractAmendParams::Credit} for more details.
           #
@@ -823,6 +829,8 @@ module MetronomeSDK
           #   @param priority [Float] If multiple credits are applicable, the one with the lower priority will apply f
           #
           #   @param rate_type [Symbol, MetronomeSDK::Models::V1::ContractAmendParams::Credit::RateType]
+          #
+          #   @param rollover_fraction [Float] Fraction of unused segments that will be rolled over. Must be between 0 and 1.
           #
           #   @param specifiers [Array<MetronomeSDK::Models::CommitSpecifierInput>] List of filters that determine what kind of customer usage draws down a commit o
 
