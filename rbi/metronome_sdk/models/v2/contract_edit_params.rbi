@@ -2517,6 +2517,13 @@ module MetronomeSDK
           end
           attr_writer :rate_type
 
+          # Fraction of unused segments that will be rolled over. Must be between 0 and 1.
+          sig { returns(T.nilable(Float)) }
+          attr_reader :rollover_fraction
+
+          sig { params(rollover_fraction: Float).void }
+          attr_writer :rollover_fraction
+
           # List of filters that determine what kind of customer usage draws down a commit
           # or credit. A customer's usage needs to meet the condition of at least one of the
           # specifiers to contribute to a commit's or credit's drawdown. This field cannot
@@ -2551,6 +2558,7 @@ module MetronomeSDK
               priority: Float,
               rate_type:
                 MetronomeSDK::V2::ContractEditParams::AddCredit::RateType::OrSymbol,
+              rollover_fraction: Float,
               specifiers: T::Array[MetronomeSDK::CommitSpecifierInput::OrHash]
             ).returns(T.attached_class)
           end
@@ -2578,6 +2586,8 @@ module MetronomeSDK
             # first.
             priority: nil,
             rate_type: nil,
+            # Fraction of unused segments that will be rolled over. Must be between 0 and 1.
+            rollover_fraction: nil,
             # List of filters that determine what kind of customer usage draws down a commit
             # or credit. A customer's usage needs to meet the condition of at least one of the
             # specifiers to contribute to a commit's or credit's drawdown. This field cannot
@@ -2605,6 +2615,7 @@ module MetronomeSDK
                 priority: Float,
                 rate_type:
                   MetronomeSDK::V2::ContractEditParams::AddCredit::RateType::OrSymbol,
+                rollover_fraction: Float,
                 specifiers: T::Array[MetronomeSDK::CommitSpecifierInput]
               }
             )
@@ -8144,6 +8155,9 @@ module MetronomeSDK
           end
           attr_writer :rate_type
 
+          sig { returns(T.nilable(Float)) }
+          attr_accessor :rollover_fraction
+
           sig do
             params(
               credit_id: String,
@@ -8159,7 +8173,8 @@ module MetronomeSDK
               priority: T.nilable(Float),
               product_id: String,
               rate_type:
-                MetronomeSDK::V2::ContractEditParams::UpdateCredit::RateType::OrSymbol
+                MetronomeSDK::V2::ContractEditParams::UpdateCredit::RateType::OrSymbol,
+              rollover_fraction: T.nilable(Float)
             ).returns(T.attached_class)
           end
           def self.new(
@@ -8183,7 +8198,8 @@ module MetronomeSDK
             # If provided, updates the credit to use the specified rate type for current and
             # future invoices. Previously finalized invoices will need to be voided and
             # regenerated to reflect the rate type change.
-            rate_type: nil
+            rate_type: nil,
+            rollover_fraction: nil
           )
           end
 
@@ -8203,7 +8219,8 @@ module MetronomeSDK
                 priority: T.nilable(Float),
                 product_id: String,
                 rate_type:
-                  MetronomeSDK::V2::ContractEditParams::UpdateCredit::RateType::OrSymbol
+                  MetronomeSDK::V2::ContractEditParams::UpdateCredit::RateType::OrSymbol,
+                rollover_fraction: T.nilable(Float)
               }
             )
           end

@@ -936,6 +936,7 @@ module MetronomeSDK
             netsuite_sales_order_id: String,
             priority: Float,
             rate_type: MetronomeSDK::Models::V2::ContractEditParams::AddCredit::rate_type,
+            rollover_fraction: Float,
             specifiers: ::Array[MetronomeSDK::CommitSpecifierInput]
           }
 
@@ -984,6 +985,10 @@ module MetronomeSDK
             MetronomeSDK::Models::V2::ContractEditParams::AddCredit::rate_type
           ) -> MetronomeSDK::Models::V2::ContractEditParams::AddCredit::rate_type
 
+          attr_reader rollover_fraction: Float?
+
+          def rollover_fraction=: (Float) -> Float
+
           attr_reader specifiers: ::Array[MetronomeSDK::CommitSpecifierInput]?
 
           def specifiers=: (
@@ -1002,6 +1007,7 @@ module MetronomeSDK
             ?netsuite_sales_order_id: String,
             ?priority: Float,
             ?rate_type: MetronomeSDK::Models::V2::ContractEditParams::AddCredit::rate_type,
+            ?rollover_fraction: Float,
             ?specifiers: ::Array[MetronomeSDK::CommitSpecifierInput]
           ) -> void
 
@@ -1017,6 +1023,7 @@ module MetronomeSDK
             netsuite_sales_order_id: String,
             priority: Float,
             rate_type: MetronomeSDK::Models::V2::ContractEditParams::AddCredit::rate_type,
+            rollover_fraction: Float,
             specifiers: ::Array[MetronomeSDK::CommitSpecifierInput]
           }
 
@@ -3366,7 +3373,8 @@ module MetronomeSDK
             netsuite_sales_order_id: String?,
             priority: Float?,
             product_id: String,
-            rate_type: MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit::rate_type
+            rate_type: MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit::rate_type,
+            rollover_fraction: Float?
           }
 
         class UpdateCredit < MetronomeSDK::Internal::Type::BaseModel
@@ -3410,6 +3418,8 @@ module MetronomeSDK
             MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit::rate_type
           ) -> MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit::rate_type
 
+          attr_accessor rollover_fraction: Float?
+
           def initialize: (
             credit_id: String,
             ?access_schedule: MetronomeSDK::V2::ContractEditParams::UpdateCredit::AccessSchedule,
@@ -3421,7 +3431,8 @@ module MetronomeSDK
             ?netsuite_sales_order_id: String?,
             ?priority: Float?,
             ?product_id: String,
-            ?rate_type: MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit::rate_type
+            ?rate_type: MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit::rate_type,
+            ?rollover_fraction: Float?
           ) -> void
 
           def to_hash: -> {
@@ -3435,7 +3446,8 @@ module MetronomeSDK
             netsuite_sales_order_id: String?,
             priority: Float?,
             product_id: String,
-            rate_type: MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit::rate_type
+            rate_type: MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit::rate_type,
+            rollover_fraction: Float?
           }
 
           type access_schedule =
