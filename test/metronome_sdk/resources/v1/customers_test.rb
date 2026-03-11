@@ -75,6 +75,27 @@ class MetronomeSDK::Test::Resources::V1::CustomersTest < MetronomeSDK::Test::Res
     end
   end
 
+  def test_archive_billing_configurations_required_params
+    response =
+      @metronome.v1.customers.archive_billing_configurations(
+        customer_billing_provider_configuration_ids: %w[
+          4db51251-61de-4bfe-b9ce-495e244f3491
+          4db51251-61de-4bfe-b9ce-495e244f3491
+        ],
+        customer_id: "20a060d1-aa80-41d4-8bb2-4f3091b93903"
+      )
+
+    assert_pattern do
+      response => MetronomeSDK::Models::V1::CustomerArchiveBillingConfigurationsResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: MetronomeSDK::Models::V1::CustomerArchiveBillingConfigurationsResponse::Data
+      }
+    end
+  end
+
   def test_list_billable_metrics_required_params
     response =
       @metronome.v1.customers.list_billable_metrics(customer_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc")

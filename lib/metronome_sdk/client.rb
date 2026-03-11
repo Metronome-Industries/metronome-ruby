@@ -18,6 +18,9 @@ module MetronomeSDK
     # @return [String]
     attr_reader :bearer_token
 
+    # @return [String, nil]
+    attr_reader :webhook_secret
+
     # @return [MetronomeSDK::Resources::V2]
     attr_reader :v2
 
@@ -37,6 +40,8 @@ module MetronomeSDK
     #
     # @param bearer_token [String, nil] Defaults to `ENV["METRONOME_BEARER_TOKEN"]`
     #
+    # @param webhook_secret [String, nil] Defaults to `ENV["METRONOME_WEBHOOK_SECRET"]`
+    #
     # @param base_url [String, nil] Override the default base URL for the API, e.g.,
     # `"https://api.example.com/v2/"`. Defaults to `ENV["METRONOME_BASE_URL"]`
     #
@@ -49,6 +54,7 @@ module MetronomeSDK
     # @param max_retry_delay [Float]
     def initialize(
       bearer_token: ENV["METRONOME_BEARER_TOKEN"],
+      webhook_secret: ENV["METRONOME_WEBHOOK_SECRET"],
       base_url: ENV["METRONOME_BASE_URL"],
       max_retries: self.class::DEFAULT_MAX_RETRIES,
       timeout: self.class::DEFAULT_TIMEOUT_IN_SECONDS,
@@ -62,6 +68,7 @@ module MetronomeSDK
       end
 
       @bearer_token = bearer_token.to_s
+      @webhook_secret = webhook_secret&.to_s
 
       super(
         base_url: base_url,

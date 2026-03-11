@@ -1631,6 +1631,13 @@ module MetronomeSDK
           end
           attr_writer :rate_type
 
+          # Fraction of unused segments that will be rolled over. Must be between 0 and 1.
+          sig { returns(T.nilable(Float)) }
+          attr_reader :rollover_fraction
+
+          sig { params(rollover_fraction: Float).void }
+          attr_writer :rollover_fraction
+
           # List of filters that determine what kind of customer usage draws down a commit
           # or credit. A customer's usage needs to meet the condition of at least one of the
           # specifiers to contribute to a commit's or credit's drawdown. This field cannot
@@ -1663,6 +1670,7 @@ module MetronomeSDK
               priority: Float,
               rate_type:
                 MetronomeSDK::V1::ContractAmendParams::Credit::RateType::OrSymbol,
+              rollover_fraction: Float,
               specifiers: T::Array[MetronomeSDK::CommitSpecifierInput::OrHash]
             ).returns(T.attached_class)
           end
@@ -1690,6 +1698,8 @@ module MetronomeSDK
             # first.
             priority: nil,
             rate_type: nil,
+            # Fraction of unused segments that will be rolled over. Must be between 0 and 1.
+            rollover_fraction: nil,
             # List of filters that determine what kind of customer usage draws down a commit
             # or credit. A customer's usage needs to meet the condition of at least one of the
             # specifiers to contribute to a commit's or credit's drawdown. This field cannot
@@ -1715,6 +1725,7 @@ module MetronomeSDK
                 priority: Float,
                 rate_type:
                   MetronomeSDK::V1::ContractAmendParams::Credit::RateType::OrSymbol,
+                rollover_fraction: Float,
                 specifiers: T::Array[MetronomeSDK::CommitSpecifierInput]
               }
             )

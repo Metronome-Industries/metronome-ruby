@@ -878,6 +878,7 @@ module MetronomeSDK
             netsuite_sales_order_id: String,
             priority: Float,
             rate_type: MetronomeSDK::Models::V1::ContractCreateParams::Credit::rate_type,
+            rollover_fraction: Float,
             specifiers: ::Array[MetronomeSDK::CommitSpecifierInput]
           }
 
@@ -926,6 +927,10 @@ module MetronomeSDK
             MetronomeSDK::Models::V1::ContractCreateParams::Credit::rate_type
           ) -> MetronomeSDK::Models::V1::ContractCreateParams::Credit::rate_type
 
+          attr_reader rollover_fraction: Float?
+
+          def rollover_fraction=: (Float) -> Float
+
           attr_reader specifiers: ::Array[MetronomeSDK::CommitSpecifierInput]?
 
           def specifiers=: (
@@ -944,6 +949,7 @@ module MetronomeSDK
             ?netsuite_sales_order_id: String,
             ?priority: Float,
             ?rate_type: MetronomeSDK::Models::V1::ContractCreateParams::Credit::rate_type,
+            ?rollover_fraction: Float,
             ?specifiers: ::Array[MetronomeSDK::CommitSpecifierInput]
           ) -> void
 
@@ -959,6 +965,7 @@ module MetronomeSDK
             netsuite_sales_order_id: String,
             priority: Float,
             rate_type: MetronomeSDK::Models::V1::ContractCreateParams::Credit::rate_type,
+            rollover_fraction: Float,
             specifiers: ::Array[MetronomeSDK::CommitSpecifierInput]
           }
 

@@ -1,0 +1,44 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type customer_archive_billing_configurations_response =
+        {
+          data: MetronomeSDK::Models::V1::CustomerArchiveBillingConfigurationsResponse::Data
+        }
+
+      class CustomerArchiveBillingConfigurationsResponse < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor data: MetronomeSDK::Models::V1::CustomerArchiveBillingConfigurationsResponse::Data
+
+        def initialize: (
+          data: MetronomeSDK::Models::V1::CustomerArchiveBillingConfigurationsResponse::Data
+        ) -> void
+
+        def to_hash: -> {
+          data: MetronomeSDK::Models::V1::CustomerArchiveBillingConfigurationsResponse::Data
+        }
+
+        type data =
+          {
+            customer_billing_provider_configuration_ids: ::Array[String],
+            customer_id: String
+          }
+
+        class Data < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor customer_billing_provider_configuration_ids: ::Array[String]
+
+          attr_accessor customer_id: String
+
+          def initialize: (
+            customer_billing_provider_configuration_ids: ::Array[String],
+            customer_id: String
+          ) -> void
+
+          def to_hash: -> {
+            customer_billing_provider_configuration_ids: ::Array[String],
+            customer_id: String
+          }
+        end
+      end
+    end
+  end
+end

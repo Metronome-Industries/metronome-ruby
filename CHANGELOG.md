@@ -1,5 +1,22 @@
 # Changelog
 
+## 3.4.0 (2026-03-11)
+
+Full Changelog: [v3.3.0...v3.4.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v3.3.0...v3.4.0)
+
+### Features
+
+* (docs): update documentation for /usage/groups ([cb98f76](https://github.com/Metronome-Industries/metronome-ruby/commit/cb98f762fd49b8bc4bf1db518c4b3fca2dfbdd76))
+* Add archive_billing_configurations endpoint ([693b236](https://github.com/Metronome-Industries/metronome-ruby/commit/693b236a57927c30bee80fa18708b335d5b3216c))
+* **client:** add webhook support ([b80cc07](https://github.com/Metronome-Industries/metronome-ruby/commit/b80cc07d79fc8f86ee10c081260c60f72421b2cc))
+* Enable rollover fraction on credits ([8cb1d11](https://github.com/Metronome-Industries/metronome-ruby/commit/8cb1d11bea6edbf2c37ebe651f37b5daea0c8e51))
+
+
+### Chores
+
+* **ci:** skip uploading artifacts on stainless-internal branches ([80252b9](https://github.com/Metronome-Industries/metronome-ruby/commit/80252b925a2136ac68afdcbc57105656b6b93d8e))
+* **test:** do not count install time for mock server timeout ([c95574c](https://github.com/Metronome-Industries/metronome-ruby/commit/c95574c224e6565840f2c6ac6e47970ac151a5d4))
+
 ## 3.3.0 (2026-03-03)
 
 Full Changelog: [v3.2.0...v3.3.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v3.2.0...v3.3.0)
