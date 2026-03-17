@@ -3295,7 +3295,8 @@ module MetronomeSDK
                   MetronomeSDK::ContractV2::Credit::Ledger::CreditCanceledLedgerEntry::OrHash,
                   MetronomeSDK::ContractV2::Credit::Ledger::CreditCreditedLedgerEntry::OrHash,
                   MetronomeSDK::ContractV2::Credit::Ledger::CreditManualLedgerEntry::OrHash,
-                  MetronomeSDK::ContractV2::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry::OrHash
+                  MetronomeSDK::ContractV2::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry::OrHash,
+                  MetronomeSDK::ContractV2::Credit::Ledger::CreditRolloverLedgerEntry::OrHash
                 )
               ]
           ).void
@@ -3329,6 +3330,19 @@ module MetronomeSDK
 
         sig { params(recurring_credit_id: String).void }
         attr_writer :recurring_credit_id
+
+        sig do
+          returns(T.nilable(MetronomeSDK::ContractV2::Credit::RolledOverFrom))
+        end
+        attr_reader :rolled_over_from
+
+        sig do
+          params(
+            rolled_over_from:
+              MetronomeSDK::ContractV2::Credit::RolledOverFrom::OrHash
+          ).void
+        end
+        attr_writer :rolled_over_from
 
         # This field's availability is dependent on your client's configuration.
         sig { returns(T.nilable(String)) }
@@ -3389,13 +3403,16 @@ module MetronomeSDK
                   MetronomeSDK::ContractV2::Credit::Ledger::CreditCanceledLedgerEntry::OrHash,
                   MetronomeSDK::ContractV2::Credit::Ledger::CreditCreditedLedgerEntry::OrHash,
                   MetronomeSDK::ContractV2::Credit::Ledger::CreditManualLedgerEntry::OrHash,
-                  MetronomeSDK::ContractV2::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry::OrHash
+                  MetronomeSDK::ContractV2::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry::OrHash,
+                  MetronomeSDK::ContractV2::Credit::Ledger::CreditRolloverLedgerEntry::OrHash
                 )
               ],
             name: String,
             netsuite_sales_order_id: String,
             priority: Float,
             recurring_credit_id: String,
+            rolled_over_from:
+              MetronomeSDK::ContractV2::Credit::RolledOverFrom::OrHash,
             salesforce_opportunity_id: String,
             specifiers: T::Array[MetronomeSDK::CommitSpecifier::OrHash],
             subscription_config:
@@ -3442,6 +3459,7 @@ module MetronomeSDK
           priority: nil,
           # The ID of the recurring credit that created this credit
           recurring_credit_id: nil,
+          rolled_over_from: nil,
           # This field's availability is dependent on your client's configuration.
           salesforce_opportunity_id: nil,
           # List of filters that determine what kind of customer usage draws down a commit
@@ -3476,6 +3494,8 @@ module MetronomeSDK
               netsuite_sales_order_id: String,
               priority: Float,
               recurring_credit_id: String,
+              rolled_over_from:
+                MetronomeSDK::ContractV2::Credit::RolledOverFrom,
               salesforce_opportunity_id: String,
               specifiers: T::Array[MetronomeSDK::CommitSpecifier],
               subscription_config:
@@ -3564,7 +3584,8 @@ module MetronomeSDK
                 MetronomeSDK::ContractV2::Credit::Ledger::CreditCanceledLedgerEntry,
                 MetronomeSDK::ContractV2::Credit::Ledger::CreditCreditedLedgerEntry,
                 MetronomeSDK::ContractV2::Credit::Ledger::CreditManualLedgerEntry,
-                MetronomeSDK::ContractV2::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry
+                MetronomeSDK::ContractV2::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry,
+                MetronomeSDK::ContractV2::Credit::Ledger::CreditRolloverLedgerEntry
               )
             end
 
@@ -4195,12 +4216,132 @@ module MetronomeSDK
             end
           end
 
+          class CreditRolloverLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::ContractV2::Credit::Ledger::CreditRolloverLedgerEntry,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            sig { returns(Float) }
+            attr_accessor :amount
+
+            sig { returns(String) }
+            attr_accessor :new_contract_id
+
+            sig { returns(String) }
+            attr_accessor :segment_id
+
+            sig { returns(Time) }
+            attr_accessor :timestamp
+
+            sig do
+              returns(
+                MetronomeSDK::ContractV2::Credit::Ledger::CreditRolloverLedgerEntry::Type::TaggedSymbol
+              )
+            end
+            attr_accessor :type
+
+            sig do
+              params(
+                amount: Float,
+                new_contract_id: String,
+                segment_id: String,
+                timestamp: Time,
+                type:
+                  MetronomeSDK::ContractV2::Credit::Ledger::CreditRolloverLedgerEntry::Type::OrSymbol
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              amount:,
+              new_contract_id:,
+              segment_id:,
+              timestamp:,
+              type:
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  amount: Float,
+                  new_contract_id: String,
+                  segment_id: String,
+                  timestamp: Time,
+                  type:
+                    MetronomeSDK::ContractV2::Credit::Ledger::CreditRolloverLedgerEntry::Type::TaggedSymbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            module Type
+              extend MetronomeSDK::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    MetronomeSDK::ContractV2::Credit::Ledger::CreditRolloverLedgerEntry::Type
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              CREDIT_ROLLOVER =
+                T.let(
+                  :CREDIT_ROLLOVER,
+                  MetronomeSDK::ContractV2::Credit::Ledger::CreditRolloverLedgerEntry::Type::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::ContractV2::Credit::Ledger::CreditRolloverLedgerEntry::Type::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+          end
+
           sig do
             override.returns(
               T::Array[MetronomeSDK::ContractV2::Credit::Ledger::Variants]
             )
           end
           def self.variants
+          end
+        end
+
+        class RolledOverFrom < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::ContractV2::Credit::RolledOverFrom,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
+          sig { returns(String) }
+          attr_accessor :contract_id
+
+          sig { returns(String) }
+          attr_accessor :credit_id
+
+          sig do
+            params(contract_id: String, credit_id: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(contract_id:, credit_id:)
+          end
+
+          sig { override.returns({ contract_id: String, credit_id: String }) }
+          def to_hash
           end
         end
       end
