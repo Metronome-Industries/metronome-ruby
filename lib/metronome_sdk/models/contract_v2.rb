@@ -1693,7 +1693,7 @@ module MetronomeSDK
         #   A list of ordered events that impact the balance of a credit. For example, an
         #   invoice deduction or an expiration.
         #
-        #   @return [Array<MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditSegmentStartLedgerEntry, MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry, MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditExpirationLedgerEntry, MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditCanceledLedgerEntry, MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditCreditedLedgerEntry, MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditManualLedgerEntry, MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry>, nil]
+        #   @return [Array<MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditSegmentStartLedgerEntry, MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry, MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditExpirationLedgerEntry, MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditCanceledLedgerEntry, MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditCreditedLedgerEntry, MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditManualLedgerEntry, MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry, MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditRolloverLedgerEntry>, nil]
         optional :ledger,
                  -> { MetronomeSDK::Internal::Type::ArrayOf[union: MetronomeSDK::ContractV2::Credit::Ledger] }
 
@@ -1721,6 +1721,11 @@ module MetronomeSDK
         #   @return [String, nil]
         optional :recurring_credit_id, String
 
+        # @!attribute rolled_over_from
+        #
+        #   @return [MetronomeSDK::Models::ContractV2::Credit::RolledOverFrom, nil]
+        optional :rolled_over_from, -> { MetronomeSDK::ContractV2::Credit::RolledOverFrom }
+
         # @!attribute salesforce_opportunity_id
         #   This field's availability is dependent on your client's configuration.
         #
@@ -1741,7 +1746,7 @@ module MetronomeSDK
         #   @return [MetronomeSDK::Models::RecurringCommitSubscriptionConfig, nil]
         optional :subscription_config, -> { MetronomeSDK::RecurringCommitSubscriptionConfig }
 
-        # @!method initialize(id:, product:, type:, access_schedule: nil, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, balance: nil, contract: nil, created_at: nil, custom_fields: nil, description: nil, hierarchy_configuration: nil, ledger: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, recurring_credit_id: nil, salesforce_opportunity_id: nil, specifiers: nil, subscription_config: nil)
+        # @!method initialize(id:, product:, type:, access_schedule: nil, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, balance: nil, contract: nil, created_at: nil, custom_fields: nil, description: nil, hierarchy_configuration: nil, ledger: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, recurring_credit_id: nil, rolled_over_from: nil, salesforce_opportunity_id: nil, specifiers: nil, subscription_config: nil)
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::ContractV2::Credit} for more details.
         #
@@ -1771,7 +1776,7 @@ module MetronomeSDK
         #
         #   @param hierarchy_configuration [MetronomeSDK::Models::CommitHierarchyConfiguration] Optional configuration for credit hierarchy access control
         #
-        #   @param ledger [Array<MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditSegmentStartLedgerEntry, MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry, MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditExpirationLedgerEntry, MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditCanceledLedgerEntry, MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditCreditedLedgerEntry, MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditManualLedgerEntry, MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry>] A list of ordered events that impact the balance of a credit. For example, an in
+        #   @param ledger [Array<MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditSegmentStartLedgerEntry, MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry, MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditExpirationLedgerEntry, MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditCanceledLedgerEntry, MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditCreditedLedgerEntry, MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditManualLedgerEntry, MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry, MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditRolloverLedgerEntry>] A list of ordered events that impact the balance of a credit. For example, an in
         #
         #   @param name [String]
         #
@@ -1780,6 +1785,8 @@ module MetronomeSDK
         #   @param priority [Float] If multiple credits or commits are applicable, the one with the lower priority w
         #
         #   @param recurring_credit_id [String] The ID of the recurring credit that created this credit
+        #
+        #   @param rolled_over_from [MetronomeSDK::Models::ContractV2::Credit::RolledOverFrom]
         #
         #   @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
         #
@@ -1841,6 +1848,8 @@ module MetronomeSDK
           variant -> { MetronomeSDK::ContractV2::Credit::Ledger::CreditManualLedgerEntry }
 
           variant -> { MetronomeSDK::ContractV2::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry }
+
+          variant -> { MetronomeSDK::ContractV2::Credit::Ledger::CreditRolloverLedgerEntry }
 
           class CreditSegmentStartLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
             # @!attribute amount
@@ -2146,8 +2155,69 @@ module MetronomeSDK
             end
           end
 
+          class CreditRolloverLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute amount
+            #
+            #   @return [Float]
+            required :amount, Float
+
+            # @!attribute new_contract_id
+            #
+            #   @return [String]
+            required :new_contract_id, String
+
+            # @!attribute segment_id
+            #
+            #   @return [String]
+            required :segment_id, String
+
+            # @!attribute timestamp
+            #
+            #   @return [Time]
+            required :timestamp, Time
+
+            # @!attribute type
+            #
+            #   @return [Symbol, MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditRolloverLedgerEntry::Type]
+            required :type, enum: -> { MetronomeSDK::ContractV2::Credit::Ledger::CreditRolloverLedgerEntry::Type }
+
+            # @!method initialize(amount:, new_contract_id:, segment_id:, timestamp:, type:)
+            #   @param amount [Float]
+            #   @param new_contract_id [String]
+            #   @param segment_id [String]
+            #   @param timestamp [Time]
+            #   @param type [Symbol, MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditRolloverLedgerEntry::Type]
+
+            # @see MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditRolloverLedgerEntry#type
+            module Type
+              extend MetronomeSDK::Internal::Type::Enum
+
+              CREDIT_ROLLOVER = :CREDIT_ROLLOVER
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
+
           # @!method self.variants
-          #   @return [Array(MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditSegmentStartLedgerEntry, MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry, MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditExpirationLedgerEntry, MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditCanceledLedgerEntry, MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditCreditedLedgerEntry, MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditManualLedgerEntry, MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry)]
+          #   @return [Array(MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditSegmentStartLedgerEntry, MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditAutomatedInvoiceDeductionLedgerEntry, MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditExpirationLedgerEntry, MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditCanceledLedgerEntry, MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditCreditedLedgerEntry, MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditManualLedgerEntry, MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry, MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditRolloverLedgerEntry)]
+        end
+
+        # @see MetronomeSDK::Models::ContractV2::Credit#rolled_over_from
+        class RolledOverFrom < MetronomeSDK::Internal::Type::BaseModel
+          # @!attribute contract_id
+          #
+          #   @return [String]
+          required :contract_id, String
+
+          # @!attribute credit_id
+          #
+          #   @return [String]
+          required :credit_id, String
+
+          # @!method initialize(contract_id:, credit_id:)
+          #   @param contract_id [String]
+          #   @param credit_id [String]
         end
       end
 
