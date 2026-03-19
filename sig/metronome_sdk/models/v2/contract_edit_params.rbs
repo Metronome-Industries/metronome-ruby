@@ -3576,6 +3576,7 @@ module MetronomeSDK
           {
             commit: MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit,
             custom_credit_type_id: String?,
+            discount_configuration: MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration?,
             is_enabled: bool,
             payment_gate_config: MetronomeSDK::PaymentGateConfigV2,
             recharge_to_amount: Float,
@@ -3590,6 +3591,8 @@ module MetronomeSDK
           ) -> MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit
 
           attr_accessor custom_credit_type_id: String?
+
+          attr_accessor discount_configuration: MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration?
 
           attr_reader is_enabled: bool?
 
@@ -3612,6 +3615,7 @@ module MetronomeSDK
           def initialize: (
             ?commit: MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit,
             ?custom_credit_type_id: String?,
+            ?discount_configuration: MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration?,
             ?is_enabled: bool,
             ?payment_gate_config: MetronomeSDK::PaymentGateConfigV2,
             ?recharge_to_amount: Float,
@@ -3621,6 +3625,7 @@ module MetronomeSDK
           def to_hash: -> {
             commit: MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit,
             custom_credit_type_id: String?,
+            discount_configuration: MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration?,
             is_enabled: bool,
             payment_gate_config: MetronomeSDK::PaymentGateConfigV2,
             recharge_to_amount: Float,
@@ -3664,6 +3669,16 @@ module MetronomeSDK
               applicable_product_tags: ::Array[String]?,
               specifiers: ::Array[MetronomeSDK::CommitSpecifierInput]?
             }
+          end
+
+          type discount_configuration = { payment_fraction: Float }
+
+          class DiscountConfiguration < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor payment_fraction: Float
+
+            def initialize: (payment_fraction: Float) -> void
+
+            def to_hash: -> { payment_fraction: Float }
           end
         end
 
@@ -3992,6 +4007,7 @@ module MetronomeSDK
         type update_spend_threshold_configuration =
           {
             commit: MetronomeSDK::UpdateBaseThresholdCommit,
+            discount_configuration: MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::DiscountConfiguration?,
             is_enabled: bool,
             payment_gate_config: MetronomeSDK::PaymentGateConfigV2,
             threshold_amount: Float
@@ -4003,6 +4019,8 @@ module MetronomeSDK
           def commit=: (
             MetronomeSDK::UpdateBaseThresholdCommit
           ) -> MetronomeSDK::UpdateBaseThresholdCommit
+
+          attr_accessor discount_configuration: MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::DiscountConfiguration?
 
           attr_reader is_enabled: bool?
 
@@ -4020,6 +4038,7 @@ module MetronomeSDK
 
           def initialize: (
             ?commit: MetronomeSDK::UpdateBaseThresholdCommit,
+            ?discount_configuration: MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::DiscountConfiguration?,
             ?is_enabled: bool,
             ?payment_gate_config: MetronomeSDK::PaymentGateConfigV2,
             ?threshold_amount: Float
@@ -4027,10 +4046,21 @@ module MetronomeSDK
 
           def to_hash: -> {
             commit: MetronomeSDK::UpdateBaseThresholdCommit,
+            discount_configuration: MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::DiscountConfiguration?,
             is_enabled: bool,
             payment_gate_config: MetronomeSDK::PaymentGateConfigV2,
             threshold_amount: Float
           }
+
+          type discount_configuration = { payment_fraction: Float }
+
+          class DiscountConfiguration < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor payment_fraction: Float
+
+            def initialize: (payment_fraction: Float) -> void
+
+            def to_hash: -> { payment_fraction: Float }
+          end
         end
 
         type update_subscription =

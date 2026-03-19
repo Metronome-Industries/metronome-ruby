@@ -28,7 +28,14 @@ module MetronomeSDK
       #   @return [Float]
       required :threshold_amount, Float
 
-      # @!method initialize(commit:, is_enabled:, payment_gate_config:, threshold_amount:)
+      # @!attribute discount_configuration
+      #
+      #   @return [MetronomeSDK::Models::SpendThresholdConfiguration::DiscountConfiguration, nil]
+      optional :discount_configuration,
+               -> { MetronomeSDK::SpendThresholdConfiguration::DiscountConfiguration },
+               nil?: true
+
+      # @!method initialize(commit:, is_enabled:, payment_gate_config:, threshold_amount:, discount_configuration: nil)
       #   Some parameter documentations has been truncated, see
       #   {MetronomeSDK::Models::SpendThresholdConfiguration} for more details.
       #
@@ -39,6 +46,26 @@ module MetronomeSDK
       #   @param payment_gate_config [MetronomeSDK::Models::PaymentGateConfig]
       #
       #   @param threshold_amount [Float] Specify the threshold amount for the contract. Each time the contract's usage hi
+      #
+      #   @param discount_configuration [MetronomeSDK::Models::SpendThresholdConfiguration::DiscountConfiguration, nil]
+
+      # @see MetronomeSDK::Models::SpendThresholdConfiguration#discount_configuration
+      class DiscountConfiguration < MetronomeSDK::Internal::Type::BaseModel
+        # @!attribute payment_fraction
+        #   The fraction of the original amount that the customer pays after applying the
+        #   discount. For example, 0.85 means the customer pays 85% of the original amount
+        #   (a 15% discount).
+        #
+        #   @return [Float]
+        required :payment_fraction, Float
+
+        # @!method initialize(payment_fraction:)
+        #   Some parameter documentations has been truncated, see
+        #   {MetronomeSDK::Models::SpendThresholdConfiguration::DiscountConfiguration} for
+        #   more details.
+        #
+        #   @param payment_fraction [Float] The fraction of the original amount that the customer pays after applying the di
+      end
     end
   end
 end

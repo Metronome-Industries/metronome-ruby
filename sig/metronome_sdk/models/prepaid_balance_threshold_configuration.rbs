@@ -7,7 +7,8 @@ module MetronomeSDK
         payment_gate_config: MetronomeSDK::PaymentGateConfig,
         recharge_to_amount: Float,
         threshold_amount: Float,
-        custom_credit_type_id: String
+        custom_credit_type_id: String,
+        discount_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration::DiscountConfiguration?
       }
 
     class PrepaidBalanceThresholdConfiguration < MetronomeSDK::Internal::Type::BaseModel
@@ -25,13 +26,16 @@ module MetronomeSDK
 
       def custom_credit_type_id=: (String) -> String
 
+      attr_accessor discount_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration::DiscountConfiguration?
+
       def initialize: (
         commit: MetronomeSDK::PrepaidBalanceThresholdConfiguration::Commit,
         is_enabled: bool,
         payment_gate_config: MetronomeSDK::PaymentGateConfig,
         recharge_to_amount: Float,
         threshold_amount: Float,
-        ?custom_credit_type_id: String
+        ?custom_credit_type_id: String,
+        ?discount_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration::DiscountConfiguration?
       ) -> void
 
       def to_hash: -> {
@@ -40,7 +44,8 @@ module MetronomeSDK
         payment_gate_config: MetronomeSDK::PaymentGateConfig,
         recharge_to_amount: Float,
         threshold_amount: Float,
-        custom_credit_type_id: String
+        custom_credit_type_id: String,
+        discount_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration::DiscountConfiguration?
       }
 
       type commit =
@@ -76,6 +81,16 @@ module MetronomeSDK
           applicable_product_tags: ::Array[String],
           specifiers: ::Array[MetronomeSDK::CommitSpecifierInput]
         }
+      end
+
+      type discount_configuration = { payment_fraction: Float }
+
+      class DiscountConfiguration < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor payment_fraction: Float
+
+        def initialize: (payment_fraction: Float) -> void
+
+        def to_hash: -> { payment_fraction: Float }
       end
     end
   end
