@@ -45,8 +45,7 @@ module MetronomeSDK
       #
       #   @return [MetronomeSDK::Models::PrepaidBalanceThresholdConfiguration::DiscountConfiguration, nil]
       optional :discount_configuration,
-               -> { MetronomeSDK::PrepaidBalanceThresholdConfiguration::DiscountConfiguration },
-               nil?: true
+               -> { MetronomeSDK::PrepaidBalanceThresholdConfiguration::DiscountConfiguration }
 
       # @!method initialize(commit:, is_enabled:, payment_gate_config:, recharge_to_amount:, threshold_amount:, custom_credit_type_id: nil, discount_configuration: nil)
       #   Some parameter documentations has been truncated, see
@@ -64,7 +63,7 @@ module MetronomeSDK
       #
       #   @param custom_credit_type_id [String] If provided, the threshold, recharge-to amount, and the resulting threshold comm
       #
-      #   @param discount_configuration [MetronomeSDK::Models::PrepaidBalanceThresholdConfiguration::DiscountConfiguration, nil]
+      #   @param discount_configuration [MetronomeSDK::Models::PrepaidBalanceThresholdConfiguration::DiscountConfiguration]
 
       # @see MetronomeSDK::Models::PrepaidBalanceThresholdConfiguration#commit
       class Commit < MetronomeSDK::Models::BaseThresholdCommit

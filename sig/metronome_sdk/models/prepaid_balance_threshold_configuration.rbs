@@ -8,7 +8,7 @@ module MetronomeSDK
         recharge_to_amount: Float,
         threshold_amount: Float,
         custom_credit_type_id: String,
-        discount_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration::DiscountConfiguration?
+        discount_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration::DiscountConfiguration
       }
 
     class PrepaidBalanceThresholdConfiguration < MetronomeSDK::Internal::Type::BaseModel
@@ -26,7 +26,11 @@ module MetronomeSDK
 
       def custom_credit_type_id=: (String) -> String
 
-      attr_accessor discount_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration::DiscountConfiguration?
+      attr_reader discount_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration::DiscountConfiguration?
+
+      def discount_configuration=: (
+        MetronomeSDK::PrepaidBalanceThresholdConfiguration::DiscountConfiguration
+      ) -> MetronomeSDK::PrepaidBalanceThresholdConfiguration::DiscountConfiguration
 
       def initialize: (
         commit: MetronomeSDK::PrepaidBalanceThresholdConfiguration::Commit,
@@ -35,7 +39,7 @@ module MetronomeSDK
         recharge_to_amount: Float,
         threshold_amount: Float,
         ?custom_credit_type_id: String,
-        ?discount_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration::DiscountConfiguration?
+        ?discount_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration::DiscountConfiguration
       ) -> void
 
       def to_hash: -> {
@@ -45,7 +49,7 @@ module MetronomeSDK
         recharge_to_amount: Float,
         threshold_amount: Float,
         custom_credit_type_id: String,
-        discount_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration::DiscountConfiguration?
+        discount_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration::DiscountConfiguration
       }
 
       type commit =

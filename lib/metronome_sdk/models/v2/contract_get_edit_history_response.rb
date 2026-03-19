@@ -787,12 +787,7 @@ module MetronomeSDK
               #   @return [Array<String>, nil]
               optional :recurring_commit_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
 
-              # @!attribute recurring_credit_ids
-              #
-              #   @return [Array<String>, nil]
-              optional :recurring_credit_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
-
-              # @!method initialize(billing_frequency: nil, commit_ids: nil, presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil, recurring_commit_ids: nil, recurring_credit_ids: nil)
+              # @!method initialize(billing_frequency: nil, commit_ids: nil, presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil, recurring_commit_ids: nil)
               #   @param billing_frequency [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverrideSpecifier::BillingFrequency]
               #   @param commit_ids [Array<String>]
               #   @param presentation_group_values [Hash{Symbol=>String, nil}]
@@ -800,7 +795,6 @@ module MetronomeSDK
               #   @param product_id [String]
               #   @param product_tags [Array<String>]
               #   @param recurring_commit_ids [Array<String>]
-              #   @param recurring_credit_ids [Array<String>]
 
               # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverrideSpecifier#billing_frequency
               module BillingFrequency
@@ -2631,8 +2625,7 @@ module MetronomeSDK
             #
             #   @return [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration, nil]
             optional :discount_configuration,
-                     -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration },
-                     nil?: true
+                     -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration }
 
             # @!attribute is_enabled
             #   When set to false, the contract will not be evaluated against the
@@ -2669,7 +2662,7 @@ module MetronomeSDK
             #
             #   @param custom_credit_type_id [String, nil] If provided, the threshold, recharge-to amount, and the resulting threshold comm
             #
-            #   @param discount_configuration [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration, nil]
+            #   @param discount_configuration [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration]
             #
             #   @param is_enabled [Boolean] When set to false, the contract will not be evaluated against the threshold_amou
             #
@@ -3046,8 +3039,7 @@ module MetronomeSDK
             #
             #   @return [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::DiscountConfiguration, nil]
             optional :discount_configuration,
-                     -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::DiscountConfiguration },
-                     nil?: true
+                     -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::DiscountConfiguration }
 
             # @!attribute is_enabled
             #   When set to false, the contract will not be evaluated against the
@@ -3076,7 +3068,7 @@ module MetronomeSDK
             #
             #   @param commit [MetronomeSDK::Models::UpdateBaseThresholdCommit]
             #
-            #   @param discount_configuration [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::DiscountConfiguration, nil]
+            #   @param discount_configuration [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::DiscountConfiguration]
             #
             #   @param is_enabled [Boolean] When set to false, the contract will not be evaluated against the threshold_amou
             #

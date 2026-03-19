@@ -1300,16 +1300,7 @@ module MetronomeSDK
             #   @return [Array<String>, nil]
             optional :recurring_commit_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
 
-            # @!attribute recurring_credit_ids
-            #   Can only be used for commit specific overrides. Must be used in conjunction with
-            #   one of `product_id`, `product_tags`, `pricing_group_values`, or
-            #   `presentation_group_values`. If provided, the override will only apply to
-            #   credits created by the specified recurring credit ids.
-            #
-            #   @return [Array<String>, nil]
-            optional :recurring_credit_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
-
-            # @!method initialize(billing_frequency: nil, commit_ids: nil, presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil, recurring_commit_ids: nil, recurring_credit_ids: nil)
+            # @!method initialize(billing_frequency: nil, commit_ids: nil, presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil, recurring_commit_ids: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V1::ContractAmendParams::Override::OverrideSpecifier} for
             #   more details.
@@ -1327,8 +1318,6 @@ module MetronomeSDK
             #   @param product_tags [Array<String>] If provided, the override will only apply to products with all the specified tag
             #
             #   @param recurring_commit_ids [Array<String>] Can only be used for commit specific overrides. Must be used in conjunction with
-            #
-            #   @param recurring_credit_ids [Array<String>] Can only be used for commit specific overrides. Must be used in conjunction with
 
             # @see MetronomeSDK::Models::V1::ContractAmendParams::Override::OverrideSpecifier#billing_frequency
             module BillingFrequency

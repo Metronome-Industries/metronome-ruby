@@ -3576,16 +3576,6 @@ module MetronomeSDK
             sig { params(recurring_commit_ids: T::Array[String]).void }
             attr_writer :recurring_commit_ids
 
-            # Can only be used for commit specific overrides. Must be used in conjunction with
-            # one of product_id, product_tags, pricing_group_values, or
-            # presentation_group_values. If provided, the override will only apply to commits
-            # created by the specified recurring credit ids.
-            sig { returns(T.nilable(T::Array[String])) }
-            attr_reader :recurring_credit_ids
-
-            sig { params(recurring_credit_ids: T::Array[String]).void }
-            attr_writer :recurring_credit_ids
-
             sig do
               params(
                 billing_frequency:
@@ -3595,8 +3585,7 @@ module MetronomeSDK
                 pricing_group_values: T::Hash[Symbol, String],
                 product_id: String,
                 product_tags: T::Array[String],
-                recurring_commit_ids: T::Array[String],
-                recurring_credit_ids: T::Array[String]
+                recurring_commit_ids: T::Array[String]
               ).returns(T.attached_class)
             end
             def self.new(
@@ -3621,12 +3610,7 @@ module MetronomeSDK
               # one of product_id, product_tags, pricing_group_values, or
               # presentation_group_values. If provided, the override will only apply to commits
               # created by the specified recurring commit ids.
-              recurring_commit_ids: nil,
-              # Can only be used for commit specific overrides. Must be used in conjunction with
-              # one of product_id, product_tags, pricing_group_values, or
-              # presentation_group_values. If provided, the override will only apply to commits
-              # created by the specified recurring credit ids.
-              recurring_credit_ids: nil
+              recurring_commit_ids: nil
             )
             end
 
@@ -3640,8 +3624,7 @@ module MetronomeSDK
                   pricing_group_values: T::Hash[Symbol, String],
                   product_id: String,
                   product_tags: T::Array[String],
-                  recurring_commit_ids: T::Array[String],
-                  recurring_credit_ids: T::Array[String]
+                  recurring_commit_ids: T::Array[String]
                 }
               )
             end
@@ -8543,9 +8526,7 @@ module MetronomeSDK
           sig do
             params(
               discount_configuration:
-                T.nilable(
-                  MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration::OrHash
-                )
+                MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration::OrHash
             ).void
           end
           attr_writer :discount_configuration
@@ -8590,9 +8571,7 @@ module MetronomeSDK
                 MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::OrHash,
               custom_credit_type_id: T.nilable(String),
               discount_configuration:
-                T.nilable(
-                  MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration::OrHash
-                ),
+                MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration::OrHash,
               is_enabled: T::Boolean,
               payment_gate_config: MetronomeSDK::PaymentGateConfigV2::OrHash,
               recharge_to_amount: Float,
@@ -8625,9 +8604,7 @@ module MetronomeSDK
                   MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit,
                 custom_credit_type_id: T.nilable(String),
                 discount_configuration:
-                  T.nilable(
-                    MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration
-                  ),
+                  MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration,
                 is_enabled: T::Boolean,
                 payment_gate_config: MetronomeSDK::PaymentGateConfigV2,
                 recharge_to_amount: Float,
@@ -9468,9 +9445,7 @@ module MetronomeSDK
           sig do
             params(
               discount_configuration:
-                T.nilable(
-                  MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::DiscountConfiguration::OrHash
-                )
+                MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::DiscountConfiguration::OrHash
             ).void
           end
           attr_writer :discount_configuration
@@ -9506,9 +9481,7 @@ module MetronomeSDK
             params(
               commit: MetronomeSDK::UpdateBaseThresholdCommit::OrHash,
               discount_configuration:
-                T.nilable(
-                  MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::DiscountConfiguration::OrHash
-                ),
+                MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::DiscountConfiguration::OrHash,
               is_enabled: T::Boolean,
               payment_gate_config: MetronomeSDK::PaymentGateConfigV2::OrHash,
               threshold_amount: Float
@@ -9533,9 +9506,7 @@ module MetronomeSDK
               {
                 commit: MetronomeSDK::UpdateBaseThresholdCommit,
                 discount_configuration:
-                  T.nilable(
-                    MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::DiscountConfiguration
-                  ),
+                  MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::DiscountConfiguration,
                 is_enabled: T::Boolean,
                 payment_gate_config: MetronomeSDK::PaymentGateConfigV2,
                 threshold_amount: Float

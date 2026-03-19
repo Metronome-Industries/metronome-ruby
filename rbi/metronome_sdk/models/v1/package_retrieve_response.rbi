@@ -1647,14 +1647,6 @@ module MetronomeSDK
               end
               attr_writer :recurring_commit_template_ids
 
-              sig { returns(T.nilable(T::Array[String])) }
-              attr_reader :recurring_credit_template_ids
-
-              sig do
-                params(recurring_credit_template_ids: T::Array[String]).void
-              end
-              attr_writer :recurring_credit_template_ids
-
               sig do
                 params(
                   billing_frequency:
@@ -1664,8 +1656,7 @@ module MetronomeSDK
                   pricing_group_values: T::Hash[Symbol, String],
                   product_id: String,
                   product_tags: T::Array[String],
-                  recurring_commit_template_ids: T::Array[String],
-                  recurring_credit_template_ids: T::Array[String]
+                  recurring_commit_template_ids: T::Array[String]
                 ).returns(T.attached_class)
               end
               def self.new(
@@ -1675,8 +1666,7 @@ module MetronomeSDK
                 pricing_group_values: nil,
                 product_id: nil,
                 product_tags: nil,
-                recurring_commit_template_ids: nil,
-                recurring_credit_template_ids: nil
+                recurring_commit_template_ids: nil
               )
               end
 
@@ -1691,8 +1681,7 @@ module MetronomeSDK
                     pricing_group_values: T::Hash[Symbol, String],
                     product_id: String,
                     product_tags: T::Array[String],
-                    recurring_commit_template_ids: T::Array[String],
-                    recurring_credit_template_ids: T::Array[String]
+                    recurring_commit_template_ids: T::Array[String]
                   }
                 )
               end
