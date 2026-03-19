@@ -3853,6 +3853,15 @@ module MetronomeSDK
           #   @return [String, nil]
           optional :custom_credit_type_id, String, nil?: true
 
+          # @!attribute discount_configuration
+          #
+          #   @return [MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration, nil]
+          optional :discount_configuration,
+                   -> {
+                     MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration
+                   },
+                   nil?: true
+
           # @!attribute is_enabled
           #   When set to false, the contract will not be evaluated against the
           #   threshold_amount. Toggling to true will result an immediate evaluation,
@@ -3879,7 +3888,7 @@ module MetronomeSDK
           #   @return [Float, nil]
           optional :threshold_amount, Float
 
-          # @!method initialize(commit: nil, custom_credit_type_id: nil, is_enabled: nil, payment_gate_config: nil, recharge_to_amount: nil, threshold_amount: nil)
+          # @!method initialize(commit: nil, custom_credit_type_id: nil, discount_configuration: nil, is_enabled: nil, payment_gate_config: nil, recharge_to_amount: nil, threshold_amount: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration}
           #   for more details.
@@ -3887,6 +3896,8 @@ module MetronomeSDK
           #   @param commit [MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit]
           #
           #   @param custom_credit_type_id [String, nil] If provided, the threshold, recharge-to amount, and the resulting threshold comm
+          #
+          #   @param discount_configuration [MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration, nil]
           #
           #   @param is_enabled [Boolean] When set to false, the contract will not be evaluated against the threshold_amou
           #
@@ -3936,6 +3947,24 @@ module MetronomeSDK
             #   @param applicable_product_tags [Array<String>, nil] Which tags the threshold commit applies to. If both applicable_product_ids and a
             #
             #   @param specifiers [Array<MetronomeSDK::Models::CommitSpecifierInput>, nil] List of filters that determine what kind of customer usage draws down a commit o
+          end
+
+          # @see MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration#discount_configuration
+          class DiscountConfiguration < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute payment_fraction
+            #   The fraction of the original amount that the customer pays after applying the
+            #   discount. For example, 0.85 means the customer pays 85% of the original amount
+            #   (a 15% discount).
+            #
+            #   @return [Float]
+            required :payment_fraction, Float
+
+            # @!method initialize(payment_fraction:)
+            #   Some parameter documentations has been truncated, see
+            #   {MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration}
+            #   for more details.
+            #
+            #   @param payment_fraction [Float] The fraction of the original amount that the customer pays after applying the di
           end
         end
 
@@ -4227,6 +4256,15 @@ module MetronomeSDK
           #   @return [MetronomeSDK::Models::UpdateBaseThresholdCommit, nil]
           optional :commit, -> { MetronomeSDK::UpdateBaseThresholdCommit }
 
+          # @!attribute discount_configuration
+          #
+          #   @return [MetronomeSDK::Models::V2::ContractEditParams::UpdateSpendThresholdConfiguration::DiscountConfiguration, nil]
+          optional :discount_configuration,
+                   -> {
+                     MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::DiscountConfiguration
+                   },
+                   nil?: true
+
           # @!attribute is_enabled
           #   When set to false, the contract will not be evaluated against the
           #   threshold_amount. Toggling to true will result an immediate evaluation,
@@ -4247,18 +4285,38 @@ module MetronomeSDK
           #   @return [Float, nil]
           optional :threshold_amount, Float
 
-          # @!method initialize(commit: nil, is_enabled: nil, payment_gate_config: nil, threshold_amount: nil)
+          # @!method initialize(commit: nil, discount_configuration: nil, is_enabled: nil, payment_gate_config: nil, threshold_amount: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V2::ContractEditParams::UpdateSpendThresholdConfiguration}
           #   for more details.
           #
           #   @param commit [MetronomeSDK::Models::UpdateBaseThresholdCommit]
           #
+          #   @param discount_configuration [MetronomeSDK::Models::V2::ContractEditParams::UpdateSpendThresholdConfiguration::DiscountConfiguration, nil]
+          #
           #   @param is_enabled [Boolean] When set to false, the contract will not be evaluated against the threshold_amou
           #
           #   @param payment_gate_config [MetronomeSDK::Models::PaymentGateConfigV2]
           #
           #   @param threshold_amount [Float] Specify the threshold amount for the contract. Each time the contract's usage hi
+
+          # @see MetronomeSDK::Models::V2::ContractEditParams::UpdateSpendThresholdConfiguration#discount_configuration
+          class DiscountConfiguration < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute payment_fraction
+            #   The fraction of the original amount that the customer pays after applying the
+            #   discount. For example, 0.85 means the customer pays 85% of the original amount
+            #   (a 15% discount).
+            #
+            #   @return [Float]
+            required :payment_fraction, Float
+
+            # @!method initialize(payment_fraction:)
+            #   Some parameter documentations has been truncated, see
+            #   {MetronomeSDK::Models::V2::ContractEditParams::UpdateSpendThresholdConfiguration::DiscountConfiguration}
+            #   for more details.
+            #
+            #   @param payment_fraction [Float] The fraction of the original amount that the customer pays after applying the di
+          end
         end
 
         class UpdateSubscription < MetronomeSDK::Internal::Type::BaseModel

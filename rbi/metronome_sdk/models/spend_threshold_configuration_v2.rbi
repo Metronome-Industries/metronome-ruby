@@ -41,11 +41,34 @@ module MetronomeSDK
       attr_accessor :threshold_amount
 
       sig do
+        returns(
+          T.nilable(
+            MetronomeSDK::SpendThresholdConfigurationV2::DiscountConfiguration
+          )
+        )
+      end
+      attr_reader :discount_configuration
+
+      sig do
+        params(
+          discount_configuration:
+            T.nilable(
+              MetronomeSDK::SpendThresholdConfigurationV2::DiscountConfiguration::OrHash
+            )
+        ).void
+      end
+      attr_writer :discount_configuration
+
+      sig do
         params(
           commit: MetronomeSDK::UpdateBaseThresholdCommit::OrHash,
           is_enabled: T::Boolean,
           payment_gate_config: MetronomeSDK::PaymentGateConfigV2::OrHash,
-          threshold_amount: Float
+          threshold_amount: Float,
+          discount_configuration:
+            T.nilable(
+              MetronomeSDK::SpendThresholdConfigurationV2::DiscountConfiguration::OrHash
+            )
         ).returns(T.attached_class)
       end
       def self.new(
@@ -57,7 +80,8 @@ module MetronomeSDK
         payment_gate_config:,
         # Specify the threshold amount for the contract. Each time the contract's usage
         # hits this amount, a threshold charge will be initiated.
-        threshold_amount:
+        threshold_amount:,
+        discount_configuration: nil
       )
       end
 
@@ -67,11 +91,44 @@ module MetronomeSDK
             commit: MetronomeSDK::UpdateBaseThresholdCommit,
             is_enabled: T::Boolean,
             payment_gate_config: MetronomeSDK::PaymentGateConfigV2,
-            threshold_amount: Float
+            threshold_amount: Float,
+            discount_configuration:
+              T.nilable(
+                MetronomeSDK::SpendThresholdConfigurationV2::DiscountConfiguration
+              )
           }
         )
       end
       def to_hash
+      end
+
+      class DiscountConfiguration < MetronomeSDK::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              MetronomeSDK::SpendThresholdConfigurationV2::DiscountConfiguration,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
+
+        # The fraction of the original amount that the customer pays after applying the
+        # discount. For example, 0.85 means the customer pays 85% of the original amount
+        # (a 15% discount).
+        sig { returns(Float) }
+        attr_accessor :payment_fraction
+
+        sig { params(payment_fraction: Float).returns(T.attached_class) }
+        def self.new(
+          # The fraction of the original amount that the customer pays after applying the
+          # discount. For example, 0.85 means the customer pays 85% of the original amount
+          # (a 15% discount).
+          payment_fraction:
+        )
+        end
+
+        sig { override.returns({ payment_fraction: Float }) }
+        def to_hash
+        end
       end
     end
   end

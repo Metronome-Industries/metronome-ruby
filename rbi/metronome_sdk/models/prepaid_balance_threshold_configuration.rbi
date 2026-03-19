@@ -58,6 +58,25 @@ module MetronomeSDK
       attr_writer :custom_credit_type_id
 
       sig do
+        returns(
+          T.nilable(
+            MetronomeSDK::PrepaidBalanceThresholdConfiguration::DiscountConfiguration
+          )
+        )
+      end
+      attr_reader :discount_configuration
+
+      sig do
+        params(
+          discount_configuration:
+            T.nilable(
+              MetronomeSDK::PrepaidBalanceThresholdConfiguration::DiscountConfiguration::OrHash
+            )
+        ).void
+      end
+      attr_writer :discount_configuration
+
+      sig do
         params(
           commit:
             MetronomeSDK::PrepaidBalanceThresholdConfiguration::Commit::OrHash,
@@ -65,7 +84,11 @@ module MetronomeSDK
           payment_gate_config: MetronomeSDK::PaymentGateConfig::OrHash,
           recharge_to_amount: Float,
           threshold_amount: Float,
-          custom_credit_type_id: String
+          custom_credit_type_id: String,
+          discount_configuration:
+            T.nilable(
+              MetronomeSDK::PrepaidBalanceThresholdConfiguration::DiscountConfiguration::OrHash
+            )
         ).returns(T.attached_class)
       end
       def self.new(
@@ -82,7 +105,8 @@ module MetronomeSDK
         threshold_amount:,
         # If provided, the threshold, recharge-to amount, and the resulting threshold
         # commit amount will be in terms of this credit type instead of the fiat currency.
-        custom_credit_type_id: nil
+        custom_credit_type_id: nil,
+        discount_configuration: nil
       )
       end
 
@@ -94,7 +118,11 @@ module MetronomeSDK
             payment_gate_config: MetronomeSDK::PaymentGateConfig,
             recharge_to_amount: Float,
             threshold_amount: Float,
-            custom_credit_type_id: String
+            custom_credit_type_id: String,
+            discount_configuration:
+              T.nilable(
+                MetronomeSDK::PrepaidBalanceThresholdConfiguration::DiscountConfiguration
+              )
           }
         )
       end
@@ -175,6 +203,35 @@ module MetronomeSDK
             }
           )
         end
+        def to_hash
+        end
+      end
+
+      class DiscountConfiguration < MetronomeSDK::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              MetronomeSDK::PrepaidBalanceThresholdConfiguration::DiscountConfiguration,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
+
+        # The fraction of the original amount that the customer pays after applying the
+        # discount. For example, 0.85 means the customer pays 85% of the original amount
+        # (a 15% discount).
+        sig { returns(Float) }
+        attr_accessor :payment_fraction
+
+        sig { params(payment_fraction: Float).returns(T.attached_class) }
+        def self.new(
+          # The fraction of the original amount that the customer pays after applying the
+          # discount. For example, 0.85 means the customer pays 85% of the original amount
+          # (a 15% discount).
+          payment_fraction:
+        )
+        end
+
+        sig { override.returns({ payment_fraction: Float }) }
         def to_hash
         end
       end
