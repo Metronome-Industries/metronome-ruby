@@ -693,8 +693,7 @@ module MetronomeSDK
                 pricing_group_values: ::Hash[Symbol, String],
                 product_id: String,
                 product_tags: ::Array[String],
-                recurring_commit_template_ids: ::Array[String],
-                recurring_credit_template_ids: ::Array[String]
+                recurring_commit_template_ids: ::Array[String]
               }
 
             class OverrideSpecifier < MetronomeSDK::Internal::Type::BaseModel
@@ -734,12 +733,6 @@ module MetronomeSDK
                 ::Array[String]
               ) -> ::Array[String]
 
-              attr_reader recurring_credit_template_ids: ::Array[String]?
-
-              def recurring_credit_template_ids=: (
-                ::Array[String]
-              ) -> ::Array[String]
-
               def initialize: (
                 ?billing_frequency: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::OverrideSpecifier::billing_frequency,
                 ?commit_template_ids: ::Array[String],
@@ -747,8 +740,7 @@ module MetronomeSDK
                 ?pricing_group_values: ::Hash[Symbol, String],
                 ?product_id: String,
                 ?product_tags: ::Array[String],
-                ?recurring_commit_template_ids: ::Array[String],
-                ?recurring_credit_template_ids: ::Array[String]
+                ?recurring_commit_template_ids: ::Array[String]
               ) -> void
 
               def to_hash: -> {
@@ -758,8 +750,7 @@ module MetronomeSDK
                 pricing_group_values: ::Hash[Symbol, String],
                 product_id: String,
                 product_tags: ::Array[String],
-                recurring_commit_template_ids: ::Array[String],
-                recurring_credit_template_ids: ::Array[String]
+                recurring_commit_template_ids: ::Array[String]
               }
 
               type billing_frequency = :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY

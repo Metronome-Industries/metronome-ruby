@@ -52,9 +52,7 @@ module MetronomeSDK
       sig do
         params(
           discount_configuration:
-            T.nilable(
-              MetronomeSDK::SpendThresholdConfigurationV2::DiscountConfiguration::OrHash
-            )
+            MetronomeSDK::SpendThresholdConfigurationV2::DiscountConfiguration::OrHash
         ).void
       end
       attr_writer :discount_configuration
@@ -66,9 +64,7 @@ module MetronomeSDK
           payment_gate_config: MetronomeSDK::PaymentGateConfigV2::OrHash,
           threshold_amount: Float,
           discount_configuration:
-            T.nilable(
-              MetronomeSDK::SpendThresholdConfigurationV2::DiscountConfiguration::OrHash
-            )
+            MetronomeSDK::SpendThresholdConfigurationV2::DiscountConfiguration::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
@@ -93,9 +89,7 @@ module MetronomeSDK
             payment_gate_config: MetronomeSDK::PaymentGateConfigV2,
             threshold_amount: Float,
             discount_configuration:
-              T.nilable(
-                MetronomeSDK::SpendThresholdConfigurationV2::DiscountConfiguration
-              )
+              MetronomeSDK::SpendThresholdConfigurationV2::DiscountConfiguration
           }
         )
       end

@@ -31,9 +31,7 @@ module MetronomeSDK
       # @!attribute discount_configuration
       #
       #   @return [MetronomeSDK::Models::SpendThresholdConfiguration::DiscountConfiguration, nil]
-      optional :discount_configuration,
-               -> { MetronomeSDK::SpendThresholdConfiguration::DiscountConfiguration },
-               nil?: true
+      optional :discount_configuration, -> { MetronomeSDK::SpendThresholdConfiguration::DiscountConfiguration }
 
       # @!method initialize(commit:, is_enabled:, payment_gate_config:, threshold_amount:, discount_configuration: nil)
       #   Some parameter documentations has been truncated, see
@@ -47,7 +45,7 @@ module MetronomeSDK
       #
       #   @param threshold_amount [Float] Specify the threshold amount for the contract. Each time the contract's usage hi
       #
-      #   @param discount_configuration [MetronomeSDK::Models::SpendThresholdConfiguration::DiscountConfiguration, nil]
+      #   @param discount_configuration [MetronomeSDK::Models::SpendThresholdConfiguration::DiscountConfiguration]
 
       # @see MetronomeSDK::Models::SpendThresholdConfiguration#discount_configuration
       class DiscountConfiguration < MetronomeSDK::Internal::Type::BaseModel

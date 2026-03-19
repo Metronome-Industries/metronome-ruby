@@ -697,12 +697,7 @@ module MetronomeSDK
               #   @return [Array<String>, nil]
               optional :recurring_commit_template_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
 
-              # @!attribute recurring_credit_template_ids
-              #
-              #   @return [Array<String>, nil]
-              optional :recurring_credit_template_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
-
-              # @!method initialize(billing_frequency: nil, commit_template_ids: nil, presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil, recurring_commit_template_ids: nil, recurring_credit_template_ids: nil)
+              # @!method initialize(billing_frequency: nil, commit_template_ids: nil, presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil, recurring_commit_template_ids: nil)
               #   @param billing_frequency [Symbol, MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::OverrideSpecifier::BillingFrequency]
               #   @param commit_template_ids [Array<String>]
               #   @param presentation_group_values [Hash{Symbol=>String, nil}]
@@ -710,7 +705,6 @@ module MetronomeSDK
               #   @param product_id [String]
               #   @param product_tags [Array<String>]
               #   @param recurring_commit_template_ids [Array<String>]
-              #   @param recurring_credit_template_ids [Array<String>]
 
               # @see MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::OverrideSpecifier#billing_frequency
               module BillingFrequency

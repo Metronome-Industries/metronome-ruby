@@ -1882,12 +1882,6 @@ module MetronomeSDK
               sig { params(recurring_commit_ids: T::Array[String]).void }
               attr_writer :recurring_commit_ids
 
-              sig { returns(T.nilable(T::Array[String])) }
-              attr_reader :recurring_credit_ids
-
-              sig { params(recurring_credit_ids: T::Array[String]).void }
-              attr_writer :recurring_credit_ids
-
               sig do
                 params(
                   billing_frequency:
@@ -1897,8 +1891,7 @@ module MetronomeSDK
                   pricing_group_values: T::Hash[Symbol, String],
                   product_id: String,
                   product_tags: T::Array[String],
-                  recurring_commit_ids: T::Array[String],
-                  recurring_credit_ids: T::Array[String]
+                  recurring_commit_ids: T::Array[String]
                 ).returns(T.attached_class)
               end
               def self.new(
@@ -1908,8 +1901,7 @@ module MetronomeSDK
                 pricing_group_values: nil,
                 product_id: nil,
                 product_tags: nil,
-                recurring_commit_ids: nil,
-                recurring_credit_ids: nil
+                recurring_commit_ids: nil
               )
               end
 
@@ -1924,8 +1916,7 @@ module MetronomeSDK
                     pricing_group_values: T::Hash[Symbol, String],
                     product_id: String,
                     product_tags: T::Array[String],
-                    recurring_commit_ids: T::Array[String],
-                    recurring_credit_ids: T::Array[String]
+                    recurring_commit_ids: T::Array[String]
                   }
                 )
               end
@@ -5752,9 +5743,7 @@ module MetronomeSDK
             sig do
               params(
                 discount_configuration:
-                  T.nilable(
-                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration::OrHash
-                  )
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration::OrHash
               ).void
             end
             attr_writer :discount_configuration
@@ -5799,9 +5788,7 @@ module MetronomeSDK
                   MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::Commit::OrHash,
                 custom_credit_type_id: T.nilable(String),
                 discount_configuration:
-                  T.nilable(
-                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration::OrHash
-                  ),
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration::OrHash,
                 is_enabled: T::Boolean,
                 payment_gate_config: MetronomeSDK::PaymentGateConfigV2::OrHash,
                 recharge_to_amount: Float,
@@ -5834,9 +5821,7 @@ module MetronomeSDK
                     MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::Commit,
                   custom_credit_type_id: T.nilable(String),
                   discount_configuration:
-                    T.nilable(
-                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration
-                    ),
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration,
                   is_enabled: T::Boolean,
                   payment_gate_config: MetronomeSDK::PaymentGateConfigV2,
                   recharge_to_amount: Float,
@@ -6708,9 +6693,7 @@ module MetronomeSDK
             sig do
               params(
                 discount_configuration:
-                  T.nilable(
-                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::DiscountConfiguration::OrHash
-                  )
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::DiscountConfiguration::OrHash
               ).void
             end
             attr_writer :discount_configuration
@@ -6746,9 +6729,7 @@ module MetronomeSDK
               params(
                 commit: MetronomeSDK::UpdateBaseThresholdCommit::OrHash,
                 discount_configuration:
-                  T.nilable(
-                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::DiscountConfiguration::OrHash
-                  ),
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::DiscountConfiguration::OrHash,
                 is_enabled: T::Boolean,
                 payment_gate_config: MetronomeSDK::PaymentGateConfigV2::OrHash,
                 threshold_amount: Float
@@ -6773,9 +6754,7 @@ module MetronomeSDK
                 {
                   commit: MetronomeSDK::UpdateBaseThresholdCommit,
                   discount_configuration:
-                    T.nilable(
-                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::DiscountConfiguration
-                    ),
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::DiscountConfiguration,
                   is_enabled: T::Boolean,
                   payment_gate_config: MetronomeSDK::PaymentGateConfigV2,
                   threshold_amount: Float

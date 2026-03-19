@@ -69,9 +69,7 @@ module MetronomeSDK
       sig do
         params(
           discount_configuration:
-            T.nilable(
-              MetronomeSDK::PrepaidBalanceThresholdConfiguration::DiscountConfiguration::OrHash
-            )
+            MetronomeSDK::PrepaidBalanceThresholdConfiguration::DiscountConfiguration::OrHash
         ).void
       end
       attr_writer :discount_configuration
@@ -86,9 +84,7 @@ module MetronomeSDK
           threshold_amount: Float,
           custom_credit_type_id: String,
           discount_configuration:
-            T.nilable(
-              MetronomeSDK::PrepaidBalanceThresholdConfiguration::DiscountConfiguration::OrHash
-            )
+            MetronomeSDK::PrepaidBalanceThresholdConfiguration::DiscountConfiguration::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
@@ -120,9 +116,7 @@ module MetronomeSDK
             threshold_amount: Float,
             custom_credit_type_id: String,
             discount_configuration:
-              T.nilable(
-                MetronomeSDK::PrepaidBalanceThresholdConfiguration::DiscountConfiguration
-              )
+              MetronomeSDK::PrepaidBalanceThresholdConfiguration::DiscountConfiguration
           }
         )
       end
