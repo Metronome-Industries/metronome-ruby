@@ -57,6 +57,7 @@ class MetronomeSDK::Test::Resources::V1::PackagesTest < MetronomeSDK::Test::Reso
         aliases: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::PackageListResponse::Alias]) | nil,
         archived_at: Time | nil,
         billing_provider: MetronomeSDK::Models::V1::PackageListResponse::BillingProvider | nil,
+        contract_name: String | nil,
         credits: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::PackageListResponse::Credit]) | nil,
         delivery_method: MetronomeSDK::Models::V1::PackageListResponse::DeliveryMethod | nil,
         duration: MetronomeSDK::Models::V1::PackageListResponse::Duration | nil,

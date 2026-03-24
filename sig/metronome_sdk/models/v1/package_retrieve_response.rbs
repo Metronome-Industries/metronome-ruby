@@ -27,6 +27,7 @@ module MetronomeSDK
             aliases: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Alias],
             archived_at: Time,
             billing_provider: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::billing_provider,
+            contract_name: String,
             credits: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit],
             delivery_method: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::delivery_method,
             duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Duration,
@@ -73,6 +74,10 @@ module MetronomeSDK
           def billing_provider=: (
             MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::billing_provider
           ) -> MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::billing_provider
+
+          attr_reader contract_name: String?
+
+          def contract_name=: (String) -> String
 
           attr_reader credits: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit]?
 
@@ -161,6 +166,7 @@ module MetronomeSDK
             ?aliases: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Alias],
             ?archived_at: Time,
             ?billing_provider: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::billing_provider,
+            ?contract_name: String,
             ?credits: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit],
             ?delivery_method: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::delivery_method,
             ?duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Duration,
@@ -188,6 +194,7 @@ module MetronomeSDK
             aliases: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Alias],
             archived_at: Time,
             billing_provider: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::billing_provider,
+            contract_name: String,
             credits: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit],
             delivery_method: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::delivery_method,
             duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Duration,
