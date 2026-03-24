@@ -71,6 +71,12 @@ module MetronomeSDK
           optional :billing_provider,
                    enum: -> { MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::BillingProvider }
 
+          # @!attribute contract_name
+          #   The name to use for contracts created from this package.
+          #
+          #   @return [String, nil]
+          optional :contract_name, String
+
           # @!attribute credits
           #
           #   @return [Array<MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit>, nil]
@@ -161,7 +167,7 @@ module MetronomeSDK
           #   @return [String, nil]
           optional :uniqueness_key, String
 
-          # @!method initialize(id:, commits:, created_at:, created_by:, overrides:, scheduled_charges:, usage_statement_schedule:, aliases: nil, archived_at: nil, billing_provider: nil, credits: nil, delivery_method: nil, duration: nil, multiplier_override_prioritization: nil, name: nil, net_payment_terms_days: nil, prepaid_balance_threshold_configuration: nil, rate_card_id: nil, recurring_commits: nil, recurring_credits: nil, scheduled_charges_on_usage_invoices: nil, spend_threshold_configuration: nil, subscriptions: nil, uniqueness_key: nil)
+          # @!method initialize(id:, commits:, created_at:, created_by:, overrides:, scheduled_charges:, usage_statement_schedule:, aliases: nil, archived_at: nil, billing_provider: nil, contract_name: nil, credits: nil, delivery_method: nil, duration: nil, multiplier_override_prioritization: nil, name: nil, net_payment_terms_days: nil, prepaid_balance_threshold_configuration: nil, rate_card_id: nil, recurring_commits: nil, recurring_credits: nil, scheduled_charges_on_usage_invoices: nil, spend_threshold_configuration: nil, subscriptions: nil, uniqueness_key: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V1::PackageRetrieveResponse::Data} for more details.
           #
@@ -184,6 +190,8 @@ module MetronomeSDK
           #   @param archived_at [Time]
           #
           #   @param billing_provider [Symbol, MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::BillingProvider]
+          #
+          #   @param contract_name [String] The name to use for contracts created from this package.
           #
           #   @param credits [Array<MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit>]
           #

@@ -101,6 +101,13 @@ module MetronomeSDK
         end
         attr_writer :billing_provider
 
+        # The name to use for contracts created from this package.
+        sig { returns(T.nilable(String)) }
+        attr_reader :contract_name
+
+        sig { params(contract_name: String).void }
+        attr_writer :contract_name
+
         sig do
           returns(
             T.nilable(
@@ -335,6 +342,7 @@ module MetronomeSDK
             archived_at: Time,
             billing_provider:
               MetronomeSDK::Models::V1::PackageListResponse::BillingProvider::OrSymbol,
+            contract_name: String,
             credits:
               T::Array[
                 MetronomeSDK::Models::V1::PackageListResponse::Credit::OrHash
@@ -380,6 +388,8 @@ module MetronomeSDK
           aliases: nil,
           archived_at: nil,
           billing_provider: nil,
+          # The name to use for contracts created from this package.
+          contract_name: nil,
           credits: nil,
           delivery_method: nil,
           duration: nil,
@@ -432,6 +442,7 @@ module MetronomeSDK
               archived_at: Time,
               billing_provider:
                 MetronomeSDK::Models::V1::PackageListResponse::BillingProvider::TaggedSymbol,
+              contract_name: String,
               credits:
                 T::Array[MetronomeSDK::Models::V1::PackageListResponse::Credit],
               delivery_method:
