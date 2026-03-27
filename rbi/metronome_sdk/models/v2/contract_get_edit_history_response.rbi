@@ -5743,7 +5743,9 @@ module MetronomeSDK
             sig do
               params(
                 discount_configuration:
-                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration::OrHash
+                  T.nilable(
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration::OrHash
+                  )
               ).void
             end
             attr_writer :discount_configuration
@@ -5788,7 +5790,9 @@ module MetronomeSDK
                   MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::Commit::OrHash,
                 custom_credit_type_id: T.nilable(String),
                 discount_configuration:
-                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration::OrHash,
+                  T.nilable(
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration::OrHash
+                  ),
                 is_enabled: T::Boolean,
                 payment_gate_config: MetronomeSDK::PaymentGateConfigV2::OrHash,
                 recharge_to_amount: Float,
@@ -5821,7 +5825,9 @@ module MetronomeSDK
                     MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::Commit,
                   custom_credit_type_id: T.nilable(String),
                   discount_configuration:
-                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration,
+                    T.nilable(
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration
+                    ),
                   is_enabled: T::Boolean,
                   payment_gate_config: MetronomeSDK::PaymentGateConfigV2,
                   recharge_to_amount: Float,
@@ -5915,21 +5921,25 @@ module MetronomeSDK
                 end
 
               # The fraction of the original amount that the customer pays after applying the
-              # discount. For example, 0.85 means the customer pays 85% of the original amount
-              # (a 15% discount).
-              sig { returns(Float) }
+              # discount. Set to null to remove the discount fraction. For example, 0.85 means
+              # the customer pays 85% of the original amount (a 15% discount).
+              sig { returns(T.nilable(Float)) }
               attr_accessor :payment_fraction
 
-              sig { params(payment_fraction: Float).returns(T.attached_class) }
+              sig do
+                params(payment_fraction: T.nilable(Float)).returns(
+                  T.attached_class
+                )
+              end
               def self.new(
                 # The fraction of the original amount that the customer pays after applying the
-                # discount. For example, 0.85 means the customer pays 85% of the original amount
-                # (a 15% discount).
-                payment_fraction:
+                # discount. Set to null to remove the discount fraction. For example, 0.85 means
+                # the customer pays 85% of the original amount (a 15% discount).
+                payment_fraction: nil
               )
               end
 
-              sig { override.returns({ payment_fraction: Float }) }
+              sig { override.returns({ payment_fraction: T.nilable(Float) }) }
               def to_hash
               end
             end
@@ -6693,7 +6703,9 @@ module MetronomeSDK
             sig do
               params(
                 discount_configuration:
-                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::DiscountConfiguration::OrHash
+                  T.nilable(
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::DiscountConfiguration::OrHash
+                  )
               ).void
             end
             attr_writer :discount_configuration
@@ -6729,7 +6741,9 @@ module MetronomeSDK
               params(
                 commit: MetronomeSDK::UpdateBaseThresholdCommit::OrHash,
                 discount_configuration:
-                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::DiscountConfiguration::OrHash,
+                  T.nilable(
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::DiscountConfiguration::OrHash
+                  ),
                 is_enabled: T::Boolean,
                 payment_gate_config: MetronomeSDK::PaymentGateConfigV2::OrHash,
                 threshold_amount: Float
@@ -6754,7 +6768,9 @@ module MetronomeSDK
                 {
                   commit: MetronomeSDK::UpdateBaseThresholdCommit,
                   discount_configuration:
-                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::DiscountConfiguration,
+                    T.nilable(
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::DiscountConfiguration
+                    ),
                   is_enabled: T::Boolean,
                   payment_gate_config: MetronomeSDK::PaymentGateConfigV2,
                   threshold_amount: Float
@@ -6774,21 +6790,25 @@ module MetronomeSDK
                 end
 
               # The fraction of the original amount that the customer pays after applying the
-              # discount. For example, 0.85 means the customer pays 85% of the original amount
-              # (a 15% discount).
-              sig { returns(Float) }
+              # discount. Set to null to remove the discount fraction. For example, 0.85 means
+              # the customer pays 85% of the original amount (a 15% discount).
+              sig { returns(T.nilable(Float)) }
               attr_accessor :payment_fraction
 
-              sig { params(payment_fraction: Float).returns(T.attached_class) }
+              sig do
+                params(payment_fraction: T.nilable(Float)).returns(
+                  T.attached_class
+                )
+              end
               def self.new(
                 # The fraction of the original amount that the customer pays after applying the
-                # discount. For example, 0.85 means the customer pays 85% of the original amount
-                # (a 15% discount).
-                payment_fraction:
+                # discount. Set to null to remove the discount fraction. For example, 0.85 means
+                # the customer pays 85% of the original amount (a 15% discount).
+                payment_fraction: nil
               )
               end
 
-              sig { override.returns({ payment_fraction: Float }) }
+              sig { override.returns({ payment_fraction: T.nilable(Float) }) }
               def to_hash
               end
             end
