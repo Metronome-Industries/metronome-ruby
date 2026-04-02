@@ -11,12 +11,10 @@ module MetronomeSDK
           )
         end
 
-      sig { returns(MetronomeSDK::UpdateBaseThresholdCommit) }
+      sig { returns(MetronomeSDK::BaseThresholdCommit) }
       attr_reader :commit
 
-      sig do
-        params(commit: MetronomeSDK::UpdateBaseThresholdCommit::OrHash).void
-      end
+      sig { params(commit: MetronomeSDK::BaseThresholdCommit::OrHash).void }
       attr_writer :commit
 
       # When set to false, the contract will not be evaluated against the
@@ -59,7 +57,7 @@ module MetronomeSDK
 
       sig do
         params(
-          commit: MetronomeSDK::UpdateBaseThresholdCommit::OrHash,
+          commit: MetronomeSDK::BaseThresholdCommit::OrHash,
           is_enabled: T::Boolean,
           payment_gate_config: MetronomeSDK::PaymentGateConfigV2::OrHash,
           threshold_amount: Float,
@@ -84,7 +82,7 @@ module MetronomeSDK
       sig do
         override.returns(
           {
-            commit: MetronomeSDK::UpdateBaseThresholdCommit,
+            commit: MetronomeSDK::BaseThresholdCommit,
             is_enabled: T::Boolean,
             payment_gate_config: MetronomeSDK::PaymentGateConfigV2,
             threshold_amount: Float,

@@ -59,7 +59,7 @@ module MetronomeSDK
           specifiers: ::Array[MetronomeSDK::CommitSpecifierInput]
         }
 
-      class Commit < MetronomeSDK::Models::UpdateBaseThresholdCommit
+      class Commit < MetronomeSDK::Models::BaseThresholdCommit
         def applicable_product_ids: -> ::Array[String]?
 
         def applicable_product_ids=: (::Array[String] _) -> ::Array[String]

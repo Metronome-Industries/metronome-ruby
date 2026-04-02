@@ -30,10 +30,21 @@ module MetronomeSDK
       sig { params(name: String).void }
       attr_writer :name
 
+      # The priority of the commit, used to determine drawdown order. Lower priority
+      # commits are consumed first. Defaults to 100 if not specified.
+      sig { returns(T.nilable(Float)) }
+      attr_reader :priority
+
+      sig { params(priority: Float).void }
+      attr_writer :priority
+
       sig do
-        params(product_id: String, description: String, name: String).returns(
-          T.attached_class
-        )
+        params(
+          product_id: String,
+          description: String,
+          name: String,
+          priority: Float
+        ).returns(T.attached_class)
       end
       def self.new(
         # The commit product that will be used to generate the line item for commit
@@ -42,13 +53,21 @@ module MetronomeSDK
         description: nil,
         # Specify the name of the line item for the threshold charge. If left blank, it
         # will default to the commit product name.
-        name: nil
+        name: nil,
+        # The priority of the commit, used to determine drawdown order. Lower priority
+        # commits are consumed first. Defaults to 100 if not specified.
+        priority: nil
       )
       end
 
       sig do
         override.returns(
-          { product_id: String, description: String, name: String }
+          {
+            product_id: String,
+            description: String,
+            name: String,
+            priority: Float
+          }
         )
       end
       def to_hash

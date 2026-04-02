@@ -66,7 +66,7 @@ module MetronomeSDK
       #   @param discount_configuration [MetronomeSDK::Models::PrepaidBalanceThresholdConfigurationV2::DiscountConfiguration]
 
       # @see MetronomeSDK::Models::PrepaidBalanceThresholdConfigurationV2#commit
-      class Commit < MetronomeSDK::Models::UpdateBaseThresholdCommit
+      class Commit < MetronomeSDK::Models::BaseThresholdCommit
         # @!attribute applicable_product_ids
         #   Which products the threshold commit applies to. If applicable_product_ids,
         #   applicable_product_tags or specifiers are not provided, the commit applies to
