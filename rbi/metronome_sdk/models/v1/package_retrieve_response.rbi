@@ -2356,19 +2356,40 @@ module MetronomeSDK
             attr_accessor :frequency
 
             sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::UsageStatementSchedule::Day::TaggedSymbol
+                )
+              )
+            end
+            attr_reader :day
+
+            sig do
+              params(
+                day:
+                  MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::UsageStatementSchedule::Day::OrSymbol
+              ).void
+            end
+            attr_writer :day
+
+            sig do
               params(
                 frequency:
-                  MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::UsageStatementSchedule::Frequency::OrSymbol
+                  MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::UsageStatementSchedule::Frequency::OrSymbol,
+                day:
+                  MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::UsageStatementSchedule::Day::OrSymbol
               ).returns(T.attached_class)
             end
-            def self.new(frequency:)
+            def self.new(frequency:, day: nil)
             end
 
             sig do
               override.returns(
                 {
                   frequency:
-                    MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::UsageStatementSchedule::Frequency::TaggedSymbol
+                    MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::UsageStatementSchedule::Frequency::TaggedSymbol,
+                  day:
+                    MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::UsageStatementSchedule::Day::TaggedSymbol
                 }
               )
             end
@@ -2412,6 +2433,40 @@ module MetronomeSDK
                 override.returns(
                   T::Array[
                     MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::UsageStatementSchedule::Frequency::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+
+            module Day
+              extend MetronomeSDK::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::UsageStatementSchedule::Day
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              FIRST_OF_MONTH =
+                T.let(
+                  :FIRST_OF_MONTH,
+                  MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::UsageStatementSchedule::Day::TaggedSymbol
+                )
+              CONTRACT_START =
+                T.let(
+                  :CONTRACT_START,
+                  MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::UsageStatementSchedule::Day::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::UsageStatementSchedule::Day::TaggedSymbol
                   ]
                 )
               end
