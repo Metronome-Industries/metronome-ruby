@@ -124,7 +124,7 @@ module MetronomeSDK
       def to_hash
       end
 
-      class Commit < MetronomeSDK::Models::UpdateBaseThresholdCommit
+      class Commit < MetronomeSDK::Models::BaseThresholdCommit
         OrHash =
           T.type_alias do
             T.any(

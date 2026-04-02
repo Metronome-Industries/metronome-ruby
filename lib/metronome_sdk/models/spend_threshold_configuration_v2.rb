@@ -5,8 +5,8 @@ module MetronomeSDK
     class SpendThresholdConfigurationV2 < MetronomeSDK::Internal::Type::BaseModel
       # @!attribute commit
       #
-      #   @return [MetronomeSDK::Models::UpdateBaseThresholdCommit]
-      required :commit, -> { MetronomeSDK::UpdateBaseThresholdCommit }
+      #   @return [MetronomeSDK::Models::BaseThresholdCommit]
+      required :commit, -> { MetronomeSDK::BaseThresholdCommit }
 
       # @!attribute is_enabled
       #   When set to false, the contract will not be evaluated against the
@@ -38,7 +38,7 @@ module MetronomeSDK
       #   Some parameter documentations has been truncated, see
       #   {MetronomeSDK::Models::SpendThresholdConfigurationV2} for more details.
       #
-      #   @param commit [MetronomeSDK::Models::UpdateBaseThresholdCommit]
+      #   @param commit [MetronomeSDK::Models::BaseThresholdCommit]
       #
       #   @param is_enabled [Boolean] When set to false, the contract will not be evaluated against the threshold_amou
       #

@@ -2,7 +2,7 @@ module MetronomeSDK
   module Models
     type spend_threshold_configuration_v2 =
       {
-        commit: MetronomeSDK::UpdateBaseThresholdCommit,
+        commit: MetronomeSDK::BaseThresholdCommit,
         is_enabled: bool,
         payment_gate_config: MetronomeSDK::PaymentGateConfigV2,
         threshold_amount: Float,
@@ -10,7 +10,7 @@ module MetronomeSDK
       }
 
     class SpendThresholdConfigurationV2 < MetronomeSDK::Internal::Type::BaseModel
-      attr_accessor commit: MetronomeSDK::UpdateBaseThresholdCommit
+      attr_accessor commit: MetronomeSDK::BaseThresholdCommit
 
       attr_accessor is_enabled: bool
 
@@ -25,7 +25,7 @@ module MetronomeSDK
       ) -> MetronomeSDK::SpendThresholdConfigurationV2::DiscountConfiguration
 
       def initialize: (
-        commit: MetronomeSDK::UpdateBaseThresholdCommit,
+        commit: MetronomeSDK::BaseThresholdCommit,
         is_enabled: bool,
         payment_gate_config: MetronomeSDK::PaymentGateConfigV2,
         threshold_amount: Float,
@@ -33,7 +33,7 @@ module MetronomeSDK
       ) -> void
 
       def to_hash: -> {
-        commit: MetronomeSDK::UpdateBaseThresholdCommit,
+        commit: MetronomeSDK::BaseThresholdCommit,
         is_enabled: bool,
         payment_gate_config: MetronomeSDK::PaymentGateConfigV2,
         threshold_amount: Float,
