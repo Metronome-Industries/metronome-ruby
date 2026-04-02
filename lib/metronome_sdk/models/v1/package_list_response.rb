@@ -963,8 +963,14 @@ module MetronomeSDK
           required :frequency,
                    enum: -> { MetronomeSDK::Models::V1::PackageListResponse::UsageStatementSchedule::Frequency }
 
-          # @!method initialize(frequency:)
+          # @!attribute day
+          #
+          #   @return [Symbol, MetronomeSDK::Models::V1::PackageListResponse::UsageStatementSchedule::Day, nil]
+          optional :day, enum: -> { MetronomeSDK::Models::V1::PackageListResponse::UsageStatementSchedule::Day }
+
+          # @!method initialize(frequency:, day: nil)
           #   @param frequency [Symbol, MetronomeSDK::Models::V1::PackageListResponse::UsageStatementSchedule::Frequency]
+          #   @param day [Symbol, MetronomeSDK::Models::V1::PackageListResponse::UsageStatementSchedule::Day]
 
           # @see MetronomeSDK::Models::V1::PackageListResponse::UsageStatementSchedule#frequency
           module Frequency
@@ -974,6 +980,17 @@ module MetronomeSDK
             QUARTERLY = :QUARTERLY
             ANNUAL = :ANNUAL
             WEEKLY = :WEEKLY
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # @see MetronomeSDK::Models::V1::PackageListResponse::UsageStatementSchedule#day
+          module Day
+            extend MetronomeSDK::Internal::Type::Enum
+
+            FIRST_OF_MONTH = :FIRST_OF_MONTH
+            CONTRACT_START = :CONTRACT_START
 
             # @!method self.values
             #   @return [Array<Symbol>]
