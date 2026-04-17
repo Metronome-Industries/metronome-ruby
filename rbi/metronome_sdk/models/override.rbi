@@ -12,6 +12,9 @@ module MetronomeSDK
       attr_accessor :id
 
       sig { returns(Time) }
+      attr_accessor :created_at
+
+      sig { returns(Time) }
       attr_accessor :starting_at
 
       sig { returns(T.nilable(T::Array[String])) }
@@ -150,6 +153,7 @@ module MetronomeSDK
       sig do
         params(
           id: String,
+          created_at: Time,
           starting_at: Time,
           applicable_product_tags: T::Array[String],
           credit_type: MetronomeSDK::CreditTypeData::OrHash,
@@ -175,6 +179,7 @@ module MetronomeSDK
       end
       def self.new(
         id:,
+        created_at:,
         starting_at:,
         applicable_product_tags: nil,
         credit_type: nil,
@@ -210,6 +215,7 @@ module MetronomeSDK
         override.returns(
           {
             id: String,
+            created_at: Time,
             starting_at: Time,
             applicable_product_tags: T::Array[String],
             credit_type: MetronomeSDK::CreditTypeData,
