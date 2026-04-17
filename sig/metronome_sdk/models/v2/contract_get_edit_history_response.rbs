@@ -704,6 +704,7 @@ module MetronomeSDK
           type add_override =
             {
               id: String,
+              created_at: Time,
               starting_at: Time,
               applicable_product_tags: ::Array[String],
               ending_before: Time,
@@ -721,6 +722,8 @@ module MetronomeSDK
 
           class AddOverride < MetronomeSDK::Internal::Type::BaseModel
             attr_accessor id: String
+
+            attr_accessor created_at: Time
 
             attr_accessor starting_at: Time
 
@@ -786,6 +789,7 @@ module MetronomeSDK
 
             def initialize: (
               id: String,
+              created_at: Time,
               starting_at: Time,
               ?applicable_product_tags: ::Array[String],
               ?ending_before: Time,
@@ -803,6 +807,7 @@ module MetronomeSDK
 
             def to_hash: -> {
               id: String,
+              created_at: Time,
               starting_at: Time,
               applicable_product_tags: ::Array[String],
               ending_before: Time,

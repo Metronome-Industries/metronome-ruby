@@ -1237,6 +1237,11 @@ module MetronomeSDK
         #   @return [String]
         required :id, String
 
+        # @!attribute created_at
+        #
+        #   @return [Time]
+        required :created_at, Time
+
         # @!attribute starting_at
         #
         #   @return [Time]
@@ -1303,8 +1308,9 @@ module MetronomeSDK
         #   @return [Symbol, MetronomeSDK::Models::ContractV2::Override::Type, nil]
         optional :type, enum: -> { MetronomeSDK::ContractV2::Override::Type }
 
-        # @!method initialize(id:, starting_at:, applicable_product_tags: nil, ending_before: nil, entitled: nil, is_commit_specific: nil, multiplier: nil, override_specifiers: nil, override_tiers: nil, overwrite_rate: nil, priority: nil, product: nil, target: nil, type: nil)
+        # @!method initialize(id:, created_at:, starting_at:, applicable_product_tags: nil, ending_before: nil, entitled: nil, is_commit_specific: nil, multiplier: nil, override_specifiers: nil, override_tiers: nil, overwrite_rate: nil, priority: nil, product: nil, target: nil, type: nil)
         #   @param id [String]
+        #   @param created_at [Time]
         #   @param starting_at [Time]
         #   @param applicable_product_tags [Array<String>]
         #   @param ending_before [Time]

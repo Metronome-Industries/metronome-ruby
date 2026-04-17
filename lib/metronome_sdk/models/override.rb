@@ -8,6 +8,11 @@ module MetronomeSDK
       #   @return [String]
       required :id, String
 
+      # @!attribute created_at
+      #
+      #   @return [Time]
+      required :created_at, Time
+
       # @!attribute starting_at
       #
       #   @return [Time]
@@ -117,11 +122,13 @@ module MetronomeSDK
       #   @return [Hash{Symbol=>Object}, nil]
       optional :value, MetronomeSDK::Internal::Type::HashOf[MetronomeSDK::Internal::Type::Unknown]
 
-      # @!method initialize(id:, starting_at:, applicable_product_tags: nil, credit_type: nil, ending_before: nil, entitled: nil, is_commit_specific: nil, is_prorated: nil, multiplier: nil, override_specifiers: nil, override_tiers: nil, overwrite_rate: nil, price: nil, priority: nil, product: nil, quantity: nil, rate_type: nil, target: nil, tiers: nil, type: nil, value: nil)
+      # @!method initialize(id:, created_at:, starting_at:, applicable_product_tags: nil, credit_type: nil, ending_before: nil, entitled: nil, is_commit_specific: nil, is_prorated: nil, multiplier: nil, override_specifiers: nil, override_tiers: nil, overwrite_rate: nil, price: nil, priority: nil, product: nil, quantity: nil, rate_type: nil, target: nil, tiers: nil, type: nil, value: nil)
       #   Some parameter documentations has been truncated, see
       #   {MetronomeSDK::Models::Override} for more details.
       #
       #   @param id [String]
+      #
+      #   @param created_at [Time]
       #
       #   @param starting_at [Time]
       #
