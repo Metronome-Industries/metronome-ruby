@@ -3639,16 +3639,16 @@ module MetronomeSDK
           optional :access_schedule, -> { MetronomeSDK::V2::ContractEditParams::UpdateCredit::AccessSchedule }
 
           # @!attribute applicable_product_ids
-          #   Which products the commit applies to. If applicable_product_ids,
-          #   applicable_product_tags or specifiers are not provided, the commit applies to
+          #   Which products the credit applies to. If applicable_product_ids,
+          #   applicable_product_tags or specifiers are not provided, the credit applies to
           #   all products.
           #
           #   @return [Array<String>, nil]
           optional :applicable_product_ids, MetronomeSDK::Internal::Type::ArrayOf[String], nil?: true
 
           # @!attribute applicable_product_tags
-          #   Which tags the commit applies to. If applicable_product_ids,
-          #   applicable_product_tags or specifiers are not provided, the commit applies to
+          #   Which tags the credit applies to. If applicable_product_ids,
+          #   applicable_product_tags or specifiers are not provided, the credit applies to
           #   all products.
           #
           #   @return [Array<String>, nil]
@@ -3706,9 +3706,9 @@ module MetronomeSDK
           #
           #   @param access_schedule [MetronomeSDK::Models::V2::ContractEditParams::UpdateCredit::AccessSchedule]
           #
-          #   @param applicable_product_ids [Array<String>, nil] Which products the commit applies to. If applicable_product_ids, applicable_prod
+          #   @param applicable_product_ids [Array<String>, nil] Which products the credit applies to. If applicable_product_ids, applicable_prod
           #
-          #   @param applicable_product_tags [Array<String>, nil] Which tags the commit applies to. If applicable*product_ids, applicable_product*
+          #   @param applicable_product_tags [Array<String>, nil] Which tags the credit applies to. If applicable*product_ids, applicable_product*
           #
           #   @param description [String]
           #

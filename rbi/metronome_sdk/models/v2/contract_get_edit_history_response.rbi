@@ -1440,6 +1440,29 @@ module MetronomeSDK
             sig { params(priority: Float).void }
             attr_writer :priority
 
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::RateType::TaggedSymbol
+                )
+              )
+            end
+            attr_reader :rate_type
+
+            sig do
+              params(
+                rate_type:
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::RateType::OrSymbol
+              ).void
+            end
+            attr_writer :rate_type
+
+            sig { returns(T.nilable(Float)) }
+            attr_reader :rollover_fraction
+
+            sig { params(rollover_fraction: Float).void }
+            attr_writer :rollover_fraction
+
             # This field's availability is dependent on your client's configuration.
             sig { returns(T.nilable(String)) }
             attr_reader :salesforce_opportunity_id
@@ -1481,6 +1504,9 @@ module MetronomeSDK
                 name: String,
                 netsuite_sales_order_id: String,
                 priority: Float,
+                rate_type:
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::RateType::OrSymbol,
+                rollover_fraction: Float,
                 salesforce_opportunity_id: String,
                 specifiers: T::Array[MetronomeSDK::CommitSpecifierInput::OrHash]
               ).returns(T.attached_class)
@@ -1502,6 +1528,8 @@ module MetronomeSDK
               # If multiple credits or commits are applicable, the one with the lower priority
               # will apply first.
               priority: nil,
+              rate_type: nil,
+              rollover_fraction: nil,
               # This field's availability is dependent on your client's configuration.
               salesforce_opportunity_id: nil,
               # List of filters that determine what kind of customer usage draws down a commit
@@ -1531,6 +1559,9 @@ module MetronomeSDK
                   name: String,
                   netsuite_sales_order_id: String,
                   priority: Float,
+                  rate_type:
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::RateType::TaggedSymbol,
+                  rollover_fraction: Float,
                   salesforce_opportunity_id: String,
                   specifiers: T::Array[MetronomeSDK::CommitSpecifierInput]
                 }
@@ -1585,6 +1616,40 @@ module MetronomeSDK
                 override.returns(
                   T::Array[
                     MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::Type::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+
+            module RateType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::RateType
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              COMMIT_RATE =
+                T.let(
+                  :COMMIT_RATE,
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::RateType::TaggedSymbol
+                )
+              LIST_RATE =
+                T.let(
+                  :LIST_RATE,
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::RateType::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::RateType::TaggedSymbol
                   ]
                 )
               end
@@ -4833,6 +4898,18 @@ module MetronomeSDK
             end
             attr_writer :access_schedule
 
+            # Which products the credit applies to. If applicable_product_ids,
+            # applicable_product_tags or specifiers are not provided, the credit applies to
+            # all products.
+            sig { returns(T.nilable(T::Array[String])) }
+            attr_accessor :applicable_product_ids
+
+            # Which tags the credit applies to. If applicable_product_ids,
+            # applicable_product_tags or specifiers are not provided, the credit applies to
+            # all products.
+            sig { returns(T.nilable(T::Array[String])) }
+            attr_accessor :applicable_product_tags
+
             sig { returns(T.nilable(String)) }
             attr_reader :description
 
@@ -4867,6 +4944,12 @@ module MetronomeSDK
             sig { returns(T.nilable(Float)) }
             attr_accessor :priority
 
+            sig { returns(T.nilable(String)) }
+            attr_reader :product_id
+
+            sig { params(product_id: String).void }
+            attr_writer :product_id
+
             # If set, the credit's rate type was updated to the specified value.
             sig do
               returns(
@@ -4888,25 +4971,51 @@ module MetronomeSDK
             sig { returns(T.nilable(Float)) }
             attr_accessor :rollover_fraction
 
+            # List of filters that determine what kind of customer usage draws down a commit
+            # or credit. A customer's usage needs to meet the condition of at least one of the
+            # specifiers to contribute to a commit's or credit's drawdown. This field cannot
+            # be used together with `applicable_product_ids` or `applicable_product_tags`.
+            # Instead, to target usage by product or product tag, pass those values in the
+            # body of `specifiers`.
+            sig do
+              returns(T.nilable(T::Array[MetronomeSDK::CommitSpecifierInput]))
+            end
+            attr_accessor :specifiers
+
             sig do
               params(
                 id: String,
                 access_schedule:
                   MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::AccessSchedule::OrHash,
+                applicable_product_ids: T.nilable(T::Array[String]),
+                applicable_product_tags: T.nilable(T::Array[String]),
                 description: String,
                 hierarchy_configuration:
                   MetronomeSDK::CommitHierarchyConfiguration::OrHash,
                 name: String,
                 netsuite_sales_order_id: T.nilable(String),
                 priority: T.nilable(Float),
+                product_id: String,
                 rate_type:
                   MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::RateType::OrSymbol,
-                rollover_fraction: T.nilable(Float)
+                rollover_fraction: T.nilable(Float),
+                specifiers:
+                  T.nilable(
+                    T::Array[MetronomeSDK::CommitSpecifierInput::OrHash]
+                  )
               ).returns(T.attached_class)
             end
             def self.new(
               id:,
               access_schedule: nil,
+              # Which products the credit applies to. If applicable_product_ids,
+              # applicable_product_tags or specifiers are not provided, the credit applies to
+              # all products.
+              applicable_product_ids: nil,
+              # Which tags the credit applies to. If applicable_product_ids,
+              # applicable_product_tags or specifiers are not provided, the credit applies to
+              # all products.
+              applicable_product_tags: nil,
               description: nil,
               # Optional configuration for credit hierarchy access control
               hierarchy_configuration: nil,
@@ -4915,9 +5024,17 @@ module MetronomeSDK
               # If multiple credits are applicable, the one with the lower priority will apply
               # first.
               priority: nil,
+              product_id: nil,
               # If set, the credit's rate type was updated to the specified value.
               rate_type: nil,
-              rollover_fraction: nil
+              rollover_fraction: nil,
+              # List of filters that determine what kind of customer usage draws down a commit
+              # or credit. A customer's usage needs to meet the condition of at least one of the
+              # specifiers to contribute to a commit's or credit's drawdown. This field cannot
+              # be used together with `applicable_product_ids` or `applicable_product_tags`.
+              # Instead, to target usage by product or product tag, pass those values in the
+              # body of `specifiers`.
+              specifiers: nil
             )
             end
 
@@ -4927,15 +5044,20 @@ module MetronomeSDK
                   id: String,
                   access_schedule:
                     MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::AccessSchedule,
+                  applicable_product_ids: T.nilable(T::Array[String]),
+                  applicable_product_tags: T.nilable(T::Array[String]),
                   description: String,
                   hierarchy_configuration:
                     MetronomeSDK::CommitHierarchyConfiguration,
                   name: String,
                   netsuite_sales_order_id: T.nilable(String),
                   priority: T.nilable(Float),
+                  product_id: String,
                   rate_type:
                     MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::RateType::TaggedSymbol,
-                  rollover_fraction: T.nilable(Float)
+                  rollover_fraction: T.nilable(Float),
+                  specifiers:
+                    T.nilable(T::Array[MetronomeSDK::CommitSpecifierInput])
                 }
               )
             end
