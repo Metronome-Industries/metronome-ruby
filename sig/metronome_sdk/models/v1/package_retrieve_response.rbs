@@ -27,6 +27,7 @@ module MetronomeSDK
             aliases: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Alias],
             archived_at: Time,
             billing_provider: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::billing_provider,
+            contract_name: String,
             credits: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit],
             delivery_method: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::delivery_method,
             duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Duration,
@@ -73,6 +74,10 @@ module MetronomeSDK
           def billing_provider=: (
             MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::billing_provider
           ) -> MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::billing_provider
+
+          attr_reader contract_name: String?
+
+          def contract_name=: (String) -> String
 
           attr_reader credits: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit]?
 
@@ -161,6 +166,7 @@ module MetronomeSDK
             ?aliases: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Alias],
             ?archived_at: Time,
             ?billing_provider: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::billing_provider,
+            ?contract_name: String,
             ?credits: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit],
             ?delivery_method: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::delivery_method,
             ?duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Duration,
@@ -188,6 +194,7 @@ module MetronomeSDK
             aliases: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Alias],
             archived_at: Time,
             billing_provider: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::billing_provider,
+            contract_name: String,
             credits: ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit],
             delivery_method: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::delivery_method,
             duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Duration,
@@ -693,8 +700,7 @@ module MetronomeSDK
                 pricing_group_values: ::Hash[Symbol, String],
                 product_id: String,
                 product_tags: ::Array[String],
-                recurring_commit_template_ids: ::Array[String],
-                recurring_credit_template_ids: ::Array[String]
+                recurring_commit_template_ids: ::Array[String]
               }
 
             class OverrideSpecifier < MetronomeSDK::Internal::Type::BaseModel
@@ -734,12 +740,6 @@ module MetronomeSDK
                 ::Array[String]
               ) -> ::Array[String]
 
-              attr_reader recurring_credit_template_ids: ::Array[String]?
-
-              def recurring_credit_template_ids=: (
-                ::Array[String]
-              ) -> ::Array[String]
-
               def initialize: (
                 ?billing_frequency: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::OverrideSpecifier::billing_frequency,
                 ?commit_template_ids: ::Array[String],
@@ -747,8 +747,7 @@ module MetronomeSDK
                 ?pricing_group_values: ::Hash[Symbol, String],
                 ?product_id: String,
                 ?product_tags: ::Array[String],
-                ?recurring_commit_template_ids: ::Array[String],
-                ?recurring_credit_template_ids: ::Array[String]
+                ?recurring_commit_template_ids: ::Array[String]
               ) -> void
 
               def to_hash: -> {
@@ -758,8 +757,7 @@ module MetronomeSDK
                 pricing_group_values: ::Hash[Symbol, String],
                 product_id: String,
                 product_tags: ::Array[String],
-                recurring_commit_template_ids: ::Array[String],
-                recurring_credit_template_ids: ::Array[String]
+                recurring_commit_template_ids: ::Array[String]
               }
 
               type billing_frequency = :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY
@@ -1035,18 +1033,27 @@ module MetronomeSDK
 
           type usage_statement_schedule =
             {
-              frequency: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::UsageStatementSchedule::frequency
+              frequency: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::UsageStatementSchedule::frequency,
+              day: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::UsageStatementSchedule::day
             }
 
           class UsageStatementSchedule < MetronomeSDK::Internal::Type::BaseModel
             attr_accessor frequency: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::UsageStatementSchedule::frequency
 
+            attr_reader day: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::UsageStatementSchedule::day?
+
+            def day=: (
+              MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::UsageStatementSchedule::day
+            ) -> MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::UsageStatementSchedule::day
+
             def initialize: (
-              frequency: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::UsageStatementSchedule::frequency
+              frequency: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::UsageStatementSchedule::frequency,
+              ?day: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::UsageStatementSchedule::day
             ) -> void
 
             def to_hash: -> {
-              frequency: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::UsageStatementSchedule::frequency
+              frequency: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::UsageStatementSchedule::frequency,
+              day: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::UsageStatementSchedule::day
             }
 
             type frequency = :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY
@@ -1060,6 +1067,17 @@ module MetronomeSDK
               WEEKLY: :WEEKLY
 
               def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::UsageStatementSchedule::frequency]
+            end
+
+            type day = :FIRST_OF_MONTH | :CONTRACT_START
+
+            module Day
+              extend MetronomeSDK::Internal::Type::Enum
+
+              FIRST_OF_MONTH: :FIRST_OF_MONTH
+              CONTRACT_START: :CONTRACT_START
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::UsageStatementSchedule::day]
             end
           end
 

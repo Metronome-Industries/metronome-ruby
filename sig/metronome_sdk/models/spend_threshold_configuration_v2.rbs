@@ -2,14 +2,15 @@ module MetronomeSDK
   module Models
     type spend_threshold_configuration_v2 =
       {
-        commit: MetronomeSDK::UpdateBaseThresholdCommit,
+        commit: MetronomeSDK::BaseThresholdCommit,
         is_enabled: bool,
         payment_gate_config: MetronomeSDK::PaymentGateConfigV2,
-        threshold_amount: Float
+        threshold_amount: Float,
+        discount_configuration: MetronomeSDK::SpendThresholdConfigurationV2::DiscountConfiguration
       }
 
     class SpendThresholdConfigurationV2 < MetronomeSDK::Internal::Type::BaseModel
-      attr_accessor commit: MetronomeSDK::UpdateBaseThresholdCommit
+      attr_accessor commit: MetronomeSDK::BaseThresholdCommit
 
       attr_accessor is_enabled: bool
 
@@ -17,19 +18,37 @@ module MetronomeSDK
 
       attr_accessor threshold_amount: Float
 
+      attr_reader discount_configuration: MetronomeSDK::SpendThresholdConfigurationV2::DiscountConfiguration?
+
+      def discount_configuration=: (
+        MetronomeSDK::SpendThresholdConfigurationV2::DiscountConfiguration
+      ) -> MetronomeSDK::SpendThresholdConfigurationV2::DiscountConfiguration
+
       def initialize: (
-        commit: MetronomeSDK::UpdateBaseThresholdCommit,
+        commit: MetronomeSDK::BaseThresholdCommit,
         is_enabled: bool,
         payment_gate_config: MetronomeSDK::PaymentGateConfigV2,
-        threshold_amount: Float
+        threshold_amount: Float,
+        ?discount_configuration: MetronomeSDK::SpendThresholdConfigurationV2::DiscountConfiguration
       ) -> void
 
       def to_hash: -> {
-        commit: MetronomeSDK::UpdateBaseThresholdCommit,
+        commit: MetronomeSDK::BaseThresholdCommit,
         is_enabled: bool,
         payment_gate_config: MetronomeSDK::PaymentGateConfigV2,
-        threshold_amount: Float
+        threshold_amount: Float,
+        discount_configuration: MetronomeSDK::SpendThresholdConfigurationV2::DiscountConfiguration
       }
+
+      type discount_configuration = { payment_fraction: Float }
+
+      class DiscountConfiguration < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor payment_fraction: Float
+
+        def initialize: (payment_fraction: Float) -> void
+
+        def to_hash: -> { payment_fraction: Float }
+      end
     end
   end
 end

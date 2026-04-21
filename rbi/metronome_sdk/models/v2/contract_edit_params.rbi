@@ -3576,16 +3576,6 @@ module MetronomeSDK
             sig { params(recurring_commit_ids: T::Array[String]).void }
             attr_writer :recurring_commit_ids
 
-            # Can only be used for commit specific overrides. Must be used in conjunction with
-            # one of product_id, product_tags, pricing_group_values, or
-            # presentation_group_values. If provided, the override will only apply to commits
-            # created by the specified recurring credit ids.
-            sig { returns(T.nilable(T::Array[String])) }
-            attr_reader :recurring_credit_ids
-
-            sig { params(recurring_credit_ids: T::Array[String]).void }
-            attr_writer :recurring_credit_ids
-
             sig do
               params(
                 billing_frequency:
@@ -3595,8 +3585,7 @@ module MetronomeSDK
                 pricing_group_values: T::Hash[Symbol, String],
                 product_id: String,
                 product_tags: T::Array[String],
-                recurring_commit_ids: T::Array[String],
-                recurring_credit_ids: T::Array[String]
+                recurring_commit_ids: T::Array[String]
               ).returns(T.attached_class)
             end
             def self.new(
@@ -3621,12 +3610,7 @@ module MetronomeSDK
               # one of product_id, product_tags, pricing_group_values, or
               # presentation_group_values. If provided, the override will only apply to commits
               # created by the specified recurring commit ids.
-              recurring_commit_ids: nil,
-              # Can only be used for commit specific overrides. Must be used in conjunction with
-              # one of product_id, product_tags, pricing_group_values, or
-              # presentation_group_values. If provided, the override will only apply to commits
-              # created by the specified recurring credit ids.
-              recurring_credit_ids: nil
+              recurring_commit_ids: nil
             )
             end
 
@@ -3640,8 +3624,7 @@ module MetronomeSDK
                   pricing_group_values: T::Hash[Symbol, String],
                   product_id: String,
                   product_tags: T::Array[String],
-                  recurring_commit_ids: T::Array[String],
-                  recurring_credit_ids: T::Array[String]
+                  recurring_commit_ids: T::Array[String]
                 }
               )
             end
@@ -8087,14 +8070,14 @@ module MetronomeSDK
           end
           attr_writer :access_schedule
 
-          # Which products the commit applies to. If applicable_product_ids,
-          # applicable_product_tags or specifiers are not provided, the commit applies to
+          # Which products the credit applies to. If applicable_product_ids,
+          # applicable_product_tags or specifiers are not provided, the credit applies to
           # all products.
           sig { returns(T.nilable(T::Array[String])) }
           attr_accessor :applicable_product_ids
 
-          # Which tags the commit applies to. If applicable_product_ids,
-          # applicable_product_tags or specifiers are not provided, the commit applies to
+          # Which tags the credit applies to. If applicable_product_ids,
+          # applicable_product_tags or specifiers are not provided, the credit applies to
           # all products.
           sig { returns(T.nilable(T::Array[String])) }
           attr_accessor :applicable_product_tags
@@ -8180,12 +8163,12 @@ module MetronomeSDK
           def self.new(
             credit_id:,
             access_schedule: nil,
-            # Which products the commit applies to. If applicable_product_ids,
-            # applicable_product_tags or specifiers are not provided, the commit applies to
+            # Which products the credit applies to. If applicable_product_ids,
+            # applicable_product_tags or specifiers are not provided, the credit applies to
             # all products.
             applicable_product_ids: nil,
-            # Which tags the commit applies to. If applicable_product_ids,
-            # applicable_product_tags or specifiers are not provided, the commit applies to
+            # Which tags the credit applies to. If applicable_product_ids,
+            # applicable_product_tags or specifiers are not provided, the credit applies to
             # all products.
             applicable_product_tags: nil,
             description: nil,
@@ -8531,6 +8514,25 @@ module MetronomeSDK
           sig { returns(T.nilable(String)) }
           attr_accessor :custom_credit_type_id
 
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration
+              )
+            )
+          end
+          attr_reader :discount_configuration
+
+          sig do
+            params(
+              discount_configuration:
+                T.nilable(
+                  MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration::OrHash
+                )
+            ).void
+          end
+          attr_writer :discount_configuration
+
           # When set to false, the contract will not be evaluated against the
           # threshold_amount. Toggling to true will result an immediate evaluation,
           # regardless of prior state.
@@ -8570,6 +8572,10 @@ module MetronomeSDK
               commit:
                 MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::OrHash,
               custom_credit_type_id: T.nilable(String),
+              discount_configuration:
+                T.nilable(
+                  MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration::OrHash
+                ),
               is_enabled: T::Boolean,
               payment_gate_config: MetronomeSDK::PaymentGateConfigV2::OrHash,
               recharge_to_amount: Float,
@@ -8581,6 +8587,7 @@ module MetronomeSDK
             # If provided, the threshold, recharge-to amount, and the resulting threshold
             # commit amount will be in terms of this credit type instead of the fiat currency.
             custom_credit_type_id: nil,
+            discount_configuration: nil,
             # When set to false, the contract will not be evaluated against the
             # threshold_amount. Toggling to true will result an immediate evaluation,
             # regardless of prior state.
@@ -8600,6 +8607,10 @@ module MetronomeSDK
                 commit:
                   MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit,
                 custom_credit_type_id: T.nilable(String),
+                discount_configuration:
+                  T.nilable(
+                    MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration
+                  ),
                 is_enabled: T::Boolean,
                 payment_gate_config: MetronomeSDK::PaymentGateConfigV2,
                 recharge_to_amount: Float,
@@ -8679,6 +8690,39 @@ module MetronomeSDK
                 }
               )
             end
+            def to_hash
+            end
+          end
+
+          class DiscountConfiguration < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            # The fraction of the original amount that the customer pays after applying the
+            # discount. Set to null to remove the discount fraction. For example, 0.85 means
+            # the customer pays 85% of the original amount (a 15% discount).
+            sig { returns(T.nilable(Float)) }
+            attr_accessor :payment_fraction
+
+            sig do
+              params(payment_fraction: T.nilable(Float)).returns(
+                T.attached_class
+              )
+            end
+            def self.new(
+              # The fraction of the original amount that the customer pays after applying the
+              # discount. Set to null to remove the discount fraction. For example, 0.85 means
+              # the customer pays 85% of the original amount (a 15% discount).
+              payment_fraction: nil
+            )
+            end
+
+            sig { override.returns({ payment_fraction: T.nilable(Float) }) }
             def to_hash
             end
           end
@@ -9399,6 +9443,25 @@ module MetronomeSDK
           end
           attr_writer :commit
 
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::DiscountConfiguration
+              )
+            )
+          end
+          attr_reader :discount_configuration
+
+          sig do
+            params(
+              discount_configuration:
+                T.nilable(
+                  MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::DiscountConfiguration::OrHash
+                )
+            ).void
+          end
+          attr_writer :discount_configuration
+
           # When set to false, the contract will not be evaluated against the
           # threshold_amount. Toggling to true will result an immediate evaluation,
           # regardless of prior state.
@@ -9429,6 +9492,10 @@ module MetronomeSDK
           sig do
             params(
               commit: MetronomeSDK::UpdateBaseThresholdCommit::OrHash,
+              discount_configuration:
+                T.nilable(
+                  MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::DiscountConfiguration::OrHash
+                ),
               is_enabled: T::Boolean,
               payment_gate_config: MetronomeSDK::PaymentGateConfigV2::OrHash,
               threshold_amount: Float
@@ -9436,6 +9503,7 @@ module MetronomeSDK
           end
           def self.new(
             commit: nil,
+            discount_configuration: nil,
             # When set to false, the contract will not be evaluated against the
             # threshold_amount. Toggling to true will result an immediate evaluation,
             # regardless of prior state.
@@ -9451,6 +9519,10 @@ module MetronomeSDK
             override.returns(
               {
                 commit: MetronomeSDK::UpdateBaseThresholdCommit,
+                discount_configuration:
+                  T.nilable(
+                    MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::DiscountConfiguration
+                  ),
                 is_enabled: T::Boolean,
                 payment_gate_config: MetronomeSDK::PaymentGateConfigV2,
                 threshold_amount: Float
@@ -9458,6 +9530,39 @@ module MetronomeSDK
             )
           end
           def to_hash
+          end
+
+          class DiscountConfiguration < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::DiscountConfiguration,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            # The fraction of the original amount that the customer pays after applying the
+            # discount. Set to null to remove the discount fraction. For example, 0.85 means
+            # the customer pays 85% of the original amount (a 15% discount).
+            sig { returns(T.nilable(Float)) }
+            attr_accessor :payment_fraction
+
+            sig do
+              params(payment_fraction: T.nilable(Float)).returns(
+                T.attached_class
+              )
+            end
+            def self.new(
+              # The fraction of the original amount that the customer pays after applying the
+              # discount. Set to null to remove the discount fraction. For example, 0.85 means
+              # the customer pays 85% of the original amount (a 15% discount).
+              payment_fraction: nil
+            )
+            end
+
+            sig { override.returns({ payment_fraction: T.nilable(Float) }) }
+            def to_hash
+            end
           end
         end
 

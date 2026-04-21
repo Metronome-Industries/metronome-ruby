@@ -5,7 +5,8 @@ module MetronomeSDK
         commit: MetronomeSDK::BaseThresholdCommit,
         is_enabled: bool,
         payment_gate_config: MetronomeSDK::PaymentGateConfig,
-        threshold_amount: Float
+        threshold_amount: Float,
+        discount_configuration: MetronomeSDK::SpendThresholdConfiguration::DiscountConfiguration
       }
 
     class SpendThresholdConfiguration < MetronomeSDK::Internal::Type::BaseModel
@@ -17,19 +18,37 @@ module MetronomeSDK
 
       attr_accessor threshold_amount: Float
 
+      attr_reader discount_configuration: MetronomeSDK::SpendThresholdConfiguration::DiscountConfiguration?
+
+      def discount_configuration=: (
+        MetronomeSDK::SpendThresholdConfiguration::DiscountConfiguration
+      ) -> MetronomeSDK::SpendThresholdConfiguration::DiscountConfiguration
+
       def initialize: (
         commit: MetronomeSDK::BaseThresholdCommit,
         is_enabled: bool,
         payment_gate_config: MetronomeSDK::PaymentGateConfig,
-        threshold_amount: Float
+        threshold_amount: Float,
+        ?discount_configuration: MetronomeSDK::SpendThresholdConfiguration::DiscountConfiguration
       ) -> void
 
       def to_hash: -> {
         commit: MetronomeSDK::BaseThresholdCommit,
         is_enabled: bool,
         payment_gate_config: MetronomeSDK::PaymentGateConfig,
-        threshold_amount: Float
+        threshold_amount: Float,
+        discount_configuration: MetronomeSDK::SpendThresholdConfiguration::DiscountConfiguration
       }
+
+      type discount_configuration = { payment_fraction: Float }
+
+      class DiscountConfiguration < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor payment_fraction: Float
+
+        def initialize: (payment_fraction: Float) -> void
+
+        def to_hash: -> { payment_fraction: Float }
+      end
     end
   end
 end

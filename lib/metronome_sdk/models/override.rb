@@ -8,6 +8,11 @@ module MetronomeSDK
       #   @return [String]
       required :id, String
 
+      # @!attribute created_at
+      #
+      #   @return [Time]
+      required :created_at, Time
+
       # @!attribute starting_at
       #
       #   @return [Time]
@@ -117,11 +122,13 @@ module MetronomeSDK
       #   @return [Hash{Symbol=>Object}, nil]
       optional :value, MetronomeSDK::Internal::Type::HashOf[MetronomeSDK::Internal::Type::Unknown]
 
-      # @!method initialize(id:, starting_at:, applicable_product_tags: nil, credit_type: nil, ending_before: nil, entitled: nil, is_commit_specific: nil, is_prorated: nil, multiplier: nil, override_specifiers: nil, override_tiers: nil, overwrite_rate: nil, price: nil, priority: nil, product: nil, quantity: nil, rate_type: nil, target: nil, tiers: nil, type: nil, value: nil)
+      # @!method initialize(id:, created_at:, starting_at:, applicable_product_tags: nil, credit_type: nil, ending_before: nil, entitled: nil, is_commit_specific: nil, is_prorated: nil, multiplier: nil, override_specifiers: nil, override_tiers: nil, overwrite_rate: nil, price: nil, priority: nil, product: nil, quantity: nil, rate_type: nil, target: nil, tiers: nil, type: nil, value: nil)
       #   Some parameter documentations has been truncated, see
       #   {MetronomeSDK::Models::Override} for more details.
       #
       #   @param id [String]
+      #
+      #   @param created_at [Time]
       #
       #   @param starting_at [Time]
       #
@@ -199,12 +206,7 @@ module MetronomeSDK
         #   @return [Array<String>, nil]
         optional :recurring_commit_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
 
-        # @!attribute recurring_credit_ids
-        #
-        #   @return [Array<String>, nil]
-        optional :recurring_credit_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
-
-        # @!method initialize(billing_frequency: nil, commit_ids: nil, presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil, recurring_commit_ids: nil, recurring_credit_ids: nil)
+        # @!method initialize(billing_frequency: nil, commit_ids: nil, presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil, recurring_commit_ids: nil)
         #   @param billing_frequency [Symbol, MetronomeSDK::Models::Override::OverrideSpecifier::BillingFrequency]
         #   @param commit_ids [Array<String>]
         #   @param presentation_group_values [Hash{Symbol=>String, nil}]
@@ -212,7 +214,6 @@ module MetronomeSDK
         #   @param product_id [String]
         #   @param product_tags [Array<String>]
         #   @param recurring_commit_ids [Array<String>]
-        #   @param recurring_credit_ids [Array<String>]
 
         # @see MetronomeSDK::Models::Override::OverrideSpecifier#billing_frequency
         module BillingFrequency

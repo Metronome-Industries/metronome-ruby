@@ -582,6 +582,17 @@ module MetronomeSDK
             #   @return [Float, nil]
             optional :priority, Float
 
+            # @!attribute rate_type
+            #
+            #   @return [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::RateType, nil]
+            optional :rate_type,
+                     enum: -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::RateType }
+
+            # @!attribute rollover_fraction
+            #
+            #   @return [Float, nil]
+            optional :rollover_fraction, Float
+
             # @!attribute salesforce_opportunity_id
             #   This field's availability is dependent on your client's configuration.
             #
@@ -599,7 +610,7 @@ module MetronomeSDK
             #   @return [Array<MetronomeSDK::Models::CommitSpecifierInput>, nil]
             optional :specifiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::CommitSpecifierInput] }
 
-            # @!method initialize(id:, product:, type:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, hierarchy_configuration: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, salesforce_opportunity_id: nil, specifiers: nil)
+            # @!method initialize(id:, product:, type:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, hierarchy_configuration: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil, rollover_fraction: nil, salesforce_opportunity_id: nil, specifiers: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit} for
             #   more details.
@@ -625,6 +636,10 @@ module MetronomeSDK
             #   @param netsuite_sales_order_id [String] This field's availability is dependent on your client's configuration.
             #
             #   @param priority [Float] If multiple credits or commits are applicable, the one with the lower priority w
+            #
+            #   @param rate_type [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit::RateType]
+            #
+            #   @param rollover_fraction [Float]
             #
             #   @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
             #
@@ -656,6 +671,17 @@ module MetronomeSDK
               # @!method self.values
               #   @return [Array<Symbol>]
             end
+
+            # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddCredit#rate_type
+            module RateType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              COMMIT_RATE = :COMMIT_RATE
+              LIST_RATE = :LIST_RATE
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
           end
 
           class AddOverride < MetronomeSDK::Internal::Type::BaseModel
@@ -663,6 +689,11 @@ module MetronomeSDK
             #
             #   @return [String]
             required :id, String
+
+            # @!attribute created_at
+            #
+            #   @return [Time]
+            required :created_at, Time
 
             # @!attribute starting_at
             #
@@ -734,8 +765,9 @@ module MetronomeSDK
             optional :type,
                      enum: -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::Type }
 
-            # @!method initialize(id:, starting_at:, applicable_product_tags: nil, ending_before: nil, entitled: nil, is_commit_specific: nil, multiplier: nil, override_specifiers: nil, override_tiers: nil, overwrite_rate: nil, priority: nil, product: nil, target: nil, type: nil)
+            # @!method initialize(id:, created_at:, starting_at:, applicable_product_tags: nil, ending_before: nil, entitled: nil, is_commit_specific: nil, multiplier: nil, override_specifiers: nil, override_tiers: nil, overwrite_rate: nil, priority: nil, product: nil, target: nil, type: nil)
             #   @param id [String]
+            #   @param created_at [Time]
             #   @param starting_at [Time]
             #   @param applicable_product_tags [Array<String>]
             #   @param ending_before [Time]
@@ -787,12 +819,7 @@ module MetronomeSDK
               #   @return [Array<String>, nil]
               optional :recurring_commit_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
 
-              # @!attribute recurring_credit_ids
-              #
-              #   @return [Array<String>, nil]
-              optional :recurring_credit_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
-
-              # @!method initialize(billing_frequency: nil, commit_ids: nil, presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil, recurring_commit_ids: nil, recurring_credit_ids: nil)
+              # @!method initialize(billing_frequency: nil, commit_ids: nil, presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil, recurring_commit_ids: nil)
               #   @param billing_frequency [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverrideSpecifier::BillingFrequency]
               #   @param commit_ids [Array<String>]
               #   @param presentation_group_values [Hash{Symbol=>String, nil}]
@@ -800,7 +827,6 @@ module MetronomeSDK
               #   @param product_id [String]
               #   @param product_tags [Array<String>]
               #   @param recurring_commit_ids [Array<String>]
-              #   @param recurring_credit_ids [Array<String>]
 
               # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverrideSpecifier#billing_frequency
               module BillingFrequency
@@ -2195,6 +2221,22 @@ module MetronomeSDK
             optional :access_schedule,
                      -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::AccessSchedule }
 
+            # @!attribute applicable_product_ids
+            #   Which products the credit applies to. If applicable_product_ids,
+            #   applicable_product_tags or specifiers are not provided, the credit applies to
+            #   all products.
+            #
+            #   @return [Array<String>, nil]
+            optional :applicable_product_ids, MetronomeSDK::Internal::Type::ArrayOf[String], nil?: true
+
+            # @!attribute applicable_product_tags
+            #   Which tags the credit applies to. If applicable_product_ids,
+            #   applicable_product_tags or specifiers are not provided, the credit applies to
+            #   all products.
+            #
+            #   @return [Array<String>, nil]
+            optional :applicable_product_tags, MetronomeSDK::Internal::Type::ArrayOf[String], nil?: true
+
             # @!attribute description
             #
             #   @return [String, nil]
@@ -2223,6 +2265,11 @@ module MetronomeSDK
             #   @return [Float, nil]
             optional :priority, Float, nil?: true
 
+            # @!attribute product_id
+            #
+            #   @return [String, nil]
+            optional :product_id, String
+
             # @!attribute rate_type
             #   If set, the credit's rate type was updated to the specified value.
             #
@@ -2235,7 +2282,20 @@ module MetronomeSDK
             #   @return [Float, nil]
             optional :rollover_fraction, Float, nil?: true
 
-            # @!method initialize(id:, access_schedule: nil, description: nil, hierarchy_configuration: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil, rollover_fraction: nil)
+            # @!attribute specifiers
+            #   List of filters that determine what kind of customer usage draws down a commit
+            #   or credit. A customer's usage needs to meet the condition of at least one of the
+            #   specifiers to contribute to a commit's or credit's drawdown. This field cannot
+            #   be used together with `applicable_product_ids` or `applicable_product_tags`.
+            #   Instead, to target usage by product or product tag, pass those values in the
+            #   body of `specifiers`.
+            #
+            #   @return [Array<MetronomeSDK::Models::CommitSpecifierInput>, nil]
+            optional :specifiers,
+                     -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::CommitSpecifierInput] },
+                     nil?: true
+
+            # @!method initialize(id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, hierarchy_configuration: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, product_id: nil, rate_type: nil, rollover_fraction: nil, specifiers: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit}
             #   for more details.
@@ -2243,6 +2303,10 @@ module MetronomeSDK
             #   @param id [String]
             #
             #   @param access_schedule [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::AccessSchedule]
+            #
+            #   @param applicable_product_ids [Array<String>, nil] Which products the credit applies to. If applicable_product_ids, applicable_prod
+            #
+            #   @param applicable_product_tags [Array<String>, nil] Which tags the credit applies to. If applicable*product_ids, applicable_product*
             #
             #   @param description [String]
             #
@@ -2254,9 +2318,13 @@ module MetronomeSDK
             #
             #   @param priority [Float, nil] If multiple credits are applicable, the one with the lower priority will apply f
             #
+            #   @param product_id [String]
+            #
             #   @param rate_type [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit::RateType] If set, the credit's rate type was updated to the specified value.
             #
             #   @param rollover_fraction [Float, nil]
+            #
+            #   @param specifiers [Array<MetronomeSDK::Models::CommitSpecifierInput>, nil] List of filters that determine what kind of customer usage draws down a commit o
 
             # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateCredit#access_schedule
             class AccessSchedule < MetronomeSDK::Internal::Type::BaseModel
@@ -2627,6 +2695,13 @@ module MetronomeSDK
             #   @return [String, nil]
             optional :custom_credit_type_id, String, nil?: true
 
+            # @!attribute discount_configuration
+            #
+            #   @return [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration, nil]
+            optional :discount_configuration,
+                     -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration },
+                     nil?: true
+
             # @!attribute is_enabled
             #   When set to false, the contract will not be evaluated against the
             #   threshold_amount. Toggling to true will result an immediate evaluation,
@@ -2653,7 +2728,7 @@ module MetronomeSDK
             #   @return [Float, nil]
             optional :threshold_amount, Float
 
-            # @!method initialize(commit: nil, custom_credit_type_id: nil, is_enabled: nil, payment_gate_config: nil, recharge_to_amount: nil, threshold_amount: nil)
+            # @!method initialize(commit: nil, custom_credit_type_id: nil, discount_configuration: nil, is_enabled: nil, payment_gate_config: nil, recharge_to_amount: nil, threshold_amount: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration}
             #   for more details.
@@ -2661,6 +2736,8 @@ module MetronomeSDK
             #   @param commit [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::Commit]
             #
             #   @param custom_credit_type_id [String, nil] If provided, the threshold, recharge-to amount, and the resulting threshold comm
+            #
+            #   @param discount_configuration [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration, nil]
             #
             #   @param is_enabled [Boolean] When set to false, the contract will not be evaluated against the threshold_amou
             #
@@ -2710,6 +2787,24 @@ module MetronomeSDK
               #   @param applicable_product_tags [Array<String>, nil] Which tags the threshold commit applies to. If both applicable_product_ids and a
               #
               #   @param specifiers [Array<MetronomeSDK::Models::CommitSpecifierInput>, nil] List of filters that determine what kind of customer usage draws down a commit o
+            end
+
+            # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration#discount_configuration
+            class DiscountConfiguration < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute payment_fraction
+              #   The fraction of the original amount that the customer pays after applying the
+              #   discount. Set to null to remove the discount fraction. For example, 0.85 means
+              #   the customer pays 85% of the original amount (a 15% discount).
+              #
+              #   @return [Float, nil]
+              optional :payment_fraction, Float, nil?: true
+
+              # @!method initialize(payment_fraction: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration}
+              #   for more details.
+              #
+              #   @param payment_fraction [Float, nil] The fraction of the original amount that the customer pays after applying the di
             end
           end
 
@@ -3015,6 +3110,13 @@ module MetronomeSDK
             #   @return [MetronomeSDK::Models::UpdateBaseThresholdCommit, nil]
             optional :commit, -> { MetronomeSDK::UpdateBaseThresholdCommit }
 
+            # @!attribute discount_configuration
+            #
+            #   @return [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::DiscountConfiguration, nil]
+            optional :discount_configuration,
+                     -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::DiscountConfiguration },
+                     nil?: true
+
             # @!attribute is_enabled
             #   When set to false, the contract will not be evaluated against the
             #   threshold_amount. Toggling to true will result an immediate evaluation,
@@ -3035,18 +3137,38 @@ module MetronomeSDK
             #   @return [Float, nil]
             optional :threshold_amount, Float
 
-            # @!method initialize(commit: nil, is_enabled: nil, payment_gate_config: nil, threshold_amount: nil)
+            # @!method initialize(commit: nil, discount_configuration: nil, is_enabled: nil, payment_gate_config: nil, threshold_amount: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration}
             #   for more details.
             #
             #   @param commit [MetronomeSDK::Models::UpdateBaseThresholdCommit]
             #
+            #   @param discount_configuration [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::DiscountConfiguration, nil]
+            #
             #   @param is_enabled [Boolean] When set to false, the contract will not be evaluated against the threshold_amou
             #
             #   @param payment_gate_config [MetronomeSDK::Models::PaymentGateConfigV2]
             #
             #   @param threshold_amount [Float] Specify the threshold amount for the contract. Each time the contract's usage hi
+
+            # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration#discount_configuration
+            class DiscountConfiguration < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute payment_fraction
+              #   The fraction of the original amount that the customer pays after applying the
+              #   discount. Set to null to remove the discount fraction. For example, 0.85 means
+              #   the customer pays 85% of the original amount (a 15% discount).
+              #
+              #   @return [Float, nil]
+              optional :payment_fraction, Float, nil?: true
+
+              # @!method initialize(payment_fraction: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::DiscountConfiguration}
+              #   for more details.
+              #
+              #   @param payment_fraction [Float, nil] The fraction of the original amount that the customer pays after applying the di
+            end
           end
 
           class UpdateSubscription < MetronomeSDK::Internal::Type::BaseModel

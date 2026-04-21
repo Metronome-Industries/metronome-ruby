@@ -7,7 +7,8 @@ module MetronomeSDK
         payment_gate_config: MetronomeSDK::PaymentGateConfigV2,
         recharge_to_amount: Float,
         threshold_amount: Float,
-        custom_credit_type_id: String
+        custom_credit_type_id: String,
+        discount_configuration: MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::DiscountConfiguration
       }
 
     class PrepaidBalanceThresholdConfigurationV2 < MetronomeSDK::Internal::Type::BaseModel
@@ -25,13 +26,20 @@ module MetronomeSDK
 
       def custom_credit_type_id=: (String) -> String
 
+      attr_reader discount_configuration: MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::DiscountConfiguration?
+
+      def discount_configuration=: (
+        MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::DiscountConfiguration
+      ) -> MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::DiscountConfiguration
+
       def initialize: (
         commit: MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::Commit,
         is_enabled: bool,
         payment_gate_config: MetronomeSDK::PaymentGateConfigV2,
         recharge_to_amount: Float,
         threshold_amount: Float,
-        ?custom_credit_type_id: String
+        ?custom_credit_type_id: String,
+        ?discount_configuration: MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::DiscountConfiguration
       ) -> void
 
       def to_hash: -> {
@@ -40,7 +48,8 @@ module MetronomeSDK
         payment_gate_config: MetronomeSDK::PaymentGateConfigV2,
         recharge_to_amount: Float,
         threshold_amount: Float,
-        custom_credit_type_id: String
+        custom_credit_type_id: String,
+        discount_configuration: MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::DiscountConfiguration
       }
 
       type commit =
@@ -50,7 +59,7 @@ module MetronomeSDK
           specifiers: ::Array[MetronomeSDK::CommitSpecifierInput]
         }
 
-      class Commit < MetronomeSDK::Models::UpdateBaseThresholdCommit
+      class Commit < MetronomeSDK::Models::BaseThresholdCommit
         def applicable_product_ids: -> ::Array[String]?
 
         def applicable_product_ids=: (::Array[String] _) -> ::Array[String]
@@ -76,6 +85,16 @@ module MetronomeSDK
           applicable_product_tags: ::Array[String],
           specifiers: ::Array[MetronomeSDK::CommitSpecifierInput]
         }
+      end
+
+      type discount_configuration = { payment_fraction: Float }
+
+      class DiscountConfiguration < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor payment_fraction: Float
+
+        def initialize: (payment_fraction: Float) -> void
+
+        def to_hash: -> { payment_fraction: Float }
       end
     end
   end

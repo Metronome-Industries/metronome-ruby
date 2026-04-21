@@ -22,7 +22,14 @@ module MetronomeSDK
       #   @return [String, nil]
       optional :name, String
 
-      # @!method initialize(product_id:, description: nil, name: nil)
+      # @!attribute priority
+      #   The priority of the commit, used to determine drawdown order. Lower priority
+      #   commits are consumed first. Defaults to 100 if not specified.
+      #
+      #   @return [Float, nil]
+      optional :priority, Float
+
+      # @!method initialize(product_id:, description: nil, name: nil, priority: nil)
       #   Some parameter documentations has been truncated, see
       #   {MetronomeSDK::Models::BaseThresholdCommit} for more details.
       #
@@ -31,6 +38,8 @@ module MetronomeSDK
       #   @param description [String]
       #
       #   @param name [String] Specify the name of the line item for the threshold charge. If left blank, it wi
+      #
+      #   @param priority [Float] The priority of the commit, used to determine drawdown order. Lower priority com
     end
   end
 end

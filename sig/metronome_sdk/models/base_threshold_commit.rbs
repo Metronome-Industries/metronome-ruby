@@ -1,7 +1,7 @@
 module MetronomeSDK
   module Models
     type base_threshold_commit =
-      { product_id: String, description: String, name: String }
+      { product_id: String, description: String, name: String, priority: Float }
 
     class BaseThresholdCommit < MetronomeSDK::Internal::Type::BaseModel
       attr_accessor product_id: String
@@ -14,13 +14,23 @@ module MetronomeSDK
 
       def name=: (String) -> String
 
+      attr_reader priority: Float?
+
+      def priority=: (Float) -> Float
+
       def initialize: (
         product_id: String,
         ?description: String,
-        ?name: String
+        ?name: String,
+        ?priority: Float
       ) -> void
 
-      def to_hash: -> { product_id: String, description: String, name: String }
+      def to_hash: -> {
+        product_id: String,
+        description: String,
+        name: String,
+        priority: Float
+      }
     end
   end
 end

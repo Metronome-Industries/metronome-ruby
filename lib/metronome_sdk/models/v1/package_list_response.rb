@@ -60,6 +60,12 @@ module MetronomeSDK
         #   @return [Symbol, MetronomeSDK::Models::V1::PackageListResponse::BillingProvider, nil]
         optional :billing_provider, enum: -> { MetronomeSDK::Models::V1::PackageListResponse::BillingProvider }
 
+        # @!attribute contract_name
+        #   The name to use for contracts created from this package.
+        #
+        #   @return [String, nil]
+        optional :contract_name, String
+
         # @!attribute credits
         #
         #   @return [Array<MetronomeSDK::Models::V1::PackageListResponse::Credit>, nil]
@@ -149,7 +155,7 @@ module MetronomeSDK
         #   @return [String, nil]
         optional :uniqueness_key, String
 
-        # @!method initialize(id:, commits:, created_at:, created_by:, overrides:, scheduled_charges:, usage_statement_schedule:, aliases: nil, archived_at: nil, billing_provider: nil, credits: nil, delivery_method: nil, duration: nil, multiplier_override_prioritization: nil, name: nil, net_payment_terms_days: nil, prepaid_balance_threshold_configuration: nil, rate_card_id: nil, recurring_commits: nil, recurring_credits: nil, scheduled_charges_on_usage_invoices: nil, spend_threshold_configuration: nil, subscriptions: nil, uniqueness_key: nil)
+        # @!method initialize(id:, commits:, created_at:, created_by:, overrides:, scheduled_charges:, usage_statement_schedule:, aliases: nil, archived_at: nil, billing_provider: nil, contract_name: nil, credits: nil, delivery_method: nil, duration: nil, multiplier_override_prioritization: nil, name: nil, net_payment_terms_days: nil, prepaid_balance_threshold_configuration: nil, rate_card_id: nil, recurring_commits: nil, recurring_credits: nil, scheduled_charges_on_usage_invoices: nil, spend_threshold_configuration: nil, subscriptions: nil, uniqueness_key: nil)
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::V1::PackageListResponse} for more details.
         #
@@ -172,6 +178,8 @@ module MetronomeSDK
         #   @param archived_at [Time]
         #
         #   @param billing_provider [Symbol, MetronomeSDK::Models::V1::PackageListResponse::BillingProvider]
+        #
+        #   @param contract_name [String] The name to use for contracts created from this package.
         #
         #   @param credits [Array<MetronomeSDK::Models::V1::PackageListResponse::Credit>]
         #
@@ -681,12 +689,7 @@ module MetronomeSDK
             #   @return [Array<String>, nil]
             optional :recurring_commit_template_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
 
-            # @!attribute recurring_credit_template_ids
-            #
-            #   @return [Array<String>, nil]
-            optional :recurring_credit_template_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
-
-            # @!method initialize(billing_frequency: nil, commit_template_ids: nil, presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil, recurring_commit_template_ids: nil, recurring_credit_template_ids: nil)
+            # @!method initialize(billing_frequency: nil, commit_template_ids: nil, presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil, recurring_commit_template_ids: nil)
             #   @param billing_frequency [Symbol, MetronomeSDK::Models::V1::PackageListResponse::Override::OverrideSpecifier::BillingFrequency]
             #   @param commit_template_ids [Array<String>]
             #   @param presentation_group_values [Hash{Symbol=>String, nil}]
@@ -694,7 +697,6 @@ module MetronomeSDK
             #   @param product_id [String]
             #   @param product_tags [Array<String>]
             #   @param recurring_commit_template_ids [Array<String>]
-            #   @param recurring_credit_template_ids [Array<String>]
 
             # @see MetronomeSDK::Models::V1::PackageListResponse::Override::OverrideSpecifier#billing_frequency
             module BillingFrequency
@@ -961,8 +963,14 @@ module MetronomeSDK
           required :frequency,
                    enum: -> { MetronomeSDK::Models::V1::PackageListResponse::UsageStatementSchedule::Frequency }
 
-          # @!method initialize(frequency:)
+          # @!attribute day
+          #
+          #   @return [Symbol, MetronomeSDK::Models::V1::PackageListResponse::UsageStatementSchedule::Day, nil]
+          optional :day, enum: -> { MetronomeSDK::Models::V1::PackageListResponse::UsageStatementSchedule::Day }
+
+          # @!method initialize(frequency:, day: nil)
           #   @param frequency [Symbol, MetronomeSDK::Models::V1::PackageListResponse::UsageStatementSchedule::Frequency]
+          #   @param day [Symbol, MetronomeSDK::Models::V1::PackageListResponse::UsageStatementSchedule::Day]
 
           # @see MetronomeSDK::Models::V1::PackageListResponse::UsageStatementSchedule#frequency
           module Frequency
@@ -972,6 +980,17 @@ module MetronomeSDK
             QUARTERLY = :QUARTERLY
             ANNUAL = :ANNUAL
             WEEKLY = :WEEKLY
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # @see MetronomeSDK::Models::V1::PackageListResponse::UsageStatementSchedule#day
+          module Day
+            extend MetronomeSDK::Internal::Type::Enum
+
+            FIRST_OF_MONTH = :FIRST_OF_MONTH
+            CONTRACT_START = :CONTRACT_START
 
             # @!method self.values
             #   @return [Array<Symbol>]

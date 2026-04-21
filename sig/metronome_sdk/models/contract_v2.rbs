@@ -1216,6 +1216,7 @@ module MetronomeSDK
       type override =
         {
           id: String,
+          created_at: Time,
           starting_at: Time,
           applicable_product_tags: ::Array[String],
           ending_before: Time,
@@ -1233,6 +1234,8 @@ module MetronomeSDK
 
       class Override < MetronomeSDK::Internal::Type::BaseModel
         attr_accessor id: String
+
+        attr_accessor created_at: Time
 
         attr_accessor starting_at: Time
 
@@ -1298,6 +1301,7 @@ module MetronomeSDK
 
         def initialize: (
           id: String,
+          created_at: Time,
           starting_at: Time,
           ?applicable_product_tags: ::Array[String],
           ?ending_before: Time,
@@ -1315,6 +1319,7 @@ module MetronomeSDK
 
         def to_hash: -> {
           id: String,
+          created_at: Time,
           starting_at: Time,
           applicable_product_tags: ::Array[String],
           ending_before: Time,
@@ -1338,8 +1343,7 @@ module MetronomeSDK
             pricing_group_values: ::Hash[Symbol, String],
             product_id: String,
             product_tags: ::Array[String],
-            recurring_commit_ids: ::Array[String],
-            recurring_credit_ids: ::Array[String]
+            recurring_commit_ids: ::Array[String]
           }
 
         class OverrideSpecifier < MetronomeSDK::Internal::Type::BaseModel
@@ -1377,10 +1381,6 @@ module MetronomeSDK
 
           def recurring_commit_ids=: (::Array[String]) -> ::Array[String]
 
-          attr_reader recurring_credit_ids: ::Array[String]?
-
-          def recurring_credit_ids=: (::Array[String]) -> ::Array[String]
-
           def initialize: (
             ?billing_frequency: MetronomeSDK::Models::ContractV2::Override::OverrideSpecifier::billing_frequency,
             ?commit_ids: ::Array[String],
@@ -1388,8 +1388,7 @@ module MetronomeSDK
             ?pricing_group_values: ::Hash[Symbol, String],
             ?product_id: String,
             ?product_tags: ::Array[String],
-            ?recurring_commit_ids: ::Array[String],
-            ?recurring_credit_ids: ::Array[String]
+            ?recurring_commit_ids: ::Array[String]
           ) -> void
 
           def to_hash: -> {
@@ -1399,8 +1398,7 @@ module MetronomeSDK
             pricing_group_values: ::Hash[Symbol, String],
             product_id: String,
             product_tags: ::Array[String],
-            recurring_commit_ids: ::Array[String],
-            recurring_credit_ids: ::Array[String]
+            recurring_commit_ids: ::Array[String]
           }
 
           type billing_frequency = :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY
@@ -1664,6 +1662,7 @@ module MetronomeSDK
           netsuite_sales_order_id: String,
           priority: Float,
           recurring_credit_id: String,
+          rolled_over_from: MetronomeSDK::ContractV2::Credit::RolledOverFrom,
           salesforce_opportunity_id: String,
           specifiers: ::Array[MetronomeSDK::CommitSpecifier],
           subscription_config: MetronomeSDK::RecurringCommitSubscriptionConfig
@@ -1744,6 +1743,12 @@ module MetronomeSDK
 
         def recurring_credit_id=: (String) -> String
 
+        attr_reader rolled_over_from: MetronomeSDK::ContractV2::Credit::RolledOverFrom?
+
+        def rolled_over_from=: (
+          MetronomeSDK::ContractV2::Credit::RolledOverFrom
+        ) -> MetronomeSDK::ContractV2::Credit::RolledOverFrom
+
         attr_reader salesforce_opportunity_id: String?
 
         def salesforce_opportunity_id=: (String) -> String
@@ -1779,6 +1784,7 @@ module MetronomeSDK
           ?netsuite_sales_order_id: String,
           ?priority: Float,
           ?recurring_credit_id: String,
+          ?rolled_over_from: MetronomeSDK::ContractV2::Credit::RolledOverFrom,
           ?salesforce_opportunity_id: String,
           ?specifiers: ::Array[MetronomeSDK::CommitSpecifier],
           ?subscription_config: MetronomeSDK::RecurringCommitSubscriptionConfig
@@ -1803,6 +1809,7 @@ module MetronomeSDK
           netsuite_sales_order_id: String,
           priority: Float,
           recurring_credit_id: String,
+          rolled_over_from: MetronomeSDK::ContractV2::Credit::RolledOverFrom,
           salesforce_opportunity_id: String,
           specifiers: ::Array[MetronomeSDK::CommitSpecifier],
           subscription_config: MetronomeSDK::RecurringCommitSubscriptionConfig
@@ -1848,6 +1855,7 @@ module MetronomeSDK
           | MetronomeSDK::ContractV2::Credit::Ledger::CreditCreditedLedgerEntry
           | MetronomeSDK::ContractV2::Credit::Ledger::CreditManualLedgerEntry
           | MetronomeSDK::ContractV2::Credit::Ledger::CreditSeatBasedAdjustmentLedgerEntry
+          | MetronomeSDK::ContractV2::Credit::Ledger::CreditRolloverLedgerEntry
 
         module Ledger
           extend MetronomeSDK::Internal::Type::Union
@@ -2182,7 +2190,66 @@ module MetronomeSDK
             end
           end
 
+          type credit_rollover_ledger_entry =
+            {
+              amount: Float,
+              new_contract_id: String,
+              segment_id: String,
+              timestamp: Time,
+              type: MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditRolloverLedgerEntry::type_
+            }
+
+          class CreditRolloverLedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor amount: Float
+
+            attr_accessor new_contract_id: String
+
+            attr_accessor segment_id: String
+
+            attr_accessor timestamp: Time
+
+            attr_accessor type: MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditRolloverLedgerEntry::type_
+
+            def initialize: (
+              amount: Float,
+              new_contract_id: String,
+              segment_id: String,
+              timestamp: Time,
+              type: MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditRolloverLedgerEntry::type_
+            ) -> void
+
+            def to_hash: -> {
+              amount: Float,
+              new_contract_id: String,
+              segment_id: String,
+              timestamp: Time,
+              type: MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditRolloverLedgerEntry::type_
+            }
+
+            type type_ = :CREDIT_ROLLOVER
+
+            module Type
+              extend MetronomeSDK::Internal::Type::Enum
+
+              CREDIT_ROLLOVER: :CREDIT_ROLLOVER
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::ContractV2::Credit::Ledger::CreditRolloverLedgerEntry::type_]
+            end
+          end
+
           def self?.variants: -> ::Array[MetronomeSDK::Models::ContractV2::Credit::ledger]
+        end
+
+        type rolled_over_from = { contract_id: String, credit_id: String }
+
+        class RolledOverFrom < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor contract_id: String
+
+          attr_accessor credit_id: String
+
+          def initialize: (contract_id: String, credit_id: String) -> void
+
+          def to_hash: -> { contract_id: String, credit_id: String }
         end
       end
 

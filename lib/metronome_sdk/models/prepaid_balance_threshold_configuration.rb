@@ -41,7 +41,13 @@ module MetronomeSDK
       #   @return [String, nil]
       optional :custom_credit_type_id, String
 
-      # @!method initialize(commit:, is_enabled:, payment_gate_config:, recharge_to_amount:, threshold_amount:, custom_credit_type_id: nil)
+      # @!attribute discount_configuration
+      #
+      #   @return [MetronomeSDK::Models::PrepaidBalanceThresholdConfiguration::DiscountConfiguration, nil]
+      optional :discount_configuration,
+               -> { MetronomeSDK::PrepaidBalanceThresholdConfiguration::DiscountConfiguration }
+
+      # @!method initialize(commit:, is_enabled:, payment_gate_config:, recharge_to_amount:, threshold_amount:, custom_credit_type_id: nil, discount_configuration: nil)
       #   Some parameter documentations has been truncated, see
       #   {MetronomeSDK::Models::PrepaidBalanceThresholdConfiguration} for more details.
       #
@@ -56,6 +62,8 @@ module MetronomeSDK
       #   @param threshold_amount [Float] Specify the threshold amount for the contract. Each time the contract's prepaid
       #
       #   @param custom_credit_type_id [String] If provided, the threshold, recharge-to amount, and the resulting threshold comm
+      #
+      #   @param discount_configuration [MetronomeSDK::Models::PrepaidBalanceThresholdConfiguration::DiscountConfiguration]
 
       # @see MetronomeSDK::Models::PrepaidBalanceThresholdConfiguration#commit
       class Commit < MetronomeSDK::Models::BaseThresholdCommit
@@ -94,6 +102,24 @@ module MetronomeSDK
         #   @param applicable_product_tags [Array<String>] Which tags the threshold commit applies to. If applicable_product_ids, applicabl
         #
         #   @param specifiers [Array<MetronomeSDK::Models::CommitSpecifierInput>] List of filters that determine what kind of customer usage draws down a commit o
+      end
+
+      # @see MetronomeSDK::Models::PrepaidBalanceThresholdConfiguration#discount_configuration
+      class DiscountConfiguration < MetronomeSDK::Internal::Type::BaseModel
+        # @!attribute payment_fraction
+        #   The fraction of the original amount that the customer pays after applying the
+        #   discount. For example, 0.85 means the customer pays 85% of the original amount
+        #   (a 15% discount).
+        #
+        #   @return [Float]
+        required :payment_fraction, Float
+
+        # @!method initialize(payment_fraction:)
+        #   Some parameter documentations has been truncated, see
+        #   {MetronomeSDK::Models::PrepaidBalanceThresholdConfiguration::DiscountConfiguration}
+        #   for more details.
+        #
+        #   @param payment_fraction [Float] The fraction of the original amount that the customer pays after applying the di
       end
     end
   end

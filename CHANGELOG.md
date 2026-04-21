@@ -1,5 +1,52 @@
 # Changelog
 
+## 3.5.0 (2026-04-18)
+
+Full Changelog: [v3.4.0...v3.5.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v3.4.0...v3.5.0)
+
+### Features
+
+* add override created at in api responses ([87dbd21](https://github.com/Metronome-Industries/metronome-ruby/commit/87dbd21032840c620459273377db9bb272cbfd22))
+* Add recurring_commit_ids and remove recurring_credit_ids from api ([792197c](https://github.com/Metronome-Industries/metronome-ruby/commit/792197c773eb6235d4c29745b813d950746214dd))
+* Docs: Dd/update balance guides ([a0c43b0](https://github.com/Metronome-Industries/metronome-ruby/commit/a0c43b07ceaa54836c753c40dc31a900ead0f30c))
+* Enable OIDC auth for npm publisher ([6db4272](https://github.com/Metronome-Industries/metronome-ruby/commit/6db427233a322a94667e5e35e0de4aa8eb17fdde))
+* External fixes for rollover credits ([6478a14](https://github.com/Metronome-Industries/metronome-ruby/commit/6478a14a3efa407fd1738dfcd94fc57719ced31d))
+* Fully document CreditAdd/CreditUpdate fields in API spec ([eb852a3](https://github.com/Metronome-Industries/metronome-ruby/commit/eb852a392fc610d2a7207d06884bbf2061c11954))
+* Fully document CreditAdd/CreditUpdate fields in API spec ([f0581f3](https://github.com/Metronome-Industries/metronome-ruby/commit/f0581f37f25e052401a9662c41580bd252f42ec8))
+* Map missing `contract_name` when returning Packages ([3eee272](https://github.com/Metronome-Industries/metronome-ruby/commit/3eee272e7797350e99f372996728453946284d16))
+* **ORCH-1361:** add priority to threshold commit OpenAPI schemas ([6461ec2](https://github.com/Metronome-Industries/metronome-ruby/commit/6461ec2ca1efd1b9a09cf33a4c5774dad5f535d1))
+* ORCH-1410: Add discount_configuration to POST v2/contracts/edit ([852219d](https://github.com/Metronome-Industries/metronome-ruby/commit/852219d69ee7cb5e22fdb3e9b0611c463b191f67))
+* remove dead field, pipe day through to MRI, return day when get package ([17f2939](https://github.com/Metronome-Industries/metronome-ruby/commit/17f2939a021072c53619250274aa89278fdb20d4))
+* Support nullable discount fraction on contract update inputs ([c67304b](https://github.com/Metronome-Industries/metronome-ruby/commit/c67304b1a4a9d5ab1761e220e36d3bd1f71e153b))
+
+
+### Bug Fixes
+
+* align path encoding with RFC 3986 section 3.3 ([cba23c1](https://github.com/Metronome-Industries/metronome-ruby/commit/cba23c1734d5642be93612e3d562c43ce5281567))
+* **internal:** correct multipart form field name encoding ([7744335](https://github.com/Metronome-Industries/metronome-ruby/commit/774433578aef086d6997faccc6e48e97c7381ec8))
+* multipart encoding for file arrays ([824320c](https://github.com/Metronome-Industries/metronome-ruby/commit/824320cdfbacbeac8650c6179280d0a71eb24b44))
+* variable name typo ([802a290](https://github.com/Metronome-Industries/metronome-ruby/commit/802a290f7a1eb290c8aad3ec0a6c7ad9eeed20bd))
+
+
+### Chores
+
+* **ci:** skip lint on metadata-only changes ([f14cdaa](https://github.com/Metronome-Industries/metronome-ruby/commit/f14cdaa8a02129e73fc1b32914ae14146b56b4ad))
+* **ci:** support opting out of skipping builds on metadata-only commits ([6f4c5bc](https://github.com/Metronome-Industries/metronome-ruby/commit/6f4c5bc8f054ccafa69ba30514c91657021e871f))
+* **internal:** tweak CI branches ([71b11a6](https://github.com/Metronome-Industries/metronome-ruby/commit/71b11a6dba46733ffec3b0ab10d5812308972c19))
+* **internal:** update gitignore ([dd4bfc8](https://github.com/Metronome-Industries/metronome-ruby/commit/dd4bfc8cae02b3edd68f1104a07b982a6e2c1b3b))
+* **tests:** bump steady to v0.19.4 ([da62d02](https://github.com/Metronome-Industries/metronome-ruby/commit/da62d027d99e26ef0f961336fd08af2926365d99))
+* **tests:** bump steady to v0.19.5 ([76ea6a0](https://github.com/Metronome-Industries/metronome-ruby/commit/76ea6a0aaf684bc2e7c691fa860c8877e1943dc0))
+* **tests:** bump steady to v0.19.6 ([1368bba](https://github.com/Metronome-Industries/metronome-ruby/commit/1368bbac0a69aa766786a9ed78d9195c73b31d09))
+* **tests:** bump steady to v0.19.7 ([5e94fed](https://github.com/Metronome-Industries/metronome-ruby/commit/5e94fed2cf97a1b3a7565ac18952c70b47040847))
+* **tests:** bump steady to v0.20.1 ([069329c](https://github.com/Metronome-Industries/metronome-ruby/commit/069329ca1cc50b77a5b76a057eae32e732066697))
+* **tests:** bump steady to v0.20.2 ([add7ae8](https://github.com/Metronome-Industries/metronome-ruby/commit/add7ae85ea63ebeacbf3cf754ef7bd48a92c701d))
+* **tests:** bump steady to v0.22.1 ([5908006](https://github.com/Metronome-Industries/metronome-ruby/commit/5908006482ed816f9960dc00e727f05067f2d0bc))
+
+
+### Refactors
+
+* **tests:** switch from prism to steady ([e8f7dbc](https://github.com/Metronome-Industries/metronome-ruby/commit/e8f7dbc646afdfa31bcce4a580e863258f76dd06))
+
 ## 3.4.0 (2026-03-11)
 
 Full Changelog: [v3.3.0...v3.4.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v3.3.0...v3.4.0)
