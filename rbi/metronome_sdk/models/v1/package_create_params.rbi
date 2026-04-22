@@ -39,23 +39,6 @@ module MetronomeSDK
         sig do
           returns(
             T.nilable(
-              MetronomeSDK::V1::PackageCreateParams::BillingAnchorDate::OrSymbol
-            )
-          )
-        end
-        attr_reader :billing_anchor_date
-
-        sig do
-          params(
-            billing_anchor_date:
-              MetronomeSDK::V1::PackageCreateParams::BillingAnchorDate::OrSymbol
-          ).void
-        end
-        attr_writer :billing_anchor_date
-
-        sig do
-          returns(
-            T.nilable(
               MetronomeSDK::V1::PackageCreateParams::BillingProvider::OrSymbol
             )
           )
@@ -344,8 +327,6 @@ module MetronomeSDK
             name: String,
             aliases:
               T::Array[MetronomeSDK::V1::PackageCreateParams::Alias::OrHash],
-            billing_anchor_date:
-              MetronomeSDK::V1::PackageCreateParams::BillingAnchorDate::OrSymbol,
             billing_provider:
               MetronomeSDK::V1::PackageCreateParams::BillingProvider::OrSymbol,
             commits:
@@ -397,7 +378,6 @@ module MetronomeSDK
           # multiple packages, it will reference the package to which it was most recently
           # assigned. It is not exposed to end customers.
           aliases: nil,
-          billing_anchor_date: nil,
           billing_provider: nil,
           commits: nil,
           contract_name: nil,
@@ -441,8 +421,6 @@ module MetronomeSDK
             {
               name: String,
               aliases: T::Array[MetronomeSDK::V1::PackageCreateParams::Alias],
-              billing_anchor_date:
-                MetronomeSDK::V1::PackageCreateParams::BillingAnchorDate::OrSymbol,
               billing_provider:
                 MetronomeSDK::V1::PackageCreateParams::BillingProvider::OrSymbol,
               commits: T::Array[MetronomeSDK::V1::PackageCreateParams::Commit],
@@ -528,40 +506,6 @@ module MetronomeSDK
             )
           end
           def to_hash
-          end
-        end
-
-        module BillingAnchorDate
-          extend MetronomeSDK::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(
-                Symbol,
-                MetronomeSDK::V1::PackageCreateParams::BillingAnchorDate
-              )
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          CONTRACT_START_DATE =
-            T.let(
-              :contract_start_date,
-              MetronomeSDK::V1::PackageCreateParams::BillingAnchorDate::TaggedSymbol
-            )
-          FIRST_BILLING_PERIOD =
-            T.let(
-              :first_billing_period,
-              MetronomeSDK::V1::PackageCreateParams::BillingAnchorDate::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                MetronomeSDK::V1::PackageCreateParams::BillingAnchorDate::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
           end
         end
 
