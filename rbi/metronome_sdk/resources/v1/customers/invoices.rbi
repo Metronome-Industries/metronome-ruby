@@ -120,6 +120,7 @@ module MetronomeSDK
           sig do
             params(
               customer_id: String,
+              contract_id: String,
               credit_type_id: String,
               ending_before: Time,
               limit: Integer,
@@ -139,6 +140,8 @@ module MetronomeSDK
           def list(
             # Path param
             customer_id:,
+            # Query param: Only return invoices for the specified contract
+            contract_id: nil,
             # Query param: Only return invoices for the specified credit type
             credit_type_id: nil,
             # Query param: RFC 3339 timestamp (exclusive). Invoices will only be returned for

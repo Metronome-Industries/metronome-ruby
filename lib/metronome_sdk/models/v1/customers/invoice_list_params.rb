@@ -14,6 +14,12 @@ module MetronomeSDK
           #   @return [String]
           required :customer_id, String
 
+          # @!attribute contract_id
+          #   Only return invoices for the specified contract
+          #
+          #   @return [String, nil]
+          optional :contract_id, String
+
           # @!attribute credit_type_id
           #   Only return invoices for the specified credit type
           #
@@ -65,11 +71,13 @@ module MetronomeSDK
           #   @return [String, nil]
           optional :status, String
 
-          # @!method initialize(customer_id:, credit_type_id: nil, ending_before: nil, limit: nil, next_page: nil, skip_zero_qty_line_items: nil, sort: nil, starting_on: nil, status: nil, request_options: {})
+          # @!method initialize(customer_id:, contract_id: nil, credit_type_id: nil, ending_before: nil, limit: nil, next_page: nil, skip_zero_qty_line_items: nil, sort: nil, starting_on: nil, status: nil, request_options: {})
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V1::Customers::InvoiceListParams} for more details.
           #
           #   @param customer_id [String]
+          #
+          #   @param contract_id [String] Only return invoices for the specified contract
           #
           #   @param credit_type_id [String] Only return invoices for the specified credit type
           #

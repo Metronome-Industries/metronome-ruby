@@ -136,9 +136,11 @@ module MetronomeSDK
           # - Voided invoices are included in results by default unless filtered out by
           #   status
           #
-          # @overload list(customer_id:, credit_type_id: nil, ending_before: nil, limit: nil, next_page: nil, skip_zero_qty_line_items: nil, sort: nil, starting_on: nil, status: nil, request_options: {})
+          # @overload list(customer_id:, contract_id: nil, credit_type_id: nil, ending_before: nil, limit: nil, next_page: nil, skip_zero_qty_line_items: nil, sort: nil, starting_on: nil, status: nil, request_options: {})
           #
           # @param customer_id [String] Path param
+          #
+          # @param contract_id [String] Query param: Only return invoices for the specified contract
           #
           # @param credit_type_id [String] Query param: Only return invoices for the specified credit type
           #
