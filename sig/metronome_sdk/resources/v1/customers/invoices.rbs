@@ -12,6 +12,7 @@ module MetronomeSDK
 
           def list: (
             customer_id: String,
+            ?contract_id: String,
             ?credit_type_id: String,
             ?ending_before: Time,
             ?limit: Integer,

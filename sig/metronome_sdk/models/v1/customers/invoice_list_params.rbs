@@ -5,6 +5,7 @@ module MetronomeSDK
         type invoice_list_params =
           {
             customer_id: String,
+            contract_id: String,
             credit_type_id: String,
             ending_before: Time,
             limit: Integer,
@@ -21,6 +22,10 @@ module MetronomeSDK
           include MetronomeSDK::Internal::Type::RequestParameters
 
           attr_accessor customer_id: String
+
+          attr_reader contract_id: String?
+
+          def contract_id=: (String) -> String
 
           attr_reader credit_type_id: String?
 
@@ -58,6 +63,7 @@ module MetronomeSDK
 
           def initialize: (
             customer_id: String,
+            ?contract_id: String,
             ?credit_type_id: String,
             ?ending_before: Time,
             ?limit: Integer,
@@ -71,6 +77,7 @@ module MetronomeSDK
 
           def to_hash: -> {
             customer_id: String,
+            contract_id: String,
             credit_type_id: String,
             ending_before: Time,
             limit: Integer,

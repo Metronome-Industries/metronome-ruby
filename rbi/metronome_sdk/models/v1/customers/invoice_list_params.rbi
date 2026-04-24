@@ -19,6 +19,13 @@ module MetronomeSDK
           sig { returns(String) }
           attr_accessor :customer_id
 
+          # Only return invoices for the specified contract
+          sig { returns(T.nilable(String)) }
+          attr_reader :contract_id
+
+          sig { params(contract_id: String).void }
+          attr_writer :contract_id
+
           # Only return invoices for the specified credit type
           sig { returns(T.nilable(String)) }
           attr_reader :credit_type_id
@@ -92,6 +99,7 @@ module MetronomeSDK
           sig do
             params(
               customer_id: String,
+              contract_id: String,
               credit_type_id: String,
               ending_before: Time,
               limit: Integer,
@@ -106,6 +114,8 @@ module MetronomeSDK
           end
           def self.new(
             customer_id:,
+            # Only return invoices for the specified contract
+            contract_id: nil,
             # Only return invoices for the specified credit type
             credit_type_id: nil,
             # RFC 3339 timestamp (exclusive). Invoices will only be returned for billing
@@ -133,6 +143,7 @@ module MetronomeSDK
             override.returns(
               {
                 customer_id: String,
+                contract_id: String,
                 credit_type_id: String,
                 ending_before: Time,
                 limit: Integer,
