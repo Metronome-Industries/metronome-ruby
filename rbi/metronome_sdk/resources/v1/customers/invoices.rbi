@@ -130,6 +130,8 @@ module MetronomeSDK
                 MetronomeSDK::V1::Customers::InvoiceListParams::Sort::OrSymbol,
               starting_on: Time,
               status: String,
+              type:
+                MetronomeSDK::V1::Customers::InvoiceListParams::Type::OrSymbol,
               request_options: MetronomeSDK::RequestOptions::OrHash
             ).returns(
               MetronomeSDK::Internal::CursorPage[
@@ -162,6 +164,8 @@ module MetronomeSDK
             starting_on: nil,
             # Query param: Invoice status, e.g. DRAFT, FINALIZED, or VOID
             status: nil,
+            # Query param: Filter invoices by type. Defaults to returning all invoice types.
+            type: nil,
             request_options: {}
           )
           end

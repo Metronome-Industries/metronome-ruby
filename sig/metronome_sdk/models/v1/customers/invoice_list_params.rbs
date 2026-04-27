@@ -13,7 +13,8 @@ module MetronomeSDK
             skip_zero_qty_line_items: bool,
             sort: MetronomeSDK::Models::V1::Customers::InvoiceListParams::sort,
             starting_on: Time,
-            status: String
+            status: String,
+            type: MetronomeSDK::Models::V1::Customers::InvoiceListParams::type_
           }
           & MetronomeSDK::Internal::Type::request_parameters
 
@@ -61,6 +62,12 @@ module MetronomeSDK
 
           def status=: (String) -> String
 
+          attr_reader type: MetronomeSDK::Models::V1::Customers::InvoiceListParams::type_?
+
+          def type=: (
+            MetronomeSDK::Models::V1::Customers::InvoiceListParams::type_
+          ) -> MetronomeSDK::Models::V1::Customers::InvoiceListParams::type_
+
           def initialize: (
             customer_id: String,
             ?contract_id: String,
@@ -72,6 +79,7 @@ module MetronomeSDK
             ?sort: MetronomeSDK::Models::V1::Customers::InvoiceListParams::sort,
             ?starting_on: Time,
             ?status: String,
+            ?type: MetronomeSDK::Models::V1::Customers::InvoiceListParams::type_,
             ?request_options: MetronomeSDK::request_opts
           ) -> void
 
@@ -86,6 +94,7 @@ module MetronomeSDK
             sort: MetronomeSDK::Models::V1::Customers::InvoiceListParams::sort,
             starting_on: Time,
             status: String,
+            type: MetronomeSDK::Models::V1::Customers::InvoiceListParams::type_,
             request_options: MetronomeSDK::RequestOptions
           }
 
@@ -98,6 +107,18 @@ module MetronomeSDK
             DATE_DESC: :date_desc
 
             def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::InvoiceListParams::sort]
+          end
+
+          type type_ = :USAGE | :USAGE_CONSOLIDATED | :SCHEDULED
+
+          module Type
+            extend MetronomeSDK::Internal::Type::Enum
+
+            USAGE: :USAGE
+            USAGE_CONSOLIDATED: :USAGE_CONSOLIDATED
+            SCHEDULED: :SCHEDULED
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::InvoiceListParams::type_]
           end
         end
       end
