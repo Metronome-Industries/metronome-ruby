@@ -96,6 +96,24 @@ module MetronomeSDK
           sig { params(status: String).void }
           attr_writer :status
 
+          # Filter invoices by type. Defaults to returning all invoice types.
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::V1::Customers::InvoiceListParams::Type::OrSymbol
+              )
+            )
+          end
+          attr_reader :type
+
+          sig do
+            params(
+              type:
+                MetronomeSDK::V1::Customers::InvoiceListParams::Type::OrSymbol
+            ).void
+          end
+          attr_writer :type
+
           sig do
             params(
               customer_id: String,
@@ -109,6 +127,8 @@ module MetronomeSDK
                 MetronomeSDK::V1::Customers::InvoiceListParams::Sort::OrSymbol,
               starting_on: Time,
               status: String,
+              type:
+                MetronomeSDK::V1::Customers::InvoiceListParams::Type::OrSymbol,
               request_options: MetronomeSDK::RequestOptions::OrHash
             ).returns(T.attached_class)
           end
@@ -135,6 +155,8 @@ module MetronomeSDK
             starting_on: nil,
             # Invoice status, e.g. DRAFT, FINALIZED, or VOID
             status: nil,
+            # Filter invoices by type. Defaults to returning all invoice types.
+            type: nil,
             request_options: {}
           )
           end
@@ -153,6 +175,8 @@ module MetronomeSDK
                   MetronomeSDK::V1::Customers::InvoiceListParams::Sort::OrSymbol,
                 starting_on: Time,
                 status: String,
+                type:
+                  MetronomeSDK::V1::Customers::InvoiceListParams::Type::OrSymbol,
                 request_options: MetronomeSDK::RequestOptions
               }
             )
@@ -189,6 +213,46 @@ module MetronomeSDK
               override.returns(
                 T::Array[
                   MetronomeSDK::V1::Customers::InvoiceListParams::Sort::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Filter invoices by type. Defaults to returning all invoice types.
+          module Type
+            extend MetronomeSDK::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  MetronomeSDK::V1::Customers::InvoiceListParams::Type
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            USAGE =
+              T.let(
+                :USAGE,
+                MetronomeSDK::V1::Customers::InvoiceListParams::Type::TaggedSymbol
+              )
+            USAGE_CONSOLIDATED =
+              T.let(
+                :USAGE_CONSOLIDATED,
+                MetronomeSDK::V1::Customers::InvoiceListParams::Type::TaggedSymbol
+              )
+            SCHEDULED =
+              T.let(
+                :SCHEDULED,
+                MetronomeSDK::V1::Customers::InvoiceListParams::Type::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  MetronomeSDK::V1::Customers::InvoiceListParams::Type::TaggedSymbol
                 ]
               )
             end
