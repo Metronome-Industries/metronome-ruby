@@ -187,7 +187,7 @@ module MetronomeSDK
 
         # If provided, provisions a customer on a package instead of creating a
         # traditional contract. When specified, only customer_id, starting_at, package_id,
-        # and uniqueness_key are allowed.
+        # uniqueness_key, transition, and custom_fields are allowed.
         sig { returns(T.nilable(String)) }
         attr_reader :package_id
 
@@ -558,7 +558,7 @@ module MetronomeSDK
           package_alias: nil,
           # If provided, provisions a customer on a package instead of creating a
           # traditional contract. When specified, only customer_id, starting_at, package_id,
-          # and uniqueness_key are allowed.
+          # uniqueness_key, transition, and custom_fields are allowed.
           package_id: nil,
           prepaid_balance_threshold_configuration: nil,
           # This field's availability is dependent on your client's configuration.
