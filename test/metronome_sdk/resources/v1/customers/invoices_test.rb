@@ -63,6 +63,7 @@ class MetronomeSDK::Test::Resources::V1::Customers::InvoicesTest < MetronomeSDK:
         plan_custom_fields: ^(MetronomeSDK::Internal::Type::HashOf[String]) | nil,
         plan_id: String | nil,
         plan_name: String | nil,
+        regenerated_from_invoice_id: String | nil,
         reseller_royalty: MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty | nil,
         revenue_system_invoices: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::Invoice::RevenueSystemInvoice]) | nil,
         salesforce_opportunity_id: String | nil,
