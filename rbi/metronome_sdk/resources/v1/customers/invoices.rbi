@@ -120,6 +120,7 @@ module MetronomeSDK
           sig do
             params(
               customer_id: String,
+              contract_id: String,
               credit_type_id: String,
               ending_before: Time,
               limit: Integer,
@@ -129,6 +130,8 @@ module MetronomeSDK
                 MetronomeSDK::V1::Customers::InvoiceListParams::Sort::OrSymbol,
               starting_on: Time,
               status: String,
+              type:
+                MetronomeSDK::V1::Customers::InvoiceListParams::Type::OrSymbol,
               request_options: MetronomeSDK::RequestOptions::OrHash
             ).returns(
               MetronomeSDK::Internal::CursorPage[
@@ -139,6 +142,8 @@ module MetronomeSDK
           def list(
             # Path param
             customer_id:,
+            # Query param: Only return invoices for the specified contract
+            contract_id: nil,
             # Query param: Only return invoices for the specified credit type
             credit_type_id: nil,
             # Query param: RFC 3339 timestamp (exclusive). Invoices will only be returned for
@@ -159,6 +164,8 @@ module MetronomeSDK
             starting_on: nil,
             # Query param: Invoice status, e.g. DRAFT, FINALIZED, or VOID
             status: nil,
+            # Query param: Filter invoices by type. Defaults to returning all invoice types.
+            type: nil,
             request_options: {}
           )
           end

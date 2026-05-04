@@ -58,13 +58,11 @@ module MetronomeSDK
         #   provisioning with a package. Edited contracts will still be associated with
         #   the package used during provisioning.
         #
-        # @overload create(name:, aliases: nil, billing_anchor_date: nil, billing_provider: nil, commits: nil, contract_name: nil, credits: nil, delivery_method: nil, duration: nil, multiplier_override_prioritization: nil, net_payment_terms_days: nil, overrides: nil, prepaid_balance_threshold_configuration: nil, rate_card_alias: nil, rate_card_id: nil, recurring_commits: nil, recurring_credits: nil, scheduled_charges: nil, scheduled_charges_on_usage_invoices: nil, spend_threshold_configuration: nil, subscriptions: nil, uniqueness_key: nil, usage_statement_schedule: nil, request_options: {})
+        # @overload create(name:, aliases: nil, billing_provider: nil, commits: nil, contract_name: nil, credits: nil, delivery_method: nil, duration: nil, multiplier_override_prioritization: nil, net_payment_terms_days: nil, overrides: nil, prepaid_balance_threshold_configuration: nil, rate_card_alias: nil, rate_card_id: nil, recurring_commits: nil, recurring_credits: nil, scheduled_charges: nil, scheduled_charges_on_usage_invoices: nil, spend_threshold_configuration: nil, subscriptions: nil, uniqueness_key: nil, usage_statement_schedule: nil, request_options: {})
         #
         # @param name [String]
         #
         # @param aliases [Array<MetronomeSDK::Models::V1::PackageCreateParams::Alias>] Reference this alias when creating a contract. If the same alias is assigned to
-        #
-        # @param billing_anchor_date [Symbol, MetronomeSDK::Models::V1::PackageCreateParams::BillingAnchorDate]
         #
         # @param billing_provider [Symbol, MetronomeSDK::Models::V1::PackageCreateParams::BillingProvider]
         #

@@ -19,8 +19,8 @@ module MetronomeSDK
 
         # Contracts define a customer's products, pricing, discounts, access duration, and
         # billing configuration. Contracts serve as the central billing agreement for both
-        # PLG and Enterprise customers, you can automatically customers access to your
-        # products and services directly from your product or CRM.
+        # PLG and Enterprise customers. You can automatically grant customers access to
+        # your products and services directly from your product or CRM.
         #
         # ### Use this endpoint to:
         #
@@ -245,7 +245,7 @@ module MetronomeSDK
           package_alias: nil,
           # If provided, provisions a customer on a package instead of creating a
           # traditional contract. When specified, only customer_id, starting_at, package_id,
-          # and uniqueness_key are allowed.
+          # uniqueness_key, transition, and custom_fields are allowed.
           package_id: nil,
           prepaid_balance_threshold_configuration: nil,
           # This field's availability is dependent on your client's configuration.

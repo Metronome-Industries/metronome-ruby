@@ -5,6 +5,7 @@ module MetronomeSDK
         type invoice_list_params =
           {
             customer_id: String,
+            contract_id: String,
             credit_type_id: String,
             ending_before: Time,
             limit: Integer,
@@ -12,7 +13,8 @@ module MetronomeSDK
             skip_zero_qty_line_items: bool,
             sort: MetronomeSDK::Models::V1::Customers::InvoiceListParams::sort,
             starting_on: Time,
-            status: String
+            status: String,
+            type: MetronomeSDK::Models::V1::Customers::InvoiceListParams::type_
           }
           & MetronomeSDK::Internal::Type::request_parameters
 
@@ -21,6 +23,10 @@ module MetronomeSDK
           include MetronomeSDK::Internal::Type::RequestParameters
 
           attr_accessor customer_id: String
+
+          attr_reader contract_id: String?
+
+          def contract_id=: (String) -> String
 
           attr_reader credit_type_id: String?
 
@@ -56,8 +62,15 @@ module MetronomeSDK
 
           def status=: (String) -> String
 
+          attr_reader type: MetronomeSDK::Models::V1::Customers::InvoiceListParams::type_?
+
+          def type=: (
+            MetronomeSDK::Models::V1::Customers::InvoiceListParams::type_
+          ) -> MetronomeSDK::Models::V1::Customers::InvoiceListParams::type_
+
           def initialize: (
             customer_id: String,
+            ?contract_id: String,
             ?credit_type_id: String,
             ?ending_before: Time,
             ?limit: Integer,
@@ -66,11 +79,13 @@ module MetronomeSDK
             ?sort: MetronomeSDK::Models::V1::Customers::InvoiceListParams::sort,
             ?starting_on: Time,
             ?status: String,
+            ?type: MetronomeSDK::Models::V1::Customers::InvoiceListParams::type_,
             ?request_options: MetronomeSDK::request_opts
           ) -> void
 
           def to_hash: -> {
             customer_id: String,
+            contract_id: String,
             credit_type_id: String,
             ending_before: Time,
             limit: Integer,
@@ -79,6 +94,7 @@ module MetronomeSDK
             sort: MetronomeSDK::Models::V1::Customers::InvoiceListParams::sort,
             starting_on: Time,
             status: String,
+            type: MetronomeSDK::Models::V1::Customers::InvoiceListParams::type_,
             request_options: MetronomeSDK::RequestOptions
           }
 
@@ -91,6 +107,18 @@ module MetronomeSDK
             DATE_DESC: :date_desc
 
             def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::InvoiceListParams::sort]
+          end
+
+          type type_ = :USAGE | :USAGE_CONSOLIDATED | :SCHEDULED
+
+          module Type
+            extend MetronomeSDK::Internal::Type::Enum
+
+            USAGE: :USAGE
+            USAGE_CONSOLIDATED: :USAGE_CONSOLIDATED
+            SCHEDULED: :SCHEDULED
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::InvoiceListParams::type_]
           end
         end
       end

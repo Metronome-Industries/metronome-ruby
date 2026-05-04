@@ -22,11 +22,6 @@ module MetronomeSDK
         optional :aliases,
                  -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::PackageCreateParams::Alias] }
 
-        # @!attribute billing_anchor_date
-        #
-        #   @return [Symbol, MetronomeSDK::Models::V1::PackageCreateParams::BillingAnchorDate, nil]
-        optional :billing_anchor_date, enum: -> { MetronomeSDK::V1::PackageCreateParams::BillingAnchorDate }
-
         # @!attribute billing_provider
         #
         #   @return [Symbol, MetronomeSDK::Models::V1::PackageCreateParams::BillingProvider, nil]
@@ -151,15 +146,13 @@ module MetronomeSDK
         #   @return [MetronomeSDK::Models::V1::PackageCreateParams::UsageStatementSchedule, nil]
         optional :usage_statement_schedule, -> { MetronomeSDK::V1::PackageCreateParams::UsageStatementSchedule }
 
-        # @!method initialize(name:, aliases: nil, billing_anchor_date: nil, billing_provider: nil, commits: nil, contract_name: nil, credits: nil, delivery_method: nil, duration: nil, multiplier_override_prioritization: nil, net_payment_terms_days: nil, overrides: nil, prepaid_balance_threshold_configuration: nil, rate_card_alias: nil, rate_card_id: nil, recurring_commits: nil, recurring_credits: nil, scheduled_charges: nil, scheduled_charges_on_usage_invoices: nil, spend_threshold_configuration: nil, subscriptions: nil, uniqueness_key: nil, usage_statement_schedule: nil, request_options: {})
+        # @!method initialize(name:, aliases: nil, billing_provider: nil, commits: nil, contract_name: nil, credits: nil, delivery_method: nil, duration: nil, multiplier_override_prioritization: nil, net_payment_terms_days: nil, overrides: nil, prepaid_balance_threshold_configuration: nil, rate_card_alias: nil, rate_card_id: nil, recurring_commits: nil, recurring_credits: nil, scheduled_charges: nil, scheduled_charges_on_usage_invoices: nil, spend_threshold_configuration: nil, subscriptions: nil, uniqueness_key: nil, usage_statement_schedule: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::V1::PackageCreateParams} for more details.
         #
         #   @param name [String]
         #
         #   @param aliases [Array<MetronomeSDK::Models::V1::PackageCreateParams::Alias>] Reference this alias when creating a contract. If the same alias is assigned to
-        #
-        #   @param billing_anchor_date [Symbol, MetronomeSDK::Models::V1::PackageCreateParams::BillingAnchorDate]
         #
         #   @param billing_provider [Symbol, MetronomeSDK::Models::V1::PackageCreateParams::BillingProvider]
         #
@@ -223,16 +216,6 @@ module MetronomeSDK
           #   @param name [String]
           #   @param ending_before [Time]
           #   @param starting_at [Time]
-        end
-
-        module BillingAnchorDate
-          extend MetronomeSDK::Internal::Type::Enum
-
-          CONTRACT_START_DATE = :contract_start_date
-          FIRST_BILLING_PERIOD = :first_billing_period
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
         end
 
         module BillingProvider

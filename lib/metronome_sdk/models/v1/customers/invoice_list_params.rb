@@ -14,6 +14,12 @@ module MetronomeSDK
           #   @return [String]
           required :customer_id, String
 
+          # @!attribute contract_id
+          #   Only return invoices for the specified contract
+          #
+          #   @return [String, nil]
+          optional :contract_id, String
+
           # @!attribute credit_type_id
           #   Only return invoices for the specified credit type
           #
@@ -65,11 +71,19 @@ module MetronomeSDK
           #   @return [String, nil]
           optional :status, String
 
-          # @!method initialize(customer_id:, credit_type_id: nil, ending_before: nil, limit: nil, next_page: nil, skip_zero_qty_line_items: nil, sort: nil, starting_on: nil, status: nil, request_options: {})
+          # @!attribute type
+          #   Filter invoices by type. Defaults to returning all invoice types.
+          #
+          #   @return [Symbol, MetronomeSDK::Models::V1::Customers::InvoiceListParams::Type, nil]
+          optional :type, enum: -> { MetronomeSDK::V1::Customers::InvoiceListParams::Type }
+
+          # @!method initialize(customer_id:, contract_id: nil, credit_type_id: nil, ending_before: nil, limit: nil, next_page: nil, skip_zero_qty_line_items: nil, sort: nil, starting_on: nil, status: nil, type: nil, request_options: {})
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V1::Customers::InvoiceListParams} for more details.
           #
           #   @param customer_id [String]
+          #
+          #   @param contract_id [String] Only return invoices for the specified contract
           #
           #   @param credit_type_id [String] Only return invoices for the specified credit type
           #
@@ -87,6 +101,8 @@ module MetronomeSDK
           #
           #   @param status [String] Invoice status, e.g. DRAFT, FINALIZED, or VOID
           #
+          #   @param type [Symbol, MetronomeSDK::Models::V1::Customers::InvoiceListParams::Type] Filter invoices by type. Defaults to returning all invoice types.
+          #
           #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
 
           # Invoice sort order by issued_at, e.g. date_asc or date_desc. Defaults to
@@ -96,6 +112,18 @@ module MetronomeSDK
 
             DATE_ASC = :date_asc
             DATE_DESC = :date_desc
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Filter invoices by type. Defaults to returning all invoice types.
+          module Type
+            extend MetronomeSDK::Internal::Type::Enum
+
+            USAGE = :USAGE
+            USAGE_CONSOLIDATED = :USAGE_CONSOLIDATED
+            SCHEDULED = :SCHEDULED
 
             # @!method self.values
             #   @return [Array<Symbol>]

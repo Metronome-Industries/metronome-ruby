@@ -136,9 +136,11 @@ module MetronomeSDK
           # - Voided invoices are included in results by default unless filtered out by
           #   status
           #
-          # @overload list(customer_id:, credit_type_id: nil, ending_before: nil, limit: nil, next_page: nil, skip_zero_qty_line_items: nil, sort: nil, starting_on: nil, status: nil, request_options: {})
+          # @overload list(customer_id:, contract_id: nil, credit_type_id: nil, ending_before: nil, limit: nil, next_page: nil, skip_zero_qty_line_items: nil, sort: nil, starting_on: nil, status: nil, type: nil, request_options: {})
           #
           # @param customer_id [String] Path param
+          #
+          # @param contract_id [String] Query param: Only return invoices for the specified contract
           #
           # @param credit_type_id [String] Query param: Only return invoices for the specified credit type
           #
@@ -155,6 +157,8 @@ module MetronomeSDK
           # @param starting_on [Time] Query param: RFC 3339 timestamp (inclusive). Invoices will only be returned for
           #
           # @param status [String] Query param: Invoice status, e.g. DRAFT, FINALIZED, or VOID
+          #
+          # @param type [Symbol, MetronomeSDK::Models::V1::Customers::InvoiceListParams::Type] Query param: Filter invoices by type. Defaults to returning all invoice types.
           #
           # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
           #

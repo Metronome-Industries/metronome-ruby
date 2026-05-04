@@ -5,7 +5,6 @@ module MetronomeSDK
         {
           name: String,
           aliases: ::Array[MetronomeSDK::V1::PackageCreateParams::Alias],
-          billing_anchor_date: MetronomeSDK::Models::V1::PackageCreateParams::billing_anchor_date,
           billing_provider: MetronomeSDK::Models::V1::PackageCreateParams::billing_provider,
           commits: ::Array[MetronomeSDK::V1::PackageCreateParams::Commit],
           contract_name: String,
@@ -40,12 +39,6 @@ module MetronomeSDK
         def aliases=: (
           ::Array[MetronomeSDK::V1::PackageCreateParams::Alias]
         ) -> ::Array[MetronomeSDK::V1::PackageCreateParams::Alias]
-
-        attr_reader billing_anchor_date: MetronomeSDK::Models::V1::PackageCreateParams::billing_anchor_date?
-
-        def billing_anchor_date=: (
-          MetronomeSDK::Models::V1::PackageCreateParams::billing_anchor_date
-        ) -> MetronomeSDK::Models::V1::PackageCreateParams::billing_anchor_date
 
         attr_reader billing_provider: MetronomeSDK::Models::V1::PackageCreateParams::billing_provider?
 
@@ -160,7 +153,6 @@ module MetronomeSDK
         def initialize: (
           name: String,
           ?aliases: ::Array[MetronomeSDK::V1::PackageCreateParams::Alias],
-          ?billing_anchor_date: MetronomeSDK::Models::V1::PackageCreateParams::billing_anchor_date,
           ?billing_provider: MetronomeSDK::Models::V1::PackageCreateParams::billing_provider,
           ?commits: ::Array[MetronomeSDK::V1::PackageCreateParams::Commit],
           ?contract_name: String,
@@ -187,7 +179,6 @@ module MetronomeSDK
         def to_hash: -> {
           name: String,
           aliases: ::Array[MetronomeSDK::V1::PackageCreateParams::Alias],
-          billing_anchor_date: MetronomeSDK::Models::V1::PackageCreateParams::billing_anchor_date,
           billing_provider: MetronomeSDK::Models::V1::PackageCreateParams::billing_provider,
           commits: ::Array[MetronomeSDK::V1::PackageCreateParams::Commit],
           contract_name: String,
@@ -235,17 +226,6 @@ module MetronomeSDK
             ending_before: Time,
             starting_at: Time
           }
-        end
-
-        type billing_anchor_date = :contract_start_date | :first_billing_period
-
-        module BillingAnchorDate
-          extend MetronomeSDK::Internal::Type::Enum
-
-          CONTRACT_START_DATE: :contract_start_date
-          FIRST_BILLING_PERIOD: :first_billing_period
-
-          def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageCreateParams::billing_anchor_date]
         end
 
         type billing_provider =
