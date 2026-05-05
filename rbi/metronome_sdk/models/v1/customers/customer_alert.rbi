@@ -552,6 +552,11 @@ module MetronomeSDK
                     :ContractCredit,
                     MetronomeSDK::V1::Customers::CustomerAlert::Alert::CustomFieldFilter::Entity::TaggedSymbol
                   )
+                CONTRACT_CREDIT_OR_COMMIT =
+                  T.let(
+                    :ContractCreditOrCommit,
+                    MetronomeSDK::V1::Customers::CustomerAlert::Alert::CustomFieldFilter::Entity::TaggedSymbol
+                  )
 
                 sig do
                   override.returns(

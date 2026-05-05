@@ -210,7 +210,8 @@ module MetronomeSDK
                 value: String
               }
 
-              type entity = :Contract | :Commit | :ContractCredit
+              type entity =
+                :Contract | :Commit | :ContractCredit | :ContractCreditOrCommit
 
               module Entity
                 extend MetronomeSDK::Internal::Type::Enum
@@ -218,6 +219,7 @@ module MetronomeSDK
                 CONTRACT: :Contract
                 COMMIT: :Commit
                 CONTRACT_CREDIT: :ContractCredit
+                CONTRACT_CREDIT_OR_COMMIT: :ContractCreditOrCommit
 
                 def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::CustomFieldFilter::entity]
               end
