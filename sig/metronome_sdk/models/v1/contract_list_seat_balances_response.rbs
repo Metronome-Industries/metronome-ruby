@@ -1,0 +1,299 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type contract_list_seat_balances_response =
+        {
+          data: ::Array[MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data],
+          pagination: MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Pagination
+        }
+
+      class ContractListSeatBalancesResponse < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor data: ::Array[MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data]
+
+        attr_accessor pagination: MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Pagination
+
+        def initialize: (
+          data: ::Array[MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data],
+          pagination: MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Pagination
+        ) -> void
+
+        def to_hash: -> {
+          data: ::Array[MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data],
+          pagination: MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Pagination
+        }
+
+        type data =
+          {
+            balances: ::Array[MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Balance],
+            seat_id: String,
+            commits: ::Array[MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Commit]?,
+            credits: ::Array[MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Credit]
+          }
+
+        class Data < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor balances: ::Array[MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Balance]
+
+          attr_accessor seat_id: String
+
+          attr_accessor commits: ::Array[MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Commit]?
+
+          attr_reader credits: ::Array[MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Credit]?
+
+          def credits=: (
+            ::Array[MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Credit]
+          ) -> ::Array[MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Credit]
+
+          def initialize: (
+            balances: ::Array[MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Balance],
+            seat_id: String,
+            ?commits: ::Array[MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Commit]?,
+            ?credits: ::Array[MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Credit]
+          ) -> void
+
+          def to_hash: -> {
+            balances: ::Array[MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Balance],
+            seat_id: String,
+            commits: ::Array[MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Commit]?,
+            credits: ::Array[MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Credit]
+          }
+
+          type balance =
+            { balance: Float, credit_type_id: String, starting_balance: Float }
+
+          class Balance < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor balance: Float
+
+            attr_accessor credit_type_id: String
+
+            attr_accessor starting_balance: Float
+
+            def initialize: (
+              balance: Float,
+              credit_type_id: String,
+              starting_balance: Float
+            ) -> void
+
+            def to_hash: -> {
+              balance: Float,
+              credit_type_id: String,
+              starting_balance: Float
+            }
+          end
+
+          type commit =
+            {
+              id: String,
+              balance: Float,
+              start_date: Time,
+              end_date: Time?,
+              ledger_entries: ::Array[MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Commit::LedgerEntry]
+            }
+
+          class Commit < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_accessor balance: Float
+
+            attr_accessor start_date: Time
+
+            attr_accessor end_date: Time?
+
+            attr_reader ledger_entries: ::Array[MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Commit::LedgerEntry]?
+
+            def ledger_entries=: (
+              ::Array[MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Commit::LedgerEntry]
+            ) -> ::Array[MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Commit::LedgerEntry]
+
+            def initialize: (
+              id: String,
+              balance: Float,
+              start_date: Time,
+              ?end_date: Time?,
+              ?ledger_entries: ::Array[MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Commit::LedgerEntry]
+            ) -> void
+
+            def to_hash: -> {
+              id: String,
+              balance: Float,
+              start_date: Time,
+              end_date: Time?,
+              ledger_entries: ::Array[MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Commit::LedgerEntry]
+            }
+
+            type ledger_entry =
+              {
+                amount: Float,
+                timestamp: Time,
+                type: MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Commit::LedgerEntry::type_
+              }
+
+            class LedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor amount: Float
+
+              attr_accessor timestamp: Time
+
+              attr_accessor type: MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Commit::LedgerEntry::type_
+
+              def initialize: (
+                amount: Float,
+                timestamp: Time,
+                type: MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Commit::LedgerEntry::type_
+              ) -> void
+
+              def to_hash: -> {
+                amount: Float,
+                timestamp: Time,
+                type: MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Commit::LedgerEntry::type_
+              }
+
+              type type_ =
+                :PREPAID_COMMIT_SEGMENT_START
+                | :PREPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION
+                | :PREPAID_COMMIT_ROLLOVER
+                | :PREPAID_COMMIT_EXPIRATION
+                | :PREPAID_COMMIT_CANCELED
+                | :PREPAID_COMMIT_CREDITED
+                | :PREPAID_COMMIT_MANUAL
+                | :PREPAID_COMMIT_SEAT_BASED_ADJUSTMENT
+
+              module Type
+                extend MetronomeSDK::Internal::Type::Enum
+
+                PREPAID_COMMIT_SEGMENT_START: :PREPAID_COMMIT_SEGMENT_START
+                PREPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION: :PREPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION
+                PREPAID_COMMIT_ROLLOVER: :PREPAID_COMMIT_ROLLOVER
+                PREPAID_COMMIT_EXPIRATION: :PREPAID_COMMIT_EXPIRATION
+                PREPAID_COMMIT_CANCELED: :PREPAID_COMMIT_CANCELED
+                PREPAID_COMMIT_CREDITED: :PREPAID_COMMIT_CREDITED
+                PREPAID_COMMIT_MANUAL: :PREPAID_COMMIT_MANUAL
+                PREPAID_COMMIT_SEAT_BASED_ADJUSTMENT: :PREPAID_COMMIT_SEAT_BASED_ADJUSTMENT
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Commit::LedgerEntry::type_]
+              end
+            end
+          end
+
+          type credit =
+            {
+              id: String,
+              balance: Float,
+              start_date: Time,
+              end_date: Time?,
+              ledger_entries: ::Array[MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Credit::LedgerEntry]
+            }
+
+          class Credit < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_accessor balance: Float
+
+            attr_accessor start_date: Time
+
+            attr_accessor end_date: Time?
+
+            attr_reader ledger_entries: ::Array[MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Credit::LedgerEntry]?
+
+            def ledger_entries=: (
+              ::Array[MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Credit::LedgerEntry]
+            ) -> ::Array[MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Credit::LedgerEntry]
+
+            def initialize: (
+              id: String,
+              balance: Float,
+              start_date: Time,
+              ?end_date: Time?,
+              ?ledger_entries: ::Array[MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Credit::LedgerEntry]
+            ) -> void
+
+            def to_hash: -> {
+              id: String,
+              balance: Float,
+              start_date: Time,
+              end_date: Time?,
+              ledger_entries: ::Array[MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Credit::LedgerEntry]
+            }
+
+            type ledger_entry =
+              {
+                amount: Float,
+                timestamp: Time,
+                type: MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Credit::LedgerEntry::type_
+              }
+
+            class LedgerEntry < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor amount: Float
+
+              attr_accessor timestamp: Time
+
+              attr_accessor type: MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Credit::LedgerEntry::type_
+
+              def initialize: (
+                amount: Float,
+                timestamp: Time,
+                type: MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Credit::LedgerEntry::type_
+              ) -> void
+
+              def to_hash: -> {
+                amount: Float,
+                timestamp: Time,
+                type: MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Credit::LedgerEntry::type_
+              }
+
+              type type_ =
+                :CREDIT_SEGMENT_START
+                | :CREDIT_AUTOMATED_INVOICE_DEDUCTION
+                | :CREDIT_EXPIRATION
+                | :CREDIT_CANCELED
+                | :CREDIT_CREDITED
+                | :CREDIT_MANUAL
+                | :CREDIT_SEAT_BASED_ADJUSTMENT
+                | :CREDIT_ROLLOVER
+
+              module Type
+                extend MetronomeSDK::Internal::Type::Enum
+
+                CREDIT_SEGMENT_START: :CREDIT_SEGMENT_START
+                CREDIT_AUTOMATED_INVOICE_DEDUCTION: :CREDIT_AUTOMATED_INVOICE_DEDUCTION
+                CREDIT_EXPIRATION: :CREDIT_EXPIRATION
+                CREDIT_CANCELED: :CREDIT_CANCELED
+                CREDIT_CREDITED: :CREDIT_CREDITED
+                CREDIT_MANUAL: :CREDIT_MANUAL
+                CREDIT_SEAT_BASED_ADJUSTMENT: :CREDIT_SEAT_BASED_ADJUSTMENT
+                CREDIT_ROLLOVER: :CREDIT_ROLLOVER
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Credit::LedgerEntry::type_]
+              end
+            end
+          end
+        end
+
+        type pagination =
+          {
+            seats_available_for_next_page: Float,
+            seats_included: Float,
+            next_page: String?
+          }
+
+        class Pagination < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor seats_available_for_next_page: Float
+
+          attr_accessor seats_included: Float
+
+          attr_accessor next_page: String?
+
+          def initialize: (
+            seats_available_for_next_page: Float,
+            seats_included: Float,
+            ?next_page: String?
+          ) -> void
+
+          def to_hash: -> {
+            seats_available_for_next_page: Float,
+            seats_included: Float,
+            next_page: String?
+          }
+        end
+      end
+    end
+  end
+end
