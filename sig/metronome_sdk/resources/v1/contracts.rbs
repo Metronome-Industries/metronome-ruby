@@ -131,6 +131,21 @@ module MetronomeSDK
           ?request_options: MetronomeSDK::request_opts
         ) -> MetronomeSDK::Internal::BodyCursorPage[MetronomeSDK::Models::V1::contract_list_balances_response]
 
+        def list_seat_balances: (
+          contract_id: String,
+          customer_id: String,
+          ?covering_date: Time,
+          ?cursor: String,
+          ?effective_before: Time,
+          ?include_credits_and_commits: bool,
+          ?include_ledgers: bool,
+          ?limit: Integer,
+          ?seat_ids: ::Array[String],
+          ?starting_at: Time,
+          ?subscription_ids: ::Array[String],
+          ?request_options: MetronomeSDK::request_opts
+        ) -> MetronomeSDK::Models::V1::ContractListSeatBalancesResponse
+
         def retrieve_rate_schedule: (
           contract_id: String,
           customer_id: String,

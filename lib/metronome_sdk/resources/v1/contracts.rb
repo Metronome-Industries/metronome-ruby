@@ -651,6 +651,73 @@ module MetronomeSDK
         end
 
         # Some parameter documentations has been truncated, see
+        # {MetronomeSDK::Models::V1::ContractListSeatBalancesParams} for more details.
+        #
+        # Retrieve detailed balance for seat-based credits and commits from the contract's
+        # subscriptions, broken down by individual seats.
+        #
+        # ### Use this endpoint to:
+        #
+        # - Display per-seat balance information in customer dashboards
+        # - Filter balance data by subscription or specific seats
+        #
+        # ### Key response fields:
+        #
+        # An array of seat balance objects containing:
+        #
+        # - Seat id
+        # - Balance: current total balance across all commits and credits
+        #
+        # ### Usage guidelines:
+        #
+        # - Date filtering: use `covering_date` OR `starting_at`/`ending_before` to filter
+        #   balance data by time range
+        # - Set `include_credits_and_commits=true` for detailed commits and credits
+        #   breakdown per seat
+        # - Set `include_ledgers=true` for detailed transaction history per commit/credit
+        #   per seat
+        #
+        # @overload list_seat_balances(contract_id:, customer_id:, covering_date: nil, cursor: nil, effective_before: nil, include_credits_and_commits: nil, include_ledgers: nil, limit: nil, seat_ids: nil, starting_at: nil, subscription_ids: nil, request_options: {})
+        #
+        # @param contract_id [String] The contract ID to retrieve seat balances for
+        #
+        # @param customer_id [String] The customer ID to retrieve seat balances for
+        #
+        # @param covering_date [Time] Include only commits or credits with access that cover this specific date (canno
+        #
+        # @param cursor [String] Page token from a previous response to retrieve the next page
+        #
+        # @param effective_before [Time] Include only commits or credits with access effective on or before this date (ca
+        #
+        # @param include_credits_and_commits [Boolean] Include credits and commits in the response
+        #
+        # @param include_ledgers [Boolean] Include ledger entries for each commit and commit. `include_credits_and_commits`
+        #
+        # @param limit [Integer] Maximum number of seats to return. Range: 1-100. Default: 25.
+        #
+        # @param seat_ids [Array<String>] Optional filter to only include specific seats
+        #
+        # @param starting_at [Time] Include only commits or credits with access effective on or after this date (can
+        #
+        # @param subscription_ids [Array<String>] Optional filter to only include seats from specific subscriptions. If subscripti
+        #
+        # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [MetronomeSDK::Models::V1::ContractListSeatBalancesResponse]
+        #
+        # @see MetronomeSDK::Models::V1::ContractListSeatBalancesParams
+        def list_seat_balances(params)
+          parsed, options = MetronomeSDK::V1::ContractListSeatBalancesParams.dump_request(params)
+          @client.request(
+            method: :post,
+            path: "v1/contracts/seatBalances/list",
+            body: parsed,
+            model: MetronomeSDK::Models::V1::ContractListSeatBalancesResponse,
+            options: options
+          )
+        end
+
+        # Some parameter documentations has been truncated, see
         # {MetronomeSDK::Models::V1::ContractRetrieveRateScheduleParams} for more details.
         #
         # For a specific customer and contract, get the rates at a specific point in time.
