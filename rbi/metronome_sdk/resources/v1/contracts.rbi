@@ -761,7 +761,7 @@ module MetronomeSDK
           # (total: 108 commits). Each returned seat includes all of its associated credits
           # and commits.
           limit: nil,
-          # Optional filter to only include specific seats
+          # Optional filter to only include specific seats.
           seat_ids: nil,
           # Include only commits or credits with access effective on or after this date
           # (cannot be used with covering_date).

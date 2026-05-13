@@ -66,7 +66,7 @@ module MetronomeSDK
         optional :limit, Integer
 
         # @!attribute seat_ids
-        #   Optional filter to only include specific seats
+        #   Optional filter to only include specific seats.
         #
         #   @return [Array<String>, nil]
         optional :seat_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
@@ -106,7 +106,7 @@ module MetronomeSDK
         #
         #   @param limit [Integer] Maximum number of seats to return. Range: 1-100. Default: 25.
         #
-        #   @param seat_ids [Array<String>] Optional filter to only include specific seats
+        #   @param seat_ids [Array<String>] Optional filter to only include specific seats.
         #
         #   @param starting_at [Time] Include only commits or credits with access effective on or after this date (can
         #

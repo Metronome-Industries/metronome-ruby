@@ -695,7 +695,7 @@ module MetronomeSDK
         #
         # @param limit [Integer] Maximum number of seats to return. Range: 1-100. Default: 25.
         #
-        # @param seat_ids [Array<String>] Optional filter to only include specific seats
+        # @param seat_ids [Array<String>] Optional filter to only include specific seats.
         #
         # @param starting_at [Time] Include only commits or credits with access effective on or after this date (can
         #
