@@ -138,7 +138,6 @@ module MetronomeSDK
             invoice_schedule: MetronomeSDK::V1::ContractAmendParams::Commit::InvoiceSchedule,
             name: String,
             netsuite_sales_order_id: String,
-            payment_gate_config: MetronomeSDK::V1::ContractAmendParams::Commit::PaymentGateConfig,
             priority: Float,
             rate_type: MetronomeSDK::Models::V1::ContractAmendParams::Commit::rate_type,
             rollover_fraction: Float,
@@ -197,12 +196,6 @@ module MetronomeSDK
 
           def netsuite_sales_order_id=: (String) -> String
 
-          attr_reader payment_gate_config: MetronomeSDK::V1::ContractAmendParams::Commit::PaymentGateConfig?
-
-          def payment_gate_config=: (
-            MetronomeSDK::V1::ContractAmendParams::Commit::PaymentGateConfig
-          ) -> MetronomeSDK::V1::ContractAmendParams::Commit::PaymentGateConfig
-
           attr_reader priority: Float?
 
           def priority=: (Float) -> Float
@@ -240,7 +233,6 @@ module MetronomeSDK
             ?invoice_schedule: MetronomeSDK::V1::ContractAmendParams::Commit::InvoiceSchedule,
             ?name: String,
             ?netsuite_sales_order_id: String,
-            ?payment_gate_config: MetronomeSDK::V1::ContractAmendParams::Commit::PaymentGateConfig,
             ?priority: Float,
             ?rate_type: MetronomeSDK::Models::V1::ContractAmendParams::Commit::rate_type,
             ?rollover_fraction: Float,
@@ -261,7 +253,6 @@ module MetronomeSDK
             invoice_schedule: MetronomeSDK::V1::ContractAmendParams::Commit::InvoiceSchedule,
             name: String,
             netsuite_sales_order_id: String,
-            payment_gate_config: MetronomeSDK::V1::ContractAmendParams::Commit::PaymentGateConfig,
             priority: Float,
             rate_type: MetronomeSDK::Models::V1::ContractAmendParams::Commit::rate_type,
             rollover_fraction: Float,
@@ -484,134 +475,6 @@ module MetronomeSDK
                 quantity: Float,
                 unit_price: Float
               }
-            end
-          end
-
-          type payment_gate_config =
-            {
-              payment_gate_type: MetronomeSDK::Models::V1::ContractAmendParams::Commit::PaymentGateConfig::payment_gate_type,
-              precalculated_tax_config: MetronomeSDK::V1::ContractAmendParams::Commit::PaymentGateConfig::PrecalculatedTaxConfig,
-              stripe_config: MetronomeSDK::V1::ContractAmendParams::Commit::PaymentGateConfig::StripeConfig,
-              tax_type: MetronomeSDK::Models::V1::ContractAmendParams::Commit::PaymentGateConfig::tax_type
-            }
-
-          class PaymentGateConfig < MetronomeSDK::Internal::Type::BaseModel
-            attr_accessor payment_gate_type: MetronomeSDK::Models::V1::ContractAmendParams::Commit::PaymentGateConfig::payment_gate_type
-
-            attr_reader precalculated_tax_config: MetronomeSDK::V1::ContractAmendParams::Commit::PaymentGateConfig::PrecalculatedTaxConfig?
-
-            def precalculated_tax_config=: (
-              MetronomeSDK::V1::ContractAmendParams::Commit::PaymentGateConfig::PrecalculatedTaxConfig
-            ) -> MetronomeSDK::V1::ContractAmendParams::Commit::PaymentGateConfig::PrecalculatedTaxConfig
-
-            attr_reader stripe_config: MetronomeSDK::V1::ContractAmendParams::Commit::PaymentGateConfig::StripeConfig?
-
-            def stripe_config=: (
-              MetronomeSDK::V1::ContractAmendParams::Commit::PaymentGateConfig::StripeConfig
-            ) -> MetronomeSDK::V1::ContractAmendParams::Commit::PaymentGateConfig::StripeConfig
-
-            attr_reader tax_type: MetronomeSDK::Models::V1::ContractAmendParams::Commit::PaymentGateConfig::tax_type?
-
-            def tax_type=: (
-              MetronomeSDK::Models::V1::ContractAmendParams::Commit::PaymentGateConfig::tax_type
-            ) -> MetronomeSDK::Models::V1::ContractAmendParams::Commit::PaymentGateConfig::tax_type
-
-            def initialize: (
-              payment_gate_type: MetronomeSDK::Models::V1::ContractAmendParams::Commit::PaymentGateConfig::payment_gate_type,
-              ?precalculated_tax_config: MetronomeSDK::V1::ContractAmendParams::Commit::PaymentGateConfig::PrecalculatedTaxConfig,
-              ?stripe_config: MetronomeSDK::V1::ContractAmendParams::Commit::PaymentGateConfig::StripeConfig,
-              ?tax_type: MetronomeSDK::Models::V1::ContractAmendParams::Commit::PaymentGateConfig::tax_type
-            ) -> void
-
-            def to_hash: -> {
-              payment_gate_type: MetronomeSDK::Models::V1::ContractAmendParams::Commit::PaymentGateConfig::payment_gate_type,
-              precalculated_tax_config: MetronomeSDK::V1::ContractAmendParams::Commit::PaymentGateConfig::PrecalculatedTaxConfig,
-              stripe_config: MetronomeSDK::V1::ContractAmendParams::Commit::PaymentGateConfig::StripeConfig,
-              tax_type: MetronomeSDK::Models::V1::ContractAmendParams::Commit::PaymentGateConfig::tax_type
-            }
-
-            type payment_gate_type = :NONE | :STRIPE | :EXTERNAL
-
-            module PaymentGateType
-              extend MetronomeSDK::Internal::Type::Enum
-
-              NONE: :NONE
-              STRIPE: :STRIPE
-              EXTERNAL: :EXTERNAL
-
-              def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractAmendParams::Commit::PaymentGateConfig::payment_gate_type]
-            end
-
-            type precalculated_tax_config =
-              { tax_amount: Float, tax_name: String }
-
-            class PrecalculatedTaxConfig < MetronomeSDK::Internal::Type::BaseModel
-              attr_accessor tax_amount: Float
-
-              attr_reader tax_name: String?
-
-              def tax_name=: (String) -> String
-
-              def initialize: (tax_amount: Float, ?tax_name: String) -> void
-
-              def to_hash: -> { tax_amount: Float, tax_name: String }
-            end
-
-            type stripe_config =
-              {
-                payment_type: MetronomeSDK::Models::V1::ContractAmendParams::Commit::PaymentGateConfig::StripeConfig::payment_type,
-                invoice_metadata: ::Hash[Symbol, String],
-                on_session_payment: bool
-              }
-
-            class StripeConfig < MetronomeSDK::Internal::Type::BaseModel
-              attr_accessor payment_type: MetronomeSDK::Models::V1::ContractAmendParams::Commit::PaymentGateConfig::StripeConfig::payment_type
-
-              attr_reader invoice_metadata: ::Hash[Symbol, String]?
-
-              def invoice_metadata=: (
-                ::Hash[Symbol, String]
-              ) -> ::Hash[Symbol, String]
-
-              attr_reader on_session_payment: bool?
-
-              def on_session_payment=: (bool) -> bool
-
-              def initialize: (
-                payment_type: MetronomeSDK::Models::V1::ContractAmendParams::Commit::PaymentGateConfig::StripeConfig::payment_type,
-                ?invoice_metadata: ::Hash[Symbol, String],
-                ?on_session_payment: bool
-              ) -> void
-
-              def to_hash: -> {
-                payment_type: MetronomeSDK::Models::V1::ContractAmendParams::Commit::PaymentGateConfig::StripeConfig::payment_type,
-                invoice_metadata: ::Hash[Symbol, String],
-                on_session_payment: bool
-              }
-
-              type payment_type = :INVOICE | :PAYMENT_INTENT
-
-              module PaymentType
-                extend MetronomeSDK::Internal::Type::Enum
-
-                INVOICE: :INVOICE
-                PAYMENT_INTENT: :PAYMENT_INTENT
-
-                def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractAmendParams::Commit::PaymentGateConfig::StripeConfig::payment_type]
-              end
-            end
-
-            type tax_type = :NONE | :STRIPE | :ANROK | :PRECALCULATED
-
-            module TaxType
-              extend MetronomeSDK::Internal::Type::Enum
-
-              NONE: :NONE
-              STRIPE: :STRIPE
-              ANROK: :ANROK
-              PRECALCULATED: :PRECALCULATED
-
-              def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractAmendParams::Commit::PaymentGateConfig::tax_type]
             end
           end
 
