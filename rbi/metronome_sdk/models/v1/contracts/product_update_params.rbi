@@ -147,6 +147,29 @@ module MetronomeSDK
           end
           attr_writer :quantity_rounding
 
+          # Defines the breakdown behavior when calculating usage from SQL Billable Metrics.
+          # If set to 'service_period' (default), the usage will be evaluated once for all
+          # events the invoice service period and the usage will be applied at the last
+          # instant of the invoice. If set to 'hour', it will be broken down and evaluated
+          # for each hour. For most use cases, 'hour' is recommended. The setting has no
+          # effect for Streaming Billable Metrics.
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::V1::Contracts::ProductUpdateParams::SqlBreakdownGranularity::OrSymbol
+              )
+            )
+          end
+          attr_reader :sql_breakdown_granularity
+
+          sig do
+            params(
+              sql_breakdown_granularity:
+                MetronomeSDK::V1::Contracts::ProductUpdateParams::SqlBreakdownGranularity::OrSymbol
+            ).void
+          end
+          attr_writer :sql_breakdown_granularity
+
           # If not provided, defaults to product's current tags
           sig { returns(T.nilable(T::Array[String])) }
           attr_reader :tags
@@ -176,6 +199,8 @@ module MetronomeSDK
                 T.nilable(
                   MetronomeSDK::V1::Contracts::QuantityRounding::OrHash
                 ),
+              sql_breakdown_granularity:
+                MetronomeSDK::V1::Contracts::ProductUpdateParams::SqlBreakdownGranularity::OrSymbol,
               tags: T::Array[String],
               request_options: MetronomeSDK::RequestOptions::OrHash
             ).returns(T.attached_class)
@@ -232,6 +257,13 @@ module MetronomeSDK
             # the method is "round up" and the decimal places is 0, then the quantity will be
             # rounded up to the nearest integer.
             quantity_rounding: nil,
+            # Defines the breakdown behavior when calculating usage from SQL Billable Metrics.
+            # If set to 'service_period' (default), the usage will be evaluated once for all
+            # events the invoice service period and the usage will be applied at the last
+            # instant of the invoice. If set to 'hour', it will be broken down and evaluated
+            # for each hour. For most use cases, 'hour' is recommended. The setting has no
+            # effect for Streaming Billable Metrics.
+            sql_breakdown_granularity: nil,
             # If not provided, defaults to product's current tags
             tags: nil,
             request_options: {}
@@ -257,12 +289,54 @@ module MetronomeSDK
                   T.nilable(MetronomeSDK::V1::Contracts::QuantityConversion),
                 quantity_rounding:
                   T.nilable(MetronomeSDK::V1::Contracts::QuantityRounding),
+                sql_breakdown_granularity:
+                  MetronomeSDK::V1::Contracts::ProductUpdateParams::SqlBreakdownGranularity::OrSymbol,
                 tags: T::Array[String],
                 request_options: MetronomeSDK::RequestOptions
               }
             )
           end
           def to_hash
+          end
+
+          # Defines the breakdown behavior when calculating usage from SQL Billable Metrics.
+          # If set to 'service_period' (default), the usage will be evaluated once for all
+          # events the invoice service period and the usage will be applied at the last
+          # instant of the invoice. If set to 'hour', it will be broken down and evaluated
+          # for each hour. For most use cases, 'hour' is recommended. The setting has no
+          # effect for Streaming Billable Metrics.
+          module SqlBreakdownGranularity
+            extend MetronomeSDK::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  MetronomeSDK::V1::Contracts::ProductUpdateParams::SqlBreakdownGranularity
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            HOUR =
+              T.let(
+                :HOUR,
+                MetronomeSDK::V1::Contracts::ProductUpdateParams::SqlBreakdownGranularity::TaggedSymbol
+              )
+            SERVICE_PERIOD =
+              T.let(
+                :SERVICE_PERIOD,
+                MetronomeSDK::V1::Contracts::ProductUpdateParams::SqlBreakdownGranularity::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  MetronomeSDK::V1::Contracts::ProductUpdateParams::SqlBreakdownGranularity::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
         end
       end

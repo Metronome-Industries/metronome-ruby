@@ -108,12 +108,24 @@ module MetronomeSDK
           #   @return [MetronomeSDK::Models::V1::Contracts::QuantityRounding, nil]
           optional :quantity_rounding, -> { MetronomeSDK::V1::Contracts::QuantityRounding }, nil?: true
 
+          # @!attribute sql_breakdown_granularity
+          #   Defines the breakdown behavior when calculating usage from SQL Billable Metrics.
+          #   If set to 'service_period' (default), the usage will be evaluated once for all
+          #   events the invoice service period and the usage will be applied at the last
+          #   instant of the invoice. If set to 'hour', it will be broken down and evaluated
+          #   for each hour. For most use cases, 'hour' is recommended. The setting has no
+          #   effect for Streaming Billable Metrics.
+          #
+          #   @return [Symbol, MetronomeSDK::Models::V1::Contracts::ProductCreateParams::SqlBreakdownGranularity, nil]
+          optional :sql_breakdown_granularity,
+                   enum: -> { MetronomeSDK::V1::Contracts::ProductCreateParams::SqlBreakdownGranularity }
+
           # @!attribute tags
           #
           #   @return [Array<String>, nil]
           optional :tags, MetronomeSDK::Internal::Type::ArrayOf[String]
 
-          # @!method initialize(name:, type:, billable_metric_id: nil, composite_product_ids: nil, composite_tags: nil, custom_fields: nil, exclude_free_usage: nil, is_refundable: nil, netsuite_internal_item_id: nil, netsuite_overage_item_id: nil, presentation_group_key: nil, pricing_group_key: nil, quantity_conversion: nil, quantity_rounding: nil, tags: nil, request_options: {})
+          # @!method initialize(name:, type:, billable_metric_id: nil, composite_product_ids: nil, composite_tags: nil, custom_fields: nil, exclude_free_usage: nil, is_refundable: nil, netsuite_internal_item_id: nil, netsuite_overage_item_id: nil, presentation_group_key: nil, pricing_group_key: nil, quantity_conversion: nil, quantity_rounding: nil, sql_breakdown_granularity: nil, tags: nil, request_options: {})
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V1::Contracts::ProductCreateParams} for more details.
           #
@@ -145,6 +157,8 @@ module MetronomeSDK
           #
           #   @param quantity_rounding [MetronomeSDK::Models::V1::Contracts::QuantityRounding, nil] Optional. Only valid for USAGE products. If provided, the quantity will be round
           #
+          #   @param sql_breakdown_granularity [Symbol, MetronomeSDK::Models::V1::Contracts::ProductCreateParams::SqlBreakdownGranularity] Defines the breakdown behavior when calculating usage from SQL Billable Metrics.
+          #
           #   @param tags [Array<String>]
           #
           #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
@@ -158,6 +172,22 @@ module MetronomeSDK
             SUBSCRIPTION = :SUBSCRIPTION
             PROFESSIONAL_SERVICE = :PROFESSIONAL_SERVICE
             PRO_SERVICE = :PRO_SERVICE
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Defines the breakdown behavior when calculating usage from SQL Billable Metrics.
+          # If set to 'service_period' (default), the usage will be evaluated once for all
+          # events the invoice service period and the usage will be applied at the last
+          # instant of the invoice. If set to 'hour', it will be broken down and evaluated
+          # for each hour. For most use cases, 'hour' is recommended. The setting has no
+          # effect for Streaming Billable Metrics.
+          module SqlBreakdownGranularity
+            extend MetronomeSDK::Internal::Type::Enum
+
+            HOUR = :HOUR
+            SERVICE_PERIOD = :SERVICE_PERIOD
 
             # @!method self.values
             #   @return [Array<Symbol>]

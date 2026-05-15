@@ -18,6 +18,7 @@ module MetronomeSDK
             pricing_group_key: ::Array[String],
             quantity_conversion: MetronomeSDK::V1::Contracts::QuantityConversion?,
             quantity_rounding: MetronomeSDK::V1::Contracts::QuantityRounding?,
+            sql_breakdown_granularity: MetronomeSDK::Models::V1::Contracts::ProductCreateParams::sql_breakdown_granularity,
             tags: ::Array[String]
           }
           & MetronomeSDK::Internal::Type::request_parameters
@@ -74,6 +75,12 @@ module MetronomeSDK
 
           attr_accessor quantity_rounding: MetronomeSDK::V1::Contracts::QuantityRounding?
 
+          attr_reader sql_breakdown_granularity: MetronomeSDK::Models::V1::Contracts::ProductCreateParams::sql_breakdown_granularity?
+
+          def sql_breakdown_granularity=: (
+            MetronomeSDK::Models::V1::Contracts::ProductCreateParams::sql_breakdown_granularity
+          ) -> MetronomeSDK::Models::V1::Contracts::ProductCreateParams::sql_breakdown_granularity
+
           attr_reader tags: ::Array[String]?
 
           def tags=: (::Array[String]) -> ::Array[String]
@@ -93,6 +100,7 @@ module MetronomeSDK
             ?pricing_group_key: ::Array[String],
             ?quantity_conversion: MetronomeSDK::V1::Contracts::QuantityConversion?,
             ?quantity_rounding: MetronomeSDK::V1::Contracts::QuantityRounding?,
+            ?sql_breakdown_granularity: MetronomeSDK::Models::V1::Contracts::ProductCreateParams::sql_breakdown_granularity,
             ?tags: ::Array[String],
             ?request_options: MetronomeSDK::request_opts
           ) -> void
@@ -112,6 +120,7 @@ module MetronomeSDK
             pricing_group_key: ::Array[String],
             quantity_conversion: MetronomeSDK::V1::Contracts::QuantityConversion?,
             quantity_rounding: MetronomeSDK::V1::Contracts::QuantityRounding?,
+            sql_breakdown_granularity: MetronomeSDK::Models::V1::Contracts::ProductCreateParams::sql_breakdown_granularity,
             tags: ::Array[String],
             request_options: MetronomeSDK::RequestOptions
           }
@@ -135,6 +144,17 @@ module MetronomeSDK
             PRO_SERVICE: :PRO_SERVICE
 
             def self?.values: -> ::Array[MetronomeSDK::Models::V1::Contracts::ProductCreateParams::type_]
+          end
+
+          type sql_breakdown_granularity = :HOUR | :SERVICE_PERIOD
+
+          module SqlBreakdownGranularity
+            extend MetronomeSDK::Internal::Type::Enum
+
+            HOUR: :HOUR
+            SERVICE_PERIOD: :SERVICE_PERIOD
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::Contracts::ProductCreateParams::sql_breakdown_granularity]
           end
         end
       end

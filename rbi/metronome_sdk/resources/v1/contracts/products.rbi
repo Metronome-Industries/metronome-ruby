@@ -34,6 +34,8 @@ module MetronomeSDK
                 T.nilable(
                   MetronomeSDK::V1::Contracts::QuantityRounding::OrHash
                 ),
+              sql_breakdown_granularity:
+                MetronomeSDK::V1::Contracts::ProductCreateParams::SqlBreakdownGranularity::OrSymbol,
               tags: T::Array[String],
               request_options: MetronomeSDK::RequestOptions::OrHash
             ).returns(
@@ -84,6 +86,13 @@ module MetronomeSDK
             # the method is "round up" and the decimal places is 0, then the quantity will be
             # rounded up to the nearest integer.
             quantity_rounding: nil,
+            # Defines the breakdown behavior when calculating usage from SQL Billable Metrics.
+            # If set to 'service_period' (default), the usage will be evaluated once for all
+            # events the invoice service period and the usage will be applied at the last
+            # instant of the invoice. If set to 'hour', it will be broken down and evaluated
+            # for each hour. For most use cases, 'hour' is recommended. The setting has no
+            # effect for Streaming Billable Metrics.
+            sql_breakdown_granularity: nil,
             tags: nil,
             request_options: {}
           )
@@ -134,6 +143,8 @@ module MetronomeSDK
                 T.nilable(
                   MetronomeSDK::V1::Contracts::QuantityRounding::OrHash
                 ),
+              sql_breakdown_granularity:
+                MetronomeSDK::V1::Contracts::ProductUpdateParams::SqlBreakdownGranularity::OrSymbol,
               tags: T::Array[String],
               request_options: MetronomeSDK::RequestOptions::OrHash
             ).returns(
@@ -192,6 +203,13 @@ module MetronomeSDK
             # the method is "round up" and the decimal places is 0, then the quantity will be
             # rounded up to the nearest integer.
             quantity_rounding: nil,
+            # Defines the breakdown behavior when calculating usage from SQL Billable Metrics.
+            # If set to 'service_period' (default), the usage will be evaluated once for all
+            # events the invoice service period and the usage will be applied at the last
+            # instant of the invoice. If set to 'hour', it will be broken down and evaluated
+            # for each hour. For most use cases, 'hour' is recommended. The setting has no
+            # effect for Streaming Billable Metrics.
+            sql_breakdown_granularity: nil,
             # If not provided, defaults to product's current tags
             tags: nil,
             request_options: {}
