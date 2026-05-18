@@ -1651,6 +1651,7 @@ module MetronomeSDK
           applicable_contract_ids: ::Array[String],
           applicable_product_ids: ::Array[String],
           applicable_product_tags: ::Array[String],
+          archived_at: Time,
           balance: Float,
           contract: MetronomeSDK::ContractV2::Credit::Contract,
           created_at: Time,
@@ -1692,6 +1693,10 @@ module MetronomeSDK
         attr_reader applicable_product_tags: ::Array[String]?
 
         def applicable_product_tags=: (::Array[String]) -> ::Array[String]
+
+        attr_reader archived_at: Time?
+
+        def archived_at=: (Time) -> Time
 
         attr_reader balance: Float?
 
@@ -1773,6 +1778,7 @@ module MetronomeSDK
           ?applicable_contract_ids: ::Array[String],
           ?applicable_product_ids: ::Array[String],
           ?applicable_product_tags: ::Array[String],
+          ?archived_at: Time,
           ?balance: Float,
           ?contract: MetronomeSDK::ContractV2::Credit::Contract,
           ?created_at: Time,
@@ -1798,6 +1804,7 @@ module MetronomeSDK
           applicable_contract_ids: ::Array[String],
           applicable_product_ids: ::Array[String],
           applicable_product_tags: ::Array[String],
+          archived_at: Time,
           balance: Float,
           contract: MetronomeSDK::ContractV2::Credit::Contract,
           created_at: Time,
