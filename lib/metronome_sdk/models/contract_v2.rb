@@ -1646,6 +1646,11 @@ module MetronomeSDK
         #   @return [Array<String>, nil]
         optional :applicable_product_tags, MetronomeSDK::Internal::Type::ArrayOf[String]
 
+        # @!attribute archived_at
+        #
+        #   @return [Time, nil]
+        optional :archived_at, Time
+
         # @!attribute balance
         #   The current balance of the credit or commit. This balance reflects the amount of
         #   credit or commit that the customer has access to use at this moment - thus,
@@ -1747,7 +1752,7 @@ module MetronomeSDK
         #   @return [MetronomeSDK::Models::RecurringCommitSubscriptionConfig, nil]
         optional :subscription_config, -> { MetronomeSDK::RecurringCommitSubscriptionConfig }
 
-        # @!method initialize(id:, product:, type:, access_schedule: nil, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, balance: nil, contract: nil, created_at: nil, custom_fields: nil, description: nil, hierarchy_configuration: nil, ledger: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, recurring_credit_id: nil, rolled_over_from: nil, salesforce_opportunity_id: nil, specifiers: nil, subscription_config: nil)
+        # @!method initialize(id:, product:, type:, access_schedule: nil, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, archived_at: nil, balance: nil, contract: nil, created_at: nil, custom_fields: nil, description: nil, hierarchy_configuration: nil, ledger: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, recurring_credit_id: nil, rolled_over_from: nil, salesforce_opportunity_id: nil, specifiers: nil, subscription_config: nil)
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::ContractV2::Credit} for more details.
         #
@@ -1764,6 +1769,8 @@ module MetronomeSDK
         #   @param applicable_product_ids [Array<String>]
         #
         #   @param applicable_product_tags [Array<String>]
+        #
+        #   @param archived_at [Time]
         #
         #   @param balance [Float] The current balance of the credit or commit. This balance reflects the amount of
         #

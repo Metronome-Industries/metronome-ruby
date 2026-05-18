@@ -3217,6 +3217,12 @@ module MetronomeSDK
         sig { params(applicable_product_tags: T::Array[String]).void }
         attr_writer :applicable_product_tags
 
+        sig { returns(T.nilable(Time)) }
+        attr_reader :archived_at
+
+        sig { params(archived_at: Time).void }
+        attr_writer :archived_at
+
         # The current balance of the credit or commit. This balance reflects the amount of
         # credit or commit that the customer has access to use at this moment - thus,
         # expired and upcoming credit or commit segments contribute 0 to the balance. The
@@ -3390,6 +3396,7 @@ module MetronomeSDK
             applicable_contract_ids: T::Array[String],
             applicable_product_ids: T::Array[String],
             applicable_product_tags: T::Array[String],
+            archived_at: Time,
             balance: Float,
             contract: MetronomeSDK::ContractV2::Credit::Contract::OrHash,
             created_at: Time,
@@ -3431,6 +3438,7 @@ module MetronomeSDK
           applicable_contract_ids: nil,
           applicable_product_ids: nil,
           applicable_product_tags: nil,
+          archived_at: nil,
           # The current balance of the credit or commit. This balance reflects the amount of
           # credit or commit that the customer has access to use at this moment - thus,
           # expired and upcoming credit or commit segments contribute 0 to the balance. The
@@ -3484,6 +3492,7 @@ module MetronomeSDK
               applicable_contract_ids: T::Array[String],
               applicable_product_ids: T::Array[String],
               applicable_product_tags: T::Array[String],
+              archived_at: Time,
               balance: Float,
               contract: MetronomeSDK::ContractV2::Credit::Contract,
               created_at: Time,
