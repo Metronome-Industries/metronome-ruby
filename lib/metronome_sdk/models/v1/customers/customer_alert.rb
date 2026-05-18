@@ -236,6 +236,7 @@ module MetronomeSDK
                 CONTRACT = :Contract
                 COMMIT = :Commit
                 CONTRACT_CREDIT = :ContractCredit
+                CONTRACT_CREDIT_OR_COMMIT = :ContractCreditOrCommit
 
                 # @!method self.values
                 #   @return [Array<Symbol>]

@@ -176,6 +176,25 @@ class MetronomeSDK::Test::Resources::V1::ContractsTest < MetronomeSDK::Test::Res
     end
   end
 
+  def test_list_seat_balances_required_params
+    response =
+      @metronome.v1.contracts.list_seat_balances(
+        contract_id: "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc",
+        customer_id: "13117714-3f05-48e5-a6e9-a66093f13b4d"
+      )
+
+    assert_pattern do
+      response => MetronomeSDK::Models::V1::ContractListSeatBalancesResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data]),
+        pagination: MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Pagination
+      }
+    end
+  end
+
   def test_retrieve_rate_schedule_required_params
     response =
       @metronome.v1.contracts.retrieve_rate_schedule(

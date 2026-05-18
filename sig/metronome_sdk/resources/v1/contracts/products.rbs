@@ -18,6 +18,7 @@ module MetronomeSDK
             ?pricing_group_key: ::Array[String],
             ?quantity_conversion: MetronomeSDK::V1::Contracts::QuantityConversion?,
             ?quantity_rounding: MetronomeSDK::V1::Contracts::QuantityRounding?,
+            ?sql_breakdown_granularity: MetronomeSDK::Models::V1::Contracts::ProductCreateParams::sql_breakdown_granularity,
             ?tags: ::Array[String],
             ?request_options: MetronomeSDK::request_opts
           ) -> MetronomeSDK::Models::V1::Contracts::ProductCreateResponse
@@ -42,6 +43,7 @@ module MetronomeSDK
             ?pricing_group_key: ::Array[String],
             ?quantity_conversion: MetronomeSDK::V1::Contracts::QuantityConversion?,
             ?quantity_rounding: MetronomeSDK::V1::Contracts::QuantityRounding?,
+            ?sql_breakdown_granularity: MetronomeSDK::Models::V1::Contracts::ProductUpdateParams::sql_breakdown_granularity,
             ?tags: ::Array[String],
             ?request_options: MetronomeSDK::request_opts
           ) -> MetronomeSDK::Models::V1::Contracts::ProductUpdateResponse

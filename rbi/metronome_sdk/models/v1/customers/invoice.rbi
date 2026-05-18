@@ -222,6 +222,12 @@ module MetronomeSDK
           sig { params(plan_name: String).void }
           attr_writer :plan_name
 
+          sig { returns(T.nilable(String)) }
+          attr_reader :regenerated_from_invoice_id
+
+          sig { params(regenerated_from_invoice_id: String).void }
+          attr_writer :regenerated_from_invoice_id
+
           # Only present for contract invoices with reseller royalties.
           sig do
             returns(
@@ -310,6 +316,7 @@ module MetronomeSDK
               plan_custom_fields: T::Hash[Symbol, String],
               plan_id: String,
               plan_name: String,
+              regenerated_from_invoice_id: String,
               reseller_royalty:
                 MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty::OrHash,
               revenue_system_invoices:
@@ -363,6 +370,7 @@ module MetronomeSDK
             plan_custom_fields: nil,
             plan_id: nil,
             plan_name: nil,
+            regenerated_from_invoice_id: nil,
             # Only present for contract invoices with reseller royalties.
             reseller_royalty: nil,
             revenue_system_invoices: nil,
@@ -414,6 +422,7 @@ module MetronomeSDK
                 plan_custom_fields: T::Hash[Symbol, String],
                 plan_id: String,
                 plan_name: String,
+                regenerated_from_invoice_id: String,
                 reseller_royalty:
                   MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty,
                 revenue_system_invoices:

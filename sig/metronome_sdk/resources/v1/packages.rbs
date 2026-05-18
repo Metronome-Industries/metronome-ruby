@@ -5,7 +5,6 @@ module MetronomeSDK
         def create: (
           name: String,
           ?aliases: ::Array[MetronomeSDK::V1::PackageCreateParams::Alias],
-          ?billing_anchor_date: MetronomeSDK::Models::V1::PackageCreateParams::billing_anchor_date,
           ?billing_provider: MetronomeSDK::Models::V1::PackageCreateParams::billing_provider,
           ?commits: ::Array[MetronomeSDK::V1::PackageCreateParams::Commit],
           ?contract_name: String,

@@ -152,6 +152,11 @@ module MetronomeSDK
           #   @return [String, nil]
           optional :plan_name, String
 
+          # @!attribute regenerated_from_invoice_id
+          #
+          #   @return [String, nil]
+          optional :regenerated_from_invoice_id, String
+
           # @!attribute reseller_royalty
           #   Only present for contract invoices with reseller royalties.
           #
@@ -184,7 +189,7 @@ module MetronomeSDK
           #   @return [Float, nil]
           optional :subtotal, Float
 
-          # @!method initialize(id:, credit_type:, customer_id:, line_items:, status:, total:, type:, amendment_id: nil, billable_status: nil, constituent_invoices: nil, contract_custom_fields: nil, contract_id: nil, correction_record: nil, created_at: nil, custom_fields: nil, customer_custom_fields: nil, end_timestamp: nil, external_invoice: nil, invoice_adjustments: nil, issued_at: nil, net_payment_terms_days: nil, netsuite_sales_order_id: nil, payer: nil, plan_custom_fields: nil, plan_id: nil, plan_name: nil, reseller_royalty: nil, revenue_system_invoices: nil, salesforce_opportunity_id: nil, start_timestamp: nil, subtotal: nil)
+          # @!method initialize(id:, credit_type:, customer_id:, line_items:, status:, total:, type:, amendment_id: nil, billable_status: nil, constituent_invoices: nil, contract_custom_fields: nil, contract_id: nil, correction_record: nil, created_at: nil, custom_fields: nil, customer_custom_fields: nil, end_timestamp: nil, external_invoice: nil, invoice_adjustments: nil, issued_at: nil, net_payment_terms_days: nil, netsuite_sales_order_id: nil, payer: nil, plan_custom_fields: nil, plan_id: nil, plan_name: nil, regenerated_from_invoice_id: nil, reseller_royalty: nil, revenue_system_invoices: nil, salesforce_opportunity_id: nil, start_timestamp: nil, subtotal: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V1::Customers::Invoice} for more details.
           #
@@ -239,6 +244,8 @@ module MetronomeSDK
           #   @param plan_id [String]
           #
           #   @param plan_name [String]
+          #
+          #   @param regenerated_from_invoice_id [String]
           #
           #   @param reseller_royalty [MetronomeSDK::Models::V1::Customers::Invoice::ResellerRoyalty] Only present for contract invoices with reseller royalties.
           #

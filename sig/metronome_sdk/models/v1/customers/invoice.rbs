@@ -30,6 +30,7 @@ module MetronomeSDK
             plan_custom_fields: ::Hash[Symbol, String],
             plan_id: String,
             plan_name: String,
+            regenerated_from_invoice_id: String,
             reseller_royalty: MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty,
             revenue_system_invoices: ::Array[MetronomeSDK::V1::Customers::Invoice::RevenueSystemInvoice]?,
             salesforce_opportunity_id: String,
@@ -140,6 +141,10 @@ module MetronomeSDK
 
           def plan_name=: (String) -> String
 
+          attr_reader regenerated_from_invoice_id: String?
+
+          def regenerated_from_invoice_id=: (String) -> String
+
           attr_reader reseller_royalty: MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty?
 
           def reseller_royalty=: (
@@ -187,6 +192,7 @@ module MetronomeSDK
             ?plan_custom_fields: ::Hash[Symbol, String],
             ?plan_id: String,
             ?plan_name: String,
+            ?regenerated_from_invoice_id: String,
             ?reseller_royalty: MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty,
             ?revenue_system_invoices: ::Array[MetronomeSDK::V1::Customers::Invoice::RevenueSystemInvoice]?,
             ?salesforce_opportunity_id: String,
@@ -221,6 +227,7 @@ module MetronomeSDK
             plan_custom_fields: ::Hash[Symbol, String],
             plan_id: String,
             plan_name: String,
+            regenerated_from_invoice_id: String,
             reseller_royalty: MetronomeSDK::V1::Customers::Invoice::ResellerRoyalty,
             revenue_system_invoices: ::Array[MetronomeSDK::V1::Customers::Invoice::RevenueSystemInvoice]?,
             salesforce_opportunity_id: String,

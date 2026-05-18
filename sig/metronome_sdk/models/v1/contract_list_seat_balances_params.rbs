@@ -1,0 +1,96 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type contract_list_seat_balances_params =
+        {
+          contract_id: String,
+          customer_id: String,
+          covering_date: Time,
+          cursor: String,
+          effective_before: Time,
+          include_credits_and_commits: bool,
+          include_ledgers: bool,
+          limit: Integer,
+          seat_ids: ::Array[String],
+          starting_at: Time,
+          subscription_ids: ::Array[String]
+        }
+        & MetronomeSDK::Internal::Type::request_parameters
+
+      class ContractListSeatBalancesParams < MetronomeSDK::Internal::Type::BaseModel
+        extend MetronomeSDK::Internal::Type::RequestParameters::Converter
+        include MetronomeSDK::Internal::Type::RequestParameters
+
+        attr_accessor contract_id: String
+
+        attr_accessor customer_id: String
+
+        attr_reader covering_date: Time?
+
+        def covering_date=: (Time) -> Time
+
+        attr_reader cursor: String?
+
+        def cursor=: (String) -> String
+
+        attr_reader effective_before: Time?
+
+        def effective_before=: (Time) -> Time
+
+        attr_reader include_credits_and_commits: bool?
+
+        def include_credits_and_commits=: (bool) -> bool
+
+        attr_reader include_ledgers: bool?
+
+        def include_ledgers=: (bool) -> bool
+
+        attr_reader limit: Integer?
+
+        def limit=: (Integer) -> Integer
+
+        attr_reader seat_ids: ::Array[String]?
+
+        def seat_ids=: (::Array[String]) -> ::Array[String]
+
+        attr_reader starting_at: Time?
+
+        def starting_at=: (Time) -> Time
+
+        attr_reader subscription_ids: ::Array[String]?
+
+        def subscription_ids=: (::Array[String]) -> ::Array[String]
+
+        def initialize: (
+          contract_id: String,
+          customer_id: String,
+          ?covering_date: Time,
+          ?cursor: String,
+          ?effective_before: Time,
+          ?include_credits_and_commits: bool,
+          ?include_ledgers: bool,
+          ?limit: Integer,
+          ?seat_ids: ::Array[String],
+          ?starting_at: Time,
+          ?subscription_ids: ::Array[String],
+          ?request_options: MetronomeSDK::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          contract_id: String,
+          customer_id: String,
+          covering_date: Time,
+          cursor: String,
+          effective_before: Time,
+          include_credits_and_commits: bool,
+          include_ledgers: bool,
+          limit: Integer,
+          seat_ids: ::Array[String],
+          starting_at: Time,
+          subscription_ids: ::Array[String],
+          request_options: MetronomeSDK::RequestOptions
+        }
+      end
+    end
+  end
+end

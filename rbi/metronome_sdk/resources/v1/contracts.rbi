@@ -19,8 +19,8 @@ module MetronomeSDK
 
         # Contracts define a customer's products, pricing, discounts, access duration, and
         # billing configuration. Contracts serve as the central billing agreement for both
-        # PLG and Enterprise customers, you can automatically customers access to your
-        # products and services directly from your product or CRM.
+        # PLG and Enterprise customers. You can automatically grant customers access to
+        # your products and services directly from your product or CRM.
         #
         # ### Use this endpoint to:
         #
@@ -245,7 +245,7 @@ module MetronomeSDK
           package_alias: nil,
           # If provided, provisions a customer on a package instead of creating a
           # traditional contract. When specified, only customer_id, starting_at, package_id,
-          # and uniqueness_key are allowed.
+          # uniqueness_key, transition, and custom_fields are allowed.
           package_id: nil,
           prepaid_balance_threshold_configuration: nil,
           # This field's availability is dependent on your client's configuration.
@@ -692,6 +692,84 @@ module MetronomeSDK
           next_page: nil,
           # Include only balances that have any access on or after the provided date
           starting_at: nil,
+          request_options: {}
+        )
+        end
+
+        # Retrieve detailed balance for seat-based credits and commits from the contract's
+        # subscriptions, broken down by individual seats.
+        #
+        # ### Use this endpoint to:
+        #
+        # - Display per-seat balance information in customer dashboards
+        # - Filter balance data by subscription or specific seats
+        #
+        # ### Key response fields:
+        #
+        # An array of seat balance objects containing:
+        #
+        # - Seat id
+        # - Balance: current total balance across all commits and credits
+        #
+        # ### Usage guidelines:
+        #
+        # - Date filtering: use `covering_date` OR `starting_at`/`ending_before` to filter
+        #   balance data by time range
+        # - Set `include_credits_and_commits=true` for detailed commits and credits
+        #   breakdown per seat
+        # - Set `include_ledgers=true` for detailed transaction history per commit/credit
+        #   per seat
+        sig do
+          params(
+            contract_id: String,
+            customer_id: String,
+            covering_date: Time,
+            cursor: String,
+            effective_before: Time,
+            include_credits_and_commits: T::Boolean,
+            include_ledgers: T::Boolean,
+            limit: Integer,
+            seat_ids: T::Array[String],
+            starting_at: Time,
+            subscription_ids: T::Array[String],
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(MetronomeSDK::Models::V1::ContractListSeatBalancesResponse)
+        end
+        def list_seat_balances(
+          # The contract ID to retrieve seat balances for
+          contract_id:,
+          # The customer ID to retrieve seat balances for
+          customer_id:,
+          # Include only commits or credits with access that cover this specific date
+          # (cannot be used with starting_at or ending_before).
+          covering_date: nil,
+          # Page token from a previous response to retrieve the next page
+          cursor: nil,
+          # Include only commits or credits with access effective on or before this date
+          # (cannot be used with covering_date).
+          effective_before: nil,
+          # Include credits and commits in the response
+          include_credits_and_commits: nil,
+          # Include ledger entries for each commit and commit. `include_credits_and_commits`
+          # must be set to `true` for `include_ledgers=true` to apply.
+          include_ledgers: nil,
+          # Maximum number of seats to return. Range: 1-100. Default: 25. When
+          # `include_credits_and_commits = true`, if the total commits/credits across all
+          # seats exceeds 100, a limit of 100 applies to the total credits and commits.
+          # Seats are included greedily to maximize the number of seats returned. Example:
+          # if seat 1 has 98 commits and seat 2 has 10 commits, both seats will be returned
+          # (total: 108 commits). Each returned seat includes all of its associated credits
+          # and commits.
+          limit: nil,
+          # Optional filter to only include specific seats.
+          seat_ids: nil,
+          # Include only commits or credits with access effective on or after this date
+          # (cannot be used with covering_date).
+          starting_at: nil,
+          # Optional filter to only include seats from specific subscriptions. If
+          # subscriptions ids are not mapped to SEAT_BASED subscriptions, error will be
+          # returned.
+          subscription_ids: nil,
           request_options: {}
         )
         end

@@ -187,7 +187,7 @@ module MetronomeSDK
 
         # If provided, provisions a customer on a package instead of creating a
         # traditional contract. When specified, only customer_id, starting_at, package_id,
-        # and uniqueness_key are allowed.
+        # uniqueness_key, transition, and custom_fields are allowed.
         sig { returns(T.nilable(String)) }
         attr_reader :package_id
 
@@ -558,7 +558,7 @@ module MetronomeSDK
           package_alias: nil,
           # If provided, provisions a customer on a package instead of creating a
           # traditional contract. When specified, only customer_id, starting_at, package_id,
-          # and uniqueness_key are allowed.
+          # uniqueness_key, transition, and custom_fields are allowed.
           package_id: nil,
           prepaid_balance_threshold_configuration: nil,
           # This field's availability is dependent on your client's configuration.
@@ -983,24 +983,6 @@ module MetronomeSDK
           sig { params(netsuite_sales_order_id: String).void }
           attr_writer :netsuite_sales_order_id
 
-          # optionally payment gate this commit
-          sig do
-            returns(
-              T.nilable(
-                MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig
-              )
-            )
-          end
-          attr_reader :payment_gate_config
-
-          sig do
-            params(
-              payment_gate_config:
-                MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::OrHash
-            ).void
-          end
-          attr_writer :payment_gate_config
-
           # If multiple commits are applicable, the one with the lower priority will apply
           # first.
           sig { returns(T.nilable(Float)) }
@@ -1075,8 +1057,6 @@ module MetronomeSDK
                 MetronomeSDK::V1::ContractCreateParams::Commit::InvoiceSchedule::OrHash,
               name: String,
               netsuite_sales_order_id: String,
-              payment_gate_config:
-                MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::OrHash,
               priority: Float,
               rate_type:
                 MetronomeSDK::V1::ContractCreateParams::Commit::RateType::OrSymbol,
@@ -1117,8 +1097,6 @@ module MetronomeSDK
             name: nil,
             # This field's availability is dependent on your client's configuration.
             netsuite_sales_order_id: nil,
-            # optionally payment gate this commit
-            payment_gate_config: nil,
             # If multiple commits are applicable, the one with the lower priority will apply
             # first.
             priority: nil,
@@ -1155,8 +1133,6 @@ module MetronomeSDK
                   MetronomeSDK::V1::ContractCreateParams::Commit::InvoiceSchedule,
                 name: String,
                 netsuite_sales_order_id: String,
-                payment_gate_config:
-                  MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig,
                 priority: Float,
                 rate_type:
                   MetronomeSDK::V1::ContractCreateParams::Commit::RateType::OrSymbol,
@@ -1696,378 +1672,6 @@ module MetronomeSDK
                 )
               end
               def to_hash
-              end
-            end
-          end
-
-          class PaymentGateConfig < MetronomeSDK::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias do
-                T.any(
-                  MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig,
-                  MetronomeSDK::Internal::AnyHash
-                )
-              end
-
-            # Gate access to the commit balance based on successful collection of payment.
-            # Select STRIPE for Metronome to facilitate payment via Stripe. Select EXTERNAL to
-            # facilitate payment using your own payment integration. Select NONE if you do not
-            # wish to payment gate the commit balance.
-            sig do
-              returns(
-                MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::PaymentGateType::OrSymbol
-              )
-            end
-            attr_accessor :payment_gate_type
-
-            # Only applicable if using PRECALCULATED as your tax type.
-            sig do
-              returns(
-                T.nilable(
-                  MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::PrecalculatedTaxConfig
-                )
-              )
-            end
-            attr_reader :precalculated_tax_config
-
-            sig do
-              params(
-                precalculated_tax_config:
-                  MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::PrecalculatedTaxConfig::OrHash
-              ).void
-            end
-            attr_writer :precalculated_tax_config
-
-            # Only applicable if using STRIPE as your payment gate type.
-            sig do
-              returns(
-                T.nilable(
-                  MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::StripeConfig
-                )
-              )
-            end
-            attr_reader :stripe_config
-
-            sig do
-              params(
-                stripe_config:
-                  MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::StripeConfig::OrHash
-              ).void
-            end
-            attr_writer :stripe_config
-
-            # Stripe tax is only supported for Stripe payment gateway. Select NONE if you do
-            # not wish Metronome to calculate tax on your behalf. Leaving this field blank
-            # will default to NONE.
-            sig do
-              returns(
-                T.nilable(
-                  MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::TaxType::OrSymbol
-                )
-              )
-            end
-            attr_reader :tax_type
-
-            sig do
-              params(
-                tax_type:
-                  MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::TaxType::OrSymbol
-              ).void
-            end
-            attr_writer :tax_type
-
-            # optionally payment gate this commit
-            sig do
-              params(
-                payment_gate_type:
-                  MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::PaymentGateType::OrSymbol,
-                precalculated_tax_config:
-                  MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::PrecalculatedTaxConfig::OrHash,
-                stripe_config:
-                  MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::StripeConfig::OrHash,
-                tax_type:
-                  MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::TaxType::OrSymbol
-              ).returns(T.attached_class)
-            end
-            def self.new(
-              # Gate access to the commit balance based on successful collection of payment.
-              # Select STRIPE for Metronome to facilitate payment via Stripe. Select EXTERNAL to
-              # facilitate payment using your own payment integration. Select NONE if you do not
-              # wish to payment gate the commit balance.
-              payment_gate_type:,
-              # Only applicable if using PRECALCULATED as your tax type.
-              precalculated_tax_config: nil,
-              # Only applicable if using STRIPE as your payment gate type.
-              stripe_config: nil,
-              # Stripe tax is only supported for Stripe payment gateway. Select NONE if you do
-              # not wish Metronome to calculate tax on your behalf. Leaving this field blank
-              # will default to NONE.
-              tax_type: nil
-            )
-            end
-
-            sig do
-              override.returns(
-                {
-                  payment_gate_type:
-                    MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::PaymentGateType::OrSymbol,
-                  precalculated_tax_config:
-                    MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::PrecalculatedTaxConfig,
-                  stripe_config:
-                    MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::StripeConfig,
-                  tax_type:
-                    MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::TaxType::OrSymbol
-                }
-              )
-            end
-            def to_hash
-            end
-
-            # Gate access to the commit balance based on successful collection of payment.
-            # Select STRIPE for Metronome to facilitate payment via Stripe. Select EXTERNAL to
-            # facilitate payment using your own payment integration. Select NONE if you do not
-            # wish to payment gate the commit balance.
-            module PaymentGateType
-              extend MetronomeSDK::Internal::Type::Enum
-
-              TaggedSymbol =
-                T.type_alias do
-                  T.all(
-                    Symbol,
-                    MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::PaymentGateType
-                  )
-                end
-              OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-              NONE =
-                T.let(
-                  :NONE,
-                  MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::PaymentGateType::TaggedSymbol
-                )
-              STRIPE =
-                T.let(
-                  :STRIPE,
-                  MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::PaymentGateType::TaggedSymbol
-                )
-              EXTERNAL =
-                T.let(
-                  :EXTERNAL,
-                  MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::PaymentGateType::TaggedSymbol
-                )
-
-              sig do
-                override.returns(
-                  T::Array[
-                    MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::PaymentGateType::TaggedSymbol
-                  ]
-                )
-              end
-              def self.values
-              end
-            end
-
-            class PrecalculatedTaxConfig < MetronomeSDK::Internal::Type::BaseModel
-              OrHash =
-                T.type_alias do
-                  T.any(
-                    MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::PrecalculatedTaxConfig,
-                    MetronomeSDK::Internal::AnyHash
-                  )
-                end
-
-              # Amount of tax to be applied. This should be in the same currency and
-              # denomination as the commit's invoice schedule
-              sig { returns(Float) }
-              attr_accessor :tax_amount
-
-              # Name of the tax to be applied. This may be used in an invoice line item
-              # description.
-              sig { returns(T.nilable(String)) }
-              attr_reader :tax_name
-
-              sig { params(tax_name: String).void }
-              attr_writer :tax_name
-
-              # Only applicable if using PRECALCULATED as your tax type.
-              sig do
-                params(tax_amount: Float, tax_name: String).returns(
-                  T.attached_class
-                )
-              end
-              def self.new(
-                # Amount of tax to be applied. This should be in the same currency and
-                # denomination as the commit's invoice schedule
-                tax_amount:,
-                # Name of the tax to be applied. This may be used in an invoice line item
-                # description.
-                tax_name: nil
-              )
-              end
-
-              sig { override.returns({ tax_amount: Float, tax_name: String }) }
-              def to_hash
-              end
-            end
-
-            class StripeConfig < MetronomeSDK::Internal::Type::BaseModel
-              OrHash =
-                T.type_alias do
-                  T.any(
-                    MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::StripeConfig,
-                    MetronomeSDK::Internal::AnyHash
-                  )
-                end
-
-              # If left blank, will default to INVOICE
-              sig do
-                returns(
-                  MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::StripeConfig::PaymentType::OrSymbol
-                )
-              end
-              attr_accessor :payment_type
-
-              # Metadata to be added to the Stripe invoice. Only applicable if using INVOICE as
-              # your payment type.
-              sig { returns(T.nilable(T::Hash[Symbol, String])) }
-              attr_reader :invoice_metadata
-
-              sig { params(invoice_metadata: T::Hash[Symbol, String]).void }
-              attr_writer :invoice_metadata
-
-              # If true, the payment will be made assuming the customer is present (i.e. on
-              # session).
-              #
-              # If false, the payment will be made assuming the customer is not present (i.e.
-              # off session). For cardholders from a country with an e-mandate requirement (e.g.
-              # India), the payment may be declined.
-              #
-              # If left blank, will default to false.
-              sig { returns(T.nilable(T::Boolean)) }
-              attr_reader :on_session_payment
-
-              sig { params(on_session_payment: T::Boolean).void }
-              attr_writer :on_session_payment
-
-              # Only applicable if using STRIPE as your payment gate type.
-              sig do
-                params(
-                  payment_type:
-                    MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::StripeConfig::PaymentType::OrSymbol,
-                  invoice_metadata: T::Hash[Symbol, String],
-                  on_session_payment: T::Boolean
-                ).returns(T.attached_class)
-              end
-              def self.new(
-                # If left blank, will default to INVOICE
-                payment_type:,
-                # Metadata to be added to the Stripe invoice. Only applicable if using INVOICE as
-                # your payment type.
-                invoice_metadata: nil,
-                # If true, the payment will be made assuming the customer is present (i.e. on
-                # session).
-                #
-                # If false, the payment will be made assuming the customer is not present (i.e.
-                # off session). For cardholders from a country with an e-mandate requirement (e.g.
-                # India), the payment may be declined.
-                #
-                # If left blank, will default to false.
-                on_session_payment: nil
-              )
-              end
-
-              sig do
-                override.returns(
-                  {
-                    payment_type:
-                      MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::StripeConfig::PaymentType::OrSymbol,
-                    invoice_metadata: T::Hash[Symbol, String],
-                    on_session_payment: T::Boolean
-                  }
-                )
-              end
-              def to_hash
-              end
-
-              # If left blank, will default to INVOICE
-              module PaymentType
-                extend MetronomeSDK::Internal::Type::Enum
-
-                TaggedSymbol =
-                  T.type_alias do
-                    T.all(
-                      Symbol,
-                      MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::StripeConfig::PaymentType
-                    )
-                  end
-                OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-                INVOICE =
-                  T.let(
-                    :INVOICE,
-                    MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::StripeConfig::PaymentType::TaggedSymbol
-                  )
-                PAYMENT_INTENT =
-                  T.let(
-                    :PAYMENT_INTENT,
-                    MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::StripeConfig::PaymentType::TaggedSymbol
-                  )
-
-                sig do
-                  override.returns(
-                    T::Array[
-                      MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::StripeConfig::PaymentType::TaggedSymbol
-                    ]
-                  )
-                end
-                def self.values
-                end
-              end
-            end
-
-            # Stripe tax is only supported for Stripe payment gateway. Select NONE if you do
-            # not wish Metronome to calculate tax on your behalf. Leaving this field blank
-            # will default to NONE.
-            module TaxType
-              extend MetronomeSDK::Internal::Type::Enum
-
-              TaggedSymbol =
-                T.type_alias do
-                  T.all(
-                    Symbol,
-                    MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::TaxType
-                  )
-                end
-              OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-              NONE =
-                T.let(
-                  :NONE,
-                  MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::TaxType::TaggedSymbol
-                )
-              STRIPE =
-                T.let(
-                  :STRIPE,
-                  MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::TaxType::TaggedSymbol
-                )
-              ANROK =
-                T.let(
-                  :ANROK,
-                  MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::TaxType::TaggedSymbol
-                )
-              PRECALCULATED =
-                T.let(
-                  :PRECALCULATED,
-                  MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::TaxType::TaggedSymbol
-                )
-
-              sig do
-                override.returns(
-                  T::Array[
-                    MetronomeSDK::V1::ContractCreateParams::Commit::PaymentGateConfig::TaxType::TaggedSymbol
-                  ]
-                )
-              end
-              def self.values
               end
             end
           end

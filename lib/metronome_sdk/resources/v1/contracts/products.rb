@@ -15,7 +15,7 @@ module MetronomeSDK
           # an ERP system. Give the product a meaningful name as they will appear on
           # customer invoices.
           #
-          # @overload create(name:, type:, billable_metric_id: nil, composite_product_ids: nil, composite_tags: nil, custom_fields: nil, exclude_free_usage: nil, is_refundable: nil, netsuite_internal_item_id: nil, netsuite_overage_item_id: nil, presentation_group_key: nil, pricing_group_key: nil, quantity_conversion: nil, quantity_rounding: nil, tags: nil, request_options: {})
+          # @overload create(name:, type:, billable_metric_id: nil, composite_product_ids: nil, composite_tags: nil, custom_fields: nil, exclude_free_usage: nil, is_refundable: nil, netsuite_internal_item_id: nil, netsuite_overage_item_id: nil, presentation_group_key: nil, pricing_group_key: nil, quantity_conversion: nil, quantity_rounding: nil, sql_breakdown_granularity: nil, tags: nil, request_options: {})
           #
           # @param name [String] displayed on invoices
           #
@@ -44,6 +44,8 @@ module MetronomeSDK
           # @param quantity_conversion [MetronomeSDK::Models::V1::Contracts::QuantityConversion, nil] Optional. Only valid for USAGE products. If provided, the quantity will be conve
           #
           # @param quantity_rounding [MetronomeSDK::Models::V1::Contracts::QuantityRounding, nil] Optional. Only valid for USAGE products. If provided, the quantity will be round
+          #
+          # @param sql_breakdown_granularity [Symbol, MetronomeSDK::Models::V1::Contracts::ProductCreateParams::SqlBreakdownGranularity] Defines the breakdown behavior when calculating usage from SQL Billable Metrics.
           #
           # @param tags [Array<String>]
           #
@@ -99,7 +101,7 @@ module MetronomeSDK
           # - Product type cannot be changed after creation. For incorrect product types,
           #   create a new product and archive the original instead.
           #
-          # @overload update(product_id:, starting_at:, billable_metric_id: nil, composite_product_ids: nil, composite_tags: nil, exclude_free_usage: nil, is_refundable: nil, name: nil, netsuite_internal_item_id: nil, netsuite_overage_item_id: nil, presentation_group_key: nil, pricing_group_key: nil, quantity_conversion: nil, quantity_rounding: nil, tags: nil, request_options: {})
+          # @overload update(product_id:, starting_at:, billable_metric_id: nil, composite_product_ids: nil, composite_tags: nil, exclude_free_usage: nil, is_refundable: nil, name: nil, netsuite_internal_item_id: nil, netsuite_overage_item_id: nil, presentation_group_key: nil, pricing_group_key: nil, quantity_conversion: nil, quantity_rounding: nil, sql_breakdown_granularity: nil, tags: nil, request_options: {})
           #
           # @param product_id [String] ID of the product to update
           #
@@ -128,6 +130,8 @@ module MetronomeSDK
           # @param quantity_conversion [MetronomeSDK::Models::V1::Contracts::QuantityConversion, nil] Optional. Only valid for USAGE products. If provided, the quantity will be conve
           #
           # @param quantity_rounding [MetronomeSDK::Models::V1::Contracts::QuantityRounding, nil] Optional. Only valid for USAGE products. If provided, the quantity will be round
+          #
+          # @param sql_breakdown_granularity [Symbol, MetronomeSDK::Models::V1::Contracts::ProductUpdateParams::SqlBreakdownGranularity] Defines the breakdown behavior when calculating usage from SQL Billable Metrics.
           #
           # @param tags [Array<String>] If not provided, defaults to product's current tags
           #

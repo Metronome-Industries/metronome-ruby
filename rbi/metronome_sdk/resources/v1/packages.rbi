@@ -59,8 +59,6 @@ module MetronomeSDK
             name: String,
             aliases:
               T::Array[MetronomeSDK::V1::PackageCreateParams::Alias::OrHash],
-            billing_anchor_date:
-              MetronomeSDK::V1::PackageCreateParams::BillingAnchorDate::OrSymbol,
             billing_provider:
               MetronomeSDK::V1::PackageCreateParams::BillingProvider::OrSymbol,
             commits:
@@ -112,7 +110,6 @@ module MetronomeSDK
           # multiple packages, it will reference the package to which it was most recently
           # assigned. It is not exposed to end customers.
           aliases: nil,
-          billing_anchor_date: nil,
           billing_provider: nil,
           commits: nil,
           contract_name: nil,

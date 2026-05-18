@@ -1,5 +1,42 @@
 # Changelog
 
+## 3.6.0 (2026-05-18)
+
+Full Changelog: [v3.5.0...v3.6.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v3.5.0...v3.6.0)
+
+### Features
+
+* [docs] fix typo in "Create a Contract" [1] page ([1c944c1](https://github.com/Metronome-Industries/metronome-ruby/commit/1c944c186c83b405e283708850d5a608e6c21ed6))
+* [orch-383] fix API docs for one-off payment-gated commits ([a4d2798](https://github.com/Metronome-Industries/metronome-ruby/commit/a4d27985195453b3546b5ecd8a420b4d768110db))
+* Add alert specifiers to contract create API ([51db5ed](https://github.com/Metronome-Industries/metronome-ruby/commit/51db5ed0d8954978ac23e2ddc30a6b542a535828))
+* add contract_id filter to list invoices endpoint ([a304fbe](https://github.com/Metronome-Industries/metronome-ruby/commit/a304fbe7fbdec29e84f6d7e00757ac8d53c4ddf2))
+* add invoice type filter for list invoices api ([872e130](https://github.com/Metronome-Industries/metronome-ruby/commit/872e1300646c989ab9d1ae057358213651f140d9))
+* Add list seat balances API endpoint to SDK ([b00dd28](https://github.com/Metronome-Industries/metronome-ruby/commit/b00dd2876202080710203143d27a3b592aa7333b))
+* Add regenerated_from_invoice_id to getInvoice response ([4fcd94f](https://github.com/Metronome-Industries/metronome-ruby/commit/4fcd94f52de907beea33c5f619ee529cdf2ee295))
+* Add sql_breakdown_granularity flag to product create/edit ([101c0ef](https://github.com/Metronome-Industries/metronome-ruby/commit/101c0efded08535d01f7d5ef67b80c3325be7e5a))
+* added custom fields to create contract with package ([3df5eaf](https://github.com/Metronome-Industries/metronome-ruby/commit/3df5eafd29b0d030f2de6c9b1da6bd0f2d83fefd))
+* doc updates ([a38c0ad](https://github.com/Metronome-Industries/metronome-ruby/commit/a38c0adccd0a9de33f91052cef6f8db0bfd054ba))
+* Limit spend breakdown/seat balances to 100 vals ([019e16c](https://github.com/Metronome-Industries/metronome-ruby/commit/019e16ca2e5091d75d9674d3c1ae58e4af6c8786))
+* Pranadreddy/launch 2486 remove dead billing anchor date field from api ([880922c](https://github.com/Metronome-Industries/metronome-ruby/commit/880922c776ce6b9026338097d22629153b06790d))
+* support setting headers via env ([70a6689](https://github.com/Metronome-Industries/metronome-ruby/commit/70a66896bf1c85734adbcc3f90ec88e91b3b124d))
+* Update stainless.yml to include Java configuration logic ([caadd1b](https://github.com/Metronome-Industries/metronome-ruby/commit/caadd1bcdfe6e513fa45e1ffe7ba16be4078f8e0))
+* wip ([d85557d](https://github.com/Metronome-Industries/metronome-ruby/commit/d85557d5c8d4e42eaedeeb01d52e925cfaec2bf5))
+
+
+### Bug Fixes
+
+* add archived_at to Credit schema (parity with Commit) ([c4cb0de](https://github.com/Metronome-Industries/metronome-ruby/commit/c4cb0de6639d6260cd5cd4991c2bdbbca9a56308))
+* **client:** elide content type header on requests without body ([3229b9e](https://github.com/Metronome-Industries/metronome-ruby/commit/3229b9ea9655734024eeacf899aef1559401c950))
+
+
+### Chores
+
+* configure new SDK language ([2318d44](https://github.com/Metronome-Industries/metronome-ruby/commit/2318d447232cd1368c1be58b004f4e56f6ec58f8))
+* configure new SDK language ([c604e19](https://github.com/Metronome-Industries/metronome-ruby/commit/c604e191054d276f6620fe43ef76543c000703ee))
+* configure new SDK language ([85c2a71](https://github.com/Metronome-Industries/metronome-ruby/commit/85c2a714681224c4e5b654ae2a0ffa0ff478c269))
+* configure new SDK language ([7f6bb80](https://github.com/Metronome-Industries/metronome-ruby/commit/7f6bb80a5e0f7838849aa1fef4e255ac7a7c6d44))
+* **internal:** more robust bootstrap script ([3f8dd59](https://github.com/Metronome-Industries/metronome-ruby/commit/3f8dd59db3d7878d6232f01d0fda804657de3e2a))
+
 ## 3.5.0 (2026-04-18)
 
 Full Changelog: [v3.4.0...v3.5.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v3.4.0...v3.5.0)
