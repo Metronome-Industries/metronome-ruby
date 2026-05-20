@@ -80,9 +80,6 @@ module MetronomeSDK
       sig { returns(MetronomeSDK::Resources::V1::Packages) }
       attr_reader :packages
 
-      sig { returns(MetronomeSDK::Resources::V1::Payments) }
-      attr_reader :payments
-
       # Use these endpoints to configure a billing API key, a webhook secret, or invoice
       # finalization behavior.
       sig { returns(MetronomeSDK::Resources::V1::Settings) }
