@@ -80,9 +80,6 @@ module MetronomeSDK
       # @return [MetronomeSDK::Resources::V1::Packages]
       attr_reader :packages
 
-      # @return [MetronomeSDK::Resources::V1::Payments]
-      attr_reader :payments
-
       # Use these endpoints to configure a billing API key, a webhook secret, or invoice
       # finalization behavior.
       # @return [MetronomeSDK::Resources::V1::Settings]
@@ -107,7 +104,6 @@ module MetronomeSDK
         @invoices = MetronomeSDK::Resources::V1::Invoices.new(client: client)
         @contracts = MetronomeSDK::Resources::V1::Contracts.new(client: client)
         @packages = MetronomeSDK::Resources::V1::Packages.new(client: client)
-        @payments = MetronomeSDK::Resources::V1::Payments.new(client: client)
         @settings = MetronomeSDK::Resources::V1::Settings.new(client: client)
       end
     end
