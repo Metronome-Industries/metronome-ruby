@@ -26,6 +26,7 @@ module MetronomeSDK
           recurring_credits: ::Array[MetronomeSDK::Models::V1::PackageListResponse::RecurringCredit],
           scheduled_charges_on_usage_invoices: MetronomeSDK::Models::V1::PackageListResponse::scheduled_charges_on_usage_invoices,
           spend_threshold_configuration: MetronomeSDK::SpendThresholdConfiguration,
+          spend_trackers: ::Array[MetronomeSDK::Models::V1::PackageListResponse::SpendTracker],
           subscriptions: ::Array[MetronomeSDK::Models::V1::PackageListResponse::Subscription],
           uniqueness_key: String
         }
@@ -131,6 +132,12 @@ module MetronomeSDK
           MetronomeSDK::SpendThresholdConfiguration
         ) -> MetronomeSDK::SpendThresholdConfiguration
 
+        attr_reader spend_trackers: ::Array[MetronomeSDK::Models::V1::PackageListResponse::SpendTracker]?
+
+        def spend_trackers=: (
+          ::Array[MetronomeSDK::Models::V1::PackageListResponse::SpendTracker]
+        ) -> ::Array[MetronomeSDK::Models::V1::PackageListResponse::SpendTracker]
+
         attr_reader subscriptions: ::Array[MetronomeSDK::Models::V1::PackageListResponse::Subscription]?
 
         def subscriptions=: (
@@ -165,6 +172,7 @@ module MetronomeSDK
           ?recurring_credits: ::Array[MetronomeSDK::Models::V1::PackageListResponse::RecurringCredit],
           ?scheduled_charges_on_usage_invoices: MetronomeSDK::Models::V1::PackageListResponse::scheduled_charges_on_usage_invoices,
           ?spend_threshold_configuration: MetronomeSDK::SpendThresholdConfiguration,
+          ?spend_trackers: ::Array[MetronomeSDK::Models::V1::PackageListResponse::SpendTracker],
           ?subscriptions: ::Array[MetronomeSDK::Models::V1::PackageListResponse::Subscription],
           ?uniqueness_key: String
         ) -> void
@@ -193,6 +201,7 @@ module MetronomeSDK
           recurring_credits: ::Array[MetronomeSDK::Models::V1::PackageListResponse::RecurringCredit],
           scheduled_charges_on_usage_invoices: MetronomeSDK::Models::V1::PackageListResponse::scheduled_charges_on_usage_invoices,
           spend_threshold_configuration: MetronomeSDK::SpendThresholdConfiguration,
+          spend_trackers: ::Array[MetronomeSDK::Models::V1::PackageListResponse::SpendTracker],
           subscriptions: ::Array[MetronomeSDK::Models::V1::PackageListResponse::Subscription],
           uniqueness_key: String
         }
@@ -2164,6 +2173,112 @@ module MetronomeSDK
           ALL: :ALL
 
           def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageListResponse::scheduled_charges_on_usage_invoices]
+        end
+
+        type spend_tracker =
+          {
+            alias_: String,
+            applicable_spend_specifiers: ::Array[MetronomeSDK::Models::V1::PackageListResponse::SpendTracker::ApplicableSpendSpecifier],
+            credit_type_id: String,
+            reset_frequency: MetronomeSDK::Models::V1::PackageListResponse::SpendTracker::reset_frequency
+          }
+
+        class SpendTracker < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor alias_: String
+
+          attr_accessor applicable_spend_specifiers: ::Array[MetronomeSDK::Models::V1::PackageListResponse::SpendTracker::ApplicableSpendSpecifier]
+
+          attr_accessor credit_type_id: String
+
+          attr_accessor reset_frequency: MetronomeSDK::Models::V1::PackageListResponse::SpendTracker::reset_frequency
+
+          def initialize: (
+            alias_: String,
+            applicable_spend_specifiers: ::Array[MetronomeSDK::Models::V1::PackageListResponse::SpendTracker::ApplicableSpendSpecifier],
+            credit_type_id: String,
+            reset_frequency: MetronomeSDK::Models::V1::PackageListResponse::SpendTracker::reset_frequency
+          ) -> void
+
+          def to_hash: -> {
+            alias_: String,
+            applicable_spend_specifiers: ::Array[MetronomeSDK::Models::V1::PackageListResponse::SpendTracker::ApplicableSpendSpecifier],
+            credit_type_id: String,
+            reset_frequency: MetronomeSDK::Models::V1::PackageListResponse::SpendTracker::reset_frequency
+          }
+
+          type applicable_spend_specifier =
+            {
+              sources: ::Array[MetronomeSDK::Models::V1::PackageListResponse::SpendTracker::ApplicableSpendSpecifier::source],
+              spend_type: MetronomeSDK::Models::V1::PackageListResponse::SpendTracker::ApplicableSpendSpecifier::spend_type,
+              discounted: MetronomeSDK::Models::V1::PackageListResponse::SpendTracker::ApplicableSpendSpecifier::discounted
+            }
+
+          class ApplicableSpendSpecifier < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor sources: ::Array[MetronomeSDK::Models::V1::PackageListResponse::SpendTracker::ApplicableSpendSpecifier::source]
+
+            attr_accessor spend_type: MetronomeSDK::Models::V1::PackageListResponse::SpendTracker::ApplicableSpendSpecifier::spend_type
+
+            attr_reader discounted: MetronomeSDK::Models::V1::PackageListResponse::SpendTracker::ApplicableSpendSpecifier::discounted?
+
+            def discounted=: (
+              MetronomeSDK::Models::V1::PackageListResponse::SpendTracker::ApplicableSpendSpecifier::discounted
+            ) -> MetronomeSDK::Models::V1::PackageListResponse::SpendTracker::ApplicableSpendSpecifier::discounted
+
+            def initialize: (
+              sources: ::Array[MetronomeSDK::Models::V1::PackageListResponse::SpendTracker::ApplicableSpendSpecifier::source],
+              spend_type: MetronomeSDK::Models::V1::PackageListResponse::SpendTracker::ApplicableSpendSpecifier::spend_type,
+              ?discounted: MetronomeSDK::Models::V1::PackageListResponse::SpendTracker::ApplicableSpendSpecifier::discounted
+            ) -> void
+
+            def to_hash: -> {
+              sources: ::Array[MetronomeSDK::Models::V1::PackageListResponse::SpendTracker::ApplicableSpendSpecifier::source],
+              spend_type: MetronomeSDK::Models::V1::PackageListResponse::SpendTracker::ApplicableSpendSpecifier::spend_type,
+              discounted: MetronomeSDK::Models::V1::PackageListResponse::SpendTracker::ApplicableSpendSpecifier::discounted
+            }
+
+            type source = :THRESHOLD_RECHARGE | :MANUAL
+
+            module Source
+              extend MetronomeSDK::Internal::Type::Enum
+
+              THRESHOLD_RECHARGE: :THRESHOLD_RECHARGE
+              MANUAL: :MANUAL
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageListResponse::SpendTracker::ApplicableSpendSpecifier::source]
+            end
+
+            type spend_type = :COMMIT_PURCHASE
+
+            module SpendType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              COMMIT_PURCHASE: :COMMIT_PURCHASE
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageListResponse::SpendTracker::ApplicableSpendSpecifier::spend_type]
+            end
+
+            type discounted = :ANY | :DISCOUNTED_ONLY | :UNDISCOUNTED_ONLY
+
+            module Discounted
+              extend MetronomeSDK::Internal::Type::Enum
+
+              ANY: :ANY
+              DISCOUNTED_ONLY: :DISCOUNTED_ONLY
+              UNDISCOUNTED_ONLY: :UNDISCOUNTED_ONLY
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageListResponse::SpendTracker::ApplicableSpendSpecifier::discounted]
+            end
+          end
+
+          type reset_frequency = :BILLING_PERIOD
+
+          module ResetFrequency
+            extend MetronomeSDK::Internal::Type::Enum
+
+            BILLING_PERIOD: :BILLING_PERIOD
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageListResponse::SpendTracker::reset_frequency]
+          end
         end
 
         type subscription =

@@ -3150,6 +3150,14 @@ module MetronomeSDK
 
             # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration#discount_configuration
             class DiscountConfiguration < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute cap
+              #   Update the discount cap. Set to null to remove an existing cap.
+              #
+              #   @return [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration::Cap, nil]
+              optional :cap,
+                       -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration::Cap },
+                       nil?: true
+
               # @!attribute payment_fraction
               #   The fraction of the original amount that the customer pays after applying the
               #   discount. Set to null to remove the discount fraction. For example, 0.85 means
@@ -3158,12 +3166,36 @@ module MetronomeSDK
               #   @return [Float, nil]
               optional :payment_fraction, Float, nil?: true
 
-              # @!method initialize(payment_fraction: nil)
+              # @!method initialize(cap: nil, payment_fraction: nil)
               #   Some parameter documentations has been truncated, see
               #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration}
               #   for more details.
               #
+              #   @param cap [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration::Cap, nil] Update the discount cap. Set to null to remove an existing cap.
+              #
               #   @param payment_fraction [Float, nil] The fraction of the original amount that the customer pays after applying the di
+
+              # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration#cap
+              class Cap < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute amount
+                #   Accumulated spend ceiling above which the discount stops applying.
+                #
+                #   @return [Float]
+                required :amount, Float
+
+                # @!attribute spend_tracker_alias
+                #   Alias of the spend tracker this cap is measured against.
+                #
+                #   @return [String]
+                required :spend_tracker_alias, String
+
+                # @!method initialize(amount:, spend_tracker_alias:)
+                #   Update the discount cap. Set to null to remove an existing cap.
+                #
+                #   @param amount [Float] Accumulated spend ceiling above which the discount stops applying.
+                #
+                #   @param spend_tracker_alias [String] Alias of the spend tracker this cap is measured against.
+              end
             end
           end
 
@@ -3513,6 +3545,14 @@ module MetronomeSDK
 
             # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration#discount_configuration
             class DiscountConfiguration < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute cap
+              #   Update the discount cap. Set to null to remove an existing cap.
+              #
+              #   @return [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::DiscountConfiguration::Cap, nil]
+              optional :cap,
+                       -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::DiscountConfiguration::Cap },
+                       nil?: true
+
               # @!attribute payment_fraction
               #   The fraction of the original amount that the customer pays after applying the
               #   discount. Set to null to remove the discount fraction. For example, 0.85 means
@@ -3521,12 +3561,36 @@ module MetronomeSDK
               #   @return [Float, nil]
               optional :payment_fraction, Float, nil?: true
 
-              # @!method initialize(payment_fraction: nil)
+              # @!method initialize(cap: nil, payment_fraction: nil)
               #   Some parameter documentations has been truncated, see
               #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::DiscountConfiguration}
               #   for more details.
               #
+              #   @param cap [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::DiscountConfiguration::Cap, nil] Update the discount cap. Set to null to remove an existing cap.
+              #
               #   @param payment_fraction [Float, nil] The fraction of the original amount that the customer pays after applying the di
+
+              # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::DiscountConfiguration#cap
+              class Cap < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute amount
+                #   Accumulated spend ceiling above which the discount stops applying.
+                #
+                #   @return [Float]
+                required :amount, Float
+
+                # @!attribute spend_tracker_alias
+                #   Alias of the spend tracker this cap is measured against.
+                #
+                #   @return [String]
+                required :spend_tracker_alias, String
+
+                # @!method initialize(amount:, spend_tracker_alias:)
+                #   Update the discount cap. Set to null to remove an existing cap.
+                #
+                #   @param amount [Float] Accumulated spend ceiling above which the discount stops applying.
+                #
+                #   @param spend_tracker_alias [String] Alias of the spend tracker this cap is measured against.
+              end
             end
           end
 

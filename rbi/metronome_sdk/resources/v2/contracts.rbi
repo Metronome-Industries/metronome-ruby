@@ -159,6 +159,10 @@ module MetronomeSDK
               ],
             add_spend_threshold_configuration:
               MetronomeSDK::SpendThresholdConfigurationV2::OrHash,
+            add_spend_trackers:
+              T::Array[
+                MetronomeSDK::V2::ContractEditParams::AddSpendTracker::OrHash
+              ],
             add_subscriptions:
               T::Array[
                 MetronomeSDK::V2::ContractEditParams::AddSubscription::OrHash
@@ -176,6 +180,7 @@ module MetronomeSDK
               T::Array[
                 MetronomeSDK::V2::ContractEditParams::ArchiveScheduledCharge::OrHash
               ],
+            archive_spend_trackers: T::Array[String],
             remove_overrides:
               T::Array[
                 MetronomeSDK::V2::ContractEditParams::RemoveOverride::OrHash
@@ -240,6 +245,9 @@ module MetronomeSDK
           add_revenue_system_configuration_update: nil,
           add_scheduled_charges: nil,
           add_spend_threshold_configuration: nil,
+          # Spend trackers to add to this contract. Aliases must be unique within a
+          # contract.
+          add_spend_trackers: nil,
           # Optional list of
           # [subscriptions](https://docs.metronome.com/manage-product-access/create-subscription/)
           # to add to the contract.
@@ -255,6 +263,8 @@ module MetronomeSDK
           archive_credits: nil,
           # IDs of scheduled charges to archive
           archive_scheduled_charges: nil,
+          # Aliases of spend trackers to archive.
+          archive_spend_trackers: nil,
           # IDs of overrides to remove
           remove_overrides: nil,
           # Optional uniqueness key to prevent duplicate contract edits.

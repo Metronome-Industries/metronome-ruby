@@ -446,6 +446,24 @@ module MetronomeSDK
           end
           attr_writer :specifiers
 
+          # Optional attributes for spend tracker integration. Immutable after creation.
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::V1::ContractAmendParams::Commit::SpendTrackerAttributes
+              )
+            )
+          end
+          attr_reader :spend_tracker_attributes
+
+          sig do
+            params(
+              spend_tracker_attributes:
+                MetronomeSDK::V1::ContractAmendParams::Commit::SpendTrackerAttributes::OrHash
+            ).void
+          end
+          attr_writer :spend_tracker_attributes
+
           # A temporary ID for the commit that can be used to reference the commit for
           # commit specific overrides.
           sig { returns(T.nilable(String)) }
@@ -477,6 +495,8 @@ module MetronomeSDK
                 MetronomeSDK::V1::ContractAmendParams::Commit::RateType::OrSymbol,
               rollover_fraction: Float,
               specifiers: T::Array[MetronomeSDK::CommitSpecifierInput::OrHash],
+              spend_tracker_attributes:
+                MetronomeSDK::V1::ContractAmendParams::Commit::SpendTrackerAttributes::OrHash,
               temporary_id: String
             ).returns(T.attached_class)
           end
@@ -523,6 +543,8 @@ module MetronomeSDK
             # specifiers to contribute to a commit's or credit's drawdown. This field cannot
             # be used together with `applicable_product_ids` or `applicable_product_tags`.
             specifiers: nil,
+            # Optional attributes for spend tracker integration. Immutable after creation.
+            spend_tracker_attributes: nil,
             # A temporary ID for the commit that can be used to reference the commit for
             # commit specific overrides.
             temporary_id: nil
@@ -553,6 +575,8 @@ module MetronomeSDK
                   MetronomeSDK::V1::ContractAmendParams::Commit::RateType::OrSymbol,
                 rollover_fraction: Float,
                 specifiers: T::Array[MetronomeSDK::CommitSpecifierInput],
+                spend_tracker_attributes:
+                  MetronomeSDK::V1::ContractAmendParams::Commit::SpendTrackerAttributes,
                 temporary_id: String
               }
             )
@@ -1122,6 +1146,36 @@ module MetronomeSDK
               )
             end
             def self.values
+            end
+          end
+
+          class SpendTrackerAttributes < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V1::ContractAmendParams::Commit::SpendTrackerAttributes,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            # If true, this commit will be included in spend trackers with discounted set to
+            # DISCOUNTED_ONLY
+            sig { returns(T::Boolean) }
+            attr_accessor :counts_as_discounted
+
+            # Optional attributes for spend tracker integration. Immutable after creation.
+            sig do
+              params(counts_as_discounted: T::Boolean).returns(T.attached_class)
+            end
+            def self.new(
+              # If true, this commit will be included in spend trackers with discounted set to
+              # DISCOUNTED_ONLY
+              counts_as_discounted:
+            )
+            end
+
+            sig { override.returns({ counts_as_discounted: T::Boolean }) }
+            def to_hash
             end
           end
         end

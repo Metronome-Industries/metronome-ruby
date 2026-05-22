@@ -127,6 +127,12 @@ module MetronomeSDK
         #   @return [MetronomeSDK::Models::SpendThresholdConfiguration, nil]
         optional :spend_threshold_configuration, -> { MetronomeSDK::SpendThresholdConfiguration }
 
+        # @!attribute spend_trackers
+        #
+        #   @return [Array<MetronomeSDK::Models::V1::PackageCreateParams::SpendTracker>, nil]
+        optional :spend_trackers,
+                 -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::PackageCreateParams::SpendTracker] }
+
         # @!attribute subscriptions
         #
         #   @return [Array<MetronomeSDK::Models::V1::PackageCreateParams::Subscription>, nil]
@@ -146,7 +152,7 @@ module MetronomeSDK
         #   @return [MetronomeSDK::Models::V1::PackageCreateParams::UsageStatementSchedule, nil]
         optional :usage_statement_schedule, -> { MetronomeSDK::V1::PackageCreateParams::UsageStatementSchedule }
 
-        # @!method initialize(name:, aliases: nil, billing_provider: nil, commits: nil, contract_name: nil, credits: nil, delivery_method: nil, duration: nil, multiplier_override_prioritization: nil, net_payment_terms_days: nil, overrides: nil, prepaid_balance_threshold_configuration: nil, rate_card_alias: nil, rate_card_id: nil, recurring_commits: nil, recurring_credits: nil, scheduled_charges: nil, scheduled_charges_on_usage_invoices: nil, spend_threshold_configuration: nil, subscriptions: nil, uniqueness_key: nil, usage_statement_schedule: nil, request_options: {})
+        # @!method initialize(name:, aliases: nil, billing_provider: nil, commits: nil, contract_name: nil, credits: nil, delivery_method: nil, duration: nil, multiplier_override_prioritization: nil, net_payment_terms_days: nil, overrides: nil, prepaid_balance_threshold_configuration: nil, rate_card_alias: nil, rate_card_id: nil, recurring_commits: nil, recurring_credits: nil, scheduled_charges: nil, scheduled_charges_on_usage_invoices: nil, spend_threshold_configuration: nil, spend_trackers: nil, subscriptions: nil, uniqueness_key: nil, usage_statement_schedule: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::V1::PackageCreateParams} for more details.
         #
@@ -187,6 +193,8 @@ module MetronomeSDK
         #   @param scheduled_charges_on_usage_invoices [Symbol, MetronomeSDK::Models::V1::PackageCreateParams::ScheduledChargesOnUsageInvoices] Determines which scheduled and commit charges to consolidate onto the Contract's
         #
         #   @param spend_threshold_configuration [MetronomeSDK::Models::SpendThresholdConfiguration]
+        #
+        #   @param spend_trackers [Array<MetronomeSDK::Models::V1::PackageCreateParams::SpendTracker>]
         #
         #   @param subscriptions [Array<MetronomeSDK::Models::V1::PackageCreateParams::Subscription>]
         #
@@ -2239,6 +2247,112 @@ module MetronomeSDK
 
           # @!method self.values
           #   @return [Array<Symbol>]
+        end
+
+        class SpendTracker < MetronomeSDK::Internal::Type::BaseModel
+          # @!attribute alias_
+          #   Human-readable identifier, unique per contract.
+          #
+          #   @return [String]
+          required :alias_, String, api_name: :alias
+
+          # @!attribute applicable_spend_specifiers
+          #
+          #   @return [Array<MetronomeSDK::Models::V1::PackageCreateParams::SpendTracker::ApplicableSpendSpecifier>]
+          required :applicable_spend_specifiers,
+                   -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::PackageCreateParams::SpendTracker::ApplicableSpendSpecifier] }
+
+          # @!attribute credit_type_id
+          #
+          #   @return [String]
+          required :credit_type_id, String
+
+          # @!attribute reset_frequency
+          #
+          #   @return [Symbol, MetronomeSDK::Models::V1::PackageCreateParams::SpendTracker::ResetFrequency]
+          required :reset_frequency,
+                   enum: -> { MetronomeSDK::V1::PackageCreateParams::SpendTracker::ResetFrequency }
+
+          # @!method initialize(alias_:, applicable_spend_specifiers:, credit_type_id:, reset_frequency:)
+          #   @param alias_ [String] Human-readable identifier, unique per contract.
+          #
+          #   @param applicable_spend_specifiers [Array<MetronomeSDK::Models::V1::PackageCreateParams::SpendTracker::ApplicableSpendSpecifier>]
+          #
+          #   @param credit_type_id [String]
+          #
+          #   @param reset_frequency [Symbol, MetronomeSDK::Models::V1::PackageCreateParams::SpendTracker::ResetFrequency]
+
+          class ApplicableSpendSpecifier < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute sources
+            #
+            #   @return [Array<Symbol, MetronomeSDK::Models::V1::PackageCreateParams::SpendTracker::ApplicableSpendSpecifier::Source>]
+            required :sources,
+                     -> { MetronomeSDK::Internal::Type::ArrayOf[enum: MetronomeSDK::V1::PackageCreateParams::SpendTracker::ApplicableSpendSpecifier::Source] }
+
+            # @!attribute spend_type
+            #
+            #   @return [Symbol, MetronomeSDK::Models::V1::PackageCreateParams::SpendTracker::ApplicableSpendSpecifier::SpendType]
+            required :spend_type,
+                     enum: -> { MetronomeSDK::V1::PackageCreateParams::SpendTracker::ApplicableSpendSpecifier::SpendType }
+
+            # @!attribute discounted
+            #   Filter by whether the spend was discounted. Defaults to ANY if omitted.
+            #
+            #   @return [Symbol, MetronomeSDK::Models::V1::PackageCreateParams::SpendTracker::ApplicableSpendSpecifier::Discounted, nil]
+            optional :discounted,
+                     enum: -> { MetronomeSDK::V1::PackageCreateParams::SpendTracker::ApplicableSpendSpecifier::Discounted }
+
+            # @!method initialize(sources:, spend_type:, discounted: nil)
+            #   @param sources [Array<Symbol, MetronomeSDK::Models::V1::PackageCreateParams::SpendTracker::ApplicableSpendSpecifier::Source>]
+            #
+            #   @param spend_type [Symbol, MetronomeSDK::Models::V1::PackageCreateParams::SpendTracker::ApplicableSpendSpecifier::SpendType]
+            #
+            #   @param discounted [Symbol, MetronomeSDK::Models::V1::PackageCreateParams::SpendTracker::ApplicableSpendSpecifier::Discounted] Filter by whether the spend was discounted. Defaults to ANY if omitted.
+
+            module Source
+              extend MetronomeSDK::Internal::Type::Enum
+
+              THRESHOLD_RECHARGE = :THRESHOLD_RECHARGE
+              MANUAL = :MANUAL
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # @see MetronomeSDK::Models::V1::PackageCreateParams::SpendTracker::ApplicableSpendSpecifier#spend_type
+            module SpendType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              COMMIT_PURCHASE = :COMMIT_PURCHASE
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Filter by whether the spend was discounted. Defaults to ANY if omitted.
+            #
+            # @see MetronomeSDK::Models::V1::PackageCreateParams::SpendTracker::ApplicableSpendSpecifier#discounted
+            module Discounted
+              extend MetronomeSDK::Internal::Type::Enum
+
+              ANY = :ANY
+              DISCOUNTED_ONLY = :DISCOUNTED_ONLY
+              UNDISCOUNTED_ONLY = :UNDISCOUNTED_ONLY
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
+
+          # @see MetronomeSDK::Models::V1::PackageCreateParams::SpendTracker#reset_frequency
+          module ResetFrequency
+            extend MetronomeSDK::Internal::Type::Enum
+
+            BILLING_PERIOD = :BILLING_PERIOD
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
         end
 
         class Subscription < MetronomeSDK::Internal::Type::BaseModel
