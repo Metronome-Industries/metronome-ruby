@@ -18,11 +18,13 @@ module MetronomeSDK
           add_revenue_system_configuration_update: MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate,
           add_scheduled_charges: ::Array[MetronomeSDK::V2::ContractEditParams::AddScheduledCharge],
           add_spend_threshold_configuration: MetronomeSDK::SpendThresholdConfigurationV2,
+          add_spend_trackers: ::Array[MetronomeSDK::V2::ContractEditParams::AddSpendTracker],
           add_subscriptions: ::Array[MetronomeSDK::V2::ContractEditParams::AddSubscription],
           allow_contract_ending_before_finalized_invoice: bool,
           archive_commits: ::Array[MetronomeSDK::V2::ContractEditParams::ArchiveCommit],
           archive_credits: ::Array[MetronomeSDK::V2::ContractEditParams::ArchiveCredit],
           archive_scheduled_charges: ::Array[MetronomeSDK::V2::ContractEditParams::ArchiveScheduledCharge],
+          archive_spend_trackers: ::Array[String],
           remove_overrides: ::Array[MetronomeSDK::V2::ContractEditParams::RemoveOverride],
           uniqueness_key: String,
           update_commits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateCommit],
@@ -125,6 +127,12 @@ module MetronomeSDK
           MetronomeSDK::SpendThresholdConfigurationV2
         ) -> MetronomeSDK::SpendThresholdConfigurationV2
 
+        attr_reader add_spend_trackers: ::Array[MetronomeSDK::V2::ContractEditParams::AddSpendTracker]?
+
+        def add_spend_trackers=: (
+          ::Array[MetronomeSDK::V2::ContractEditParams::AddSpendTracker]
+        ) -> ::Array[MetronomeSDK::V2::ContractEditParams::AddSpendTracker]
+
         attr_reader add_subscriptions: ::Array[MetronomeSDK::V2::ContractEditParams::AddSubscription]?
 
         def add_subscriptions=: (
@@ -152,6 +160,10 @@ module MetronomeSDK
         def archive_scheduled_charges=: (
           ::Array[MetronomeSDK::V2::ContractEditParams::ArchiveScheduledCharge]
         ) -> ::Array[MetronomeSDK::V2::ContractEditParams::ArchiveScheduledCharge]
+
+        attr_reader archive_spend_trackers: ::Array[String]?
+
+        def archive_spend_trackers=: (::Array[String]) -> ::Array[String]
 
         attr_reader remove_overrides: ::Array[MetronomeSDK::V2::ContractEditParams::RemoveOverride]?
 
@@ -233,11 +245,13 @@ module MetronomeSDK
           ?add_revenue_system_configuration_update: MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate,
           ?add_scheduled_charges: ::Array[MetronomeSDK::V2::ContractEditParams::AddScheduledCharge],
           ?add_spend_threshold_configuration: MetronomeSDK::SpendThresholdConfigurationV2,
+          ?add_spend_trackers: ::Array[MetronomeSDK::V2::ContractEditParams::AddSpendTracker],
           ?add_subscriptions: ::Array[MetronomeSDK::V2::ContractEditParams::AddSubscription],
           ?allow_contract_ending_before_finalized_invoice: bool,
           ?archive_commits: ::Array[MetronomeSDK::V2::ContractEditParams::ArchiveCommit],
           ?archive_credits: ::Array[MetronomeSDK::V2::ContractEditParams::ArchiveCredit],
           ?archive_scheduled_charges: ::Array[MetronomeSDK::V2::ContractEditParams::ArchiveScheduledCharge],
+          ?archive_spend_trackers: ::Array[String],
           ?remove_overrides: ::Array[MetronomeSDK::V2::ContractEditParams::RemoveOverride],
           ?uniqueness_key: String,
           ?update_commits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateCommit],
@@ -270,11 +284,13 @@ module MetronomeSDK
           add_revenue_system_configuration_update: MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate,
           add_scheduled_charges: ::Array[MetronomeSDK::V2::ContractEditParams::AddScheduledCharge],
           add_spend_threshold_configuration: MetronomeSDK::SpendThresholdConfigurationV2,
+          add_spend_trackers: ::Array[MetronomeSDK::V2::ContractEditParams::AddSpendTracker],
           add_subscriptions: ::Array[MetronomeSDK::V2::ContractEditParams::AddSubscription],
           allow_contract_ending_before_finalized_invoice: bool,
           archive_commits: ::Array[MetronomeSDK::V2::ContractEditParams::ArchiveCommit],
           archive_credits: ::Array[MetronomeSDK::V2::ContractEditParams::ArchiveCredit],
           archive_scheduled_charges: ::Array[MetronomeSDK::V2::ContractEditParams::ArchiveScheduledCharge],
+          archive_spend_trackers: ::Array[String],
           remove_overrides: ::Array[MetronomeSDK::V2::ContractEditParams::RemoveOverride],
           uniqueness_key: String,
           update_commits: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateCommit],
@@ -437,6 +453,7 @@ module MetronomeSDK
             rate_type: MetronomeSDK::Models::V2::ContractEditParams::AddCommit::rate_type,
             rollover_fraction: Float,
             specifiers: ::Array[MetronomeSDK::CommitSpecifierInput],
+            spend_tracker_attributes: MetronomeSDK::V2::ContractEditParams::AddCommit::SpendTrackerAttributes,
             temporary_id: String
           }
 
@@ -517,6 +534,12 @@ module MetronomeSDK
             ::Array[MetronomeSDK::CommitSpecifierInput]
           ) -> ::Array[MetronomeSDK::CommitSpecifierInput]
 
+          attr_reader spend_tracker_attributes: MetronomeSDK::V2::ContractEditParams::AddCommit::SpendTrackerAttributes?
+
+          def spend_tracker_attributes=: (
+            MetronomeSDK::V2::ContractEditParams::AddCommit::SpendTrackerAttributes
+          ) -> MetronomeSDK::V2::ContractEditParams::AddCommit::SpendTrackerAttributes
+
           attr_reader temporary_id: String?
 
           def temporary_id=: (String) -> String
@@ -539,6 +562,7 @@ module MetronomeSDK
             ?rate_type: MetronomeSDK::Models::V2::ContractEditParams::AddCommit::rate_type,
             ?rollover_fraction: Float,
             ?specifiers: ::Array[MetronomeSDK::CommitSpecifierInput],
+            ?spend_tracker_attributes: MetronomeSDK::V2::ContractEditParams::AddCommit::SpendTrackerAttributes,
             ?temporary_id: String
           ) -> void
 
@@ -560,6 +584,7 @@ module MetronomeSDK
             rate_type: MetronomeSDK::Models::V2::ContractEditParams::AddCommit::rate_type,
             rollover_fraction: Float,
             specifiers: ::Array[MetronomeSDK::CommitSpecifierInput],
+            spend_tracker_attributes: MetronomeSDK::V2::ContractEditParams::AddCommit::SpendTrackerAttributes,
             temporary_id: String
           }
 
@@ -920,6 +945,16 @@ module MetronomeSDK
             LIST_RATE: :LIST_RATE
 
             def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractEditParams::AddCommit::rate_type]
+          end
+
+          type spend_tracker_attributes = { counts_as_discounted: bool }
+
+          class SpendTrackerAttributes < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor counts_as_discounted: bool
+
+            def initialize: (counts_as_discounted: bool) -> void
+
+            def to_hash: -> { counts_as_discounted: bool }
           end
         end
 
@@ -2742,6 +2777,112 @@ module MetronomeSDK
           end
         end
 
+        type add_spend_tracker =
+          {
+            alias_: String,
+            applicable_spend_specifiers: ::Array[MetronomeSDK::V2::ContractEditParams::AddSpendTracker::ApplicableSpendSpecifier],
+            credit_type_id: String,
+            reset_frequency: MetronomeSDK::Models::V2::ContractEditParams::AddSpendTracker::reset_frequency
+          }
+
+        class AddSpendTracker < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor alias_: String
+
+          attr_accessor applicable_spend_specifiers: ::Array[MetronomeSDK::V2::ContractEditParams::AddSpendTracker::ApplicableSpendSpecifier]
+
+          attr_accessor credit_type_id: String
+
+          attr_accessor reset_frequency: MetronomeSDK::Models::V2::ContractEditParams::AddSpendTracker::reset_frequency
+
+          def initialize: (
+            alias_: String,
+            applicable_spend_specifiers: ::Array[MetronomeSDK::V2::ContractEditParams::AddSpendTracker::ApplicableSpendSpecifier],
+            credit_type_id: String,
+            reset_frequency: MetronomeSDK::Models::V2::ContractEditParams::AddSpendTracker::reset_frequency
+          ) -> void
+
+          def to_hash: -> {
+            alias_: String,
+            applicable_spend_specifiers: ::Array[MetronomeSDK::V2::ContractEditParams::AddSpendTracker::ApplicableSpendSpecifier],
+            credit_type_id: String,
+            reset_frequency: MetronomeSDK::Models::V2::ContractEditParams::AddSpendTracker::reset_frequency
+          }
+
+          type applicable_spend_specifier =
+            {
+              sources: ::Array[MetronomeSDK::Models::V2::ContractEditParams::AddSpendTracker::ApplicableSpendSpecifier::source],
+              spend_type: MetronomeSDK::Models::V2::ContractEditParams::AddSpendTracker::ApplicableSpendSpecifier::spend_type,
+              discounted: MetronomeSDK::Models::V2::ContractEditParams::AddSpendTracker::ApplicableSpendSpecifier::discounted
+            }
+
+          class ApplicableSpendSpecifier < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor sources: ::Array[MetronomeSDK::Models::V2::ContractEditParams::AddSpendTracker::ApplicableSpendSpecifier::source]
+
+            attr_accessor spend_type: MetronomeSDK::Models::V2::ContractEditParams::AddSpendTracker::ApplicableSpendSpecifier::spend_type
+
+            attr_reader discounted: MetronomeSDK::Models::V2::ContractEditParams::AddSpendTracker::ApplicableSpendSpecifier::discounted?
+
+            def discounted=: (
+              MetronomeSDK::Models::V2::ContractEditParams::AddSpendTracker::ApplicableSpendSpecifier::discounted
+            ) -> MetronomeSDK::Models::V2::ContractEditParams::AddSpendTracker::ApplicableSpendSpecifier::discounted
+
+            def initialize: (
+              sources: ::Array[MetronomeSDK::Models::V2::ContractEditParams::AddSpendTracker::ApplicableSpendSpecifier::source],
+              spend_type: MetronomeSDK::Models::V2::ContractEditParams::AddSpendTracker::ApplicableSpendSpecifier::spend_type,
+              ?discounted: MetronomeSDK::Models::V2::ContractEditParams::AddSpendTracker::ApplicableSpendSpecifier::discounted
+            ) -> void
+
+            def to_hash: -> {
+              sources: ::Array[MetronomeSDK::Models::V2::ContractEditParams::AddSpendTracker::ApplicableSpendSpecifier::source],
+              spend_type: MetronomeSDK::Models::V2::ContractEditParams::AddSpendTracker::ApplicableSpendSpecifier::spend_type,
+              discounted: MetronomeSDK::Models::V2::ContractEditParams::AddSpendTracker::ApplicableSpendSpecifier::discounted
+            }
+
+            type source = :THRESHOLD_RECHARGE | :MANUAL
+
+            module Source
+              extend MetronomeSDK::Internal::Type::Enum
+
+              THRESHOLD_RECHARGE: :THRESHOLD_RECHARGE
+              MANUAL: :MANUAL
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractEditParams::AddSpendTracker::ApplicableSpendSpecifier::source]
+            end
+
+            type spend_type = :COMMIT_PURCHASE
+
+            module SpendType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              COMMIT_PURCHASE: :COMMIT_PURCHASE
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractEditParams::AddSpendTracker::ApplicableSpendSpecifier::spend_type]
+            end
+
+            type discounted = :ANY | :DISCOUNTED_ONLY | :UNDISCOUNTED_ONLY
+
+            module Discounted
+              extend MetronomeSDK::Internal::Type::Enum
+
+              ANY: :ANY
+              DISCOUNTED_ONLY: :DISCOUNTED_ONLY
+              UNDISCOUNTED_ONLY: :UNDISCOUNTED_ONLY
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractEditParams::AddSpendTracker::ApplicableSpendSpecifier::discounted]
+            end
+          end
+
+          type reset_frequency = :BILLING_PERIOD
+
+          module ResetFrequency
+            extend MetronomeSDK::Internal::Type::Enum
+
+            BILLING_PERIOD: :BILLING_PERIOD
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractEditParams::AddSpendTracker::reset_frequency]
+          end
+        end
+
         type add_subscription =
           {
             collection_schedule: MetronomeSDK::Models::V2::ContractEditParams::AddSubscription::collection_schedule,
@@ -3664,14 +3805,41 @@ module MetronomeSDK
             }
           end
 
-          type discount_configuration = { payment_fraction: Float? }
+          type discount_configuration =
+            {
+              cap: MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration::Cap?,
+              payment_fraction: Float?
+            }
 
           class DiscountConfiguration < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor cap: MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration::Cap?
+
             attr_accessor payment_fraction: Float?
 
-            def initialize: (?payment_fraction: Float?) -> void
+            def initialize: (
+              ?cap: MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration::Cap?,
+              ?payment_fraction: Float?
+            ) -> void
 
-            def to_hash: -> { payment_fraction: Float? }
+            def to_hash: -> {
+              cap: MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration::Cap?,
+              payment_fraction: Float?
+            }
+
+            type cap = { amount: Float, spend_tracker_alias: String }
+
+            class Cap < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor amount: Float
+
+              attr_accessor spend_tracker_alias: String
+
+              def initialize: (
+                amount: Float,
+                spend_tracker_alias: String
+              ) -> void
+
+              def to_hash: -> { amount: Float, spend_tracker_alias: String }
+            end
           end
         end
 
@@ -4045,14 +4213,41 @@ module MetronomeSDK
             threshold_amount: Float
           }
 
-          type discount_configuration = { payment_fraction: Float? }
+          type discount_configuration =
+            {
+              cap: MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::DiscountConfiguration::Cap?,
+              payment_fraction: Float?
+            }
 
           class DiscountConfiguration < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor cap: MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::DiscountConfiguration::Cap?
+
             attr_accessor payment_fraction: Float?
 
-            def initialize: (?payment_fraction: Float?) -> void
+            def initialize: (
+              ?cap: MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::DiscountConfiguration::Cap?,
+              ?payment_fraction: Float?
+            ) -> void
 
-            def to_hash: -> { payment_fraction: Float? }
+            def to_hash: -> {
+              cap: MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::DiscountConfiguration::Cap?,
+              payment_fraction: Float?
+            }
+
+            type cap = { amount: Float, spend_tracker_alias: String }
+
+            class Cap < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor amount: Float
+
+              attr_accessor spend_tracker_alias: String
+
+              def initialize: (
+                amount: Float,
+                spend_tracker_alias: String
+              ) -> void
+
+              def to_hash: -> { amount: Float, spend_tracker_alias: String }
+            end
           end
         end
 

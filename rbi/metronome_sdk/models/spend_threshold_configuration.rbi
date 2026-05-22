@@ -109,17 +109,92 @@ module MetronomeSDK
         sig { returns(Float) }
         attr_accessor :payment_fraction
 
-        sig { params(payment_fraction: Float).returns(T.attached_class) }
+        # If provided, the discount stops applying once the spend tracker has accumulated
+        # this much spend in the billing period.
+        sig do
+          returns(
+            T.nilable(
+              MetronomeSDK::SpendThresholdConfiguration::DiscountConfiguration::Cap
+            )
+          )
+        end
+        attr_reader :cap
+
+        sig do
+          params(
+            cap:
+              MetronomeSDK::SpendThresholdConfiguration::DiscountConfiguration::Cap::OrHash
+          ).void
+        end
+        attr_writer :cap
+
+        sig do
+          params(
+            payment_fraction: Float,
+            cap:
+              MetronomeSDK::SpendThresholdConfiguration::DiscountConfiguration::Cap::OrHash
+          ).returns(T.attached_class)
+        end
         def self.new(
           # The fraction of the original amount that the customer pays after applying the
           # discount. For example, 0.85 means the customer pays 85% of the original amount
           # (a 15% discount).
-          payment_fraction:
+          payment_fraction:,
+          # If provided, the discount stops applying once the spend tracker has accumulated
+          # this much spend in the billing period.
+          cap: nil
         )
         end
 
-        sig { override.returns({ payment_fraction: Float }) }
+        sig do
+          override.returns(
+            {
+              payment_fraction: Float,
+              cap:
+                MetronomeSDK::SpendThresholdConfiguration::DiscountConfiguration::Cap
+            }
+          )
+        end
         def to_hash
+        end
+
+        class Cap < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::SpendThresholdConfiguration::DiscountConfiguration::Cap,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
+          # Accumulated spend ceiling above which the discount stops applying.
+          sig { returns(Float) }
+          attr_accessor :amount
+
+          # Alias of the spend tracker this cap is measured against.
+          sig { returns(String) }
+          attr_accessor :spend_tracker_alias
+
+          # If provided, the discount stops applying once the spend tracker has accumulated
+          # this much spend in the billing period.
+          sig do
+            params(amount: Float, spend_tracker_alias: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # Accumulated spend ceiling above which the discount stops applying.
+            amount:,
+            # Alias of the spend tracker this cap is measured against.
+            spend_tracker_alias:
+          )
+          end
+
+          sig do
+            override.returns({ amount: Float, spend_tracker_alias: String })
+          end
+          def to_hash
+          end
         end
       end
     end

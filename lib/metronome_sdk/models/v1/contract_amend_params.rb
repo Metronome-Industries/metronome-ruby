@@ -233,6 +233,13 @@ module MetronomeSDK
           #   @return [Array<MetronomeSDK::Models::CommitSpecifierInput>, nil]
           optional :specifiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::CommitSpecifierInput] }
 
+          # @!attribute spend_tracker_attributes
+          #   Optional attributes for spend tracker integration. Immutable after creation.
+          #
+          #   @return [MetronomeSDK::Models::V1::ContractAmendParams::Commit::SpendTrackerAttributes, nil]
+          optional :spend_tracker_attributes,
+                   -> { MetronomeSDK::V1::ContractAmendParams::Commit::SpendTrackerAttributes }
+
           # @!attribute temporary_id
           #   A temporary ID for the commit that can be used to reference the commit for
           #   commit specific overrides.
@@ -240,7 +247,7 @@ module MetronomeSDK
           #   @return [String, nil]
           optional :temporary_id, String
 
-          # @!method initialize(product_id:, type:, access_schedule: nil, amount: nil, applicable_product_ids: nil, applicable_product_tags: nil, custom_fields: nil, description: nil, hierarchy_configuration: nil, invoice_schedule: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil, rollover_fraction: nil, specifiers: nil, temporary_id: nil)
+          # @!method initialize(product_id:, type:, access_schedule: nil, amount: nil, applicable_product_ids: nil, applicable_product_tags: nil, custom_fields: nil, description: nil, hierarchy_configuration: nil, invoice_schedule: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil, rollover_fraction: nil, specifiers: nil, spend_tracker_attributes: nil, temporary_id: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V1::ContractAmendParams::Commit} for more details.
           #
@@ -275,6 +282,8 @@ module MetronomeSDK
           #   @param rollover_fraction [Float] Fraction of unused segments that will be rolled over. Must be between 0 and 1.
           #
           #   @param specifiers [Array<MetronomeSDK::Models::CommitSpecifierInput>] List of filters that determine what kind of customer usage draws down a commit o
+          #
+          #   @param spend_tracker_attributes [MetronomeSDK::Models::V1::ContractAmendParams::Commit::SpendTrackerAttributes] Optional attributes for spend tracker integration. Immutable after creation.
           #
           #   @param temporary_id [String] A temporary ID for the commit that can be used to reference the commit for commi
 
@@ -542,6 +551,25 @@ module MetronomeSDK
 
             # @!method self.values
             #   @return [Array<Symbol>]
+          end
+
+          # @see MetronomeSDK::Models::V1::ContractAmendParams::Commit#spend_tracker_attributes
+          class SpendTrackerAttributes < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute counts_as_discounted
+            #   If true, this commit will be included in spend trackers with discounted set to
+            #   DISCOUNTED_ONLY
+            #
+            #   @return [Boolean]
+            required :counts_as_discounted, MetronomeSDK::Internal::Type::Boolean
+
+            # @!method initialize(counts_as_discounted:)
+            #   Some parameter documentations has been truncated, see
+            #   {MetronomeSDK::Models::V1::ContractAmendParams::Commit::SpendTrackerAttributes}
+            #   for more details.
+            #
+            #   Optional attributes for spend tracker integration. Immutable after creation.
+            #
+            #   @param counts_as_discounted [Boolean] If true, this commit will be included in spend trackers with discounted set to D
           end
         end
 

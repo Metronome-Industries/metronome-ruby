@@ -22,6 +22,7 @@ module MetronomeSDK
           ?scheduled_charges: ::Array[MetronomeSDK::V1::PackageCreateParams::ScheduledCharge],
           ?scheduled_charges_on_usage_invoices: MetronomeSDK::Models::V1::PackageCreateParams::scheduled_charges_on_usage_invoices,
           ?spend_threshold_configuration: MetronomeSDK::SpendThresholdConfiguration,
+          ?spend_trackers: ::Array[MetronomeSDK::V1::PackageCreateParams::SpendTracker],
           ?subscriptions: ::Array[MetronomeSDK::V1::PackageCreateParams::Subscription],
           ?uniqueness_key: String,
           ?usage_statement_schedule: MetronomeSDK::V1::PackageCreateParams::UsageStatementSchedule,

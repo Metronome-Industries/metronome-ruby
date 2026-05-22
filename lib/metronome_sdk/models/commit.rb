@@ -171,6 +171,12 @@ module MetronomeSDK
       #   @return [Array<MetronomeSDK::Models::CommitSpecifier>, nil]
       optional :specifiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::CommitSpecifier] }
 
+      # @!attribute spend_tracker_attributes
+      #   Optional attributes controlling how this commit interacts with spend trackers.
+      #
+      #   @return [MetronomeSDK::Models::Commit::SpendTrackerAttributes, nil]
+      optional :spend_tracker_attributes, -> { MetronomeSDK::Commit::SpendTrackerAttributes }
+
       # @!attribute subscription_config
       #   The subscription configuration for this commit, if it was generated from a
       #   recurring commit with a subscription attached.
@@ -187,7 +193,7 @@ module MetronomeSDK
       #   @return [String, nil]
       optional :uniqueness_key, String
 
-      # @!method initialize(id:, created_at:, product:, type:, access_schedule: nil, amount: nil, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, archived_at: nil, balance: nil, contract: nil, custom_fields: nil, description: nil, hierarchy_configuration: nil, invoice_contract: nil, invoice_schedule: nil, ledger: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil, recurring_commit_id: nil, rolled_over_from: nil, rollover_fraction: nil, salesforce_opportunity_id: nil, specifiers: nil, subscription_config: nil, uniqueness_key: nil)
+      # @!method initialize(id:, created_at:, product:, type:, access_schedule: nil, amount: nil, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, archived_at: nil, balance: nil, contract: nil, custom_fields: nil, description: nil, hierarchy_configuration: nil, invoice_contract: nil, invoice_schedule: nil, ledger: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil, recurring_commit_id: nil, rolled_over_from: nil, rollover_fraction: nil, salesforce_opportunity_id: nil, specifiers: nil, spend_tracker_attributes: nil, subscription_config: nil, uniqueness_key: nil)
       #   Some parameter documentations has been truncated, see
       #   {MetronomeSDK::Models::Commit} for more details.
       #
@@ -244,6 +250,8 @@ module MetronomeSDK
       #   @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
       #
       #   @param specifiers [Array<MetronomeSDK::Models::CommitSpecifier>] List of filters that determine what kind of customer usage draws down a commit o
+      #
+      #   @param spend_tracker_attributes [MetronomeSDK::Models::Commit::SpendTrackerAttributes] Optional attributes controlling how this commit interacts with spend trackers.
       #
       #   @param subscription_config [MetronomeSDK::Models::Commit::SubscriptionConfig] The subscription configuration for this commit, if it was generated from a recur
       #
@@ -951,6 +959,24 @@ module MetronomeSDK
         # @!method initialize(commit_id:, contract_id:)
         #   @param commit_id [String]
         #   @param contract_id [String]
+      end
+
+      # @see MetronomeSDK::Models::Commit#spend_tracker_attributes
+      class SpendTrackerAttributes < MetronomeSDK::Internal::Type::BaseModel
+        # @!attribute counts_as_discounted
+        #   If true, this commit is included in spend trackers with discounted set to
+        #   DISCOUNTED_ONLY
+        #
+        #   @return [Boolean]
+        required :counts_as_discounted, MetronomeSDK::Internal::Type::Boolean
+
+        # @!method initialize(counts_as_discounted:)
+        #   Some parameter documentations has been truncated, see
+        #   {MetronomeSDK::Models::Commit::SpendTrackerAttributes} for more details.
+        #
+        #   Optional attributes controlling how this commit interacts with spend trackers.
+        #
+        #   @param counts_as_discounted [Boolean] If true, this commit is included in spend trackers with discounted set to DISCOU
       end
 
       # @see MetronomeSDK::Models::Commit#subscription_config

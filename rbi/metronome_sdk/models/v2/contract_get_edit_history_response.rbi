@@ -6836,6 +6836,26 @@ module MetronomeSDK
                   )
                 end
 
+              # Update the discount cap. Set to null to remove an existing cap.
+              sig do
+                returns(
+                  T.nilable(
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration::Cap
+                  )
+                )
+              end
+              attr_reader :cap
+
+              sig do
+                params(
+                  cap:
+                    T.nilable(
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration::Cap::OrHash
+                    )
+                ).void
+              end
+              attr_writer :cap
+
               # The fraction of the original amount that the customer pays after applying the
               # discount. Set to null to remove the discount fraction. For example, 0.85 means
               # the customer pays 85% of the original amount (a 15% discount).
@@ -6843,11 +6863,17 @@ module MetronomeSDK
               attr_accessor :payment_fraction
 
               sig do
-                params(payment_fraction: T.nilable(Float)).returns(
-                  T.attached_class
-                )
+                params(
+                  cap:
+                    T.nilable(
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration::Cap::OrHash
+                    ),
+                  payment_fraction: T.nilable(Float)
+                ).returns(T.attached_class)
               end
               def self.new(
+                # Update the discount cap. Set to null to remove an existing cap.
+                cap: nil,
                 # The fraction of the original amount that the customer pays after applying the
                 # discount. Set to null to remove the discount fraction. For example, 0.85 means
                 # the customer pays 85% of the original amount (a 15% discount).
@@ -6855,8 +6881,58 @@ module MetronomeSDK
               )
               end
 
-              sig { override.returns({ payment_fraction: T.nilable(Float) }) }
+              sig do
+                override.returns(
+                  {
+                    cap:
+                      T.nilable(
+                        MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration::Cap
+                      ),
+                    payment_fraction: T.nilable(Float)
+                  }
+                )
+              end
               def to_hash
+              end
+
+              class Cap < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration::Cap,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                # Accumulated spend ceiling above which the discount stops applying.
+                sig { returns(Float) }
+                attr_accessor :amount
+
+                # Alias of the spend tracker this cap is measured against.
+                sig { returns(String) }
+                attr_accessor :spend_tracker_alias
+
+                # Update the discount cap. Set to null to remove an existing cap.
+                sig do
+                  params(amount: Float, spend_tracker_alias: String).returns(
+                    T.attached_class
+                  )
+                end
+                def self.new(
+                  # Accumulated spend ceiling above which the discount stops applying.
+                  amount:,
+                  # Alias of the spend tracker this cap is measured against.
+                  spend_tracker_alias:
+                )
+                end
+
+                sig do
+                  override.returns(
+                    { amount: Float, spend_tracker_alias: String }
+                  )
+                end
+                def to_hash
+                end
               end
             end
           end
@@ -7705,6 +7781,26 @@ module MetronomeSDK
                   )
                 end
 
+              # Update the discount cap. Set to null to remove an existing cap.
+              sig do
+                returns(
+                  T.nilable(
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::DiscountConfiguration::Cap
+                  )
+                )
+              end
+              attr_reader :cap
+
+              sig do
+                params(
+                  cap:
+                    T.nilable(
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::DiscountConfiguration::Cap::OrHash
+                    )
+                ).void
+              end
+              attr_writer :cap
+
               # The fraction of the original amount that the customer pays after applying the
               # discount. Set to null to remove the discount fraction. For example, 0.85 means
               # the customer pays 85% of the original amount (a 15% discount).
@@ -7712,11 +7808,17 @@ module MetronomeSDK
               attr_accessor :payment_fraction
 
               sig do
-                params(payment_fraction: T.nilable(Float)).returns(
-                  T.attached_class
-                )
+                params(
+                  cap:
+                    T.nilable(
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::DiscountConfiguration::Cap::OrHash
+                    ),
+                  payment_fraction: T.nilable(Float)
+                ).returns(T.attached_class)
               end
               def self.new(
+                # Update the discount cap. Set to null to remove an existing cap.
+                cap: nil,
                 # The fraction of the original amount that the customer pays after applying the
                 # discount. Set to null to remove the discount fraction. For example, 0.85 means
                 # the customer pays 85% of the original amount (a 15% discount).
@@ -7724,8 +7826,58 @@ module MetronomeSDK
               )
               end
 
-              sig { override.returns({ payment_fraction: T.nilable(Float) }) }
+              sig do
+                override.returns(
+                  {
+                    cap:
+                      T.nilable(
+                        MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::DiscountConfiguration::Cap
+                      ),
+                    payment_fraction: T.nilable(Float)
+                  }
+                )
+              end
               def to_hash
+              end
+
+              class Cap < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::DiscountConfiguration::Cap,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                # Accumulated spend ceiling above which the discount stops applying.
+                sig { returns(Float) }
+                attr_accessor :amount
+
+                # Alias of the spend tracker this cap is measured against.
+                sig { returns(String) }
+                attr_accessor :spend_tracker_alias
+
+                # Update the discount cap. Set to null to remove an existing cap.
+                sig do
+                  params(amount: Float, spend_tracker_alias: String).returns(
+                    T.attached_class
+                  )
+                end
+                def self.new(
+                  # Accumulated spend ceiling above which the discount stops applying.
+                  amount:,
+                  # Alias of the spend tracker this cap is measured against.
+                  spend_tracker_alias:
+                )
+                end
+
+                sig do
+                  override.returns(
+                    { amount: Float, spend_tracker_alias: String }
+                  )
+                end
+                def to_hash
+                end
               end
             end
           end

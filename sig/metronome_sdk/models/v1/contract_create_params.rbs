@@ -31,6 +31,7 @@ module MetronomeSDK
           scheduled_charges: ::Array[MetronomeSDK::V1::ContractCreateParams::ScheduledCharge],
           scheduled_charges_on_usage_invoices: MetronomeSDK::Models::V1::ContractCreateParams::scheduled_charges_on_usage_invoices,
           spend_threshold_configuration: MetronomeSDK::SpendThresholdConfiguration,
+          spend_trackers: ::Array[MetronomeSDK::V1::ContractCreateParams::SpendTracker],
           subscriptions: ::Array[MetronomeSDK::V1::ContractCreateParams::Subscription],
           total_contract_value: Float,
           transition: MetronomeSDK::V1::ContractCreateParams::Transition,
@@ -184,6 +185,12 @@ module MetronomeSDK
           MetronomeSDK::SpendThresholdConfiguration
         ) -> MetronomeSDK::SpendThresholdConfiguration
 
+        attr_reader spend_trackers: ::Array[MetronomeSDK::V1::ContractCreateParams::SpendTracker]?
+
+        def spend_trackers=: (
+          ::Array[MetronomeSDK::V1::ContractCreateParams::SpendTracker]
+        ) -> ::Array[MetronomeSDK::V1::ContractCreateParams::SpendTracker]
+
         attr_reader subscriptions: ::Array[MetronomeSDK::V1::ContractCreateParams::Subscription]?
 
         def subscriptions=: (
@@ -245,6 +252,7 @@ module MetronomeSDK
           ?scheduled_charges: ::Array[MetronomeSDK::V1::ContractCreateParams::ScheduledCharge],
           ?scheduled_charges_on_usage_invoices: MetronomeSDK::Models::V1::ContractCreateParams::scheduled_charges_on_usage_invoices,
           ?spend_threshold_configuration: MetronomeSDK::SpendThresholdConfiguration,
+          ?spend_trackers: ::Array[MetronomeSDK::V1::ContractCreateParams::SpendTracker],
           ?subscriptions: ::Array[MetronomeSDK::V1::ContractCreateParams::Subscription],
           ?total_contract_value: Float,
           ?transition: MetronomeSDK::V1::ContractCreateParams::Transition,
@@ -283,6 +291,7 @@ module MetronomeSDK
           scheduled_charges: ::Array[MetronomeSDK::V1::ContractCreateParams::ScheduledCharge],
           scheduled_charges_on_usage_invoices: MetronomeSDK::Models::V1::ContractCreateParams::scheduled_charges_on_usage_invoices,
           spend_threshold_configuration: MetronomeSDK::SpendThresholdConfiguration,
+          spend_trackers: ::Array[MetronomeSDK::V1::ContractCreateParams::SpendTracker],
           subscriptions: ::Array[MetronomeSDK::V1::ContractCreateParams::Subscription],
           total_contract_value: Float,
           transition: MetronomeSDK::V1::ContractCreateParams::Transition,
@@ -380,6 +389,7 @@ module MetronomeSDK
             rate_type: MetronomeSDK::Models::V1::ContractCreateParams::Commit::rate_type,
             rollover_fraction: Float,
             specifiers: ::Array[MetronomeSDK::CommitSpecifierInput],
+            spend_tracker_attributes: MetronomeSDK::V1::ContractCreateParams::Commit::SpendTrackerAttributes,
             temporary_id: String
           }
 
@@ -454,6 +464,12 @@ module MetronomeSDK
             ::Array[MetronomeSDK::CommitSpecifierInput]
           ) -> ::Array[MetronomeSDK::CommitSpecifierInput]
 
+          attr_reader spend_tracker_attributes: MetronomeSDK::V1::ContractCreateParams::Commit::SpendTrackerAttributes?
+
+          def spend_tracker_attributes=: (
+            MetronomeSDK::V1::ContractCreateParams::Commit::SpendTrackerAttributes
+          ) -> MetronomeSDK::V1::ContractCreateParams::Commit::SpendTrackerAttributes
+
           attr_reader temporary_id: String?
 
           def temporary_id=: (String) -> String
@@ -475,6 +491,7 @@ module MetronomeSDK
             ?rate_type: MetronomeSDK::Models::V1::ContractCreateParams::Commit::rate_type,
             ?rollover_fraction: Float,
             ?specifiers: ::Array[MetronomeSDK::CommitSpecifierInput],
+            ?spend_tracker_attributes: MetronomeSDK::V1::ContractCreateParams::Commit::SpendTrackerAttributes,
             ?temporary_id: String
           ) -> void
 
@@ -495,6 +512,7 @@ module MetronomeSDK
             rate_type: MetronomeSDK::Models::V1::ContractCreateParams::Commit::rate_type,
             rollover_fraction: Float,
             specifiers: ::Array[MetronomeSDK::CommitSpecifierInput],
+            spend_tracker_attributes: MetronomeSDK::V1::ContractCreateParams::Commit::SpendTrackerAttributes,
             temporary_id: String
           }
 
@@ -725,6 +743,16 @@ module MetronomeSDK
             LIST_RATE: :LIST_RATE
 
             def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::Commit::rate_type]
+          end
+
+          type spend_tracker_attributes = { counts_as_discounted: bool }
+
+          class SpendTrackerAttributes < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor counts_as_discounted: bool
+
+            def initialize: (counts_as_discounted: bool) -> void
+
+            def to_hash: -> { counts_as_discounted: bool }
           end
         end
 
@@ -2619,6 +2647,112 @@ module MetronomeSDK
           ALL: :ALL
 
           def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::scheduled_charges_on_usage_invoices]
+        end
+
+        type spend_tracker =
+          {
+            alias_: String,
+            applicable_spend_specifiers: ::Array[MetronomeSDK::V1::ContractCreateParams::SpendTracker::ApplicableSpendSpecifier],
+            credit_type_id: String,
+            reset_frequency: MetronomeSDK::Models::V1::ContractCreateParams::SpendTracker::reset_frequency
+          }
+
+        class SpendTracker < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor alias_: String
+
+          attr_accessor applicable_spend_specifiers: ::Array[MetronomeSDK::V1::ContractCreateParams::SpendTracker::ApplicableSpendSpecifier]
+
+          attr_accessor credit_type_id: String
+
+          attr_accessor reset_frequency: MetronomeSDK::Models::V1::ContractCreateParams::SpendTracker::reset_frequency
+
+          def initialize: (
+            alias_: String,
+            applicable_spend_specifiers: ::Array[MetronomeSDK::V1::ContractCreateParams::SpendTracker::ApplicableSpendSpecifier],
+            credit_type_id: String,
+            reset_frequency: MetronomeSDK::Models::V1::ContractCreateParams::SpendTracker::reset_frequency
+          ) -> void
+
+          def to_hash: -> {
+            alias_: String,
+            applicable_spend_specifiers: ::Array[MetronomeSDK::V1::ContractCreateParams::SpendTracker::ApplicableSpendSpecifier],
+            credit_type_id: String,
+            reset_frequency: MetronomeSDK::Models::V1::ContractCreateParams::SpendTracker::reset_frequency
+          }
+
+          type applicable_spend_specifier =
+            {
+              sources: ::Array[MetronomeSDK::Models::V1::ContractCreateParams::SpendTracker::ApplicableSpendSpecifier::source],
+              spend_type: MetronomeSDK::Models::V1::ContractCreateParams::SpendTracker::ApplicableSpendSpecifier::spend_type,
+              discounted: MetronomeSDK::Models::V1::ContractCreateParams::SpendTracker::ApplicableSpendSpecifier::discounted
+            }
+
+          class ApplicableSpendSpecifier < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor sources: ::Array[MetronomeSDK::Models::V1::ContractCreateParams::SpendTracker::ApplicableSpendSpecifier::source]
+
+            attr_accessor spend_type: MetronomeSDK::Models::V1::ContractCreateParams::SpendTracker::ApplicableSpendSpecifier::spend_type
+
+            attr_reader discounted: MetronomeSDK::Models::V1::ContractCreateParams::SpendTracker::ApplicableSpendSpecifier::discounted?
+
+            def discounted=: (
+              MetronomeSDK::Models::V1::ContractCreateParams::SpendTracker::ApplicableSpendSpecifier::discounted
+            ) -> MetronomeSDK::Models::V1::ContractCreateParams::SpendTracker::ApplicableSpendSpecifier::discounted
+
+            def initialize: (
+              sources: ::Array[MetronomeSDK::Models::V1::ContractCreateParams::SpendTracker::ApplicableSpendSpecifier::source],
+              spend_type: MetronomeSDK::Models::V1::ContractCreateParams::SpendTracker::ApplicableSpendSpecifier::spend_type,
+              ?discounted: MetronomeSDK::Models::V1::ContractCreateParams::SpendTracker::ApplicableSpendSpecifier::discounted
+            ) -> void
+
+            def to_hash: -> {
+              sources: ::Array[MetronomeSDK::Models::V1::ContractCreateParams::SpendTracker::ApplicableSpendSpecifier::source],
+              spend_type: MetronomeSDK::Models::V1::ContractCreateParams::SpendTracker::ApplicableSpendSpecifier::spend_type,
+              discounted: MetronomeSDK::Models::V1::ContractCreateParams::SpendTracker::ApplicableSpendSpecifier::discounted
+            }
+
+            type source = :THRESHOLD_RECHARGE | :MANUAL
+
+            module Source
+              extend MetronomeSDK::Internal::Type::Enum
+
+              THRESHOLD_RECHARGE: :THRESHOLD_RECHARGE
+              MANUAL: :MANUAL
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::SpendTracker::ApplicableSpendSpecifier::source]
+            end
+
+            type spend_type = :COMMIT_PURCHASE
+
+            module SpendType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              COMMIT_PURCHASE: :COMMIT_PURCHASE
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::SpendTracker::ApplicableSpendSpecifier::spend_type]
+            end
+
+            type discounted = :ANY | :DISCOUNTED_ONLY | :UNDISCOUNTED_ONLY
+
+            module Discounted
+              extend MetronomeSDK::Internal::Type::Enum
+
+              ANY: :ANY
+              DISCOUNTED_ONLY: :DISCOUNTED_ONLY
+              UNDISCOUNTED_ONLY: :UNDISCOUNTED_ONLY
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::SpendTracker::ApplicableSpendSpecifier::discounted]
+            end
+          end
+
+          type reset_frequency = :BILLING_PERIOD
+
+          module ResetFrequency
+            extend MetronomeSDK::Internal::Type::Enum
+
+            BILLING_PERIOD: :BILLING_PERIOD
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::SpendTracker::reset_frequency]
+          end
         end
 
         type subscription =

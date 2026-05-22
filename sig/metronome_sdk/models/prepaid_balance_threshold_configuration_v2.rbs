@@ -87,14 +87,42 @@ module MetronomeSDK
         }
       end
 
-      type discount_configuration = { payment_fraction: Float }
+      type discount_configuration =
+        {
+          payment_fraction: Float,
+          cap: MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::DiscountConfiguration::Cap
+        }
 
       class DiscountConfiguration < MetronomeSDK::Internal::Type::BaseModel
         attr_accessor payment_fraction: Float
 
-        def initialize: (payment_fraction: Float) -> void
+        attr_reader cap: MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::DiscountConfiguration::Cap?
 
-        def to_hash: -> { payment_fraction: Float }
+        def cap=: (
+          MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::DiscountConfiguration::Cap
+        ) -> MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::DiscountConfiguration::Cap
+
+        def initialize: (
+          payment_fraction: Float,
+          ?cap: MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::DiscountConfiguration::Cap
+        ) -> void
+
+        def to_hash: -> {
+          payment_fraction: Float,
+          cap: MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::DiscountConfiguration::Cap
+        }
+
+        type cap = { amount: Float, spend_tracker_alias: String }
+
+        class Cap < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor amount: Float
+
+          attr_accessor spend_tracker_alias: String
+
+          def initialize: (amount: Float, spend_tracker_alias: String) -> void
+
+          def to_hash: -> { amount: Float, spend_tracker_alias: String }
+        end
       end
     end
   end
