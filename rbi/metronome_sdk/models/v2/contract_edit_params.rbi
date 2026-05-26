@@ -8947,6 +8947,17 @@ module MetronomeSDK
           attr_writer :threshold_amount
 
           sig do
+            returns(
+              T.nilable(
+                T::Array[
+                  MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier
+                ]
+              )
+            )
+          end
+          attr_accessor :threshold_balance_specifiers
+
+          sig do
             params(
               commit:
                 MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::OrHash,
@@ -8958,7 +8969,13 @@ module MetronomeSDK
               is_enabled: T::Boolean,
               payment_gate_config: MetronomeSDK::PaymentGateConfigV2::OrHash,
               recharge_to_amount: Float,
-              threshold_amount: Float
+              threshold_amount: Float,
+              threshold_balance_specifiers:
+                T.nilable(
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::OrHash
+                  ]
+                )
             ).returns(T.attached_class)
           end
           def self.new(
@@ -8976,7 +8993,8 @@ module MetronomeSDK
             recharge_to_amount: nil,
             # Specify the threshold amount for the contract. Each time the contract's balance
             # lowers to this amount, a threshold charge will be initiated.
-            threshold_amount: nil
+            threshold_amount: nil,
+            threshold_balance_specifiers: nil
           )
           end
 
@@ -8993,7 +9011,13 @@ module MetronomeSDK
                 is_enabled: T::Boolean,
                 payment_gate_config: MetronomeSDK::PaymentGateConfigV2,
                 recharge_to_amount: Float,
-                threshold_amount: Float
+                threshold_amount: Float,
+                threshold_balance_specifiers:
+                  T.nilable(
+                    T::Array[
+                      MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier
+                    ]
+                  )
               }
             )
           end
@@ -9176,6 +9200,178 @@ module MetronomeSDK
                 override.returns({ amount: Float, spend_tracker_alias: String })
               end
               def to_hash
+              end
+            end
+          end
+
+          class ThresholdBalanceSpecifier < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            sig do
+              returns(
+                T::Array[
+                  MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude
+                ]
+              )
+            end
+            attr_accessor :exclude
+
+            sig do
+              params(
+                exclude:
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude::OrHash
+                  ]
+              ).returns(T.attached_class)
+            end
+            def self.new(exclude:)
+            end
+
+            sig do
+              override.returns(
+                {
+                  exclude:
+                    T::Array[
+                      MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude
+                    ]
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class Exclude < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig do
+                returns(
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter
+                  ]
+                )
+              end
+              attr_accessor :custom_field_filters
+
+              sig do
+                params(
+                  custom_field_filters:
+                    T::Array[
+                      MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter::OrHash
+                    ]
+                ).returns(T.attached_class)
+              end
+              def self.new(custom_field_filters:)
+              end
+
+              sig do
+                override.returns(
+                  {
+                    custom_field_filters:
+                      T::Array[
+                        MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter
+                      ]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class CustomFieldFilter < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig do
+                  returns(
+                    MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter::Entity::OrSymbol
+                  )
+                end
+                attr_accessor :entity
+
+                sig { returns(String) }
+                attr_accessor :key
+
+                sig { returns(String) }
+                attr_accessor :value
+
+                sig do
+                  params(
+                    entity:
+                      MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter::Entity::OrSymbol,
+                    key: String,
+                    value: String
+                  ).returns(T.attached_class)
+                end
+                def self.new(entity:, key:, value:)
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      entity:
+                        MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter::Entity::OrSymbol,
+                      key: String,
+                      value: String
+                    }
+                  )
+                end
+                def to_hash
+                end
+
+                module Entity
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  TaggedSymbol =
+                    T.type_alias do
+                      T.all(
+                        Symbol,
+                        MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter::Entity
+                      )
+                    end
+                  OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                  COMMIT =
+                    T.let(
+                      :Commit,
+                      MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter::Entity::TaggedSymbol
+                    )
+                  CONTRACT_CREDIT =
+                    T.let(
+                      :ContractCredit,
+                      MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter::Entity::TaggedSymbol
+                    )
+                  CONTRACT_CREDIT_OR_COMMIT =
+                    T.let(
+                      :ContractCreditOrCommit,
+                      MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter::Entity::TaggedSymbol
+                    )
+
+                  sig do
+                    override.returns(
+                      T::Array[
+                        MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter::Entity::TaggedSymbol
+                      ]
+                    )
+                  end
+                  def self.values
+                  end
+                end
               end
             end
           end
