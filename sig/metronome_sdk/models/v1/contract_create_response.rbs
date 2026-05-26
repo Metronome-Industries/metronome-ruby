@@ -1,14 +1,1055 @@
 module MetronomeSDK
   module Models
     module V1
-      type contract_create_response = { data: MetronomeSDK::ID }
+      type contract_create_response =
+        { data: MetronomeSDK::Models::V1::ContractCreateResponse::Data }
 
       class ContractCreateResponse < MetronomeSDK::Internal::Type::BaseModel
-        attr_accessor data: MetronomeSDK::ID
+        attr_accessor data: MetronomeSDK::Models::V1::ContractCreateResponse::Data
 
-        def initialize: (data: MetronomeSDK::ID) -> void
+        def initialize: (
+          data: MetronomeSDK::Models::V1::ContractCreateResponse::Data
+        ) -> void
 
-        def to_hash: -> { data: MetronomeSDK::ID }
+        def to_hash: -> {
+          data: MetronomeSDK::Models::V1::ContractCreateResponse::Data
+        }
+
+        type data =
+          {
+            id: String,
+            contract: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract
+          }
+
+        class Data < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_reader contract: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract?
+
+          def contract=: (
+            MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract
+          ) -> MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract
+
+          def initialize: (
+            id: String,
+            ?contract: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            contract: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract
+          }
+
+          type contract =
+            {
+              id: String,
+              commits: ::Array[MetronomeSDK::Commit],
+              created_at: Time,
+              created_by: String,
+              customer_id: String,
+              overrides: ::Array[MetronomeSDK::Override],
+              scheduled_charges: ::Array[MetronomeSDK::ScheduledCharge],
+              starting_at: Time,
+              transitions: ::Array[MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::Transition],
+              usage_filter: ::Array[MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::UsageFilter],
+              usage_statement_schedule: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::UsageStatementSchedule,
+              credits: ::Array[MetronomeSDK::Credit],
+              custom_fields: ::Hash[Symbol, String],
+              customer_billing_provider_configuration: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration,
+              ending_before: Time,
+              has_more: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::HasMore,
+              hierarchy_configuration: MetronomeSDK::Models::hierarchy_configuration,
+              multiplier_override_prioritization: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::multiplier_override_prioritization,
+              name: String,
+              net_payment_terms_days: Float,
+              package_id: String,
+              prepaid_balance_threshold_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration,
+              rate_card_id: String,
+              recurring_commits: ::Array[MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit],
+              recurring_credits: ::Array[MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit],
+              scheduled_charges_on_usage_invoices: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::scheduled_charges_on_usage_invoices,
+              spend_threshold_configuration: MetronomeSDK::SpendThresholdConfiguration,
+              subscriptions: ::Array[MetronomeSDK::Subscription],
+              uniqueness_key: String
+            }
+
+          class Contract < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_accessor commits: ::Array[MetronomeSDK::Commit]
+
+            attr_accessor created_at: Time
+
+            attr_accessor created_by: String
+
+            attr_accessor customer_id: String
+
+            attr_accessor overrides: ::Array[MetronomeSDK::Override]
+
+            attr_accessor scheduled_charges: ::Array[MetronomeSDK::ScheduledCharge]
+
+            attr_accessor starting_at: Time
+
+            attr_accessor transitions: ::Array[MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::Transition]
+
+            attr_accessor usage_filter: ::Array[MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::UsageFilter]
+
+            attr_accessor usage_statement_schedule: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::UsageStatementSchedule
+
+            attr_reader credits: ::Array[MetronomeSDK::Credit]?
+
+            def credits=: (
+              ::Array[MetronomeSDK::Credit]
+            ) -> ::Array[MetronomeSDK::Credit]
+
+            attr_reader custom_fields: ::Hash[Symbol, String]?
+
+            def custom_fields=: (
+              ::Hash[Symbol, String]
+            ) -> ::Hash[Symbol, String]
+
+            attr_reader customer_billing_provider_configuration: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration?
+
+            def customer_billing_provider_configuration=: (
+              MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration
+            ) -> MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration
+
+            attr_reader ending_before: Time?
+
+            def ending_before=: (Time) -> Time
+
+            attr_reader has_more: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::HasMore?
+
+            def has_more=: (
+              MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::HasMore
+            ) -> MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::HasMore
+
+            attr_reader hierarchy_configuration: MetronomeSDK::Models::hierarchy_configuration?
+
+            def hierarchy_configuration=: (
+              MetronomeSDK::Models::hierarchy_configuration
+            ) -> MetronomeSDK::Models::hierarchy_configuration
+
+            attr_reader multiplier_override_prioritization: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::multiplier_override_prioritization?
+
+            def multiplier_override_prioritization=: (
+              MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::multiplier_override_prioritization
+            ) -> MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::multiplier_override_prioritization
+
+            attr_reader name: String?
+
+            def name=: (String) -> String
+
+            attr_reader net_payment_terms_days: Float?
+
+            def net_payment_terms_days=: (Float) -> Float
+
+            attr_reader package_id: String?
+
+            def package_id=: (String) -> String
+
+            attr_reader prepaid_balance_threshold_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration?
+
+            def prepaid_balance_threshold_configuration=: (
+              MetronomeSDK::PrepaidBalanceThresholdConfiguration
+            ) -> MetronomeSDK::PrepaidBalanceThresholdConfiguration
+
+            attr_reader rate_card_id: String?
+
+            def rate_card_id=: (String) -> String
+
+            attr_reader recurring_commits: ::Array[MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit]?
+
+            def recurring_commits=: (
+              ::Array[MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit]
+            ) -> ::Array[MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit]
+
+            attr_reader recurring_credits: ::Array[MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit]?
+
+            def recurring_credits=: (
+              ::Array[MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit]
+            ) -> ::Array[MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit]
+
+            attr_reader scheduled_charges_on_usage_invoices: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::scheduled_charges_on_usage_invoices?
+
+            def scheduled_charges_on_usage_invoices=: (
+              MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::scheduled_charges_on_usage_invoices
+            ) -> MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::scheduled_charges_on_usage_invoices
+
+            attr_reader spend_threshold_configuration: MetronomeSDK::SpendThresholdConfiguration?
+
+            def spend_threshold_configuration=: (
+              MetronomeSDK::SpendThresholdConfiguration
+            ) -> MetronomeSDK::SpendThresholdConfiguration
+
+            attr_reader subscriptions: ::Array[MetronomeSDK::Subscription]?
+
+            def subscriptions=: (
+              ::Array[MetronomeSDK::Subscription]
+            ) -> ::Array[MetronomeSDK::Subscription]
+
+            attr_reader uniqueness_key: String?
+
+            def uniqueness_key=: (String) -> String
+
+            def initialize: (
+              id: String,
+              commits: ::Array[MetronomeSDK::Commit],
+              created_at: Time,
+              created_by: String,
+              customer_id: String,
+              overrides: ::Array[MetronomeSDK::Override],
+              scheduled_charges: ::Array[MetronomeSDK::ScheduledCharge],
+              starting_at: Time,
+              transitions: ::Array[MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::Transition],
+              usage_filter: ::Array[MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::UsageFilter],
+              usage_statement_schedule: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::UsageStatementSchedule,
+              ?credits: ::Array[MetronomeSDK::Credit],
+              ?custom_fields: ::Hash[Symbol, String],
+              ?customer_billing_provider_configuration: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration,
+              ?ending_before: Time,
+              ?has_more: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::HasMore,
+              ?hierarchy_configuration: MetronomeSDK::Models::hierarchy_configuration,
+              ?multiplier_override_prioritization: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::multiplier_override_prioritization,
+              ?name: String,
+              ?net_payment_terms_days: Float,
+              ?package_id: String,
+              ?prepaid_balance_threshold_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration,
+              ?rate_card_id: String,
+              ?recurring_commits: ::Array[MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit],
+              ?recurring_credits: ::Array[MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit],
+              ?scheduled_charges_on_usage_invoices: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::scheduled_charges_on_usage_invoices,
+              ?spend_threshold_configuration: MetronomeSDK::SpendThresholdConfiguration,
+              ?subscriptions: ::Array[MetronomeSDK::Subscription],
+              ?uniqueness_key: String
+            ) -> void
+
+            def to_hash: -> {
+              id: String,
+              commits: ::Array[MetronomeSDK::Commit],
+              created_at: Time,
+              created_by: String,
+              customer_id: String,
+              overrides: ::Array[MetronomeSDK::Override],
+              scheduled_charges: ::Array[MetronomeSDK::ScheduledCharge],
+              starting_at: Time,
+              transitions: ::Array[MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::Transition],
+              usage_filter: ::Array[MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::UsageFilter],
+              usage_statement_schedule: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::UsageStatementSchedule,
+              credits: ::Array[MetronomeSDK::Credit],
+              custom_fields: ::Hash[Symbol, String],
+              customer_billing_provider_configuration: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration,
+              ending_before: Time,
+              has_more: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::HasMore,
+              hierarchy_configuration: MetronomeSDK::Models::hierarchy_configuration,
+              multiplier_override_prioritization: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::multiplier_override_prioritization,
+              name: String,
+              net_payment_terms_days: Float,
+              package_id: String,
+              prepaid_balance_threshold_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration,
+              rate_card_id: String,
+              recurring_commits: ::Array[MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit],
+              recurring_credits: ::Array[MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit],
+              scheduled_charges_on_usage_invoices: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::scheduled_charges_on_usage_invoices,
+              spend_threshold_configuration: MetronomeSDK::SpendThresholdConfiguration,
+              subscriptions: ::Array[MetronomeSDK::Subscription],
+              uniqueness_key: String
+            }
+
+            type transition =
+              {
+                from_contract_id: String,
+                to_contract_id: String,
+                type: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::Transition::type_
+              }
+
+            class Transition < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor from_contract_id: String
+
+              attr_accessor to_contract_id: String
+
+              attr_accessor type: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::Transition::type_
+
+              def initialize: (
+                from_contract_id: String,
+                to_contract_id: String,
+                type: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::Transition::type_
+              ) -> void
+
+              def to_hash: -> {
+                from_contract_id: String,
+                to_contract_id: String,
+                type: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::Transition::type_
+              }
+
+              type type_ = :SUPERSEDE | :RENEWAL
+
+              module Type
+                extend MetronomeSDK::Internal::Type::Enum
+
+                SUPERSEDE: :SUPERSEDE
+                RENEWAL: :RENEWAL
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::Transition::type_]
+              end
+            end
+
+            type usage_filter =
+              {
+                group_key: String,
+                group_values: ::Array[String],
+                starting_at: Time,
+                ending_before: Time
+              }
+
+            class UsageFilter < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor group_key: String
+
+              attr_accessor group_values: ::Array[String]
+
+              attr_accessor starting_at: Time
+
+              attr_reader ending_before: Time?
+
+              def ending_before=: (Time) -> Time
+
+              def initialize: (
+                group_key: String,
+                group_values: ::Array[String],
+                starting_at: Time,
+                ?ending_before: Time
+              ) -> void
+
+              def to_hash: -> {
+                group_key: String,
+                group_values: ::Array[String],
+                starting_at: Time,
+                ending_before: Time
+              }
+            end
+
+            type usage_statement_schedule =
+              {
+                billing_anchor_date: Time,
+                frequency: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::UsageStatementSchedule::frequency
+              }
+
+            class UsageStatementSchedule < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor billing_anchor_date: Time
+
+              attr_accessor frequency: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::UsageStatementSchedule::frequency
+
+              def initialize: (
+                billing_anchor_date: Time,
+                frequency: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::UsageStatementSchedule::frequency
+              ) -> void
+
+              def to_hash: -> {
+                billing_anchor_date: Time,
+                frequency: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::UsageStatementSchedule::frequency
+              }
+
+              type frequency = :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY
+
+              module Frequency
+                extend MetronomeSDK::Internal::Type::Enum
+
+                MONTHLY: :MONTHLY
+                QUARTERLY: :QUARTERLY
+                ANNUAL: :ANNUAL
+                WEEKLY: :WEEKLY
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::UsageStatementSchedule::frequency]
+              end
+            end
+
+            type customer_billing_provider_configuration =
+              {
+                id: String,
+                billing_provider: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::billing_provider,
+                delivery_method: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::delivery_method
+              }
+
+            class CustomerBillingProviderConfiguration < MetronomeSDK::Internal::Type::BaseModel
+              attr_reader id: String?
+
+              def id=: (String) -> String
+
+              attr_reader billing_provider: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::billing_provider?
+
+              def billing_provider=: (
+                MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::billing_provider
+              ) -> MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::billing_provider
+
+              attr_reader delivery_method: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::delivery_method?
+
+              def delivery_method=: (
+                MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::delivery_method
+              ) -> MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::delivery_method
+
+              def initialize: (
+                ?id: String,
+                ?billing_provider: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::billing_provider,
+                ?delivery_method: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::delivery_method
+              ) -> void
+
+              def to_hash: -> {
+                id: String,
+                billing_provider: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::billing_provider,
+                delivery_method: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::delivery_method
+              }
+
+              type billing_provider =
+                :aws_marketplace
+                | :stripe
+                | :netsuite
+                | :custom
+                | :azure_marketplace
+                | :quickbooks_online
+                | :workday
+                | :gcp_marketplace
+                | :metronome
+
+              module BillingProvider
+                extend MetronomeSDK::Internal::Type::Enum
+
+                AWS_MARKETPLACE: :aws_marketplace
+                STRIPE: :stripe
+                NETSUITE: :netsuite
+                CUSTOM: :custom
+                AZURE_MARKETPLACE: :azure_marketplace
+                QUICKBOOKS_ONLINE: :quickbooks_online
+                WORKDAY: :workday
+                GCP_MARKETPLACE: :gcp_marketplace
+                METRONOME: :metronome
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::billing_provider]
+              end
+
+              type delivery_method =
+                :direct_to_billing_provider | :aws_sqs | :tackle | :aws_sns
+
+              module DeliveryMethod
+                extend MetronomeSDK::Internal::Type::Enum
+
+                DIRECT_TO_BILLING_PROVIDER: :direct_to_billing_provider
+                AWS_SQS: :aws_sqs
+                TACKLE: :tackle
+                AWS_SNS: :aws_sns
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::delivery_method]
+              end
+            end
+
+            type has_more = { commits: bool, credits: bool }
+
+            class HasMore < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor commits: bool
+
+              attr_accessor credits: bool
+
+              def initialize: (commits: bool, credits: bool) -> void
+
+              def to_hash: -> { commits: bool, credits: bool }
+            end
+
+            type multiplier_override_prioritization =
+              :LOWEST_MULTIPLIER | :EXPLICIT
+
+            module MultiplierOverridePrioritization
+              extend MetronomeSDK::Internal::Type::Enum
+
+              LOWEST_MULTIPLIER: :LOWEST_MULTIPLIER
+              EXPLICIT: :EXPLICIT
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::multiplier_override_prioritization]
+            end
+
+            type recurring_commit =
+              {
+                id: String,
+                access_amount: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::AccessAmount,
+                commit_duration: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::CommitDuration,
+                priority: Float,
+                product: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::Product,
+                rate_type: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::rate_type,
+                starting_at: Time,
+                applicable_product_ids: ::Array[String],
+                applicable_product_tags: ::Array[String],
+                contract: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::Contract,
+                description: String,
+                ending_before: Time,
+                hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,
+                invoice_amount: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::InvoiceAmount,
+                name: String,
+                netsuite_sales_order_id: String,
+                proration: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::proration,
+                recurrence_frequency: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::recurrence_frequency,
+                rollover_fraction: Float,
+                specifiers: ::Array[MetronomeSDK::CommitSpecifier],
+                subscription_config: MetronomeSDK::RecurringCommitSubscriptionConfig
+              }
+
+            class RecurringCommit < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor id: String
+
+              attr_accessor access_amount: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::AccessAmount
+
+              attr_accessor commit_duration: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::CommitDuration
+
+              attr_accessor priority: Float
+
+              attr_accessor product: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::Product
+
+              attr_accessor rate_type: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::rate_type
+
+              attr_accessor starting_at: Time
+
+              attr_reader applicable_product_ids: ::Array[String]?
+
+              def applicable_product_ids=: (::Array[String]) -> ::Array[String]
+
+              attr_reader applicable_product_tags: ::Array[String]?
+
+              def applicable_product_tags=: (::Array[String]) -> ::Array[String]
+
+              attr_reader contract: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::Contract?
+
+              def contract=: (
+                MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::Contract
+              ) -> MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::Contract
+
+              attr_reader description: String?
+
+              def description=: (String) -> String
+
+              attr_reader ending_before: Time?
+
+              def ending_before=: (Time) -> Time
+
+              attr_reader hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration?
+
+              def hierarchy_configuration=: (
+                MetronomeSDK::CommitHierarchyConfiguration
+              ) -> MetronomeSDK::CommitHierarchyConfiguration
+
+              attr_reader invoice_amount: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::InvoiceAmount?
+
+              def invoice_amount=: (
+                MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::InvoiceAmount
+              ) -> MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::InvoiceAmount
+
+              attr_reader name: String?
+
+              def name=: (String) -> String
+
+              attr_reader netsuite_sales_order_id: String?
+
+              def netsuite_sales_order_id=: (String) -> String
+
+              attr_reader proration: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::proration?
+
+              def proration=: (
+                MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::proration
+              ) -> MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::proration
+
+              attr_reader recurrence_frequency: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::recurrence_frequency?
+
+              def recurrence_frequency=: (
+                MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::recurrence_frequency
+              ) -> MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::recurrence_frequency
+
+              attr_reader rollover_fraction: Float?
+
+              def rollover_fraction=: (Float) -> Float
+
+              attr_reader specifiers: ::Array[MetronomeSDK::CommitSpecifier]?
+
+              def specifiers=: (
+                ::Array[MetronomeSDK::CommitSpecifier]
+              ) -> ::Array[MetronomeSDK::CommitSpecifier]
+
+              attr_reader subscription_config: MetronomeSDK::RecurringCommitSubscriptionConfig?
+
+              def subscription_config=: (
+                MetronomeSDK::RecurringCommitSubscriptionConfig
+              ) -> MetronomeSDK::RecurringCommitSubscriptionConfig
+
+              def initialize: (
+                id: String,
+                access_amount: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::AccessAmount,
+                commit_duration: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::CommitDuration,
+                priority: Float,
+                product: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::Product,
+                rate_type: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::rate_type,
+                starting_at: Time,
+                ?applicable_product_ids: ::Array[String],
+                ?applicable_product_tags: ::Array[String],
+                ?contract: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::Contract,
+                ?description: String,
+                ?ending_before: Time,
+                ?hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,
+                ?invoice_amount: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::InvoiceAmount,
+                ?name: String,
+                ?netsuite_sales_order_id: String,
+                ?proration: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::proration,
+                ?recurrence_frequency: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::recurrence_frequency,
+                ?rollover_fraction: Float,
+                ?specifiers: ::Array[MetronomeSDK::CommitSpecifier],
+                ?subscription_config: MetronomeSDK::RecurringCommitSubscriptionConfig
+              ) -> void
+
+              def to_hash: -> {
+                id: String,
+                access_amount: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::AccessAmount,
+                commit_duration: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::CommitDuration,
+                priority: Float,
+                product: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::Product,
+                rate_type: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::rate_type,
+                starting_at: Time,
+                applicable_product_ids: ::Array[String],
+                applicable_product_tags: ::Array[String],
+                contract: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::Contract,
+                description: String,
+                ending_before: Time,
+                hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,
+                invoice_amount: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::InvoiceAmount,
+                name: String,
+                netsuite_sales_order_id: String,
+                proration: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::proration,
+                recurrence_frequency: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::recurrence_frequency,
+                rollover_fraction: Float,
+                specifiers: ::Array[MetronomeSDK::CommitSpecifier],
+                subscription_config: MetronomeSDK::RecurringCommitSubscriptionConfig
+              }
+
+              type access_amount =
+                { credit_type_id: String, unit_price: Float, quantity: Float }
+
+              class AccessAmount < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor credit_type_id: String
+
+                attr_accessor unit_price: Float
+
+                attr_reader quantity: Float?
+
+                def quantity=: (Float) -> Float
+
+                def initialize: (
+                  credit_type_id: String,
+                  unit_price: Float,
+                  ?quantity: Float
+                ) -> void
+
+                def to_hash: -> {
+                  credit_type_id: String,
+                  unit_price: Float,
+                  quantity: Float
+                }
+              end
+
+              type commit_duration =
+                {
+                  value: Float,
+                  unit: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::CommitDuration::unit
+                }
+
+              class CommitDuration < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor value: Float
+
+                attr_reader unit: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::CommitDuration::unit?
+
+                def unit=: (
+                  MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::CommitDuration::unit
+                ) -> MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::CommitDuration::unit
+
+                def initialize: (
+                  value: Float,
+                  ?unit: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::CommitDuration::unit
+                ) -> void
+
+                def to_hash: -> {
+                  value: Float,
+                  unit: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::CommitDuration::unit
+                }
+
+                type unit = :PERIODS
+
+                module Unit
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  PERIODS: :PERIODS
+
+                  def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::CommitDuration::unit]
+                end
+              end
+
+              type product = { id: String, name: String }
+
+              class Product < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor id: String
+
+                attr_accessor name: String
+
+                def initialize: (id: String, name: String) -> void
+
+                def to_hash: -> { id: String, name: String }
+              end
+
+              type rate_type = :COMMIT_RATE | :LIST_RATE
+
+              module RateType
+                extend MetronomeSDK::Internal::Type::Enum
+
+                COMMIT_RATE: :COMMIT_RATE
+                LIST_RATE: :LIST_RATE
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::rate_type]
+              end
+
+              type contract = { id: String }
+
+              class Contract < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor id: String
+
+                def initialize: (id: String) -> void
+
+                def to_hash: -> { id: String }
+              end
+
+              type invoice_amount =
+                { credit_type_id: String, quantity: Float, unit_price: Float }
+
+              class InvoiceAmount < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor credit_type_id: String
+
+                attr_accessor quantity: Float
+
+                attr_accessor unit_price: Float
+
+                def initialize: (
+                  credit_type_id: String,
+                  quantity: Float,
+                  unit_price: Float
+                ) -> void
+
+                def to_hash: -> {
+                  credit_type_id: String,
+                  quantity: Float,
+                  unit_price: Float
+                }
+              end
+
+              type proration = :NONE | :FIRST | :LAST | :FIRST_AND_LAST
+
+              module Proration
+                extend MetronomeSDK::Internal::Type::Enum
+
+                NONE: :NONE
+                FIRST: :FIRST
+                LAST: :LAST
+                FIRST_AND_LAST: :FIRST_AND_LAST
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::proration]
+              end
+
+              type recurrence_frequency =
+                :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY
+
+              module RecurrenceFrequency
+                extend MetronomeSDK::Internal::Type::Enum
+
+                MONTHLY: :MONTHLY
+                QUARTERLY: :QUARTERLY
+                ANNUAL: :ANNUAL
+                WEEKLY: :WEEKLY
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::recurrence_frequency]
+              end
+            end
+
+            type recurring_credit =
+              {
+                id: String,
+                access_amount: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::AccessAmount,
+                commit_duration: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::CommitDuration,
+                priority: Float,
+                product: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::Product,
+                rate_type: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::rate_type,
+                starting_at: Time,
+                applicable_product_ids: ::Array[String],
+                applicable_product_tags: ::Array[String],
+                contract: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::Contract,
+                description: String,
+                ending_before: Time,
+                hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,
+                name: String,
+                netsuite_sales_order_id: String,
+                proration: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::proration,
+                recurrence_frequency: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::recurrence_frequency,
+                rollover_fraction: Float,
+                specifiers: ::Array[MetronomeSDK::CommitSpecifier],
+                subscription_config: MetronomeSDK::RecurringCommitSubscriptionConfig
+              }
+
+            class RecurringCredit < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor id: String
+
+              attr_accessor access_amount: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::AccessAmount
+
+              attr_accessor commit_duration: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::CommitDuration
+
+              attr_accessor priority: Float
+
+              attr_accessor product: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::Product
+
+              attr_accessor rate_type: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::rate_type
+
+              attr_accessor starting_at: Time
+
+              attr_reader applicable_product_ids: ::Array[String]?
+
+              def applicable_product_ids=: (::Array[String]) -> ::Array[String]
+
+              attr_reader applicable_product_tags: ::Array[String]?
+
+              def applicable_product_tags=: (::Array[String]) -> ::Array[String]
+
+              attr_reader contract: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::Contract?
+
+              def contract=: (
+                MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::Contract
+              ) -> MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::Contract
+
+              attr_reader description: String?
+
+              def description=: (String) -> String
+
+              attr_reader ending_before: Time?
+
+              def ending_before=: (Time) -> Time
+
+              attr_reader hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration?
+
+              def hierarchy_configuration=: (
+                MetronomeSDK::CommitHierarchyConfiguration
+              ) -> MetronomeSDK::CommitHierarchyConfiguration
+
+              attr_reader name: String?
+
+              def name=: (String) -> String
+
+              attr_reader netsuite_sales_order_id: String?
+
+              def netsuite_sales_order_id=: (String) -> String
+
+              attr_reader proration: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::proration?
+
+              def proration=: (
+                MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::proration
+              ) -> MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::proration
+
+              attr_reader recurrence_frequency: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::recurrence_frequency?
+
+              def recurrence_frequency=: (
+                MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::recurrence_frequency
+              ) -> MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::recurrence_frequency
+
+              attr_reader rollover_fraction: Float?
+
+              def rollover_fraction=: (Float) -> Float
+
+              attr_reader specifiers: ::Array[MetronomeSDK::CommitSpecifier]?
+
+              def specifiers=: (
+                ::Array[MetronomeSDK::CommitSpecifier]
+              ) -> ::Array[MetronomeSDK::CommitSpecifier]
+
+              attr_reader subscription_config: MetronomeSDK::RecurringCommitSubscriptionConfig?
+
+              def subscription_config=: (
+                MetronomeSDK::RecurringCommitSubscriptionConfig
+              ) -> MetronomeSDK::RecurringCommitSubscriptionConfig
+
+              def initialize: (
+                id: String,
+                access_amount: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::AccessAmount,
+                commit_duration: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::CommitDuration,
+                priority: Float,
+                product: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::Product,
+                rate_type: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::rate_type,
+                starting_at: Time,
+                ?applicable_product_ids: ::Array[String],
+                ?applicable_product_tags: ::Array[String],
+                ?contract: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::Contract,
+                ?description: String,
+                ?ending_before: Time,
+                ?hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,
+                ?name: String,
+                ?netsuite_sales_order_id: String,
+                ?proration: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::proration,
+                ?recurrence_frequency: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::recurrence_frequency,
+                ?rollover_fraction: Float,
+                ?specifiers: ::Array[MetronomeSDK::CommitSpecifier],
+                ?subscription_config: MetronomeSDK::RecurringCommitSubscriptionConfig
+              ) -> void
+
+              def to_hash: -> {
+                id: String,
+                access_amount: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::AccessAmount,
+                commit_duration: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::CommitDuration,
+                priority: Float,
+                product: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::Product,
+                rate_type: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::rate_type,
+                starting_at: Time,
+                applicable_product_ids: ::Array[String],
+                applicable_product_tags: ::Array[String],
+                contract: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::Contract,
+                description: String,
+                ending_before: Time,
+                hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,
+                name: String,
+                netsuite_sales_order_id: String,
+                proration: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::proration,
+                recurrence_frequency: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::recurrence_frequency,
+                rollover_fraction: Float,
+                specifiers: ::Array[MetronomeSDK::CommitSpecifier],
+                subscription_config: MetronomeSDK::RecurringCommitSubscriptionConfig
+              }
+
+              type access_amount =
+                { credit_type_id: String, unit_price: Float, quantity: Float }
+
+              class AccessAmount < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor credit_type_id: String
+
+                attr_accessor unit_price: Float
+
+                attr_reader quantity: Float?
+
+                def quantity=: (Float) -> Float
+
+                def initialize: (
+                  credit_type_id: String,
+                  unit_price: Float,
+                  ?quantity: Float
+                ) -> void
+
+                def to_hash: -> {
+                  credit_type_id: String,
+                  unit_price: Float,
+                  quantity: Float
+                }
+              end
+
+              type commit_duration =
+                {
+                  value: Float,
+                  unit: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::CommitDuration::unit
+                }
+
+              class CommitDuration < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor value: Float
+
+                attr_reader unit: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::CommitDuration::unit?
+
+                def unit=: (
+                  MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::CommitDuration::unit
+                ) -> MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::CommitDuration::unit
+
+                def initialize: (
+                  value: Float,
+                  ?unit: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::CommitDuration::unit
+                ) -> void
+
+                def to_hash: -> {
+                  value: Float,
+                  unit: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::CommitDuration::unit
+                }
+
+                type unit = :PERIODS
+
+                module Unit
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  PERIODS: :PERIODS
+
+                  def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::CommitDuration::unit]
+                end
+              end
+
+              type product = { id: String, name: String }
+
+              class Product < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor id: String
+
+                attr_accessor name: String
+
+                def initialize: (id: String, name: String) -> void
+
+                def to_hash: -> { id: String, name: String }
+              end
+
+              type rate_type = :COMMIT_RATE | :LIST_RATE
+
+              module RateType
+                extend MetronomeSDK::Internal::Type::Enum
+
+                COMMIT_RATE: :COMMIT_RATE
+                LIST_RATE: :LIST_RATE
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::rate_type]
+              end
+
+              type contract = { id: String }
+
+              class Contract < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor id: String
+
+                def initialize: (id: String) -> void
+
+                def to_hash: -> { id: String }
+              end
+
+              type proration = :NONE | :FIRST | :LAST | :FIRST_AND_LAST
+
+              module Proration
+                extend MetronomeSDK::Internal::Type::Enum
+
+                NONE: :NONE
+                FIRST: :FIRST
+                LAST: :LAST
+                FIRST_AND_LAST: :FIRST_AND_LAST
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::proration]
+              end
+
+              type recurrence_frequency =
+                :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY
+
+              module RecurrenceFrequency
+                extend MetronomeSDK::Internal::Type::Enum
+
+                MONTHLY: :MONTHLY
+                QUARTERLY: :QUARTERLY
+                ANNUAL: :ANNUAL
+                WEEKLY: :WEEKLY
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::recurrence_frequency]
+              end
+            end
+
+            type scheduled_charges_on_usage_invoices = :ALL
+
+            module ScheduledChargesOnUsageInvoices
+              extend MetronomeSDK::Internal::Type::Enum
+
+              ALL: :ALL
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::scheduled_charges_on_usage_invoices]
+            end
+          end
+        end
       end
     end
   end
