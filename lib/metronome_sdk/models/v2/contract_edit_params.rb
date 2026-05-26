@@ -4029,7 +4029,18 @@ module MetronomeSDK
           #   @return [Float, nil]
           optional :threshold_amount, Float
 
-          # @!method initialize(commit: nil, custom_credit_type_id: nil, discount_configuration: nil, is_enabled: nil, payment_gate_config: nil, recharge_to_amount: nil, threshold_amount: nil)
+          # @!attribute threshold_balance_specifiers
+          #
+          #   @return [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier>, nil]
+          optional :threshold_balance_specifiers,
+                   -> do
+                     MetronomeSDK::Internal::Type::ArrayOf[
+                       MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier
+                     ]
+                   end,
+                   nil?: true
+
+          # @!method initialize(commit: nil, custom_credit_type_id: nil, discount_configuration: nil, is_enabled: nil, payment_gate_config: nil, recharge_to_amount: nil, threshold_amount: nil, threshold_balance_specifiers: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration}
           #   for more details.
@@ -4047,6 +4058,8 @@ module MetronomeSDK
           #   @param recharge_to_amount [Float] Specify the amount the balance should be recharged to.
           #
           #   @param threshold_amount [Float] Specify the threshold amount for the contract. Each time the contract's balance
+          #
+          #   @param threshold_balance_specifiers [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier>, nil]
 
           # @see MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration#commit
           class Commit < MetronomeSDK::Models::UpdateBaseThresholdCommit
@@ -4139,6 +4152,71 @@ module MetronomeSDK
               #   @param amount [Float] Accumulated spend ceiling above which the discount stops applying.
               #
               #   @param spend_tracker_alias [String] Alias of the spend tracker this cap is measured against.
+            end
+          end
+
+          class ThresholdBalanceSpecifier < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute exclude
+            #
+            #   @return [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude>]
+            required :exclude,
+                     -> do
+                       MetronomeSDK::Internal::Type::ArrayOf[
+                         MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude
+                       ]
+                     end
+
+            # @!method initialize(exclude:)
+            #   @param exclude [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude>]
+
+            class Exclude < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute custom_field_filters
+              #
+              #   @return [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter>]
+              required :custom_field_filters,
+                       -> do
+                         MetronomeSDK::Internal::Type::ArrayOf[
+                           MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter
+                         ]
+                       end
+
+              # @!method initialize(custom_field_filters:)
+              #   @param custom_field_filters [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter>]
+
+              class CustomFieldFilter < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute entity
+                #
+                #   @return [Symbol, MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter::Entity]
+                required :entity,
+                         enum: -> { MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter::Entity }
+
+                # @!attribute key
+                #
+                #   @return [String]
+                required :key, String
+
+                # @!attribute value
+                #
+                #   @return [String]
+                required :value, String
+
+                # @!method initialize(entity:, key:, value:)
+                #   @param entity [Symbol, MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter::Entity]
+                #   @param key [String]
+                #   @param value [String]
+
+                # @see MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter#entity
+                module Entity
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  COMMIT = :Commit
+                  CONTRACT_CREDIT = :ContractCredit
+                  CONTRACT_CREDIT_OR_COMMIT = :ContractCreditOrCommit
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
+              end
             end
           end
         end
