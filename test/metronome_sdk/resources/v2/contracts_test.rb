@@ -48,7 +48,7 @@ class MetronomeSDK::Test::Resources::V2::ContractsTest < MetronomeSDK::Test::Res
 
     assert_pattern do
       response => {
-        data: MetronomeSDK::ID
+        data: MetronomeSDK::Models::V2::ContractEditResponse::Data
       }
     end
   end
