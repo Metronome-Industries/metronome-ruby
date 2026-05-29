@@ -70,6 +70,7 @@ class MetronomeSDK::Test::Resources::V1::PackagesTest < MetronomeSDK::Test::Reso
         recurring_credits: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::PackageListResponse::RecurringCredit]) | nil,
         scheduled_charges_on_usage_invoices: MetronomeSDK::Models::V1::PackageListResponse::ScheduledChargesOnUsageInvoices | nil,
         spend_threshold_configuration: MetronomeSDK::SpendThresholdConfiguration | nil,
+        spend_trackers: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::PackageListResponse::SpendTracker]) | nil,
         subscriptions: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::PackageListResponse::Subscription]) | nil,
         uniqueness_key: String | nil
       }

@@ -75,6 +75,7 @@ class MetronomeSDK::Test::Resources::V1::Customers::CommitsTest < MetronomeSDK::
         rollover_fraction: Float | nil,
         salesforce_opportunity_id: String | nil,
         specifiers: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::CommitSpecifier]) | nil,
+        spend_tracker_attributes: MetronomeSDK::Commit::SpendTrackerAttributes | nil,
         subscription_config: MetronomeSDK::Commit::SubscriptionConfig | nil,
         uniqueness_key: String | nil
       }

@@ -26,6 +26,7 @@ module MetronomeSDK
         salesforce_opportunity_id: String,
         scheduled_charges_on_usage_invoices: MetronomeSDK::Models::ContractWithoutAmendments::scheduled_charges_on_usage_invoices,
         spend_threshold_configuration: MetronomeSDK::SpendThresholdConfiguration,
+        spend_trackers: ::Array[MetronomeSDK::ContractWithoutAmendments::SpendTracker],
         total_contract_value: Float,
         usage_filter: MetronomeSDK::ContractWithoutAmendments::UsageFilter
       }
@@ -131,6 +132,12 @@ module MetronomeSDK
         MetronomeSDK::SpendThresholdConfiguration
       ) -> MetronomeSDK::SpendThresholdConfiguration
 
+      attr_reader spend_trackers: ::Array[MetronomeSDK::ContractWithoutAmendments::SpendTracker]?
+
+      def spend_trackers=: (
+        ::Array[MetronomeSDK::ContractWithoutAmendments::SpendTracker]
+      ) -> ::Array[MetronomeSDK::ContractWithoutAmendments::SpendTracker]
+
       attr_reader total_contract_value: Float?
 
       def total_contract_value=: (Float) -> Float
@@ -166,6 +173,7 @@ module MetronomeSDK
         ?salesforce_opportunity_id: String,
         ?scheduled_charges_on_usage_invoices: MetronomeSDK::Models::ContractWithoutAmendments::scheduled_charges_on_usage_invoices,
         ?spend_threshold_configuration: MetronomeSDK::SpendThresholdConfiguration,
+        ?spend_trackers: ::Array[MetronomeSDK::ContractWithoutAmendments::SpendTracker],
         ?total_contract_value: Float,
         ?usage_filter: MetronomeSDK::ContractWithoutAmendments::UsageFilter
       ) -> void
@@ -195,6 +203,7 @@ module MetronomeSDK
         salesforce_opportunity_id: String,
         scheduled_charges_on_usage_invoices: MetronomeSDK::Models::ContractWithoutAmendments::scheduled_charges_on_usage_invoices,
         spend_threshold_configuration: MetronomeSDK::SpendThresholdConfiguration,
+        spend_trackers: ::Array[MetronomeSDK::ContractWithoutAmendments::SpendTracker],
         total_contract_value: Float,
         usage_filter: MetronomeSDK::ContractWithoutAmendments::UsageFilter
       }
@@ -960,6 +969,148 @@ module MetronomeSDK
         ALL: :ALL
 
         def self?.values: -> ::Array[MetronomeSDK::Models::ContractWithoutAmendments::scheduled_charges_on_usage_invoices]
+      end
+
+      type spend_tracker =
+        {
+          alias_: String,
+          applicable_spend_specifiers: ::Array[MetronomeSDK::ContractWithoutAmendments::SpendTracker::ApplicableSpendSpecifier],
+          credit_type_id: String,
+          reset_frequency: MetronomeSDK::Models::ContractWithoutAmendments::SpendTracker::reset_frequency,
+          accumulated_spend: MetronomeSDK::ContractWithoutAmendments::SpendTracker::AccumulatedSpend
+        }
+
+      class SpendTracker < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor alias_: String
+
+        attr_accessor applicable_spend_specifiers: ::Array[MetronomeSDK::ContractWithoutAmendments::SpendTracker::ApplicableSpendSpecifier]
+
+        attr_accessor credit_type_id: String
+
+        attr_accessor reset_frequency: MetronomeSDK::Models::ContractWithoutAmendments::SpendTracker::reset_frequency
+
+        attr_reader accumulated_spend: MetronomeSDK::ContractWithoutAmendments::SpendTracker::AccumulatedSpend?
+
+        def accumulated_spend=: (
+          MetronomeSDK::ContractWithoutAmendments::SpendTracker::AccumulatedSpend
+        ) -> MetronomeSDK::ContractWithoutAmendments::SpendTracker::AccumulatedSpend
+
+        def initialize: (
+          alias_: String,
+          applicable_spend_specifiers: ::Array[MetronomeSDK::ContractWithoutAmendments::SpendTracker::ApplicableSpendSpecifier],
+          credit_type_id: String,
+          reset_frequency: MetronomeSDK::Models::ContractWithoutAmendments::SpendTracker::reset_frequency,
+          ?accumulated_spend: MetronomeSDK::ContractWithoutAmendments::SpendTracker::AccumulatedSpend
+        ) -> void
+
+        def to_hash: -> {
+          alias_: String,
+          applicable_spend_specifiers: ::Array[MetronomeSDK::ContractWithoutAmendments::SpendTracker::ApplicableSpendSpecifier],
+          credit_type_id: String,
+          reset_frequency: MetronomeSDK::Models::ContractWithoutAmendments::SpendTracker::reset_frequency,
+          accumulated_spend: MetronomeSDK::ContractWithoutAmendments::SpendTracker::AccumulatedSpend
+        }
+
+        type applicable_spend_specifier =
+          {
+            sources: ::Array[MetronomeSDK::Models::ContractWithoutAmendments::SpendTracker::ApplicableSpendSpecifier::source],
+            spend_type: MetronomeSDK::Models::ContractWithoutAmendments::SpendTracker::ApplicableSpendSpecifier::spend_type,
+            discounted: MetronomeSDK::Models::ContractWithoutAmendments::SpendTracker::ApplicableSpendSpecifier::discounted
+          }
+
+        class ApplicableSpendSpecifier < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor sources: ::Array[MetronomeSDK::Models::ContractWithoutAmendments::SpendTracker::ApplicableSpendSpecifier::source]
+
+          attr_accessor spend_type: MetronomeSDK::Models::ContractWithoutAmendments::SpendTracker::ApplicableSpendSpecifier::spend_type
+
+          attr_reader discounted: MetronomeSDK::Models::ContractWithoutAmendments::SpendTracker::ApplicableSpendSpecifier::discounted?
+
+          def discounted=: (
+            MetronomeSDK::Models::ContractWithoutAmendments::SpendTracker::ApplicableSpendSpecifier::discounted
+          ) -> MetronomeSDK::Models::ContractWithoutAmendments::SpendTracker::ApplicableSpendSpecifier::discounted
+
+          def initialize: (
+            sources: ::Array[MetronomeSDK::Models::ContractWithoutAmendments::SpendTracker::ApplicableSpendSpecifier::source],
+            spend_type: MetronomeSDK::Models::ContractWithoutAmendments::SpendTracker::ApplicableSpendSpecifier::spend_type,
+            ?discounted: MetronomeSDK::Models::ContractWithoutAmendments::SpendTracker::ApplicableSpendSpecifier::discounted
+          ) -> void
+
+          def to_hash: -> {
+            sources: ::Array[MetronomeSDK::Models::ContractWithoutAmendments::SpendTracker::ApplicableSpendSpecifier::source],
+            spend_type: MetronomeSDK::Models::ContractWithoutAmendments::SpendTracker::ApplicableSpendSpecifier::spend_type,
+            discounted: MetronomeSDK::Models::ContractWithoutAmendments::SpendTracker::ApplicableSpendSpecifier::discounted
+          }
+
+          type source = :THRESHOLD_RECHARGE | :MANUAL
+
+          module Source
+            extend MetronomeSDK::Internal::Type::Enum
+
+            THRESHOLD_RECHARGE: :THRESHOLD_RECHARGE
+            MANUAL: :MANUAL
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::ContractWithoutAmendments::SpendTracker::ApplicableSpendSpecifier::source]
+          end
+
+          type spend_type = :COMMIT_PURCHASE
+
+          module SpendType
+            extend MetronomeSDK::Internal::Type::Enum
+
+            COMMIT_PURCHASE: :COMMIT_PURCHASE
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::ContractWithoutAmendments::SpendTracker::ApplicableSpendSpecifier::spend_type]
+          end
+
+          type discounted = :ANY | :DISCOUNTED_ONLY | :UNDISCOUNTED_ONLY
+
+          module Discounted
+            extend MetronomeSDK::Internal::Type::Enum
+
+            ANY: :ANY
+            DISCOUNTED_ONLY: :DISCOUNTED_ONLY
+            UNDISCOUNTED_ONLY: :UNDISCOUNTED_ONLY
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::ContractWithoutAmendments::SpendTracker::ApplicableSpendSpecifier::discounted]
+          end
+        end
+
+        type reset_frequency = :BILLING_PERIOD
+
+        module ResetFrequency
+          extend MetronomeSDK::Internal::Type::Enum
+
+          BILLING_PERIOD: :BILLING_PERIOD
+
+          def self?.values: -> ::Array[MetronomeSDK::Models::ContractWithoutAmendments::SpendTracker::reset_frequency]
+        end
+
+        type accumulated_spend =
+          {
+            amount: Float,
+            period_ending_before: Time,
+            period_starting_at: Time
+          }
+
+        class AccumulatedSpend < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor amount: Float
+
+          attr_accessor period_ending_before: Time
+
+          attr_accessor period_starting_at: Time
+
+          def initialize: (
+            amount: Float,
+            period_ending_before: Time,
+            period_starting_at: Time
+          ) -> void
+
+          def to_hash: -> {
+            amount: Float,
+            period_ending_before: Time,
+            period_starting_at: Time
+          }
+        end
       end
 
       type usage_filter =

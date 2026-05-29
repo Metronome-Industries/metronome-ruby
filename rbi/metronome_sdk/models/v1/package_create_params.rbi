@@ -280,6 +280,25 @@ module MetronomeSDK
         sig do
           returns(
             T.nilable(
+              T::Array[MetronomeSDK::V1::PackageCreateParams::SpendTracker]
+            )
+          )
+        end
+        attr_reader :spend_trackers
+
+        sig do
+          params(
+            spend_trackers:
+              T::Array[
+                MetronomeSDK::V1::PackageCreateParams::SpendTracker::OrHash
+              ]
+          ).void
+        end
+        attr_writer :spend_trackers
+
+        sig do
+          returns(
+            T.nilable(
               T::Array[MetronomeSDK::V1::PackageCreateParams::Subscription]
             )
           )
@@ -362,6 +381,10 @@ module MetronomeSDK
               MetronomeSDK::V1::PackageCreateParams::ScheduledChargesOnUsageInvoices::OrSymbol,
             spend_threshold_configuration:
               MetronomeSDK::SpendThresholdConfiguration::OrHash,
+            spend_trackers:
+              T::Array[
+                MetronomeSDK::V1::PackageCreateParams::SpendTracker::OrHash
+              ],
             subscriptions:
               T::Array[
                 MetronomeSDK::V1::PackageCreateParams::Subscription::OrHash
@@ -406,6 +429,7 @@ module MetronomeSDK
           # on a separate invoice from usage charges.
           scheduled_charges_on_usage_invoices: nil,
           spend_threshold_configuration: nil,
+          spend_trackers: nil,
           subscriptions: nil,
           # Prevents the creation of duplicates. If a request to create a record is made
           # with a previously used uniqueness key, a new record will not be created and the
@@ -454,6 +478,8 @@ module MetronomeSDK
                 MetronomeSDK::V1::PackageCreateParams::ScheduledChargesOnUsageInvoices::OrSymbol,
               spend_threshold_configuration:
                 MetronomeSDK::SpendThresholdConfiguration,
+              spend_trackers:
+                T::Array[MetronomeSDK::V1::PackageCreateParams::SpendTracker],
               subscriptions:
                 T::Array[MetronomeSDK::V1::PackageCreateParams::Subscription],
               uniqueness_key: String,
@@ -5210,6 +5236,290 @@ module MetronomeSDK
             )
           end
           def self.values
+          end
+        end
+
+        class SpendTracker < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::PackageCreateParams::SpendTracker,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
+          # Human-readable identifier, unique per contract.
+          sig { returns(String) }
+          attr_accessor :alias_
+
+          sig do
+            returns(
+              T::Array[
+                MetronomeSDK::V1::PackageCreateParams::SpendTracker::ApplicableSpendSpecifier
+              ]
+            )
+          end
+          attr_accessor :applicable_spend_specifiers
+
+          sig { returns(String) }
+          attr_accessor :credit_type_id
+
+          sig do
+            returns(
+              MetronomeSDK::V1::PackageCreateParams::SpendTracker::ResetFrequency::OrSymbol
+            )
+          end
+          attr_accessor :reset_frequency
+
+          sig do
+            params(
+              alias_: String,
+              applicable_spend_specifiers:
+                T::Array[
+                  MetronomeSDK::V1::PackageCreateParams::SpendTracker::ApplicableSpendSpecifier::OrHash
+                ],
+              credit_type_id: String,
+              reset_frequency:
+                MetronomeSDK::V1::PackageCreateParams::SpendTracker::ResetFrequency::OrSymbol
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # Human-readable identifier, unique per contract.
+            alias_:,
+            applicable_spend_specifiers:,
+            credit_type_id:,
+            reset_frequency:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                alias_: String,
+                applicable_spend_specifiers:
+                  T::Array[
+                    MetronomeSDK::V1::PackageCreateParams::SpendTracker::ApplicableSpendSpecifier
+                  ],
+                credit_type_id: String,
+                reset_frequency:
+                  MetronomeSDK::V1::PackageCreateParams::SpendTracker::ResetFrequency::OrSymbol
+              }
+            )
+          end
+          def to_hash
+          end
+
+          class ApplicableSpendSpecifier < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V1::PackageCreateParams::SpendTracker::ApplicableSpendSpecifier,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            sig do
+              returns(
+                T::Array[
+                  MetronomeSDK::V1::PackageCreateParams::SpendTracker::ApplicableSpendSpecifier::Source::OrSymbol
+                ]
+              )
+            end
+            attr_accessor :sources
+
+            sig do
+              returns(
+                MetronomeSDK::V1::PackageCreateParams::SpendTracker::ApplicableSpendSpecifier::SpendType::OrSymbol
+              )
+            end
+            attr_accessor :spend_type
+
+            # Filter by whether the spend was discounted. Defaults to ANY if omitted.
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::V1::PackageCreateParams::SpendTracker::ApplicableSpendSpecifier::Discounted::OrSymbol
+                )
+              )
+            end
+            attr_reader :discounted
+
+            sig do
+              params(
+                discounted:
+                  MetronomeSDK::V1::PackageCreateParams::SpendTracker::ApplicableSpendSpecifier::Discounted::OrSymbol
+              ).void
+            end
+            attr_writer :discounted
+
+            sig do
+              params(
+                sources:
+                  T::Array[
+                    MetronomeSDK::V1::PackageCreateParams::SpendTracker::ApplicableSpendSpecifier::Source::OrSymbol
+                  ],
+                spend_type:
+                  MetronomeSDK::V1::PackageCreateParams::SpendTracker::ApplicableSpendSpecifier::SpendType::OrSymbol,
+                discounted:
+                  MetronomeSDK::V1::PackageCreateParams::SpendTracker::ApplicableSpendSpecifier::Discounted::OrSymbol
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              sources:,
+              spend_type:,
+              # Filter by whether the spend was discounted. Defaults to ANY if omitted.
+              discounted: nil
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  sources:
+                    T::Array[
+                      MetronomeSDK::V1::PackageCreateParams::SpendTracker::ApplicableSpendSpecifier::Source::OrSymbol
+                    ],
+                  spend_type:
+                    MetronomeSDK::V1::PackageCreateParams::SpendTracker::ApplicableSpendSpecifier::SpendType::OrSymbol,
+                  discounted:
+                    MetronomeSDK::V1::PackageCreateParams::SpendTracker::ApplicableSpendSpecifier::Discounted::OrSymbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            module Source
+              extend MetronomeSDK::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    MetronomeSDK::V1::PackageCreateParams::SpendTracker::ApplicableSpendSpecifier::Source
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              THRESHOLD_RECHARGE =
+                T.let(
+                  :THRESHOLD_RECHARGE,
+                  MetronomeSDK::V1::PackageCreateParams::SpendTracker::ApplicableSpendSpecifier::Source::TaggedSymbol
+                )
+              MANUAL =
+                T.let(
+                  :MANUAL,
+                  MetronomeSDK::V1::PackageCreateParams::SpendTracker::ApplicableSpendSpecifier::Source::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::V1::PackageCreateParams::SpendTracker::ApplicableSpendSpecifier::Source::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+
+            module SpendType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    MetronomeSDK::V1::PackageCreateParams::SpendTracker::ApplicableSpendSpecifier::SpendType
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              COMMIT_PURCHASE =
+                T.let(
+                  :COMMIT_PURCHASE,
+                  MetronomeSDK::V1::PackageCreateParams::SpendTracker::ApplicableSpendSpecifier::SpendType::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::V1::PackageCreateParams::SpendTracker::ApplicableSpendSpecifier::SpendType::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+
+            # Filter by whether the spend was discounted. Defaults to ANY if omitted.
+            module Discounted
+              extend MetronomeSDK::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    MetronomeSDK::V1::PackageCreateParams::SpendTracker::ApplicableSpendSpecifier::Discounted
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              ANY =
+                T.let(
+                  :ANY,
+                  MetronomeSDK::V1::PackageCreateParams::SpendTracker::ApplicableSpendSpecifier::Discounted::TaggedSymbol
+                )
+              DISCOUNTED_ONLY =
+                T.let(
+                  :DISCOUNTED_ONLY,
+                  MetronomeSDK::V1::PackageCreateParams::SpendTracker::ApplicableSpendSpecifier::Discounted::TaggedSymbol
+                )
+              UNDISCOUNTED_ONLY =
+                T.let(
+                  :UNDISCOUNTED_ONLY,
+                  MetronomeSDK::V1::PackageCreateParams::SpendTracker::ApplicableSpendSpecifier::Discounted::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::V1::PackageCreateParams::SpendTracker::ApplicableSpendSpecifier::Discounted::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+          end
+
+          module ResetFrequency
+            extend MetronomeSDK::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  MetronomeSDK::V1::PackageCreateParams::SpendTracker::ResetFrequency
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            BILLING_PERIOD =
+              T.let(
+                :BILLING_PERIOD,
+                MetronomeSDK::V1::PackageCreateParams::SpendTracker::ResetFrequency::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  MetronomeSDK::V1::PackageCreateParams::SpendTracker::ResetFrequency::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
         end
 

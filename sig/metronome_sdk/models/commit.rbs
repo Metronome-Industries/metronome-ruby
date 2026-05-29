@@ -29,6 +29,7 @@ module MetronomeSDK
         rollover_fraction: Float,
         salesforce_opportunity_id: String,
         specifiers: ::Array[MetronomeSDK::CommitSpecifier],
+        spend_tracker_attributes: MetronomeSDK::Commit::SpendTrackerAttributes,
         subscription_config: MetronomeSDK::Commit::SubscriptionConfig,
         uniqueness_key: String
       }
@@ -152,6 +153,12 @@ module MetronomeSDK
         ::Array[MetronomeSDK::CommitSpecifier]
       ) -> ::Array[MetronomeSDK::CommitSpecifier]
 
+      attr_reader spend_tracker_attributes: MetronomeSDK::Commit::SpendTrackerAttributes?
+
+      def spend_tracker_attributes=: (
+        MetronomeSDK::Commit::SpendTrackerAttributes
+      ) -> MetronomeSDK::Commit::SpendTrackerAttributes
+
       attr_reader subscription_config: MetronomeSDK::Commit::SubscriptionConfig?
 
       def subscription_config=: (
@@ -190,6 +197,7 @@ module MetronomeSDK
         ?rollover_fraction: Float,
         ?salesforce_opportunity_id: String,
         ?specifiers: ::Array[MetronomeSDK::CommitSpecifier],
+        ?spend_tracker_attributes: MetronomeSDK::Commit::SpendTrackerAttributes,
         ?subscription_config: MetronomeSDK::Commit::SubscriptionConfig,
         ?uniqueness_key: String
       ) -> void
@@ -222,6 +230,7 @@ module MetronomeSDK
         rollover_fraction: Float,
         salesforce_opportunity_id: String,
         specifiers: ::Array[MetronomeSDK::CommitSpecifier],
+        spend_tracker_attributes: MetronomeSDK::Commit::SpendTrackerAttributes,
         subscription_config: MetronomeSDK::Commit::SubscriptionConfig,
         uniqueness_key: String
       }
@@ -955,6 +964,16 @@ module MetronomeSDK
         def initialize: (commit_id: String, contract_id: String) -> void
 
         def to_hash: -> { commit_id: String, contract_id: String }
+      end
+
+      type spend_tracker_attributes = { counts_as_discounted: bool }
+
+      class SpendTrackerAttributes < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor counts_as_discounted: bool
+
+        def initialize: (counts_as_discounted: bool) -> void
+
+        def to_hash: -> { counts_as_discounted: bool }
       end
 
       type subscription_config =

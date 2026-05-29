@@ -237,6 +237,18 @@ module MetronomeSDK
       end
       attr_writer :specifiers
 
+      # Optional attributes controlling how this commit interacts with spend trackers.
+      sig { returns(T.nilable(MetronomeSDK::Commit::SpendTrackerAttributes)) }
+      attr_reader :spend_tracker_attributes
+
+      sig do
+        params(
+          spend_tracker_attributes:
+            MetronomeSDK::Commit::SpendTrackerAttributes::OrHash
+        ).void
+      end
+      attr_writer :spend_tracker_attributes
+
       # The subscription configuration for this commit, if it was generated from a
       # recurring commit with a subscription attached.
       sig { returns(T.nilable(MetronomeSDK::Commit::SubscriptionConfig)) }
@@ -307,6 +319,8 @@ module MetronomeSDK
           rollover_fraction: Float,
           salesforce_opportunity_id: String,
           specifiers: T::Array[MetronomeSDK::CommitSpecifier::OrHash],
+          spend_tracker_attributes:
+            MetronomeSDK::Commit::SpendTrackerAttributes::OrHash,
           subscription_config: MetronomeSDK::Commit::SubscriptionConfig::OrHash,
           uniqueness_key: String
         ).returns(T.attached_class)
@@ -372,6 +386,8 @@ module MetronomeSDK
         # or credit. A customer's usage needs to meet the condition of at least one of the
         # specifiers to contribute to a commit's or credit's drawdown.
         specifiers: nil,
+        # Optional attributes controlling how this commit interacts with spend trackers.
+        spend_tracker_attributes: nil,
         # The subscription configuration for this commit, if it was generated from a
         # recurring commit with a subscription attached.
         subscription_config: nil,
@@ -413,6 +429,8 @@ module MetronomeSDK
             rollover_fraction: Float,
             salesforce_opportunity_id: String,
             specifiers: T::Array[MetronomeSDK::CommitSpecifier],
+            spend_tracker_attributes:
+              MetronomeSDK::Commit::SpendTrackerAttributes,
             subscription_config: MetronomeSDK::Commit::SubscriptionConfig,
             uniqueness_key: String
           }
@@ -1820,6 +1838,36 @@ module MetronomeSDK
         end
 
         sig { override.returns({ commit_id: String, contract_id: String }) }
+        def to_hash
+        end
+      end
+
+      class SpendTrackerAttributes < MetronomeSDK::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              MetronomeSDK::Commit::SpendTrackerAttributes,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
+
+        # If true, this commit is included in spend trackers with discounted set to
+        # DISCOUNTED_ONLY
+        sig { returns(T::Boolean) }
+        attr_accessor :counts_as_discounted
+
+        # Optional attributes controlling how this commit interacts with spend trackers.
+        sig do
+          params(counts_as_discounted: T::Boolean).returns(T.attached_class)
+        end
+        def self.new(
+          # If true, this commit is included in spend trackers with discounted set to
+          # DISCOUNTED_ONLY
+          counts_as_discounted:
+        )
+        end
+
+        sig { override.returns({ counts_as_discounted: T::Boolean }) }
         def to_hash
         end
       end

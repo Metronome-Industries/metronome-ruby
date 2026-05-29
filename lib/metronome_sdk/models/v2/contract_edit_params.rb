@@ -104,6 +104,14 @@ module MetronomeSDK
         #   @return [MetronomeSDK::Models::SpendThresholdConfigurationV2, nil]
         optional :add_spend_threshold_configuration, -> { MetronomeSDK::SpendThresholdConfigurationV2 }
 
+        # @!attribute add_spend_trackers
+        #   Spend trackers to add to this contract. Aliases must be unique within a
+        #   contract.
+        #
+        #   @return [Array<MetronomeSDK::Models::V2::ContractEditParams::AddSpendTracker>, nil]
+        optional :add_spend_trackers,
+                 -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V2::ContractEditParams::AddSpendTracker] }
+
         # @!attribute add_subscriptions
         #   Optional list of
         #   [subscriptions](https://docs.metronome.com/manage-product-access/create-subscription/)
@@ -142,6 +150,12 @@ module MetronomeSDK
         #   @return [Array<MetronomeSDK::Models::V2::ContractEditParams::ArchiveScheduledCharge>, nil]
         optional :archive_scheduled_charges,
                  -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V2::ContractEditParams::ArchiveScheduledCharge] }
+
+        # @!attribute archive_spend_trackers
+        #   Aliases of spend trackers to archive.
+        #
+        #   @return [Array<String>, nil]
+        optional :archive_spend_trackers, MetronomeSDK::Internal::Type::ArrayOf[String]
 
         # @!attribute remove_overrides
         #   IDs of overrides to remove
@@ -231,7 +245,7 @@ module MetronomeSDK
         optional :update_subscriptions,
                  -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V2::ContractEditParams::UpdateSubscription] }
 
-        # @!method initialize(contract_id:, customer_id:, add_billing_provider_configuration_update: nil, add_commits: nil, add_credits: nil, add_discounts: nil, add_overrides: nil, add_prepaid_balance_threshold_configuration: nil, add_professional_services: nil, add_recurring_commits: nil, add_recurring_credits: nil, add_reseller_royalties: nil, add_revenue_system_configuration_update: nil, add_scheduled_charges: nil, add_spend_threshold_configuration: nil, add_subscriptions: nil, allow_contract_ending_before_finalized_invoice: nil, archive_commits: nil, archive_credits: nil, archive_scheduled_charges: nil, remove_overrides: nil, uniqueness_key: nil, update_commits: nil, update_contract_end_date: nil, update_contract_name: nil, update_credits: nil, update_net_payment_terms_days: nil, update_prepaid_balance_threshold_configuration: nil, update_recurring_commits: nil, update_recurring_credits: nil, update_scheduled_charges: nil, update_spend_threshold_configuration: nil, update_subscriptions: nil, request_options: {})
+        # @!method initialize(contract_id:, customer_id:, add_billing_provider_configuration_update: nil, add_commits: nil, add_credits: nil, add_discounts: nil, add_overrides: nil, add_prepaid_balance_threshold_configuration: nil, add_professional_services: nil, add_recurring_commits: nil, add_recurring_credits: nil, add_reseller_royalties: nil, add_revenue_system_configuration_update: nil, add_scheduled_charges: nil, add_spend_threshold_configuration: nil, add_spend_trackers: nil, add_subscriptions: nil, allow_contract_ending_before_finalized_invoice: nil, archive_commits: nil, archive_credits: nil, archive_scheduled_charges: nil, archive_spend_trackers: nil, remove_overrides: nil, uniqueness_key: nil, update_commits: nil, update_contract_end_date: nil, update_contract_name: nil, update_credits: nil, update_net_payment_terms_days: nil, update_prepaid_balance_threshold_configuration: nil, update_recurring_commits: nil, update_recurring_credits: nil, update_scheduled_charges: nil, update_spend_threshold_configuration: nil, update_subscriptions: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::V2::ContractEditParams} for more details.
         #
@@ -265,6 +279,8 @@ module MetronomeSDK
         #
         #   @param add_spend_threshold_configuration [MetronomeSDK::Models::SpendThresholdConfigurationV2]
         #
+        #   @param add_spend_trackers [Array<MetronomeSDK::Models::V2::ContractEditParams::AddSpendTracker>] Spend trackers to add to this contract. Aliases must be unique within a contract
+        #
         #   @param add_subscriptions [Array<MetronomeSDK::Models::V2::ContractEditParams::AddSubscription>] Optional list of [subscriptions](https://docs.metronome.com/manage-product-acces
         #
         #   @param allow_contract_ending_before_finalized_invoice [Boolean] If true, allows setting the contract end date earlier than the end_timestamp of
@@ -274,6 +290,8 @@ module MetronomeSDK
         #   @param archive_credits [Array<MetronomeSDK::Models::V2::ContractEditParams::ArchiveCredit>] IDs of credits to archive
         #
         #   @param archive_scheduled_charges [Array<MetronomeSDK::Models::V2::ContractEditParams::ArchiveScheduledCharge>] IDs of scheduled charges to archive
+        #
+        #   @param archive_spend_trackers [Array<String>] Aliases of spend trackers to archive.
         #
         #   @param remove_overrides [Array<MetronomeSDK::Models::V2::ContractEditParams::RemoveOverride>] IDs of overrides to remove
         #
@@ -531,6 +549,13 @@ module MetronomeSDK
           #   @return [Array<MetronomeSDK::Models::CommitSpecifierInput>, nil]
           optional :specifiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::CommitSpecifierInput] }
 
+          # @!attribute spend_tracker_attributes
+          #   Optional attributes for spend tracker integration. Immutable after creation.
+          #
+          #   @return [MetronomeSDK::Models::V2::ContractEditParams::AddCommit::SpendTrackerAttributes, nil]
+          optional :spend_tracker_attributes,
+                   -> { MetronomeSDK::V2::ContractEditParams::AddCommit::SpendTrackerAttributes }
+
           # @!attribute temporary_id
           #   A temporary ID for the commit that can be used to reference the commit for
           #   commit specific overrides.
@@ -538,7 +563,7 @@ module MetronomeSDK
           #   @return [String, nil]
           optional :temporary_id, String
 
-          # @!method initialize(product_id:, type:, access_schedule: nil, amount: nil, applicable_product_ids: nil, applicable_product_tags: nil, custom_fields: nil, description: nil, hierarchy_configuration: nil, invoice_schedule: nil, name: nil, netsuite_sales_order_id: nil, payment_gate_config: nil, priority: nil, rate_type: nil, rollover_fraction: nil, specifiers: nil, temporary_id: nil)
+          # @!method initialize(product_id:, type:, access_schedule: nil, amount: nil, applicable_product_ids: nil, applicable_product_tags: nil, custom_fields: nil, description: nil, hierarchy_configuration: nil, invoice_schedule: nil, name: nil, netsuite_sales_order_id: nil, payment_gate_config: nil, priority: nil, rate_type: nil, rollover_fraction: nil, specifiers: nil, spend_tracker_attributes: nil, temporary_id: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V2::ContractEditParams::AddCommit} for more details.
           #
@@ -575,6 +600,8 @@ module MetronomeSDK
           #   @param rollover_fraction [Float] Fraction of unused segments that will be rolled over. Must be between 0 and 1.
           #
           #   @param specifiers [Array<MetronomeSDK::Models::CommitSpecifierInput>] List of filters that determine what kind of customer usage draws down a commit o
+          #
+          #   @param spend_tracker_attributes [MetronomeSDK::Models::V2::ContractEditParams::AddCommit::SpendTrackerAttributes] Optional attributes for spend tracker integration. Immutable after creation.
           #
           #   @param temporary_id [String] A temporary ID for the commit that can be used to reference the commit for commi
 
@@ -1010,6 +1037,25 @@ module MetronomeSDK
 
             # @!method self.values
             #   @return [Array<Symbol>]
+          end
+
+          # @see MetronomeSDK::Models::V2::ContractEditParams::AddCommit#spend_tracker_attributes
+          class SpendTrackerAttributes < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute counts_as_discounted
+            #   If true, this commit will be included in spend trackers with discounted set to
+            #   DISCOUNTED_ONLY
+            #
+            #   @return [Boolean]
+            required :counts_as_discounted, MetronomeSDK::Internal::Type::Boolean
+
+            # @!method initialize(counts_as_discounted:)
+            #   Some parameter documentations has been truncated, see
+            #   {MetronomeSDK::Models::V2::ContractEditParams::AddCommit::SpendTrackerAttributes}
+            #   for more details.
+            #
+            #   Optional attributes for spend tracker integration. Immutable after creation.
+            #
+            #   @param counts_as_discounted [Boolean] If true, this commit will be included in spend trackers with discounted set to D
           end
         end
 
@@ -3012,6 +3058,112 @@ module MetronomeSDK
           end
         end
 
+        class AddSpendTracker < MetronomeSDK::Internal::Type::BaseModel
+          # @!attribute alias_
+          #   Human-readable identifier, unique per contract.
+          #
+          #   @return [String]
+          required :alias_, String, api_name: :alias
+
+          # @!attribute applicable_spend_specifiers
+          #
+          #   @return [Array<MetronomeSDK::Models::V2::ContractEditParams::AddSpendTracker::ApplicableSpendSpecifier>]
+          required :applicable_spend_specifiers,
+                   -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V2::ContractEditParams::AddSpendTracker::ApplicableSpendSpecifier] }
+
+          # @!attribute credit_type_id
+          #
+          #   @return [String]
+          required :credit_type_id, String
+
+          # @!attribute reset_frequency
+          #
+          #   @return [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddSpendTracker::ResetFrequency]
+          required :reset_frequency,
+                   enum: -> { MetronomeSDK::V2::ContractEditParams::AddSpendTracker::ResetFrequency }
+
+          # @!method initialize(alias_:, applicable_spend_specifiers:, credit_type_id:, reset_frequency:)
+          #   @param alias_ [String] Human-readable identifier, unique per contract.
+          #
+          #   @param applicable_spend_specifiers [Array<MetronomeSDK::Models::V2::ContractEditParams::AddSpendTracker::ApplicableSpendSpecifier>]
+          #
+          #   @param credit_type_id [String]
+          #
+          #   @param reset_frequency [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddSpendTracker::ResetFrequency]
+
+          class ApplicableSpendSpecifier < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute sources
+            #
+            #   @return [Array<Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddSpendTracker::ApplicableSpendSpecifier::Source>]
+            required :sources,
+                     -> { MetronomeSDK::Internal::Type::ArrayOf[enum: MetronomeSDK::V2::ContractEditParams::AddSpendTracker::ApplicableSpendSpecifier::Source] }
+
+            # @!attribute spend_type
+            #
+            #   @return [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddSpendTracker::ApplicableSpendSpecifier::SpendType]
+            required :spend_type,
+                     enum: -> { MetronomeSDK::V2::ContractEditParams::AddSpendTracker::ApplicableSpendSpecifier::SpendType }
+
+            # @!attribute discounted
+            #   Filter by whether the spend was discounted. Defaults to ANY if omitted.
+            #
+            #   @return [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddSpendTracker::ApplicableSpendSpecifier::Discounted, nil]
+            optional :discounted,
+                     enum: -> { MetronomeSDK::V2::ContractEditParams::AddSpendTracker::ApplicableSpendSpecifier::Discounted }
+
+            # @!method initialize(sources:, spend_type:, discounted: nil)
+            #   @param sources [Array<Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddSpendTracker::ApplicableSpendSpecifier::Source>]
+            #
+            #   @param spend_type [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddSpendTracker::ApplicableSpendSpecifier::SpendType]
+            #
+            #   @param discounted [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddSpendTracker::ApplicableSpendSpecifier::Discounted] Filter by whether the spend was discounted. Defaults to ANY if omitted.
+
+            module Source
+              extend MetronomeSDK::Internal::Type::Enum
+
+              THRESHOLD_RECHARGE = :THRESHOLD_RECHARGE
+              MANUAL = :MANUAL
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # @see MetronomeSDK::Models::V2::ContractEditParams::AddSpendTracker::ApplicableSpendSpecifier#spend_type
+            module SpendType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              COMMIT_PURCHASE = :COMMIT_PURCHASE
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
+            # Filter by whether the spend was discounted. Defaults to ANY if omitted.
+            #
+            # @see MetronomeSDK::Models::V2::ContractEditParams::AddSpendTracker::ApplicableSpendSpecifier#discounted
+            module Discounted
+              extend MetronomeSDK::Internal::Type::Enum
+
+              ANY = :ANY
+              DISCOUNTED_ONLY = :DISCOUNTED_ONLY
+              UNDISCOUNTED_ONLY = :UNDISCOUNTED_ONLY
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
+
+          # @see MetronomeSDK::Models::V2::ContractEditParams::AddSpendTracker#reset_frequency
+          module ResetFrequency
+            extend MetronomeSDK::Internal::Type::Enum
+
+            BILLING_PERIOD = :BILLING_PERIOD
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
+
         class AddSubscription < MetronomeSDK::Internal::Type::BaseModel
           # @!attribute collection_schedule
           #
@@ -3877,7 +4029,18 @@ module MetronomeSDK
           #   @return [Float, nil]
           optional :threshold_amount, Float
 
-          # @!method initialize(commit: nil, custom_credit_type_id: nil, discount_configuration: nil, is_enabled: nil, payment_gate_config: nil, recharge_to_amount: nil, threshold_amount: nil)
+          # @!attribute threshold_balance_specifiers
+          #
+          #   @return [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier>, nil]
+          optional :threshold_balance_specifiers,
+                   -> do
+                     MetronomeSDK::Internal::Type::ArrayOf[
+                       MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier
+                     ]
+                   end,
+                   nil?: true
+
+          # @!method initialize(commit: nil, custom_credit_type_id: nil, discount_configuration: nil, is_enabled: nil, payment_gate_config: nil, recharge_to_amount: nil, threshold_amount: nil, threshold_balance_specifiers: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration}
           #   for more details.
@@ -3895,6 +4058,8 @@ module MetronomeSDK
           #   @param recharge_to_amount [Float] Specify the amount the balance should be recharged to.
           #
           #   @param threshold_amount [Float] Specify the threshold amount for the contract. Each time the contract's balance
+          #
+          #   @param threshold_balance_specifiers [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier>, nil]
 
           # @see MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration#commit
           class Commit < MetronomeSDK::Models::UpdateBaseThresholdCommit
@@ -3940,6 +4105,16 @@ module MetronomeSDK
 
           # @see MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration#discount_configuration
           class DiscountConfiguration < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute cap
+            #   Update the discount cap. Set to null to remove an existing cap.
+            #
+            #   @return [MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration::Cap, nil]
+            optional :cap,
+                     -> {
+                       MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration::Cap
+                     },
+                     nil?: true
+
             # @!attribute payment_fraction
             #   The fraction of the original amount that the customer pays after applying the
             #   discount. Set to null to remove the discount fraction. For example, 0.85 means
@@ -3948,12 +4123,101 @@ module MetronomeSDK
             #   @return [Float, nil]
             optional :payment_fraction, Float, nil?: true
 
-            # @!method initialize(payment_fraction: nil)
+            # @!method initialize(cap: nil, payment_fraction: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration}
             #   for more details.
             #
+            #   @param cap [MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration::Cap, nil] Update the discount cap. Set to null to remove an existing cap.
+            #
             #   @param payment_fraction [Float, nil] The fraction of the original amount that the customer pays after applying the di
+
+            # @see MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration#cap
+            class Cap < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute amount
+              #   Accumulated spend ceiling above which the discount stops applying.
+              #
+              #   @return [Float]
+              required :amount, Float
+
+              # @!attribute spend_tracker_alias
+              #   Alias of the spend tracker this cap is measured against.
+              #
+              #   @return [String]
+              required :spend_tracker_alias, String
+
+              # @!method initialize(amount:, spend_tracker_alias:)
+              #   Update the discount cap. Set to null to remove an existing cap.
+              #
+              #   @param amount [Float] Accumulated spend ceiling above which the discount stops applying.
+              #
+              #   @param spend_tracker_alias [String] Alias of the spend tracker this cap is measured against.
+            end
+          end
+
+          class ThresholdBalanceSpecifier < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute exclude
+            #
+            #   @return [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude>]
+            required :exclude,
+                     -> do
+                       MetronomeSDK::Internal::Type::ArrayOf[
+                         MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude
+                       ]
+                     end
+
+            # @!method initialize(exclude:)
+            #   @param exclude [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude>]
+
+            class Exclude < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute custom_field_filters
+              #
+              #   @return [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter>]
+              required :custom_field_filters,
+                       -> do
+                         MetronomeSDK::Internal::Type::ArrayOf[
+                           MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter
+                         ]
+                       end
+
+              # @!method initialize(custom_field_filters:)
+              #   @param custom_field_filters [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter>]
+
+              class CustomFieldFilter < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute entity
+                #
+                #   @return [Symbol, MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter::Entity]
+                required :entity,
+                         enum: -> { MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter::Entity }
+
+                # @!attribute key
+                #
+                #   @return [String]
+                required :key, String
+
+                # @!attribute value
+                #
+                #   @return [String]
+                required :value, String
+
+                # @!method initialize(entity:, key:, value:)
+                #   @param entity [Symbol, MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter::Entity]
+                #   @param key [String]
+                #   @param value [String]
+
+                # @see MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter#entity
+                module Entity
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  COMMIT = :Commit
+                  CONTRACT_CREDIT = :ContractCredit
+                  CONTRACT_CREDIT_OR_COMMIT = :ContractCreditOrCommit
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
+              end
+            end
           end
         end
 
@@ -4291,6 +4555,16 @@ module MetronomeSDK
 
           # @see MetronomeSDK::Models::V2::ContractEditParams::UpdateSpendThresholdConfiguration#discount_configuration
           class DiscountConfiguration < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute cap
+            #   Update the discount cap. Set to null to remove an existing cap.
+            #
+            #   @return [MetronomeSDK::Models::V2::ContractEditParams::UpdateSpendThresholdConfiguration::DiscountConfiguration::Cap, nil]
+            optional :cap,
+                     -> {
+                       MetronomeSDK::V2::ContractEditParams::UpdateSpendThresholdConfiguration::DiscountConfiguration::Cap
+                     },
+                     nil?: true
+
             # @!attribute payment_fraction
             #   The fraction of the original amount that the customer pays after applying the
             #   discount. Set to null to remove the discount fraction. For example, 0.85 means
@@ -4299,12 +4573,36 @@ module MetronomeSDK
             #   @return [Float, nil]
             optional :payment_fraction, Float, nil?: true
 
-            # @!method initialize(payment_fraction: nil)
+            # @!method initialize(cap: nil, payment_fraction: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractEditParams::UpdateSpendThresholdConfiguration::DiscountConfiguration}
             #   for more details.
             #
+            #   @param cap [MetronomeSDK::Models::V2::ContractEditParams::UpdateSpendThresholdConfiguration::DiscountConfiguration::Cap, nil] Update the discount cap. Set to null to remove an existing cap.
+            #
             #   @param payment_fraction [Float, nil] The fraction of the original amount that the customer pays after applying the di
+
+            # @see MetronomeSDK::Models::V2::ContractEditParams::UpdateSpendThresholdConfiguration::DiscountConfiguration#cap
+            class Cap < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute amount
+              #   Accumulated spend ceiling above which the discount stops applying.
+              #
+              #   @return [Float]
+              required :amount, Float
+
+              # @!attribute spend_tracker_alias
+              #   Alias of the spend tracker this cap is measured against.
+              #
+              #   @return [String]
+              required :spend_tracker_alias, String
+
+              # @!method initialize(amount:, spend_tracker_alias:)
+              #   Update the discount cap. Set to null to remove an existing cap.
+              #
+              #   @param amount [Float] Accumulated spend ceiling above which the discount stops applying.
+              #
+              #   @param spend_tracker_alias [String] Alias of the spend tracker this cap is measured against.
+            end
           end
         end
 

@@ -58,7 +58,7 @@ module MetronomeSDK
         #   provisioning with a package. Edited contracts will still be associated with
         #   the package used during provisioning.
         #
-        # @overload create(name:, aliases: nil, billing_provider: nil, commits: nil, contract_name: nil, credits: nil, delivery_method: nil, duration: nil, multiplier_override_prioritization: nil, net_payment_terms_days: nil, overrides: nil, prepaid_balance_threshold_configuration: nil, rate_card_alias: nil, rate_card_id: nil, recurring_commits: nil, recurring_credits: nil, scheduled_charges: nil, scheduled_charges_on_usage_invoices: nil, spend_threshold_configuration: nil, subscriptions: nil, uniqueness_key: nil, usage_statement_schedule: nil, request_options: {})
+        # @overload create(name:, aliases: nil, billing_provider: nil, commits: nil, contract_name: nil, credits: nil, delivery_method: nil, duration: nil, multiplier_override_prioritization: nil, net_payment_terms_days: nil, overrides: nil, prepaid_balance_threshold_configuration: nil, rate_card_alias: nil, rate_card_id: nil, recurring_commits: nil, recurring_credits: nil, scheduled_charges: nil, scheduled_charges_on_usage_invoices: nil, spend_threshold_configuration: nil, spend_trackers: nil, subscriptions: nil, uniqueness_key: nil, usage_statement_schedule: nil, request_options: {})
         #
         # @param name [String]
         #
@@ -97,6 +97,8 @@ module MetronomeSDK
         # @param scheduled_charges_on_usage_invoices [Symbol, MetronomeSDK::Models::V1::PackageCreateParams::ScheduledChargesOnUsageInvoices] Determines which scheduled and commit charges to consolidate onto the Contract's
         #
         # @param spend_threshold_configuration [MetronomeSDK::Models::SpendThresholdConfiguration]
+        #
+        # @param spend_trackers [Array<MetronomeSDK::Models::V1::PackageCreateParams::SpendTracker>]
         #
         # @param subscriptions [Array<MetronomeSDK::Models::V1::PackageCreateParams::Subscription>]
         #
@@ -216,10 +218,9 @@ module MetronomeSDK
         #
         # ### **Usage guidelines:**
         #
-        # Use the **`starting_at`**, **`covering_date`**,
-        # and **`include_archived`** parameters to filter the list of returned contracts.
-        # For example, to list only currently active contracts,
-        # pass **`covering_date`** equal to the current time.
+        # Use the **`starting_at`**, **`covering_date`**, and **`include_archived`**
+        # parameters to filter the list of returned contracts. For example, to list only
+        # currently active contracts, pass **`covering_date`** equal to the current time.
         #
         # @overload list_contracts_on_package(package_id:, limit: nil, next_page: nil, covering_date: nil, include_archived: nil, starting_at: nil, request_options: {})
         #

@@ -58,12 +58,44 @@ module MetronomeSDK
         #   @return [Float]
         required :payment_fraction, Float
 
-        # @!method initialize(payment_fraction:)
+        # @!attribute cap
+        #   If provided, the discount stops applying once the spend tracker has accumulated
+        #   this much spend in the billing period.
+        #
+        #   @return [MetronomeSDK::Models::SpendThresholdConfigurationV2::DiscountConfiguration::Cap, nil]
+        optional :cap, -> { MetronomeSDK::SpendThresholdConfigurationV2::DiscountConfiguration::Cap }
+
+        # @!method initialize(payment_fraction:, cap: nil)
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::SpendThresholdConfigurationV2::DiscountConfiguration} for
         #   more details.
         #
         #   @param payment_fraction [Float] The fraction of the original amount that the customer pays after applying the di
+        #
+        #   @param cap [MetronomeSDK::Models::SpendThresholdConfigurationV2::DiscountConfiguration::Cap] If provided, the discount stops applying once the spend tracker has accumulated
+
+        # @see MetronomeSDK::Models::SpendThresholdConfigurationV2::DiscountConfiguration#cap
+        class Cap < MetronomeSDK::Internal::Type::BaseModel
+          # @!attribute amount
+          #   Accumulated spend ceiling above which the discount stops applying.
+          #
+          #   @return [Float]
+          required :amount, Float
+
+          # @!attribute spend_tracker_alias
+          #   Alias of the spend tracker this cap is measured against.
+          #
+          #   @return [String]
+          required :spend_tracker_alias, String
+
+          # @!method initialize(amount:, spend_tracker_alias:)
+          #   If provided, the discount stops applying once the spend tracker has accumulated
+          #   this much spend in the billing period.
+          #
+          #   @param amount [Float] Accumulated spend ceiling above which the discount stops applying.
+          #
+          #   @param spend_tracker_alias [String] Alias of the spend tracker this cap is measured against.
+        end
       end
     end
   end

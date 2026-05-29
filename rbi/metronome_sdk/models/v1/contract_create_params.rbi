@@ -379,6 +379,27 @@ module MetronomeSDK
         end
         attr_writer :spend_threshold_configuration
 
+        # Spend trackers to attach to this contract. Aliases must be unique within a
+        # contract.
+        sig do
+          returns(
+            T.nilable(
+              T::Array[MetronomeSDK::V1::ContractCreateParams::SpendTracker]
+            )
+          )
+        end
+        attr_reader :spend_trackers
+
+        sig do
+          params(
+            spend_trackers:
+              T::Array[
+                MetronomeSDK::V1::ContractCreateParams::SpendTracker::OrHash
+              ]
+          ).void
+        end
+        attr_writer :spend_trackers
+
         # Optional list of
         # [subscriptions](https://docs.metronome.com/manage-product-access/create-subscription/)
         # to add to the contract.
@@ -513,6 +534,10 @@ module MetronomeSDK
               MetronomeSDK::V1::ContractCreateParams::ScheduledChargesOnUsageInvoices::OrSymbol,
             spend_threshold_configuration:
               MetronomeSDK::SpendThresholdConfiguration::OrHash,
+            spend_trackers:
+              T::Array[
+                MetronomeSDK::V1::ContractCreateParams::SpendTracker::OrHash
+              ],
             subscriptions:
               T::Array[
                 MetronomeSDK::V1::ContractCreateParams::Subscription::OrHash
@@ -584,6 +609,9 @@ module MetronomeSDK
           # on a separate invoice from usage charges.
           scheduled_charges_on_usage_invoices: nil,
           spend_threshold_configuration: nil,
+          # Spend trackers to attach to this contract. Aliases must be unique within a
+          # contract.
+          spend_trackers: nil,
           # Optional list of
           # [subscriptions](https://docs.metronome.com/manage-product-access/create-subscription/)
           # to add to the contract.
@@ -656,6 +684,8 @@ module MetronomeSDK
                 MetronomeSDK::V1::ContractCreateParams::ScheduledChargesOnUsageInvoices::OrSymbol,
               spend_threshold_configuration:
                 MetronomeSDK::SpendThresholdConfiguration,
+              spend_trackers:
+                T::Array[MetronomeSDK::V1::ContractCreateParams::SpendTracker],
               subscriptions:
                 T::Array[MetronomeSDK::V1::ContractCreateParams::Subscription],
               total_contract_value: Float,
@@ -1031,6 +1061,24 @@ module MetronomeSDK
           end
           attr_writer :specifiers
 
+          # Optional attributes for spend tracker integration. Immutable after creation.
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::V1::ContractCreateParams::Commit::SpendTrackerAttributes
+              )
+            )
+          end
+          attr_reader :spend_tracker_attributes
+
+          sig do
+            params(
+              spend_tracker_attributes:
+                MetronomeSDK::V1::ContractCreateParams::Commit::SpendTrackerAttributes::OrHash
+            ).void
+          end
+          attr_writer :spend_tracker_attributes
+
           # A temporary ID for the commit that can be used to reference the commit for
           # commit specific overrides.
           sig { returns(T.nilable(String)) }
@@ -1062,6 +1110,8 @@ module MetronomeSDK
                 MetronomeSDK::V1::ContractCreateParams::Commit::RateType::OrSymbol,
               rollover_fraction: Float,
               specifiers: T::Array[MetronomeSDK::CommitSpecifierInput::OrHash],
+              spend_tracker_attributes:
+                MetronomeSDK::V1::ContractCreateParams::Commit::SpendTrackerAttributes::OrHash,
               temporary_id: String
             ).returns(T.attached_class)
           end
@@ -1108,6 +1158,8 @@ module MetronomeSDK
             # specifiers to contribute to a commit's or credit's drawdown. This field cannot
             # be used together with `applicable_product_ids` or `applicable_product_tags`.
             specifiers: nil,
+            # Optional attributes for spend tracker integration. Immutable after creation.
+            spend_tracker_attributes: nil,
             # A temporary ID for the commit that can be used to reference the commit for
             # commit specific overrides.
             temporary_id: nil
@@ -1138,6 +1190,8 @@ module MetronomeSDK
                   MetronomeSDK::V1::ContractCreateParams::Commit::RateType::OrSymbol,
                 rollover_fraction: Float,
                 specifiers: T::Array[MetronomeSDK::CommitSpecifierInput],
+                spend_tracker_attributes:
+                  MetronomeSDK::V1::ContractCreateParams::Commit::SpendTrackerAttributes,
                 temporary_id: String
               }
             )
@@ -1707,6 +1761,36 @@ module MetronomeSDK
               )
             end
             def self.values
+            end
+          end
+
+          class SpendTrackerAttributes < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V1::ContractCreateParams::Commit::SpendTrackerAttributes,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            # If true, this commit will be included in spend trackers with discounted set to
+            # DISCOUNTED_ONLY
+            sig { returns(T::Boolean) }
+            attr_accessor :counts_as_discounted
+
+            # Optional attributes for spend tracker integration. Immutable after creation.
+            sig do
+              params(counts_as_discounted: T::Boolean).returns(T.attached_class)
+            end
+            def self.new(
+              # If true, this commit will be included in spend trackers with discounted set to
+              # DISCOUNTED_ONLY
+              counts_as_discounted:
+            )
+            end
+
+            sig { override.returns({ counts_as_discounted: T::Boolean }) }
+            def to_hash
             end
           end
         end
@@ -6228,6 +6312,290 @@ module MetronomeSDK
             )
           end
           def self.values
+          end
+        end
+
+        class SpendTracker < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::V1::ContractCreateParams::SpendTracker,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
+          # Human-readable identifier, unique per contract.
+          sig { returns(String) }
+          attr_accessor :alias_
+
+          sig do
+            returns(
+              T::Array[
+                MetronomeSDK::V1::ContractCreateParams::SpendTracker::ApplicableSpendSpecifier
+              ]
+            )
+          end
+          attr_accessor :applicable_spend_specifiers
+
+          sig { returns(String) }
+          attr_accessor :credit_type_id
+
+          sig do
+            returns(
+              MetronomeSDK::V1::ContractCreateParams::SpendTracker::ResetFrequency::OrSymbol
+            )
+          end
+          attr_accessor :reset_frequency
+
+          sig do
+            params(
+              alias_: String,
+              applicable_spend_specifiers:
+                T::Array[
+                  MetronomeSDK::V1::ContractCreateParams::SpendTracker::ApplicableSpendSpecifier::OrHash
+                ],
+              credit_type_id: String,
+              reset_frequency:
+                MetronomeSDK::V1::ContractCreateParams::SpendTracker::ResetFrequency::OrSymbol
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # Human-readable identifier, unique per contract.
+            alias_:,
+            applicable_spend_specifiers:,
+            credit_type_id:,
+            reset_frequency:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                alias_: String,
+                applicable_spend_specifiers:
+                  T::Array[
+                    MetronomeSDK::V1::ContractCreateParams::SpendTracker::ApplicableSpendSpecifier
+                  ],
+                credit_type_id: String,
+                reset_frequency:
+                  MetronomeSDK::V1::ContractCreateParams::SpendTracker::ResetFrequency::OrSymbol
+              }
+            )
+          end
+          def to_hash
+          end
+
+          class ApplicableSpendSpecifier < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V1::ContractCreateParams::SpendTracker::ApplicableSpendSpecifier,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            sig do
+              returns(
+                T::Array[
+                  MetronomeSDK::V1::ContractCreateParams::SpendTracker::ApplicableSpendSpecifier::Source::OrSymbol
+                ]
+              )
+            end
+            attr_accessor :sources
+
+            sig do
+              returns(
+                MetronomeSDK::V1::ContractCreateParams::SpendTracker::ApplicableSpendSpecifier::SpendType::OrSymbol
+              )
+            end
+            attr_accessor :spend_type
+
+            # Filter by whether the spend was discounted. Defaults to ANY if omitted.
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::V1::ContractCreateParams::SpendTracker::ApplicableSpendSpecifier::Discounted::OrSymbol
+                )
+              )
+            end
+            attr_reader :discounted
+
+            sig do
+              params(
+                discounted:
+                  MetronomeSDK::V1::ContractCreateParams::SpendTracker::ApplicableSpendSpecifier::Discounted::OrSymbol
+              ).void
+            end
+            attr_writer :discounted
+
+            sig do
+              params(
+                sources:
+                  T::Array[
+                    MetronomeSDK::V1::ContractCreateParams::SpendTracker::ApplicableSpendSpecifier::Source::OrSymbol
+                  ],
+                spend_type:
+                  MetronomeSDK::V1::ContractCreateParams::SpendTracker::ApplicableSpendSpecifier::SpendType::OrSymbol,
+                discounted:
+                  MetronomeSDK::V1::ContractCreateParams::SpendTracker::ApplicableSpendSpecifier::Discounted::OrSymbol
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              sources:,
+              spend_type:,
+              # Filter by whether the spend was discounted. Defaults to ANY if omitted.
+              discounted: nil
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  sources:
+                    T::Array[
+                      MetronomeSDK::V1::ContractCreateParams::SpendTracker::ApplicableSpendSpecifier::Source::OrSymbol
+                    ],
+                  spend_type:
+                    MetronomeSDK::V1::ContractCreateParams::SpendTracker::ApplicableSpendSpecifier::SpendType::OrSymbol,
+                  discounted:
+                    MetronomeSDK::V1::ContractCreateParams::SpendTracker::ApplicableSpendSpecifier::Discounted::OrSymbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            module Source
+              extend MetronomeSDK::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    MetronomeSDK::V1::ContractCreateParams::SpendTracker::ApplicableSpendSpecifier::Source
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              THRESHOLD_RECHARGE =
+                T.let(
+                  :THRESHOLD_RECHARGE,
+                  MetronomeSDK::V1::ContractCreateParams::SpendTracker::ApplicableSpendSpecifier::Source::TaggedSymbol
+                )
+              MANUAL =
+                T.let(
+                  :MANUAL,
+                  MetronomeSDK::V1::ContractCreateParams::SpendTracker::ApplicableSpendSpecifier::Source::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::V1::ContractCreateParams::SpendTracker::ApplicableSpendSpecifier::Source::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+
+            module SpendType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    MetronomeSDK::V1::ContractCreateParams::SpendTracker::ApplicableSpendSpecifier::SpendType
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              COMMIT_PURCHASE =
+                T.let(
+                  :COMMIT_PURCHASE,
+                  MetronomeSDK::V1::ContractCreateParams::SpendTracker::ApplicableSpendSpecifier::SpendType::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::V1::ContractCreateParams::SpendTracker::ApplicableSpendSpecifier::SpendType::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+
+            # Filter by whether the spend was discounted. Defaults to ANY if omitted.
+            module Discounted
+              extend MetronomeSDK::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    MetronomeSDK::V1::ContractCreateParams::SpendTracker::ApplicableSpendSpecifier::Discounted
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              ANY =
+                T.let(
+                  :ANY,
+                  MetronomeSDK::V1::ContractCreateParams::SpendTracker::ApplicableSpendSpecifier::Discounted::TaggedSymbol
+                )
+              DISCOUNTED_ONLY =
+                T.let(
+                  :DISCOUNTED_ONLY,
+                  MetronomeSDK::V1::ContractCreateParams::SpendTracker::ApplicableSpendSpecifier::Discounted::TaggedSymbol
+                )
+              UNDISCOUNTED_ONLY =
+                T.let(
+                  :UNDISCOUNTED_ONLY,
+                  MetronomeSDK::V1::ContractCreateParams::SpendTracker::ApplicableSpendSpecifier::Discounted::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::V1::ContractCreateParams::SpendTracker::ApplicableSpendSpecifier::Discounted::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+          end
+
+          module ResetFrequency
+            extend MetronomeSDK::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  MetronomeSDK::V1::ContractCreateParams::SpendTracker::ResetFrequency
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            BILLING_PERIOD =
+              T.let(
+                :BILLING_PERIOD,
+                MetronomeSDK::V1::ContractCreateParams::SpendTracker::ResetFrequency::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  MetronomeSDK::V1::ContractCreateParams::SpendTracker::ResetFrequency::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
         end
 

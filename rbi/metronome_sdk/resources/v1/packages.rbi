@@ -94,6 +94,10 @@ module MetronomeSDK
               MetronomeSDK::V1::PackageCreateParams::ScheduledChargesOnUsageInvoices::OrSymbol,
             spend_threshold_configuration:
               MetronomeSDK::SpendThresholdConfiguration::OrHash,
+            spend_trackers:
+              T::Array[
+                MetronomeSDK::V1::PackageCreateParams::SpendTracker::OrHash
+              ],
             subscriptions:
               T::Array[
                 MetronomeSDK::V1::PackageCreateParams::Subscription::OrHash
@@ -138,6 +142,7 @@ module MetronomeSDK
           # on a separate invoice from usage charges.
           scheduled_charges_on_usage_invoices: nil,
           spend_threshold_configuration: nil,
+          spend_trackers: nil,
           subscriptions: nil,
           # Prevents the creation of duplicates. If a request to create a record is made
           # with a previously used uniqueness key, a new record will not be created and the
@@ -216,10 +221,9 @@ module MetronomeSDK
         #
         # ### **Usage guidelines:**
         #
-        # Use the **`starting_at`**, **`covering_date`**,
-        # and **`include_archived`** parameters to filter the list of returned contracts.
-        # For example, to list only currently active contracts,
-        # pass **`covering_date`** equal to the current time.
+        # Use the **`starting_at`**, **`covering_date`**, and **`include_archived`**
+        # parameters to filter the list of returned contracts. For example, to list only
+        # currently active contracts, pass **`covering_date`** equal to the current time.
         sig do
           params(
             package_id: String,

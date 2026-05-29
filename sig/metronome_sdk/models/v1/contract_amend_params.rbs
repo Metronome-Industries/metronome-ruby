@@ -142,6 +142,7 @@ module MetronomeSDK
             rate_type: MetronomeSDK::Models::V1::ContractAmendParams::Commit::rate_type,
             rollover_fraction: Float,
             specifiers: ::Array[MetronomeSDK::CommitSpecifierInput],
+            spend_tracker_attributes: MetronomeSDK::V1::ContractAmendParams::Commit::SpendTrackerAttributes,
             temporary_id: String
           }
 
@@ -216,6 +217,12 @@ module MetronomeSDK
             ::Array[MetronomeSDK::CommitSpecifierInput]
           ) -> ::Array[MetronomeSDK::CommitSpecifierInput]
 
+          attr_reader spend_tracker_attributes: MetronomeSDK::V1::ContractAmendParams::Commit::SpendTrackerAttributes?
+
+          def spend_tracker_attributes=: (
+            MetronomeSDK::V1::ContractAmendParams::Commit::SpendTrackerAttributes
+          ) -> MetronomeSDK::V1::ContractAmendParams::Commit::SpendTrackerAttributes
+
           attr_reader temporary_id: String?
 
           def temporary_id=: (String) -> String
@@ -237,6 +244,7 @@ module MetronomeSDK
             ?rate_type: MetronomeSDK::Models::V1::ContractAmendParams::Commit::rate_type,
             ?rollover_fraction: Float,
             ?specifiers: ::Array[MetronomeSDK::CommitSpecifierInput],
+            ?spend_tracker_attributes: MetronomeSDK::V1::ContractAmendParams::Commit::SpendTrackerAttributes,
             ?temporary_id: String
           ) -> void
 
@@ -257,6 +265,7 @@ module MetronomeSDK
             rate_type: MetronomeSDK::Models::V1::ContractAmendParams::Commit::rate_type,
             rollover_fraction: Float,
             specifiers: ::Array[MetronomeSDK::CommitSpecifierInput],
+            spend_tracker_attributes: MetronomeSDK::V1::ContractAmendParams::Commit::SpendTrackerAttributes,
             temporary_id: String
           }
 
@@ -487,6 +496,16 @@ module MetronomeSDK
             LIST_RATE: :LIST_RATE
 
             def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractAmendParams::Commit::rate_type]
+          end
+
+          type spend_tracker_attributes = { counts_as_discounted: bool }
+
+          class SpendTrackerAttributes < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor counts_as_discounted: bool
+
+            def initialize: (counts_as_discounted: bool) -> void
+
+            def to_hash: -> { counts_as_discounted: bool }
           end
         end
 

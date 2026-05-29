@@ -3087,7 +3087,18 @@ module MetronomeSDK
             #   @return [Float, nil]
             optional :threshold_amount, Float
 
-            # @!method initialize(commit: nil, custom_credit_type_id: nil, discount_configuration: nil, is_enabled: nil, payment_gate_config: nil, recharge_to_amount: nil, threshold_amount: nil)
+            # @!attribute threshold_balance_specifiers
+            #
+            #   @return [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier>, nil]
+            optional :threshold_balance_specifiers,
+                     -> do
+                       MetronomeSDK::Internal::Type::ArrayOf[
+                         MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier
+                       ]
+                     end,
+                     nil?: true
+
+            # @!method initialize(commit: nil, custom_credit_type_id: nil, discount_configuration: nil, is_enabled: nil, payment_gate_config: nil, recharge_to_amount: nil, threshold_amount: nil, threshold_balance_specifiers: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration}
             #   for more details.
@@ -3105,6 +3116,8 @@ module MetronomeSDK
             #   @param recharge_to_amount [Float] Specify the amount the balance should be recharged to.
             #
             #   @param threshold_amount [Float] Specify the threshold amount for the contract. Each time the contract's balance
+            #
+            #   @param threshold_balance_specifiers [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier>, nil]
 
             # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration#commit
             class Commit < MetronomeSDK::Models::UpdateBaseThresholdCommit
@@ -3150,6 +3163,14 @@ module MetronomeSDK
 
             # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration#discount_configuration
             class DiscountConfiguration < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute cap
+              #   Update the discount cap. Set to null to remove an existing cap.
+              #
+              #   @return [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration::Cap, nil]
+              optional :cap,
+                       -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration::Cap },
+                       nil?: true
+
               # @!attribute payment_fraction
               #   The fraction of the original amount that the customer pays after applying the
               #   discount. Set to null to remove the discount fraction. For example, 0.85 means
@@ -3158,12 +3179,101 @@ module MetronomeSDK
               #   @return [Float, nil]
               optional :payment_fraction, Float, nil?: true
 
-              # @!method initialize(payment_fraction: nil)
+              # @!method initialize(cap: nil, payment_fraction: nil)
               #   Some parameter documentations has been truncated, see
               #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration}
               #   for more details.
               #
+              #   @param cap [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration::Cap, nil] Update the discount cap. Set to null to remove an existing cap.
+              #
               #   @param payment_fraction [Float, nil] The fraction of the original amount that the customer pays after applying the di
+
+              # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::DiscountConfiguration#cap
+              class Cap < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute amount
+                #   Accumulated spend ceiling above which the discount stops applying.
+                #
+                #   @return [Float]
+                required :amount, Float
+
+                # @!attribute spend_tracker_alias
+                #   Alias of the spend tracker this cap is measured against.
+                #
+                #   @return [String]
+                required :spend_tracker_alias, String
+
+                # @!method initialize(amount:, spend_tracker_alias:)
+                #   Update the discount cap. Set to null to remove an existing cap.
+                #
+                #   @param amount [Float] Accumulated spend ceiling above which the discount stops applying.
+                #
+                #   @param spend_tracker_alias [String] Alias of the spend tracker this cap is measured against.
+              end
+            end
+
+            class ThresholdBalanceSpecifier < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute exclude
+              #
+              #   @return [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude>]
+              required :exclude,
+                       -> do
+                         MetronomeSDK::Internal::Type::ArrayOf[
+                           MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude
+                         ]
+                       end
+
+              # @!method initialize(exclude:)
+              #   @param exclude [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude>]
+
+              class Exclude < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute custom_field_filters
+                #
+                #   @return [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter>]
+                required :custom_field_filters,
+                         -> do
+                           MetronomeSDK::Internal::Type::ArrayOf[
+                             MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter
+                           ]
+                         end
+
+                # @!method initialize(custom_field_filters:)
+                #   @param custom_field_filters [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter>]
+
+                class CustomFieldFilter < MetronomeSDK::Internal::Type::BaseModel
+                  # @!attribute entity
+                  #
+                  #   @return [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter::Entity]
+                  required :entity,
+                           enum: -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter::Entity }
+
+                  # @!attribute key
+                  #
+                  #   @return [String]
+                  required :key, String
+
+                  # @!attribute value
+                  #
+                  #   @return [String]
+                  required :value, String
+
+                  # @!method initialize(entity:, key:, value:)
+                  #   @param entity [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter::Entity]
+                  #   @param key [String]
+                  #   @param value [String]
+
+                  # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter#entity
+                  module Entity
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    COMMIT = :Commit
+                    CONTRACT_CREDIT = :ContractCredit
+                    CONTRACT_CREDIT_OR_COMMIT = :ContractCreditOrCommit
+
+                    # @!method self.values
+                    #   @return [Array<Symbol>]
+                  end
+                end
+              end
             end
           end
 
@@ -3513,6 +3623,14 @@ module MetronomeSDK
 
             # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration#discount_configuration
             class DiscountConfiguration < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute cap
+              #   Update the discount cap. Set to null to remove an existing cap.
+              #
+              #   @return [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::DiscountConfiguration::Cap, nil]
+              optional :cap,
+                       -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::DiscountConfiguration::Cap },
+                       nil?: true
+
               # @!attribute payment_fraction
               #   The fraction of the original amount that the customer pays after applying the
               #   discount. Set to null to remove the discount fraction. For example, 0.85 means
@@ -3521,12 +3639,36 @@ module MetronomeSDK
               #   @return [Float, nil]
               optional :payment_fraction, Float, nil?: true
 
-              # @!method initialize(payment_fraction: nil)
+              # @!method initialize(cap: nil, payment_fraction: nil)
               #   Some parameter documentations has been truncated, see
               #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::DiscountConfiguration}
               #   for more details.
               #
+              #   @param cap [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::DiscountConfiguration::Cap, nil] Update the discount cap. Set to null to remove an existing cap.
+              #
               #   @param payment_fraction [Float, nil] The fraction of the original amount that the customer pays after applying the di
+
+              # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSpendThresholdConfiguration::DiscountConfiguration#cap
+              class Cap < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute amount
+                #   Accumulated spend ceiling above which the discount stops applying.
+                #
+                #   @return [Float]
+                required :amount, Float
+
+                # @!attribute spend_tracker_alias
+                #   Alias of the spend tracker this cap is measured against.
+                #
+                #   @return [String]
+                required :spend_tracker_alias, String
+
+                # @!method initialize(amount:, spend_tracker_alias:)
+                #   Update the discount cap. Set to null to remove an existing cap.
+                #
+                #   @param amount [Float] Accumulated spend ceiling above which the discount stops applying.
+                #
+                #   @param spend_tracker_alias [String] Alias of the spend tracker this cap is measured against.
+              end
             end
           end
 

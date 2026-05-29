@@ -197,6 +197,13 @@ module MetronomeSDK
       #   @return [MetronomeSDK::Models::SpendThresholdConfigurationV2, nil]
       optional :spend_threshold_configuration, -> { MetronomeSDK::SpendThresholdConfigurationV2 }
 
+      # @!attribute spend_trackers
+      #   Spend trackers attached to this contract.
+      #
+      #   @return [Array<MetronomeSDK::Models::ContractV2::SpendTracker>, nil]
+      optional :spend_trackers,
+               -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::ContractV2::SpendTracker] }
+
       # @!attribute subscriptions
       #   List of subscriptions on the contract.
       #
@@ -215,7 +222,7 @@ module MetronomeSDK
       #   @return [String, nil]
       optional :uniqueness_key, String
 
-      # @!method initialize(id:, commits:, created_at:, created_by:, customer_id:, overrides:, scheduled_charges:, starting_at:, transitions:, usage_filter:, usage_statement_schedule:, archived_at: nil, credits: nil, custom_fields: nil, customer_billing_provider_configuration: nil, discounts: nil, ending_before: nil, has_more: nil, hierarchy_configuration: nil, multiplier_override_prioritization: nil, name: nil, net_payment_terms_days: nil, netsuite_sales_order_id: nil, prepaid_balance_threshold_configuration: nil, priority: nil, professional_services: nil, rate_card_id: nil, recurring_commits: nil, recurring_credits: nil, reseller_royalties: nil, salesforce_opportunity_id: nil, scheduled_charges_on_usage_invoices: nil, spend_threshold_configuration: nil, subscriptions: nil, total_contract_value: nil, uniqueness_key: nil)
+      # @!method initialize(id:, commits:, created_at:, created_by:, customer_id:, overrides:, scheduled_charges:, starting_at:, transitions:, usage_filter:, usage_statement_schedule:, archived_at: nil, credits: nil, custom_fields: nil, customer_billing_provider_configuration: nil, discounts: nil, ending_before: nil, has_more: nil, hierarchy_configuration: nil, multiplier_override_prioritization: nil, name: nil, net_payment_terms_days: nil, netsuite_sales_order_id: nil, prepaid_balance_threshold_configuration: nil, priority: nil, professional_services: nil, rate_card_id: nil, recurring_commits: nil, recurring_credits: nil, reseller_royalties: nil, salesforce_opportunity_id: nil, scheduled_charges_on_usage_invoices: nil, spend_threshold_configuration: nil, spend_trackers: nil, subscriptions: nil, total_contract_value: nil, uniqueness_key: nil)
       #   Some parameter documentations has been truncated, see
       #   {MetronomeSDK::Models::ContractV2} for more details.
       #
@@ -284,6 +291,8 @@ module MetronomeSDK
       #   @param scheduled_charges_on_usage_invoices [Symbol, MetronomeSDK::Models::ContractV2::ScheduledChargesOnUsageInvoices] Determines which scheduled and commit charges to consolidate onto the Contract's
       #
       #   @param spend_threshold_configuration [MetronomeSDK::Models::SpendThresholdConfigurationV2]
+      #
+      #   @param spend_trackers [Array<MetronomeSDK::Models::ContractV2::SpendTracker>] Spend trackers attached to this contract.
       #
       #   @param subscriptions [Array<MetronomeSDK::Models::ContractV2::Subscription>] List of subscriptions on the contract.
       #
@@ -452,13 +461,19 @@ module MetronomeSDK
         #   @return [Array<MetronomeSDK::Models::CommitSpecifier>, nil]
         optional :specifiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::CommitSpecifier] }
 
+        # @!attribute spend_tracker_attributes
+        #   Optional attributes controlling how this commit interacts with spend trackers.
+        #
+        #   @return [MetronomeSDK::Models::ContractV2::Commit::SpendTrackerAttributes, nil]
+        optional :spend_tracker_attributes, -> { MetronomeSDK::ContractV2::Commit::SpendTrackerAttributes }
+
         # @!attribute subscription_config
         #   Attach a subscription to the recurring commit/credit.
         #
         #   @return [MetronomeSDK::Models::RecurringCommitSubscriptionConfig, nil]
         optional :subscription_config, -> { MetronomeSDK::RecurringCommitSubscriptionConfig }
 
-        # @!method initialize(id:, created_at:, product:, type:, access_schedule: nil, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, archived_at: nil, balance: nil, contract: nil, custom_fields: nil, description: nil, hierarchy_configuration: nil, invoice_contract: nil, invoice_schedule: nil, ledger: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil, recurring_commit_id: nil, rolled_over_from: nil, rollover_fraction: nil, salesforce_opportunity_id: nil, specifiers: nil, subscription_config: nil)
+        # @!method initialize(id:, created_at:, product:, type:, access_schedule: nil, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, archived_at: nil, balance: nil, contract: nil, custom_fields: nil, description: nil, hierarchy_configuration: nil, invoice_contract: nil, invoice_schedule: nil, ledger: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil, recurring_commit_id: nil, rolled_over_from: nil, rollover_fraction: nil, salesforce_opportunity_id: nil, specifiers: nil, spend_tracker_attributes: nil, subscription_config: nil)
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::ContractV2::Commit} for more details.
         #
@@ -513,6 +528,8 @@ module MetronomeSDK
         #   @param salesforce_opportunity_id [String] This field's availability is dependent on your client's configuration.
         #
         #   @param specifiers [Array<MetronomeSDK::Models::CommitSpecifier>] List of filters that determine what kind of customer usage draws down a commit o
+        #
+        #   @param spend_tracker_attributes [MetronomeSDK::Models::ContractV2::Commit::SpendTrackerAttributes] Optional attributes controlling how this commit interacts with spend trackers.
         #
         #   @param subscription_config [MetronomeSDK::Models::RecurringCommitSubscriptionConfig] Attach a subscription to the recurring commit/credit.
 
@@ -1229,6 +1246,25 @@ module MetronomeSDK
           # @!method initialize(commit_id:, contract_id:)
           #   @param commit_id [String]
           #   @param contract_id [String]
+        end
+
+        # @see MetronomeSDK::Models::ContractV2::Commit#spend_tracker_attributes
+        class SpendTrackerAttributes < MetronomeSDK::Internal::Type::BaseModel
+          # @!attribute counts_as_discounted
+          #   If true, this commit is included in spend trackers with discounted set to
+          #   DISCOUNTED_ONLY
+          #
+          #   @return [Boolean]
+          required :counts_as_discounted, MetronomeSDK::Internal::Type::Boolean
+
+          # @!method initialize(counts_as_discounted:)
+          #   Some parameter documentations has been truncated, see
+          #   {MetronomeSDK::Models::ContractV2::Commit::SpendTrackerAttributes} for more
+          #   details.
+          #
+          #   Optional attributes controlling how this commit interacts with spend trackers.
+          #
+          #   @param counts_as_discounted [Boolean] If true, this commit is included in spend trackers with discounted set to DISCOU
         end
       end
 
@@ -3304,6 +3340,136 @@ module MetronomeSDK
 
         # @!method self.values
         #   @return [Array<Symbol>]
+      end
+
+      class SpendTracker < MetronomeSDK::Internal::Type::BaseModel
+        # @!attribute alias_
+        #   Human-readable identifier, unique per contract.
+        #
+        #   @return [String]
+        required :alias_, String, api_name: :alias
+
+        # @!attribute applicable_spend_specifiers
+        #
+        #   @return [Array<MetronomeSDK::Models::ContractV2::SpendTracker::ApplicableSpendSpecifier>]
+        required :applicable_spend_specifiers,
+                 -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::ContractV2::SpendTracker::ApplicableSpendSpecifier] }
+
+        # @!attribute credit_type_id
+        #
+        #   @return [String]
+        required :credit_type_id, String
+
+        # @!attribute reset_frequency
+        #
+        #   @return [Symbol, MetronomeSDK::Models::ContractV2::SpendTracker::ResetFrequency]
+        required :reset_frequency, enum: -> { MetronomeSDK::ContractV2::SpendTracker::ResetFrequency }
+
+        # @!attribute accumulated_spend
+        #
+        #   @return [MetronomeSDK::Models::ContractV2::SpendTracker::AccumulatedSpend, nil]
+        optional :accumulated_spend, -> { MetronomeSDK::ContractV2::SpendTracker::AccumulatedSpend }
+
+        # @!method initialize(alias_:, applicable_spend_specifiers:, credit_type_id:, reset_frequency:, accumulated_spend: nil)
+        #   @param alias_ [String] Human-readable identifier, unique per contract.
+        #
+        #   @param applicable_spend_specifiers [Array<MetronomeSDK::Models::ContractV2::SpendTracker::ApplicableSpendSpecifier>]
+        #
+        #   @param credit_type_id [String]
+        #
+        #   @param reset_frequency [Symbol, MetronomeSDK::Models::ContractV2::SpendTracker::ResetFrequency]
+        #
+        #   @param accumulated_spend [MetronomeSDK::Models::ContractV2::SpendTracker::AccumulatedSpend]
+
+        class ApplicableSpendSpecifier < MetronomeSDK::Internal::Type::BaseModel
+          # @!attribute sources
+          #
+          #   @return [Array<Symbol, MetronomeSDK::Models::ContractV2::SpendTracker::ApplicableSpendSpecifier::Source>]
+          required :sources,
+                   -> { MetronomeSDK::Internal::Type::ArrayOf[enum: MetronomeSDK::ContractV2::SpendTracker::ApplicableSpendSpecifier::Source] }
+
+          # @!attribute spend_type
+          #
+          #   @return [Symbol, MetronomeSDK::Models::ContractV2::SpendTracker::ApplicableSpendSpecifier::SpendType]
+          required :spend_type,
+                   enum: -> { MetronomeSDK::ContractV2::SpendTracker::ApplicableSpendSpecifier::SpendType }
+
+          # @!attribute discounted
+          #
+          #   @return [Symbol, MetronomeSDK::Models::ContractV2::SpendTracker::ApplicableSpendSpecifier::Discounted, nil]
+          optional :discounted,
+                   enum: -> { MetronomeSDK::ContractV2::SpendTracker::ApplicableSpendSpecifier::Discounted }
+
+          # @!method initialize(sources:, spend_type:, discounted: nil)
+          #   @param sources [Array<Symbol, MetronomeSDK::Models::ContractV2::SpendTracker::ApplicableSpendSpecifier::Source>]
+          #   @param spend_type [Symbol, MetronomeSDK::Models::ContractV2::SpendTracker::ApplicableSpendSpecifier::SpendType]
+          #   @param discounted [Symbol, MetronomeSDK::Models::ContractV2::SpendTracker::ApplicableSpendSpecifier::Discounted]
+
+          module Source
+            extend MetronomeSDK::Internal::Type::Enum
+
+            THRESHOLD_RECHARGE = :THRESHOLD_RECHARGE
+            MANUAL = :MANUAL
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # @see MetronomeSDK::Models::ContractV2::SpendTracker::ApplicableSpendSpecifier#spend_type
+          module SpendType
+            extend MetronomeSDK::Internal::Type::Enum
+
+            COMMIT_PURCHASE = :COMMIT_PURCHASE
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # @see MetronomeSDK::Models::ContractV2::SpendTracker::ApplicableSpendSpecifier#discounted
+          module Discounted
+            extend MetronomeSDK::Internal::Type::Enum
+
+            ANY = :ANY
+            DISCOUNTED_ONLY = :DISCOUNTED_ONLY
+            UNDISCOUNTED_ONLY = :UNDISCOUNTED_ONLY
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+        end
+
+        # @see MetronomeSDK::Models::ContractV2::SpendTracker#reset_frequency
+        module ResetFrequency
+          extend MetronomeSDK::Internal::Type::Enum
+
+          BILLING_PERIOD = :BILLING_PERIOD
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        # @see MetronomeSDK::Models::ContractV2::SpendTracker#accumulated_spend
+        class AccumulatedSpend < MetronomeSDK::Internal::Type::BaseModel
+          # @!attribute amount
+          #
+          #   @return [Float]
+          required :amount, Float
+
+          # @!attribute period_ending_before
+          #
+          #   @return [Time]
+          required :period_ending_before, Time
+
+          # @!attribute period_starting_at
+          #
+          #   @return [Time]
+          required :period_starting_at, Time
+
+          # @!method initialize(amount:, period_ending_before:, period_starting_at:)
+          #   @param amount [Float]
+          #   @param period_ending_before [Time]
+          #   @param period_starting_at [Time]
+        end
       end
 
       class Subscription < MetronomeSDK::Internal::Type::BaseModel

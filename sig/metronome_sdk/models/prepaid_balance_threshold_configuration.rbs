@@ -8,7 +8,8 @@ module MetronomeSDK
         recharge_to_amount: Float,
         threshold_amount: Float,
         custom_credit_type_id: String,
-        discount_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration::DiscountConfiguration
+        discount_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration::DiscountConfiguration,
+        threshold_balance_specifiers: ::Array[MetronomeSDK::PrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier]
       }
 
     class PrepaidBalanceThresholdConfiguration < MetronomeSDK::Internal::Type::BaseModel
@@ -32,6 +33,12 @@ module MetronomeSDK
         MetronomeSDK::PrepaidBalanceThresholdConfiguration::DiscountConfiguration
       ) -> MetronomeSDK::PrepaidBalanceThresholdConfiguration::DiscountConfiguration
 
+      attr_reader threshold_balance_specifiers: ::Array[MetronomeSDK::PrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier]?
+
+      def threshold_balance_specifiers=: (
+        ::Array[MetronomeSDK::PrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier]
+      ) -> ::Array[MetronomeSDK::PrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier]
+
       def initialize: (
         commit: MetronomeSDK::PrepaidBalanceThresholdConfiguration::Commit,
         is_enabled: bool,
@@ -39,7 +46,8 @@ module MetronomeSDK
         recharge_to_amount: Float,
         threshold_amount: Float,
         ?custom_credit_type_id: String,
-        ?discount_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration::DiscountConfiguration
+        ?discount_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration::DiscountConfiguration,
+        ?threshold_balance_specifiers: ::Array[MetronomeSDK::PrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier]
       ) -> void
 
       def to_hash: -> {
@@ -49,7 +57,8 @@ module MetronomeSDK
         recharge_to_amount: Float,
         threshold_amount: Float,
         custom_credit_type_id: String,
-        discount_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration::DiscountConfiguration
+        discount_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration::DiscountConfiguration,
+        threshold_balance_specifiers: ::Array[MetronomeSDK::PrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier]
       }
 
       type commit =
@@ -87,14 +96,115 @@ module MetronomeSDK
         }
       end
 
-      type discount_configuration = { payment_fraction: Float }
+      type discount_configuration =
+        {
+          payment_fraction: Float,
+          cap: MetronomeSDK::PrepaidBalanceThresholdConfiguration::DiscountConfiguration::Cap
+        }
 
       class DiscountConfiguration < MetronomeSDK::Internal::Type::BaseModel
         attr_accessor payment_fraction: Float
 
-        def initialize: (payment_fraction: Float) -> void
+        attr_reader cap: MetronomeSDK::PrepaidBalanceThresholdConfiguration::DiscountConfiguration::Cap?
 
-        def to_hash: -> { payment_fraction: Float }
+        def cap=: (
+          MetronomeSDK::PrepaidBalanceThresholdConfiguration::DiscountConfiguration::Cap
+        ) -> MetronomeSDK::PrepaidBalanceThresholdConfiguration::DiscountConfiguration::Cap
+
+        def initialize: (
+          payment_fraction: Float,
+          ?cap: MetronomeSDK::PrepaidBalanceThresholdConfiguration::DiscountConfiguration::Cap
+        ) -> void
+
+        def to_hash: -> {
+          payment_fraction: Float,
+          cap: MetronomeSDK::PrepaidBalanceThresholdConfiguration::DiscountConfiguration::Cap
+        }
+
+        type cap = { amount: Float, spend_tracker_alias: String }
+
+        class Cap < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor amount: Float
+
+          attr_accessor spend_tracker_alias: String
+
+          def initialize: (amount: Float, spend_tracker_alias: String) -> void
+
+          def to_hash: -> { amount: Float, spend_tracker_alias: String }
+        end
+      end
+
+      type threshold_balance_specifier =
+        {
+          exclude: ::Array[MetronomeSDK::PrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude]
+        }
+
+      class ThresholdBalanceSpecifier < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor exclude: ::Array[MetronomeSDK::PrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude]
+
+        def initialize: (
+          exclude: ::Array[MetronomeSDK::PrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude]
+        ) -> void
+
+        def to_hash: -> {
+          exclude: ::Array[MetronomeSDK::PrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude]
+        }
+
+        type exclude =
+          {
+            custom_field_filters: ::Array[MetronomeSDK::PrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter]
+          }
+
+        class Exclude < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor custom_field_filters: ::Array[MetronomeSDK::PrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter]
+
+          def initialize: (
+            custom_field_filters: ::Array[MetronomeSDK::PrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter]
+          ) -> void
+
+          def to_hash: -> {
+            custom_field_filters: ::Array[MetronomeSDK::PrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter]
+          }
+
+          type custom_field_filter =
+            {
+              entity: MetronomeSDK::Models::PrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter::entity,
+              key: String,
+              value: String
+            }
+
+          class CustomFieldFilter < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor entity: MetronomeSDK::Models::PrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter::entity
+
+            attr_accessor key: String
+
+            attr_accessor value: String
+
+            def initialize: (
+              entity: MetronomeSDK::Models::PrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter::entity,
+              key: String,
+              value: String
+            ) -> void
+
+            def to_hash: -> {
+              entity: MetronomeSDK::Models::PrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter::entity,
+              key: String,
+              value: String
+            }
+
+            type entity = :Commit | :ContractCredit | :ContractCreditOrCommit
+
+            module Entity
+              extend MetronomeSDK::Internal::Type::Enum
+
+              COMMIT: :Commit
+              CONTRACT_CREDIT: :ContractCredit
+              CONTRACT_CREDIT_OR_COMMIT: :ContractCreditOrCommit
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::PrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter::entity]
+            end
+          end
+        end
       end
     end
   end

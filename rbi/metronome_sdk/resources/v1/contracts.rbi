@@ -200,6 +200,10 @@ module MetronomeSDK
               MetronomeSDK::V1::ContractCreateParams::ScheduledChargesOnUsageInvoices::OrSymbol,
             spend_threshold_configuration:
               MetronomeSDK::SpendThresholdConfiguration::OrHash,
+            spend_trackers:
+              T::Array[
+                MetronomeSDK::V1::ContractCreateParams::SpendTracker::OrHash
+              ],
             subscriptions:
               T::Array[
                 MetronomeSDK::V1::ContractCreateParams::Subscription::OrHash
@@ -271,6 +275,9 @@ module MetronomeSDK
           # on a separate invoice from usage charges.
           scheduled_charges_on_usage_invoices: nil,
           spend_threshold_configuration: nil,
+          # Spend trackers to attach to this contract. Aliases must be unique within a
+          # contract.
+          spend_trackers: nil,
           # Optional list of
           # [subscriptions](https://docs.metronome.com/manage-product-access/create-subscription/)
           # to add to the contract.

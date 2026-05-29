@@ -75,6 +75,27 @@ module MetronomeSDK
       attr_writer :discount_configuration
 
       sig do
+        returns(
+          T.nilable(
+            T::Array[
+              MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::ThresholdBalanceSpecifier
+            ]
+          )
+        )
+      end
+      attr_reader :threshold_balance_specifiers
+
+      sig do
+        params(
+          threshold_balance_specifiers:
+            T::Array[
+              MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::ThresholdBalanceSpecifier::OrHash
+            ]
+        ).void
+      end
+      attr_writer :threshold_balance_specifiers
+
+      sig do
         params(
           commit:
             MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::Commit::OrHash,
@@ -84,7 +105,11 @@ module MetronomeSDK
           threshold_amount: Float,
           custom_credit_type_id: String,
           discount_configuration:
-            MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::DiscountConfiguration::OrHash
+            MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::DiscountConfiguration::OrHash,
+          threshold_balance_specifiers:
+            T::Array[
+              MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::ThresholdBalanceSpecifier::OrHash
+            ]
         ).returns(T.attached_class)
       end
       def self.new(
@@ -102,7 +127,8 @@ module MetronomeSDK
         # If provided, the threshold, recharge-to amount, and the resulting threshold
         # commit amount will be in terms of this credit type instead of the fiat currency.
         custom_credit_type_id: nil,
-        discount_configuration: nil
+        discount_configuration: nil,
+        threshold_balance_specifiers: nil
       )
       end
 
@@ -117,7 +143,11 @@ module MetronomeSDK
             threshold_amount: Float,
             custom_credit_type_id: String,
             discount_configuration:
-              MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::DiscountConfiguration
+              MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::DiscountConfiguration,
+            threshold_balance_specifiers:
+              T::Array[
+                MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::ThresholdBalanceSpecifier
+              ]
           }
         )
       end
@@ -221,17 +251,264 @@ module MetronomeSDK
         sig { returns(Float) }
         attr_accessor :payment_fraction
 
-        sig { params(payment_fraction: Float).returns(T.attached_class) }
+        # If provided, the discount stops applying once the spend tracker has accumulated
+        # this much spend in the billing period.
+        sig do
+          returns(
+            T.nilable(
+              MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::DiscountConfiguration::Cap
+            )
+          )
+        end
+        attr_reader :cap
+
+        sig do
+          params(
+            cap:
+              MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::DiscountConfiguration::Cap::OrHash
+          ).void
+        end
+        attr_writer :cap
+
+        sig do
+          params(
+            payment_fraction: Float,
+            cap:
+              MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::DiscountConfiguration::Cap::OrHash
+          ).returns(T.attached_class)
+        end
         def self.new(
           # The fraction of the original amount that the customer pays after applying the
           # discount. For example, 0.85 means the customer pays 85% of the original amount
           # (a 15% discount).
-          payment_fraction:
+          payment_fraction:,
+          # If provided, the discount stops applying once the spend tracker has accumulated
+          # this much spend in the billing period.
+          cap: nil
         )
         end
 
-        sig { override.returns({ payment_fraction: Float }) }
+        sig do
+          override.returns(
+            {
+              payment_fraction: Float,
+              cap:
+                MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::DiscountConfiguration::Cap
+            }
+          )
+        end
         def to_hash
+        end
+
+        class Cap < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::DiscountConfiguration::Cap,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
+          # Accumulated spend ceiling above which the discount stops applying.
+          sig { returns(Float) }
+          attr_accessor :amount
+
+          # Alias of the spend tracker this cap is measured against.
+          sig { returns(String) }
+          attr_accessor :spend_tracker_alias
+
+          # If provided, the discount stops applying once the spend tracker has accumulated
+          # this much spend in the billing period.
+          sig do
+            params(amount: Float, spend_tracker_alias: String).returns(
+              T.attached_class
+            )
+          end
+          def self.new(
+            # Accumulated spend ceiling above which the discount stops applying.
+            amount:,
+            # Alias of the spend tracker this cap is measured against.
+            spend_tracker_alias:
+          )
+          end
+
+          sig do
+            override.returns({ amount: Float, spend_tracker_alias: String })
+          end
+          def to_hash
+          end
+        end
+      end
+
+      class ThresholdBalanceSpecifier < MetronomeSDK::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::ThresholdBalanceSpecifier,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
+
+        sig do
+          returns(
+            T::Array[
+              MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::ThresholdBalanceSpecifier::Exclude
+            ]
+          )
+        end
+        attr_accessor :exclude
+
+        sig do
+          params(
+            exclude:
+              T::Array[
+                MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::ThresholdBalanceSpecifier::Exclude::OrHash
+              ]
+          ).returns(T.attached_class)
+        end
+        def self.new(exclude:)
+        end
+
+        sig do
+          override.returns(
+            {
+              exclude:
+                T::Array[
+                  MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::ThresholdBalanceSpecifier::Exclude
+                ]
+            }
+          )
+        end
+        def to_hash
+        end
+
+        class Exclude < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::ThresholdBalanceSpecifier::Exclude,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
+          sig do
+            returns(
+              T::Array[
+                MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter
+              ]
+            )
+          end
+          attr_accessor :custom_field_filters
+
+          sig do
+            params(
+              custom_field_filters:
+                T::Array[
+                  MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter::OrHash
+                ]
+            ).returns(T.attached_class)
+          end
+          def self.new(custom_field_filters:)
+          end
+
+          sig do
+            override.returns(
+              {
+                custom_field_filters:
+                  T::Array[
+                    MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter
+                  ]
+              }
+            )
+          end
+          def to_hash
+          end
+
+          class CustomFieldFilter < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            sig do
+              returns(
+                MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter::Entity::OrSymbol
+              )
+            end
+            attr_accessor :entity
+
+            sig { returns(String) }
+            attr_accessor :key
+
+            sig { returns(String) }
+            attr_accessor :value
+
+            sig do
+              params(
+                entity:
+                  MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter::Entity::OrSymbol,
+                key: String,
+                value: String
+              ).returns(T.attached_class)
+            end
+            def self.new(entity:, key:, value:)
+            end
+
+            sig do
+              override.returns(
+                {
+                  entity:
+                    MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter::Entity::OrSymbol,
+                  key: String,
+                  value: String
+                }
+              )
+            end
+            def to_hash
+            end
+
+            module Entity
+              extend MetronomeSDK::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter::Entity
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              COMMIT =
+                T.let(
+                  :Commit,
+                  MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter::Entity::TaggedSymbol
+                )
+              CONTRACT_CREDIT =
+                T.let(
+                  :ContractCredit,
+                  MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter::Entity::TaggedSymbol
+                )
+              CONTRACT_CREDIT_OR_COMMIT =
+                T.let(
+                  :ContractCreditOrCommit,
+                  MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter::Entity::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::ThresholdBalanceSpecifier::Exclude::CustomFieldFilter::Entity::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+          end
         end
       end
     end
