@@ -1,5 +1,21 @@
 # Changelog
 
+## 3.7.0 (2026-05-29)
+
+Full Changelog: [v3.6.0...v3.7.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v3.6.0...v3.7.0)
+
+### Features
+
+* [LAUNCH-2814] editContract returns full edit in the response ([fd684bc](https://github.com/Metronome-Industries/metronome-ruby/commit/fd684bc491dc2083911a144ba0a455385eaf315d))
+* [orch-1860] remove all deprecated `/payments/*` endpoints from API ([1c6cdb1](https://github.com/Metronome-Industries/metronome-ruby/commit/1c6cdb1d7629e6a29adc78a1dbd460eebbbab08b))
+* create contract returns contract data ([16469e5](https://github.com/Metronome-Industries/metronome-ruby/commit/16469e57c6563dd35b5b2f3cf05893a69ec7d406))
+* nikku-orch-1723-update-create-contract ([a5de974](https://github.com/Metronome-Industries/metronome-ruby/commit/a5de9740f141a211e0435fff858ceca62d2b5359))
+
+
+### Chores
+
+* (internal) Add threshold balance specifier to contract create & edit, package create and both contract and package retrievals ([eb1049d](https://github.com/Metronome-Industries/metronome-ruby/commit/eb1049d2826865a29710c274e13cc311005a0e91))
+
 ## 3.6.0 (2026-05-18)
 
 Full Changelog: [v3.5.0...v3.6.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v3.5.0...v3.6.0)
