@@ -1460,6 +1460,7 @@ module MetronomeSDK
               invoice_amount: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::InvoiceAmount,
               name: String,
               proration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::proration,
+              proration_rounding: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding?,
               recurrence_frequency: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::recurrence_frequency,
               rollover_fraction: Float,
               specifiers: ::Array[MetronomeSDK::CommitSpecifier],
@@ -1515,6 +1516,8 @@ module MetronomeSDK
               MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::proration
             ) -> MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::proration
 
+            attr_accessor proration_rounding: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding?
+
             attr_reader recurrence_frequency: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::recurrence_frequency?
 
             def recurrence_frequency=: (
@@ -1552,6 +1555,7 @@ module MetronomeSDK
               ?invoice_amount: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::InvoiceAmount,
               ?name: String,
               ?proration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::proration,
+              ?proration_rounding: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding?,
               ?recurrence_frequency: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::recurrence_frequency,
               ?rollover_fraction: Float,
               ?specifiers: ::Array[MetronomeSDK::CommitSpecifier],
@@ -1573,6 +1577,7 @@ module MetronomeSDK
               invoice_amount: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::InvoiceAmount,
               name: String,
               proration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::proration,
+              proration_rounding: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding?,
               recurrence_frequency: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::recurrence_frequency,
               rollover_fraction: Float,
               specifiers: ::Array[MetronomeSDK::CommitSpecifier],
@@ -1769,6 +1774,104 @@ module MetronomeSDK
               def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::proration]
             end
 
+            type proration_rounding =
+              {
+                access: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding::Access,
+                invoice: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding::Invoice
+              }
+
+            class ProrationRounding < MetronomeSDK::Internal::Type::BaseModel
+              attr_reader access: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding::Access?
+
+              def access=: (
+                MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding::Access
+              ) -> MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding::Access
+
+              attr_reader invoice: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding::Invoice?
+
+              def invoice=: (
+                MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding::Invoice
+              ) -> MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding::Invoice
+
+              def initialize: (
+                ?access: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding::Access,
+                ?invoice: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding::Invoice
+              ) -> void
+
+              def to_hash: -> {
+                access: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding::Access,
+                invoice: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding::Invoice
+              }
+
+              type access =
+                {
+                  decimal_places: Float,
+                  rounding_method: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding::Access::rounding_method
+                }
+
+              class Access < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor decimal_places: Float
+
+                attr_accessor rounding_method: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding::Access::rounding_method
+
+                def initialize: (
+                  decimal_places: Float,
+                  rounding_method: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding::Access::rounding_method
+                ) -> void
+
+                def to_hash: -> {
+                  decimal_places: Float,
+                  rounding_method: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding::Access::rounding_method
+                }
+
+                type rounding_method = :HALF_UP | :FLOOR | :CEILING
+
+                module RoundingMethod
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  HALF_UP: :HALF_UP
+                  FLOOR: :FLOOR
+                  CEILING: :CEILING
+
+                  def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding::Access::rounding_method]
+                end
+              end
+
+              type invoice =
+                {
+                  decimal_places: Float,
+                  rounding_method: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding::Invoice::rounding_method
+                }
+
+              class Invoice < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor decimal_places: Float
+
+                attr_accessor rounding_method: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding::Invoice::rounding_method
+
+                def initialize: (
+                  decimal_places: Float,
+                  rounding_method: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding::Invoice::rounding_method
+                ) -> void
+
+                def to_hash: -> {
+                  decimal_places: Float,
+                  rounding_method: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding::Invoice::rounding_method
+                }
+
+                type rounding_method = :HALF_UP | :FLOOR | :CEILING
+
+                module RoundingMethod
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  HALF_UP: :HALF_UP
+                  FLOOR: :FLOOR
+                  CEILING: :CEILING
+
+                  def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding::Invoice::rounding_method]
+                end
+              end
+            end
+
             type recurrence_frequency =
               :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY
 
@@ -1847,6 +1950,7 @@ module MetronomeSDK
               duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::Duration,
               name: String,
               proration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::proration,
+              proration_rounding: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::ProrationRounding?,
               recurrence_frequency: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::recurrence_frequency,
               rollover_fraction: Float,
               specifiers: ::Array[MetronomeSDK::CommitSpecifier],
@@ -1896,6 +2000,8 @@ module MetronomeSDK
               MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::proration
             ) -> MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::proration
 
+            attr_accessor proration_rounding: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::ProrationRounding?
+
             attr_reader recurrence_frequency: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::recurrence_frequency?
 
             def recurrence_frequency=: (
@@ -1932,6 +2038,7 @@ module MetronomeSDK
               ?duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::Duration,
               ?name: String,
               ?proration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::proration,
+              ?proration_rounding: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::ProrationRounding?,
               ?recurrence_frequency: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::recurrence_frequency,
               ?rollover_fraction: Float,
               ?specifiers: ::Array[MetronomeSDK::CommitSpecifier],
@@ -1952,6 +2059,7 @@ module MetronomeSDK
               duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::Duration,
               name: String,
               proration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::proration,
+              proration_rounding: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::ProrationRounding?,
               recurrence_frequency: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::recurrence_frequency,
               rollover_fraction: Float,
               specifiers: ::Array[MetronomeSDK::CommitSpecifier],
@@ -2123,6 +2231,61 @@ module MetronomeSDK
               FIRST_AND_LAST: :FIRST_AND_LAST
 
               def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::proration]
+            end
+
+            type proration_rounding =
+              {
+                access: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::ProrationRounding::Access
+              }
+
+            class ProrationRounding < MetronomeSDK::Internal::Type::BaseModel
+              attr_reader access: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::ProrationRounding::Access?
+
+              def access=: (
+                MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::ProrationRounding::Access
+              ) -> MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::ProrationRounding::Access
+
+              def initialize: (
+                ?access: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::ProrationRounding::Access
+              ) -> void
+
+              def to_hash: -> {
+                access: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::ProrationRounding::Access
+              }
+
+              type access =
+                {
+                  decimal_places: Float,
+                  rounding_method: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::ProrationRounding::Access::rounding_method
+                }
+
+              class Access < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor decimal_places: Float
+
+                attr_accessor rounding_method: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::ProrationRounding::Access::rounding_method
+
+                def initialize: (
+                  decimal_places: Float,
+                  rounding_method: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::ProrationRounding::Access::rounding_method
+                ) -> void
+
+                def to_hash: -> {
+                  decimal_places: Float,
+                  rounding_method: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::ProrationRounding::Access::rounding_method
+                }
+
+                type rounding_method = :HALF_UP | :FLOOR | :CEILING
+
+                module RoundingMethod
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  HALF_UP: :HALF_UP
+                  FLOOR: :FLOOR
+                  CEILING: :CEILING
+
+                  def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::ProrationRounding::Access::rounding_method]
+                end
+              end
             end
 
             type recurrence_frequency =
@@ -2310,6 +2473,7 @@ module MetronomeSDK
               proration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Proration,
               subscription_rate: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::SubscriptionRate,
               id: String,
+              billing_cycle_config: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::BillingCycleConfig,
               custom_fields: ::Hash[Symbol, String],
               description: String,
               duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Duration,
@@ -2331,6 +2495,12 @@ module MetronomeSDK
             attr_reader id: String?
 
             def id=: (String) -> String
+
+            attr_reader billing_cycle_config: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::BillingCycleConfig?
+
+            def billing_cycle_config=: (
+              MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::BillingCycleConfig
+            ) -> MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::BillingCycleConfig
 
             attr_reader custom_fields: ::Hash[Symbol, String]?
 
@@ -2383,6 +2553,7 @@ module MetronomeSDK
               proration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Proration,
               subscription_rate: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::SubscriptionRate,
               ?id: String,
+              ?billing_cycle_config: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::BillingCycleConfig,
               ?custom_fields: ::Hash[Symbol, String],
               ?description: String,
               ?duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Duration,
@@ -2399,6 +2570,7 @@ module MetronomeSDK
               proration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Proration,
               subscription_rate: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::SubscriptionRate,
               id: String,
+              billing_cycle_config: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::BillingCycleConfig,
               custom_fields: ::Hash[Symbol, String],
               description: String,
               duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Duration,
@@ -2424,7 +2596,8 @@ module MetronomeSDK
             type proration =
               {
                 invoice_behavior: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Proration::invoice_behavior,
-                is_prorated: bool
+                is_prorated: bool,
+                rounding: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Proration::Rounding
               }
 
             class Proration < MetronomeSDK::Internal::Type::BaseModel
@@ -2432,14 +2605,22 @@ module MetronomeSDK
 
               attr_accessor is_prorated: bool
 
+              attr_reader rounding: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Proration::Rounding?
+
+              def rounding=: (
+                MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Proration::Rounding
+              ) -> MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Proration::Rounding
+
               def initialize: (
                 invoice_behavior: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Proration::invoice_behavior,
-                is_prorated: bool
+                is_prorated: bool,
+                ?rounding: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Proration::Rounding
               ) -> void
 
               def to_hash: -> {
                 invoice_behavior: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Proration::invoice_behavior,
-                is_prorated: bool
+                is_prorated: bool,
+                rounding: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Proration::Rounding
               }
 
               type invoice_behavior =
@@ -2452,6 +2633,40 @@ module MetronomeSDK
                 BILL_ON_NEXT_COLLECTION_DATE: :BILL_ON_NEXT_COLLECTION_DATE
 
                 def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Proration::invoice_behavior]
+              end
+
+              type rounding =
+                {
+                  decimal_places: Float,
+                  rounding_method: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Proration::Rounding::rounding_method
+                }
+
+              class Rounding < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor decimal_places: Float
+
+                attr_accessor rounding_method: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Proration::Rounding::rounding_method
+
+                def initialize: (
+                  decimal_places: Float,
+                  rounding_method: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Proration::Rounding::rounding_method
+                ) -> void
+
+                def to_hash: -> {
+                  decimal_places: Float,
+                  rounding_method: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Proration::Rounding::rounding_method
+                }
+
+                type rounding_method = :HALF_UP | :FLOOR | :CEILING
+
+                module RoundingMethod
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  HALF_UP: :HALF_UP
+                  FLOOR: :FLOOR
+                  CEILING: :CEILING
+
+                  def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Proration::Rounding::rounding_method]
+                end
               end
             end
 
@@ -2499,6 +2714,38 @@ module MetronomeSDK
                 def initialize: (id: String, name: String) -> void
 
                 def to_hash: -> { id: String, name: String }
+              end
+            end
+
+            type billing_cycle_config =
+              {
+                invoice_placement: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::BillingCycleConfig::invoice_placement
+              }
+
+            class BillingCycleConfig < MetronomeSDK::Internal::Type::BaseModel
+              attr_reader invoice_placement: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::BillingCycleConfig::invoice_placement?
+
+              def invoice_placement=: (
+                MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::BillingCycleConfig::invoice_placement
+              ) -> MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::BillingCycleConfig::invoice_placement
+
+              def initialize: (
+                ?invoice_placement: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::BillingCycleConfig::invoice_placement
+              ) -> void
+
+              def to_hash: -> {
+                invoice_placement: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::BillingCycleConfig::invoice_placement
+              }
+
+              type invoice_placement = :ON_SCHEDULED_INVOICE | :ON_USAGE_INVOICE
+
+              module InvoicePlacement
+                extend MetronomeSDK::Internal::Type::Enum
+
+                ON_SCHEDULED_INVOICE: :ON_SCHEDULED_INVOICE
+                ON_USAGE_INVOICE: :ON_USAGE_INVOICE
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::BillingCycleConfig::invoice_placement]
               end
             end
 
