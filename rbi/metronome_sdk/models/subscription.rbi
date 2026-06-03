@@ -73,6 +73,17 @@ module MetronomeSDK
       sig { params(id: String).void }
       attr_writer :id
 
+      sig { returns(T.nilable(MetronomeSDK::Subscription::BillingCycleConfig)) }
+      attr_reader :billing_cycle_config
+
+      sig do
+        params(
+          billing_cycle_config:
+            MetronomeSDK::Subscription::BillingCycleConfig::OrHash
+        ).void
+      end
+      attr_writer :billing_cycle_config
+
       # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
       sig { returns(T.nilable(T::Hash[Symbol, String])) }
       attr_reader :custom_fields
@@ -126,6 +137,8 @@ module MetronomeSDK
           subscription_rate:
             MetronomeSDK::Subscription::SubscriptionRate::OrHash,
           id: String,
+          billing_cycle_config:
+            MetronomeSDK::Subscription::BillingCycleConfig::OrHash,
           custom_fields: T::Hash[Symbol, String],
           description: String,
           ending_before: Time,
@@ -155,6 +168,7 @@ module MetronomeSDK
         starting_at:,
         subscription_rate:,
         id: nil,
+        billing_cycle_config: nil,
         # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         custom_fields: nil,
         description: nil,
@@ -179,6 +193,8 @@ module MetronomeSDK
             starting_at: Time,
             subscription_rate: MetronomeSDK::Subscription::SubscriptionRate,
             id: String,
+            billing_cycle_config:
+              MetronomeSDK::Subscription::BillingCycleConfig,
             custom_fields: T::Hash[Symbol, String],
             description: String,
             ending_before: Time,
@@ -402,13 +418,26 @@ module MetronomeSDK
         attr_accessor :is_prorated
 
         sig do
+          returns(T.nilable(MetronomeSDK::Subscription::Proration::Rounding))
+        end
+        attr_reader :rounding
+
+        sig do
+          params(
+            rounding: MetronomeSDK::Subscription::Proration::Rounding::OrHash
+          ).void
+        end
+        attr_writer :rounding
+
+        sig do
           params(
             invoice_behavior:
               MetronomeSDK::Subscription::Proration::InvoiceBehavior::OrSymbol,
-            is_prorated: T::Boolean
+            is_prorated: T::Boolean,
+            rounding: MetronomeSDK::Subscription::Proration::Rounding::OrHash
           ).returns(T.attached_class)
         end
-        def self.new(invoice_behavior:, is_prorated:)
+        def self.new(invoice_behavior:, is_prorated:, rounding: nil)
         end
 
         sig do
@@ -416,7 +445,8 @@ module MetronomeSDK
             {
               invoice_behavior:
                 MetronomeSDK::Subscription::Proration::InvoiceBehavior::TaggedSymbol,
-              is_prorated: T::Boolean
+              is_prorated: T::Boolean,
+              rounding: MetronomeSDK::Subscription::Proration::Rounding
             }
           )
         end
@@ -454,6 +484,98 @@ module MetronomeSDK
             )
           end
           def self.values
+          end
+        end
+
+        class Rounding < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::Subscription::Proration::Rounding,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
+          # Number of decimal places to round to. Applied directly to the stored monetary
+          # representation. Negative values round to powers of 10 (e.g., -2 rounds to
+          # nearest 100 in the stored unit. For USD, this means rounding to the nearest
+          # dollar).
+          sig { returns(Float) }
+          attr_accessor :decimal_places
+
+          sig do
+            returns(
+              MetronomeSDK::Subscription::Proration::Rounding::RoundingMethod::TaggedSymbol
+            )
+          end
+          attr_accessor :rounding_method
+
+          sig do
+            params(
+              decimal_places: Float,
+              rounding_method:
+                MetronomeSDK::Subscription::Proration::Rounding::RoundingMethod::OrSymbol
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # Number of decimal places to round to. Applied directly to the stored monetary
+            # representation. Negative values round to powers of 10 (e.g., -2 rounds to
+            # nearest 100 in the stored unit. For USD, this means rounding to the nearest
+            # dollar).
+            decimal_places:,
+            rounding_method:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                decimal_places: Float,
+                rounding_method:
+                  MetronomeSDK::Subscription::Proration::Rounding::RoundingMethod::TaggedSymbol
+              }
+            )
+          end
+          def to_hash
+          end
+
+          module RoundingMethod
+            extend MetronomeSDK::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  MetronomeSDK::Subscription::Proration::Rounding::RoundingMethod
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            HALF_UP =
+              T.let(
+                :HALF_UP,
+                MetronomeSDK::Subscription::Proration::Rounding::RoundingMethod::TaggedSymbol
+              )
+            FLOOR =
+              T.let(
+                :FLOOR,
+                MetronomeSDK::Subscription::Proration::Rounding::RoundingMethod::TaggedSymbol
+              )
+            CEILING =
+              T.let(
+                :CEILING,
+                MetronomeSDK::Subscription::Proration::Rounding::RoundingMethod::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  MetronomeSDK::Subscription::Proration::Rounding::RoundingMethod::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
         end
       end
@@ -653,6 +775,93 @@ module MetronomeSDK
 
           sig { override.returns({ id: String, name: String }) }
           def to_hash
+          end
+        end
+      end
+
+      class BillingCycleConfig < MetronomeSDK::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              MetronomeSDK::Subscription::BillingCycleConfig,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
+
+        # The date this subscription's billing cycle is anchored to.
+        sig { returns(Time) }
+        attr_accessor :anchor_date
+
+        # Controls whether this subscription consolidates onto usage invoices or gets its
+        # own scheduled invoice.
+        sig do
+          returns(
+            MetronomeSDK::Subscription::BillingCycleConfig::InvoicePlacement::TaggedSymbol
+          )
+        end
+        attr_accessor :invoice_placement
+
+        sig do
+          params(
+            anchor_date: Time,
+            invoice_placement:
+              MetronomeSDK::Subscription::BillingCycleConfig::InvoicePlacement::OrSymbol
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # The date this subscription's billing cycle is anchored to.
+          anchor_date:,
+          # Controls whether this subscription consolidates onto usage invoices or gets its
+          # own scheduled invoice.
+          invoice_placement:
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              anchor_date: Time,
+              invoice_placement:
+                MetronomeSDK::Subscription::BillingCycleConfig::InvoicePlacement::TaggedSymbol
+            }
+          )
+        end
+        def to_hash
+        end
+
+        # Controls whether this subscription consolidates onto usage invoices or gets its
+        # own scheduled invoice.
+        module InvoicePlacement
+          extend MetronomeSDK::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                MetronomeSDK::Subscription::BillingCycleConfig::InvoicePlacement
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          ON_SCHEDULED_INVOICE =
+            T.let(
+              :ON_SCHEDULED_INVOICE,
+              MetronomeSDK::Subscription::BillingCycleConfig::InvoicePlacement::TaggedSymbol
+            )
+          ON_USAGE_INVOICE =
+            T.let(
+              :ON_USAGE_INVOICE,
+              MetronomeSDK::Subscription::BillingCycleConfig::InvoicePlacement::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                MetronomeSDK::Subscription::BillingCycleConfig::InvoicePlacement::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
           end
         end
       end
