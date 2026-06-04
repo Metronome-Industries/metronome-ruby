@@ -10,7 +10,6 @@ module MetronomeSDK
         starting_at: Time,
         subscription_rate: MetronomeSDK::Subscription::SubscriptionRate,
         id: String,
-        billing_cycle_config: MetronomeSDK::Subscription::BillingCycleConfig,
         custom_fields: ::Hash[Symbol, String],
         description: String,
         ending_before: Time,
@@ -37,12 +36,6 @@ module MetronomeSDK
       attr_reader id: String?
 
       def id=: (String) -> String
-
-      attr_reader billing_cycle_config: MetronomeSDK::Subscription::BillingCycleConfig?
-
-      def billing_cycle_config=: (
-        MetronomeSDK::Subscription::BillingCycleConfig
-      ) -> MetronomeSDK::Subscription::BillingCycleConfig
 
       attr_reader custom_fields: ::Hash[Symbol, String]?
 
@@ -79,7 +72,6 @@ module MetronomeSDK
         starting_at: Time,
         subscription_rate: MetronomeSDK::Subscription::SubscriptionRate,
         ?id: String,
-        ?billing_cycle_config: MetronomeSDK::Subscription::BillingCycleConfig,
         ?custom_fields: ::Hash[Symbol, String],
         ?description: String,
         ?ending_before: Time,
@@ -97,7 +89,6 @@ module MetronomeSDK
         starting_at: Time,
         subscription_rate: MetronomeSDK::Subscription::SubscriptionRate,
         id: String,
-        billing_cycle_config: MetronomeSDK::Subscription::BillingCycleConfig,
         custom_fields: ::Hash[Symbol, String],
         description: String,
         ending_before: Time,
@@ -195,8 +186,7 @@ module MetronomeSDK
       type proration =
         {
           invoice_behavior: MetronomeSDK::Models::Subscription::Proration::invoice_behavior,
-          is_prorated: bool,
-          rounding: MetronomeSDK::Subscription::Proration::Rounding
+          is_prorated: bool
         }
 
       class Proration < MetronomeSDK::Internal::Type::BaseModel
@@ -204,22 +194,14 @@ module MetronomeSDK
 
         attr_accessor is_prorated: bool
 
-        attr_reader rounding: MetronomeSDK::Subscription::Proration::Rounding?
-
-        def rounding=: (
-          MetronomeSDK::Subscription::Proration::Rounding
-        ) -> MetronomeSDK::Subscription::Proration::Rounding
-
         def initialize: (
           invoice_behavior: MetronomeSDK::Models::Subscription::Proration::invoice_behavior,
-          is_prorated: bool,
-          ?rounding: MetronomeSDK::Subscription::Proration::Rounding
+          is_prorated: bool
         ) -> void
 
         def to_hash: -> {
           invoice_behavior: MetronomeSDK::Models::Subscription::Proration::invoice_behavior,
-          is_prorated: bool,
-          rounding: MetronomeSDK::Subscription::Proration::Rounding
+          is_prorated: bool
         }
 
         type invoice_behavior =
@@ -232,40 +214,6 @@ module MetronomeSDK
           BILL_ON_NEXT_COLLECTION_DATE: :BILL_ON_NEXT_COLLECTION_DATE
 
           def self?.values: -> ::Array[MetronomeSDK::Models::Subscription::Proration::invoice_behavior]
-        end
-
-        type rounding =
-          {
-            decimal_places: Float,
-            rounding_method: MetronomeSDK::Models::Subscription::Proration::Rounding::rounding_method
-          }
-
-        class Rounding < MetronomeSDK::Internal::Type::BaseModel
-          attr_accessor decimal_places: Float
-
-          attr_accessor rounding_method: MetronomeSDK::Models::Subscription::Proration::Rounding::rounding_method
-
-          def initialize: (
-            decimal_places: Float,
-            rounding_method: MetronomeSDK::Models::Subscription::Proration::Rounding::rounding_method
-          ) -> void
-
-          def to_hash: -> {
-            decimal_places: Float,
-            rounding_method: MetronomeSDK::Models::Subscription::Proration::Rounding::rounding_method
-          }
-
-          type rounding_method = :HALF_UP | :FLOOR | :CEILING
-
-          module RoundingMethod
-            extend MetronomeSDK::Internal::Type::Enum
-
-            HALF_UP: :HALF_UP
-            FLOOR: :FLOOR
-            CEILING: :CEILING
-
-            def self?.values: -> ::Array[MetronomeSDK::Models::Subscription::Proration::Rounding::rounding_method]
-          end
         end
       end
 
@@ -349,39 +297,6 @@ module MetronomeSDK
           def initialize: (id: String, name: String) -> void
 
           def to_hash: -> { id: String, name: String }
-        end
-      end
-
-      type billing_cycle_config =
-        {
-          anchor_date: Time,
-          invoice_placement: MetronomeSDK::Models::Subscription::BillingCycleConfig::invoice_placement
-        }
-
-      class BillingCycleConfig < MetronomeSDK::Internal::Type::BaseModel
-        attr_accessor anchor_date: Time
-
-        attr_accessor invoice_placement: MetronomeSDK::Models::Subscription::BillingCycleConfig::invoice_placement
-
-        def initialize: (
-          anchor_date: Time,
-          invoice_placement: MetronomeSDK::Models::Subscription::BillingCycleConfig::invoice_placement
-        ) -> void
-
-        def to_hash: -> {
-          anchor_date: Time,
-          invoice_placement: MetronomeSDK::Models::Subscription::BillingCycleConfig::invoice_placement
-        }
-
-        type invoice_placement = :ON_SCHEDULED_INVOICE | :ON_USAGE_INVOICE
-
-        module InvoicePlacement
-          extend MetronomeSDK::Internal::Type::Enum
-
-          ON_SCHEDULED_INVOICE: :ON_SCHEDULED_INVOICE
-          ON_USAGE_INVOICE: :ON_USAGE_INVOICE
-
-          def self?.values: -> ::Array[MetronomeSDK::Models::Subscription::BillingCycleConfig::invoice_placement]
         end
       end
 
