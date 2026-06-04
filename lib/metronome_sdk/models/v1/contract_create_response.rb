@@ -578,14 +578,6 @@ module MetronomeSDK
               optional :proration,
                        enum: -> { MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::Proration }
 
-              # @!attribute proration_rounding
-              #   Rounding configuration for prorated recurring commit amounts.
-              #
-              #   @return [MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::ProrationRounding, nil]
-              optional :proration_rounding,
-                       -> { MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::ProrationRounding },
-                       nil?: true
-
               # @!attribute recurrence_frequency
               #   The frequency at which the recurring commits will be created. If not provided: -
               #   The commits will be created on the usage invoice frequency. If provided: - The
@@ -619,7 +611,7 @@ module MetronomeSDK
               #   @return [MetronomeSDK::Models::RecurringCommitSubscriptionConfig, nil]
               optional :subscription_config, -> { MetronomeSDK::RecurringCommitSubscriptionConfig }
 
-              # @!method initialize(id:, access_amount:, commit_duration:, priority:, product:, rate_type:, starting_at:, applicable_product_ids: nil, applicable_product_tags: nil, contract: nil, description: nil, ending_before: nil, hierarchy_configuration: nil, invoice_amount: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, proration_rounding: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil, subscription_config: nil)
+              # @!method initialize(id:, access_amount:, commit_duration:, priority:, product:, rate_type:, starting_at:, applicable_product_ids: nil, applicable_product_tags: nil, contract: nil, description: nil, ending_before: nil, hierarchy_configuration: nil, invoice_amount: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil, subscription_config: nil)
               #   Some parameter documentations has been truncated, see
               #   {MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit}
               #   for more details.
@@ -657,8 +649,6 @@ module MetronomeSDK
               #   @param netsuite_sales_order_id [String] Will be passed down to the individual commits
               #
               #   @param proration [Symbol, MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::Proration] Determines whether the first and last commit will be prorated. If not provided,
-              #
-              #   @param proration_rounding [MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::ProrationRounding, nil] Rounding configuration for prorated recurring commit amounts.
               #
               #   @param recurrence_frequency [Symbol, MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::RecurrenceFrequency] The frequency at which the recurring commits will be created. If not provided:
               #
@@ -805,105 +795,6 @@ module MetronomeSDK
                 #   @return [Array<Symbol>]
               end
 
-              # @see MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit#proration_rounding
-              class ProrationRounding < MetronomeSDK::Internal::Type::BaseModel
-                # @!attribute access
-                #
-                #   @return [MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::ProrationRounding::Access, nil]
-                optional :access,
-                         -> { MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::ProrationRounding::Access }
-
-                # @!attribute invoice
-                #
-                #   @return [MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::ProrationRounding::Invoice, nil]
-                optional :invoice,
-                         -> { MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::ProrationRounding::Invoice }
-
-                # @!method initialize(access: nil, invoice: nil)
-                #   Rounding configuration for prorated recurring commit amounts.
-                #
-                #   @param access [MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::ProrationRounding::Access]
-                #   @param invoice [MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::ProrationRounding::Invoice]
-
-                # @see MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::ProrationRounding#access
-                class Access < MetronomeSDK::Internal::Type::BaseModel
-                  # @!attribute decimal_places
-                  #   Number of decimal places to round to. Applied directly to the stored monetary
-                  #   representation. Negative values round to powers of 10 (e.g., -2 rounds to
-                  #   nearest 100 in the stored unit. For USD, this means rounding to the nearest
-                  #   dollar).
-                  #
-                  #   @return [Float]
-                  required :decimal_places, Float
-
-                  # @!attribute rounding_method
-                  #
-                  #   @return [Symbol, MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::ProrationRounding::Access::RoundingMethod]
-                  required :rounding_method,
-                           enum: -> { MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::ProrationRounding::Access::RoundingMethod }
-
-                  # @!method initialize(decimal_places:, rounding_method:)
-                  #   Some parameter documentations has been truncated, see
-                  #   {MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::ProrationRounding::Access}
-                  #   for more details.
-                  #
-                  #   @param decimal_places [Float] Number of decimal places to round to. Applied directly to the stored monetary re
-                  #
-                  #   @param rounding_method [Symbol, MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::ProrationRounding::Access::RoundingMethod]
-
-                  # @see MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::ProrationRounding::Access#rounding_method
-                  module RoundingMethod
-                    extend MetronomeSDK::Internal::Type::Enum
-
-                    HALF_UP = :HALF_UP
-                    FLOOR = :FLOOR
-                    CEILING = :CEILING
-
-                    # @!method self.values
-                    #   @return [Array<Symbol>]
-                  end
-                end
-
-                # @see MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::ProrationRounding#invoice
-                class Invoice < MetronomeSDK::Internal::Type::BaseModel
-                  # @!attribute decimal_places
-                  #   Number of decimal places to round to. Applied directly to the stored monetary
-                  #   representation. Negative values round to powers of 10 (e.g., -2 rounds to
-                  #   nearest 100 in the stored unit. For USD, this means rounding to the nearest
-                  #   dollar).
-                  #
-                  #   @return [Float]
-                  required :decimal_places, Float
-
-                  # @!attribute rounding_method
-                  #
-                  #   @return [Symbol, MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::ProrationRounding::Invoice::RoundingMethod]
-                  required :rounding_method,
-                           enum: -> { MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::ProrationRounding::Invoice::RoundingMethod }
-
-                  # @!method initialize(decimal_places:, rounding_method:)
-                  #   Some parameter documentations has been truncated, see
-                  #   {MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::ProrationRounding::Invoice}
-                  #   for more details.
-                  #
-                  #   @param decimal_places [Float] Number of decimal places to round to. Applied directly to the stored monetary re
-                  #
-                  #   @param rounding_method [Symbol, MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::ProrationRounding::Invoice::RoundingMethod]
-
-                  # @see MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::ProrationRounding::Invoice#rounding_method
-                  module RoundingMethod
-                    extend MetronomeSDK::Internal::Type::Enum
-
-                    HALF_UP = :HALF_UP
-                    FLOOR = :FLOOR
-                    CEILING = :CEILING
-
-                    # @!method self.values
-                    #   @return [Array<Symbol>]
-                  end
-                end
-              end
-
               # The frequency at which the recurring commits will be created. If not provided: -
               # The commits will be created on the usage invoice frequency. If provided: - The
               # period defined in the duration will correspond to this frequency. - Commits will
@@ -1025,14 +916,6 @@ module MetronomeSDK
               optional :proration,
                        enum: -> { MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::Proration }
 
-              # @!attribute proration_rounding
-              #   Rounding configuration for prorated recurring credit amounts.
-              #
-              #   @return [MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::ProrationRounding, nil]
-              optional :proration_rounding,
-                       -> { MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::ProrationRounding },
-                       nil?: true
-
               # @!attribute recurrence_frequency
               #   The frequency at which the recurring commits will be created. If not provided: -
               #   The commits will be created on the usage invoice frequency. If provided: - The
@@ -1066,7 +949,7 @@ module MetronomeSDK
               #   @return [MetronomeSDK::Models::RecurringCommitSubscriptionConfig, nil]
               optional :subscription_config, -> { MetronomeSDK::RecurringCommitSubscriptionConfig }
 
-              # @!method initialize(id:, access_amount:, commit_duration:, priority:, product:, rate_type:, starting_at:, applicable_product_ids: nil, applicable_product_tags: nil, contract: nil, description: nil, ending_before: nil, hierarchy_configuration: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, proration_rounding: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil, subscription_config: nil)
+              # @!method initialize(id:, access_amount:, commit_duration:, priority:, product:, rate_type:, starting_at:, applicable_product_ids: nil, applicable_product_tags: nil, contract: nil, description: nil, ending_before: nil, hierarchy_configuration: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil, subscription_config: nil)
               #   Some parameter documentations has been truncated, see
               #   {MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit}
               #   for more details.
@@ -1102,8 +985,6 @@ module MetronomeSDK
               #   @param netsuite_sales_order_id [String] Will be passed down to the individual commits
               #
               #   @param proration [Symbol, MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::Proration] Determines whether the first and last commit will be prorated. If not provided,
-              #
-              #   @param proration_rounding [MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::ProrationRounding, nil] Rounding configuration for prorated recurring credit amounts.
               #
               #   @param recurrence_frequency [Symbol, MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::RecurrenceFrequency] The frequency at which the recurring commits will be created. If not provided:
               #
@@ -1223,59 +1104,6 @@ module MetronomeSDK
 
                 # @!method self.values
                 #   @return [Array<Symbol>]
-              end
-
-              # @see MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit#proration_rounding
-              class ProrationRounding < MetronomeSDK::Internal::Type::BaseModel
-                # @!attribute access
-                #
-                #   @return [MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::ProrationRounding::Access, nil]
-                optional :access,
-                         -> { MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::ProrationRounding::Access }
-
-                # @!method initialize(access: nil)
-                #   Rounding configuration for prorated recurring credit amounts.
-                #
-                #   @param access [MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::ProrationRounding::Access]
-
-                # @see MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::ProrationRounding#access
-                class Access < MetronomeSDK::Internal::Type::BaseModel
-                  # @!attribute decimal_places
-                  #   Number of decimal places to round to. Applied directly to the stored monetary
-                  #   representation. Negative values round to powers of 10 (e.g., -2 rounds to
-                  #   nearest 100 in the stored unit. For USD, this means rounding to the nearest
-                  #   dollar).
-                  #
-                  #   @return [Float]
-                  required :decimal_places, Float
-
-                  # @!attribute rounding_method
-                  #
-                  #   @return [Symbol, MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::ProrationRounding::Access::RoundingMethod]
-                  required :rounding_method,
-                           enum: -> { MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::ProrationRounding::Access::RoundingMethod }
-
-                  # @!method initialize(decimal_places:, rounding_method:)
-                  #   Some parameter documentations has been truncated, see
-                  #   {MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::ProrationRounding::Access}
-                  #   for more details.
-                  #
-                  #   @param decimal_places [Float] Number of decimal places to round to. Applied directly to the stored monetary re
-                  #
-                  #   @param rounding_method [Symbol, MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::ProrationRounding::Access::RoundingMethod]
-
-                  # @see MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::ProrationRounding::Access#rounding_method
-                  module RoundingMethod
-                    extend MetronomeSDK::Internal::Type::Enum
-
-                    HALF_UP = :HALF_UP
-                    FLOOR = :FLOOR
-                    CEILING = :CEILING
-
-                    # @!method self.values
-                    #   @return [Array<Symbol>]
-                  end
-                end
               end
 
               # The frequency at which the recurring commits will be created. If not provided: -

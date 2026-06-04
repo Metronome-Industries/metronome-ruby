@@ -56,11 +56,6 @@ module MetronomeSDK
       #   @return [String, nil]
       optional :id, String
 
-      # @!attribute billing_cycle_config
-      #
-      #   @return [MetronomeSDK::Models::Subscription::BillingCycleConfig, nil]
-      optional :billing_cycle_config, -> { MetronomeSDK::Subscription::BillingCycleConfig }
-
       # @!attribute custom_fields
       #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
       #
@@ -92,7 +87,7 @@ module MetronomeSDK
       #   @return [MetronomeSDK::Models::Subscription::SeatConfig, nil]
       optional :seat_config, -> { MetronomeSDK::Subscription::SeatConfig }
 
-      # @!method initialize(billing_periods:, collection_schedule:, proration:, quantity_management_mode:, quantity_schedule:, starting_at:, subscription_rate:, id: nil, billing_cycle_config: nil, custom_fields: nil, description: nil, ending_before: nil, fiat_credit_type_id: nil, name: nil, seat_config: nil)
+      # @!method initialize(billing_periods:, collection_schedule:, proration:, quantity_management_mode:, quantity_schedule:, starting_at:, subscription_rate:, id: nil, custom_fields: nil, description: nil, ending_before: nil, fiat_credit_type_id: nil, name: nil, seat_config: nil)
       #   Some parameter documentations has been truncated, see
       #   {MetronomeSDK::Models::Subscription} for more details.
       #
@@ -111,8 +106,6 @@ module MetronomeSDK
       #   @param subscription_rate [MetronomeSDK::Models::Subscription::SubscriptionRate]
       #
       #   @param id [String]
-      #
-      #   @param billing_cycle_config [MetronomeSDK::Models::Subscription::BillingCycleConfig]
       #
       #   @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
       #
@@ -225,15 +218,9 @@ module MetronomeSDK
         #   @return [Boolean]
         required :is_prorated, MetronomeSDK::Internal::Type::Boolean
 
-        # @!attribute rounding
-        #
-        #   @return [MetronomeSDK::Models::Subscription::Proration::Rounding, nil]
-        optional :rounding, -> { MetronomeSDK::Subscription::Proration::Rounding }
-
-        # @!method initialize(invoice_behavior:, is_prorated:, rounding: nil)
+        # @!method initialize(invoice_behavior:, is_prorated:)
         #   @param invoice_behavior [Symbol, MetronomeSDK::Models::Subscription::Proration::InvoiceBehavior]
         #   @param is_prorated [Boolean]
-        #   @param rounding [MetronomeSDK::Models::Subscription::Proration::Rounding]
 
         # @see MetronomeSDK::Models::Subscription::Proration#invoice_behavior
         module InvoiceBehavior
@@ -244,43 +231,6 @@ module MetronomeSDK
 
           # @!method self.values
           #   @return [Array<Symbol>]
-        end
-
-        # @see MetronomeSDK::Models::Subscription::Proration#rounding
-        class Rounding < MetronomeSDK::Internal::Type::BaseModel
-          # @!attribute decimal_places
-          #   Number of decimal places to round to. Applied directly to the stored monetary
-          #   representation. Negative values round to powers of 10 (e.g., -2 rounds to
-          #   nearest 100 in the stored unit. For USD, this means rounding to the nearest
-          #   dollar).
-          #
-          #   @return [Float]
-          required :decimal_places, Float
-
-          # @!attribute rounding_method
-          #
-          #   @return [Symbol, MetronomeSDK::Models::Subscription::Proration::Rounding::RoundingMethod]
-          required :rounding_method, enum: -> { MetronomeSDK::Subscription::Proration::Rounding::RoundingMethod }
-
-          # @!method initialize(decimal_places:, rounding_method:)
-          #   Some parameter documentations has been truncated, see
-          #   {MetronomeSDK::Models::Subscription::Proration::Rounding} for more details.
-          #
-          #   @param decimal_places [Float] Number of decimal places to round to. Applied directly to the stored monetary re
-          #
-          #   @param rounding_method [Symbol, MetronomeSDK::Models::Subscription::Proration::Rounding::RoundingMethod]
-
-          # @see MetronomeSDK::Models::Subscription::Proration::Rounding#rounding_method
-          module RoundingMethod
-            extend MetronomeSDK::Internal::Type::Enum
-
-            HALF_UP = :HALF_UP
-            FLOOR = :FLOOR
-            CEILING = :CEILING
-
-            # @!method self.values
-            #   @return [Array<Symbol>]
-          end
         end
       end
 
@@ -371,44 +321,6 @@ module MetronomeSDK
           # @!method initialize(id:, name:)
           #   @param id [String]
           #   @param name [String]
-        end
-      end
-
-      # @see MetronomeSDK::Models::Subscription#billing_cycle_config
-      class BillingCycleConfig < MetronomeSDK::Internal::Type::BaseModel
-        # @!attribute anchor_date
-        #   The date this subscription's billing cycle is anchored to.
-        #
-        #   @return [Time]
-        required :anchor_date, Time
-
-        # @!attribute invoice_placement
-        #   Controls whether this subscription consolidates onto usage invoices or gets its
-        #   own scheduled invoice.
-        #
-        #   @return [Symbol, MetronomeSDK::Models::Subscription::BillingCycleConfig::InvoicePlacement]
-        required :invoice_placement, enum: -> { MetronomeSDK::Subscription::BillingCycleConfig::InvoicePlacement }
-
-        # @!method initialize(anchor_date:, invoice_placement:)
-        #   Some parameter documentations has been truncated, see
-        #   {MetronomeSDK::Models::Subscription::BillingCycleConfig} for more details.
-        #
-        #   @param anchor_date [Time] The date this subscription's billing cycle is anchored to.
-        #
-        #   @param invoice_placement [Symbol, MetronomeSDK::Models::Subscription::BillingCycleConfig::InvoicePlacement] Controls whether this subscription consolidates onto usage invoices or gets its
-
-        # Controls whether this subscription consolidates onto usage invoices or gets its
-        # own scheduled invoice.
-        #
-        # @see MetronomeSDK::Models::Subscription::BillingCycleConfig#invoice_placement
-        module InvoicePlacement
-          extend MetronomeSDK::Internal::Type::Enum
-
-          ON_SCHEDULED_INVOICE = :ON_SCHEDULED_INVOICE
-          ON_USAGE_INVOICE = :ON_USAGE_INVOICE
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
         end
       end
 
