@@ -1066,6 +1066,7 @@ module MetronomeSDK
                 name: String,
                 netsuite_sales_order_id: String,
                 proration: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCommit::proration,
+                proration_rounding: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCommit::ProrationRounding?,
                 recurrence_frequency: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCommit::recurrence_frequency,
                 rollover_fraction: Float,
                 specifiers: ::Array[MetronomeSDK::CommitSpecifier],
@@ -1135,6 +1136,8 @@ module MetronomeSDK
                 MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCommit::proration
               ) -> MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCommit::proration
 
+              attr_accessor proration_rounding: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCommit::ProrationRounding?
+
               attr_reader recurrence_frequency: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCommit::recurrence_frequency?
 
               def recurrence_frequency=: (
@@ -1175,6 +1178,7 @@ module MetronomeSDK
                 ?name: String,
                 ?netsuite_sales_order_id: String,
                 ?proration: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCommit::proration,
+                ?proration_rounding: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCommit::ProrationRounding?,
                 ?recurrence_frequency: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCommit::recurrence_frequency,
                 ?rollover_fraction: Float,
                 ?specifiers: ::Array[MetronomeSDK::CommitSpecifier],
@@ -1199,6 +1203,7 @@ module MetronomeSDK
                 name: String,
                 netsuite_sales_order_id: String,
                 proration: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCommit::proration,
+                proration_rounding: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCommit::ProrationRounding?,
                 recurrence_frequency: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCommit::recurrence_frequency,
                 rollover_fraction: Float,
                 specifiers: ::Array[MetronomeSDK::CommitSpecifier],
@@ -1335,6 +1340,104 @@ module MetronomeSDK
                 def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCommit::proration]
               end
 
+              type proration_rounding =
+                {
+                  access: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCommit::ProrationRounding::Access,
+                  invoice: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCommit::ProrationRounding::Invoice
+                }
+
+              class ProrationRounding < MetronomeSDK::Internal::Type::BaseModel
+                attr_reader access: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCommit::ProrationRounding::Access?
+
+                def access=: (
+                  MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCommit::ProrationRounding::Access
+                ) -> MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCommit::ProrationRounding::Access
+
+                attr_reader invoice: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCommit::ProrationRounding::Invoice?
+
+                def invoice=: (
+                  MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCommit::ProrationRounding::Invoice
+                ) -> MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCommit::ProrationRounding::Invoice
+
+                def initialize: (
+                  ?access: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCommit::ProrationRounding::Access,
+                  ?invoice: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCommit::ProrationRounding::Invoice
+                ) -> void
+
+                def to_hash: -> {
+                  access: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCommit::ProrationRounding::Access,
+                  invoice: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCommit::ProrationRounding::Invoice
+                }
+
+                type access =
+                  {
+                    decimal_places: Float,
+                    rounding_method: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCommit::ProrationRounding::Access::rounding_method
+                  }
+
+                class Access < MetronomeSDK::Internal::Type::BaseModel
+                  attr_accessor decimal_places: Float
+
+                  attr_accessor rounding_method: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCommit::ProrationRounding::Access::rounding_method
+
+                  def initialize: (
+                    decimal_places: Float,
+                    rounding_method: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCommit::ProrationRounding::Access::rounding_method
+                  ) -> void
+
+                  def to_hash: -> {
+                    decimal_places: Float,
+                    rounding_method: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCommit::ProrationRounding::Access::rounding_method
+                  }
+
+                  type rounding_method = :HALF_UP | :FLOOR | :CEILING
+
+                  module RoundingMethod
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    HALF_UP: :HALF_UP
+                    FLOOR: :FLOOR
+                    CEILING: :CEILING
+
+                    def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCommit::ProrationRounding::Access::rounding_method]
+                  end
+                end
+
+                type invoice =
+                  {
+                    decimal_places: Float,
+                    rounding_method: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCommit::ProrationRounding::Invoice::rounding_method
+                  }
+
+                class Invoice < MetronomeSDK::Internal::Type::BaseModel
+                  attr_accessor decimal_places: Float
+
+                  attr_accessor rounding_method: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCommit::ProrationRounding::Invoice::rounding_method
+
+                  def initialize: (
+                    decimal_places: Float,
+                    rounding_method: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCommit::ProrationRounding::Invoice::rounding_method
+                  ) -> void
+
+                  def to_hash: -> {
+                    decimal_places: Float,
+                    rounding_method: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCommit::ProrationRounding::Invoice::rounding_method
+                  }
+
+                  type rounding_method = :HALF_UP | :FLOOR | :CEILING
+
+                  module RoundingMethod
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    HALF_UP: :HALF_UP
+                    FLOOR: :FLOOR
+                    CEILING: :CEILING
+
+                    def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCommit::ProrationRounding::Invoice::rounding_method]
+                  end
+                end
+              end
+
               type recurrence_frequency =
                 :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY
 
@@ -1368,6 +1471,7 @@ module MetronomeSDK
                 name: String,
                 netsuite_sales_order_id: String,
                 proration: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCredit::proration,
+                proration_rounding: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCredit::ProrationRounding?,
                 recurrence_frequency: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCredit::recurrence_frequency,
                 rollover_fraction: Float,
                 specifiers: ::Array[MetronomeSDK::CommitSpecifier],
@@ -1431,6 +1535,8 @@ module MetronomeSDK
                 MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCredit::proration
               ) -> MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCredit::proration
 
+              attr_accessor proration_rounding: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCredit::ProrationRounding?
+
               attr_reader recurrence_frequency: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCredit::recurrence_frequency?
 
               def recurrence_frequency=: (
@@ -1470,6 +1576,7 @@ module MetronomeSDK
                 ?name: String,
                 ?netsuite_sales_order_id: String,
                 ?proration: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCredit::proration,
+                ?proration_rounding: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCredit::ProrationRounding?,
                 ?recurrence_frequency: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCredit::recurrence_frequency,
                 ?rollover_fraction: Float,
                 ?specifiers: ::Array[MetronomeSDK::CommitSpecifier],
@@ -1493,6 +1600,7 @@ module MetronomeSDK
                 name: String,
                 netsuite_sales_order_id: String,
                 proration: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCredit::proration,
+                proration_rounding: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCredit::ProrationRounding?,
                 recurrence_frequency: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCredit::recurrence_frequency,
                 rollover_fraction: Float,
                 specifiers: ::Array[MetronomeSDK::CommitSpecifier],
@@ -1604,6 +1712,61 @@ module MetronomeSDK
                 FIRST_AND_LAST: :FIRST_AND_LAST
 
                 def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCredit::proration]
+              end
+
+              type proration_rounding =
+                {
+                  access: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCredit::ProrationRounding::Access
+                }
+
+              class ProrationRounding < MetronomeSDK::Internal::Type::BaseModel
+                attr_reader access: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCredit::ProrationRounding::Access?
+
+                def access=: (
+                  MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCredit::ProrationRounding::Access
+                ) -> MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCredit::ProrationRounding::Access
+
+                def initialize: (
+                  ?access: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCredit::ProrationRounding::Access
+                ) -> void
+
+                def to_hash: -> {
+                  access: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCredit::ProrationRounding::Access
+                }
+
+                type access =
+                  {
+                    decimal_places: Float,
+                    rounding_method: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCredit::ProrationRounding::Access::rounding_method
+                  }
+
+                class Access < MetronomeSDK::Internal::Type::BaseModel
+                  attr_accessor decimal_places: Float
+
+                  attr_accessor rounding_method: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCredit::ProrationRounding::Access::rounding_method
+
+                  def initialize: (
+                    decimal_places: Float,
+                    rounding_method: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCredit::ProrationRounding::Access::rounding_method
+                  ) -> void
+
+                  def to_hash: -> {
+                    decimal_places: Float,
+                    rounding_method: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCredit::ProrationRounding::Access::rounding_method
+                  }
+
+                  type rounding_method = :HALF_UP | :FLOOR | :CEILING
+
+                  module RoundingMethod
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    HALF_UP: :HALF_UP
+                    FLOOR: :FLOOR
+                    CEILING: :CEILING
+
+                    def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCredit::ProrationRounding::Access::rounding_method]
+                  end
+                end
               end
 
               type recurrence_frequency =
@@ -1797,6 +1960,7 @@ module MetronomeSDK
                 starting_at: Time,
                 subscription_rate: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddSubscription::SubscriptionRate,
                 id: String,
+                billing_cycle_config: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddSubscription::BillingCycleConfig,
                 custom_fields: ::Hash[Symbol, String],
                 description: String,
                 ending_before: Time,
@@ -1823,6 +1987,12 @@ module MetronomeSDK
               attr_reader id: String?
 
               def id=: (String) -> String
+
+              attr_reader billing_cycle_config: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddSubscription::BillingCycleConfig?
+
+              def billing_cycle_config=: (
+                MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddSubscription::BillingCycleConfig
+              ) -> MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddSubscription::BillingCycleConfig
 
               attr_reader custom_fields: ::Hash[Symbol, String]?
 
@@ -1861,6 +2031,7 @@ module MetronomeSDK
                 starting_at: Time,
                 subscription_rate: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddSubscription::SubscriptionRate,
                 ?id: String,
+                ?billing_cycle_config: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddSubscription::BillingCycleConfig,
                 ?custom_fields: ::Hash[Symbol, String],
                 ?description: String,
                 ?ending_before: Time,
@@ -1878,6 +2049,7 @@ module MetronomeSDK
                 starting_at: Time,
                 subscription_rate: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddSubscription::SubscriptionRate,
                 id: String,
+                billing_cycle_config: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddSubscription::BillingCycleConfig,
                 custom_fields: ::Hash[Symbol, String],
                 description: String,
                 ending_before: Time,
@@ -1984,7 +2156,8 @@ module MetronomeSDK
               type proration =
                 {
                   invoice_behavior: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddSubscription::Proration::invoice_behavior,
-                  is_prorated: bool
+                  is_prorated: bool,
+                  rounding: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddSubscription::Proration::Rounding
                 }
 
               class Proration < MetronomeSDK::Internal::Type::BaseModel
@@ -1992,14 +2165,22 @@ module MetronomeSDK
 
                 attr_accessor is_prorated: bool
 
+                attr_reader rounding: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddSubscription::Proration::Rounding?
+
+                def rounding=: (
+                  MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddSubscription::Proration::Rounding
+                ) -> MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddSubscription::Proration::Rounding
+
                 def initialize: (
                   invoice_behavior: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddSubscription::Proration::invoice_behavior,
-                  is_prorated: bool
+                  is_prorated: bool,
+                  ?rounding: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddSubscription::Proration::Rounding
                 ) -> void
 
                 def to_hash: -> {
                   invoice_behavior: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddSubscription::Proration::invoice_behavior,
-                  is_prorated: bool
+                  is_prorated: bool,
+                  rounding: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddSubscription::Proration::Rounding
                 }
 
                 type invoice_behavior =
@@ -2012,6 +2193,40 @@ module MetronomeSDK
                   BILL_ON_NEXT_COLLECTION_DATE: :BILL_ON_NEXT_COLLECTION_DATE
 
                   def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddSubscription::Proration::invoice_behavior]
+                end
+
+                type rounding =
+                  {
+                    decimal_places: Float,
+                    rounding_method: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddSubscription::Proration::Rounding::rounding_method
+                  }
+
+                class Rounding < MetronomeSDK::Internal::Type::BaseModel
+                  attr_accessor decimal_places: Float
+
+                  attr_accessor rounding_method: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddSubscription::Proration::Rounding::rounding_method
+
+                  def initialize: (
+                    decimal_places: Float,
+                    rounding_method: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddSubscription::Proration::Rounding::rounding_method
+                  ) -> void
+
+                  def to_hash: -> {
+                    decimal_places: Float,
+                    rounding_method: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddSubscription::Proration::Rounding::rounding_method
+                  }
+
+                  type rounding_method = :HALF_UP | :FLOOR | :CEILING
+
+                  module RoundingMethod
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    HALF_UP: :HALF_UP
+                    FLOOR: :FLOOR
+                    CEILING: :CEILING
+
+                    def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddSubscription::Proration::Rounding::rounding_method]
+                  end
                 end
               end
 
@@ -2096,6 +2311,40 @@ module MetronomeSDK
                   def initialize: (id: String, name: String) -> void
 
                   def to_hash: -> { id: String, name: String }
+                end
+              end
+
+              type billing_cycle_config =
+                {
+                  anchor_date: Time,
+                  invoice_placement: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddSubscription::BillingCycleConfig::invoice_placement
+                }
+
+              class BillingCycleConfig < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor anchor_date: Time
+
+                attr_accessor invoice_placement: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddSubscription::BillingCycleConfig::invoice_placement
+
+                def initialize: (
+                  anchor_date: Time,
+                  invoice_placement: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddSubscription::BillingCycleConfig::invoice_placement
+                ) -> void
+
+                def to_hash: -> {
+                  anchor_date: Time,
+                  invoice_placement: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddSubscription::BillingCycleConfig::invoice_placement
+                }
+
+                type invoice_placement =
+                  :ON_SCHEDULED_INVOICE | :ON_USAGE_INVOICE
+
+                module InvoicePlacement
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  ON_SCHEDULED_INVOICE: :ON_SCHEDULED_INVOICE
+                  ON_USAGE_INVOICE: :ON_USAGE_INVOICE
+
+                  def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddSubscription::BillingCycleConfig::invoice_placement]
                 end
               end
 
@@ -3190,6 +3439,7 @@ module MetronomeSDK
                 access_amount: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCommit::AccessAmount,
                 ending_before: Time,
                 invoice_amount: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCommit::InvoiceAmount,
+                proration_rounding: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCommit::ProrationRounding?,
                 rate_type: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCommit::rate_type
               }
 
@@ -3212,6 +3462,8 @@ module MetronomeSDK
                 MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCommit::InvoiceAmount
               ) -> MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCommit::InvoiceAmount
 
+              attr_accessor proration_rounding: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCommit::ProrationRounding?
+
               attr_reader rate_type: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCommit::rate_type?
 
               def rate_type=: (
@@ -3223,6 +3475,7 @@ module MetronomeSDK
                 ?access_amount: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCommit::AccessAmount,
                 ?ending_before: Time,
                 ?invoice_amount: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCommit::InvoiceAmount,
+                ?proration_rounding: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCommit::ProrationRounding?,
                 ?rate_type: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCommit::rate_type
               ) -> void
 
@@ -3231,6 +3484,7 @@ module MetronomeSDK
                 access_amount: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCommit::AccessAmount,
                 ending_before: Time,
                 invoice_amount: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCommit::InvoiceAmount,
+                proration_rounding: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCommit::ProrationRounding?,
                 rate_type: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCommit::rate_type
               }
 
@@ -3266,6 +3520,104 @@ module MetronomeSDK
                 def to_hash: -> { quantity: Float, unit_price: Float }
               end
 
+              type proration_rounding =
+                {
+                  access: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCommit::ProrationRounding::Access,
+                  invoice: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCommit::ProrationRounding::Invoice
+                }
+
+              class ProrationRounding < MetronomeSDK::Internal::Type::BaseModel
+                attr_reader access: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCommit::ProrationRounding::Access?
+
+                def access=: (
+                  MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCommit::ProrationRounding::Access
+                ) -> MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCommit::ProrationRounding::Access
+
+                attr_reader invoice: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCommit::ProrationRounding::Invoice?
+
+                def invoice=: (
+                  MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCommit::ProrationRounding::Invoice
+                ) -> MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCommit::ProrationRounding::Invoice
+
+                def initialize: (
+                  ?access: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCommit::ProrationRounding::Access,
+                  ?invoice: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCommit::ProrationRounding::Invoice
+                ) -> void
+
+                def to_hash: -> {
+                  access: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCommit::ProrationRounding::Access,
+                  invoice: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCommit::ProrationRounding::Invoice
+                }
+
+                type access =
+                  {
+                    decimal_places: Float,
+                    rounding_method: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCommit::ProrationRounding::Access::rounding_method
+                  }
+
+                class Access < MetronomeSDK::Internal::Type::BaseModel
+                  attr_accessor decimal_places: Float
+
+                  attr_accessor rounding_method: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCommit::ProrationRounding::Access::rounding_method
+
+                  def initialize: (
+                    decimal_places: Float,
+                    rounding_method: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCommit::ProrationRounding::Access::rounding_method
+                  ) -> void
+
+                  def to_hash: -> {
+                    decimal_places: Float,
+                    rounding_method: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCommit::ProrationRounding::Access::rounding_method
+                  }
+
+                  type rounding_method = :HALF_UP | :FLOOR | :CEILING
+
+                  module RoundingMethod
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    HALF_UP: :HALF_UP
+                    FLOOR: :FLOOR
+                    CEILING: :CEILING
+
+                    def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCommit::ProrationRounding::Access::rounding_method]
+                  end
+                end
+
+                type invoice =
+                  {
+                    decimal_places: Float,
+                    rounding_method: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCommit::ProrationRounding::Invoice::rounding_method
+                  }
+
+                class Invoice < MetronomeSDK::Internal::Type::BaseModel
+                  attr_accessor decimal_places: Float
+
+                  attr_accessor rounding_method: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCommit::ProrationRounding::Invoice::rounding_method
+
+                  def initialize: (
+                    decimal_places: Float,
+                    rounding_method: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCommit::ProrationRounding::Invoice::rounding_method
+                  ) -> void
+
+                  def to_hash: -> {
+                    decimal_places: Float,
+                    rounding_method: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCommit::ProrationRounding::Invoice::rounding_method
+                  }
+
+                  type rounding_method = :HALF_UP | :FLOOR | :CEILING
+
+                  module RoundingMethod
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    HALF_UP: :HALF_UP
+                    FLOOR: :FLOOR
+                    CEILING: :CEILING
+
+                    def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCommit::ProrationRounding::Invoice::rounding_method]
+                  end
+                end
+              end
+
               type rate_type = :LIST_RATE | :COMMIT_RATE
 
               module RateType
@@ -3283,6 +3635,7 @@ module MetronomeSDK
                 id: String,
                 access_amount: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCredit::AccessAmount,
                 ending_before: Time,
+                proration_rounding: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCredit::ProrationRounding?,
                 rate_type: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCredit::rate_type
               }
 
@@ -3299,6 +3652,8 @@ module MetronomeSDK
 
               def ending_before=: (Time) -> Time
 
+              attr_accessor proration_rounding: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCredit::ProrationRounding?
+
               attr_reader rate_type: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCredit::rate_type?
 
               def rate_type=: (
@@ -3309,6 +3664,7 @@ module MetronomeSDK
                 id: String,
                 ?access_amount: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCredit::AccessAmount,
                 ?ending_before: Time,
+                ?proration_rounding: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCredit::ProrationRounding?,
                 ?rate_type: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCredit::rate_type
               ) -> void
 
@@ -3316,6 +3672,7 @@ module MetronomeSDK
                 id: String,
                 access_amount: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCredit::AccessAmount,
                 ending_before: Time,
+                proration_rounding: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCredit::ProrationRounding?,
                 rate_type: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCredit::rate_type
               }
 
@@ -3333,6 +3690,61 @@ module MetronomeSDK
                 def initialize: (?quantity: Float, ?unit_price: Float) -> void
 
                 def to_hash: -> { quantity: Float, unit_price: Float }
+              end
+
+              type proration_rounding =
+                {
+                  access: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCredit::ProrationRounding::Access
+                }
+
+              class ProrationRounding < MetronomeSDK::Internal::Type::BaseModel
+                attr_reader access: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCredit::ProrationRounding::Access?
+
+                def access=: (
+                  MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCredit::ProrationRounding::Access
+                ) -> MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCredit::ProrationRounding::Access
+
+                def initialize: (
+                  ?access: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCredit::ProrationRounding::Access
+                ) -> void
+
+                def to_hash: -> {
+                  access: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCredit::ProrationRounding::Access
+                }
+
+                type access =
+                  {
+                    decimal_places: Float,
+                    rounding_method: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCredit::ProrationRounding::Access::rounding_method
+                  }
+
+                class Access < MetronomeSDK::Internal::Type::BaseModel
+                  attr_accessor decimal_places: Float
+
+                  attr_accessor rounding_method: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCredit::ProrationRounding::Access::rounding_method
+
+                  def initialize: (
+                    decimal_places: Float,
+                    rounding_method: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCredit::ProrationRounding::Access::rounding_method
+                  ) -> void
+
+                  def to_hash: -> {
+                    decimal_places: Float,
+                    rounding_method: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCredit::ProrationRounding::Access::rounding_method
+                  }
+
+                  type rounding_method = :HALF_UP | :FLOOR | :CEILING
+
+                  module RoundingMethod
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    HALF_UP: :HALF_UP
+                    FLOOR: :FLOOR
+                    CEILING: :CEILING
+
+                    def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateRecurringCredit::ProrationRounding::Access::rounding_method]
+                  end
+                end
               end
 
               type rate_type = :LIST_RATE | :COMMIT_RATE
