@@ -1438,6 +1438,7 @@ module MetronomeSDK
 
           type override_specifier =
             {
+              any_commit_or_credit_ids: ::Array[String],
               billing_frequency: MetronomeSDK::Models::V2::ContractEditParams::AddOverride::OverrideSpecifier::billing_frequency,
               commit_ids: ::Array[String],
               presentation_group_values: ::Hash[Symbol, String],
@@ -1448,6 +1449,10 @@ module MetronomeSDK
             }
 
           class OverrideSpecifier < MetronomeSDK::Internal::Type::BaseModel
+            attr_reader any_commit_or_credit_ids: ::Array[String]?
+
+            def any_commit_or_credit_ids=: (::Array[String]) -> ::Array[String]
+
             attr_reader billing_frequency: MetronomeSDK::Models::V2::ContractEditParams::AddOverride::OverrideSpecifier::billing_frequency?
 
             def billing_frequency=: (
@@ -1483,6 +1488,7 @@ module MetronomeSDK
             def recurring_commit_ids=: (::Array[String]) -> ::Array[String]
 
             def initialize: (
+              ?any_commit_or_credit_ids: ::Array[String],
               ?billing_frequency: MetronomeSDK::Models::V2::ContractEditParams::AddOverride::OverrideSpecifier::billing_frequency,
               ?commit_ids: ::Array[String],
               ?presentation_group_values: ::Hash[Symbol, String],
@@ -1493,6 +1499,7 @@ module MetronomeSDK
             ) -> void
 
             def to_hash: -> {
+              any_commit_or_credit_ids: ::Array[String],
               billing_frequency: MetronomeSDK::Models::V2::ContractEditParams::AddOverride::OverrideSpecifier::billing_frequency,
               commit_ids: ::Array[String],
               presentation_group_values: ::Hash[Symbol, String],
