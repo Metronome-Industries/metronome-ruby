@@ -3601,6 +3601,17 @@ module MetronomeSDK
                 )
               end
 
+            # Can only be used for commit specific overrides. Must be used in conjunction with
+            # one of `product_id`, `product_tags`, `pricing_group_values`, or
+            # `presentation_group_values`. Must be used instead of both `commit_ids` and
+            # `recurring_commit_ids` If provided, the override will apply to any specified
+            # commit, credit, recurring commit or recurring credit IDs.
+            sig { returns(T.nilable(T::Array[String])) }
+            attr_reader :any_commit_or_credit_ids
+
+            sig { params(any_commit_or_credit_ids: T::Array[String]).void }
+            attr_writer :any_commit_or_credit_ids
+
             sig do
               returns(
                 T.nilable(
@@ -3673,6 +3684,7 @@ module MetronomeSDK
 
             sig do
               params(
+                any_commit_or_credit_ids: T::Array[String],
                 billing_frequency:
                   MetronomeSDK::V2::ContractEditParams::AddOverride::OverrideSpecifier::BillingFrequency::OrSymbol,
                 commit_ids: T::Array[String],
@@ -3684,6 +3696,12 @@ module MetronomeSDK
               ).returns(T.attached_class)
             end
             def self.new(
+              # Can only be used for commit specific overrides. Must be used in conjunction with
+              # one of `product_id`, `product_tags`, `pricing_group_values`, or
+              # `presentation_group_values`. Must be used instead of both `commit_ids` and
+              # `recurring_commit_ids` If provided, the override will apply to any specified
+              # commit, credit, recurring commit or recurring credit IDs.
+              any_commit_or_credit_ids: nil,
               billing_frequency: nil,
               # If provided, the override will only apply to the specified commits. Can only be
               # used for commit specific overrides. If not provided, the override will apply to
@@ -3712,6 +3730,7 @@ module MetronomeSDK
             sig do
               override.returns(
                 {
+                  any_commit_or_credit_ids: T::Array[String],
                   billing_frequency:
                     MetronomeSDK::V2::ContractEditParams::AddOverride::OverrideSpecifier::BillingFrequency::OrSymbol,
                   commit_ids: T::Array[String],

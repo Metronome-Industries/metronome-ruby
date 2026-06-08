@@ -793,6 +793,11 @@ module MetronomeSDK
               #   @param type [Symbol, MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddOverride::Type]
 
               class OverrideSpecifier < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute any_commit_or_credit_ids
+                #
+                #   @return [Array<String>, nil]
+                optional :any_commit_or_credit_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
+
                 # @!attribute billing_frequency
                 #
                 #   @return [Symbol, MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddOverride::OverrideSpecifier::BillingFrequency, nil]
@@ -829,7 +834,8 @@ module MetronomeSDK
                 #   @return [Array<String>, nil]
                 optional :recurring_commit_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
 
-                # @!method initialize(billing_frequency: nil, commit_ids: nil, presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil, recurring_commit_ids: nil)
+                # @!method initialize(any_commit_or_credit_ids: nil, billing_frequency: nil, commit_ids: nil, presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil, recurring_commit_ids: nil)
+                #   @param any_commit_or_credit_ids [Array<String>]
                 #   @param billing_frequency [Symbol, MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddOverride::OverrideSpecifier::BillingFrequency]
                 #   @param commit_ids [Array<String>]
                 #   @param presentation_group_values [Hash{Symbol=>String, nil}]

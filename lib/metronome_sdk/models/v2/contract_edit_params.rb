@@ -1585,6 +1585,16 @@ module MetronomeSDK
           #   @param type [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddOverride::Type] Overwrites are prioritized over multipliers and tiered overrides.
 
           class OverrideSpecifier < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute any_commit_or_credit_ids
+            #   Can only be used for commit specific overrides. Must be used in conjunction with
+            #   one of `product_id`, `product_tags`, `pricing_group_values`, or
+            #   `presentation_group_values`. Must be used instead of both `commit_ids` and
+            #   `recurring_commit_ids` If provided, the override will apply to any specified
+            #   commit, credit, recurring commit or recurring credit IDs.
+            #
+            #   @return [Array<String>, nil]
+            optional :any_commit_or_credit_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
+
             # @!attribute billing_frequency
             #
             #   @return [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddOverride::OverrideSpecifier::BillingFrequency, nil]
@@ -1636,10 +1646,12 @@ module MetronomeSDK
             #   @return [Array<String>, nil]
             optional :recurring_commit_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
 
-            # @!method initialize(billing_frequency: nil, commit_ids: nil, presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil, recurring_commit_ids: nil)
+            # @!method initialize(any_commit_or_credit_ids: nil, billing_frequency: nil, commit_ids: nil, presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil, recurring_commit_ids: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractEditParams::AddOverride::OverrideSpecifier}
             #   for more details.
+            #
+            #   @param any_commit_or_credit_ids [Array<String>] Can only be used for commit specific overrides. Must be used in conjunction with
             #
             #   @param billing_frequency [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddOverride::OverrideSpecifier::BillingFrequency]
             #
