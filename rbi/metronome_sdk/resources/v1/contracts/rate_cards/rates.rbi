@@ -51,6 +51,10 @@ module MetronomeSDK
             end
 
             # Add a new rate
+            #
+            # This endpoint is heavily rate limited. For adding multiple rates, using the
+            # [addRates](https://docs.metronome.com/api-reference/rate-cards/add-rates)
+            # endpoint is strongly encouraged.
             sig do
               params(
                 entitled: T::Boolean,
