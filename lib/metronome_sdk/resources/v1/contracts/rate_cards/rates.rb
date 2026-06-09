@@ -59,6 +59,10 @@ module MetronomeSDK
             #
             # Add a new rate
             #
+            # This endpoint is heavily rate limited. For adding multiple rates, using the
+            # [addRates](https://docs.metronome.com/api-reference/rate-cards/add-rates)
+            # endpoint is strongly encouraged.
+            #
             # @overload add(entitled:, product_id:, rate_card_id:, rate_type:, starting_at:, billing_frequency: nil, commit_rate: nil, credit_type_id: nil, custom_rate: nil, ending_before: nil, is_prorated: nil, price: nil, pricing_group_values: nil, quantity: nil, tiers: nil, request_options: {})
             #
             # @param entitled [Boolean]
