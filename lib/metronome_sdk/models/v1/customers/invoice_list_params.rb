@@ -77,7 +77,14 @@ module MetronomeSDK
           #   @return [Symbol, MetronomeSDK::Models::V1::Customers::InvoiceListParams::Type, nil]
           optional :type, enum: -> { MetronomeSDK::V1::Customers::InvoiceListParams::Type }
 
-          # @!method initialize(customer_id:, contract_id: nil, credit_type_id: nil, ending_before: nil, limit: nil, next_page: nil, skip_zero_qty_line_items: nil, sort: nil, starting_on: nil, status: nil, type: nil, request_options: {})
+          # @!attribute webhook_notification_id
+          #   Indicates that this API request was triggered by a webhook notification with the
+          #   provided ID.
+          #
+          #   @return [String, nil]
+          optional :webhook_notification_id, String
+
+          # @!method initialize(customer_id:, contract_id: nil, credit_type_id: nil, ending_before: nil, limit: nil, next_page: nil, skip_zero_qty_line_items: nil, sort: nil, starting_on: nil, status: nil, type: nil, webhook_notification_id: nil, request_options: {})
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V1::Customers::InvoiceListParams} for more details.
           #
@@ -102,6 +109,8 @@ module MetronomeSDK
           #   @param status [String] Invoice status, e.g. DRAFT, FINALIZED, or VOID
           #
           #   @param type [Symbol, MetronomeSDK::Models::V1::Customers::InvoiceListParams::Type] Filter invoices by type. Defaults to returning all invoice types.
+          #
+          #   @param webhook_notification_id [String] Indicates that this API request was triggered by a webhook notification with the
           #
           #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
 

@@ -14,7 +14,8 @@ module MetronomeSDK
             sort: MetronomeSDK::Models::V1::Customers::InvoiceListParams::sort,
             starting_on: Time,
             status: String,
-            type: MetronomeSDK::Models::V1::Customers::InvoiceListParams::type_
+            type: MetronomeSDK::Models::V1::Customers::InvoiceListParams::type_,
+            webhook_notification_id: String
           }
           & MetronomeSDK::Internal::Type::request_parameters
 
@@ -68,6 +69,10 @@ module MetronomeSDK
             MetronomeSDK::Models::V1::Customers::InvoiceListParams::type_
           ) -> MetronomeSDK::Models::V1::Customers::InvoiceListParams::type_
 
+          attr_reader webhook_notification_id: String?
+
+          def webhook_notification_id=: (String) -> String
+
           def initialize: (
             customer_id: String,
             ?contract_id: String,
@@ -80,6 +85,7 @@ module MetronomeSDK
             ?starting_on: Time,
             ?status: String,
             ?type: MetronomeSDK::Models::V1::Customers::InvoiceListParams::type_,
+            ?webhook_notification_id: String,
             ?request_options: MetronomeSDK::request_opts
           ) -> void
 
@@ -95,6 +101,7 @@ module MetronomeSDK
             starting_on: Time,
             status: String,
             type: MetronomeSDK::Models::V1::Customers::InvoiceListParams::type_,
+            webhook_notification_id: String,
             request_options: MetronomeSDK::RequestOptions
           }
 
