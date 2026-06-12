@@ -154,6 +154,7 @@ module MetronomeSDK
           ?include_ledgers: bool,
           ?limit: Integer,
           ?seat_ids: ::Array[String],
+          ?skip_missing_seat_ids: bool,
           ?starting_at: Time,
           ?subscription_ids: ::Array[String],
           ?request_options: MetronomeSDK::request_opts

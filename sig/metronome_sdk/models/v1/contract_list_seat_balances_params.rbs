@@ -12,6 +12,7 @@ module MetronomeSDK
           include_ledgers: bool,
           limit: Integer,
           seat_ids: ::Array[String],
+          skip_missing_seat_ids: bool,
           starting_at: Time,
           subscription_ids: ::Array[String]
         }
@@ -53,6 +54,10 @@ module MetronomeSDK
 
         def seat_ids=: (::Array[String]) -> ::Array[String]
 
+        attr_reader skip_missing_seat_ids: bool?
+
+        def skip_missing_seat_ids=: (bool) -> bool
+
         attr_reader starting_at: Time?
 
         def starting_at=: (Time) -> Time
@@ -71,6 +76,7 @@ module MetronomeSDK
           ?include_ledgers: bool,
           ?limit: Integer,
           ?seat_ids: ::Array[String],
+          ?skip_missing_seat_ids: bool,
           ?starting_at: Time,
           ?subscription_ids: ::Array[String],
           ?request_options: MetronomeSDK::request_opts
@@ -86,6 +92,7 @@ module MetronomeSDK
           include_ledgers: bool,
           limit: Integer,
           seat_ids: ::Array[String],
+          skip_missing_seat_ids: bool,
           starting_at: Time,
           subscription_ids: ::Array[String],
           request_options: MetronomeSDK::RequestOptions
