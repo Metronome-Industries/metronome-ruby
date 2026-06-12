@@ -11,6 +11,7 @@ module MetronomeSDK
         applicable_product_tags: ::Array[String],
         balance: Float,
         contract: MetronomeSDK::Credit::Contract,
+        created_by: String,
         custom_fields: ::Hash[Symbol, String],
         description: String,
         hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,
@@ -61,6 +62,10 @@ module MetronomeSDK
       def contract=: (
         MetronomeSDK::Credit::Contract
       ) -> MetronomeSDK::Credit::Contract
+
+      attr_reader created_by: String?
+
+      def created_by=: (String) -> String
 
       attr_reader custom_fields: ::Hash[Symbol, String]?
 
@@ -140,6 +145,7 @@ module MetronomeSDK
         ?applicable_product_tags: ::Array[String],
         ?balance: Float,
         ?contract: MetronomeSDK::Credit::Contract,
+        ?created_by: String,
         ?custom_fields: ::Hash[Symbol, String],
         ?description: String,
         ?hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,
@@ -166,6 +172,7 @@ module MetronomeSDK
         applicable_product_tags: ::Array[String],
         balance: Float,
         contract: MetronomeSDK::Credit::Contract,
+        created_by: String,
         custom_fields: ::Hash[Symbol, String],
         description: String,
         hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,

@@ -595,6 +595,13 @@ module MetronomeSDK
         end
         attr_writer :contract
 
+        # The actor who created this commit.
+        sig { returns(T.nilable(String)) }
+        attr_reader :created_by
+
+        sig { params(created_by: String).void }
+        attr_writer :created_by
+
         # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         sig { returns(T.nilable(T::Hash[Symbol, String])) }
         attr_reader :custom_fields
@@ -805,6 +812,7 @@ module MetronomeSDK
             archived_at: Time,
             balance: Float,
             contract: MetronomeSDK::ContractV2::Commit::Contract::OrHash,
+            created_by: String,
             custom_fields: T::Hash[Symbol, String],
             description: String,
             hierarchy_configuration:
@@ -874,6 +882,8 @@ module MetronomeSDK
           # included in the balance, including future-dated manual ledger entries.
           balance: nil,
           contract: nil,
+          # The actor who created this commit.
+          created_by: nil,
           # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           custom_fields: nil,
           description: nil,
@@ -924,6 +934,7 @@ module MetronomeSDK
               archived_at: Time,
               balance: Float,
               contract: MetronomeSDK::ContractV2::Commit::Contract,
+              created_by: String,
               custom_fields: T::Hash[Symbol, String],
               description: String,
               hierarchy_configuration:
@@ -3337,6 +3348,13 @@ module MetronomeSDK
         sig { params(created_at: Time).void }
         attr_writer :created_at
 
+        # The actor who created this credit.
+        sig { returns(T.nilable(String)) }
+        attr_reader :created_by
+
+        sig { params(created_by: String).void }
+        attr_writer :created_by
+
         # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         sig { returns(T.nilable(T::Hash[Symbol, String])) }
         attr_reader :custom_fields
@@ -3480,6 +3498,7 @@ module MetronomeSDK
             balance: Float,
             contract: MetronomeSDK::ContractV2::Credit::Contract::OrHash,
             created_at: Time,
+            created_by: String,
             custom_fields: T::Hash[Symbol, String],
             description: String,
             hierarchy_configuration:
@@ -3534,6 +3553,8 @@ module MetronomeSDK
           # - Recurring credits: latter of credit service period date and parent credit
           #   start date
           created_at: nil,
+          # The actor who created this credit.
+          created_by: nil,
           # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           custom_fields: nil,
           description: nil,
@@ -3576,6 +3597,7 @@ module MetronomeSDK
               balance: Float,
               contract: MetronomeSDK::ContractV2::Credit::Contract,
               created_at: Time,
+              created_by: String,
               custom_fields: T::Hash[Symbol, String],
               description: String,
               hierarchy_configuration:

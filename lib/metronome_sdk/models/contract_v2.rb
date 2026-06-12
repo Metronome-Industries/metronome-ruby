@@ -371,6 +371,12 @@ module MetronomeSDK
         #   @return [MetronomeSDK::Models::ContractV2::Commit::Contract, nil]
         optional :contract, -> { MetronomeSDK::ContractV2::Commit::Contract }
 
+        # @!attribute created_by
+        #   The actor who created this commit.
+        #
+        #   @return [String, nil]
+        optional :created_by, String
+
         # @!attribute custom_fields
         #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         #
@@ -473,7 +479,7 @@ module MetronomeSDK
         #   @return [MetronomeSDK::Models::RecurringCommitSubscriptionConfig, nil]
         optional :subscription_config, -> { MetronomeSDK::RecurringCommitSubscriptionConfig }
 
-        # @!method initialize(id:, created_at:, product:, type:, access_schedule: nil, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, archived_at: nil, balance: nil, contract: nil, custom_fields: nil, description: nil, hierarchy_configuration: nil, invoice_contract: nil, invoice_schedule: nil, ledger: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil, recurring_commit_id: nil, rolled_over_from: nil, rollover_fraction: nil, salesforce_opportunity_id: nil, specifiers: nil, spend_tracker_attributes: nil, subscription_config: nil)
+        # @!method initialize(id:, created_at:, product:, type:, access_schedule: nil, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, archived_at: nil, balance: nil, contract: nil, created_by: nil, custom_fields: nil, description: nil, hierarchy_configuration: nil, invoice_contract: nil, invoice_schedule: nil, ledger: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil, recurring_commit_id: nil, rolled_over_from: nil, rollover_fraction: nil, salesforce_opportunity_id: nil, specifiers: nil, spend_tracker_attributes: nil, subscription_config: nil)
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::ContractV2::Commit} for more details.
         #
@@ -498,6 +504,8 @@ module MetronomeSDK
         #   @param balance [Float] The current balance of the credit or commit. This balance reflects the amount of
         #
         #   @param contract [MetronomeSDK::Models::ContractV2::Commit::Contract]
+        #
+        #   @param created_by [String] The actor who created this commit.
         #
         #   @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         #
@@ -1720,6 +1728,12 @@ module MetronomeSDK
         #   @return [Time, nil]
         optional :created_at, Time
 
+        # @!attribute created_by
+        #   The actor who created this credit.
+        #
+        #   @return [String, nil]
+        optional :created_by, String
+
         # @!attribute custom_fields
         #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         #
@@ -1794,7 +1808,7 @@ module MetronomeSDK
         #   @return [MetronomeSDK::Models::RecurringCommitSubscriptionConfig, nil]
         optional :subscription_config, -> { MetronomeSDK::RecurringCommitSubscriptionConfig }
 
-        # @!method initialize(id:, product:, type:, access_schedule: nil, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, archived_at: nil, balance: nil, contract: nil, created_at: nil, custom_fields: nil, description: nil, hierarchy_configuration: nil, ledger: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, recurring_credit_id: nil, rolled_over_from: nil, salesforce_opportunity_id: nil, specifiers: nil, subscription_config: nil)
+        # @!method initialize(id:, product:, type:, access_schedule: nil, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, archived_at: nil, balance: nil, contract: nil, created_at: nil, created_by: nil, custom_fields: nil, description: nil, hierarchy_configuration: nil, ledger: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, recurring_credit_id: nil, rolled_over_from: nil, salesforce_opportunity_id: nil, specifiers: nil, subscription_config: nil)
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::ContractV2::Credit} for more details.
         #
@@ -1819,6 +1833,8 @@ module MetronomeSDK
         #   @param contract [MetronomeSDK::Models::ContractV2::Credit::Contract]
         #
         #   @param created_at [Time] Timestamp of when the credit was created.
+        #
+        #   @param created_by [String] The actor who created this credit.
         #
         #   @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         #
