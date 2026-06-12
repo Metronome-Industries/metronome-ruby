@@ -56,6 +56,7 @@ class MetronomeSDK::Test::Resources::V1::Customers::CreditsTest < MetronomeSDK::
         applicable_product_tags: ^(MetronomeSDK::Internal::Type::ArrayOf[String]) | nil,
         balance: Float | nil,
         contract: MetronomeSDK::Credit::Contract | nil,
+        created_by: String | nil,
         custom_fields: ^(MetronomeSDK::Internal::Type::HashOf[String]) | nil,
         description: String | nil,
         hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration | nil,
