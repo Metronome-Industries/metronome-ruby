@@ -71,6 +71,13 @@ module MetronomeSDK
         #   @return [Array<String>, nil]
         optional :seat_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
 
+        # @!attribute skip_missing_seat_ids
+        #   When true, any seat_ids not found in contract subscriptions will be silently
+        #   omitted from the response instead of returning a 400 error.
+        #
+        #   @return [Boolean, nil]
+        optional :skip_missing_seat_ids, MetronomeSDK::Internal::Type::Boolean
+
         # @!attribute starting_at
         #   Include only commits or credits with access effective on or after this date
         #   (cannot be used with covering_date).
@@ -86,7 +93,7 @@ module MetronomeSDK
         #   @return [Array<String>, nil]
         optional :subscription_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
 
-        # @!method initialize(contract_id:, customer_id:, covering_date: nil, cursor: nil, effective_before: nil, include_credits_and_commits: nil, include_ledgers: nil, limit: nil, seat_ids: nil, starting_at: nil, subscription_ids: nil, request_options: {})
+        # @!method initialize(contract_id:, customer_id:, covering_date: nil, cursor: nil, effective_before: nil, include_credits_and_commits: nil, include_ledgers: nil, limit: nil, seat_ids: nil, skip_missing_seat_ids: nil, starting_at: nil, subscription_ids: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::V1::ContractListSeatBalancesParams} for more details.
         #
@@ -107,6 +114,8 @@ module MetronomeSDK
         #   @param limit [Integer] Maximum number of seats to return. Range: 1-100. Default: 25.
         #
         #   @param seat_ids [Array<String>] Optional filter to only include specific seats.
+        #
+        #   @param skip_missing_seat_ids [Boolean] When true, any seat_ids not found in contract subscriptions will be silently omi
         #
         #   @param starting_at [Time] Include only commits or credits with access effective on or after this date (can
         #

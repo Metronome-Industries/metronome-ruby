@@ -744,7 +744,7 @@ module MetronomeSDK
         # - Set `include_ledgers=true` for detailed transaction history per commit/credit
         #   per seat
         #
-        # @overload list_seat_balances(contract_id:, customer_id:, covering_date: nil, cursor: nil, effective_before: nil, include_credits_and_commits: nil, include_ledgers: nil, limit: nil, seat_ids: nil, starting_at: nil, subscription_ids: nil, request_options: {})
+        # @overload list_seat_balances(contract_id:, customer_id:, covering_date: nil, cursor: nil, effective_before: nil, include_credits_and_commits: nil, include_ledgers: nil, limit: nil, seat_ids: nil, skip_missing_seat_ids: nil, starting_at: nil, subscription_ids: nil, request_options: {})
         #
         # @param contract_id [String] The contract ID to retrieve seat balances for
         #
@@ -763,6 +763,8 @@ module MetronomeSDK
         # @param limit [Integer] Maximum number of seats to return. Range: 1-100. Default: 25.
         #
         # @param seat_ids [Array<String>] Optional filter to only include specific seats.
+        #
+        # @param skip_missing_seat_ids [Boolean] When true, any seat_ids not found in contract subscriptions will be silently omi
         #
         # @param starting_at [Time] Include only commits or credits with access effective on or after this date (can
         #

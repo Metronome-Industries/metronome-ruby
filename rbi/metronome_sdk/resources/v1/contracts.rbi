@@ -803,6 +803,7 @@ module MetronomeSDK
             include_ledgers: T::Boolean,
             limit: Integer,
             seat_ids: T::Array[String],
+            skip_missing_seat_ids: T::Boolean,
             starting_at: Time,
             subscription_ids: T::Array[String],
             request_options: MetronomeSDK::RequestOptions::OrHash
@@ -836,6 +837,9 @@ module MetronomeSDK
           limit: nil,
           # Optional filter to only include specific seats.
           seat_ids: nil,
+          # When true, any seat_ids not found in contract subscriptions will be silently
+          # omitted from the response instead of returning a 400 error.
+          skip_missing_seat_ids: nil,
           # Include only commits or credits with access effective on or after this date
           # (cannot be used with covering_date).
           starting_at: nil,
