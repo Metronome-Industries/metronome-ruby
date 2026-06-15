@@ -69,7 +69,7 @@ module MetronomeSDK
             required :type, enum: -> { MetronomeSDK::V1::Customers::CustomerAlert::Alert::Type }
 
             # @!attribute updated_at
-            #   Timestamp for when the threshold notification was last updated
+            #   Timestamp for when the threshold notification's customer status was last updated
             #
             #   @return [Time]
             required :updated_at, Time
@@ -147,7 +147,7 @@ module MetronomeSDK
             #
             #   @param type [Symbol, MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::Type] Type of the threshold notification
             #
-            #   @param updated_at [Time] Timestamp for when the threshold notification was last updated
+            #   @param updated_at [Time] Timestamp for when the threshold notification's customer status was last updated
             #
             #   @param credit_grant_type_filters [Array<String>] An array of strings, representing a way to filter the credit grant this threshol
             #
