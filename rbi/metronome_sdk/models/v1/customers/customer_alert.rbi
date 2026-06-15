@@ -112,7 +112,7 @@ module MetronomeSDK
             end
             attr_accessor :type
 
-            # Timestamp for when the threshold notification was last updated
+            # Timestamp for when the threshold notification's customer status was last updated
             sig { returns(Time) }
             attr_accessor :updated_at
 
@@ -276,7 +276,7 @@ module MetronomeSDK
               threshold:,
               # Type of the threshold notification
               type:,
-              # Timestamp for when the threshold notification was last updated
+              # Timestamp for when the threshold notification's customer status was last updated
               updated_at:,
               # An array of strings, representing a way to filter the credit grant this
               # threshold notification applies to, by looking at the credit_grant_type field on
