@@ -595,7 +595,8 @@ module MetronomeSDK
         end
         attr_writer :contract
 
-        # The actor who created this commit.
+        # The actor who created this commit. Omitted for system-generated commits such as
+        # recurring commits, rollover commits, and threshold commits.
         sig { returns(T.nilable(String)) }
         attr_reader :created_by
 
@@ -882,7 +883,8 @@ module MetronomeSDK
           # included in the balance, including future-dated manual ledger entries.
           balance: nil,
           contract: nil,
-          # The actor who created this commit.
+          # The actor who created this commit. Omitted for system-generated commits such as
+          # recurring commits, rollover commits, and threshold commits.
           created_by: nil,
           # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           custom_fields: nil,
@@ -3348,7 +3350,8 @@ module MetronomeSDK
         sig { params(created_at: Time).void }
         attr_writer :created_at
 
-        # The actor who created this credit.
+        # The actor who created this credit. Omitted for system-generated credits such as
+        # recurring credits.
         sig { returns(T.nilable(String)) }
         attr_reader :created_by
 
@@ -3553,7 +3556,8 @@ module MetronomeSDK
           # - Recurring credits: latter of credit service period date and parent credit
           #   start date
           created_at: nil,
-          # The actor who created this credit.
+          # The actor who created this credit. Omitted for system-generated credits such as
+          # recurring credits.
           created_by: nil,
           # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           custom_fields: nil,

@@ -67,7 +67,8 @@ module MetronomeSDK
       sig { params(contract: MetronomeSDK::Credit::Contract::OrHash).void }
       attr_writer :contract
 
-      # The actor who created this credit.
+      # The actor who created this credit. Omitted for system-generated credits such as
+      # recurring credits.
       sig { returns(T.nilable(String)) }
       attr_reader :created_by
 
@@ -270,7 +271,8 @@ module MetronomeSDK
         # included in the balance, including future-dated manual ledger entries.
         balance: nil,
         contract: nil,
-        # The actor who created this credit.
+        # The actor who created this credit. Omitted for system-generated credits such as
+        # recurring credits.
         created_by: nil,
         # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         custom_fields: nil,

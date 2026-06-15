@@ -91,7 +91,8 @@ module MetronomeSDK
       sig { params(contract: MetronomeSDK::Commit::Contract::OrHash).void }
       attr_writer :contract
 
-      # The actor who created this commit.
+      # The actor who created this commit. Omitted for system-generated commits such as
+      # recurring commits, rollover commits, and threshold commits.
       sig { returns(T.nilable(String)) }
       attr_reader :created_by
 
@@ -364,7 +365,8 @@ module MetronomeSDK
         # included in the balance, including future-dated manual ledger entries.
         balance: nil,
         contract: nil,
-        # The actor who created this commit.
+        # The actor who created this commit. Omitted for system-generated commits such as
+        # recurring commits, rollover commits, and threshold commits.
         created_by: nil,
         # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         custom_fields: nil,
