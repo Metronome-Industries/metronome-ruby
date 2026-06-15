@@ -2187,9 +2187,10 @@ module MetronomeSDK
           attr_writer :entitled
 
           # Indicates whether the override should only apply to commits. Defaults to
-          # `false`. If `true`, you can specify relevant commits in `override_specifiers` by
-          # passing `commit_ids`. if you do not specify `commit_ids`, then the override will
-          # apply when consuming any prepaid or postpaid commit.
+          # `false`. If `true` you can specify relevant commits in `override_specifiers` by
+          # passing `commit_ids`, `recurring_commit_ids`, or `any_commit_or_credit_ids`. If
+          # you do not specify any of these fields, the override will apply when consuming
+          # any prepaid commit, postpaid commit, or credit
           sig { returns(T.nilable(T::Boolean)) }
           attr_reader :is_commit_specific
 
@@ -2326,9 +2327,10 @@ module MetronomeSDK
             duration: nil,
             entitled: nil,
             # Indicates whether the override should only apply to commits. Defaults to
-            # `false`. If `true`, you can specify relevant commits in `override_specifiers` by
-            # passing `commit_ids`. if you do not specify `commit_ids`, then the override will
-            # apply when consuming any prepaid or postpaid commit.
+            # `false`. If `true` you can specify relevant commits in `override_specifiers` by
+            # passing `commit_ids`, `recurring_commit_ids`, or `any_commit_or_credit_ids`. If
+            # you do not specify any of these fields, the override will apply when consuming
+            # any prepaid commit, postpaid commit, or credit
             is_commit_specific: nil,
             # Required for MULTIPLIER type. Must be >=0.
             multiplier: nil,
