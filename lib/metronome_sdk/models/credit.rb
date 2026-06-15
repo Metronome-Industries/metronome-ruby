@@ -58,7 +58,8 @@ module MetronomeSDK
       optional :contract, -> { MetronomeSDK::Credit::Contract }
 
       # @!attribute created_by
-      #   The actor who created this credit.
+      #   The actor who created this credit. Omitted for system-generated credits such as
+      #   recurring credits.
       #
       #   @return [String, nil]
       optional :created_by, String
@@ -174,7 +175,7 @@ module MetronomeSDK
       #
       #   @param contract [MetronomeSDK::Models::Credit::Contract]
       #
-      #   @param created_by [String] The actor who created this credit.
+      #   @param created_by [String] The actor who created this credit. Omitted for system-generated credits such as
       #
       #   @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
       #

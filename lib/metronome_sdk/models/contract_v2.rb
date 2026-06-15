@@ -372,7 +372,8 @@ module MetronomeSDK
         optional :contract, -> { MetronomeSDK::ContractV2::Commit::Contract }
 
         # @!attribute created_by
-        #   The actor who created this commit.
+        #   The actor who created this commit. Omitted for system-generated commits such as
+        #   recurring commits, rollover commits, and threshold commits.
         #
         #   @return [String, nil]
         optional :created_by, String
@@ -505,7 +506,7 @@ module MetronomeSDK
         #
         #   @param contract [MetronomeSDK::Models::ContractV2::Commit::Contract]
         #
-        #   @param created_by [String] The actor who created this commit.
+        #   @param created_by [String] The actor who created this commit. Omitted for system-generated commits such as
         #
         #   @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         #
@@ -1729,7 +1730,8 @@ module MetronomeSDK
         optional :created_at, Time
 
         # @!attribute created_by
-        #   The actor who created this credit.
+        #   The actor who created this credit. Omitted for system-generated credits such as
+        #   recurring credits.
         #
         #   @return [String, nil]
         optional :created_by, String
@@ -1834,7 +1836,7 @@ module MetronomeSDK
         #
         #   @param created_at [Time] Timestamp of when the credit was created.
         #
-        #   @param created_by [String] The actor who created this credit.
+        #   @param created_by [String] The actor who created this credit. Omitted for system-generated credits such as
         #
         #   @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         #
