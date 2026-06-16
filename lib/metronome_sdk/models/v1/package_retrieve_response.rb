@@ -1526,7 +1526,7 @@ module MetronomeSDK
             #
             #   @param proration_rounding [MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding, nil] Rounding configuration for prorated recurring commit amounts.
             #
-            #   @param recurrence_frequency [Symbol, MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::RecurrenceFrequency] The frequency at which the recurring commits will be created. If not provided:
+            #   @param recurrence_frequency [Symbol, MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::RecurrenceFrequency] The frequency at which the recurring commits will be created. If not provided: -
             #
             #   @param rollover_fraction [Float] Will be passed down to the individual commits. This controls how much of an indi
             #
@@ -1841,6 +1841,7 @@ module MetronomeSDK
               QUARTERLY = :QUARTERLY
               ANNUAL = :ANNUAL
               WEEKLY = :WEEKLY
+              DAILY = :DAILY
 
               # @!method self.values
               #   @return [Array<Symbol>]
@@ -2056,7 +2057,7 @@ module MetronomeSDK
             #
             #   @param proration_rounding [MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::ProrationRounding, nil] Rounding configuration for prorated recurring credit amounts.
             #
-            #   @param recurrence_frequency [Symbol, MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::RecurrenceFrequency] The frequency at which the recurring commits will be created. If not provided:
+            #   @param recurrence_frequency [Symbol, MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::RecurrenceFrequency] The frequency at which the recurring commits will be created. If not provided: -
             #
             #   @param rollover_fraction [Float] Will be passed down to the individual commits. This controls how much of an indi
             #
@@ -2300,6 +2301,7 @@ module MetronomeSDK
               QUARTERLY = :QUARTERLY
               ANNUAL = :ANNUAL
               WEEKLY = :WEEKLY
+              DAILY = :DAILY
 
               # @!method self.values
               #   @return [Array<Symbol>]
