@@ -2049,6 +2049,11 @@ module MetronomeSDK
                     :WEEKLY,
                     MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::RecurrenceFrequency::TaggedSymbol
                   )
+                DAILY =
+                  T.let(
+                    :DAILY,
+                    MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::RecurrenceFrequency::TaggedSymbol
+                  )
 
                 sig do
                   override.returns(
@@ -2872,6 +2877,11 @@ module MetronomeSDK
                 WEEKLY =
                   T.let(
                     :WEEKLY,
+                    MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::RecurrenceFrequency::TaggedSymbol
+                  )
+                DAILY =
+                  T.let(
+                    :DAILY,
                     MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::RecurrenceFrequency::TaggedSymbol
                   )
 

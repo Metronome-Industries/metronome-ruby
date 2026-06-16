@@ -1455,7 +1455,7 @@ module MetronomeSDK
           #
           #   @param rate_type [Symbol, MetronomeSDK::Models::V1::PackageCreateParams::RecurringCommit::RateType] Whether the created commits will use the commit rate or list rate
           #
-          #   @param recurrence_frequency [Symbol, MetronomeSDK::Models::V1::PackageCreateParams::RecurringCommit::RecurrenceFrequency] The frequency at which the recurring commits will be created. If not provided:
+          #   @param recurrence_frequency [Symbol, MetronomeSDK::Models::V1::PackageCreateParams::RecurringCommit::RecurrenceFrequency] The frequency at which the recurring commits will be created. If not provided: -
           #
           #   @param rollover_fraction [Float] Will be passed down to the individual commits. This controls how much of an indi
           #
@@ -1762,6 +1762,7 @@ module MetronomeSDK
             QUARTERLY = :QUARTERLY
             ANNUAL = :ANNUAL
             WEEKLY = :WEEKLY
+            DAILY = :DAILY
 
             # @!method self.values
             #   @return [Array<Symbol>]
@@ -1988,7 +1989,7 @@ module MetronomeSDK
           #
           #   @param rate_type [Symbol, MetronomeSDK::Models::V1::PackageCreateParams::RecurringCredit::RateType] Whether the created commits will use the commit rate or list rate
           #
-          #   @param recurrence_frequency [Symbol, MetronomeSDK::Models::V1::PackageCreateParams::RecurringCredit::RecurrenceFrequency] The frequency at which the recurring commits will be created. If not provided:
+          #   @param recurrence_frequency [Symbol, MetronomeSDK::Models::V1::PackageCreateParams::RecurringCredit::RecurrenceFrequency] The frequency at which the recurring commits will be created. If not provided: -
           #
           #   @param rollover_fraction [Float] Will be passed down to the individual commits. This controls how much of an indi
           #
@@ -2224,6 +2225,7 @@ module MetronomeSDK
             QUARTERLY = :QUARTERLY
             ANNUAL = :ANNUAL
             WEEKLY = :WEEKLY
+            DAILY = :DAILY
 
             # @!method self.values
             #   @return [Array<Symbol>]

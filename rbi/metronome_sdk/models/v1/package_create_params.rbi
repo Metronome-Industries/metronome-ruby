@@ -4133,6 +4133,11 @@ module MetronomeSDK
                 :WEEKLY,
                 MetronomeSDK::V1::PackageCreateParams::RecurringCommit::RecurrenceFrequency::TaggedSymbol
               )
+            DAILY =
+              T.let(
+                :DAILY,
+                MetronomeSDK::V1::PackageCreateParams::RecurringCommit::RecurrenceFrequency::TaggedSymbol
+              )
 
             sig do
               override.returns(
@@ -5217,6 +5222,11 @@ module MetronomeSDK
             WEEKLY =
               T.let(
                 :WEEKLY,
+                MetronomeSDK::V1::PackageCreateParams::RecurringCredit::RecurrenceFrequency::TaggedSymbol
+              )
+            DAILY =
+              T.let(
+                :DAILY,
                 MetronomeSDK::V1::PackageCreateParams::RecurringCredit::RecurrenceFrequency::TaggedSymbol
               )
 

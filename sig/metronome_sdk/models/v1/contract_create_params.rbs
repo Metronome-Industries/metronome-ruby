@@ -1987,7 +1987,8 @@ module MetronomeSDK
             def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::rate_type]
           end
 
-          type recurrence_frequency = :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY
+          type recurrence_frequency =
+            :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY | :DAILY
 
           module RecurrenceFrequency
             extend MetronomeSDK::Internal::Type::Enum
@@ -1996,6 +1997,7 @@ module MetronomeSDK
             QUARTERLY: :QUARTERLY
             ANNUAL: :ANNUAL
             WEEKLY: :WEEKLY
+            DAILY: :DAILY
 
             def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::recurrence_frequency]
           end
@@ -2348,7 +2350,8 @@ module MetronomeSDK
             def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::rate_type]
           end
 
-          type recurrence_frequency = :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY
+          type recurrence_frequency =
+            :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY | :DAILY
 
           module RecurrenceFrequency
             extend MetronomeSDK::Internal::Type::Enum
@@ -2357,6 +2360,7 @@ module MetronomeSDK
             QUARTERLY: :QUARTERLY
             ANNUAL: :ANNUAL
             WEEKLY: :WEEKLY
+            DAILY: :DAILY
 
             def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::recurrence_frequency]
           end

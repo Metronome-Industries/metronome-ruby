@@ -672,7 +672,8 @@ module MetronomeSDK
           end
         end
 
-        type recurrence_frequency = :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY
+        type recurrence_frequency =
+          :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY | :DAILY
 
         module RecurrenceFrequency
           extend MetronomeSDK::Internal::Type::Enum
@@ -681,6 +682,7 @@ module MetronomeSDK
           QUARTERLY: :QUARTERLY
           ANNUAL: :ANNUAL
           WEEKLY: :WEEKLY
+          DAILY: :DAILY
 
           def self?.values: -> ::Array[MetronomeSDK::Models::ContractWithoutAmendments::RecurringCommit::recurrence_frequency]
         end
@@ -1002,7 +1004,8 @@ module MetronomeSDK
           end
         end
 
-        type recurrence_frequency = :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY
+        type recurrence_frequency =
+          :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY | :DAILY
 
         module RecurrenceFrequency
           extend MetronomeSDK::Internal::Type::Enum
@@ -1011,6 +1014,7 @@ module MetronomeSDK
           QUARTERLY: :QUARTERLY
           ANNUAL: :ANNUAL
           WEEKLY: :WEEKLY
+          DAILY: :DAILY
 
           def self?.values: -> ::Array[MetronomeSDK::Models::ContractWithoutAmendments::RecurringCredit::recurrence_frequency]
         end

@@ -1426,6 +1426,7 @@ module MetronomeSDK
                 QUARTERLY = :QUARTERLY
                 ANNUAL = :ANNUAL
                 WEEKLY = :WEEKLY
+                DAILY = :DAILY
 
                 # @!method self.values
                 #   @return [Array<Symbol>]
@@ -1799,6 +1800,7 @@ module MetronomeSDK
                 QUARTERLY = :QUARTERLY
                 ANNUAL = :ANNUAL
                 WEEKLY = :WEEKLY
+                DAILY = :DAILY
 
                 # @!method self.values
                 #   @return [Array<Symbol>]
