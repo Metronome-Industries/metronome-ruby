@@ -6,6 +6,7 @@ module MetronomeSDK
           alert_type: MetronomeSDK::Models::V1::AlertCreateParams::alert_type,
           name: String,
           threshold: Float,
+          ?alert_specifiers: ::Array[MetronomeSDK::V1::AlertCreateParams::AlertSpecifier],
           ?billable_metric_id: String,
           ?credit_grant_type_filters: ::Array[String],
           ?credit_type_id: String,

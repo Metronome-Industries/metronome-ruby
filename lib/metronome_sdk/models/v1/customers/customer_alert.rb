@@ -74,6 +74,15 @@ module MetronomeSDK
             #   @return [Time]
             required :updated_at, Time
 
+            # @!attribute alert_specifiers
+            #   Present for `low_remaining_contract_credit_and_commit_balance_reached`
+            #   notifications. The filters that define the balances that are considered when
+            #   evaluating the alert.
+            #
+            #   @return [Array<MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::AlertSpecifier>, nil]
+            optional :alert_specifiers,
+                     -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier] }
+
             # @!attribute credit_grant_type_filters
             #   An array of strings, representing a way to filter the credit grant this
             #   threshold notification applies to, by looking at the credit_grant_type field on
@@ -133,7 +142,7 @@ module MetronomeSDK
             #   @return [String, nil]
             optional :uniqueness_key, String
 
-            # @!method initialize(id:, name:, status:, threshold:, type:, updated_at:, credit_grant_type_filters: nil, credit_type: nil, custom_field_filters: nil, group_key_filter: nil, group_values: nil, invoice_types_filter: nil, seat_filter: nil, uniqueness_key: nil)
+            # @!method initialize(id:, name:, status:, threshold:, type:, updated_at:, alert_specifiers: nil, credit_grant_type_filters: nil, credit_type: nil, custom_field_filters: nil, group_key_filter: nil, group_values: nil, invoice_types_filter: nil, seat_filter: nil, uniqueness_key: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert} for more details.
             #
@@ -148,6 +157,8 @@ module MetronomeSDK
             #   @param type [Symbol, MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::Type] Type of the threshold notification
             #
             #   @param updated_at [Time] Timestamp for when the threshold notification's customer status was last updated
+            #
+            #   @param alert_specifiers [Array<MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::AlertSpecifier>] Present for `low_remaining_contract_credit_and_commit_balance_reached` notificat
             #
             #   @param credit_grant_type_filters [Array<String>] An array of strings, representing a way to filter the credit grant this threshol
             #
@@ -205,6 +216,122 @@ module MetronomeSDK
 
               # @!method self.values
               #   @return [Array<Symbol>]
+            end
+
+            class AlertSpecifier < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute custom_field_filters
+              #   A list of custom field filters for notification types that support advanced
+              #   filtering
+              #
+              #   @return [Array<MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::AlertSpecifier::CustomFieldFilter>, nil]
+              optional :custom_field_filters,
+                       -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier::CustomFieldFilter] }
+
+              # @!attribute exclude
+              #   If provided, the specifier will not apply to balances that matches the inclusion
+              #   criteria and any of the excluding values.
+              #
+              #   @return [Array<MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::AlertSpecifier::Exclude>, nil]
+              optional :exclude,
+                       -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier::Exclude] }
+
+              # @!method initialize(custom_field_filters: nil, exclude: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::AlertSpecifier} for
+              #   more details.
+              #
+              #   @param custom_field_filters [Array<MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::AlertSpecifier::CustomFieldFilter>] A list of custom field filters for notification types that support advanced filt
+              #
+              #   @param exclude [Array<MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::AlertSpecifier::Exclude>] If provided, the specifier will not apply to balances that matches the inclusion
+
+              class CustomFieldFilter < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute entity
+                #
+                #   @return [Symbol, MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::AlertSpecifier::CustomFieldFilter::Entity]
+                required :entity,
+                         enum: -> { MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier::CustomFieldFilter::Entity }
+
+                # @!attribute key
+                #
+                #   @return [String]
+                required :key, String
+
+                # @!attribute value
+                #
+                #   @return [String, nil]
+                optional :value, String
+
+                # @!method initialize(entity:, key:, value: nil)
+                #   @param entity [Symbol, MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::AlertSpecifier::CustomFieldFilter::Entity]
+                #   @param key [String]
+                #   @param value [String]
+
+                # @see MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::AlertSpecifier::CustomFieldFilter#entity
+                module Entity
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  CONTRACT = :Contract
+                  COMMIT = :Commit
+                  CONTRACT_CREDIT = :ContractCredit
+                  CONTRACT_CREDIT_OR_COMMIT = :ContractCreditOrCommit
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
+              end
+
+              class Exclude < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute custom_field_filters
+                #   A list of custom field filters for notification types that support advanced
+                #   filtering
+                #
+                #   @return [Array<MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::AlertSpecifier::Exclude::CustomFieldFilter>, nil]
+                optional :custom_field_filters,
+                         -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier::Exclude::CustomFieldFilter] }
+
+                # @!method initialize(custom_field_filters: nil)
+                #   Some parameter documentations has been truncated, see
+                #   {MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::AlertSpecifier::Exclude}
+                #   for more details.
+                #
+                #   @param custom_field_filters [Array<MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::AlertSpecifier::Exclude::CustomFieldFilter>] A list of custom field filters for notification types that support advanced filt
+
+                class CustomFieldFilter < MetronomeSDK::Internal::Type::BaseModel
+                  # @!attribute entity
+                  #
+                  #   @return [Symbol, MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::AlertSpecifier::Exclude::CustomFieldFilter::Entity]
+                  required :entity,
+                           enum: -> { MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier::Exclude::CustomFieldFilter::Entity }
+
+                  # @!attribute key
+                  #
+                  #   @return [String]
+                  required :key, String
+
+                  # @!attribute value
+                  #
+                  #   @return [String]
+                  required :value, String
+
+                  # @!method initialize(entity:, key:, value:)
+                  #   @param entity [Symbol, MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::AlertSpecifier::Exclude::CustomFieldFilter::Entity]
+                  #   @param key [String]
+                  #   @param value [String]
+
+                  # @see MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::AlertSpecifier::Exclude::CustomFieldFilter#entity
+                  module Entity
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    CONTRACT = :Contract
+                    COMMIT = :Commit
+                    CONTRACT_CREDIT = :ContractCredit
+                    CONTRACT_CREDIT_OR_COMMIT = :ContractCreditOrCommit
+
+                    # @!method self.values
+                    #   @return [Array<Symbol>]
+                  end
+                end
+              end
             end
 
             class CustomFieldFilter < MetronomeSDK::Internal::Type::BaseModel

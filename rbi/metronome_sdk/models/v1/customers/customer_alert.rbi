@@ -116,6 +116,30 @@ module MetronomeSDK
             sig { returns(Time) }
             attr_accessor :updated_at
 
+            # Present for `low_remaining_contract_credit_and_commit_balance_reached`
+            # notifications. The filters that define the balances that are considered when
+            # evaluating the alert.
+            sig do
+              returns(
+                T.nilable(
+                  T::Array[
+                    MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier
+                  ]
+                )
+              )
+            end
+            attr_reader :alert_specifiers
+
+            sig do
+              params(
+                alert_specifiers:
+                  T::Array[
+                    MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier::OrHash
+                  ]
+              ).void
+            end
+            attr_writer :alert_specifiers
+
             # An array of strings, representing a way to filter the credit grant this
             # threshold notification applies to, by looking at the credit_grant_type field on
             # the credit grant. This field is only defined for CreditPercentage and
@@ -247,6 +271,10 @@ module MetronomeSDK
                 type:
                   MetronomeSDK::V1::Customers::CustomerAlert::Alert::Type::OrSymbol,
                 updated_at: Time,
+                alert_specifiers:
+                  T::Array[
+                    MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier::OrHash
+                  ],
                 credit_grant_type_filters: T::Array[String],
                 credit_type: T.nilable(MetronomeSDK::CreditTypeData::OrHash),
                 custom_field_filters:
@@ -278,6 +306,10 @@ module MetronomeSDK
               type:,
               # Timestamp for when the threshold notification's customer status was last updated
               updated_at:,
+              # Present for `low_remaining_contract_credit_and_commit_balance_reached`
+              # notifications. The filters that define the balances that are considered when
+              # evaluating the alert.
+              alert_specifiers: nil,
               # An array of strings, representing a way to filter the credit grant this
               # threshold notification applies to, by looking at the credit_grant_type field on
               # the credit grant. This field is only defined for CreditPercentage and
@@ -317,6 +349,10 @@ module MetronomeSDK
                   type:
                     MetronomeSDK::V1::Customers::CustomerAlert::Alert::Type::TaggedSymbol,
                   updated_at: Time,
+                  alert_specifiers:
+                    T::Array[
+                      MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier
+                    ],
                   credit_grant_type_filters: T::Array[String],
                   credit_type: T.nilable(MetronomeSDK::CreditTypeData),
                   custom_field_filters:
@@ -476,6 +512,347 @@ module MetronomeSDK
                 )
               end
               def self.values
+              end
+            end
+
+            class AlertSpecifier < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              # A list of custom field filters for notification types that support advanced
+              # filtering
+              sig do
+                returns(
+                  T.nilable(
+                    T::Array[
+                      MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier::CustomFieldFilter
+                    ]
+                  )
+                )
+              end
+              attr_reader :custom_field_filters
+
+              sig do
+                params(
+                  custom_field_filters:
+                    T::Array[
+                      MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier::CustomFieldFilter::OrHash
+                    ]
+                ).void
+              end
+              attr_writer :custom_field_filters
+
+              # If provided, the specifier will not apply to balances that matches the inclusion
+              # criteria and any of the excluding values.
+              sig do
+                returns(
+                  T.nilable(
+                    T::Array[
+                      MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier::Exclude
+                    ]
+                  )
+                )
+              end
+              attr_reader :exclude
+
+              sig do
+                params(
+                  exclude:
+                    T::Array[
+                      MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier::Exclude::OrHash
+                    ]
+                ).void
+              end
+              attr_writer :exclude
+
+              sig do
+                params(
+                  custom_field_filters:
+                    T::Array[
+                      MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier::CustomFieldFilter::OrHash
+                    ],
+                  exclude:
+                    T::Array[
+                      MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier::Exclude::OrHash
+                    ]
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # A list of custom field filters for notification types that support advanced
+                # filtering
+                custom_field_filters: nil,
+                # If provided, the specifier will not apply to balances that matches the inclusion
+                # criteria and any of the excluding values.
+                exclude: nil
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    custom_field_filters:
+                      T::Array[
+                        MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier::CustomFieldFilter
+                      ],
+                    exclude:
+                      T::Array[
+                        MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier::Exclude
+                      ]
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              class CustomFieldFilter < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier::CustomFieldFilter,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig do
+                  returns(
+                    MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier::CustomFieldFilter::Entity::TaggedSymbol
+                  )
+                end
+                attr_accessor :entity
+
+                sig { returns(String) }
+                attr_accessor :key
+
+                sig { returns(T.nilable(String)) }
+                attr_reader :value
+
+                sig { params(value: String).void }
+                attr_writer :value
+
+                sig do
+                  params(
+                    entity:
+                      MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier::CustomFieldFilter::Entity::OrSymbol,
+                    key: String,
+                    value: String
+                  ).returns(T.attached_class)
+                end
+                def self.new(entity:, key:, value: nil)
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      entity:
+                        MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier::CustomFieldFilter::Entity::TaggedSymbol,
+                      key: String,
+                      value: String
+                    }
+                  )
+                end
+                def to_hash
+                end
+
+                module Entity
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  TaggedSymbol =
+                    T.type_alias do
+                      T.all(
+                        Symbol,
+                        MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier::CustomFieldFilter::Entity
+                      )
+                    end
+                  OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                  CONTRACT =
+                    T.let(
+                      :Contract,
+                      MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier::CustomFieldFilter::Entity::TaggedSymbol
+                    )
+                  COMMIT =
+                    T.let(
+                      :Commit,
+                      MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier::CustomFieldFilter::Entity::TaggedSymbol
+                    )
+                  CONTRACT_CREDIT =
+                    T.let(
+                      :ContractCredit,
+                      MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier::CustomFieldFilter::Entity::TaggedSymbol
+                    )
+                  CONTRACT_CREDIT_OR_COMMIT =
+                    T.let(
+                      :ContractCreditOrCommit,
+                      MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier::CustomFieldFilter::Entity::TaggedSymbol
+                    )
+
+                  sig do
+                    override.returns(
+                      T::Array[
+                        MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier::CustomFieldFilter::Entity::TaggedSymbol
+                      ]
+                    )
+                  end
+                  def self.values
+                  end
+                end
+              end
+
+              class Exclude < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier::Exclude,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                # A list of custom field filters for notification types that support advanced
+                # filtering
+                sig do
+                  returns(
+                    T.nilable(
+                      T::Array[
+                        MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier::Exclude::CustomFieldFilter
+                      ]
+                    )
+                  )
+                end
+                attr_reader :custom_field_filters
+
+                sig do
+                  params(
+                    custom_field_filters:
+                      T::Array[
+                        MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier::Exclude::CustomFieldFilter::OrHash
+                      ]
+                  ).void
+                end
+                attr_writer :custom_field_filters
+
+                sig do
+                  params(
+                    custom_field_filters:
+                      T::Array[
+                        MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier::Exclude::CustomFieldFilter::OrHash
+                      ]
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  # A list of custom field filters for notification types that support advanced
+                  # filtering
+                  custom_field_filters: nil
+                )
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      custom_field_filters:
+                        T::Array[
+                          MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier::Exclude::CustomFieldFilter
+                        ]
+                    }
+                  )
+                end
+                def to_hash
+                end
+
+                class CustomFieldFilter < MetronomeSDK::Internal::Type::BaseModel
+                  OrHash =
+                    T.type_alias do
+                      T.any(
+                        MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier::Exclude::CustomFieldFilter,
+                        MetronomeSDK::Internal::AnyHash
+                      )
+                    end
+
+                  sig do
+                    returns(
+                      MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier::Exclude::CustomFieldFilter::Entity::TaggedSymbol
+                    )
+                  end
+                  attr_accessor :entity
+
+                  sig { returns(String) }
+                  attr_accessor :key
+
+                  sig { returns(String) }
+                  attr_accessor :value
+
+                  sig do
+                    params(
+                      entity:
+                        MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier::Exclude::CustomFieldFilter::Entity::OrSymbol,
+                      key: String,
+                      value: String
+                    ).returns(T.attached_class)
+                  end
+                  def self.new(entity:, key:, value:)
+                  end
+
+                  sig do
+                    override.returns(
+                      {
+                        entity:
+                          MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier::Exclude::CustomFieldFilter::Entity::TaggedSymbol,
+                        key: String,
+                        value: String
+                      }
+                    )
+                  end
+                  def to_hash
+                  end
+
+                  module Entity
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    TaggedSymbol =
+                      T.type_alias do
+                        T.all(
+                          Symbol,
+                          MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier::Exclude::CustomFieldFilter::Entity
+                        )
+                      end
+                    OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                    CONTRACT =
+                      T.let(
+                        :Contract,
+                        MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier::Exclude::CustomFieldFilter::Entity::TaggedSymbol
+                      )
+                    COMMIT =
+                      T.let(
+                        :Commit,
+                        MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier::Exclude::CustomFieldFilter::Entity::TaggedSymbol
+                      )
+                    CONTRACT_CREDIT =
+                      T.let(
+                        :ContractCredit,
+                        MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier::Exclude::CustomFieldFilter::Entity::TaggedSymbol
+                      )
+                    CONTRACT_CREDIT_OR_COMMIT =
+                      T.let(
+                        :ContractCreditOrCommit,
+                        MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier::Exclude::CustomFieldFilter::Entity::TaggedSymbol
+                      )
+
+                    sig do
+                      override.returns(
+                        T::Array[
+                          MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier::Exclude::CustomFieldFilter::Entity::TaggedSymbol
+                        ]
+                      )
+                    end
+                    def self.values
+                    end
+                  end
+                end
               end
             end
 
