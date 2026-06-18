@@ -60,6 +60,10 @@ module MetronomeSDK
               MetronomeSDK::V1::AlertCreateParams::AlertType::OrSymbol,
             name: String,
             threshold: Float,
+            alert_specifiers:
+              T::Array[
+                MetronomeSDK::V1::AlertCreateParams::AlertSpecifier::OrHash
+              ],
             billable_metric_id: String,
             credit_grant_type_filters: T::Array[String],
             credit_type_id: String,
@@ -88,6 +92,10 @@ module MetronomeSDK
           # type, this number may represent a financial amount, the days remaining, or a
           # percentage reached.
           threshold:,
+          # Can be used with only `low_remaining_contract_credit_and_commit_balance_reached`
+          # notifications. Defines the balances that are considered when evaluating the
+          # alert.
+          alert_specifiers: nil,
           # For threshold notifications of type `usage_threshold_reached`, specifies which
           # billable metric to track the usage for.
           billable_metric_id: nil,

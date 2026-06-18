@@ -69,6 +69,10 @@ module MetronomeSDK
             params(
               alert_id: String,
               customer_id: String,
+              alert_specifiers:
+                T::Array[
+                  MetronomeSDK::V1::Customers::AlertRetrieveParams::AlertSpecifier::OrHash
+                ],
               group_values:
                 T::Array[
                   MetronomeSDK::V1::Customers::AlertRetrieveParams::GroupValue::OrHash
@@ -87,6 +91,9 @@ module MetronomeSDK
             alert_id:,
             # The Metronome ID of the customer
             customer_id:,
+            # Can be used with only `low_remaining_contract_credit_and_commit_balance_reached`
+            # notifications. Used to filter the alert by the custom field key-value pair.
+            alert_specifiers: nil,
             # Only present for `spend_threshold_reached` notifications. Retrieve the
             # notification for a specific group key-value pair.
             group_values: nil,

@@ -6,6 +6,7 @@ module MetronomeSDK
           alert_type: MetronomeSDK::Models::V1::AlertCreateParams::alert_type,
           name: String,
           threshold: Float,
+          alert_specifiers: ::Array[MetronomeSDK::V1::AlertCreateParams::AlertSpecifier],
           billable_metric_id: String,
           credit_grant_type_filters: ::Array[String],
           credit_type_id: String,
@@ -29,6 +30,12 @@ module MetronomeSDK
         attr_accessor name: String
 
         attr_accessor threshold: Float
+
+        attr_reader alert_specifiers: ::Array[MetronomeSDK::V1::AlertCreateParams::AlertSpecifier]?
+
+        def alert_specifiers=: (
+          ::Array[MetronomeSDK::V1::AlertCreateParams::AlertSpecifier]
+        ) -> ::Array[MetronomeSDK::V1::AlertCreateParams::AlertSpecifier]
 
         attr_reader billable_metric_id: String?
 
@@ -84,6 +91,7 @@ module MetronomeSDK
           alert_type: MetronomeSDK::Models::V1::AlertCreateParams::alert_type,
           name: String,
           threshold: Float,
+          ?alert_specifiers: ::Array[MetronomeSDK::V1::AlertCreateParams::AlertSpecifier],
           ?billable_metric_id: String,
           ?credit_grant_type_filters: ::Array[String],
           ?credit_type_id: String,
@@ -102,6 +110,7 @@ module MetronomeSDK
           alert_type: MetronomeSDK::Models::V1::AlertCreateParams::alert_type,
           name: String,
           threshold: Float,
+          alert_specifiers: ::Array[MetronomeSDK::V1::AlertCreateParams::AlertSpecifier],
           billable_metric_id: String,
           credit_grant_type_filters: ::Array[String],
           credit_type_id: String,
@@ -153,6 +162,141 @@ module MetronomeSDK
           LOW_REMAINING_SEAT_BALANCE_REACHED: :low_remaining_seat_balance_reached
 
           def self?.values: -> ::Array[MetronomeSDK::Models::V1::AlertCreateParams::alert_type]
+        end
+
+        type alert_specifier =
+          {
+            custom_field_filters: ::Array[MetronomeSDK::V1::AlertCreateParams::AlertSpecifier::CustomFieldFilter],
+            exclude: ::Array[MetronomeSDK::V1::AlertCreateParams::AlertSpecifier::Exclude]
+          }
+
+        class AlertSpecifier < MetronomeSDK::Internal::Type::BaseModel
+          attr_reader custom_field_filters: ::Array[MetronomeSDK::V1::AlertCreateParams::AlertSpecifier::CustomFieldFilter]?
+
+          def custom_field_filters=: (
+            ::Array[MetronomeSDK::V1::AlertCreateParams::AlertSpecifier::CustomFieldFilter]
+          ) -> ::Array[MetronomeSDK::V1::AlertCreateParams::AlertSpecifier::CustomFieldFilter]
+
+          attr_reader exclude: ::Array[MetronomeSDK::V1::AlertCreateParams::AlertSpecifier::Exclude]?
+
+          def exclude=: (
+            ::Array[MetronomeSDK::V1::AlertCreateParams::AlertSpecifier::Exclude]
+          ) -> ::Array[MetronomeSDK::V1::AlertCreateParams::AlertSpecifier::Exclude]
+
+          def initialize: (
+            ?custom_field_filters: ::Array[MetronomeSDK::V1::AlertCreateParams::AlertSpecifier::CustomFieldFilter],
+            ?exclude: ::Array[MetronomeSDK::V1::AlertCreateParams::AlertSpecifier::Exclude]
+          ) -> void
+
+          def to_hash: -> {
+            custom_field_filters: ::Array[MetronomeSDK::V1::AlertCreateParams::AlertSpecifier::CustomFieldFilter],
+            exclude: ::Array[MetronomeSDK::V1::AlertCreateParams::AlertSpecifier::Exclude]
+          }
+
+          type custom_field_filter =
+            {
+              entity: MetronomeSDK::Models::V1::AlertCreateParams::AlertSpecifier::CustomFieldFilter::entity,
+              key: String,
+              value: String
+            }
+
+          class CustomFieldFilter < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor entity: MetronomeSDK::Models::V1::AlertCreateParams::AlertSpecifier::CustomFieldFilter::entity
+
+            attr_accessor key: String
+
+            attr_reader value: String?
+
+            def value=: (String) -> String
+
+            def initialize: (
+              entity: MetronomeSDK::Models::V1::AlertCreateParams::AlertSpecifier::CustomFieldFilter::entity,
+              key: String,
+              ?value: String
+            ) -> void
+
+            def to_hash: -> {
+              entity: MetronomeSDK::Models::V1::AlertCreateParams::AlertSpecifier::CustomFieldFilter::entity,
+              key: String,
+              value: String
+            }
+
+            type entity =
+              :Contract | :Commit | :ContractCredit | :ContractCreditOrCommit
+
+            module Entity
+              extend MetronomeSDK::Internal::Type::Enum
+
+              CONTRACT: :Contract
+              COMMIT: :Commit
+              CONTRACT_CREDIT: :ContractCredit
+              CONTRACT_CREDIT_OR_COMMIT: :ContractCreditOrCommit
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::AlertCreateParams::AlertSpecifier::CustomFieldFilter::entity]
+            end
+          end
+
+          type exclude =
+            {
+              custom_field_filters: ::Array[MetronomeSDK::V1::AlertCreateParams::AlertSpecifier::Exclude::CustomFieldFilter]
+            }
+
+          class Exclude < MetronomeSDK::Internal::Type::BaseModel
+            attr_reader custom_field_filters: ::Array[MetronomeSDK::V1::AlertCreateParams::AlertSpecifier::Exclude::CustomFieldFilter]?
+
+            def custom_field_filters=: (
+              ::Array[MetronomeSDK::V1::AlertCreateParams::AlertSpecifier::Exclude::CustomFieldFilter]
+            ) -> ::Array[MetronomeSDK::V1::AlertCreateParams::AlertSpecifier::Exclude::CustomFieldFilter]
+
+            def initialize: (
+              ?custom_field_filters: ::Array[MetronomeSDK::V1::AlertCreateParams::AlertSpecifier::Exclude::CustomFieldFilter]
+            ) -> void
+
+            def to_hash: -> {
+              custom_field_filters: ::Array[MetronomeSDK::V1::AlertCreateParams::AlertSpecifier::Exclude::CustomFieldFilter]
+            }
+
+            type custom_field_filter =
+              {
+                entity: MetronomeSDK::Models::V1::AlertCreateParams::AlertSpecifier::Exclude::CustomFieldFilter::entity,
+                key: String,
+                value: String
+              }
+
+            class CustomFieldFilter < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor entity: MetronomeSDK::Models::V1::AlertCreateParams::AlertSpecifier::Exclude::CustomFieldFilter::entity
+
+              attr_accessor key: String
+
+              attr_accessor value: String
+
+              def initialize: (
+                entity: MetronomeSDK::Models::V1::AlertCreateParams::AlertSpecifier::Exclude::CustomFieldFilter::entity,
+                key: String,
+                value: String
+              ) -> void
+
+              def to_hash: -> {
+                entity: MetronomeSDK::Models::V1::AlertCreateParams::AlertSpecifier::Exclude::CustomFieldFilter::entity,
+                key: String,
+                value: String
+              }
+
+              type entity =
+                :Contract | :Commit | :ContractCredit | :ContractCreditOrCommit
+
+              module Entity
+                extend MetronomeSDK::Internal::Type::Enum
+
+                CONTRACT: :Contract
+                COMMIT: :Commit
+                CONTRACT_CREDIT: :ContractCredit
+                CONTRACT_CREDIT_OR_COMMIT: :ContractCreditOrCommit
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::AlertCreateParams::AlertSpecifier::Exclude::CustomFieldFilter::entity]
+              end
+            end
+          end
         end
 
         type custom_field_filter =

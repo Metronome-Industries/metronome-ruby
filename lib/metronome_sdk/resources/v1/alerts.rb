@@ -58,13 +58,15 @@ module MetronomeSDK
         #   threshold notification evaluations in real-time as usage events stream in,
         #   unlike competitors who rely on periodic polling or batch evaluation cycles
         #
-        # @overload create(alert_type:, name:, threshold:, billable_metric_id: nil, credit_grant_type_filters: nil, credit_type_id: nil, custom_field_filters: nil, customer_id: nil, evaluate_on_create: nil, group_values: nil, invoice_types_filter: nil, plan_id: nil, seat_filter: nil, uniqueness_key: nil, request_options: {})
+        # @overload create(alert_type:, name:, threshold:, alert_specifiers: nil, billable_metric_id: nil, credit_grant_type_filters: nil, credit_type_id: nil, custom_field_filters: nil, customer_id: nil, evaluate_on_create: nil, group_values: nil, invoice_types_filter: nil, plan_id: nil, seat_filter: nil, uniqueness_key: nil, request_options: {})
         #
         # @param alert_type [Symbol, MetronomeSDK::Models::V1::AlertCreateParams::AlertType] Type of the threshold notification
         #
         # @param name [String] Name of the threshold notification
         #
         # @param threshold [Float] Threshold value of the notification policy. Depending upon the notification typ
+        #
+        # @param alert_specifiers [Array<MetronomeSDK::Models::V1::AlertCreateParams::AlertSpecifier>] Can be used with only `low_remaining_contract_credit_and_commit_balance_reached`
         #
         # @param billable_metric_id [String] For threshold notifications of type `usage_threshold_reached`, specifies which b
         #
