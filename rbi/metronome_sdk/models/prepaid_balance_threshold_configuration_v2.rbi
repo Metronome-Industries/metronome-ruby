@@ -74,6 +74,8 @@ module MetronomeSDK
       end
       attr_writer :discount_configuration
 
+      # Determines which balances are excluded from remaining balance calculation for
+      # threshold billing.
       sig do
         returns(
           T.nilable(
@@ -128,6 +130,8 @@ module MetronomeSDK
         # commit amount will be in terms of this credit type instead of the fiat currency.
         custom_credit_type_id: nil,
         discount_configuration: nil,
+        # Determines which balances are excluded from remaining balance calculation for
+        # threshold billing.
         threshold_balance_specifiers: nil
       )
       end

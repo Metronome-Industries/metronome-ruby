@@ -7386,6 +7386,8 @@ module MetronomeSDK
             sig { params(threshold_amount: Float).void }
             attr_writer :threshold_amount
 
+            # Determines which balances are excluded from remaining balance calculation for
+            # threshold billing.
             sig do
               returns(
                 T.nilable(
@@ -7434,6 +7436,8 @@ module MetronomeSDK
               # Specify the threshold amount for the contract. Each time the contract's balance
               # lowers to this amount, a threshold charge will be initiated.
               threshold_amount: nil,
+              # Determines which balances are excluded from remaining balance calculation for
+              # threshold billing.
               threshold_balance_specifiers: nil
             )
             end
