@@ -4305,6 +4305,8 @@ module MetronomeSDK
           optional :threshold_amount, Float
 
           # @!attribute threshold_balance_specifiers
+          #   Determines which balances are excluded from remaining balance calculation for
+          #   threshold billing.
           #
           #   @return [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier>, nil]
           optional :threshold_balance_specifiers,
@@ -4334,7 +4336,7 @@ module MetronomeSDK
           #
           #   @param threshold_amount [Float] Specify the threshold amount for the contract. Each time the contract's balance
           #
-          #   @param threshold_balance_specifiers [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier>, nil]
+          #   @param threshold_balance_specifiers [Array<MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier>, nil] Determines which balances are excluded from remaining balance calculation for th
 
           # @see MetronomeSDK::Models::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration#commit
           class Commit < MetronomeSDK::Models::UpdateBaseThresholdCommit

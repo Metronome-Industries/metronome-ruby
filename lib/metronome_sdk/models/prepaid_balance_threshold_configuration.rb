@@ -48,6 +48,8 @@ module MetronomeSDK
                -> { MetronomeSDK::PrepaidBalanceThresholdConfiguration::DiscountConfiguration }
 
       # @!attribute threshold_balance_specifiers
+      #   Determines which balances are excluded from remaining balance calculation for
+      #   threshold billing.
       #
       #   @return [Array<MetronomeSDK::Models::PrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier>, nil]
       optional :threshold_balance_specifiers,
@@ -71,7 +73,7 @@ module MetronomeSDK
       #
       #   @param discount_configuration [MetronomeSDK::Models::PrepaidBalanceThresholdConfiguration::DiscountConfiguration]
       #
-      #   @param threshold_balance_specifiers [Array<MetronomeSDK::Models::PrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier>]
+      #   @param threshold_balance_specifiers [Array<MetronomeSDK::Models::PrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier>] Determines which balances are excluded from remaining balance calculation for th
 
       # @see MetronomeSDK::Models::PrepaidBalanceThresholdConfiguration#commit
       class Commit < MetronomeSDK::Models::BaseThresholdCommit
@@ -164,13 +166,19 @@ module MetronomeSDK
 
       class ThresholdBalanceSpecifier < MetronomeSDK::Internal::Type::BaseModel
         # @!attribute exclude
+        #   If any of the exclude specifier is met, the balance is not considered when
+        #   evaluating threshold billing
         #
         #   @return [Array<MetronomeSDK::Models::PrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude>]
         required :exclude,
                  -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::PrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude] }
 
         # @!method initialize(exclude:)
-        #   @param exclude [Array<MetronomeSDK::Models::PrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude>]
+        #   Some parameter documentations has been truncated, see
+        #   {MetronomeSDK::Models::PrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier}
+        #   for more details.
+        #
+        #   @param exclude [Array<MetronomeSDK::Models::PrepaidBalanceThresholdConfiguration::ThresholdBalanceSpecifier::Exclude>] If any of the exclude specifier is met, the balance is not considered when evalu
 
         class Exclude < MetronomeSDK::Internal::Type::BaseModel
           # @!attribute custom_field_filters
