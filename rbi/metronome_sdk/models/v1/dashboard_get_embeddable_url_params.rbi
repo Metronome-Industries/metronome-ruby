@@ -434,6 +434,16 @@ module MetronomeSDK
                 :Progress_bar_background,
                 MetronomeSDK::V1::DashboardGetEmbeddableURLParams::ColorOverride::Name::TaggedSymbol
               )
+            ACTION =
+              T.let(
+                :Action,
+                MetronomeSDK::V1::DashboardGetEmbeddableURLParams::ColorOverride::Name::TaggedSymbol
+              )
+            ACTION_HOVER =
+              T.let(
+                :Action_hover,
+                MetronomeSDK::V1::DashboardGetEmbeddableURLParams::ColorOverride::Name::TaggedSymbol
+              )
 
             sig do
               override.returns(
