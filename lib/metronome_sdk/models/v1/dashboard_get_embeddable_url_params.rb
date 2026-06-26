@@ -143,6 +143,8 @@ module MetronomeSDK
             PRIMARY_RED = :Primary_red
             PROGRESS_BAR = :Progress_bar
             PROGRESS_BAR_BACKGROUND = :Progress_bar_background
+            ACTION = :Action
+            ACTION_HOVER = :Action_hover
 
             # @!method self.values
             #   @return [Array<Symbol>]
