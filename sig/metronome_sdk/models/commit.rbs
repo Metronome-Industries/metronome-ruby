@@ -14,6 +14,7 @@ module MetronomeSDK
         archived_at: Time,
         balance: Float,
         contract: MetronomeSDK::Commit::Contract,
+        created_by: String,
         custom_fields: ::Hash[Symbol, String],
         description: String,
         hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,
@@ -78,6 +79,10 @@ module MetronomeSDK
       def contract=: (
         MetronomeSDK::Commit::Contract
       ) -> MetronomeSDK::Commit::Contract
+
+      attr_reader created_by: String?
+
+      def created_by=: (String) -> String
 
       attr_reader custom_fields: ::Hash[Symbol, String]?
 
@@ -182,6 +187,7 @@ module MetronomeSDK
         ?archived_at: Time,
         ?balance: Float,
         ?contract: MetronomeSDK::Commit::Contract,
+        ?created_by: String,
         ?custom_fields: ::Hash[Symbol, String],
         ?description: String,
         ?hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,
@@ -215,6 +221,7 @@ module MetronomeSDK
         archived_at: Time,
         balance: Float,
         contract: MetronomeSDK::Commit::Contract,
+        created_by: String,
         custom_fields: ::Hash[Symbol, String],
         description: String,
         hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,

@@ -1006,9 +1006,10 @@ module MetronomeSDK
 
           # @!attribute is_commit_specific
           #   Indicates whether the override should only apply to commits. Defaults to
-          #   `false`. If `true`, you can specify relevant commits in `override_specifiers` by
-          #   passing `commit_ids`. if you do not specify `commit_ids`, then the override will
-          #   apply when consuming any prepaid or postpaid commit.
+          #   `false`. If `true` you can specify relevant commits in `override_specifiers` by
+          #   passing `commit_ids`, `recurring_commit_ids`, or `any_commit_or_credit_ids`. If
+          #   you do not specify any of these fields, the override will apply when consuming
+          #   any prepaid commit, postpaid commit, or credit
           #
           #   @return [Boolean, nil]
           optional :is_commit_specific, MetronomeSDK::Internal::Type::Boolean
@@ -1101,6 +1102,16 @@ module MetronomeSDK
           #   @param type [Symbol, MetronomeSDK::Models::V1::ContractAmendParams::Override::Type] Overwrites are prioritized over multipliers and tiered overrides.
 
           class OverrideSpecifier < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute any_commit_or_credit_ids
+            #   Can only be used for commit specific overrides. Must be used in conjunction with
+            #   one of `product_id`, `product_tags`, `pricing_group_values`, or
+            #   `presentation_group_values`. Must be used instead of both `commit_ids` and
+            #   `recurring_commit_ids` If provided, the override will apply to any specified
+            #   commit, credit, recurring commit or recurring credit IDs.
+            #
+            #   @return [Array<String>, nil]
+            optional :any_commit_or_credit_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
+
             # @!attribute billing_frequency
             #
             #   @return [Symbol, MetronomeSDK::Models::V1::ContractAmendParams::Override::OverrideSpecifier::BillingFrequency, nil]
@@ -1152,10 +1163,12 @@ module MetronomeSDK
             #   @return [Array<String>, nil]
             optional :recurring_commit_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
 
-            # @!method initialize(billing_frequency: nil, commit_ids: nil, presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil, recurring_commit_ids: nil)
+            # @!method initialize(any_commit_or_credit_ids: nil, billing_frequency: nil, commit_ids: nil, presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil, recurring_commit_ids: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V1::ContractAmendParams::Override::OverrideSpecifier} for
             #   more details.
+            #
+            #   @param any_commit_or_credit_ids [Array<String>] Can only be used for commit specific overrides. Must be used in conjunction with
             #
             #   @param billing_frequency [Symbol, MetronomeSDK::Models::V1::ContractAmendParams::Override::OverrideSpecifier::BillingFrequency]
             #

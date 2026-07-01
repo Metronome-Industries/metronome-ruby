@@ -60,6 +60,7 @@ class MetronomeSDK::Test::Resources::V1::Customers::CommitsTest < MetronomeSDK::
         archived_at: Time | nil,
         balance: Float | nil,
         contract: MetronomeSDK::Commit::Contract | nil,
+        created_by: String | nil,
         custom_fields: ^(MetronomeSDK::Internal::Type::HashOf[String]) | nil,
         description: String | nil,
         hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration | nil,

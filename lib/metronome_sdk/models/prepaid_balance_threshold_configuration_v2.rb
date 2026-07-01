@@ -48,6 +48,8 @@ module MetronomeSDK
                -> { MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::DiscountConfiguration }
 
       # @!attribute threshold_balance_specifiers
+      #   Determines which balances are excluded from remaining balance calculation for
+      #   threshold billing.
       #
       #   @return [Array<MetronomeSDK::Models::PrepaidBalanceThresholdConfigurationV2::ThresholdBalanceSpecifier>, nil]
       optional :threshold_balance_specifiers,
@@ -71,7 +73,7 @@ module MetronomeSDK
       #
       #   @param discount_configuration [MetronomeSDK::Models::PrepaidBalanceThresholdConfigurationV2::DiscountConfiguration]
       #
-      #   @param threshold_balance_specifiers [Array<MetronomeSDK::Models::PrepaidBalanceThresholdConfigurationV2::ThresholdBalanceSpecifier>]
+      #   @param threshold_balance_specifiers [Array<MetronomeSDK::Models::PrepaidBalanceThresholdConfigurationV2::ThresholdBalanceSpecifier>] Determines which balances are excluded from remaining balance calculation for th
 
       # @see MetronomeSDK::Models::PrepaidBalanceThresholdConfigurationV2#commit
       class Commit < MetronomeSDK::Models::BaseThresholdCommit

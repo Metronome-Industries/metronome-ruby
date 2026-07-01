@@ -2039,9 +2039,10 @@ module MetronomeSDK
           attr_writer :entitled
 
           # Indicates whether the override should only apply to commits. Defaults to
-          # `false`. If `true`, you can specify relevant commits in `override_specifiers` by
-          # passing `commit_ids`. if you do not specify `commit_ids`, then the override will
-          # apply when consuming any prepaid or postpaid commit.
+          # `false`. If `true` you can specify relevant commits in `override_specifiers` by
+          # passing `commit_ids`, `recurring_commit_ids`, or `any_commit_or_credit_ids`. If
+          # you do not specify any of these fields, the override will apply when consuming
+          # any prepaid commit, postpaid commit, or credit
           sig { returns(T.nilable(T::Boolean)) }
           attr_reader :is_commit_specific
 
@@ -2208,9 +2209,10 @@ module MetronomeSDK
             ending_before: nil,
             entitled: nil,
             # Indicates whether the override should only apply to commits. Defaults to
-            # `false`. If `true`, you can specify relevant commits in `override_specifiers` by
-            # passing `commit_ids`. if you do not specify `commit_ids`, then the override will
-            # apply when consuming any prepaid or postpaid commit.
+            # `false`. If `true` you can specify relevant commits in `override_specifiers` by
+            # passing `commit_ids`, `recurring_commit_ids`, or `any_commit_or_credit_ids`. If
+            # you do not specify any of these fields, the override will apply when consuming
+            # any prepaid commit, postpaid commit, or credit
             is_commit_specific: nil,
             # Required for MULTIPLIER type. Must be >=0.
             multiplier: nil,
@@ -2277,6 +2279,17 @@ module MetronomeSDK
                   MetronomeSDK::Internal::AnyHash
                 )
               end
+
+            # Can only be used for commit specific overrides. Must be used in conjunction with
+            # one of `product_id`, `product_tags`, `pricing_group_values`, or
+            # `presentation_group_values`. Must be used instead of both `commit_ids` and
+            # `recurring_commit_ids` If provided, the override will apply to any specified
+            # commit, credit, recurring commit or recurring credit IDs.
+            sig { returns(T.nilable(T::Array[String])) }
+            attr_reader :any_commit_or_credit_ids
+
+            sig { params(any_commit_or_credit_ids: T::Array[String]).void }
+            attr_writer :any_commit_or_credit_ids
 
             sig do
               returns(
@@ -2350,6 +2363,7 @@ module MetronomeSDK
 
             sig do
               params(
+                any_commit_or_credit_ids: T::Array[String],
                 billing_frequency:
                   MetronomeSDK::V1::ContractAmendParams::Override::OverrideSpecifier::BillingFrequency::OrSymbol,
                 commit_ids: T::Array[String],
@@ -2361,6 +2375,12 @@ module MetronomeSDK
               ).returns(T.attached_class)
             end
             def self.new(
+              # Can only be used for commit specific overrides. Must be used in conjunction with
+              # one of `product_id`, `product_tags`, `pricing_group_values`, or
+              # `presentation_group_values`. Must be used instead of both `commit_ids` and
+              # `recurring_commit_ids` If provided, the override will apply to any specified
+              # commit, credit, recurring commit or recurring credit IDs.
+              any_commit_or_credit_ids: nil,
               billing_frequency: nil,
               # Can only be used for commit specific overrides. Must be used in conjunction with
               # one of `product_id`, `product_tags`, `pricing_group_values`, or
@@ -2389,6 +2409,7 @@ module MetronomeSDK
             sig do
               override.returns(
                 {
+                  any_commit_or_credit_ids: T::Array[String],
                   billing_frequency:
                     MetronomeSDK::V1::ContractAmendParams::Override::OverrideSpecifier::BillingFrequency::OrSymbol,
                   commit_ids: T::Array[String],

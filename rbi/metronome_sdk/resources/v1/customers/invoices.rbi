@@ -132,6 +132,7 @@ module MetronomeSDK
               status: String,
               type:
                 MetronomeSDK::V1::Customers::InvoiceListParams::Type::OrSymbol,
+              webhook_notification_id: String,
               request_options: MetronomeSDK::RequestOptions::OrHash
             ).returns(
               MetronomeSDK::Internal::CursorPage[
@@ -166,6 +167,9 @@ module MetronomeSDK
             status: nil,
             # Query param: Filter invoices by type. Defaults to returning all invoice types.
             type: nil,
+            # Query param: Indicates that this API request was triggered by a webhook
+            # notification with the provided ID.
+            webhook_notification_id: nil,
             request_options: {}
           )
           end

@@ -81,6 +81,13 @@ module MetronomeSDK
       #   @return [MetronomeSDK::Models::Commit::Contract, nil]
       optional :contract, -> { MetronomeSDK::Commit::Contract }
 
+      # @!attribute created_by
+      #   The actor who created this commit. Omitted for system-generated commits such as
+      #   recurring commits, rollover commits, and threshold commits.
+      #
+      #   @return [String, nil]
+      optional :created_by, String
+
       # @!attribute custom_fields
       #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
       #
@@ -193,7 +200,7 @@ module MetronomeSDK
       #   @return [String, nil]
       optional :uniqueness_key, String
 
-      # @!method initialize(id:, created_at:, product:, type:, access_schedule: nil, amount: nil, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, archived_at: nil, balance: nil, contract: nil, custom_fields: nil, description: nil, hierarchy_configuration: nil, invoice_contract: nil, invoice_schedule: nil, ledger: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil, recurring_commit_id: nil, rolled_over_from: nil, rollover_fraction: nil, salesforce_opportunity_id: nil, specifiers: nil, spend_tracker_attributes: nil, subscription_config: nil, uniqueness_key: nil)
+      # @!method initialize(id:, created_at:, product:, type:, access_schedule: nil, amount: nil, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, archived_at: nil, balance: nil, contract: nil, created_by: nil, custom_fields: nil, description: nil, hierarchy_configuration: nil, invoice_contract: nil, invoice_schedule: nil, ledger: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil, recurring_commit_id: nil, rolled_over_from: nil, rollover_fraction: nil, salesforce_opportunity_id: nil, specifiers: nil, spend_tracker_attributes: nil, subscription_config: nil, uniqueness_key: nil)
       #   Some parameter documentations has been truncated, see
       #   {MetronomeSDK::Models::Commit} for more details.
       #
@@ -220,6 +227,8 @@ module MetronomeSDK
       #   @param balance [Float] The current balance of the credit or commit. This balance reflects the amount of
       #
       #   @param contract [MetronomeSDK::Models::Commit::Contract]
+      #
+      #   @param created_by [String] The actor who created this commit. Omitted for system-generated commits such as
       #
       #   @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
       #

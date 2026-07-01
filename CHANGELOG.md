@@ -1,5 +1,43 @@
 # Changelog
 
+## 3.8.0 (2026-06-29)
+
+Full Changelog: [v3.7.0...v3.8.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v3.7.0...v3.8.0)
+
+### Features
+
+* [🪿] Remove `allow-subscriptions-custom-billing-anchor` feature flag ([4a67399](https://github.com/Metronome-Industries/metronome-ruby/commit/4a673991f9369fe744bc3a5a2f854c14c9b497ac))
+* Add `Action` and `Action_hover` theme color options to embeddable dashboard ([ad6641d](https://github.com/Metronome-Industries/metronome-ruby/commit/ad6641d4ff8118e8acc920c143adb6e57bfd4201))
+* Add alert specifiers to  for `low_remaining_contract_credit_and_commit_balance_reached` threshold notification creation payload ([8dccadf](https://github.com/Metronome-Industries/metronome-ruby/commit/8dccadf1cc4077759e004a8802cb603971b6f978))
+* Add any_commit_and_credit_ids to override specifier fields ([797cfca](https://github.com/Metronome-Industries/metronome-ruby/commit/797cfca1e8f5179b99887b99ccbf8391366cdb74))
+* add getSubscriptionSeatsHistory to Node SDK ([d288a2a](https://github.com/Metronome-Industries/metronome-ruby/commit/d288a2a109b6f0d6e0c45cdd4d3a8ab64ec9732c))
+* Add notification_metadata to four API endpoints (Anthropic-only) ([fb4e252](https://github.com/Metronome-Industries/metronome-ruby/commit/fb4e252118ebc3ce523e12074af87a90dadf712a))
+* added created by to commits ([a11cb6f](https://github.com/Metronome-Industries/metronome-ruby/commit/a11cb6fe06264f5d348818e77c8b1b1bb560b339))
+* **CONN-980:** add contract_id, invoice_type, show_unbillable_invoices to embeddable dashboard API ([cccf877](https://github.com/Metronome-Industries/metronome-ruby/commit/cccf877456c646c28569fbf9e4e86cec7b32faf6))
+* createdBy description specifies excluding system created commits ([d492e50](https://github.com/Metronome-Industries/metronome-ruby/commit/d492e5019a404dd6cfd0606a7fa959e45e79d42c))
+* daily recurrence frequency for recurring commits ([b143c69](https://github.com/Metronome-Industries/metronome-ruby/commit/b143c690a98329e91830210aebb56d9fd910b8d3))
+* Docs: Update v1.yml ([2b13cb9](https://github.com/Metronome-Industries/metronome-ruby/commit/2b13cb9e673f4af7a8413c581e8b0722f98905c2))
+* Revert "[pgs] Remove `allow-subscriptions-custom-billing-anchor` and proration rounding feature flags" ([804fc62](https://github.com/Metronome-Industries/metronome-ruby/commit/804fc62384bd67a65e9f022349d8af18e7faf3e8))
+* Revert "Revert "[pgs] Remove `allow-subscriptions-custom-billing-anchor` and proration rounding feature flags"" ([b5532d9](https://github.com/Metronome-Industries/metronome-ruby/commit/b5532d9ec1866c08629b7f7616bdb7eb12a2f541))
+* skip seat IDs from balances ([242fa91](https://github.com/Metronome-Industries/metronome-ruby/commit/242fa91291d812744c214497ee2f87e03c20e048))
+* Update copy ([911d292](https://github.com/Metronome-Industries/metronome-ruby/commit/911d2924cef101ec49077fe8a859e7b9a9d3f083))
+
+
+### Bug Fixes
+
+* **client:** send content-type header for requests with an omitted optional body ([4d4e05a](https://github.com/Metronome-Industries/metronome-ruby/commit/4d4e05aa6c499bc6f51e60d134225cccc49767d0))
+
+
+### Chores
+
+* (internal) Add description for threshold balance specifiers fields ([bbc523a](https://github.com/Metronome-Industries/metronome-ruby/commit/bbc523aae016d1a9d907bdae0a656164ffd242de))
+* **internal:** bound formatter parallelism to CPU count ([b497f47](https://github.com/Metronome-Industries/metronome-ruby/commit/b497f478f4d039c50d4cf2366bd2d492d0489002))
+
+
+### Documentation
+
+* add RPS limit and batch recommendation to addRate endpoint ([aad17f7](https://github.com/Metronome-Industries/metronome-ruby/commit/aad17f7960f3caad7db5c4e4d3d78e1308b92676))
+
 ## 3.7.0 (2026-05-29)
 
 Full Changelog: [v3.6.0...v3.7.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v3.6.0...v3.7.0)

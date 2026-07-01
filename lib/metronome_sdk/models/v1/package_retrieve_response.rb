@@ -677,6 +677,11 @@ module MetronomeSDK
             #   @param type [Symbol, MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::Type]
 
             class OverrideSpecifier < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute any_commit_or_credit_template_ids
+              #
+              #   @return [Array<String>, nil]
+              optional :any_commit_or_credit_template_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
+
               # @!attribute billing_frequency
               #
               #   @return [Symbol, MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::OverrideSpecifier::BillingFrequency, nil]
@@ -713,7 +718,8 @@ module MetronomeSDK
               #   @return [Array<String>, nil]
               optional :recurring_commit_template_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
 
-              # @!method initialize(billing_frequency: nil, commit_template_ids: nil, presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil, recurring_commit_template_ids: nil)
+              # @!method initialize(any_commit_or_credit_template_ids: nil, billing_frequency: nil, commit_template_ids: nil, presentation_group_values: nil, pricing_group_values: nil, product_id: nil, product_tags: nil, recurring_commit_template_ids: nil)
+              #   @param any_commit_or_credit_template_ids [Array<String>]
               #   @param billing_frequency [Symbol, MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Override::OverrideSpecifier::BillingFrequency]
               #   @param commit_template_ids [Array<String>]
               #   @param presentation_group_values [Hash{Symbol=>String, nil}]
@@ -1443,6 +1449,14 @@ module MetronomeSDK
             optional :proration,
                      enum: -> { MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::Proration }
 
+            # @!attribute proration_rounding
+            #   Rounding configuration for prorated recurring commit amounts.
+            #
+            #   @return [MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding, nil]
+            optional :proration_rounding,
+                     -> { MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding },
+                     nil?: true
+
             # @!attribute recurrence_frequency
             #   The frequency at which the recurring commits will be created. If not provided: -
             #   The commits will be created on the usage invoice frequency. If provided: - The
@@ -1477,7 +1491,7 @@ module MetronomeSDK
             optional :subscription_config,
                      -> { MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::SubscriptionConfig }
 
-            # @!method initialize(id:, access_amount:, commit_duration:, priority:, product:, rate_type:, starting_at_offset:, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, duration: nil, invoice_amount: nil, name: nil, proration: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil, subscription_config: nil)
+            # @!method initialize(id:, access_amount:, commit_duration:, priority:, product:, rate_type:, starting_at_offset:, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, duration: nil, invoice_amount: nil, name: nil, proration: nil, proration_rounding: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil, subscription_config: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit} for
             #   more details.
@@ -1510,7 +1524,9 @@ module MetronomeSDK
             #
             #   @param proration [Symbol, MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::Proration] Determines whether the first and last commit will be prorated. If not provided,
             #
-            #   @param recurrence_frequency [Symbol, MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::RecurrenceFrequency] The frequency at which the recurring commits will be created. If not provided:
+            #   @param proration_rounding [MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding, nil] Rounding configuration for prorated recurring commit amounts.
+            #
+            #   @param recurrence_frequency [Symbol, MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::RecurrenceFrequency] The frequency at which the recurring commits will be created. If not provided: -
             #
             #   @param rollover_fraction [Float] Will be passed down to the individual commits. This controls how much of an indi
             #
@@ -1712,6 +1728,105 @@ module MetronomeSDK
               #   @return [Array<Symbol>]
             end
 
+            # @see MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit#proration_rounding
+            class ProrationRounding < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute access
+              #
+              #   @return [MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding::Access, nil]
+              optional :access,
+                       -> { MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding::Access }
+
+              # @!attribute invoice
+              #
+              #   @return [MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding::Invoice, nil]
+              optional :invoice,
+                       -> { MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding::Invoice }
+
+              # @!method initialize(access: nil, invoice: nil)
+              #   Rounding configuration for prorated recurring commit amounts.
+              #
+              #   @param access [MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding::Access]
+              #   @param invoice [MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding::Invoice]
+
+              # @see MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding#access
+              class Access < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute decimal_places
+                #   Number of decimal places to round to. Applied directly to the stored monetary
+                #   representation. Negative values round to powers of 10 (e.g., -2 rounds to
+                #   nearest 100 in the stored unit. For USD, this means rounding to the nearest
+                #   dollar).
+                #
+                #   @return [Float]
+                required :decimal_places, Float
+
+                # @!attribute rounding_method
+                #
+                #   @return [Symbol, MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding::Access::RoundingMethod]
+                required :rounding_method,
+                         enum: -> { MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding::Access::RoundingMethod }
+
+                # @!method initialize(decimal_places:, rounding_method:)
+                #   Some parameter documentations has been truncated, see
+                #   {MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding::Access}
+                #   for more details.
+                #
+                #   @param decimal_places [Float] Number of decimal places to round to. Applied directly to the stored monetary re
+                #
+                #   @param rounding_method [Symbol, MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding::Access::RoundingMethod]
+
+                # @see MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding::Access#rounding_method
+                module RoundingMethod
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  HALF_UP = :HALF_UP
+                  FLOOR = :FLOOR
+                  CEILING = :CEILING
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
+              end
+
+              # @see MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding#invoice
+              class Invoice < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute decimal_places
+                #   Number of decimal places to round to. Applied directly to the stored monetary
+                #   representation. Negative values round to powers of 10 (e.g., -2 rounds to
+                #   nearest 100 in the stored unit. For USD, this means rounding to the nearest
+                #   dollar).
+                #
+                #   @return [Float]
+                required :decimal_places, Float
+
+                # @!attribute rounding_method
+                #
+                #   @return [Symbol, MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding::Invoice::RoundingMethod]
+                required :rounding_method,
+                         enum: -> { MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding::Invoice::RoundingMethod }
+
+                # @!method initialize(decimal_places:, rounding_method:)
+                #   Some parameter documentations has been truncated, see
+                #   {MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding::Invoice}
+                #   for more details.
+                #
+                #   @param decimal_places [Float] Number of decimal places to round to. Applied directly to the stored monetary re
+                #
+                #   @param rounding_method [Symbol, MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding::Invoice::RoundingMethod]
+
+                # @see MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::ProrationRounding::Invoice#rounding_method
+                module RoundingMethod
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  HALF_UP = :HALF_UP
+                  FLOOR = :FLOOR
+                  CEILING = :CEILING
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
+              end
+            end
+
             # The frequency at which the recurring commits will be created. If not provided: -
             # The commits will be created on the usage invoice frequency. If provided: - The
             # period defined in the duration will correspond to this frequency. - Commits will
@@ -1726,6 +1841,7 @@ module MetronomeSDK
               QUARTERLY = :QUARTERLY
               ANNUAL = :ANNUAL
               WEEKLY = :WEEKLY
+              DAILY = :DAILY
 
               # @!method self.values
               #   @return [Array<Symbol>]
@@ -1866,6 +1982,14 @@ module MetronomeSDK
             optional :proration,
                      enum: -> { MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::Proration }
 
+            # @!attribute proration_rounding
+            #   Rounding configuration for prorated recurring credit amounts.
+            #
+            #   @return [MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::ProrationRounding, nil]
+            optional :proration_rounding,
+                     -> { MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::ProrationRounding },
+                     nil?: true
+
             # @!attribute recurrence_frequency
             #   The frequency at which the recurring commits will be created. If not provided: -
             #   The commits will be created on the usage invoice frequency. If provided: - The
@@ -1900,7 +2024,7 @@ module MetronomeSDK
             optional :subscription_config,
                      -> { MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::SubscriptionConfig }
 
-            # @!method initialize(id:, access_amount:, commit_duration:, priority:, product:, rate_type:, starting_at_offset:, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, duration: nil, name: nil, proration: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil, subscription_config: nil)
+            # @!method initialize(id:, access_amount:, commit_duration:, priority:, product:, rate_type:, starting_at_offset:, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, duration: nil, name: nil, proration: nil, proration_rounding: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil, subscription_config: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit} for
             #   more details.
@@ -1931,7 +2055,9 @@ module MetronomeSDK
             #
             #   @param proration [Symbol, MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::Proration] Determines whether the first and last commit will be prorated. If not provided,
             #
-            #   @param recurrence_frequency [Symbol, MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::RecurrenceFrequency] The frequency at which the recurring commits will be created. If not provided:
+            #   @param proration_rounding [MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::ProrationRounding, nil] Rounding configuration for prorated recurring credit amounts.
+            #
+            #   @param recurrence_frequency [Symbol, MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::RecurrenceFrequency] The frequency at which the recurring commits will be created. If not provided: -
             #
             #   @param rollover_fraction [Float] Will be passed down to the individual commits. This controls how much of an indi
             #
@@ -2108,6 +2234,59 @@ module MetronomeSDK
               #   @return [Array<Symbol>]
             end
 
+            # @see MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit#proration_rounding
+            class ProrationRounding < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute access
+              #
+              #   @return [MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::ProrationRounding::Access, nil]
+              optional :access,
+                       -> { MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::ProrationRounding::Access }
+
+              # @!method initialize(access: nil)
+              #   Rounding configuration for prorated recurring credit amounts.
+              #
+              #   @param access [MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::ProrationRounding::Access]
+
+              # @see MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::ProrationRounding#access
+              class Access < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute decimal_places
+                #   Number of decimal places to round to. Applied directly to the stored monetary
+                #   representation. Negative values round to powers of 10 (e.g., -2 rounds to
+                #   nearest 100 in the stored unit. For USD, this means rounding to the nearest
+                #   dollar).
+                #
+                #   @return [Float]
+                required :decimal_places, Float
+
+                # @!attribute rounding_method
+                #
+                #   @return [Symbol, MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::ProrationRounding::Access::RoundingMethod]
+                required :rounding_method,
+                         enum: -> { MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::ProrationRounding::Access::RoundingMethod }
+
+                # @!method initialize(decimal_places:, rounding_method:)
+                #   Some parameter documentations has been truncated, see
+                #   {MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::ProrationRounding::Access}
+                #   for more details.
+                #
+                #   @param decimal_places [Float] Number of decimal places to round to. Applied directly to the stored monetary re
+                #
+                #   @param rounding_method [Symbol, MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::ProrationRounding::Access::RoundingMethod]
+
+                # @see MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::ProrationRounding::Access#rounding_method
+                module RoundingMethod
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  HALF_UP = :HALF_UP
+                  FLOOR = :FLOOR
+                  CEILING = :CEILING
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
+              end
+            end
+
             # The frequency at which the recurring commits will be created. If not provided: -
             # The commits will be created on the usage invoice frequency. If provided: - The
             # period defined in the duration will correspond to this frequency. - Commits will
@@ -2122,6 +2301,7 @@ module MetronomeSDK
               QUARTERLY = :QUARTERLY
               ANNUAL = :ANNUAL
               WEEKLY = :WEEKLY
+              DAILY = :DAILY
 
               # @!method self.values
               #   @return [Array<Symbol>]
@@ -2323,6 +2503,12 @@ module MetronomeSDK
             #   @return [String, nil]
             optional :id, String
 
+            # @!attribute billing_cycle_config
+            #
+            #   @return [MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::BillingCycleConfig, nil]
+            optional :billing_cycle_config,
+                     -> { MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::BillingCycleConfig }
+
             # @!attribute custom_fields
             #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             #
@@ -2381,7 +2567,7 @@ module MetronomeSDK
             optional :starting_at_offset,
                      -> { MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::StartingAtOffset }
 
-            # @!method initialize(collection_schedule:, proration:, subscription_rate:, id: nil, custom_fields: nil, description: nil, duration: nil, fiat_credit_type_id: nil, initial_quantity: nil, name: nil, quantity_management_mode: nil, seat_config: nil, starting_at_offset: nil)
+            # @!method initialize(collection_schedule:, proration:, subscription_rate:, id: nil, billing_cycle_config: nil, custom_fields: nil, description: nil, duration: nil, fiat_credit_type_id: nil, initial_quantity: nil, name: nil, quantity_management_mode: nil, seat_config: nil, starting_at_offset: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription} for more
             #   details.
@@ -2393,6 +2579,8 @@ module MetronomeSDK
             #   @param subscription_rate [MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::SubscriptionRate]
             #
             #   @param id [String]
+            #
+            #   @param billing_cycle_config [MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::BillingCycleConfig]
             #
             #   @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             #
@@ -2436,9 +2624,16 @@ module MetronomeSDK
               #   @return [Boolean]
               required :is_prorated, MetronomeSDK::Internal::Type::Boolean
 
-              # @!method initialize(invoice_behavior:, is_prorated:)
+              # @!attribute rounding
+              #
+              #   @return [MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Proration::Rounding, nil]
+              optional :rounding,
+                       -> { MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Proration::Rounding }
+
+              # @!method initialize(invoice_behavior:, is_prorated:, rounding: nil)
               #   @param invoice_behavior [Symbol, MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Proration::InvoiceBehavior]
               #   @param is_prorated [Boolean]
+              #   @param rounding [MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Proration::Rounding]
 
               # @see MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Proration#invoice_behavior
               module InvoiceBehavior
@@ -2449,6 +2644,45 @@ module MetronomeSDK
 
                 # @!method self.values
                 #   @return [Array<Symbol>]
+              end
+
+              # @see MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Proration#rounding
+              class Rounding < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute decimal_places
+                #   Number of decimal places to round to. Applied directly to the stored monetary
+                #   representation. Negative values round to powers of 10 (e.g., -2 rounds to
+                #   nearest 100 in the stored unit. For USD, this means rounding to the nearest
+                #   dollar).
+                #
+                #   @return [Float]
+                required :decimal_places, Float
+
+                # @!attribute rounding_method
+                #
+                #   @return [Symbol, MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Proration::Rounding::RoundingMethod]
+                required :rounding_method,
+                         enum: -> { MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Proration::Rounding::RoundingMethod }
+
+                # @!method initialize(decimal_places:, rounding_method:)
+                #   Some parameter documentations has been truncated, see
+                #   {MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Proration::Rounding}
+                #   for more details.
+                #
+                #   @param decimal_places [Float] Number of decimal places to round to. Applied directly to the stored monetary re
+                #
+                #   @param rounding_method [Symbol, MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Proration::Rounding::RoundingMethod]
+
+                # @see MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Proration::Rounding#rounding_method
+                module RoundingMethod
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  HALF_UP = :HALF_UP
+                  FLOOR = :FLOOR
+                  CEILING = :CEILING
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
               end
             end
 
@@ -2498,6 +2732,29 @@ module MetronomeSDK
                 # @!method initialize(id:, name:)
                 #   @param id [String]
                 #   @param name [String]
+              end
+            end
+
+            # @see MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription#billing_cycle_config
+            class BillingCycleConfig < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute invoice_placement
+              #
+              #   @return [Symbol, MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::BillingCycleConfig::InvoicePlacement, nil]
+              optional :invoice_placement,
+                       enum: -> { MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::BillingCycleConfig::InvoicePlacement }
+
+              # @!method initialize(invoice_placement: nil)
+              #   @param invoice_placement [Symbol, MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::BillingCycleConfig::InvoicePlacement]
+
+              # @see MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::BillingCycleConfig#invoice_placement
+              module InvoicePlacement
+                extend MetronomeSDK::Internal::Type::Enum
+
+                ON_SCHEDULED_INVOICE = :ON_SCHEDULED_INVOICE
+                ON_USAGE_INVOICE = :ON_USAGE_INVOICE
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
 

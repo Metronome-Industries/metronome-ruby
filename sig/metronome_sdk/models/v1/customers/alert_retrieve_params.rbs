@@ -6,6 +6,7 @@ module MetronomeSDK
           {
             alert_id: String,
             customer_id: String,
+            alert_specifiers: ::Array[MetronomeSDK::V1::Customers::AlertRetrieveParams::AlertSpecifier],
             group_values: ::Array[MetronomeSDK::V1::Customers::AlertRetrieveParams::GroupValue],
             plans_or_contracts: MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::plans_or_contracts,
             seat_filter: MetronomeSDK::V1::Customers::AlertRetrieveParams::SeatFilter
@@ -19,6 +20,12 @@ module MetronomeSDK
           attr_accessor alert_id: String
 
           attr_accessor customer_id: String
+
+          attr_reader alert_specifiers: ::Array[MetronomeSDK::V1::Customers::AlertRetrieveParams::AlertSpecifier]?
+
+          def alert_specifiers=: (
+            ::Array[MetronomeSDK::V1::Customers::AlertRetrieveParams::AlertSpecifier]
+          ) -> ::Array[MetronomeSDK::V1::Customers::AlertRetrieveParams::AlertSpecifier]
 
           attr_reader group_values: ::Array[MetronomeSDK::V1::Customers::AlertRetrieveParams::GroupValue]?
 
@@ -41,6 +48,7 @@ module MetronomeSDK
           def initialize: (
             alert_id: String,
             customer_id: String,
+            ?alert_specifiers: ::Array[MetronomeSDK::V1::Customers::AlertRetrieveParams::AlertSpecifier],
             ?group_values: ::Array[MetronomeSDK::V1::Customers::AlertRetrieveParams::GroupValue],
             ?plans_or_contracts: MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::plans_or_contracts,
             ?seat_filter: MetronomeSDK::V1::Customers::AlertRetrieveParams::SeatFilter,
@@ -50,11 +58,144 @@ module MetronomeSDK
           def to_hash: -> {
             alert_id: String,
             customer_id: String,
+            alert_specifiers: ::Array[MetronomeSDK::V1::Customers::AlertRetrieveParams::AlertSpecifier],
             group_values: ::Array[MetronomeSDK::V1::Customers::AlertRetrieveParams::GroupValue],
             plans_or_contracts: MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::plans_or_contracts,
             seat_filter: MetronomeSDK::V1::Customers::AlertRetrieveParams::SeatFilter,
             request_options: MetronomeSDK::RequestOptions
           }
+
+          type alert_specifier =
+            {
+              custom_field_filters: ::Array[MetronomeSDK::V1::Customers::AlertRetrieveParams::AlertSpecifier::CustomFieldFilter],
+              exclude: ::Array[MetronomeSDK::V1::Customers::AlertRetrieveParams::AlertSpecifier::Exclude]
+            }
+
+          class AlertSpecifier < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor custom_field_filters: ::Array[MetronomeSDK::V1::Customers::AlertRetrieveParams::AlertSpecifier::CustomFieldFilter]
+
+            attr_reader exclude: ::Array[MetronomeSDK::V1::Customers::AlertRetrieveParams::AlertSpecifier::Exclude]?
+
+            def exclude=: (
+              ::Array[MetronomeSDK::V1::Customers::AlertRetrieveParams::AlertSpecifier::Exclude]
+            ) -> ::Array[MetronomeSDK::V1::Customers::AlertRetrieveParams::AlertSpecifier::Exclude]
+
+            def initialize: (
+              custom_field_filters: ::Array[MetronomeSDK::V1::Customers::AlertRetrieveParams::AlertSpecifier::CustomFieldFilter],
+              ?exclude: ::Array[MetronomeSDK::V1::Customers::AlertRetrieveParams::AlertSpecifier::Exclude]
+            ) -> void
+
+            def to_hash: -> {
+              custom_field_filters: ::Array[MetronomeSDK::V1::Customers::AlertRetrieveParams::AlertSpecifier::CustomFieldFilter],
+              exclude: ::Array[MetronomeSDK::V1::Customers::AlertRetrieveParams::AlertSpecifier::Exclude]
+            }
+
+            type custom_field_filter =
+              {
+                entity: MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::AlertSpecifier::CustomFieldFilter::entity,
+                key: String,
+                value: String
+              }
+
+            class CustomFieldFilter < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor entity: MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::AlertSpecifier::CustomFieldFilter::entity
+
+              attr_accessor key: String
+
+              attr_accessor value: String
+
+              def initialize: (
+                entity: MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::AlertSpecifier::CustomFieldFilter::entity,
+                key: String,
+                value: String
+              ) -> void
+
+              def to_hash: -> {
+                entity: MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::AlertSpecifier::CustomFieldFilter::entity,
+                key: String,
+                value: String
+              }
+
+              type entity =
+                :Contract | :Commit | :ContractCredit | :ContractCreditOrCommit
+
+              module Entity
+                extend MetronomeSDK::Internal::Type::Enum
+
+                CONTRACT: :Contract
+                COMMIT: :Commit
+                CONTRACT_CREDIT: :ContractCredit
+                CONTRACT_CREDIT_OR_COMMIT: :ContractCreditOrCommit
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::AlertSpecifier::CustomFieldFilter::entity]
+              end
+            end
+
+            type exclude =
+              {
+                custom_field_filters: ::Array[MetronomeSDK::V1::Customers::AlertRetrieveParams::AlertSpecifier::Exclude::CustomFieldFilter]
+              }
+
+            class Exclude < MetronomeSDK::Internal::Type::BaseModel
+              attr_reader custom_field_filters: ::Array[MetronomeSDK::V1::Customers::AlertRetrieveParams::AlertSpecifier::Exclude::CustomFieldFilter]?
+
+              def custom_field_filters=: (
+                ::Array[MetronomeSDK::V1::Customers::AlertRetrieveParams::AlertSpecifier::Exclude::CustomFieldFilter]
+              ) -> ::Array[MetronomeSDK::V1::Customers::AlertRetrieveParams::AlertSpecifier::Exclude::CustomFieldFilter]
+
+              def initialize: (
+                ?custom_field_filters: ::Array[MetronomeSDK::V1::Customers::AlertRetrieveParams::AlertSpecifier::Exclude::CustomFieldFilter]
+              ) -> void
+
+              def to_hash: -> {
+                custom_field_filters: ::Array[MetronomeSDK::V1::Customers::AlertRetrieveParams::AlertSpecifier::Exclude::CustomFieldFilter]
+              }
+
+              type custom_field_filter =
+                {
+                  entity: MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::AlertSpecifier::Exclude::CustomFieldFilter::entity,
+                  key: String,
+                  value: String
+                }
+
+              class CustomFieldFilter < MetronomeSDK::Internal::Type::BaseModel
+                attr_accessor entity: MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::AlertSpecifier::Exclude::CustomFieldFilter::entity
+
+                attr_accessor key: String
+
+                attr_accessor value: String
+
+                def initialize: (
+                  entity: MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::AlertSpecifier::Exclude::CustomFieldFilter::entity,
+                  key: String,
+                  value: String
+                ) -> void
+
+                def to_hash: -> {
+                  entity: MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::AlertSpecifier::Exclude::CustomFieldFilter::entity,
+                  key: String,
+                  value: String
+                }
+
+                type entity =
+                  :Contract
+                  | :Commit
+                  | :ContractCredit
+                  | :ContractCreditOrCommit
+
+                module Entity
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  CONTRACT: :Contract
+                  COMMIT: :Commit
+                  CONTRACT_CREDIT: :ContractCredit
+                  CONTRACT_CREDIT_OR_COMMIT: :ContractCreditOrCommit
+
+                  def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::AlertSpecifier::Exclude::CustomFieldFilter::entity]
+                end
+              end
+            end
+          end
 
           type group_value = { key: String, value: String }
 

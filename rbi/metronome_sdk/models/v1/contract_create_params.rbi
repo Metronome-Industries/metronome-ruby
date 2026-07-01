@@ -3048,9 +3048,10 @@ module MetronomeSDK
           attr_writer :entitled
 
           # Indicates whether the override should only apply to commits. Defaults to
-          # `false`. If `true`, you can specify relevant commits in `override_specifiers` by
-          # passing `commit_ids`. if you do not specify `commit_ids`, then the override will
-          # apply when consuming any prepaid or postpaid commit.
+          # `false`. If `true` you can specify relevant commits in `override_specifiers` by
+          # passing `commit_ids`, `recurring_commit_ids`, or `any_commit_or_credit_ids`. If
+          # you do not specify any of these fields, the override will apply when consuming
+          # any prepaid commit, postpaid commit, or credit
           sig { returns(T.nilable(T::Boolean)) }
           attr_reader :is_commit_specific
 
@@ -3217,9 +3218,10 @@ module MetronomeSDK
             ending_before: nil,
             entitled: nil,
             # Indicates whether the override should only apply to commits. Defaults to
-            # `false`. If `true`, you can specify relevant commits in `override_specifiers` by
-            # passing `commit_ids`. if you do not specify `commit_ids`, then the override will
-            # apply when consuming any prepaid or postpaid commit.
+            # `false`. If `true` you can specify relevant commits in `override_specifiers` by
+            # passing `commit_ids`, `recurring_commit_ids`, or `any_commit_or_credit_ids`. If
+            # you do not specify any of these fields, the override will apply when consuming
+            # any prepaid commit, postpaid commit, or credit
             is_commit_specific: nil,
             # Required for MULTIPLIER type. Must be >=0.
             multiplier: nil,
@@ -3286,6 +3288,17 @@ module MetronomeSDK
                   MetronomeSDK::Internal::AnyHash
                 )
               end
+
+            # Can only be used for commit specific overrides. Must be used in conjunction with
+            # one of `product_id`, `product_tags`, `pricing_group_values`, or
+            # `presentation_group_values`. Must be used instead of both `commit_ids` and
+            # `recurring_commit_ids` If provided, the override will apply to any specified
+            # commit, credit, recurring commit or recurring credit IDs.
+            sig { returns(T.nilable(T::Array[String])) }
+            attr_reader :any_commit_or_credit_ids
+
+            sig { params(any_commit_or_credit_ids: T::Array[String]).void }
+            attr_writer :any_commit_or_credit_ids
 
             sig do
               returns(
@@ -3359,6 +3372,7 @@ module MetronomeSDK
 
             sig do
               params(
+                any_commit_or_credit_ids: T::Array[String],
                 billing_frequency:
                   MetronomeSDK::V1::ContractCreateParams::Override::OverrideSpecifier::BillingFrequency::OrSymbol,
                 commit_ids: T::Array[String],
@@ -3370,6 +3384,12 @@ module MetronomeSDK
               ).returns(T.attached_class)
             end
             def self.new(
+              # Can only be used for commit specific overrides. Must be used in conjunction with
+              # one of `product_id`, `product_tags`, `pricing_group_values`, or
+              # `presentation_group_values`. Must be used instead of both `commit_ids` and
+              # `recurring_commit_ids` If provided, the override will apply to any specified
+              # commit, credit, recurring commit or recurring credit IDs.
+              any_commit_or_credit_ids: nil,
               billing_frequency: nil,
               # Can only be used for commit specific overrides. Must be used in conjunction with
               # one of `product_id`, `product_tags`, `pricing_group_values`, or
@@ -3398,6 +3418,7 @@ module MetronomeSDK
             sig do
               override.returns(
                 {
+                  any_commit_or_credit_ids: T::Array[String],
                   billing_frequency:
                     MetronomeSDK::V1::ContractCreateParams::Override::OverrideSpecifier::BillingFrequency::OrSymbol,
                   commit_ids: T::Array[String],
@@ -3965,6 +3986,24 @@ module MetronomeSDK
           end
           attr_writer :proration
 
+          # Optional rounding configuration for prorated recurring commit amounts.
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::V1::ContractCreateParams::RecurringCommit::ProrationRounding
+              )
+            )
+          end
+          attr_reader :proration_rounding
+
+          sig do
+            params(
+              proration_rounding:
+                MetronomeSDK::V1::ContractCreateParams::RecurringCommit::ProrationRounding::OrHash
+            ).void
+          end
+          attr_writer :proration_rounding
+
           # Whether the created commits will use the commit rate or list rate
           sig do
             returns(
@@ -4077,6 +4116,8 @@ module MetronomeSDK
               netsuite_sales_order_id: String,
               proration:
                 MetronomeSDK::V1::ContractCreateParams::RecurringCommit::Proration::OrSymbol,
+              proration_rounding:
+                MetronomeSDK::V1::ContractCreateParams::RecurringCommit::ProrationRounding::OrHash,
               rate_type:
                 MetronomeSDK::V1::ContractCreateParams::RecurringCommit::RateType::OrSymbol,
               recurrence_frequency:
@@ -4119,6 +4160,8 @@ module MetronomeSDK
             # Determines whether the first and last commit will be prorated. If not provided,
             # the default is FIRST_AND_LAST (i.e. prorate both the first and last commits).
             proration: nil,
+            # Optional rounding configuration for prorated recurring commit amounts.
+            proration_rounding: nil,
             # Whether the created commits will use the commit rate or list rate
             rate_type: nil,
             # The frequency at which the recurring commits will be created. If not provided: -
@@ -4166,6 +4209,8 @@ module MetronomeSDK
                 netsuite_sales_order_id: String,
                 proration:
                   MetronomeSDK::V1::ContractCreateParams::RecurringCommit::Proration::OrSymbol,
+                proration_rounding:
+                  MetronomeSDK::V1::ContractCreateParams::RecurringCommit::ProrationRounding,
                 rate_type:
                   MetronomeSDK::V1::ContractCreateParams::RecurringCommit::RateType::OrSymbol,
                 recurrence_frequency:
@@ -4398,6 +4443,259 @@ module MetronomeSDK
             end
           end
 
+          class ProrationRounding < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V1::ContractCreateParams::RecurringCommit::ProrationRounding,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::V1::ContractCreateParams::RecurringCommit::ProrationRounding::Access
+                )
+              )
+            end
+            attr_reader :access
+
+            sig do
+              params(
+                access:
+                  MetronomeSDK::V1::ContractCreateParams::RecurringCommit::ProrationRounding::Access::OrHash
+              ).void
+            end
+            attr_writer :access
+
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::V1::ContractCreateParams::RecurringCommit::ProrationRounding::Invoice
+                )
+              )
+            end
+            attr_reader :invoice
+
+            sig do
+              params(
+                invoice:
+                  MetronomeSDK::V1::ContractCreateParams::RecurringCommit::ProrationRounding::Invoice::OrHash
+              ).void
+            end
+            attr_writer :invoice
+
+            # Optional rounding configuration for prorated recurring commit amounts.
+            sig do
+              params(
+                access:
+                  MetronomeSDK::V1::ContractCreateParams::RecurringCommit::ProrationRounding::Access::OrHash,
+                invoice:
+                  MetronomeSDK::V1::ContractCreateParams::RecurringCommit::ProrationRounding::Invoice::OrHash
+              ).returns(T.attached_class)
+            end
+            def self.new(access: nil, invoice: nil)
+            end
+
+            sig do
+              override.returns(
+                {
+                  access:
+                    MetronomeSDK::V1::ContractCreateParams::RecurringCommit::ProrationRounding::Access,
+                  invoice:
+                    MetronomeSDK::V1::ContractCreateParams::RecurringCommit::ProrationRounding::Invoice
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class Access < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::V1::ContractCreateParams::RecurringCommit::ProrationRounding::Access,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              # Number of decimal places to round to. Applied directly to the stored monetary
+              # representation. Negative values round to powers of 10 (e.g., -2 rounds to
+              # nearest 100 in the stored unit. For USD, this means rounding to the nearest
+              # dollar).
+              sig { returns(Float) }
+              attr_accessor :decimal_places
+
+              sig do
+                returns(
+                  MetronomeSDK::V1::ContractCreateParams::RecurringCommit::ProrationRounding::Access::RoundingMethod::OrSymbol
+                )
+              end
+              attr_accessor :rounding_method
+
+              sig do
+                params(
+                  decimal_places: Float,
+                  rounding_method:
+                    MetronomeSDK::V1::ContractCreateParams::RecurringCommit::ProrationRounding::Access::RoundingMethod::OrSymbol
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # Number of decimal places to round to. Applied directly to the stored monetary
+                # representation. Negative values round to powers of 10 (e.g., -2 rounds to
+                # nearest 100 in the stored unit. For USD, this means rounding to the nearest
+                # dollar).
+                decimal_places:,
+                rounding_method:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    decimal_places: Float,
+                    rounding_method:
+                      MetronomeSDK::V1::ContractCreateParams::RecurringCommit::ProrationRounding::Access::RoundingMethod::OrSymbol
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              module RoundingMethod
+                extend MetronomeSDK::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      MetronomeSDK::V1::ContractCreateParams::RecurringCommit::ProrationRounding::Access::RoundingMethod
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                HALF_UP =
+                  T.let(
+                    :HALF_UP,
+                    MetronomeSDK::V1::ContractCreateParams::RecurringCommit::ProrationRounding::Access::RoundingMethod::TaggedSymbol
+                  )
+                FLOOR =
+                  T.let(
+                    :FLOOR,
+                    MetronomeSDK::V1::ContractCreateParams::RecurringCommit::ProrationRounding::Access::RoundingMethod::TaggedSymbol
+                  )
+                CEILING =
+                  T.let(
+                    :CEILING,
+                    MetronomeSDK::V1::ContractCreateParams::RecurringCommit::ProrationRounding::Access::RoundingMethod::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      MetronomeSDK::V1::ContractCreateParams::RecurringCommit::ProrationRounding::Access::RoundingMethod::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+            end
+
+            class Invoice < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::V1::ContractCreateParams::RecurringCommit::ProrationRounding::Invoice,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              # Number of decimal places to round to. Applied directly to the stored monetary
+              # representation. Negative values round to powers of 10 (e.g., -2 rounds to
+              # nearest 100 in the stored unit. For USD, this means rounding to the nearest
+              # dollar).
+              sig { returns(Float) }
+              attr_accessor :decimal_places
+
+              sig do
+                returns(
+                  MetronomeSDK::V1::ContractCreateParams::RecurringCommit::ProrationRounding::Invoice::RoundingMethod::OrSymbol
+                )
+              end
+              attr_accessor :rounding_method
+
+              sig do
+                params(
+                  decimal_places: Float,
+                  rounding_method:
+                    MetronomeSDK::V1::ContractCreateParams::RecurringCommit::ProrationRounding::Invoice::RoundingMethod::OrSymbol
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # Number of decimal places to round to. Applied directly to the stored monetary
+                # representation. Negative values round to powers of 10 (e.g., -2 rounds to
+                # nearest 100 in the stored unit. For USD, this means rounding to the nearest
+                # dollar).
+                decimal_places:,
+                rounding_method:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    decimal_places: Float,
+                    rounding_method:
+                      MetronomeSDK::V1::ContractCreateParams::RecurringCommit::ProrationRounding::Invoice::RoundingMethod::OrSymbol
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              module RoundingMethod
+                extend MetronomeSDK::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      MetronomeSDK::V1::ContractCreateParams::RecurringCommit::ProrationRounding::Invoice::RoundingMethod
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                HALF_UP =
+                  T.let(
+                    :HALF_UP,
+                    MetronomeSDK::V1::ContractCreateParams::RecurringCommit::ProrationRounding::Invoice::RoundingMethod::TaggedSymbol
+                  )
+                FLOOR =
+                  T.let(
+                    :FLOOR,
+                    MetronomeSDK::V1::ContractCreateParams::RecurringCommit::ProrationRounding::Invoice::RoundingMethod::TaggedSymbol
+                  )
+                CEILING =
+                  T.let(
+                    :CEILING,
+                    MetronomeSDK::V1::ContractCreateParams::RecurringCommit::ProrationRounding::Invoice::RoundingMethod::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      MetronomeSDK::V1::ContractCreateParams::RecurringCommit::ProrationRounding::Invoice::RoundingMethod::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+            end
+          end
+
           # Whether the created commits will use the commit rate or list rate
           module RateType
             extend MetronomeSDK::Internal::Type::Enum
@@ -4468,6 +4766,11 @@ module MetronomeSDK
             WEEKLY =
               T.let(
                 :WEEKLY,
+                MetronomeSDK::V1::ContractCreateParams::RecurringCommit::RecurrenceFrequency::TaggedSymbol
+              )
+            DAILY =
+              T.let(
+                :DAILY,
                 MetronomeSDK::V1::ContractCreateParams::RecurringCommit::RecurrenceFrequency::TaggedSymbol
               )
 
@@ -4753,6 +5056,24 @@ module MetronomeSDK
           end
           attr_writer :proration
 
+          # Optional rounding configuration for prorated recurring credit amounts.
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::V1::ContractCreateParams::RecurringCredit::ProrationRounding
+              )
+            )
+          end
+          attr_reader :proration_rounding
+
+          sig do
+            params(
+              proration_rounding:
+                MetronomeSDK::V1::ContractCreateParams::RecurringCredit::ProrationRounding::OrHash
+            ).void
+          end
+          attr_writer :proration_rounding
+
           # Whether the created commits will use the commit rate or list rate
           sig do
             returns(
@@ -4863,6 +5184,8 @@ module MetronomeSDK
               netsuite_sales_order_id: String,
               proration:
                 MetronomeSDK::V1::ContractCreateParams::RecurringCredit::Proration::OrSymbol,
+              proration_rounding:
+                MetronomeSDK::V1::ContractCreateParams::RecurringCredit::ProrationRounding::OrHash,
               rate_type:
                 MetronomeSDK::V1::ContractCreateParams::RecurringCredit::RateType::OrSymbol,
               recurrence_frequency:
@@ -4903,6 +5226,8 @@ module MetronomeSDK
             # Determines whether the first and last commit will be prorated. If not provided,
             # the default is FIRST_AND_LAST (i.e. prorate both the first and last commits).
             proration: nil,
+            # Optional rounding configuration for prorated recurring credit amounts.
+            proration_rounding: nil,
             # Whether the created commits will use the commit rate or list rate
             rate_type: nil,
             # The frequency at which the recurring commits will be created. If not provided: -
@@ -4948,6 +5273,8 @@ module MetronomeSDK
                 netsuite_sales_order_id: String,
                 proration:
                   MetronomeSDK::V1::ContractCreateParams::RecurringCredit::Proration::OrSymbol,
+                proration_rounding:
+                  MetronomeSDK::V1::ContractCreateParams::RecurringCredit::ProrationRounding,
                 rate_type:
                   MetronomeSDK::V1::ContractCreateParams::RecurringCredit::RateType::OrSymbol,
                 recurrence_frequency:
@@ -5142,6 +5469,146 @@ module MetronomeSDK
             end
           end
 
+          class ProrationRounding < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V1::ContractCreateParams::RecurringCredit::ProrationRounding,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::V1::ContractCreateParams::RecurringCredit::ProrationRounding::Access
+                )
+              )
+            end
+            attr_reader :access
+
+            sig do
+              params(
+                access:
+                  MetronomeSDK::V1::ContractCreateParams::RecurringCredit::ProrationRounding::Access::OrHash
+              ).void
+            end
+            attr_writer :access
+
+            # Optional rounding configuration for prorated recurring credit amounts.
+            sig do
+              params(
+                access:
+                  MetronomeSDK::V1::ContractCreateParams::RecurringCredit::ProrationRounding::Access::OrHash
+              ).returns(T.attached_class)
+            end
+            def self.new(access: nil)
+            end
+
+            sig do
+              override.returns(
+                {
+                  access:
+                    MetronomeSDK::V1::ContractCreateParams::RecurringCredit::ProrationRounding::Access
+                }
+              )
+            end
+            def to_hash
+            end
+
+            class Access < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::V1::ContractCreateParams::RecurringCredit::ProrationRounding::Access,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              # Number of decimal places to round to. Applied directly to the stored monetary
+              # representation. Negative values round to powers of 10 (e.g., -2 rounds to
+              # nearest 100 in the stored unit. For USD, this means rounding to the nearest
+              # dollar).
+              sig { returns(Float) }
+              attr_accessor :decimal_places
+
+              sig do
+                returns(
+                  MetronomeSDK::V1::ContractCreateParams::RecurringCredit::ProrationRounding::Access::RoundingMethod::OrSymbol
+                )
+              end
+              attr_accessor :rounding_method
+
+              sig do
+                params(
+                  decimal_places: Float,
+                  rounding_method:
+                    MetronomeSDK::V1::ContractCreateParams::RecurringCredit::ProrationRounding::Access::RoundingMethod::OrSymbol
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # Number of decimal places to round to. Applied directly to the stored monetary
+                # representation. Negative values round to powers of 10 (e.g., -2 rounds to
+                # nearest 100 in the stored unit. For USD, this means rounding to the nearest
+                # dollar).
+                decimal_places:,
+                rounding_method:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    decimal_places: Float,
+                    rounding_method:
+                      MetronomeSDK::V1::ContractCreateParams::RecurringCredit::ProrationRounding::Access::RoundingMethod::OrSymbol
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              module RoundingMethod
+                extend MetronomeSDK::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      MetronomeSDK::V1::ContractCreateParams::RecurringCredit::ProrationRounding::Access::RoundingMethod
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                HALF_UP =
+                  T.let(
+                    :HALF_UP,
+                    MetronomeSDK::V1::ContractCreateParams::RecurringCredit::ProrationRounding::Access::RoundingMethod::TaggedSymbol
+                  )
+                FLOOR =
+                  T.let(
+                    :FLOOR,
+                    MetronomeSDK::V1::ContractCreateParams::RecurringCredit::ProrationRounding::Access::RoundingMethod::TaggedSymbol
+                  )
+                CEILING =
+                  T.let(
+                    :CEILING,
+                    MetronomeSDK::V1::ContractCreateParams::RecurringCredit::ProrationRounding::Access::RoundingMethod::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      MetronomeSDK::V1::ContractCreateParams::RecurringCredit::ProrationRounding::Access::RoundingMethod::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+            end
+          end
+
           # Whether the created commits will use the commit rate or list rate
           module RateType
             extend MetronomeSDK::Internal::Type::Enum
@@ -5212,6 +5679,11 @@ module MetronomeSDK
             WEEKLY =
               T.let(
                 :WEEKLY,
+                MetronomeSDK::V1::ContractCreateParams::RecurringCredit::RecurrenceFrequency::TaggedSymbol
+              )
+            DAILY =
+              T.let(
+                :DAILY,
                 MetronomeSDK::V1::ContractCreateParams::RecurringCredit::RecurrenceFrequency::TaggedSymbol
               )
 
@@ -6645,6 +7117,23 @@ module MetronomeSDK
           end
           attr_writer :subscription_rate
 
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::V1::ContractCreateParams::Subscription::BillingCycleConfig
+              )
+            )
+          end
+          attr_reader :billing_cycle_config
+
+          sig do
+            params(
+              billing_cycle_config:
+                MetronomeSDK::V1::ContractCreateParams::Subscription::BillingCycleConfig::OrHash
+            ).void
+          end
+          attr_writer :billing_cycle_config
+
           # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           sig { returns(T.nilable(T::Hash[Symbol, String])) }
           attr_reader :custom_fields
@@ -6747,6 +7236,8 @@ module MetronomeSDK
                 MetronomeSDK::V1::ContractCreateParams::Subscription::Proration::OrHash,
               subscription_rate:
                 MetronomeSDK::V1::ContractCreateParams::Subscription::SubscriptionRate::OrHash,
+              billing_cycle_config:
+                MetronomeSDK::V1::ContractCreateParams::Subscription::BillingCycleConfig::OrHash,
               custom_fields: T::Hash[Symbol, String],
               description: String,
               ending_before: Time,
@@ -6764,6 +7255,7 @@ module MetronomeSDK
             collection_schedule:,
             proration:,
             subscription_rate:,
+            billing_cycle_config: nil,
             # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             custom_fields: nil,
             description: nil,
@@ -6803,6 +7295,8 @@ module MetronomeSDK
                   MetronomeSDK::V1::ContractCreateParams::Subscription::Proration,
                 subscription_rate:
                   MetronomeSDK::V1::ContractCreateParams::Subscription::SubscriptionRate,
+                billing_cycle_config:
+                  MetronomeSDK::V1::ContractCreateParams::Subscription::BillingCycleConfig,
                 custom_fields: T::Hash[Symbol, String],
                 description: String,
                 ending_before: Time,
@@ -6893,10 +7387,29 @@ module MetronomeSDK
             attr_writer :is_prorated
 
             sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::V1::ContractCreateParams::Subscription::Proration::Rounding
+                )
+              )
+            end
+            attr_reader :rounding
+
+            sig do
+              params(
+                rounding:
+                  MetronomeSDK::V1::ContractCreateParams::Subscription::Proration::Rounding::OrHash
+              ).void
+            end
+            attr_writer :rounding
+
+            sig do
               params(
                 invoice_behavior:
                   MetronomeSDK::V1::ContractCreateParams::Subscription::Proration::InvoiceBehavior::OrSymbol,
-                is_prorated: T::Boolean
+                is_prorated: T::Boolean,
+                rounding:
+                  MetronomeSDK::V1::ContractCreateParams::Subscription::Proration::Rounding::OrHash
               ).returns(T.attached_class)
             end
             def self.new(
@@ -6907,7 +7420,8 @@ module MetronomeSDK
               # in-arrears at the end of the period.
               invoice_behavior: nil,
               # Indicates if the partial period will be prorated or charged a full amount.
-              is_prorated: nil
+              is_prorated: nil,
+              rounding: nil
             )
             end
 
@@ -6916,7 +7430,9 @@ module MetronomeSDK
                 {
                   invoice_behavior:
                     MetronomeSDK::V1::ContractCreateParams::Subscription::Proration::InvoiceBehavior::OrSymbol,
-                  is_prorated: T::Boolean
+                  is_prorated: T::Boolean,
+                  rounding:
+                    MetronomeSDK::V1::ContractCreateParams::Subscription::Proration::Rounding
                 }
               )
             end
@@ -6959,6 +7475,98 @@ module MetronomeSDK
                 )
               end
               def self.values
+              end
+            end
+
+            class Rounding < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::V1::ContractCreateParams::Subscription::Proration::Rounding,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              # Number of decimal places to round to. Applied directly to the stored monetary
+              # representation. Negative values round to powers of 10 (e.g., -2 rounds to
+              # nearest 100 in the stored unit. For USD, this means rounding to the nearest
+              # dollar).
+              sig { returns(Float) }
+              attr_accessor :decimal_places
+
+              sig do
+                returns(
+                  MetronomeSDK::V1::ContractCreateParams::Subscription::Proration::Rounding::RoundingMethod::OrSymbol
+                )
+              end
+              attr_accessor :rounding_method
+
+              sig do
+                params(
+                  decimal_places: Float,
+                  rounding_method:
+                    MetronomeSDK::V1::ContractCreateParams::Subscription::Proration::Rounding::RoundingMethod::OrSymbol
+                ).returns(T.attached_class)
+              end
+              def self.new(
+                # Number of decimal places to round to. Applied directly to the stored monetary
+                # representation. Negative values round to powers of 10 (e.g., -2 rounds to
+                # nearest 100 in the stored unit. For USD, this means rounding to the nearest
+                # dollar).
+                decimal_places:,
+                rounding_method:
+              )
+              end
+
+              sig do
+                override.returns(
+                  {
+                    decimal_places: Float,
+                    rounding_method:
+                      MetronomeSDK::V1::ContractCreateParams::Subscription::Proration::Rounding::RoundingMethod::OrSymbol
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              module RoundingMethod
+                extend MetronomeSDK::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      MetronomeSDK::V1::ContractCreateParams::Subscription::Proration::Rounding::RoundingMethod
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                HALF_UP =
+                  T.let(
+                    :HALF_UP,
+                    MetronomeSDK::V1::ContractCreateParams::Subscription::Proration::Rounding::RoundingMethod::TaggedSymbol
+                  )
+                FLOOR =
+                  T.let(
+                    :FLOOR,
+                    MetronomeSDK::V1::ContractCreateParams::Subscription::Proration::Rounding::RoundingMethod::TaggedSymbol
+                  )
+                CEILING =
+                  T.let(
+                    :CEILING,
+                    MetronomeSDK::V1::ContractCreateParams::Subscription::Proration::Rounding::RoundingMethod::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      MetronomeSDK::V1::ContractCreateParams::Subscription::Proration::Rounding::RoundingMethod::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
               end
             end
           end
@@ -7052,6 +7660,108 @@ module MetronomeSDK
                 override.returns(
                   T::Array[
                     MetronomeSDK::V1::ContractCreateParams::Subscription::SubscriptionRate::BillingFrequency::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+          end
+
+          class BillingCycleConfig < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V1::ContractCreateParams::Subscription::BillingCycleConfig,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            # The date to anchor the billing cycle to. If omitted, defaults to the contract's
+            # usage invoice billing cycle anchor date.
+            sig { returns(T.nilable(Time)) }
+            attr_reader :anchor_date
+
+            sig { params(anchor_date: Time).void }
+            attr_writer :anchor_date
+
+            # Controls whether this subscription consolidates onto usage invoices or gets its
+            # own scheduled invoice. Defaults to ON_USAGE_INVOICE if omitted.
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::V1::ContractCreateParams::Subscription::BillingCycleConfig::InvoicePlacement::OrSymbol
+                )
+              )
+            end
+            attr_reader :invoice_placement
+
+            sig do
+              params(
+                invoice_placement:
+                  MetronomeSDK::V1::ContractCreateParams::Subscription::BillingCycleConfig::InvoicePlacement::OrSymbol
+              ).void
+            end
+            attr_writer :invoice_placement
+
+            sig do
+              params(
+                anchor_date: Time,
+                invoice_placement:
+                  MetronomeSDK::V1::ContractCreateParams::Subscription::BillingCycleConfig::InvoicePlacement::OrSymbol
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # The date to anchor the billing cycle to. If omitted, defaults to the contract's
+              # usage invoice billing cycle anchor date.
+              anchor_date: nil,
+              # Controls whether this subscription consolidates onto usage invoices or gets its
+              # own scheduled invoice. Defaults to ON_USAGE_INVOICE if omitted.
+              invoice_placement: nil
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  anchor_date: Time,
+                  invoice_placement:
+                    MetronomeSDK::V1::ContractCreateParams::Subscription::BillingCycleConfig::InvoicePlacement::OrSymbol
+                }
+              )
+            end
+            def to_hash
+            end
+
+            # Controls whether this subscription consolidates onto usage invoices or gets its
+            # own scheduled invoice. Defaults to ON_USAGE_INVOICE if omitted.
+            module InvoicePlacement
+              extend MetronomeSDK::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    MetronomeSDK::V1::ContractCreateParams::Subscription::BillingCycleConfig::InvoicePlacement
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              ON_SCHEDULED_INVOICE =
+                T.let(
+                  :ON_SCHEDULED_INVOICE,
+                  MetronomeSDK::V1::ContractCreateParams::Subscription::BillingCycleConfig::InvoicePlacement::TaggedSymbol
+                )
+              ON_USAGE_INVOICE =
+                T.let(
+                  :ON_USAGE_INVOICE,
+                  MetronomeSDK::V1::ContractCreateParams::Subscription::BillingCycleConfig::InvoicePlacement::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::V1::ContractCreateParams::Subscription::BillingCycleConfig::InvoicePlacement::TaggedSymbol
                   ]
                 )
               end

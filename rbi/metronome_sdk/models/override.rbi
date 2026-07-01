@@ -252,6 +252,12 @@ module MetronomeSDK
             )
           end
 
+        sig { returns(T.nilable(T::Array[String])) }
+        attr_reader :any_commit_or_credit_ids
+
+        sig { params(any_commit_or_credit_ids: T::Array[String]).void }
+        attr_writer :any_commit_or_credit_ids
+
         sig do
           returns(
             T.nilable(
@@ -311,6 +317,7 @@ module MetronomeSDK
 
         sig do
           params(
+            any_commit_or_credit_ids: T::Array[String],
             billing_frequency:
               MetronomeSDK::Override::OverrideSpecifier::BillingFrequency::OrSymbol,
             commit_ids: T::Array[String],
@@ -322,6 +329,7 @@ module MetronomeSDK
           ).returns(T.attached_class)
         end
         def self.new(
+          any_commit_or_credit_ids: nil,
           billing_frequency: nil,
           commit_ids: nil,
           presentation_group_values: nil,
@@ -335,6 +343,7 @@ module MetronomeSDK
         sig do
           override.returns(
             {
+              any_commit_or_credit_ids: T::Array[String],
               billing_frequency:
                 MetronomeSDK::Override::OverrideSpecifier::BillingFrequency::TaggedSymbol,
               commit_ids: T::Array[String],

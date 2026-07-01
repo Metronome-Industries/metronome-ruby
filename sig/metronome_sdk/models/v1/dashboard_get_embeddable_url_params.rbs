@@ -148,6 +148,8 @@ module MetronomeSDK
             | :Primary_red
             | :Progress_bar
             | :Progress_bar_background
+            | :Action
+            | :Action_hover
 
           module Name
             extend MetronomeSDK::Internal::Type::Enum
@@ -173,6 +175,8 @@ module MetronomeSDK
             PRIMARY_RED: :Primary_red
             PROGRESS_BAR: :Progress_bar
             PROGRESS_BAR_BACKGROUND: :Progress_bar_background
+            ACTION: :Action
+            ACTION_HOVER: :Action_hover
 
             def self?.values: -> ::Array[MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::ColorOverride::name_]
           end

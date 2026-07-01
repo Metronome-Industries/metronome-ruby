@@ -6,6 +6,7 @@ module MetronomeSDK
           def retrieve: (
             alert_id: String,
             customer_id: String,
+            ?alert_specifiers: ::Array[MetronomeSDK::V1::Customers::AlertRetrieveParams::AlertSpecifier],
             ?group_values: ::Array[MetronomeSDK::V1::Customers::AlertRetrieveParams::GroupValue],
             ?plans_or_contracts: MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::plans_or_contracts,
             ?seat_filter: MetronomeSDK::V1::Customers::AlertRetrieveParams::SeatFilter,

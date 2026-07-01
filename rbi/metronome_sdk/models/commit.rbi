@@ -91,6 +91,14 @@ module MetronomeSDK
       sig { params(contract: MetronomeSDK::Commit::Contract::OrHash).void }
       attr_writer :contract
 
+      # The actor who created this commit. Omitted for system-generated commits such as
+      # recurring commits, rollover commits, and threshold commits.
+      sig { returns(T.nilable(String)) }
+      attr_reader :created_by
+
+      sig { params(created_by: String).void }
+      attr_writer :created_by
+
       # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
       sig { returns(T.nilable(T::Hash[Symbol, String])) }
       attr_reader :custom_fields
@@ -285,6 +293,7 @@ module MetronomeSDK
           archived_at: Time,
           balance: Float,
           contract: MetronomeSDK::Commit::Contract::OrHash,
+          created_by: String,
           custom_fields: T::Hash[Symbol, String],
           description: String,
           hierarchy_configuration:
@@ -356,6 +365,9 @@ module MetronomeSDK
         # included in the balance, including future-dated manual ledger entries.
         balance: nil,
         contract: nil,
+        # The actor who created this commit. Omitted for system-generated commits such as
+        # recurring commits, rollover commits, and threshold commits.
+        created_by: nil,
         # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         custom_fields: nil,
         description: nil,
@@ -414,6 +426,7 @@ module MetronomeSDK
             archived_at: Time,
             balance: Float,
             contract: MetronomeSDK::Commit::Contract,
+            created_by: String,
             custom_fields: T::Hash[Symbol, String],
             description: String,
             hierarchy_configuration: MetronomeSDK::CommitHierarchyConfiguration,

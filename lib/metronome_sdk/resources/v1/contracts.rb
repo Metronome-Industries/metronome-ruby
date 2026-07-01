@@ -569,6 +569,71 @@ module MetronomeSDK
         end
 
         # Some parameter documentations has been truncated, see
+        # {MetronomeSDK::Models::V1::ContractGetSubscriptionSeatsHistoryParams} for more
+        # details.
+        #
+        # Get the history of subscription seats schedule over time for a given
+        # `subscription_id`. This endpoint provides information about seat assignments and
+        # total quantities for different time periods, allowing you to track how seat
+        # assignments have changed over time.
+        #
+        # ### Use this endpoint to:
+        #
+        # - Track changes to seat assignments over time
+        # - Get seat schedule for a specific date using the `covering_date` parameter
+        # - Get seat schedule history with optional date range filtering using
+        #   `starting_at` and `ending_before`
+        #
+        # ### Key response fields:
+        #
+        # - data: array of seat schedule entries with time periods, quantity, and
+        #   assignments
+        # - next_page: cursor for pagination to retrieve additional results
+        #
+        # ### Usage guidelines:
+        #
+        # - Use `covering_date` to get the active seats for a specific point in time.
+        #   `covering_date` cannot be used with `starting_at` or `ending_before`.
+        # - Use `starting_at` and `ending_before` to filter results by time range.
+        #   `starting_at` and `ending_before` cannot be used with `covering_date`.
+        # - Maximum limit is 10 seat schedule entries per request
+        # - Results are ordered by `starting_at` timestamp
+        #
+        # @overload get_subscription_seats_history(contract_id:, customer_id:, subscription_id:, covering_date: nil, cursor: nil, ending_before: nil, limit: nil, starting_at: nil, request_options: {})
+        #
+        # @param contract_id [String]
+        #
+        # @param customer_id [String]
+        #
+        # @param subscription_id [String]
+        #
+        # @param covering_date [Time, nil] Get the seats history segment for the covering date. Cannot be used with `starti
+        #
+        # @param cursor [String, nil] Cursor for pagination. Use the value from the `next_page` field of the previous
+        #
+        # @param ending_before [Time, nil] Include seats history segments that are active at or before this timestamp. Use
+        #
+        # @param limit [Integer, nil] Maximum number of seat schedule entries to return. Defaults to 10. Required rang
+        #
+        # @param starting_at [Time, nil] Include seats history segments that are active at or after this timestamp. Use w
+        #
+        # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [MetronomeSDK::Models::V1::ContractGetSubscriptionSeatsHistoryResponse]
+        #
+        # @see MetronomeSDK::Models::V1::ContractGetSubscriptionSeatsHistoryParams
+        def get_subscription_seats_history(params)
+          parsed, options = MetronomeSDK::V1::ContractGetSubscriptionSeatsHistoryParams.dump_request(params)
+          @client.request(
+            method: :post,
+            path: "v1/contracts/getSubscriptionSeatsHistory",
+            body: parsed,
+            model: MetronomeSDK::Models::V1::ContractGetSubscriptionSeatsHistoryResponse,
+            options: options
+          )
+        end
+
+        # Some parameter documentations has been truncated, see
         # {MetronomeSDK::Models::V1::ContractListBalancesParams} for more details.
         #
         # Retrieve a comprehensive view of all available balances (commits and credits)
@@ -679,7 +744,7 @@ module MetronomeSDK
         # - Set `include_ledgers=true` for detailed transaction history per commit/credit
         #   per seat
         #
-        # @overload list_seat_balances(contract_id:, customer_id:, covering_date: nil, cursor: nil, effective_before: nil, include_credits_and_commits: nil, include_ledgers: nil, limit: nil, seat_ids: nil, starting_at: nil, subscription_ids: nil, request_options: {})
+        # @overload list_seat_balances(contract_id:, customer_id:, covering_date: nil, cursor: nil, effective_before: nil, include_credits_and_commits: nil, include_ledgers: nil, limit: nil, seat_ids: nil, skip_missing_seat_ids: nil, starting_at: nil, subscription_ids: nil, request_options: {})
         #
         # @param contract_id [String] The contract ID to retrieve seat balances for
         #
@@ -698,6 +763,8 @@ module MetronomeSDK
         # @param limit [Integer] Maximum number of seats to return. Range: 1-100. Default: 25.
         #
         # @param seat_ids [Array<String>] Optional filter to only include specific seats.
+        #
+        # @param skip_missing_seat_ids [Boolean] When true, any seat_ids not found in contract subscriptions will be silently omi
         #
         # @param starting_at [Time] Include only commits or credits with access effective on or after this date (can
         #

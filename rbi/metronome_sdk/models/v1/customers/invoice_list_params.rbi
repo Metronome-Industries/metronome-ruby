@@ -114,6 +114,14 @@ module MetronomeSDK
           end
           attr_writer :type
 
+          # Indicates that this API request was triggered by a webhook notification with the
+          # provided ID.
+          sig { returns(T.nilable(String)) }
+          attr_reader :webhook_notification_id
+
+          sig { params(webhook_notification_id: String).void }
+          attr_writer :webhook_notification_id
+
           sig do
             params(
               customer_id: String,
@@ -129,6 +137,7 @@ module MetronomeSDK
               status: String,
               type:
                 MetronomeSDK::V1::Customers::InvoiceListParams::Type::OrSymbol,
+              webhook_notification_id: String,
               request_options: MetronomeSDK::RequestOptions::OrHash
             ).returns(T.attached_class)
           end
@@ -157,6 +166,9 @@ module MetronomeSDK
             status: nil,
             # Filter invoices by type. Defaults to returning all invoice types.
             type: nil,
+            # Indicates that this API request was triggered by a webhook notification with the
+            # provided ID.
+            webhook_notification_id: nil,
             request_options: {}
           )
           end
@@ -177,6 +189,7 @@ module MetronomeSDK
                 status: String,
                 type:
                   MetronomeSDK::V1::Customers::InvoiceListParams::Type::OrSymbol,
+                webhook_notification_id: String,
                 request_options: MetronomeSDK::RequestOptions
               }
             )

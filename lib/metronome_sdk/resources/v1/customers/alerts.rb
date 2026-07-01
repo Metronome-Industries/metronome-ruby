@@ -47,11 +47,11 @@ module MetronomeSDK
           # - `null` - Notification has been archived
           # - `triggered_by`: Additional context about what caused the notification to
           #   trigger (when applicable)
+          # - `updated_at`: Timestamp of when the `customer_status` was last updated
           # - alert: Complete threshold notification configuration including:
           #   - Notification ID, name, and type
           #   - Current threshold values and credit type information
           #   - Notification status (enabled, disabled, or archived)
-          #   - Last update timestamp
           #   - Any applied filters (credit grant types, custom fields, group values)
           #
           # ### Usage guidelines:
@@ -69,11 +69,13 @@ module MetronomeSDK
           # - Error handling: Returns 404 if either the customer or alert_id doesn't exist
           #   or isn't accessible to your organization
           #
-          # @overload retrieve(alert_id:, customer_id:, group_values: nil, plans_or_contracts: nil, seat_filter: nil, request_options: {})
+          # @overload retrieve(alert_id:, customer_id:, alert_specifiers: nil, group_values: nil, plans_or_contracts: nil, seat_filter: nil, request_options: {})
           #
           # @param alert_id [String] The Metronome ID of the threshold notification
           #
           # @param customer_id [String] The Metronome ID of the customer
+          #
+          # @param alert_specifiers [Array<MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::AlertSpecifier>] Can be used with only `low_remaining_contract_credit_and_commit_balance_reached`
           #
           # @param group_values [Array<MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::GroupValue>] Only present for `spend_threshold_reached` notifications. Retrieve the notificat
           #
