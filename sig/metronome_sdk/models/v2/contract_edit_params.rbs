@@ -422,12 +422,13 @@ module MetronomeSDK
               effective_at: MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::Schedule::effective_at
             }
 
-            type effective_at = :START_OF_CURRENT_PERIOD
+            type effective_at = :START_OF_CURRENT_PERIOD | :START_OF_NEXT_PERIOD
 
             module EffectiveAt
               extend MetronomeSDK::Internal::Type::Enum
 
               START_OF_CURRENT_PERIOD: :START_OF_CURRENT_PERIOD
+              START_OF_NEXT_PERIOD: :START_OF_NEXT_PERIOD
 
               def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::Schedule::effective_at]
             end
@@ -2742,12 +2743,13 @@ module MetronomeSDK
               effective_at: MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::Schedule::effective_at
             }
 
-            type effective_at = :START_OF_CURRENT_PERIOD
+            type effective_at = :START_OF_CURRENT_PERIOD | :START_OF_NEXT_PERIOD
 
             module EffectiveAt
               extend MetronomeSDK::Internal::Type::Enum
 
               START_OF_CURRENT_PERIOD: :START_OF_CURRENT_PERIOD
+              START_OF_NEXT_PERIOD: :START_OF_NEXT_PERIOD
 
               def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::Schedule::effective_at]
             end

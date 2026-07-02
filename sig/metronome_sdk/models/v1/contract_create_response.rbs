@@ -366,37 +366,52 @@ module MetronomeSDK
             type customer_billing_provider_configuration =
               {
                 id: String,
+                archived_at: Time?,
                 billing_provider: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::billing_provider,
-                delivery_method: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::delivery_method
+                configuration: ::Hash[Symbol, top],
+                customer_id: String,
+                delivery_method: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::delivery_method,
+                delivery_method_configuration: ::Hash[Symbol, top],
+                delivery_method_id: String
               }
 
             class CustomerBillingProviderConfiguration < MetronomeSDK::Internal::Type::BaseModel
-              attr_reader id: String?
+              attr_accessor id: String
 
-              def id=: (String) -> String
+              attr_accessor archived_at: Time?
 
-              attr_reader billing_provider: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::billing_provider?
+              attr_accessor billing_provider: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::billing_provider
 
-              def billing_provider=: (
-                MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::billing_provider
-              ) -> MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::billing_provider
+              attr_accessor configuration: ::Hash[Symbol, top]
 
-              attr_reader delivery_method: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::delivery_method?
+              attr_accessor customer_id: String
 
-              def delivery_method=: (
-                MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::delivery_method
-              ) -> MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::delivery_method
+              attr_accessor delivery_method: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::delivery_method
+
+              attr_accessor delivery_method_configuration: ::Hash[Symbol, top]
+
+              attr_accessor delivery_method_id: String
 
               def initialize: (
-                ?id: String,
-                ?billing_provider: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::billing_provider,
-                ?delivery_method: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::delivery_method
+                id: String,
+                archived_at: Time?,
+                billing_provider: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::billing_provider,
+                configuration: ::Hash[Symbol, top],
+                customer_id: String,
+                delivery_method: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::delivery_method,
+                delivery_method_configuration: ::Hash[Symbol, top],
+                delivery_method_id: String
               ) -> void
 
               def to_hash: -> {
                 id: String,
+                archived_at: Time?,
                 billing_provider: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::billing_provider,
-                delivery_method: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::delivery_method
+                configuration: ::Hash[Symbol, top],
+                customer_id: String,
+                delivery_method: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::delivery_method,
+                delivery_method_configuration: ::Hash[Symbol, top],
+                delivery_method_id: String
               }
 
               type billing_provider =
