@@ -48,7 +48,6 @@ module MetronomeSDK
       sig { params(custom_fields: T::Hash[Symbol, String]).void }
       attr_writer :custom_fields
 
-      # The billing provider configuration associated with a contract.
       sig do
         returns(
           T.nilable(
@@ -183,7 +182,6 @@ module MetronomeSDK
         archived_at: nil,
         # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         custom_fields: nil,
-        # The billing provider configuration associated with a contract.
         customer_billing_provider_configuration: nil,
         # ID of the package this contract was created from, if applicable.
         package_id: nil,
@@ -567,9 +565,15 @@ module MetronomeSDK
             )
           end
 
+        # ID of this configuration; can be provided as the
+        # billing_provider_configuration_id when creating a contract.
+        sig { returns(String) }
+        attr_accessor :id
+
         sig { returns(T.nilable(Time)) }
         attr_accessor :archived_at
 
+        # The billing provider set for this configuration.
         sig do
           returns(
             MetronomeSDK::Contract::CustomerBillingProviderConfiguration::BillingProvider::TaggedSymbol
@@ -577,6 +581,15 @@ module MetronomeSDK
         end
         attr_accessor :billing_provider
 
+        # Configuration for the billing provider. The structure of this object is specific
+        # to the billing provider.
+        sig { returns(T::Hash[Symbol, T.anything]) }
+        attr_accessor :configuration
+
+        sig { returns(String) }
+        attr_accessor :customer_id
+
+        # The method to use for delivering invoices to this customer.
         sig do
           returns(
             MetronomeSDK::Contract::CustomerBillingProviderConfiguration::DeliveryMethod::TaggedSymbol
@@ -584,59 +597,70 @@ module MetronomeSDK
         end
         attr_accessor :delivery_method
 
-        sig { returns(T.nilable(String)) }
-        attr_reader :id
+        # Configuration for the delivery method. The structure of this object is specific
+        # to the delivery method.
+        sig { returns(T::Hash[Symbol, T.anything]) }
+        attr_accessor :delivery_method_configuration
 
-        sig { params(id: String).void }
-        attr_writer :id
+        # ID of the delivery method to use for this customer.
+        sig { returns(String) }
+        attr_accessor :delivery_method_id
 
-        # Configuration for the billing provider. The structure of this object is specific
-        # to the billing provider.
-        sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
-        attr_reader :configuration
-
-        sig { params(configuration: T::Hash[Symbol, T.anything]).void }
-        attr_writer :configuration
-
-        # The billing provider configuration associated with a contract.
         sig do
           params(
+            id: String,
             archived_at: T.nilable(Time),
             billing_provider:
               MetronomeSDK::Contract::CustomerBillingProviderConfiguration::BillingProvider::OrSymbol,
+            configuration: T::Hash[Symbol, T.anything],
+            customer_id: String,
             delivery_method:
               MetronomeSDK::Contract::CustomerBillingProviderConfiguration::DeliveryMethod::OrSymbol,
-            id: String,
-            configuration: T::Hash[Symbol, T.anything]
+            delivery_method_configuration: T::Hash[Symbol, T.anything],
+            delivery_method_id: String
           ).returns(T.attached_class)
         end
         def self.new(
+          # ID of this configuration; can be provided as the
+          # billing_provider_configuration_id when creating a contract.
+          id:,
           archived_at:,
+          # The billing provider set for this configuration.
           billing_provider:,
-          delivery_method:,
-          id: nil,
           # Configuration for the billing provider. The structure of this object is specific
           # to the billing provider.
-          configuration: nil
+          configuration:,
+          customer_id:,
+          # The method to use for delivering invoices to this customer.
+          delivery_method:,
+          # Configuration for the delivery method. The structure of this object is specific
+          # to the delivery method.
+          delivery_method_configuration:,
+          # ID of the delivery method to use for this customer.
+          delivery_method_id:
         )
         end
 
         sig do
           override.returns(
             {
+              id: String,
               archived_at: T.nilable(Time),
               billing_provider:
                 MetronomeSDK::Contract::CustomerBillingProviderConfiguration::BillingProvider::TaggedSymbol,
+              configuration: T::Hash[Symbol, T.anything],
+              customer_id: String,
               delivery_method:
                 MetronomeSDK::Contract::CustomerBillingProviderConfiguration::DeliveryMethod::TaggedSymbol,
-              id: String,
-              configuration: T::Hash[Symbol, T.anything]
+              delivery_method_configuration: T::Hash[Symbol, T.anything],
+              delivery_method_id: String
             }
           )
         end
         def to_hash
         end
 
+        # The billing provider set for this configuration.
         module BillingProvider
           extend MetronomeSDK::Internal::Type::Enum
 
@@ -706,6 +730,7 @@ module MetronomeSDK
           end
         end
 
+        # The method to use for delivering invoices to this customer.
         module DeliveryMethod
           extend MetronomeSDK::Internal::Type::Enum
 

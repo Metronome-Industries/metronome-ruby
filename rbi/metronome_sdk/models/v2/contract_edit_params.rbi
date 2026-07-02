@@ -1182,6 +1182,11 @@ module MetronomeSDK
                   :START_OF_CURRENT_PERIOD,
                   MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::Schedule::EffectiveAt::TaggedSymbol
                 )
+              START_OF_NEXT_PERIOD =
+                T.let(
+                  :START_OF_NEXT_PERIOD,
+                  MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::Schedule::EffectiveAt::TaggedSymbol
+                )
 
               sig do
                 override.returns(
@@ -6717,6 +6722,11 @@ module MetronomeSDK
               START_OF_CURRENT_PERIOD =
                 T.let(
                   :START_OF_CURRENT_PERIOD,
+                  MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::Schedule::EffectiveAt::TaggedSymbol
+                )
+              START_OF_NEXT_PERIOD =
+                T.let(
+                  :START_OF_NEXT_PERIOD,
                   MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::Schedule::EffectiveAt::TaggedSymbol
                 )
 

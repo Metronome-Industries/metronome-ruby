@@ -14,6 +14,7 @@ module MetronomeSDK
         usage_filter: ::Array[MetronomeSDK::ContractV2::UsageFilter],
         usage_statement_schedule: MetronomeSDK::ContractV2::UsageStatementSchedule,
         archived_at: Time,
+        billing_provider_configuration_schedule: ::Array[MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule],
         credits: ::Array[MetronomeSDK::ContractV2::Credit],
         custom_fields: ::Hash[Symbol, String],
         customer_billing_provider_configuration: MetronomeSDK::ContractV2::CustomerBillingProviderConfiguration,
@@ -32,6 +33,7 @@ module MetronomeSDK
         recurring_commits: ::Array[MetronomeSDK::ContractV2::RecurringCommit],
         recurring_credits: ::Array[MetronomeSDK::ContractV2::RecurringCredit],
         reseller_royalties: ::Array[MetronomeSDK::ContractV2::ResellerRoyalty],
+        revenue_system_configuration_schedule: ::Array[MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule],
         salesforce_opportunity_id: String,
         scheduled_charges_on_usage_invoices: MetronomeSDK::Models::ContractV2::scheduled_charges_on_usage_invoices,
         spend_threshold_configuration: MetronomeSDK::SpendThresholdConfigurationV2,
@@ -67,6 +69,12 @@ module MetronomeSDK
       attr_reader archived_at: Time?
 
       def archived_at=: (Time) -> Time
+
+      attr_reader billing_provider_configuration_schedule: ::Array[MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule]?
+
+      def billing_provider_configuration_schedule=: (
+        ::Array[MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule]
+      ) -> ::Array[MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule]
 
       attr_reader credits: ::Array[MetronomeSDK::ContractV2::Credit]?
 
@@ -162,6 +170,12 @@ module MetronomeSDK
         ::Array[MetronomeSDK::ContractV2::ResellerRoyalty]
       ) -> ::Array[MetronomeSDK::ContractV2::ResellerRoyalty]
 
+      attr_reader revenue_system_configuration_schedule: ::Array[MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule]?
+
+      def revenue_system_configuration_schedule=: (
+        ::Array[MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule]
+      ) -> ::Array[MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule]
+
       attr_reader salesforce_opportunity_id: String?
 
       def salesforce_opportunity_id=: (String) -> String
@@ -211,6 +225,7 @@ module MetronomeSDK
         usage_filter: ::Array[MetronomeSDK::ContractV2::UsageFilter],
         usage_statement_schedule: MetronomeSDK::ContractV2::UsageStatementSchedule,
         ?archived_at: Time,
+        ?billing_provider_configuration_schedule: ::Array[MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule],
         ?credits: ::Array[MetronomeSDK::ContractV2::Credit],
         ?custom_fields: ::Hash[Symbol, String],
         ?customer_billing_provider_configuration: MetronomeSDK::ContractV2::CustomerBillingProviderConfiguration,
@@ -229,6 +244,7 @@ module MetronomeSDK
         ?recurring_commits: ::Array[MetronomeSDK::ContractV2::RecurringCommit],
         ?recurring_credits: ::Array[MetronomeSDK::ContractV2::RecurringCredit],
         ?reseller_royalties: ::Array[MetronomeSDK::ContractV2::ResellerRoyalty],
+        ?revenue_system_configuration_schedule: ::Array[MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule],
         ?salesforce_opportunity_id: String,
         ?scheduled_charges_on_usage_invoices: MetronomeSDK::Models::ContractV2::scheduled_charges_on_usage_invoices,
         ?spend_threshold_configuration: MetronomeSDK::SpendThresholdConfigurationV2,
@@ -251,6 +267,7 @@ module MetronomeSDK
         usage_filter: ::Array[MetronomeSDK::ContractV2::UsageFilter],
         usage_statement_schedule: MetronomeSDK::ContractV2::UsageStatementSchedule,
         archived_at: Time,
+        billing_provider_configuration_schedule: ::Array[MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule],
         credits: ::Array[MetronomeSDK::ContractV2::Credit],
         custom_fields: ::Hash[Symbol, String],
         customer_billing_provider_configuration: MetronomeSDK::ContractV2::CustomerBillingProviderConfiguration,
@@ -269,6 +286,7 @@ module MetronomeSDK
         recurring_commits: ::Array[MetronomeSDK::ContractV2::RecurringCommit],
         recurring_credits: ::Array[MetronomeSDK::ContractV2::RecurringCredit],
         reseller_royalties: ::Array[MetronomeSDK::ContractV2::ResellerRoyalty],
+        revenue_system_configuration_schedule: ::Array[MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule],
         salesforce_opportunity_id: String,
         scheduled_charges_on_usage_invoices: MetronomeSDK::Models::ContractV2::scheduled_charges_on_usage_invoices,
         spend_threshold_configuration: MetronomeSDK::SpendThresholdConfigurationV2,
@@ -1684,6 +1702,128 @@ module MetronomeSDK
         end
       end
 
+      type billing_provider_configuration_schedule =
+        {
+          billing_provider_configuration: MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration,
+          effective_at: Time,
+          effective_until: Time
+        }
+
+      class BillingProviderConfigurationSchedule < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor billing_provider_configuration: MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration
+
+        attr_accessor effective_at: Time
+
+        attr_reader effective_until: Time?
+
+        def effective_until=: (Time) -> Time
+
+        def initialize: (
+          billing_provider_configuration: MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration,
+          effective_at: Time,
+          ?effective_until: Time
+        ) -> void
+
+        def to_hash: -> {
+          billing_provider_configuration: MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration,
+          effective_at: Time,
+          effective_until: Time
+        }
+
+        type billing_provider_configuration =
+          {
+            id: String,
+            archived_at: Time?,
+            billing_provider: MetronomeSDK::Models::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration::billing_provider,
+            configuration: ::Hash[Symbol, top],
+            customer_id: String,
+            delivery_method: MetronomeSDK::Models::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration::delivery_method,
+            delivery_method_configuration: ::Hash[Symbol, top],
+            delivery_method_id: String
+          }
+
+        class BillingProviderConfiguration < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor archived_at: Time?
+
+          attr_accessor billing_provider: MetronomeSDK::Models::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration::billing_provider
+
+          attr_accessor configuration: ::Hash[Symbol, top]
+
+          attr_accessor customer_id: String
+
+          attr_accessor delivery_method: MetronomeSDK::Models::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration::delivery_method
+
+          attr_accessor delivery_method_configuration: ::Hash[Symbol, top]
+
+          attr_accessor delivery_method_id: String
+
+          def initialize: (
+            id: String,
+            archived_at: Time?,
+            billing_provider: MetronomeSDK::Models::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration::billing_provider,
+            configuration: ::Hash[Symbol, top],
+            customer_id: String,
+            delivery_method: MetronomeSDK::Models::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration::delivery_method,
+            delivery_method_configuration: ::Hash[Symbol, top],
+            delivery_method_id: String
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            archived_at: Time?,
+            billing_provider: MetronomeSDK::Models::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration::billing_provider,
+            configuration: ::Hash[Symbol, top],
+            customer_id: String,
+            delivery_method: MetronomeSDK::Models::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration::delivery_method,
+            delivery_method_configuration: ::Hash[Symbol, top],
+            delivery_method_id: String
+          }
+
+          type billing_provider =
+            :aws_marketplace
+            | :stripe
+            | :netsuite
+            | :custom
+            | :azure_marketplace
+            | :quickbooks_online
+            | :workday
+            | :gcp_marketplace
+            | :metronome
+
+          module BillingProvider
+            extend MetronomeSDK::Internal::Type::Enum
+
+            AWS_MARKETPLACE: :aws_marketplace
+            STRIPE: :stripe
+            NETSUITE: :netsuite
+            CUSTOM: :custom
+            AZURE_MARKETPLACE: :azure_marketplace
+            QUICKBOOKS_ONLINE: :quickbooks_online
+            WORKDAY: :workday
+            GCP_MARKETPLACE: :gcp_marketplace
+            METRONOME: :metronome
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration::billing_provider]
+          end
+
+          type delivery_method =
+            :direct_to_billing_provider | :aws_sqs | :tackle | :aws_sns
+
+          module DeliveryMethod
+            extend MetronomeSDK::Internal::Type::Enum
+
+            DIRECT_TO_BILLING_PROVIDER: :direct_to_billing_provider
+            AWS_SQS: :aws_sqs
+            TACKLE: :tackle
+            AWS_SNS: :aws_sns
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration::delivery_method]
+          end
+        end
+      end
+
       type credit =
         {
           id: String,
@@ -2312,27 +2452,52 @@ module MetronomeSDK
       type customer_billing_provider_configuration =
         {
           id: String,
+          archived_at: Time?,
           billing_provider: MetronomeSDK::Models::ContractV2::CustomerBillingProviderConfiguration::billing_provider,
-          delivery_method: MetronomeSDK::Models::ContractV2::CustomerBillingProviderConfiguration::delivery_method
+          configuration: ::Hash[Symbol, top],
+          customer_id: String,
+          delivery_method: MetronomeSDK::Models::ContractV2::CustomerBillingProviderConfiguration::delivery_method,
+          delivery_method_configuration: ::Hash[Symbol, top],
+          delivery_method_id: String
         }
 
       class CustomerBillingProviderConfiguration < MetronomeSDK::Internal::Type::BaseModel
         attr_accessor id: String
 
+        attr_accessor archived_at: Time?
+
         attr_accessor billing_provider: MetronomeSDK::Models::ContractV2::CustomerBillingProviderConfiguration::billing_provider
+
+        attr_accessor configuration: ::Hash[Symbol, top]
+
+        attr_accessor customer_id: String
 
         attr_accessor delivery_method: MetronomeSDK::Models::ContractV2::CustomerBillingProviderConfiguration::delivery_method
 
+        attr_accessor delivery_method_configuration: ::Hash[Symbol, top]
+
+        attr_accessor delivery_method_id: String
+
         def initialize: (
           id: String,
+          archived_at: Time?,
           billing_provider: MetronomeSDK::Models::ContractV2::CustomerBillingProviderConfiguration::billing_provider,
-          delivery_method: MetronomeSDK::Models::ContractV2::CustomerBillingProviderConfiguration::delivery_method
+          configuration: ::Hash[Symbol, top],
+          customer_id: String,
+          delivery_method: MetronomeSDK::Models::ContractV2::CustomerBillingProviderConfiguration::delivery_method,
+          delivery_method_configuration: ::Hash[Symbol, top],
+          delivery_method_id: String
         ) -> void
 
         def to_hash: -> {
           id: String,
+          archived_at: Time?,
           billing_provider: MetronomeSDK::Models::ContractV2::CustomerBillingProviderConfiguration::billing_provider,
-          delivery_method: MetronomeSDK::Models::ContractV2::CustomerBillingProviderConfiguration::delivery_method
+          configuration: ::Hash[Symbol, top],
+          customer_id: String,
+          delivery_method: MetronomeSDK::Models::ContractV2::CustomerBillingProviderConfiguration::delivery_method,
+          delivery_method_configuration: ::Hash[Symbol, top],
+          delivery_method_id: String
         }
 
         type billing_provider =
@@ -3427,6 +3592,119 @@ module MetronomeSDK
             GCP_PRO_SERVICE: :GCP_PRO_SERVICE
 
             def self?.values: -> ::Array[MetronomeSDK::Models::ContractV2::ResellerRoyalty::Segment::reseller_type]
+          end
+        end
+      end
+
+      type revenue_system_configuration_schedule =
+        {
+          effective_at: Time,
+          revenue_system_configuration: MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration,
+          effective_until: Time
+        }
+
+      class RevenueSystemConfigurationSchedule < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor effective_at: Time
+
+        attr_accessor revenue_system_configuration: MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration
+
+        attr_reader effective_until: Time?
+
+        def effective_until=: (Time) -> Time
+
+        def initialize: (
+          effective_at: Time,
+          revenue_system_configuration: MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration,
+          ?effective_until: Time
+        ) -> void
+
+        def to_hash: -> {
+          effective_at: Time,
+          revenue_system_configuration: MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration,
+          effective_until: Time
+        }
+
+        type revenue_system_configuration =
+          {
+            id: String,
+            configuration: ::Hash[Symbol, top],
+            customer_id: String,
+            delivery_method_id: String,
+            provider: MetronomeSDK::Models::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration::provider,
+            archived_at: Time?,
+            delivery_method: MetronomeSDK::Models::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration::delivery_method,
+            delivery_method_configuration: ::Hash[Symbol, top]
+          }
+
+        class RevenueSystemConfiguration < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor id: String
+
+          attr_accessor configuration: ::Hash[Symbol, top]
+
+          attr_accessor customer_id: String
+
+          attr_accessor delivery_method_id: String
+
+          attr_accessor provider: MetronomeSDK::Models::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration::provider
+
+          attr_accessor archived_at: Time?
+
+          attr_reader delivery_method: MetronomeSDK::Models::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration::delivery_method?
+
+          def delivery_method=: (
+            MetronomeSDK::Models::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration::delivery_method
+          ) -> MetronomeSDK::Models::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration::delivery_method
+
+          attr_reader delivery_method_configuration: ::Hash[Symbol, top]?
+
+          def delivery_method_configuration=: (
+            ::Hash[Symbol, top]
+          ) -> ::Hash[Symbol, top]
+
+          def initialize: (
+            id: String,
+            configuration: ::Hash[Symbol, top],
+            customer_id: String,
+            delivery_method_id: String,
+            provider: MetronomeSDK::Models::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration::provider,
+            ?archived_at: Time?,
+            ?delivery_method: MetronomeSDK::Models::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration::delivery_method,
+            ?delivery_method_configuration: ::Hash[Symbol, top]
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            configuration: ::Hash[Symbol, top],
+            customer_id: String,
+            delivery_method_id: String,
+            provider: MetronomeSDK::Models::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration::provider,
+            archived_at: Time?,
+            delivery_method: MetronomeSDK::Models::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration::delivery_method,
+            delivery_method_configuration: ::Hash[Symbol, top]
+          }
+
+          type provider = :netsuite
+
+          module Provider
+            extend MetronomeSDK::Internal::Type::Enum
+
+            NETSUITE: :netsuite
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration::provider]
+          end
+
+          type delivery_method =
+            :direct_to_billing_provider | :aws_sqs | :tackle | :aws_sns
+
+          module DeliveryMethod
+            extend MetronomeSDK::Internal::Type::Enum
+
+            DIRECT_TO_BILLING_PROVIDER: :direct_to_billing_provider
+            AWS_SQS: :aws_sqs
+            TACKLE: :tackle
+            AWS_SNS: :aws_sns
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration::delivery_method]
           end
         end
       end
