@@ -1,5 +1,13 @@
 # Changelog
 
+## 3.9.0 (2026-07-02)
+
+Full Changelog: [v3.8.0...v3.9.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v3.8.0...v3.9.0)
+
+### Features
+
+* [ORCH-1875] add billing config schedule to api ([d99c67a](https://github.com/Metronome-Industries/metronome-ruby/commit/d99c67a326f711abccba75cac0d8bb840a79583d))
+
 ## 3.8.0 (2026-06-29)
 
 Full Changelog: [v3.7.0...v3.8.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v3.7.0...v3.8.0)
