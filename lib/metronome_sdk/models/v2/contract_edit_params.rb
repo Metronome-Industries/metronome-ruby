@@ -427,6 +427,7 @@ module MetronomeSDK
               extend MetronomeSDK::Internal::Type::Enum
 
               START_OF_CURRENT_PERIOD = :START_OF_CURRENT_PERIOD
+              START_OF_NEXT_PERIOD = :START_OF_NEXT_PERIOD
 
               # @!method self.values
               #   @return [Array<Symbol>]
@@ -2998,6 +2999,7 @@ module MetronomeSDK
               extend MetronomeSDK::Internal::Type::Enum
 
               START_OF_CURRENT_PERIOD = :START_OF_CURRENT_PERIOD
+              START_OF_NEXT_PERIOD = :START_OF_NEXT_PERIOD
 
               # @!method self.values
               #   @return [Array<Symbol>]

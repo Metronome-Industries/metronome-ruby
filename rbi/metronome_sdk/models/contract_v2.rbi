@@ -55,6 +55,29 @@ module MetronomeSDK
       sig { params(archived_at: Time).void }
       attr_writer :archived_at
 
+      # The schedule of billing provider configuration changes on the contract, ordered
+      # by effective_at ascending.
+      sig do
+        returns(
+          T.nilable(
+            T::Array[
+              MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule
+            ]
+          )
+        )
+      end
+      attr_reader :billing_provider_configuration_schedule
+
+      sig do
+        params(
+          billing_provider_configuration_schedule:
+            T::Array[
+              MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::OrHash
+            ]
+        ).void
+      end
+      attr_writer :billing_provider_configuration_schedule
+
       sig { returns(T.nilable(T::Array[MetronomeSDK::ContractV2::Credit])) }
       attr_reader :credits
 
@@ -70,7 +93,6 @@ module MetronomeSDK
       sig { params(custom_fields: T::Hash[Symbol, String]).void }
       attr_writer :custom_fields
 
-      # This field's availability is dependent on your client's configuration.
       sig do
         returns(
           T.nilable(
@@ -246,6 +268,29 @@ module MetronomeSDK
       end
       attr_writer :reseller_royalties
 
+      # The schedule of revenue system configuration changes on the contract, ordered by
+      # effective_at ascending.
+      sig do
+        returns(
+          T.nilable(
+            T::Array[
+              MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule
+            ]
+          )
+        )
+      end
+      attr_reader :revenue_system_configuration_schedule
+
+      sig do
+        params(
+          revenue_system_configuration_schedule:
+            T::Array[
+              MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::OrHash
+            ]
+        ).void
+      end
+      attr_writer :revenue_system_configuration_schedule
+
       # This field's availability is dependent on your client's configuration.
       sig { returns(T.nilable(String)) }
       attr_reader :salesforce_opportunity_id
@@ -342,6 +387,10 @@ module MetronomeSDK
           usage_statement_schedule:
             MetronomeSDK::ContractV2::UsageStatementSchedule::OrHash,
           archived_at: Time,
+          billing_provider_configuration_schedule:
+            T::Array[
+              MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::OrHash
+            ],
           credits: T::Array[MetronomeSDK::ContractV2::Credit::OrHash],
           custom_fields: T::Hash[Symbol, String],
           customer_billing_provider_configuration:
@@ -370,6 +419,10 @@ module MetronomeSDK
             T::Array[MetronomeSDK::ContractV2::RecurringCredit::OrHash],
           reseller_royalties:
             T::Array[MetronomeSDK::ContractV2::ResellerRoyalty::OrHash],
+          revenue_system_configuration_schedule:
+            T::Array[
+              MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::OrHash
+            ],
           salesforce_opportunity_id: String,
           scheduled_charges_on_usage_invoices:
             MetronomeSDK::ContractV2::ScheduledChargesOnUsageInvoices::OrSymbol,
@@ -396,10 +449,12 @@ module MetronomeSDK
         usage_filter:,
         usage_statement_schedule:,
         archived_at: nil,
+        # The schedule of billing provider configuration changes on the contract, ordered
+        # by effective_at ascending.
+        billing_provider_configuration_schedule: nil,
         credits: nil,
         # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         custom_fields: nil,
-        # This field's availability is dependent on your client's configuration.
         customer_billing_provider_configuration: nil,
         # This field's availability is dependent on your client's configuration.
         discounts: nil,
@@ -429,6 +484,9 @@ module MetronomeSDK
         recurring_credits: nil,
         # This field's availability is dependent on your client's configuration.
         reseller_royalties: nil,
+        # The schedule of revenue system configuration changes on the contract, ordered by
+        # effective_at ascending.
+        revenue_system_configuration_schedule: nil,
         # This field's availability is dependent on your client's configuration.
         salesforce_opportunity_id: nil,
         # Determines which scheduled and commit charges to consolidate onto the Contract's
@@ -464,6 +522,10 @@ module MetronomeSDK
             usage_statement_schedule:
               MetronomeSDK::ContractV2::UsageStatementSchedule,
             archived_at: Time,
+            billing_provider_configuration_schedule:
+              T::Array[
+                MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule
+              ],
             credits: T::Array[MetronomeSDK::ContractV2::Credit],
             custom_fields: T::Hash[Symbol, String],
             customer_billing_provider_configuration:
@@ -489,6 +551,10 @@ module MetronomeSDK
               T::Array[MetronomeSDK::ContractV2::RecurringCredit],
             reseller_royalties:
               T::Array[MetronomeSDK::ContractV2::ResellerRoyalty],
+            revenue_system_configuration_schedule:
+              T::Array[
+                MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule
+              ],
             salesforce_opportunity_id: String,
             scheduled_charges_on_usage_invoices:
               MetronomeSDK::ContractV2::ScheduledChargesOnUsageInvoices::TaggedSymbol,
@@ -3258,6 +3324,294 @@ module MetronomeSDK
         end
       end
 
+      class BillingProviderConfigurationSchedule < MetronomeSDK::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
+
+        sig do
+          returns(
+            MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration
+          )
+        end
+        attr_reader :billing_provider_configuration
+
+        sig do
+          params(
+            billing_provider_configuration:
+              MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration::OrHash
+          ).void
+        end
+        attr_writer :billing_provider_configuration
+
+        # The date this billing provider configuration became or becomes active.
+        sig { returns(Time) }
+        attr_accessor :effective_at
+
+        # The date this billing provider configuration is superseded by the next entry.
+        # Null for the last entry in the schedule.
+        sig { returns(T.nilable(Time)) }
+        attr_reader :effective_until
+
+        sig { params(effective_until: Time).void }
+        attr_writer :effective_until
+
+        sig do
+          params(
+            billing_provider_configuration:
+              MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration::OrHash,
+            effective_at: Time,
+            effective_until: Time
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          billing_provider_configuration:,
+          # The date this billing provider configuration became or becomes active.
+          effective_at:,
+          # The date this billing provider configuration is superseded by the next entry.
+          # Null for the last entry in the schedule.
+          effective_until: nil
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              billing_provider_configuration:
+                MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration,
+              effective_at: Time,
+              effective_until: Time
+            }
+          )
+        end
+        def to_hash
+        end
+
+        class BillingProviderConfiguration < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
+          # ID of this configuration; can be provided as the
+          # billing_provider_configuration_id when creating a contract.
+          sig { returns(String) }
+          attr_accessor :id
+
+          sig { returns(T.nilable(Time)) }
+          attr_accessor :archived_at
+
+          # The billing provider set for this configuration.
+          sig do
+            returns(
+              MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration::BillingProvider::TaggedSymbol
+            )
+          end
+          attr_accessor :billing_provider
+
+          # Configuration for the billing provider. The structure of this object is specific
+          # to the billing provider.
+          sig { returns(T::Hash[Symbol, T.anything]) }
+          attr_accessor :configuration
+
+          sig { returns(String) }
+          attr_accessor :customer_id
+
+          # The method to use for delivering invoices to this customer.
+          sig do
+            returns(
+              MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration::DeliveryMethod::TaggedSymbol
+            )
+          end
+          attr_accessor :delivery_method
+
+          # Configuration for the delivery method. The structure of this object is specific
+          # to the delivery method.
+          sig { returns(T::Hash[Symbol, T.anything]) }
+          attr_accessor :delivery_method_configuration
+
+          # ID of the delivery method to use for this customer.
+          sig { returns(String) }
+          attr_accessor :delivery_method_id
+
+          sig do
+            params(
+              id: String,
+              archived_at: T.nilable(Time),
+              billing_provider:
+                MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration::BillingProvider::OrSymbol,
+              configuration: T::Hash[Symbol, T.anything],
+              customer_id: String,
+              delivery_method:
+                MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration::DeliveryMethod::OrSymbol,
+              delivery_method_configuration: T::Hash[Symbol, T.anything],
+              delivery_method_id: String
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # ID of this configuration; can be provided as the
+            # billing_provider_configuration_id when creating a contract.
+            id:,
+            archived_at:,
+            # The billing provider set for this configuration.
+            billing_provider:,
+            # Configuration for the billing provider. The structure of this object is specific
+            # to the billing provider.
+            configuration:,
+            customer_id:,
+            # The method to use for delivering invoices to this customer.
+            delivery_method:,
+            # Configuration for the delivery method. The structure of this object is specific
+            # to the delivery method.
+            delivery_method_configuration:,
+            # ID of the delivery method to use for this customer.
+            delivery_method_id:
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                id: String,
+                archived_at: T.nilable(Time),
+                billing_provider:
+                  MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration::BillingProvider::TaggedSymbol,
+                configuration: T::Hash[Symbol, T.anything],
+                customer_id: String,
+                delivery_method:
+                  MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration::DeliveryMethod::TaggedSymbol,
+                delivery_method_configuration: T::Hash[Symbol, T.anything],
+                delivery_method_id: String
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # The billing provider set for this configuration.
+          module BillingProvider
+            extend MetronomeSDK::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration::BillingProvider
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            AWS_MARKETPLACE =
+              T.let(
+                :aws_marketplace,
+                MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration::BillingProvider::TaggedSymbol
+              )
+            STRIPE =
+              T.let(
+                :stripe,
+                MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration::BillingProvider::TaggedSymbol
+              )
+            NETSUITE =
+              T.let(
+                :netsuite,
+                MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration::BillingProvider::TaggedSymbol
+              )
+            CUSTOM =
+              T.let(
+                :custom,
+                MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration::BillingProvider::TaggedSymbol
+              )
+            AZURE_MARKETPLACE =
+              T.let(
+                :azure_marketplace,
+                MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration::BillingProvider::TaggedSymbol
+              )
+            QUICKBOOKS_ONLINE =
+              T.let(
+                :quickbooks_online,
+                MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration::BillingProvider::TaggedSymbol
+              )
+            WORKDAY =
+              T.let(
+                :workday,
+                MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration::BillingProvider::TaggedSymbol
+              )
+            GCP_MARKETPLACE =
+              T.let(
+                :gcp_marketplace,
+                MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration::BillingProvider::TaggedSymbol
+              )
+            METRONOME =
+              T.let(
+                :metronome,
+                MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration::BillingProvider::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration::BillingProvider::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # The method to use for delivering invoices to this customer.
+          module DeliveryMethod
+            extend MetronomeSDK::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration::DeliveryMethod
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            DIRECT_TO_BILLING_PROVIDER =
+              T.let(
+                :direct_to_billing_provider,
+                MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration::DeliveryMethod::TaggedSymbol
+              )
+            AWS_SQS =
+              T.let(
+                :aws_sqs,
+                MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration::DeliveryMethod::TaggedSymbol
+              )
+            TACKLE =
+              T.let(
+                :tackle,
+                MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration::DeliveryMethod::TaggedSymbol
+              )
+            AWS_SNS =
+              T.let(
+                :aws_sns,
+                MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration::DeliveryMethod::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration::DeliveryMethod::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+        end
+      end
+
       class Credit < MetronomeSDK::Internal::Type::BaseModel
         OrHash =
           T.type_alias do
@@ -4473,10 +4827,15 @@ module MetronomeSDK
             )
           end
 
-        # ID of Customer's billing provider configuration.
+        # ID of this configuration; can be provided as the
+        # billing_provider_configuration_id when creating a contract.
         sig { returns(String) }
         attr_accessor :id
 
+        sig { returns(T.nilable(Time)) }
+        attr_accessor :archived_at
+
+        # The billing provider set for this configuration.
         sig do
           returns(
             MetronomeSDK::ContractV2::CustomerBillingProviderConfiguration::BillingProvider::TaggedSymbol
@@ -4484,6 +4843,15 @@ module MetronomeSDK
         end
         attr_accessor :billing_provider
 
+        # Configuration for the billing provider. The structure of this object is specific
+        # to the billing provider.
+        sig { returns(T::Hash[Symbol, T.anything]) }
+        attr_accessor :configuration
+
+        sig { returns(String) }
+        attr_accessor :customer_id
+
+        # The method to use for delivering invoices to this customer.
         sig do
           returns(
             MetronomeSDK::ContractV2::CustomerBillingProviderConfiguration::DeliveryMethod::TaggedSymbol
@@ -4491,21 +4859,47 @@ module MetronomeSDK
         end
         attr_accessor :delivery_method
 
-        # This field's availability is dependent on your client's configuration.
+        # Configuration for the delivery method. The structure of this object is specific
+        # to the delivery method.
+        sig { returns(T::Hash[Symbol, T.anything]) }
+        attr_accessor :delivery_method_configuration
+
+        # ID of the delivery method to use for this customer.
+        sig { returns(String) }
+        attr_accessor :delivery_method_id
+
         sig do
           params(
             id: String,
+            archived_at: T.nilable(Time),
             billing_provider:
               MetronomeSDK::ContractV2::CustomerBillingProviderConfiguration::BillingProvider::OrSymbol,
+            configuration: T::Hash[Symbol, T.anything],
+            customer_id: String,
             delivery_method:
-              MetronomeSDK::ContractV2::CustomerBillingProviderConfiguration::DeliveryMethod::OrSymbol
+              MetronomeSDK::ContractV2::CustomerBillingProviderConfiguration::DeliveryMethod::OrSymbol,
+            delivery_method_configuration: T::Hash[Symbol, T.anything],
+            delivery_method_id: String
           ).returns(T.attached_class)
         end
         def self.new(
-          # ID of Customer's billing provider configuration.
+          # ID of this configuration; can be provided as the
+          # billing_provider_configuration_id when creating a contract.
           id:,
+          archived_at:,
+          # The billing provider set for this configuration.
           billing_provider:,
-          delivery_method:
+          # Configuration for the billing provider. The structure of this object is specific
+          # to the billing provider.
+          configuration:,
+          customer_id:,
+          # The method to use for delivering invoices to this customer.
+          delivery_method:,
+          # Configuration for the delivery method. The structure of this object is specific
+          # to the delivery method.
+          delivery_method_configuration:,
+          # ID of the delivery method to use for this customer.
+          delivery_method_id:
         )
         end
 
@@ -4513,16 +4907,22 @@ module MetronomeSDK
           override.returns(
             {
               id: String,
+              archived_at: T.nilable(Time),
               billing_provider:
                 MetronomeSDK::ContractV2::CustomerBillingProviderConfiguration::BillingProvider::TaggedSymbol,
+              configuration: T::Hash[Symbol, T.anything],
+              customer_id: String,
               delivery_method:
-                MetronomeSDK::ContractV2::CustomerBillingProviderConfiguration::DeliveryMethod::TaggedSymbol
+                MetronomeSDK::ContractV2::CustomerBillingProviderConfiguration::DeliveryMethod::TaggedSymbol,
+              delivery_method_configuration: T::Hash[Symbol, T.anything],
+              delivery_method_id: String
             }
           )
         end
         def to_hash
         end
 
+        # The billing provider set for this configuration.
         module BillingProvider
           extend MetronomeSDK::Internal::Type::Enum
 
@@ -4592,6 +4992,7 @@ module MetronomeSDK
           end
         end
 
+        # The method to use for delivering invoices to this customer.
         module DeliveryMethod
           extend MetronomeSDK::Internal::Type::Enum
 
@@ -7200,6 +7601,269 @@ module MetronomeSDK
               override.returns(
                 T::Array[
                   MetronomeSDK::ContractV2::ResellerRoyalty::Segment::ResellerType::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+        end
+      end
+
+      class RevenueSystemConfigurationSchedule < MetronomeSDK::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule,
+              MetronomeSDK::Internal::AnyHash
+            )
+          end
+
+        # The date this revenue system configuration became or becomes active.
+        sig { returns(Time) }
+        attr_accessor :effective_at
+
+        sig do
+          returns(
+            MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration
+          )
+        end
+        attr_reader :revenue_system_configuration
+
+        sig do
+          params(
+            revenue_system_configuration:
+              MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration::OrHash
+          ).void
+        end
+        attr_writer :revenue_system_configuration
+
+        # The date this revenue system configuration is superseded by the next entry. Null
+        # for the last entry in the schedule.
+        sig { returns(T.nilable(Time)) }
+        attr_reader :effective_until
+
+        sig { params(effective_until: Time).void }
+        attr_writer :effective_until
+
+        sig do
+          params(
+            effective_at: Time,
+            revenue_system_configuration:
+              MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration::OrHash,
+            effective_until: Time
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # The date this revenue system configuration became or becomes active.
+          effective_at:,
+          revenue_system_configuration:,
+          # The date this revenue system configuration is superseded by the next entry. Null
+          # for the last entry in the schedule.
+          effective_until: nil
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              effective_at: Time,
+              revenue_system_configuration:
+                MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration,
+              effective_until: Time
+            }
+          )
+        end
+        def to_hash
+        end
+
+        class RevenueSystemConfiguration < MetronomeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration,
+                MetronomeSDK::Internal::AnyHash
+              )
+            end
+
+          # ID of the revenue system configuration.
+          sig { returns(String) }
+          attr_accessor :id
+
+          # Configuration for the revenue system. The structure of this object is specific
+          # to the provider.
+          sig { returns(T::Hash[Symbol, T.anything]) }
+          attr_accessor :configuration
+
+          sig { returns(String) }
+          attr_accessor :customer_id
+
+          # ID of the delivery method used for this customer configuration.
+          sig { returns(String) }
+          attr_accessor :delivery_method_id
+
+          # The revenue system provider (e.g. netsuite).
+          sig do
+            returns(
+              MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration::Provider::TaggedSymbol
+            )
+          end
+          attr_accessor :provider
+
+          sig { returns(T.nilable(Time)) }
+          attr_accessor :archived_at
+
+          # The method to use for delivering data to the revenue system.
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration::DeliveryMethod::TaggedSymbol
+              )
+            )
+          end
+          attr_reader :delivery_method
+
+          sig do
+            params(
+              delivery_method:
+                MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration::DeliveryMethod::OrSymbol
+            ).void
+          end
+          attr_writer :delivery_method
+
+          # Configuration for the delivery method. The structure of this object is specific
+          # to the delivery method.
+          sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
+          attr_reader :delivery_method_configuration
+
+          sig do
+            params(
+              delivery_method_configuration: T::Hash[Symbol, T.anything]
+            ).void
+          end
+          attr_writer :delivery_method_configuration
+
+          sig do
+            params(
+              id: String,
+              configuration: T::Hash[Symbol, T.anything],
+              customer_id: String,
+              delivery_method_id: String,
+              provider:
+                MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration::Provider::OrSymbol,
+              archived_at: T.nilable(Time),
+              delivery_method:
+                MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration::DeliveryMethod::OrSymbol,
+              delivery_method_configuration: T::Hash[Symbol, T.anything]
+            ).returns(T.attached_class)
+          end
+          def self.new(
+            # ID of the revenue system configuration.
+            id:,
+            # Configuration for the revenue system. The structure of this object is specific
+            # to the provider.
+            configuration:,
+            customer_id:,
+            # ID of the delivery method used for this customer configuration.
+            delivery_method_id:,
+            # The revenue system provider (e.g. netsuite).
+            provider:,
+            archived_at: nil,
+            # The method to use for delivering data to the revenue system.
+            delivery_method: nil,
+            # Configuration for the delivery method. The structure of this object is specific
+            # to the delivery method.
+            delivery_method_configuration: nil
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                id: String,
+                configuration: T::Hash[Symbol, T.anything],
+                customer_id: String,
+                delivery_method_id: String,
+                provider:
+                  MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration::Provider::TaggedSymbol,
+                archived_at: T.nilable(Time),
+                delivery_method:
+                  MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration::DeliveryMethod::TaggedSymbol,
+                delivery_method_configuration: T::Hash[Symbol, T.anything]
+              }
+            )
+          end
+          def to_hash
+          end
+
+          # The revenue system provider (e.g. netsuite).
+          module Provider
+            extend MetronomeSDK::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration::Provider
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            NETSUITE =
+              T.let(
+                :netsuite,
+                MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration::Provider::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration::Provider::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # The method to use for delivering data to the revenue system.
+          module DeliveryMethod
+            extend MetronomeSDK::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration::DeliveryMethod
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            DIRECT_TO_BILLING_PROVIDER =
+              T.let(
+                :direct_to_billing_provider,
+                MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration::DeliveryMethod::TaggedSymbol
+              )
+            AWS_SQS =
+              T.let(
+                :aws_sqs,
+                MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration::DeliveryMethod::TaggedSymbol
+              )
+            TACKLE =
+              T.let(
+                :tackle,
+                MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration::DeliveryMethod::TaggedSymbol
+              )
+            AWS_SNS =
+              T.let(
+                :aws_sns,
+                MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration::DeliveryMethod::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration::DeliveryMethod::TaggedSymbol
                 ]
               )
             end
