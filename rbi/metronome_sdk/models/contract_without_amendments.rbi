@@ -479,11 +479,6 @@ module MetronomeSDK
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          SUPERSEDE =
-            T.let(
-              :SUPERSEDE,
-              MetronomeSDK::ContractWithoutAmendments::Transition::Type::TaggedSymbol
-            )
           RENEWAL =
             T.let(
               :RENEWAL,

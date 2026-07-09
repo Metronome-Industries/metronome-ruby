@@ -1621,12 +1621,11 @@ module MetronomeSDK
           type: MetronomeSDK::Models::ContractV2::Transition::type_
         }
 
-        type type_ = :SUPERSEDE | :RENEWAL
+        type type_ = :RENEWAL
 
         module Type
           extend MetronomeSDK::Internal::Type::Enum
 
-          SUPERSEDE: :SUPERSEDE
           RENEWAL: :RENEWAL
 
           def self?.values: -> ::Array[MetronomeSDK::Models::ContractV2::Transition::type_]

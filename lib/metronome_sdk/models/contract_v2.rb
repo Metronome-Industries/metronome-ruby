@@ -1601,7 +1601,6 @@ module MetronomeSDK
         module Type
           extend MetronomeSDK::Internal::Type::Enum
 
-          SUPERSEDE = :SUPERSEDE
           RENEWAL = :RENEWAL
 
           # @!method self.values
