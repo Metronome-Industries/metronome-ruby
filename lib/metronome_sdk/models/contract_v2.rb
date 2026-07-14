@@ -1681,9 +1681,12 @@ module MetronomeSDK
       class BillingProviderConfigurationSchedule < MetronomeSDK::Internal::Type::BaseModel
         # @!attribute billing_provider_configuration
         #
-        #   @return [MetronomeSDK::Models::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration]
+        #   @return [MetronomeSDK::Models::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration, nil]
         required :billing_provider_configuration,
-                 -> { MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration }
+                 -> {
+                   MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration
+                 },
+                 nil?: true
 
         # @!attribute effective_at
         #   The date this billing provider configuration became or becomes active.
@@ -1703,7 +1706,7 @@ module MetronomeSDK
         #   {MetronomeSDK::Models::ContractV2::BillingProviderConfigurationSchedule} for
         #   more details.
         #
-        #   @param billing_provider_configuration [MetronomeSDK::Models::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration]
+        #   @param billing_provider_configuration [MetronomeSDK::Models::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration, nil]
         #
         #   @param effective_at [Time] The date this billing provider configuration became or becomes active.
         #
@@ -3742,9 +3745,12 @@ module MetronomeSDK
 
         # @!attribute revenue_system_configuration
         #
-        #   @return [MetronomeSDK::Models::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration]
+        #   @return [MetronomeSDK::Models::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration, nil]
         required :revenue_system_configuration,
-                 -> { MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration }
+                 -> {
+                   MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration
+                 },
+                 nil?: true
 
         # @!attribute effective_until
         #   The date this revenue system configuration is superseded by the next entry. Null
@@ -3760,7 +3766,7 @@ module MetronomeSDK
         #
         #   @param effective_at [Time] The date this revenue system configuration became or becomes active.
         #
-        #   @param revenue_system_configuration [MetronomeSDK::Models::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration]
+        #   @param revenue_system_configuration [MetronomeSDK::Models::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration, nil]
         #
         #   @param effective_until [Time] The date this revenue system configuration is superseded by the next entry. Null
 
