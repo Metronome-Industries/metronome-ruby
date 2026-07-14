@@ -182,16 +182,51 @@ module MetronomeSDK
           end
         end
 
-        type dashboard_option = { key: String, value: String }
+        type dashboard_option =
+          {
+            key: MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::DashboardOption::key,
+            value: String
+          }
 
         class DashboardOption < MetronomeSDK::Internal::Type::BaseModel
-          attr_accessor key: String
+          attr_accessor key: MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::DashboardOption::key
 
           attr_accessor value: String
 
-          def initialize: (key: String, value: String) -> void
+          def initialize: (
+            key: MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::DashboardOption::key,
+            value: String
+          ) -> void
 
-          def to_hash: -> { key: String, value: String }
+          def to_hash: -> {
+            key: MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::DashboardOption::key,
+            value: String
+          }
+
+          type key =
+            :show_zero_usage_line_items
+            | :contract_id
+            | :invoice_type
+            | :invoice_status_filter
+            | :hide_voided_invoices
+            | :billable_status_filter
+            | :hide_grant_name
+            | :credit_ledger_credit_type_id
+
+          module Key
+            extend MetronomeSDK::Internal::Type::Enum
+
+            SHOW_ZERO_USAGE_LINE_ITEMS: :show_zero_usage_line_items
+            CONTRACT_ID: :contract_id
+            INVOICE_TYPE: :invoice_type
+            INVOICE_STATUS_FILTER: :invoice_status_filter
+            HIDE_VOIDED_INVOICES: :hide_voided_invoices
+            BILLABLE_STATUS_FILTER: :billable_status_filter
+            HIDE_GRANT_NAME: :hide_grant_name
+            CREDIT_LEDGER_CREDIT_TYPE_ID: :credit_ledger_credit_type_id
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::DashboardOption::key]
+          end
         end
       end
     end
