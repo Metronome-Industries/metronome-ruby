@@ -155,19 +155,46 @@ module MetronomeSDK
           # @!attribute key
           #   The option key name
           #
-          #   @return [String]
-          required :key, String
+          #   @return [Symbol, MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::DashboardOption::Key]
+          required :key, enum: -> { MetronomeSDK::V1::DashboardGetEmbeddableURLParams::DashboardOption::Key }
 
           # @!attribute value
-          #   The option value
+          #   The option value. For show_zero_usage_line_items: "true" or "false" (default
+          #   "false"). For contract_id: a UUID filtering invoices to a specific contract. For
+          #   invoice_type: "USAGE" or "SCHEDULED". For invoice_status_filter: "VOID",
+          #   "FINALIZED", "DRAFT", "FINALIZED_AND_DRAFT", or "ALL". For hide_voided_invoices
+          #   (deprecated): "true" or "false".
           #
           #   @return [String]
           required :value, String
 
           # @!method initialize(key:, value:)
-          #   @param key [String] The option key name
+          #   Some parameter documentations has been truncated, see
+          #   {MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::DashboardOption} for
+          #   more details.
           #
-          #   @param value [String] The option value
+          #   @param key [Symbol, MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::DashboardOption::Key] The option key name
+          #
+          #   @param value [String] The option value. For show_zero_usage_line_items: "true" or "false" (default "fa
+
+          # The option key name
+          #
+          # @see MetronomeSDK::Models::V1::DashboardGetEmbeddableURLParams::DashboardOption#key
+          module Key
+            extend MetronomeSDK::Internal::Type::Enum
+
+            SHOW_ZERO_USAGE_LINE_ITEMS = :show_zero_usage_line_items
+            CONTRACT_ID = :contract_id
+            INVOICE_TYPE = :invoice_type
+            INVOICE_STATUS_FILTER = :invoice_status_filter
+            HIDE_VOIDED_INVOICES = :hide_voided_invoices
+            BILLABLE_STATUS_FILTER = :billable_status_filter
+            HIDE_GRANT_NAME = :hide_grant_name
+            CREDIT_LEDGER_CREDIT_TYPE_ID = :credit_ledger_credit_type_id
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
         end
       end
     end
