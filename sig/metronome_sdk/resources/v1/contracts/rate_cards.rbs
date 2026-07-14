@@ -26,6 +26,7 @@ module MetronomeSDK
 
           def update: (
             rate_card_id: String,
+            ?add_credit_type_conversions: ::Array[MetronomeSDK::V1::Contracts::RateCardUpdateParams::AddCreditTypeConversion],
             ?aliases: ::Array[MetronomeSDK::V1::Contracts::RateCardUpdateParams::Alias],
             ?description: String,
             ?name: String,
