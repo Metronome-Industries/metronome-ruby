@@ -3278,12 +3278,11 @@ module MetronomeSDK
             future_invoice_behavior: MetronomeSDK::V1::ContractCreateParams::Transition::FutureInvoiceBehavior
           }
 
-          type type_ = :SUPERSEDE | :RENEWAL
+          type type_ = :RENEWAL
 
           module Type
             extend MetronomeSDK::Internal::Type::Enum
 
-            SUPERSEDE: :SUPERSEDE
             RENEWAL: :RENEWAL
 
             def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateParams::Transition::type_]

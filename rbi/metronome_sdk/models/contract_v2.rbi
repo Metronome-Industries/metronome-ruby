@@ -3150,11 +3150,6 @@ module MetronomeSDK
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          SUPERSEDE =
-            T.let(
-              :SUPERSEDE,
-              MetronomeSDK::ContractV2::Transition::Type::TaggedSymbol
-            )
           RENEWAL =
             T.let(
               :RENEWAL,
@@ -5763,7 +5758,8 @@ module MetronomeSDK
         # The commits will be created on the usage invoice frequency. If provided: - The
         # period defined in the duration will correspond to this frequency. - Commits will
         # be created aligned with the recurring commit's starting_at rather than the usage
-        # invoice dates.
+        # invoice dates. - Daily recurring commits have a limit of one per contract, and
+        # are unable to be created with seat-based subscriptions
         sig do
           returns(
             T.nilable(
@@ -5894,7 +5890,8 @@ module MetronomeSDK
           # The commits will be created on the usage invoice frequency. If provided: - The
           # period defined in the duration will correspond to this frequency. - Commits will
           # be created aligned with the recurring commit's starting_at rather than the usage
-          # invoice dates.
+          # invoice dates. - Daily recurring commits have a limit of one per contract, and
+          # are unable to be created with seat-based subscriptions
           recurrence_frequency: nil,
           # Will be passed down to the individual commits. This controls how much of an
           # individual unexpired commit will roll over upon contract transition. Must be
@@ -6488,7 +6485,8 @@ module MetronomeSDK
         # The commits will be created on the usage invoice frequency. If provided: - The
         # period defined in the duration will correspond to this frequency. - Commits will
         # be created aligned with the recurring commit's starting_at rather than the usage
-        # invoice dates.
+        # invoice dates. - Daily recurring commits have a limit of one per contract, and
+        # are unable to be created with seat-based subscriptions
         module RecurrenceFrequency
           extend MetronomeSDK::Internal::Type::Enum
 
@@ -6715,7 +6713,8 @@ module MetronomeSDK
         # The commits will be created on the usage invoice frequency. If provided: - The
         # period defined in the duration will correspond to this frequency. - Commits will
         # be created aligned with the recurring commit's starting_at rather than the usage
-        # invoice dates.
+        # invoice dates. - Daily recurring commits have a limit of one per contract, and
+        # are unable to be created with seat-based subscriptions
         sig do
           returns(
             T.nilable(
@@ -6842,7 +6841,8 @@ module MetronomeSDK
           # The commits will be created on the usage invoice frequency. If provided: - The
           # period defined in the duration will correspond to this frequency. - Commits will
           # be created aligned with the recurring commit's starting_at rather than the usage
-          # invoice dates.
+          # invoice dates. - Daily recurring commits have a limit of one per contract, and
+          # are unable to be created with seat-based subscriptions
           recurrence_frequency: nil,
           # Will be passed down to the individual commits. This controls how much of an
           # individual unexpired commit will roll over upon contract transition. Must be
@@ -7285,7 +7285,8 @@ module MetronomeSDK
         # The commits will be created on the usage invoice frequency. If provided: - The
         # period defined in the duration will correspond to this frequency. - Commits will
         # be created aligned with the recurring commit's starting_at rather than the usage
-        # invoice dates.
+        # invoice dates. - Daily recurring commits have a limit of one per contract, and
+        # are unable to be created with seat-based subscriptions
         module RecurrenceFrequency
           extend MetronomeSDK::Internal::Type::Enum
 

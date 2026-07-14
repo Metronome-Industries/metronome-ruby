@@ -467,24 +467,115 @@ module MetronomeSDK
             end
 
           # The option key name
-          sig { returns(String) }
+          sig do
+            returns(
+              MetronomeSDK::V1::DashboardGetEmbeddableURLParams::DashboardOption::Key::OrSymbol
+            )
+          end
           attr_accessor :key
 
-          # The option value
+          # The option value. For show_zero_usage_line_items: "true" or "false" (default
+          # "false"). For contract_id: a UUID filtering invoices to a specific contract. For
+          # invoice_type: "USAGE" or "SCHEDULED". For invoice_status_filter: "VOID",
+          # "FINALIZED", "DRAFT", "FINALIZED_AND_DRAFT", or "ALL". For hide_voided_invoices
+          # (deprecated): "true" or "false".
           sig { returns(String) }
           attr_accessor :value
 
-          sig { params(key: String, value: String).returns(T.attached_class) }
+          sig do
+            params(
+              key:
+                MetronomeSDK::V1::DashboardGetEmbeddableURLParams::DashboardOption::Key::OrSymbol,
+              value: String
+            ).returns(T.attached_class)
+          end
           def self.new(
             # The option key name
             key:,
-            # The option value
+            # The option value. For show_zero_usage_line_items: "true" or "false" (default
+            # "false"). For contract_id: a UUID filtering invoices to a specific contract. For
+            # invoice_type: "USAGE" or "SCHEDULED". For invoice_status_filter: "VOID",
+            # "FINALIZED", "DRAFT", "FINALIZED_AND_DRAFT", or "ALL". For hide_voided_invoices
+            # (deprecated): "true" or "false".
             value:
           )
           end
 
-          sig { override.returns({ key: String, value: String }) }
+          sig do
+            override.returns(
+              {
+                key:
+                  MetronomeSDK::V1::DashboardGetEmbeddableURLParams::DashboardOption::Key::OrSymbol,
+                value: String
+              }
+            )
+          end
           def to_hash
+          end
+
+          # The option key name
+          module Key
+            extend MetronomeSDK::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  MetronomeSDK::V1::DashboardGetEmbeddableURLParams::DashboardOption::Key
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            SHOW_ZERO_USAGE_LINE_ITEMS =
+              T.let(
+                :show_zero_usage_line_items,
+                MetronomeSDK::V1::DashboardGetEmbeddableURLParams::DashboardOption::Key::TaggedSymbol
+              )
+            CONTRACT_ID =
+              T.let(
+                :contract_id,
+                MetronomeSDK::V1::DashboardGetEmbeddableURLParams::DashboardOption::Key::TaggedSymbol
+              )
+            INVOICE_TYPE =
+              T.let(
+                :invoice_type,
+                MetronomeSDK::V1::DashboardGetEmbeddableURLParams::DashboardOption::Key::TaggedSymbol
+              )
+            INVOICE_STATUS_FILTER =
+              T.let(
+                :invoice_status_filter,
+                MetronomeSDK::V1::DashboardGetEmbeddableURLParams::DashboardOption::Key::TaggedSymbol
+              )
+            HIDE_VOIDED_INVOICES =
+              T.let(
+                :hide_voided_invoices,
+                MetronomeSDK::V1::DashboardGetEmbeddableURLParams::DashboardOption::Key::TaggedSymbol
+              )
+            BILLABLE_STATUS_FILTER =
+              T.let(
+                :billable_status_filter,
+                MetronomeSDK::V1::DashboardGetEmbeddableURLParams::DashboardOption::Key::TaggedSymbol
+              )
+            HIDE_GRANT_NAME =
+              T.let(
+                :hide_grant_name,
+                MetronomeSDK::V1::DashboardGetEmbeddableURLParams::DashboardOption::Key::TaggedSymbol
+              )
+            CREDIT_LEDGER_CREDIT_TYPE_ID =
+              T.let(
+                :credit_ledger_credit_type_id,
+                MetronomeSDK::V1::DashboardGetEmbeddableURLParams::DashboardOption::Key::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  MetronomeSDK::V1::DashboardGetEmbeddableURLParams::DashboardOption::Key::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
         end
       end
