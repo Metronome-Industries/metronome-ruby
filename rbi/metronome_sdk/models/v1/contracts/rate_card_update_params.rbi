@@ -20,6 +20,29 @@ module MetronomeSDK
           sig { returns(String) }
           attr_accessor :rate_card_id
 
+          # Add credit type conversions for using custom pricing units in rates. Existing
+          # conversions cannot be modified.
+          sig do
+            returns(
+              T.nilable(
+                T::Array[
+                  MetronomeSDK::V1::Contracts::RateCardUpdateParams::AddCreditTypeConversion
+                ]
+              )
+            )
+          end
+          attr_reader :add_credit_type_conversions
+
+          sig do
+            params(
+              add_credit_type_conversions:
+                T::Array[
+                  MetronomeSDK::V1::Contracts::RateCardUpdateParams::AddCreditTypeConversion::OrHash
+                ]
+            ).void
+          end
+          attr_writer :add_credit_type_conversions
+
           # Reference this alias when creating a contract. If the same alias is assigned to
           # multiple rate cards, it will reference the rate card to which it was most
           # recently assigned. It is not exposed to end customers.
@@ -60,6 +83,10 @@ module MetronomeSDK
           sig do
             params(
               rate_card_id: String,
+              add_credit_type_conversions:
+                T::Array[
+                  MetronomeSDK::V1::Contracts::RateCardUpdateParams::AddCreditTypeConversion::OrHash
+                ],
               aliases:
                 T::Array[
                   MetronomeSDK::V1::Contracts::RateCardUpdateParams::Alias::OrHash
@@ -72,6 +99,9 @@ module MetronomeSDK
           def self.new(
             # ID of the rate card to update
             rate_card_id:,
+            # Add credit type conversions for using custom pricing units in rates. Existing
+            # conversions cannot be modified.
+            add_credit_type_conversions: nil,
             # Reference this alias when creating a contract. If the same alias is assigned to
             # multiple rate cards, it will reference the rate card to which it was most
             # recently assigned. It is not exposed to end customers.
@@ -87,6 +117,10 @@ module MetronomeSDK
             override.returns(
               {
                 rate_card_id: String,
+                add_credit_type_conversions:
+                  T::Array[
+                    MetronomeSDK::V1::Contracts::RateCardUpdateParams::AddCreditTypeConversion
+                  ],
                 aliases:
                   T::Array[
                     MetronomeSDK::V1::Contracts::RateCardUpdateParams::Alias
@@ -98,6 +132,39 @@ module MetronomeSDK
             )
           end
           def to_hash
+          end
+
+          class AddCreditTypeConversion < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V1::Contracts::RateCardUpdateParams::AddCreditTypeConversion,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            sig { returns(String) }
+            attr_accessor :custom_credit_type_id
+
+            sig { returns(Float) }
+            attr_accessor :fiat_per_custom_credit
+
+            sig do
+              params(
+                custom_credit_type_id: String,
+                fiat_per_custom_credit: Float
+              ).returns(T.attached_class)
+            end
+            def self.new(custom_credit_type_id:, fiat_per_custom_credit:)
+            end
+
+            sig do
+              override.returns(
+                { custom_credit_type_id: String, fiat_per_custom_credit: Float }
+              )
+            end
+            def to_hash
+            end
           end
 
           class Alias < MetronomeSDK::Internal::Type::BaseModel
