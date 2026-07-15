@@ -25,6 +25,14 @@ module MetronomeSDK
         #   @return [MetronomeSDK::Models::V2::ContractEditCommitParams::AccessSchedule, nil]
         optional :access_schedule, -> { MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule }
 
+        # @!attribute applicable_contract_ids
+        #   Which contracts the customer-level commit applies to. If set to null, the commit
+        #   applies to all of the customer's contracts. This field cannot be edited for
+        #   POSTPAID commits or contract-level commits.
+        #
+        #   @return [Array<String>, nil]
+        optional :applicable_contract_ids, MetronomeSDK::Internal::Type::ArrayOf[String], nil?: true
+
         # @!attribute applicable_product_ids
         #   Which products the commit applies to. If applicable_product_ids,
         #   applicable_product_tags or specifiers are not provided, the commit applies to
@@ -103,7 +111,7 @@ module MetronomeSDK
                  -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::CommitSpecifierInput] },
                  nil?: true
 
-        # @!method initialize(commit_id:, customer_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, hierarchy_configuration: nil, invoice_contract_id: nil, invoice_schedule: nil, name: nil, priority: nil, product_id: nil, rate_type: nil, specifiers: nil, request_options: {})
+        # @!method initialize(commit_id:, customer_id:, access_schedule: nil, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, hierarchy_configuration: nil, invoice_contract_id: nil, invoice_schedule: nil, name: nil, priority: nil, product_id: nil, rate_type: nil, specifiers: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::V2::ContractEditCommitParams} for more details.
         #
@@ -112,6 +120,8 @@ module MetronomeSDK
         #   @param customer_id [String] ID of the customer whose commit is being edited
         #
         #   @param access_schedule [MetronomeSDK::Models::V2::ContractEditCommitParams::AccessSchedule]
+        #
+        #   @param applicable_contract_ids [Array<String>, nil] Which contracts the customer-level commit applies to. If set to null, the commit
         #
         #   @param applicable_product_ids [Array<String>, nil] Which products the commit applies to. If applicable_product_ids, applicable_prod
         #

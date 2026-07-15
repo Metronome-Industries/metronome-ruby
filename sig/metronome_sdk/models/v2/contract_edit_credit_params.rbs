@@ -6,6 +6,7 @@ module MetronomeSDK
           credit_id: String,
           customer_id: String,
           access_schedule: MetronomeSDK::V2::ContractEditCreditParams::AccessSchedule,
+          applicable_contract_ids: ::Array[String]?,
           applicable_product_ids: ::Array[String]?,
           applicable_product_tags: ::Array[String]?,
           description: String,
@@ -31,6 +32,8 @@ module MetronomeSDK
         def access_schedule=: (
           MetronomeSDK::V2::ContractEditCreditParams::AccessSchedule
         ) -> MetronomeSDK::V2::ContractEditCreditParams::AccessSchedule
+
+        attr_accessor applicable_contract_ids: ::Array[String]?
 
         attr_accessor applicable_product_ids: ::Array[String]?
 
@@ -68,6 +71,7 @@ module MetronomeSDK
           credit_id: String,
           customer_id: String,
           ?access_schedule: MetronomeSDK::V2::ContractEditCreditParams::AccessSchedule,
+          ?applicable_contract_ids: ::Array[String]?,
           ?applicable_product_ids: ::Array[String]?,
           ?applicable_product_tags: ::Array[String]?,
           ?description: String,
@@ -84,6 +88,7 @@ module MetronomeSDK
           credit_id: String,
           customer_id: String,
           access_schedule: MetronomeSDK::V2::ContractEditCreditParams::AccessSchedule,
+          applicable_contract_ids: ::Array[String]?,
           applicable_product_ids: ::Array[String]?,
           applicable_product_tags: ::Array[String]?,
           description: String,
