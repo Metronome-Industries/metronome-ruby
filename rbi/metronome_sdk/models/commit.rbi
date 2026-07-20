@@ -91,6 +91,13 @@ module MetronomeSDK
       sig { params(contract: MetronomeSDK::Commit::Contract::OrHash).void }
       attr_writer :contract
 
+      # The ratio of the amount paid for the commit to the amount of credit granted.
+      sig { returns(T.nilable(Float)) }
+      attr_reader :cost_basis
+
+      sig { params(cost_basis: Float).void }
+      attr_writer :cost_basis
+
       # The actor who created this commit. Omitted for system-generated commits such as
       # recurring commits, rollover commits, and threshold commits.
       sig { returns(T.nilable(String)) }
@@ -293,6 +300,7 @@ module MetronomeSDK
           archived_at: Time,
           balance: Float,
           contract: MetronomeSDK::Commit::Contract::OrHash,
+          cost_basis: Float,
           created_by: String,
           custom_fields: T::Hash[Symbol, String],
           description: String,
@@ -365,6 +373,8 @@ module MetronomeSDK
         # included in the balance, including future-dated manual ledger entries.
         balance: nil,
         contract: nil,
+        # The ratio of the amount paid for the commit to the amount of credit granted.
+        cost_basis: nil,
         # The actor who created this commit. Omitted for system-generated commits such as
         # recurring commits, rollover commits, and threshold commits.
         created_by: nil,
@@ -426,6 +436,7 @@ module MetronomeSDK
             archived_at: Time,
             balance: Float,
             contract: MetronomeSDK::Commit::Contract,
+            cost_basis: Float,
             created_by: String,
             custom_fields: T::Hash[Symbol, String],
             description: String,

@@ -309,6 +309,7 @@ module MetronomeSDK
           archived_at: Time,
           balance: Float,
           contract: MetronomeSDK::ContractV2::Commit::Contract,
+          cost_basis: Float,
           created_by: String,
           custom_fields: ::Hash[Symbol, String],
           description: String,
@@ -369,6 +370,10 @@ module MetronomeSDK
         def contract=: (
           MetronomeSDK::ContractV2::Commit::Contract
         ) -> MetronomeSDK::ContractV2::Commit::Contract
+
+        attr_reader cost_basis: Float?
+
+        def cost_basis=: (Float) -> Float
 
         attr_reader created_by: String?
 
@@ -472,6 +477,7 @@ module MetronomeSDK
           ?archived_at: Time,
           ?balance: Float,
           ?contract: MetronomeSDK::ContractV2::Commit::Contract,
+          ?cost_basis: Float,
           ?created_by: String,
           ?custom_fields: ::Hash[Symbol, String],
           ?description: String,
@@ -504,6 +510,7 @@ module MetronomeSDK
           archived_at: Time,
           balance: Float,
           contract: MetronomeSDK::ContractV2::Commit::Contract,
+          cost_basis: Float,
           created_by: String,
           custom_fields: ::Hash[Symbol, String],
           description: String,

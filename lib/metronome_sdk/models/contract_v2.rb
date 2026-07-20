@@ -390,6 +390,12 @@ module MetronomeSDK
         #   @return [MetronomeSDK::Models::ContractV2::Commit::Contract, nil]
         optional :contract, -> { MetronomeSDK::ContractV2::Commit::Contract }
 
+        # @!attribute cost_basis
+        #   The ratio of the amount paid for the commit to the amount of credit granted.
+        #
+        #   @return [Float, nil]
+        optional :cost_basis, Float
+
         # @!attribute created_by
         #   The actor who created this commit. Omitted for system-generated commits such as
         #   recurring commits, rollover commits, and threshold commits.
@@ -499,7 +505,7 @@ module MetronomeSDK
         #   @return [MetronomeSDK::Models::RecurringCommitSubscriptionConfig, nil]
         optional :subscription_config, -> { MetronomeSDK::RecurringCommitSubscriptionConfig }
 
-        # @!method initialize(id:, created_at:, product:, type:, access_schedule: nil, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, archived_at: nil, balance: nil, contract: nil, created_by: nil, custom_fields: nil, description: nil, hierarchy_configuration: nil, invoice_contract: nil, invoice_schedule: nil, ledger: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil, recurring_commit_id: nil, rolled_over_from: nil, rollover_fraction: nil, salesforce_opportunity_id: nil, specifiers: nil, spend_tracker_attributes: nil, subscription_config: nil)
+        # @!method initialize(id:, created_at:, product:, type:, access_schedule: nil, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, archived_at: nil, balance: nil, contract: nil, cost_basis: nil, created_by: nil, custom_fields: nil, description: nil, hierarchy_configuration: nil, invoice_contract: nil, invoice_schedule: nil, ledger: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil, recurring_commit_id: nil, rolled_over_from: nil, rollover_fraction: nil, salesforce_opportunity_id: nil, specifiers: nil, spend_tracker_attributes: nil, subscription_config: nil)
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::ContractV2::Commit} for more details.
         #
@@ -524,6 +530,8 @@ module MetronomeSDK
         #   @param balance [Float] The current balance of the credit or commit. This balance reflects the amount of
         #
         #   @param contract [MetronomeSDK::Models::ContractV2::Commit::Contract]
+        #
+        #   @param cost_basis [Float] The ratio of the amount paid for the commit to the amount of credit granted.
         #
         #   @param created_by [String] The actor who created this commit. Omitted for system-generated commits such as
         #
