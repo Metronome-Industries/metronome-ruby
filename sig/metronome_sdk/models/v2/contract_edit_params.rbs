@@ -331,7 +331,7 @@ module MetronomeSDK
           type billing_provider_configuration =
             {
               billing_provider: MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::billing_provider,
-              billing_provider_configuration_id: String,
+              billing_provider_configuration_id: String?,
               delivery_method: MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::delivery_method
             }
 
@@ -342,9 +342,7 @@ module MetronomeSDK
               MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::billing_provider
             ) -> MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::billing_provider
 
-            attr_reader billing_provider_configuration_id: String?
-
-            def billing_provider_configuration_id=: (String) -> String
+            attr_accessor billing_provider_configuration_id: String?
 
             attr_reader delivery_method: MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::delivery_method?
 
@@ -354,13 +352,13 @@ module MetronomeSDK
 
             def initialize: (
               ?billing_provider: MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::billing_provider,
-              ?billing_provider_configuration_id: String,
+              ?billing_provider_configuration_id: String?,
               ?delivery_method: MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::delivery_method
             ) -> void
 
             def to_hash: -> {
               billing_provider: MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::billing_provider,
-              billing_provider_configuration_id: String,
+              billing_provider_configuration_id: String?,
               delivery_method: MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::delivery_method
             }
 
@@ -2670,7 +2668,7 @@ module MetronomeSDK
             {
               delivery_method: MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::delivery_method,
               provider: MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::provider,
-              revenue_system_configuration_id: String
+              revenue_system_configuration_id: String?
             }
 
           class RevenueSystemConfiguration < MetronomeSDK::Internal::Type::BaseModel
@@ -2686,20 +2684,18 @@ module MetronomeSDK
               MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::provider
             ) -> MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::provider
 
-            attr_reader revenue_system_configuration_id: String?
-
-            def revenue_system_configuration_id=: (String) -> String
+            attr_accessor revenue_system_configuration_id: String?
 
             def initialize: (
               ?delivery_method: MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::delivery_method,
               ?provider: MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::provider,
-              ?revenue_system_configuration_id: String
+              ?revenue_system_configuration_id: String?
             ) -> void
 
             def to_hash: -> {
               delivery_method: MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::delivery_method,
               provider: MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::provider,
-              revenue_system_configuration_id: String
+              revenue_system_configuration_id: String?
             }
 
             type delivery_method =

@@ -40,6 +40,12 @@ module MetronomeSDK
         end
         attr_writer :access_schedule
 
+        # Which contracts the customer-level commit applies to. If set to null, the commit
+        # applies to all of the customer's contracts. This field cannot be edited for
+        # POSTPAID commits or contract-level commits.
+        sig { returns(T.nilable(T::Array[String])) }
+        attr_accessor :applicable_contract_ids
+
         # Which products the commit applies to. If applicable_product_ids,
         # applicable_product_tags or specifiers are not provided, the commit applies to
         # all products.
@@ -148,6 +154,7 @@ module MetronomeSDK
             customer_id: String,
             access_schedule:
               MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule::OrHash,
+            applicable_contract_ids: T.nilable(T::Array[String]),
             applicable_product_ids: T.nilable(T::Array[String]),
             applicable_product_tags: T.nilable(T::Array[String]),
             description: String,
@@ -172,6 +179,10 @@ module MetronomeSDK
           # ID of the customer whose commit is being edited
           customer_id:,
           access_schedule: nil,
+          # Which contracts the customer-level commit applies to. If set to null, the commit
+          # applies to all of the customer's contracts. This field cannot be edited for
+          # POSTPAID commits or contract-level commits.
+          applicable_contract_ids: nil,
           # Which products the commit applies to. If applicable_product_ids,
           # applicable_product_tags or specifiers are not provided, the commit applies to
           # all products.
@@ -215,6 +226,7 @@ module MetronomeSDK
               customer_id: String,
               access_schedule:
                 MetronomeSDK::V2::ContractEditCommitParams::AccessSchedule,
+              applicable_contract_ids: T.nilable(T::Array[String]),
               applicable_product_ids: T.nilable(T::Array[String]),
               applicable_product_tags: T.nilable(T::Array[String]),
               description: String,

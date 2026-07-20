@@ -3330,7 +3330,9 @@ module MetronomeSDK
 
         sig do
           returns(
-            MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration
+            T.nilable(
+              MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration
+            )
           )
         end
         attr_reader :billing_provider_configuration
@@ -3338,7 +3340,9 @@ module MetronomeSDK
         sig do
           params(
             billing_provider_configuration:
-              MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration::OrHash
+              T.nilable(
+                MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration::OrHash
+              )
           ).void
         end
         attr_writer :billing_provider_configuration
@@ -3358,7 +3362,9 @@ module MetronomeSDK
         sig do
           params(
             billing_provider_configuration:
-              MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration::OrHash,
+              T.nilable(
+                MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration::OrHash
+              ),
             effective_at: Time,
             effective_until: Time
           ).returns(T.attached_class)
@@ -3377,7 +3383,9 @@ module MetronomeSDK
           override.returns(
             {
               billing_provider_configuration:
-                MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration,
+                T.nilable(
+                  MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration
+                ),
               effective_at: Time,
               effective_until: Time
             }
@@ -7626,7 +7634,9 @@ module MetronomeSDK
 
         sig do
           returns(
-            MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration
+            T.nilable(
+              MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration
+            )
           )
         end
         attr_reader :revenue_system_configuration
@@ -7634,7 +7644,9 @@ module MetronomeSDK
         sig do
           params(
             revenue_system_configuration:
-              MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration::OrHash
+              T.nilable(
+                MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration::OrHash
+              )
           ).void
         end
         attr_writer :revenue_system_configuration
@@ -7651,7 +7663,9 @@ module MetronomeSDK
           params(
             effective_at: Time,
             revenue_system_configuration:
-              MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration::OrHash,
+              T.nilable(
+                MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration::OrHash
+              ),
             effective_until: Time
           ).returns(T.attached_class)
         end
@@ -7670,7 +7684,9 @@ module MetronomeSDK
             {
               effective_at: Time,
               revenue_system_configuration:
-                MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration,
+                T.nilable(
+                  MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration
+                ),
               effective_until: Time
             }
           )

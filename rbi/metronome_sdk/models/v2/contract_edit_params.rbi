@@ -956,10 +956,7 @@ module MetronomeSDK
             attr_writer :billing_provider
 
             sig { returns(T.nilable(String)) }
-            attr_reader :billing_provider_configuration_id
-
-            sig { params(billing_provider_configuration_id: String).void }
-            attr_writer :billing_provider_configuration_id
+            attr_accessor :billing_provider_configuration_id
 
             sig do
               returns(
@@ -982,7 +979,7 @@ module MetronomeSDK
               params(
                 billing_provider:
                   MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::BillingProvider::OrSymbol,
-                billing_provider_configuration_id: String,
+                billing_provider_configuration_id: T.nilable(String),
                 delivery_method:
                   MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::DeliveryMethod::OrSymbol
               ).returns(T.attached_class)
@@ -999,7 +996,7 @@ module MetronomeSDK
                 {
                   billing_provider:
                     MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::BillingProvider::OrSymbol,
-                  billing_provider_configuration_id: String,
+                  billing_provider_configuration_id: T.nilable(String),
                   delivery_method:
                     MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::DeliveryMethod::OrSymbol
                 }
@@ -6561,10 +6558,7 @@ module MetronomeSDK
             attr_writer :provider
 
             sig { returns(T.nilable(String)) }
-            attr_reader :revenue_system_configuration_id
-
-            sig { params(revenue_system_configuration_id: String).void }
-            attr_writer :revenue_system_configuration_id
+            attr_accessor :revenue_system_configuration_id
 
             sig do
               params(
@@ -6572,7 +6566,7 @@ module MetronomeSDK
                   MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::DeliveryMethod::OrSymbol,
                 provider:
                   MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::Provider::OrSymbol,
-                revenue_system_configuration_id: String
+                revenue_system_configuration_id: T.nilable(String)
               ).returns(T.attached_class)
             end
             def self.new(
@@ -6590,7 +6584,7 @@ module MetronomeSDK
                     MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::DeliveryMethod::OrSymbol,
                   provider:
                     MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::Provider::OrSymbol,
-                  revenue_system_configuration_id: String
+                  revenue_system_configuration_id: T.nilable(String)
                 }
               )
             end
