@@ -16,6 +16,9 @@ module MetronomeSDK
     sig { returns(T.nilable(String)) }
     attr_reader :webhook_secret
 
+    sig { returns(MetronomeSDK::Resources::Webhooks) }
+    attr_reader :webhooks
+
     sig { returns(MetronomeSDK::Resources::V2) }
     attr_reader :v2
 
