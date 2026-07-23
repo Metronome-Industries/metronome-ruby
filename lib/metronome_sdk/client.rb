@@ -21,9 +21,6 @@ module MetronomeSDK
     # @return [String, nil]
     attr_reader :webhook_secret
 
-    # @return [MetronomeSDK::Resources::Webhooks]
-    attr_reader :webhooks
-
     # @return [MetronomeSDK::Resources::V2]
     attr_reader :v2
 
@@ -95,7 +92,6 @@ module MetronomeSDK
         headers: headers
       )
 
-      @webhooks = MetronomeSDK::Resources::Webhooks.new(client: self)
       @v2 = MetronomeSDK::Resources::V2.new(client: self)
       @v1 = MetronomeSDK::Resources::V1.new(client: self)
     end

@@ -12,8 +12,6 @@ module MetronomeSDK
 
     attr_reader webhook_secret: String?
 
-    attr_reader webhooks: MetronomeSDK::Resources::Webhooks
-
     attr_reader v2: MetronomeSDK::Resources::V2
 
     attr_reader v1: MetronomeSDK::Resources::V1
