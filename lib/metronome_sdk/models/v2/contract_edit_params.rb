@@ -360,7 +360,7 @@ module MetronomeSDK
             # @!attribute billing_provider_configuration_id
             #
             #   @return [String, nil]
-            optional :billing_provider_configuration_id, String
+            optional :billing_provider_configuration_id, String, nil?: true
 
             # @!attribute delivery_method
             #
@@ -370,7 +370,7 @@ module MetronomeSDK
 
             # @!method initialize(billing_provider: nil, billing_provider_configuration_id: nil, delivery_method: nil)
             #   @param billing_provider [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::BillingProvider]
-            #   @param billing_provider_configuration_id [String]
+            #   @param billing_provider_configuration_id [String, nil]
             #   @param delivery_method [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::DeliveryMethod]
 
             # @see MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration#billing_provider
@@ -1979,7 +1979,8 @@ module MetronomeSDK
           #   The commits will be created on the usage invoice frequency. If provided: - The
           #   period defined in the duration will correspond to this frequency. - Commits will
           #   be created aligned with the recurring commit's starting_at rather than the usage
-          #   invoice dates.
+          #   invoice dates. - Daily recurring commits have a limit of one per contract, and
+          #   are unable to be created with seat-based subscriptions
           #
           #   @return [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddRecurringCommit::RecurrenceFrequency, nil]
           optional :recurrence_frequency,
@@ -2285,7 +2286,8 @@ module MetronomeSDK
           # The commits will be created on the usage invoice frequency. If provided: - The
           # period defined in the duration will correspond to this frequency. - Commits will
           # be created aligned with the recurring commit's starting_at rather than the usage
-          # invoice dates.
+          # invoice dates. - Daily recurring commits have a limit of one per contract, and
+          # are unable to be created with seat-based subscriptions
           #
           # @see MetronomeSDK::Models::V2::ContractEditParams::AddRecurringCommit#recurrence_frequency
           module RecurrenceFrequency
@@ -2463,7 +2465,8 @@ module MetronomeSDK
           #   The commits will be created on the usage invoice frequency. If provided: - The
           #   period defined in the duration will correspond to this frequency. - Commits will
           #   be created aligned with the recurring commit's starting_at rather than the usage
-          #   invoice dates.
+          #   invoice dates. - Daily recurring commits have a limit of one per contract, and
+          #   are unable to be created with seat-based subscriptions
           #
           #   @return [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddRecurringCredit::RecurrenceFrequency, nil]
           optional :recurrence_frequency,
@@ -2697,7 +2700,8 @@ module MetronomeSDK
           # The commits will be created on the usage invoice frequency. If provided: - The
           # period defined in the duration will correspond to this frequency. - Commits will
           # be created aligned with the recurring commit's starting_at rather than the usage
-          # invoice dates.
+          # invoice dates. - Daily recurring commits have a limit of one per contract, and
+          # are unable to be created with seat-based subscriptions
           #
           # @see MetronomeSDK::Models::V2::ContractEditParams::AddRecurringCredit#recurrence_frequency
           module RecurrenceFrequency
@@ -2945,14 +2949,14 @@ module MetronomeSDK
             # @!attribute revenue_system_configuration_id
             #
             #   @return [String, nil]
-            optional :revenue_system_configuration_id, String
+            optional :revenue_system_configuration_id, String, nil?: true
 
             # @!method initialize(delivery_method: nil, provider: nil, revenue_system_configuration_id: nil)
             #   @param delivery_method [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::DeliveryMethod]
             #
             #   @param provider [Symbol, MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::Provider] The revenue system provider type.
             #
-            #   @param revenue_system_configuration_id [String]
+            #   @param revenue_system_configuration_id [String, nil]
 
             # @see MetronomeSDK::Models::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration#delivery_method
             module DeliveryMethod

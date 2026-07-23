@@ -390,6 +390,12 @@ module MetronomeSDK
         #   @return [MetronomeSDK::Models::ContractV2::Commit::Contract, nil]
         optional :contract, -> { MetronomeSDK::ContractV2::Commit::Contract }
 
+        # @!attribute cost_basis
+        #   The ratio of the amount paid for the commit to the amount of credit granted.
+        #
+        #   @return [Float, nil]
+        optional :cost_basis, Float
+
         # @!attribute created_by
         #   The actor who created this commit. Omitted for system-generated commits such as
         #   recurring commits, rollover commits, and threshold commits.
@@ -499,7 +505,7 @@ module MetronomeSDK
         #   @return [MetronomeSDK::Models::RecurringCommitSubscriptionConfig, nil]
         optional :subscription_config, -> { MetronomeSDK::RecurringCommitSubscriptionConfig }
 
-        # @!method initialize(id:, created_at:, product:, type:, access_schedule: nil, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, archived_at: nil, balance: nil, contract: nil, created_by: nil, custom_fields: nil, description: nil, hierarchy_configuration: nil, invoice_contract: nil, invoice_schedule: nil, ledger: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil, recurring_commit_id: nil, rolled_over_from: nil, rollover_fraction: nil, salesforce_opportunity_id: nil, specifiers: nil, spend_tracker_attributes: nil, subscription_config: nil)
+        # @!method initialize(id:, created_at:, product:, type:, access_schedule: nil, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, archived_at: nil, balance: nil, contract: nil, cost_basis: nil, created_by: nil, custom_fields: nil, description: nil, hierarchy_configuration: nil, invoice_contract: nil, invoice_schedule: nil, ledger: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil, recurring_commit_id: nil, rolled_over_from: nil, rollover_fraction: nil, salesforce_opportunity_id: nil, specifiers: nil, spend_tracker_attributes: nil, subscription_config: nil)
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::ContractV2::Commit} for more details.
         #
@@ -524,6 +530,8 @@ module MetronomeSDK
         #   @param balance [Float] The current balance of the credit or commit. This balance reflects the amount of
         #
         #   @param contract [MetronomeSDK::Models::ContractV2::Commit::Contract]
+        #
+        #   @param cost_basis [Float] The ratio of the amount paid for the commit to the amount of credit granted.
         #
         #   @param created_by [String] The actor who created this commit. Omitted for system-generated commits such as
         #
@@ -1601,7 +1609,6 @@ module MetronomeSDK
         module Type
           extend MetronomeSDK::Internal::Type::Enum
 
-          SUPERSEDE = :SUPERSEDE
           RENEWAL = :RENEWAL
 
           # @!method self.values
@@ -1682,9 +1689,12 @@ module MetronomeSDK
       class BillingProviderConfigurationSchedule < MetronomeSDK::Internal::Type::BaseModel
         # @!attribute billing_provider_configuration
         #
-        #   @return [MetronomeSDK::Models::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration]
+        #   @return [MetronomeSDK::Models::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration, nil]
         required :billing_provider_configuration,
-                 -> { MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration }
+                 -> {
+                   MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration
+                 },
+                 nil?: true
 
         # @!attribute effective_at
         #   The date this billing provider configuration became or becomes active.
@@ -1704,7 +1714,7 @@ module MetronomeSDK
         #   {MetronomeSDK::Models::ContractV2::BillingProviderConfigurationSchedule} for
         #   more details.
         #
-        #   @param billing_provider_configuration [MetronomeSDK::Models::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration]
+        #   @param billing_provider_configuration [MetronomeSDK::Models::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration, nil]
         #
         #   @param effective_at [Time] The date this billing provider configuration became or becomes active.
         #
@@ -2912,7 +2922,8 @@ module MetronomeSDK
         #   The commits will be created on the usage invoice frequency. If provided: - The
         #   period defined in the duration will correspond to this frequency. - Commits will
         #   be created aligned with the recurring commit's starting_at rather than the usage
-        #   invoice dates.
+        #   invoice dates. - Daily recurring commits have a limit of one per contract, and
+        #   are unable to be created with seat-based subscriptions
         #
         #   @return [Symbol, MetronomeSDK::Models::ContractV2::RecurringCommit::RecurrenceFrequency, nil]
         optional :recurrence_frequency,
@@ -3223,7 +3234,8 @@ module MetronomeSDK
         # The commits will be created on the usage invoice frequency. If provided: - The
         # period defined in the duration will correspond to this frequency. - Commits will
         # be created aligned with the recurring commit's starting_at rather than the usage
-        # invoice dates.
+        # invoice dates. - Daily recurring commits have a limit of one per contract, and
+        # are unable to be created with seat-based subscriptions
         #
         # @see MetronomeSDK::Models::ContractV2::RecurringCommit#recurrence_frequency
         module RecurrenceFrequency
@@ -3348,7 +3360,8 @@ module MetronomeSDK
         #   The commits will be created on the usage invoice frequency. If provided: - The
         #   period defined in the duration will correspond to this frequency. - Commits will
         #   be created aligned with the recurring commit's starting_at rather than the usage
-        #   invoice dates.
+        #   invoice dates. - Daily recurring commits have a limit of one per contract, and
+        #   are unable to be created with seat-based subscriptions
         #
         #   @return [Symbol, MetronomeSDK::Models::ContractV2::RecurringCredit::RecurrenceFrequency, nil]
         optional :recurrence_frequency,
@@ -3588,7 +3601,8 @@ module MetronomeSDK
         # The commits will be created on the usage invoice frequency. If provided: - The
         # period defined in the duration will correspond to this frequency. - Commits will
         # be created aligned with the recurring commit's starting_at rather than the usage
-        # invoice dates.
+        # invoice dates. - Daily recurring commits have a limit of one per contract, and
+        # are unable to be created with seat-based subscriptions
         #
         # @see MetronomeSDK::Models::ContractV2::RecurringCredit#recurrence_frequency
         module RecurrenceFrequency
@@ -3739,9 +3753,12 @@ module MetronomeSDK
 
         # @!attribute revenue_system_configuration
         #
-        #   @return [MetronomeSDK::Models::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration]
+        #   @return [MetronomeSDK::Models::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration, nil]
         required :revenue_system_configuration,
-                 -> { MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration }
+                 -> {
+                   MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration
+                 },
+                 nil?: true
 
         # @!attribute effective_until
         #   The date this revenue system configuration is superseded by the next entry. Null
@@ -3757,7 +3774,7 @@ module MetronomeSDK
         #
         #   @param effective_at [Time] The date this revenue system configuration became or becomes active.
         #
-        #   @param revenue_system_configuration [MetronomeSDK::Models::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration]
+        #   @param revenue_system_configuration [MetronomeSDK::Models::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration, nil]
         #
         #   @param effective_until [Time] The date this revenue system configuration is superseded by the next entry. Null
 

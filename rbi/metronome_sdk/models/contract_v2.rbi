@@ -661,6 +661,13 @@ module MetronomeSDK
         end
         attr_writer :contract
 
+        # The ratio of the amount paid for the commit to the amount of credit granted.
+        sig { returns(T.nilable(Float)) }
+        attr_reader :cost_basis
+
+        sig { params(cost_basis: Float).void }
+        attr_writer :cost_basis
+
         # The actor who created this commit. Omitted for system-generated commits such as
         # recurring commits, rollover commits, and threshold commits.
         sig { returns(T.nilable(String)) }
@@ -879,6 +886,7 @@ module MetronomeSDK
             archived_at: Time,
             balance: Float,
             contract: MetronomeSDK::ContractV2::Commit::Contract::OrHash,
+            cost_basis: Float,
             created_by: String,
             custom_fields: T::Hash[Symbol, String],
             description: String,
@@ -949,6 +957,8 @@ module MetronomeSDK
           # included in the balance, including future-dated manual ledger entries.
           balance: nil,
           contract: nil,
+          # The ratio of the amount paid for the commit to the amount of credit granted.
+          cost_basis: nil,
           # The actor who created this commit. Omitted for system-generated commits such as
           # recurring commits, rollover commits, and threshold commits.
           created_by: nil,
@@ -1002,6 +1012,7 @@ module MetronomeSDK
               archived_at: Time,
               balance: Float,
               contract: MetronomeSDK::ContractV2::Commit::Contract,
+              cost_basis: Float,
               created_by: String,
               custom_fields: T::Hash[Symbol, String],
               description: String,
@@ -3150,11 +3161,6 @@ module MetronomeSDK
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          SUPERSEDE =
-            T.let(
-              :SUPERSEDE,
-              MetronomeSDK::ContractV2::Transition::Type::TaggedSymbol
-            )
           RENEWAL =
             T.let(
               :RENEWAL,
@@ -3335,7 +3341,9 @@ module MetronomeSDK
 
         sig do
           returns(
-            MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration
+            T.nilable(
+              MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration
+            )
           )
         end
         attr_reader :billing_provider_configuration
@@ -3343,7 +3351,9 @@ module MetronomeSDK
         sig do
           params(
             billing_provider_configuration:
-              MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration::OrHash
+              T.nilable(
+                MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration::OrHash
+              )
           ).void
         end
         attr_writer :billing_provider_configuration
@@ -3363,7 +3373,9 @@ module MetronomeSDK
         sig do
           params(
             billing_provider_configuration:
-              MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration::OrHash,
+              T.nilable(
+                MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration::OrHash
+              ),
             effective_at: Time,
             effective_until: Time
           ).returns(T.attached_class)
@@ -3382,7 +3394,9 @@ module MetronomeSDK
           override.returns(
             {
               billing_provider_configuration:
-                MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration,
+                T.nilable(
+                  MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration
+                ),
               effective_at: Time,
               effective_until: Time
             }
@@ -5763,7 +5777,8 @@ module MetronomeSDK
         # The commits will be created on the usage invoice frequency. If provided: - The
         # period defined in the duration will correspond to this frequency. - Commits will
         # be created aligned with the recurring commit's starting_at rather than the usage
-        # invoice dates.
+        # invoice dates. - Daily recurring commits have a limit of one per contract, and
+        # are unable to be created with seat-based subscriptions
         sig do
           returns(
             T.nilable(
@@ -5894,7 +5909,8 @@ module MetronomeSDK
           # The commits will be created on the usage invoice frequency. If provided: - The
           # period defined in the duration will correspond to this frequency. - Commits will
           # be created aligned with the recurring commit's starting_at rather than the usage
-          # invoice dates.
+          # invoice dates. - Daily recurring commits have a limit of one per contract, and
+          # are unable to be created with seat-based subscriptions
           recurrence_frequency: nil,
           # Will be passed down to the individual commits. This controls how much of an
           # individual unexpired commit will roll over upon contract transition. Must be
@@ -6488,7 +6504,8 @@ module MetronomeSDK
         # The commits will be created on the usage invoice frequency. If provided: - The
         # period defined in the duration will correspond to this frequency. - Commits will
         # be created aligned with the recurring commit's starting_at rather than the usage
-        # invoice dates.
+        # invoice dates. - Daily recurring commits have a limit of one per contract, and
+        # are unable to be created with seat-based subscriptions
         module RecurrenceFrequency
           extend MetronomeSDK::Internal::Type::Enum
 
@@ -6715,7 +6732,8 @@ module MetronomeSDK
         # The commits will be created on the usage invoice frequency. If provided: - The
         # period defined in the duration will correspond to this frequency. - Commits will
         # be created aligned with the recurring commit's starting_at rather than the usage
-        # invoice dates.
+        # invoice dates. - Daily recurring commits have a limit of one per contract, and
+        # are unable to be created with seat-based subscriptions
         sig do
           returns(
             T.nilable(
@@ -6842,7 +6860,8 @@ module MetronomeSDK
           # The commits will be created on the usage invoice frequency. If provided: - The
           # period defined in the duration will correspond to this frequency. - Commits will
           # be created aligned with the recurring commit's starting_at rather than the usage
-          # invoice dates.
+          # invoice dates. - Daily recurring commits have a limit of one per contract, and
+          # are unable to be created with seat-based subscriptions
           recurrence_frequency: nil,
           # Will be passed down to the individual commits. This controls how much of an
           # individual unexpired commit will roll over upon contract transition. Must be
@@ -7285,7 +7304,8 @@ module MetronomeSDK
         # The commits will be created on the usage invoice frequency. If provided: - The
         # period defined in the duration will correspond to this frequency. - Commits will
         # be created aligned with the recurring commit's starting_at rather than the usage
-        # invoice dates.
+        # invoice dates. - Daily recurring commits have a limit of one per contract, and
+        # are unable to be created with seat-based subscriptions
         module RecurrenceFrequency
           extend MetronomeSDK::Internal::Type::Enum
 
@@ -7625,7 +7645,9 @@ module MetronomeSDK
 
         sig do
           returns(
-            MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration
+            T.nilable(
+              MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration
+            )
           )
         end
         attr_reader :revenue_system_configuration
@@ -7633,7 +7655,9 @@ module MetronomeSDK
         sig do
           params(
             revenue_system_configuration:
-              MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration::OrHash
+              T.nilable(
+                MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration::OrHash
+              )
           ).void
         end
         attr_writer :revenue_system_configuration
@@ -7650,7 +7674,9 @@ module MetronomeSDK
           params(
             effective_at: Time,
             revenue_system_configuration:
-              MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration::OrHash,
+              T.nilable(
+                MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration::OrHash
+              ),
             effective_until: Time
           ).returns(T.attached_class)
         end
@@ -7669,7 +7695,9 @@ module MetronomeSDK
             {
               effective_at: Time,
               revenue_system_configuration:
-                MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration,
+                T.nilable(
+                  MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration
+                ),
               effective_until: Time
             }
           )

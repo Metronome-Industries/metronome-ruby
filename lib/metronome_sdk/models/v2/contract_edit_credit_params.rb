@@ -25,6 +25,14 @@ module MetronomeSDK
         #   @return [MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule, nil]
         optional :access_schedule, -> { MetronomeSDK::V2::ContractEditCreditParams::AccessSchedule }
 
+        # @!attribute applicable_contract_ids
+        #   Which contracts the customer-level credit applies to. If set to null, the credit
+        #   applies to all of the customer's contracts. This field cannot be set on a
+        #   contract-level credit.
+        #
+        #   @return [Array<String>, nil]
+        optional :applicable_contract_ids, MetronomeSDK::Internal::Type::ArrayOf[String], nil?: true
+
         # @!attribute applicable_product_ids
         #   Which products the credit applies to. If both applicable_product_ids and
         #   applicable_product_tags are not provided, the credit applies to all products.
@@ -90,7 +98,7 @@ module MetronomeSDK
                  -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::CommitSpecifierInput] },
                  nil?: true
 
-        # @!method initialize(credit_id:, customer_id:, access_schedule: nil, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, hierarchy_configuration: nil, name: nil, priority: nil, product_id: nil, rate_type: nil, specifiers: nil, request_options: {})
+        # @!method initialize(credit_id:, customer_id:, access_schedule: nil, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, hierarchy_configuration: nil, name: nil, priority: nil, product_id: nil, rate_type: nil, specifiers: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::V2::ContractEditCreditParams} for more details.
         #
@@ -99,6 +107,8 @@ module MetronomeSDK
         #   @param customer_id [String] ID of the customer whose credit is being edited
         #
         #   @param access_schedule [MetronomeSDK::Models::V2::ContractEditCreditParams::AccessSchedule]
+        #
+        #   @param applicable_contract_ids [Array<String>, nil] Which contracts the customer-level credit applies to. If set to null, the credit
         #
         #   @param applicable_product_ids [Array<String>, nil] Which products the credit applies to. If both applicable_product_ids and applica
         #

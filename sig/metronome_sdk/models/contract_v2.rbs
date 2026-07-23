@@ -309,6 +309,7 @@ module MetronomeSDK
           archived_at: Time,
           balance: Float,
           contract: MetronomeSDK::ContractV2::Commit::Contract,
+          cost_basis: Float,
           created_by: String,
           custom_fields: ::Hash[Symbol, String],
           description: String,
@@ -369,6 +370,10 @@ module MetronomeSDK
         def contract=: (
           MetronomeSDK::ContractV2::Commit::Contract
         ) -> MetronomeSDK::ContractV2::Commit::Contract
+
+        attr_reader cost_basis: Float?
+
+        def cost_basis=: (Float) -> Float
 
         attr_reader created_by: String?
 
@@ -472,6 +477,7 @@ module MetronomeSDK
           ?archived_at: Time,
           ?balance: Float,
           ?contract: MetronomeSDK::ContractV2::Commit::Contract,
+          ?cost_basis: Float,
           ?created_by: String,
           ?custom_fields: ::Hash[Symbol, String],
           ?description: String,
@@ -504,6 +510,7 @@ module MetronomeSDK
           archived_at: Time,
           balance: Float,
           contract: MetronomeSDK::ContractV2::Commit::Contract,
+          cost_basis: Float,
           created_by: String,
           custom_fields: ::Hash[Symbol, String],
           description: String,
@@ -1621,12 +1628,11 @@ module MetronomeSDK
           type: MetronomeSDK::Models::ContractV2::Transition::type_
         }
 
-        type type_ = :SUPERSEDE | :RENEWAL
+        type type_ = :RENEWAL
 
         module Type
           extend MetronomeSDK::Internal::Type::Enum
 
-          SUPERSEDE: :SUPERSEDE
           RENEWAL: :RENEWAL
 
           def self?.values: -> ::Array[MetronomeSDK::Models::ContractV2::Transition::type_]
@@ -1704,13 +1710,13 @@ module MetronomeSDK
 
       type billing_provider_configuration_schedule =
         {
-          billing_provider_configuration: MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration,
+          billing_provider_configuration: MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration?,
           effective_at: Time,
           effective_until: Time
         }
 
       class BillingProviderConfigurationSchedule < MetronomeSDK::Internal::Type::BaseModel
-        attr_accessor billing_provider_configuration: MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration
+        attr_accessor billing_provider_configuration: MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration?
 
         attr_accessor effective_at: Time
 
@@ -1719,13 +1725,13 @@ module MetronomeSDK
         def effective_until=: (Time) -> Time
 
         def initialize: (
-          billing_provider_configuration: MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration,
+          billing_provider_configuration: MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration?,
           effective_at: Time,
           ?effective_until: Time
         ) -> void
 
         def to_hash: -> {
-          billing_provider_configuration: MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration,
+          billing_provider_configuration: MetronomeSDK::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration?,
           effective_at: Time,
           effective_until: Time
         }
@@ -3599,14 +3605,14 @@ module MetronomeSDK
       type revenue_system_configuration_schedule =
         {
           effective_at: Time,
-          revenue_system_configuration: MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration,
+          revenue_system_configuration: MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration?,
           effective_until: Time
         }
 
       class RevenueSystemConfigurationSchedule < MetronomeSDK::Internal::Type::BaseModel
         attr_accessor effective_at: Time
 
-        attr_accessor revenue_system_configuration: MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration
+        attr_accessor revenue_system_configuration: MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration?
 
         attr_reader effective_until: Time?
 
@@ -3614,13 +3620,13 @@ module MetronomeSDK
 
         def initialize: (
           effective_at: Time,
-          revenue_system_configuration: MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration,
+          revenue_system_configuration: MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration?,
           ?effective_until: Time
         ) -> void
 
         def to_hash: -> {
           effective_at: Time,
-          revenue_system_configuration: MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration,
+          revenue_system_configuration: MetronomeSDK::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration?,
           effective_until: Time
         }
 
