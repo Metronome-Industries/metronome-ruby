@@ -1,7 +1,0 @@
-module MetronomeSDK
-  module Resources
-    class Webhooks
-      def initialize: (client: MetronomeSDK::Client) -> void
-    end
-  end
-end
