@@ -1,5 +1,31 @@
 # Changelog
 
+## 3.10.0 (2026-07-23)
+
+Full Changelog: [v3.9.0...v3.10.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v3.9.0...v3.10.0)
+
+### Features
+
+* [ORCH-2018] fixes type issues created from breaking gql changes ([f21c903](https://github.com/Metronome-Industries/metronome-ruby/commit/f21c90353a4ad56440c447b713624df8b1583f3f))
+* Add add_credit_type_conversions field to update_rate_card ([f9d1ca5](https://github.com/Metronome-Industries/metronome-ruby/commit/f9d1ca5a365285e27b63f89a1720e98e2685f3e4))
+* Add cost_basis to commits ([276ba9b](https://github.com/Metronome-Industries/metronome-ruby/commit/276ba9b96f7784fa142a6ed5caf1fbe9edf32df5))
+* Add daily recurring commit description to docs ([22ce79a](https://github.com/Metronome-Industries/metronome-ruby/commit/22ce79af31f1e1585ee16d53ea8103e23b9141ee))
+* add stlc SDK generation workflow to api repo ([fe49163](https://github.com/Metronome-Industries/metronome-ruby/commit/fe49163f7be32e3eb9248c19b77d8d73a9c53687))
+* Docs: embeddable dashboard doc updates ([6cdc3fb](https://github.com/Metronome-Industries/metronome-ruby/commit/6cdc3fbb56a486febbcb27b6c40b2169b965df93))
+* Kmd/remove supersede from contract transition ([260c042](https://github.com/Metronome-Industries/metronome-ruby/commit/260c042cf1c63a78a9eb4687b78d11c07544af45))
+* Plumb applicable_contract_ids in edit customer commit ([b35217d](https://github.com/Metronome-Industries/metronome-ruby/commit/b35217d2002003b7bbe3432a3bc2bcff3599999f))
+* **stlc:** configurable CI runner and private-production-repo support in workflow templates ([702930f](https://github.com/Metronome-Industries/metronome-ruby/commit/702930fbea60e526f6bdbd68bc1d3fceb7c1355b))
+
+
+### Bug Fixes
+
+* remove webhook config that overwrites custom code ([d015d08](https://github.com/Metronome-Industries/metronome-ruby/commit/d015d08d5b3b8279626635a9e4136cce74fc5bbb))
+
+
+### Chores
+
+* update tracking files for promote workflow ([3b6573c](https://github.com/Metronome-Industries/metronome-ruby/commit/3b6573c4116bbe414677ac23afa186ad5f106b40))
+
 ## 3.9.0 (2026-07-02)
 
 Full Changelog: [v3.8.0...v3.9.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v3.8.0...v3.9.0)
