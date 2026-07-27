@@ -9,6 +9,9 @@ module MetronomeSDK
           # Some parameter documentations has been truncated, see
           # {MetronomeSDK::Models::V1::Customers::CreditCreateParams} for more details.
           #
+          # ⚠️ For most contract amendments, use `contracts/edit` directly. Use this
+          # endpoint only for cross-contract or enterprise-wide commits.
+          #
           # Creates customer-level credits that provide spending allowances or free credit
           # balances for customers across their Metronome usage. Note: In most cases, you
           # should add credits directly to customer contracts using the contract/create or

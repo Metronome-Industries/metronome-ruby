@@ -6,6 +6,9 @@ module MetronomeSDK
       class Customers
         # Credits and commits are used to manage customer balances.
         class Credits
+          # ⚠️ For most contract amendments, use `contracts/edit` directly. Use this
+          # endpoint only for cross-contract or enterprise-wide commits.
+          #
           # Creates customer-level credits that provide spending allowances or free credit
           # balances for customers across their Metronome usage. Note: In most cases, you
           # should add credits directly to customer contracts using the contract/create or
