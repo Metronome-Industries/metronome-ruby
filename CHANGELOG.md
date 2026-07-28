@@ -1,5 +1,19 @@
 # Changelog
 
+## 3.11.0 (2026-07-28)
+
+Full Changelog: [v3.10.0...v3.11.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v3.10.0...v3.11.0)
+
+### Features
+
+* add release-please workflow ([#27](https://github.com/Metronome-Industries/metronome-ruby/issues/27)) ([03844d8](https://github.com/Metronome-Industries/metronome-ruby/commit/03844d89a8dcd94ae1af42a3adaab0e80e86c0ac))
+* **stlc:** dispatch custom-code seals to api ([f3fc992](https://github.com/Metronome-Industries/metronome-ruby/commit/f3fc9929937ed044e5c3fa945ab4eb756260b1ff))
+
+
+### Bug Fixes
+
+* **stlc:** use bot token for sync ([25835bf](https://github.com/Metronome-Industries/metronome-ruby/commit/25835bfd8586274cdf7399cf4ffb74bb891e47b4))
+
 ## 3.10.0 (2026-07-23)
 
 Full Changelog: [v3.9.0...v3.10.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v3.9.0...v3.10.0)
