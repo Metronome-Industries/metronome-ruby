@@ -77,29 +77,33 @@ jobs:
           set -euo pipefail
           git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${REPO}.git"
           git fetch origin main
+          current=$(jq -r '."."' .release-please-manifest.json)
+          if [ -z "$current" ] || [ "$current" = "null" ]; then
+            echo "::error::Could not determine the current release version"
+            exit 1
+          fi
           changed=$(git diff --name-only --diff-filter=AM "origin/main...HEAD")
           rewritten=()
           while IFS= read -r file; do
             [ -n "$file" ] || continue
             [ -f "$file" ] || continue
             grep -Iq . "$file" || continue
-            DESIRED_VERSION="$VERSION" python3 - "$file" <<'PY'
+            CURRENT_VERSION="$current" DESIRED_VERSION="$VERSION" python3 - "$file" <<'PY'
           import os
           import re
           import sys
 
           path = sys.argv[1]
+          old = os.environ["CURRENT_VERSION"]
           new = os.environ["DESIRED_VERSION"]
           version_pattern = re.compile(
-              r"(?<![0-9.])[0-9]+\.[0-9]+\.[0-9]+(?:-[0-9A-Za-z.-]+)?(?![0-9.])"
+              r"(?<![0-9.])" + re.escape(old) + r"(?![0-9.])"
           )
           with open(path, encoding="utf-8") as handle:
               contents = handle.read()
-          match = version_pattern.search(contents)
-          if match is None:
+          if version_pattern.search(contents) is None:
               sys.exit(0)
-          old = match.group(0)
-          updated = contents.replace(old, new)
+          updated = version_pattern.sub(new, contents)
           if updated != contents:
               with open(path, "w", encoding="utf-8") as handle:
                   handle.write(updated)
