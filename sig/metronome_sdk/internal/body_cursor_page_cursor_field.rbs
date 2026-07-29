@@ -1,0 +1,13 @@
+module MetronomeSDK
+  module Internal
+    class BodyCursorPageCursorField[Elem]
+      include MetronomeSDK::Internal::Type::BasePage[Elem]
+
+      attr_accessor cursor: String
+
+      attr_accessor data: ::Array[Elem]?
+
+      def inspect: -> String
+    end
+  end
+end
