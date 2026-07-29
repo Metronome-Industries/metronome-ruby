@@ -143,7 +143,7 @@ jobs:
           $marker
           Release version selected: **$VERSION**.
 
-          This release will be performed as **$VERSION**. To change it, edit this PR title to \\`release: X.Y.Z\\` (including any prerelease suffix); the workflow will update the release files in place.
+          This release will be performed as **$VERSION**. To change it, edit this PR title to release: X.Y.Z (including any prerelease suffix); the workflow will update the release files in place.
           EOF
           )
           existing=$(gh api "repos/${REPO}/issues/${PR_NUMBER}/comments" --paginate \
