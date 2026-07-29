@@ -75,6 +75,7 @@ jobs:
           VERSION: ${{ steps.version.outputs.version }}
         run: |
           set -euo pipefail
+          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${REPO}.git"
           git fetch origin main
           changed=$(git diff --name-only --diff-filter=AM "origin/main...HEAD")
           rewritten=()
