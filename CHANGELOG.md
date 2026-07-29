@@ -1,5 +1,29 @@
 # Changelog
 
+## [3.11.0-alpha.1](https://github.com/Metronome-Industries/metronome-ruby/compare/v3.10.0...v3.11.0-alpha.1) (2026-07-29)
+
+
+### Features
+
+* add release-please workflow ([#27](https://github.com/Metronome-Industries/metronome-ruby/issues/27)) ([03844d8](https://github.com/Metronome-Industries/metronome-ruby/commit/03844d89a8dcd94ae1af42a3adaab0e80e86c0ac))
+* **release:** add App-token release workflow and in-PR overrides ([#30](https://github.com/Metronome-Industries/metronome-ruby/issues/30)) ([8e907d6](https://github.com/Metronome-Industries/metronome-ruby/commit/8e907d6a95aead3575af00f0123fa2762d7fca0c))
+* **stlc:** dispatch custom-code seals to api ([3b86868](https://github.com/Metronome-Industries/metronome-ruby/commit/3b86868ff54438037af4f13ad6ae40409fa4b728))
+* **stlc:** dispatch custom-code seals to api ([f3fc992](https://github.com/Metronome-Industries/metronome-ruby/commit/f3fc9929937ed044e5c3fa945ab4eb756260b1ff))
+
+
+### Bug Fixes
+
+* **stlc:** use bot token for sync ([d80fe13](https://github.com/Metronome-Industries/metronome-ruby/commit/d80fe13b320e348522129cdb8d4dbef19b030572))
+* **stlc:** use bot token for sync ([25835bf](https://github.com/Metronome-Industries/metronome-ruby/commit/25835bfd8586274cdf7399cf4ffb74bb891e47b4))
+
+
+### Chores
+
+* initial promote from stlc staging ([a7c3956](https://github.com/Metronome-Industries/metronome-ruby/commit/a7c39562193758c563806594397f9c2b0df131dc))
+* promote SDK changes from staging ([7659721](https://github.com/Metronome-Industries/metronome-ruby/commit/7659721dfa9b8482fb4c7c342e521f9d8f69c30c))
+* **stlc:** reconcile production history into staging ([fbc1ce6](https://github.com/Metronome-Industries/metronome-ruby/commit/fbc1ce606c5ebe8377109b919bb9750fde62bfc2))
+* **stlc:** reconcile Ruby production history into staging ([7984d3e](https://github.com/Metronome-Industries/metronome-ruby/commit/7984d3e146fffba603062f6d4e2cd54833c6ef89))
+
 ## 3.10.0 (2026-07-23)
 
 Full Changelog: [v3.9.0...v3.10.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v3.9.0...v3.10.0)
