@@ -1,6 +1,6 @@
 # Changelog
 
-## [3.11.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v3.10.0...v3.11.0) (2026-07-29)
+## [3.11.0-alpha.1](https://github.com/Metronome-Industries/metronome-ruby/compare/v3.10.0...v3.11.0-alpha.1) (2026-07-29)
 
 
 ### Features
