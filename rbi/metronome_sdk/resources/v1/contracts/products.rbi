@@ -21,6 +21,7 @@ module MetronomeSDK
               composite_tags: T::Array[String],
               custom_fields: T::Hash[Symbol, String],
               exclude_free_usage: T::Boolean,
+              include_composite_spend: T::Boolean,
               is_refundable: T::Boolean,
               netsuite_internal_item_id: String,
               netsuite_overage_item_id: String,
@@ -57,6 +58,9 @@ module MetronomeSDK
             # Beta feature only available for composite products. If true, products with $0
             # will not be included when computing composite usage. Defaults to false
             exclude_free_usage: nil,
+            # Only for composite products. If true, allows a composite to incorporate spend
+            # from other composite products. Defaults to false
+            include_composite_spend: nil,
             # This field's availability is dependent on your client's configuration. Defaults
             # to true.
             is_refundable: nil,
@@ -129,6 +133,7 @@ module MetronomeSDK
               composite_product_ids: T::Array[String],
               composite_tags: T::Array[String],
               exclude_free_usage: T::Boolean,
+              include_composite_spend: T::Boolean,
               is_refundable: T::Boolean,
               name: String,
               netsuite_internal_item_id: String,
@@ -169,6 +174,9 @@ module MetronomeSDK
             # Beta feature only available for composite products. If true, products with $0
             # will not be included when computing composite usage. Defaults to false
             exclude_free_usage: nil,
+            # Only for composite products. If true, allows a composite to incorporate spend
+            # from other composite products. Defaults to false
+            include_composite_spend: nil,
             # Defaults to product's current refundability status. This field's availability is
             # dependent on your client's configuration.
             is_refundable: nil,
