@@ -365,8 +365,9 @@ module MetronomeSDK
         # Amendments will be replaced by Contract editing. New clients should implement
         # using the `editContract` endpoint. Read more about the migration to contract
         # editing [here](/guides/implement-metronome/migrate-amendments-to-edits/) and
-        # reach out to your Metronome representative for more details. Once contract
-        # editing is enabled, access to this endpoint will be removed.
+        # contact us via the [Metronome support portal](https://support.metronome.com/)
+        # for more details. Once contract editing is enabled, access to this endpoint will
+        # be removed.
         #
         # @overload amend(contract_id:, customer_id:, starting_at:, commits: nil, credits: nil, custom_fields: nil, discounts: nil, netsuite_sales_order_id: nil, overrides: nil, professional_services: nil, reseller_royalties: nil, salesforce_opportunity_id: nil, scheduled_charges: nil, total_contract_value: nil, request_options: {})
         #

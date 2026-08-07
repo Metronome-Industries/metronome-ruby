@@ -11,6 +11,9 @@ module MetronomeSDK
       module Customers
       end
 
+      module Notifications
+      end
+
       module RateCards
       end
 
@@ -31,6 +34,8 @@ module MetronomeSDK
       end
 
       module V2
+        module Notifications
+        end
       end
     end
   end

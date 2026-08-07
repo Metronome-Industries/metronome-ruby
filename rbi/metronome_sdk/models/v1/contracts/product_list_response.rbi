@@ -199,6 +199,14 @@ module MetronomeSDK
             sig { params(exclude_free_usage: T::Boolean).void }
             attr_writer :exclude_free_usage
 
+            # Only for composite products. If true, allows a composite to incorporate spend
+            # from other composite products. Defaults to false
+            sig { returns(T.nilable(T::Boolean)) }
+            attr_reader :include_composite_spend
+
+            sig { params(include_composite_spend: T::Boolean).void }
+            attr_writer :include_composite_spend
+
             sig { returns(T.nilable(T::Boolean)) }
             attr_reader :is_refundable
 
@@ -307,6 +315,7 @@ module MetronomeSDK
                 composite_product_ids: T::Array[String],
                 composite_tags: T::Array[String],
                 exclude_free_usage: T::Boolean,
+                include_composite_spend: T::Boolean,
                 is_refundable: T::Boolean,
                 name: String,
                 netsuite_internal_item_id: String,
@@ -332,6 +341,9 @@ module MetronomeSDK
               composite_product_ids: nil,
               composite_tags: nil,
               exclude_free_usage: nil,
+              # Only for composite products. If true, allows a composite to incorporate spend
+              # from other composite products. Defaults to false
+              include_composite_spend: nil,
               is_refundable: nil,
               name: nil,
               # This field's availability is dependent on your client's configuration.
@@ -374,6 +386,7 @@ module MetronomeSDK
                   composite_product_ids: T::Array[String],
                   composite_tags: T::Array[String],
                   exclude_free_usage: T::Boolean,
+                  include_composite_spend: T::Boolean,
                   is_refundable: T::Boolean,
                   name: String,
                   netsuite_internal_item_id: String,
