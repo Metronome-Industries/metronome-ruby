@@ -3409,6 +3409,32 @@ module MetronomeSDK
                 #   @return [Array<String>, nil]
                 optional :applicable_product_tags, MetronomeSDK::Internal::Type::ArrayOf[String], nil?: true
 
+                # @!attribute duration
+                #   The length of time the created commit will be valid, starting from the end of
+                #   the invoice's service period. Set to null to clear a previously configured
+                #   duration.
+                #
+                #   @return [MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration, nil]
+                optional :duration,
+                         -> { MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration },
+                         nil?: true
+
+                # @!attribute rate_type
+                #   Whether the created commits will be charged at commit rate or list rate. Set to
+                #   null to clear a previously configured rate type.
+                #
+                #   @return [Symbol, MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdatePrepaidBalanceThresholdConfiguration::Commit::RateType, nil]
+                optional :rate_type,
+                         enum: -> { MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdatePrepaidBalanceThresholdConfiguration::Commit::RateType },
+                         nil?: true
+
+                # @!attribute rollover_fraction
+                #   Fraction of the created commit's unused balance that will roll over. Must be
+                #   between 0 and 1. Set to null to clear a previously configured rollover fraction.
+                #
+                #   @return [Float, nil]
+                optional :rollover_fraction, Float, nil?: true
+
                 # @!attribute specifiers
                 #   List of filters that determine what kind of customer usage draws down a commit
                 #   or credit. A customer's usage needs to meet the condition of at least one of the
@@ -3422,7 +3448,7 @@ module MetronomeSDK
                          -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::CommitSpecifierInput] },
                          nil?: true
 
-                # @!method initialize(applicable_product_ids: nil, applicable_product_tags: nil, specifiers: nil)
+                # @!method initialize(applicable_product_ids: nil, applicable_product_tags: nil, duration: nil, rate_type: nil, rollover_fraction: nil, specifiers: nil)
                 #   Some parameter documentations has been truncated, see
                 #   {MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdatePrepaidBalanceThresholdConfiguration::Commit}
                 #   for more details.
@@ -3431,7 +3457,59 @@ module MetronomeSDK
                 #
                 #   @param applicable_product_tags [Array<String>, nil] Which tags the threshold commit applies to. If both applicable_product_ids and a
                 #
+                #   @param duration [MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration, nil] The length of time the created commit will be valid, starting from the end of th
+                #
+                #   @param rate_type [Symbol, MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdatePrepaidBalanceThresholdConfiguration::Commit::RateType, nil] Whether the created commits will be charged at commit rate or list rate. Set to
+                #
+                #   @param rollover_fraction [Float, nil] Fraction of the created commit's unused balance that will roll over. Must be bet
+                #
                 #   @param specifiers [Array<MetronomeSDK::Models::CommitSpecifierInput>, nil] List of filters that determine what kind of customer usage draws down a commit o
+
+                class Duration < MetronomeSDK::Internal::Type::BaseModel
+                  # @!attribute unit
+                  #
+                  #   @return [Symbol, MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration::Unit]
+                  required :unit,
+                           enum: -> { MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration::Unit }
+
+                  # @!attribute value
+                  #
+                  #   @return [Integer]
+                  required :value, Integer
+
+                  # @!method initialize(unit:, value:)
+                  #   The length of time the created commit will be valid, starting from the end of
+                  #   the invoice's service period. Set to null to clear a previously configured
+                  #   duration.
+                  #
+                  #   @param unit [Symbol, MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration::Unit]
+                  #   @param value [Integer]
+
+                  # @see MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration#unit
+                  module Unit
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    DAYS = :DAYS
+                    WEEKS = :WEEKS
+                    MONTHS = :MONTHS
+                    YEARS = :YEARS
+
+                    # @!method self.values
+                    #   @return [Array<Symbol>]
+                  end
+                end
+
+                # Whether the created commits will be charged at commit rate or list rate. Set to
+                # null to clear a previously configured rate type.
+                module RateType
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  COMMIT_RATE = :COMMIT_RATE
+                  LIST_RATE = :LIST_RATE
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
               end
 
               # @see MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdatePrepaidBalanceThresholdConfiguration#discount_configuration
