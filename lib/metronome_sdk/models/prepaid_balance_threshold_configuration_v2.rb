@@ -93,26 +93,6 @@ module MetronomeSDK
         #   @return [Array<String>, nil]
         optional :applicable_product_tags, MetronomeSDK::Internal::Type::ArrayOf[String]
 
-        # @!attribute duration
-        #   The length of time the created commit will be valid, starting from the end of
-        #   the invoice's service period. If not provided, defaults to one year.
-        #
-        #   @return [MetronomeSDK::Models::PrepaidBalanceThresholdConfigurationV2::Commit::Duration, nil]
-        optional :duration, -> { MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::Commit::Duration }
-
-        # @!attribute rate_type
-        #   Whether the created commits will be charged at commit rate or list rate.
-        #
-        #   @return [Symbol, MetronomeSDK::Models::PrepaidBalanceThresholdConfigurationV2::Commit::RateType, nil]
-        optional :rate_type, enum: -> { MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::Commit::RateType }
-
-        # @!attribute rollover_fraction
-        #   Fraction of the created commit's unused balance that will roll over. Must be
-        #   between 0 and 1.
-        #
-        #   @return [Float, nil]
-        optional :rollover_fraction, Float
-
         # @!attribute specifiers
         #   List of filters that determine what kind of customer usage draws down a commit
         #   or credit. A customer's usage needs to meet the condition of at least one of the
@@ -124,7 +104,7 @@ module MetronomeSDK
         #   @return [Array<MetronomeSDK::Models::CommitSpecifierInput>, nil]
         optional :specifiers, -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::CommitSpecifierInput] }
 
-        # @!method initialize(applicable_product_ids: nil, applicable_product_tags: nil, duration: nil, rate_type: nil, rollover_fraction: nil, specifiers: nil)
+        # @!method initialize(applicable_product_ids: nil, applicable_product_tags: nil, specifiers: nil)
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::PrepaidBalanceThresholdConfigurationV2::Commit} for more
         #   details.
@@ -133,56 +113,7 @@ module MetronomeSDK
         #
         #   @param applicable_product_tags [Array<String>] Which tags the threshold commit applies to. If applicable_product_ids, applicabl
         #
-        #   @param duration [MetronomeSDK::Models::PrepaidBalanceThresholdConfigurationV2::Commit::Duration] The length of time the created commit will be valid, starting from the end of th
-        #
-        #   @param rate_type [Symbol, MetronomeSDK::Models::PrepaidBalanceThresholdConfigurationV2::Commit::RateType] Whether the created commits will be charged at commit rate or list rate.
-        #
-        #   @param rollover_fraction [Float] Fraction of the created commit's unused balance that will roll over. Must be bet
-        #
         #   @param specifiers [Array<MetronomeSDK::Models::CommitSpecifierInput>] List of filters that determine what kind of customer usage draws down a commit o
-
-        class Duration < MetronomeSDK::Internal::Type::BaseModel
-          # @!attribute unit
-          #
-          #   @return [Symbol, MetronomeSDK::Models::PrepaidBalanceThresholdConfigurationV2::Commit::Duration::Unit]
-          required :unit, enum: -> { MetronomeSDK::PrepaidBalanceThresholdConfigurationV2::Commit::Duration::Unit }
-
-          # @!attribute value
-          #
-          #   @return [Integer]
-          required :value, Integer
-
-          # @!method initialize(unit:, value:)
-          #   The length of time the created commit will be valid, starting from the end of
-          #   the invoice's service period. If not provided, defaults to one year.
-          #
-          #   @param unit [Symbol, MetronomeSDK::Models::PrepaidBalanceThresholdConfigurationV2::Commit::Duration::Unit]
-          #   @param value [Integer]
-
-          # @see MetronomeSDK::Models::PrepaidBalanceThresholdConfigurationV2::Commit::Duration#unit
-          module Unit
-            extend MetronomeSDK::Internal::Type::Enum
-
-            DAYS = :DAYS
-            WEEKS = :WEEKS
-            MONTHS = :MONTHS
-            YEARS = :YEARS
-
-            # @!method self.values
-            #   @return [Array<Symbol>]
-          end
-        end
-
-        # Whether the created commits will be charged at commit rate or list rate.
-        module RateType
-          extend MetronomeSDK::Internal::Type::Enum
-
-          COMMIT_RATE = :COMMIT_RATE
-          LIST_RATE = :LIST_RATE
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
-        end
       end
 
       # @see MetronomeSDK::Models::PrepaidBalanceThresholdConfigurationV2#discount_configuration

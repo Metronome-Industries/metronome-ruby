@@ -184,51 +184,6 @@ module MetronomeSDK
         sig { params(applicable_product_tags: T::Array[String]).void }
         attr_writer :applicable_product_tags
 
-        # The length of time the created commit will be valid, starting from the end of
-        # the invoice's service period. If not provided, defaults to one year.
-        sig do
-          returns(
-            T.nilable(
-              MetronomeSDK::PrepaidBalanceThresholdConfiguration::Commit::Duration
-            )
-          )
-        end
-        attr_reader :duration
-
-        sig do
-          params(
-            duration:
-              MetronomeSDK::PrepaidBalanceThresholdConfiguration::Commit::Duration::OrHash
-          ).void
-        end
-        attr_writer :duration
-
-        # Whether the created commits will be charged at commit rate or list rate.
-        sig do
-          returns(
-            T.nilable(
-              MetronomeSDK::PrepaidBalanceThresholdConfiguration::Commit::RateType::OrSymbol
-            )
-          )
-        end
-        attr_reader :rate_type
-
-        sig do
-          params(
-            rate_type:
-              MetronomeSDK::PrepaidBalanceThresholdConfiguration::Commit::RateType::OrSymbol
-          ).void
-        end
-        attr_writer :rate_type
-
-        # Fraction of the created commit's unused balance that will roll over. Must be
-        # between 0 and 1.
-        sig { returns(T.nilable(Float)) }
-        attr_reader :rollover_fraction
-
-        sig { params(rollover_fraction: Float).void }
-        attr_writer :rollover_fraction
-
         # List of filters that determine what kind of customer usage draws down a commit
         # or credit. A customer's usage needs to meet the condition of at least one of the
         # specifiers to contribute to a commit's or credit's drawdown. This field cannot
@@ -247,11 +202,6 @@ module MetronomeSDK
           params(
             applicable_product_ids: T::Array[String],
             applicable_product_tags: T::Array[String],
-            duration:
-              MetronomeSDK::PrepaidBalanceThresholdConfiguration::Commit::Duration::OrHash,
-            rate_type:
-              MetronomeSDK::PrepaidBalanceThresholdConfiguration::Commit::RateType::OrSymbol,
-            rollover_fraction: Float,
             specifiers: T::Array[MetronomeSDK::CommitSpecifierInput::OrHash]
           ).returns(T.attached_class)
         end
@@ -264,14 +214,6 @@ module MetronomeSDK
           # applicable_product_tags or specifiers are not provided, the commit applies to
           # all products.
           applicable_product_tags: nil,
-          # The length of time the created commit will be valid, starting from the end of
-          # the invoice's service period. If not provided, defaults to one year.
-          duration: nil,
-          # Whether the created commits will be charged at commit rate or list rate.
-          rate_type: nil,
-          # Fraction of the created commit's unused balance that will roll over. Must be
-          # between 0 and 1.
-          rollover_fraction: nil,
           # List of filters that determine what kind of customer usage draws down a commit
           # or credit. A customer's usage needs to meet the condition of at least one of the
           # specifiers to contribute to a commit's or credit's drawdown. This field cannot
@@ -285,139 +227,11 @@ module MetronomeSDK
             {
               applicable_product_ids: T::Array[String],
               applicable_product_tags: T::Array[String],
-              duration:
-                MetronomeSDK::PrepaidBalanceThresholdConfiguration::Commit::Duration,
-              rate_type:
-                MetronomeSDK::PrepaidBalanceThresholdConfiguration::Commit::RateType::OrSymbol,
-              rollover_fraction: Float,
               specifiers: T::Array[MetronomeSDK::CommitSpecifierInput]
             }
           )
         end
         def to_hash
-        end
-
-        class Duration < MetronomeSDK::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                MetronomeSDK::PrepaidBalanceThresholdConfiguration::Commit::Duration,
-                MetronomeSDK::Internal::AnyHash
-              )
-            end
-
-          sig do
-            returns(
-              MetronomeSDK::PrepaidBalanceThresholdConfiguration::Commit::Duration::Unit::OrSymbol
-            )
-          end
-          attr_accessor :unit
-
-          sig { returns(Integer) }
-          attr_accessor :value
-
-          # The length of time the created commit will be valid, starting from the end of
-          # the invoice's service period. If not provided, defaults to one year.
-          sig do
-            params(
-              unit:
-                MetronomeSDK::PrepaidBalanceThresholdConfiguration::Commit::Duration::Unit::OrSymbol,
-              value: Integer
-            ).returns(T.attached_class)
-          end
-          def self.new(unit:, value:)
-          end
-
-          sig do
-            override.returns(
-              {
-                unit:
-                  MetronomeSDK::PrepaidBalanceThresholdConfiguration::Commit::Duration::Unit::OrSymbol,
-                value: Integer
-              }
-            )
-          end
-          def to_hash
-          end
-
-          module Unit
-            extend MetronomeSDK::Internal::Type::Enum
-
-            TaggedSymbol =
-              T.type_alias do
-                T.all(
-                  Symbol,
-                  MetronomeSDK::PrepaidBalanceThresholdConfiguration::Commit::Duration::Unit
-                )
-              end
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-            DAYS =
-              T.let(
-                :DAYS,
-                MetronomeSDK::PrepaidBalanceThresholdConfiguration::Commit::Duration::Unit::TaggedSymbol
-              )
-            WEEKS =
-              T.let(
-                :WEEKS,
-                MetronomeSDK::PrepaidBalanceThresholdConfiguration::Commit::Duration::Unit::TaggedSymbol
-              )
-            MONTHS =
-              T.let(
-                :MONTHS,
-                MetronomeSDK::PrepaidBalanceThresholdConfiguration::Commit::Duration::Unit::TaggedSymbol
-              )
-            YEARS =
-              T.let(
-                :YEARS,
-                MetronomeSDK::PrepaidBalanceThresholdConfiguration::Commit::Duration::Unit::TaggedSymbol
-              )
-
-            sig do
-              override.returns(
-                T::Array[
-                  MetronomeSDK::PrepaidBalanceThresholdConfiguration::Commit::Duration::Unit::TaggedSymbol
-                ]
-              )
-            end
-            def self.values
-            end
-          end
-        end
-
-        # Whether the created commits will be charged at commit rate or list rate.
-        module RateType
-          extend MetronomeSDK::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(
-                Symbol,
-                MetronomeSDK::PrepaidBalanceThresholdConfiguration::Commit::RateType
-              )
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          COMMIT_RATE =
-            T.let(
-              :COMMIT_RATE,
-              MetronomeSDK::PrepaidBalanceThresholdConfiguration::Commit::RateType::TaggedSymbol
-            )
-          LIST_RATE =
-            T.let(
-              :LIST_RATE,
-              MetronomeSDK::PrepaidBalanceThresholdConfiguration::Commit::RateType::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                MetronomeSDK::PrepaidBalanceThresholdConfiguration::Commit::RateType::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
         end
       end
 
