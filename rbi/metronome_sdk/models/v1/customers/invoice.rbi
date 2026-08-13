@@ -745,6 +745,14 @@ module MetronomeSDK
             sig { params(quantity: Float).void }
             attr_writer :quantity
 
+            # Present on applied commit line items for quantity-based commits. Represents the
+            # unit quantity deducted the commit.
+            sig { returns(T.nilable(Float)) }
+            attr_reader :quantity_consumed
+
+            sig { params(quantity_consumed: Float).void }
+            attr_writer :quantity_consumed
+
             sig do
               returns(
                 T.nilable(
@@ -887,6 +895,7 @@ module MetronomeSDK
                 professional_service_custom_fields: T::Hash[Symbol, String],
                 professional_service_id: String,
                 quantity: Float,
+                quantity_consumed: Float,
                 reseller_type:
                   MetronomeSDK::V1::Customers::Invoice::LineItem::ResellerType::OrSymbol,
                 scheduled_charge_custom_fields: T::Hash[Symbol, String],
@@ -999,6 +1008,9 @@ module MetronomeSDK
               professional_service_id: nil,
               # The quantity associated with the line item.
               quantity: nil,
+              # Present on applied commit line items for quantity-based commits. Represents the
+              # unit quantity deducted the commit.
+              quantity_consumed: nil,
               reseller_type: nil,
               # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
               scheduled_charge_custom_fields: nil,
@@ -1059,6 +1071,7 @@ module MetronomeSDK
                   professional_service_custom_fields: T::Hash[Symbol, String],
                   professional_service_id: String,
                   quantity: Float,
+                  quantity_consumed: Float,
                   reseller_type:
                     MetronomeSDK::V1::Customers::Invoice::LineItem::ResellerType::TaggedSymbol,
                   scheduled_charge_custom_fields: T::Hash[Symbol, String],

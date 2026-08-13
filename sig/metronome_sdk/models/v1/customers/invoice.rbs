@@ -271,6 +271,7 @@ module MetronomeSDK
               professional_service_custom_fields: ::Hash[Symbol, String],
               professional_service_id: String,
               quantity: Float,
+              quantity_consumed: Float,
               reseller_type: MetronomeSDK::Models::V1::Customers::Invoice::LineItem::reseller_type,
               scheduled_charge_custom_fields: ::Hash[Symbol, String],
               scheduled_charge_id: String,
@@ -429,6 +430,10 @@ module MetronomeSDK
 
             def quantity=: (Float) -> Float
 
+            attr_reader quantity_consumed: Float?
+
+            def quantity_consumed=: (Float) -> Float
+
             attr_reader reseller_type: MetronomeSDK::Models::V1::Customers::Invoice::LineItem::reseller_type?
 
             def reseller_type=: (
@@ -510,6 +515,7 @@ module MetronomeSDK
               ?professional_service_custom_fields: ::Hash[Symbol, String],
               ?professional_service_id: String,
               ?quantity: Float,
+              ?quantity_consumed: Float,
               ?reseller_type: MetronomeSDK::Models::V1::Customers::Invoice::LineItem::reseller_type,
               ?scheduled_charge_custom_fields: ::Hash[Symbol, String],
               ?scheduled_charge_id: String,
@@ -556,6 +562,7 @@ module MetronomeSDK
               professional_service_custom_fields: ::Hash[Symbol, String],
               professional_service_id: String,
               quantity: Float,
+              quantity_consumed: Float,
               reseller_type: MetronomeSDK::Models::V1::Customers::Invoice::LineItem::reseller_type,
               scheduled_charge_custom_fields: ::Hash[Symbol, String],
               scheduled_charge_id: String,
