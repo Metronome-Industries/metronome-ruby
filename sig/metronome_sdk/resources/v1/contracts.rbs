@@ -74,6 +74,7 @@ module MetronomeSDK
           ?contract_id: String,
           ?per_group_amounts: ::Hash[Symbol, Float],
           ?timestamp: Time,
+          ?uniqueness_key: String,
           ?request_options: MetronomeSDK::request_opts
         ) -> nil
 

@@ -58,7 +58,15 @@ module MetronomeSDK
         #   @return [Time, nil]
         optional :timestamp, Time
 
-        # @!method initialize(id:, amount:, customer_id:, reason:, segment_id:, contract_id: nil, per_group_amounts: nil, timestamp: nil, request_options: {})
+        # @!attribute uniqueness_key
+        #   Prevents the creation of duplicates. If a request to create a record is made
+        #   with a previously used uniqueness key, a new record will not be created and the
+        #   request will fail with a 409 error.
+        #
+        #   @return [String, nil]
+        optional :uniqueness_key, String
+
+        # @!method initialize(id:, amount:, customer_id:, reason:, segment_id:, contract_id: nil, per_group_amounts: nil, timestamp: nil, uniqueness_key: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::V1::ContractAddManualBalanceEntryParams} for more
         #   details.
@@ -78,6 +86,8 @@ module MetronomeSDK
         #   @param per_group_amounts [Hash{Symbol=>Float}] If using individually configured commits/credits attached to seat managed subscr
         #
         #   @param timestamp [Time] RFC 3339 timestamp indicating when the manual adjustment takes place. If not pro
+        #
+        #   @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a record is made wit
         #
         #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
       end

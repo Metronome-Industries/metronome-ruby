@@ -10,7 +10,8 @@ module MetronomeSDK
           segment_id: String,
           contract_id: String,
           per_group_amounts: ::Hash[Symbol, Float],
-          timestamp: Time
+          timestamp: Time,
+          uniqueness_key: String
         }
         & MetronomeSDK::Internal::Type::request_parameters
 
@@ -40,6 +41,10 @@ module MetronomeSDK
 
         def timestamp=: (Time) -> Time
 
+        attr_reader uniqueness_key: String?
+
+        def uniqueness_key=: (String) -> String
+
         def initialize: (
           id: String,
           amount: Float,
@@ -49,6 +54,7 @@ module MetronomeSDK
           ?contract_id: String,
           ?per_group_amounts: ::Hash[Symbol, Float],
           ?timestamp: Time,
+          ?uniqueness_key: String,
           ?request_options: MetronomeSDK::request_opts
         ) -> void
 
@@ -61,6 +67,7 @@ module MetronomeSDK
           contract_id: String,
           per_group_amounts: ::Hash[Symbol, Float],
           timestamp: Time,
+          uniqueness_key: String,
           request_options: MetronomeSDK::RequestOptions
         }
       end
