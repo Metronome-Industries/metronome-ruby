@@ -1259,6 +1259,10 @@ module MetronomeSDK
               end
               attr_writer :access_amount
 
+              # The date this recurring commit's billing periods are anchored to.
+              sig { returns(Time) }
+              attr_accessor :anchor_date
+
               # The amount of time the created commits will be valid for
               sig do
                 returns(
@@ -1504,6 +1508,7 @@ module MetronomeSDK
                   id: String,
                   access_amount:
                     MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::AccessAmount::OrHash,
+                  anchor_date: Time,
                   commit_duration:
                     MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::CommitDuration::OrHash,
                   priority: Float,
@@ -1542,6 +1547,8 @@ module MetronomeSDK
                 id:,
                 # The amount of commit to grant.
                 access_amount:,
+                # The date this recurring commit's billing periods are anchored to.
+                anchor_date:,
                 # The amount of time the created commits will be valid for
                 commit_duration:,
                 # Will be passed down to the individual commits
@@ -1599,6 +1606,7 @@ module MetronomeSDK
                     id: String,
                     access_amount:
                       MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::AccessAmount,
+                    anchor_date: Time,
                     commit_duration:
                       MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::CommitDuration,
                     priority: Float,
@@ -2271,6 +2279,10 @@ module MetronomeSDK
               end
               attr_writer :access_amount
 
+              # The date this recurring commit's billing periods are anchored to.
+              sig { returns(Time) }
+              attr_accessor :anchor_date
+
               # The amount of time the created commits will be valid for
               sig do
                 returns(
@@ -2498,6 +2510,7 @@ module MetronomeSDK
                   id: String,
                   access_amount:
                     MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::AccessAmount::OrHash,
+                  anchor_date: Time,
                   commit_duration:
                     MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::CommitDuration::OrHash,
                   priority: Float,
@@ -2534,6 +2547,8 @@ module MetronomeSDK
                 id:,
                 # The amount of commit to grant.
                 access_amount:,
+                # The date this recurring commit's billing periods are anchored to.
+                anchor_date:,
                 # The amount of time the created commits will be valid for
                 commit_duration:,
                 # Will be passed down to the individual commits
@@ -2589,6 +2604,7 @@ module MetronomeSDK
                     id: String,
                     access_amount:
                       MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::AccessAmount,
+                    anchor_date: Time,
                     commit_duration:
                       MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::CommitDuration,
                     priority: Float,

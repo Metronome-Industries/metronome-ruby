@@ -284,6 +284,7 @@ module MetronomeSDK
         {
           id: String,
           access_amount: MetronomeSDK::ContractWithoutAmendments::RecurringCommit::AccessAmount,
+          anchor_date: Time,
           commit_duration: MetronomeSDK::ContractWithoutAmendments::RecurringCommit::CommitDuration,
           priority: Float,
           product: MetronomeSDK::ContractWithoutAmendments::RecurringCommit::Product,
@@ -310,6 +311,8 @@ module MetronomeSDK
         attr_accessor id: String
 
         attr_accessor access_amount: MetronomeSDK::ContractWithoutAmendments::RecurringCommit::AccessAmount
+
+        attr_accessor anchor_date: Time
 
         attr_accessor commit_duration: MetronomeSDK::ContractWithoutAmendments::RecurringCommit::CommitDuration
 
@@ -396,6 +399,7 @@ module MetronomeSDK
         def initialize: (
           id: String,
           access_amount: MetronomeSDK::ContractWithoutAmendments::RecurringCommit::AccessAmount,
+          anchor_date: Time,
           commit_duration: MetronomeSDK::ContractWithoutAmendments::RecurringCommit::CommitDuration,
           priority: Float,
           product: MetronomeSDK::ContractWithoutAmendments::RecurringCommit::Product,
@@ -421,6 +425,7 @@ module MetronomeSDK
         def to_hash: -> {
           id: String,
           access_amount: MetronomeSDK::ContractWithoutAmendments::RecurringCommit::AccessAmount,
+          anchor_date: Time,
           commit_duration: MetronomeSDK::ContractWithoutAmendments::RecurringCommit::CommitDuration,
           priority: Float,
           product: MetronomeSDK::ContractWithoutAmendments::RecurringCommit::Product,
@@ -691,6 +696,7 @@ module MetronomeSDK
         {
           id: String,
           access_amount: MetronomeSDK::ContractWithoutAmendments::RecurringCredit::AccessAmount,
+          anchor_date: Time,
           commit_duration: MetronomeSDK::ContractWithoutAmendments::RecurringCredit::CommitDuration,
           priority: Float,
           product: MetronomeSDK::ContractWithoutAmendments::RecurringCredit::Product,
@@ -716,6 +722,8 @@ module MetronomeSDK
         attr_accessor id: String
 
         attr_accessor access_amount: MetronomeSDK::ContractWithoutAmendments::RecurringCredit::AccessAmount
+
+        attr_accessor anchor_date: Time
 
         attr_accessor commit_duration: MetronomeSDK::ContractWithoutAmendments::RecurringCredit::CommitDuration
 
@@ -796,6 +804,7 @@ module MetronomeSDK
         def initialize: (
           id: String,
           access_amount: MetronomeSDK::ContractWithoutAmendments::RecurringCredit::AccessAmount,
+          anchor_date: Time,
           commit_duration: MetronomeSDK::ContractWithoutAmendments::RecurringCredit::CommitDuration,
           priority: Float,
           product: MetronomeSDK::ContractWithoutAmendments::RecurringCredit::Product,
@@ -820,6 +829,7 @@ module MetronomeSDK
         def to_hash: -> {
           id: String,
           access_amount: MetronomeSDK::ContractWithoutAmendments::RecurringCredit::AccessAmount,
+          anchor_date: Time,
           commit_duration: MetronomeSDK::ContractWithoutAmendments::RecurringCredit::CommitDuration,
           priority: Float,
           product: MetronomeSDK::ContractWithoutAmendments::RecurringCredit::Product,

@@ -984,6 +984,12 @@ module MetronomeSDK
             required :access_amount,
                      -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::AccessAmount }
 
+            # @!attribute anchor_date
+            #   The date this recurring commit's billing periods are anchored to.
+            #
+            #   @return [Time]
+            required :anchor_date, Time
+
             # @!attribute commit_duration
             #   The amount of time the created commits will be valid for
             #
@@ -1121,7 +1127,7 @@ module MetronomeSDK
             #   @return [MetronomeSDK::Models::RecurringCommitSubscriptionConfig, nil]
             optional :subscription_config, -> { MetronomeSDK::RecurringCommitSubscriptionConfig }
 
-            # @!method initialize(id:, access_amount:, commit_duration:, priority:, product:, rate_type:, starting_at:, applicable_product_ids: nil, applicable_product_tags: nil, contract: nil, description: nil, ending_before: nil, hierarchy_configuration: nil, invoice_amount: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, proration_rounding: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil, subscription_config: nil)
+            # @!method initialize(id:, access_amount:, anchor_date:, commit_duration:, priority:, product:, rate_type:, starting_at:, applicable_product_ids: nil, applicable_product_tags: nil, contract: nil, description: nil, ending_before: nil, hierarchy_configuration: nil, invoice_amount: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, proration_rounding: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil, subscription_config: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit}
             #   for more details.
@@ -1129,6 +1135,8 @@ module MetronomeSDK
             #   @param id [String]
             #
             #   @param access_amount [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::AccessAmount] The amount of commit to grant.
+            #
+            #   @param anchor_date [Time] The date this recurring commit's billing periods are anchored to.
             #
             #   @param commit_duration [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::CommitDuration] The amount of time the created commits will be valid for
             #
@@ -1439,6 +1447,12 @@ module MetronomeSDK
             required :access_amount,
                      -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::AccessAmount }
 
+            # @!attribute anchor_date
+            #   The date this recurring commit's billing periods are anchored to.
+            #
+            #   @return [Time]
+            required :anchor_date, Time
+
             # @!attribute commit_duration
             #   The amount of time the created commits will be valid for
             #
@@ -1569,7 +1583,7 @@ module MetronomeSDK
             #   @return [MetronomeSDK::Models::RecurringCommitSubscriptionConfig, nil]
             optional :subscription_config, -> { MetronomeSDK::RecurringCommitSubscriptionConfig }
 
-            # @!method initialize(id:, access_amount:, commit_duration:, priority:, product:, rate_type:, starting_at:, applicable_product_ids: nil, applicable_product_tags: nil, contract: nil, description: nil, ending_before: nil, hierarchy_configuration: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, proration_rounding: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil, subscription_config: nil)
+            # @!method initialize(id:, access_amount:, anchor_date:, commit_duration:, priority:, product:, rate_type:, starting_at:, applicable_product_ids: nil, applicable_product_tags: nil, contract: nil, description: nil, ending_before: nil, hierarchy_configuration: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, proration_rounding: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil, subscription_config: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit}
             #   for more details.
@@ -1577,6 +1591,8 @@ module MetronomeSDK
             #   @param id [String]
             #
             #   @param access_amount [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::AccessAmount] The amount of commit to grant.
+            #
+            #   @param anchor_date [Time] The date this recurring commit's billing periods are anchored to.
             #
             #   @param commit_duration [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::CommitDuration] The amount of time the created commits will be valid for
             #
