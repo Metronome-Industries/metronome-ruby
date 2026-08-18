@@ -4607,6 +4607,15 @@ module MetronomeSDK
             sig { params(name: String).void }
             attr_writer :name
 
+            # Custom fields from the subscription product referenced by
+            # `subscription_rate.product`. These are distinct from the subscription instance's
+            # `custom_fields`.
+            sig { returns(T.nilable(T::Hash[Symbol, String])) }
+            attr_reader :product_custom_fields
+
+            sig { params(product_custom_fields: T::Hash[Symbol, String]).void }
+            attr_writer :product_custom_fields
+
             sig do
               returns(
                 T.nilable(
@@ -4649,6 +4658,7 @@ module MetronomeSDK
                 ending_before: Time,
                 fiat_credit_type_id: String,
                 name: String,
+                product_custom_fields: T::Hash[Symbol, String],
                 seat_config:
                   MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::SeatConfig::OrHash
               ).returns(T.attached_class)
@@ -4681,6 +4691,10 @@ module MetronomeSDK
               ending_before: nil,
               fiat_credit_type_id: nil,
               name: nil,
+              # Custom fields from the subscription product referenced by
+              # `subscription_rate.product`. These are distinct from the subscription instance's
+              # `custom_fields`.
+              product_custom_fields: nil,
               seat_config: nil
             )
             end
@@ -4711,6 +4725,7 @@ module MetronomeSDK
                   ending_before: Time,
                   fiat_credit_type_id: String,
                   name: String,
+                  product_custom_fields: T::Hash[Symbol, String],
                   seat_config:
                     MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::SeatConfig
                 }

@@ -1963,6 +1963,7 @@ module MetronomeSDK
               ending_before: Time,
               fiat_credit_type_id: String,
               name: String,
+              product_custom_fields: ::Hash[Symbol, String],
               seat_config: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::SeatConfig
             }
 
@@ -2013,6 +2014,12 @@ module MetronomeSDK
 
             def name=: (String) -> String
 
+            attr_reader product_custom_fields: ::Hash[Symbol, String]?
+
+            def product_custom_fields=: (
+              ::Hash[Symbol, String]
+            ) -> ::Hash[Symbol, String]
+
             attr_reader seat_config: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::SeatConfig?
 
             def seat_config=: (
@@ -2034,6 +2041,7 @@ module MetronomeSDK
               ?ending_before: Time,
               ?fiat_credit_type_id: String,
               ?name: String,
+              ?product_custom_fields: ::Hash[Symbol, String],
               ?seat_config: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::SeatConfig
             ) -> void
 
@@ -2052,6 +2060,7 @@ module MetronomeSDK
               ending_before: Time,
               fiat_credit_type_id: String,
               name: String,
+              product_custom_fields: ::Hash[Symbol, String],
               seat_config: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::SeatConfig
             }
 
