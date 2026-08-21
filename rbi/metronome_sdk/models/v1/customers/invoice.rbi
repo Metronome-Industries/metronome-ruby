@@ -45,7 +45,8 @@ module MetronomeSDK
           sig { params(amendment_id: String).void }
           attr_writer :amendment_id
 
-          # This field's availability is dependent on your client's configuration.
+          # Indicates if the invoice has been or will be sent to the configured customer
+          # billing provider. Defaults to `billable`.
           sig { returns(T.nilable(T.anything)) }
           attr_reader :billable_status
 
@@ -339,7 +340,8 @@ module MetronomeSDK
             total:,
             type:,
             amendment_id: nil,
-            # This field's availability is dependent on your client's configuration.
+            # Indicates if the invoice has been or will be sent to the configured customer
+            # billing provider. Defaults to `billable`.
             billable_status: nil,
             # Required on invoices with type USAGE_CONSOLIDATED. List of constituent invoices
             # that were consolidated to create this invoice.

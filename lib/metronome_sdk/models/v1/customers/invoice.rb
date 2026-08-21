@@ -48,7 +48,8 @@ module MetronomeSDK
           optional :amendment_id, String
 
           # @!attribute billable_status
-          #   This field's availability is dependent on your client's configuration.
+          #   Indicates if the invoice has been or will be sent to the configured customer
+          #   billing provider. Defaults to `billable`.
           #
           #   @return [Object, nil]
           optional :billable_status, MetronomeSDK::Internal::Type::Unknown
@@ -209,7 +210,7 @@ module MetronomeSDK
           #
           #   @param amendment_id [String]
           #
-          #   @param billable_status [Object] This field's availability is dependent on your client's configuration.
+          #   @param billable_status [Object] Indicates if the invoice has been or will be sent to the configured customer bil
           #
           #   @param constituent_invoices [Array<MetronomeSDK::Models::V1::Customers::Invoice::ConstituentInvoice>] Required on invoices with type USAGE_CONSOLIDATED. List of constituent invoices
           #
