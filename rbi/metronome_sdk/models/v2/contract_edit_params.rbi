@@ -11680,6 +11680,12 @@ module MetronomeSDK
           sig { returns(T.nilable(Time)) }
           attr_accessor :ending_before
 
+          sig { returns(T.nilable(String)) }
+          attr_reader :name
+
+          sig { params(name: String).void }
+          attr_writer :name
+
           sig do
             returns(
               T.nilable(
@@ -11763,6 +11769,7 @@ module MetronomeSDK
             params(
               subscription_id: String,
               ending_before: T.nilable(Time),
+              name: String,
               proration_rounding:
                 T.nilable(
                   MetronomeSDK::V2::ContractEditParams::UpdateSubscription::ProrationRounding::OrHash
@@ -11780,6 +11787,7 @@ module MetronomeSDK
           def self.new(
             subscription_id:,
             ending_before: nil,
+            name: nil,
             proration_rounding: nil,
             # Update the subscription's quantity management mode from QUANTITY_ONLY to
             # SEAT_BASED with the provided seat_group_key.
@@ -11797,6 +11805,7 @@ module MetronomeSDK
               {
                 subscription_id: String,
                 ending_before: T.nilable(Time),
+                name: String,
                 proration_rounding:
                   T.nilable(
                     MetronomeSDK::V2::ContractEditParams::UpdateSubscription::ProrationRounding

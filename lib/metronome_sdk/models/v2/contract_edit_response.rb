@@ -4236,6 +4236,11 @@ module MetronomeSDK
               #   @return [Time, nil]
               optional :ending_before, Time
 
+              # @!attribute name
+              #
+              #   @return [String, nil]
+              optional :name, String
+
               # @!attribute quantity_updates
               #
               #   @return [Array<MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateSubscription::QuantityUpdate>, nil]
@@ -4249,10 +4254,12 @@ module MetronomeSDK
               optional :seat_updates,
                        -> { MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateSubscription::SeatUpdates }
 
-              # @!method initialize(id:, ending_before: nil, quantity_updates: nil, seat_updates: nil)
+              # @!method initialize(id:, ending_before: nil, name: nil, quantity_updates: nil, seat_updates: nil)
               #   @param id [String]
               #
               #   @param ending_before [Time]
+              #
+              #   @param name [String]
               #
               #   @param quantity_updates [Array<MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateSubscription::QuantityUpdate>]
               #

@@ -5164,6 +5164,11 @@ module MetronomeSDK
           #   @return [Time, nil]
           optional :ending_before, Time, nil?: true
 
+          # @!attribute name
+          #
+          #   @return [String, nil]
+          optional :name, String
+
           # @!attribute proration_rounding
           #
           #   @return [MetronomeSDK::Models::V2::ContractEditParams::UpdateSubscription::ProrationRounding, nil]
@@ -5193,7 +5198,7 @@ module MetronomeSDK
           #   @return [MetronomeSDK::Models::V2::ContractEditParams::UpdateSubscription::SeatUpdates, nil]
           optional :seat_updates, -> { MetronomeSDK::V2::ContractEditParams::UpdateSubscription::SeatUpdates }
 
-          # @!method initialize(subscription_id:, ending_before: nil, proration_rounding: nil, quantity_management_mode_update: nil, quantity_updates: nil, seat_updates: nil)
+          # @!method initialize(subscription_id:, ending_before: nil, name: nil, proration_rounding: nil, quantity_management_mode_update: nil, quantity_updates: nil, seat_updates: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V2::ContractEditParams::UpdateSubscription} for more
           #   details.
@@ -5201,6 +5206,8 @@ module MetronomeSDK
           #   @param subscription_id [String]
           #
           #   @param ending_before [Time, nil]
+          #
+          #   @param name [String]
           #
           #   @param proration_rounding [MetronomeSDK::Models::V2::ContractEditParams::UpdateSubscription::ProrationRounding, nil]
           #

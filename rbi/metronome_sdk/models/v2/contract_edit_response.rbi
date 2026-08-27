@@ -9550,6 +9550,12 @@ module MetronomeSDK
               sig { params(ending_before: Time).void }
               attr_writer :ending_before
 
+              sig { returns(T.nilable(String)) }
+              attr_reader :name
+
+              sig { params(name: String).void }
+              attr_writer :name
+
               sig do
                 returns(
                   T.nilable(
@@ -9593,6 +9599,7 @@ module MetronomeSDK
                 params(
                   id: String,
                   ending_before: Time,
+                  name: String,
                   quantity_updates:
                     T::Array[
                       MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateSubscription::QuantityUpdate::OrHash
@@ -9604,6 +9611,7 @@ module MetronomeSDK
               def self.new(
                 id:,
                 ending_before: nil,
+                name: nil,
                 quantity_updates: nil,
                 # Manage subscription seats for subscriptions in SEAT_BASED mode.
                 seat_updates: nil
@@ -9615,6 +9623,7 @@ module MetronomeSDK
                   {
                     id: String,
                     ending_before: Time,
+                    name: String,
                     quantity_updates:
                       T::Array[
                         MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateSubscription::QuantityUpdate

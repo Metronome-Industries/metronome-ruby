@@ -4827,6 +4827,7 @@ module MetronomeSDK
           {
             subscription_id: String,
             ending_before: Time?,
+            name: String,
             proration_rounding: MetronomeSDK::V2::ContractEditParams::UpdateSubscription::ProrationRounding?,
             quantity_management_mode_update: MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate,
             quantity_updates: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityUpdate],
@@ -4837,6 +4838,10 @@ module MetronomeSDK
           attr_accessor subscription_id: String
 
           attr_accessor ending_before: Time?
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
 
           attr_accessor proration_rounding: MetronomeSDK::V2::ContractEditParams::UpdateSubscription::ProrationRounding?
 
@@ -4861,6 +4866,7 @@ module MetronomeSDK
           def initialize: (
             subscription_id: String,
             ?ending_before: Time?,
+            ?name: String,
             ?proration_rounding: MetronomeSDK::V2::ContractEditParams::UpdateSubscription::ProrationRounding?,
             ?quantity_management_mode_update: MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate,
             ?quantity_updates: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityUpdate],
@@ -4870,6 +4876,7 @@ module MetronomeSDK
           def to_hash: -> {
             subscription_id: String,
             ending_before: Time?,
+            name: String,
             proration_rounding: MetronomeSDK::V2::ContractEditParams::UpdateSubscription::ProrationRounding?,
             quantity_management_mode_update: MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityManagementModeUpdate,
             quantity_updates: ::Array[MetronomeSDK::V2::ContractEditParams::UpdateSubscription::QuantityUpdate],

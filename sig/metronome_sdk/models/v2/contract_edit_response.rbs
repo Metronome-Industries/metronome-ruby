@@ -4132,6 +4132,7 @@ module MetronomeSDK
               {
                 id: String,
                 ending_before: Time,
+                name: String,
                 quantity_updates: ::Array[MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateSubscription::QuantityUpdate],
                 seat_updates: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateSubscription::SeatUpdates
               }
@@ -4142,6 +4143,10 @@ module MetronomeSDK
               attr_reader ending_before: Time?
 
               def ending_before=: (Time) -> Time
+
+              attr_reader name: String?
+
+              def name=: (String) -> String
 
               attr_reader quantity_updates: ::Array[MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateSubscription::QuantityUpdate]?
 
@@ -4158,6 +4163,7 @@ module MetronomeSDK
               def initialize: (
                 id: String,
                 ?ending_before: Time,
+                ?name: String,
                 ?quantity_updates: ::Array[MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateSubscription::QuantityUpdate],
                 ?seat_updates: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateSubscription::SeatUpdates
               ) -> void
@@ -4165,6 +4171,7 @@ module MetronomeSDK
               def to_hash: -> {
                 id: String,
                 ending_before: Time,
+                name: String,
                 quantity_updates: ::Array[MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateSubscription::QuantityUpdate],
                 seat_updates: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateSubscription::SeatUpdates
               }
