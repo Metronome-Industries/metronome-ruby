@@ -826,30 +826,6 @@ module MetronomeSDK
               sig { returns(String) }
               attr_accessor :delivery_method_id
 
-              # Rules that stop matching invoices from being sent to the billing provider. Only
-              # supported for Stripe billing provider configurations. When omitted, every
-              # invoice is sent to the billing provider.
-              sig do
-                returns(
-                  T.nilable(
-                    T::Array[
-                      MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::UnbillableInvoicesConfiguration
-                    ]
-                  )
-                )
-              end
-              attr_reader :unbillable_invoices_configuration
-
-              sig do
-                params(
-                  unbillable_invoices_configuration:
-                    T::Array[
-                      MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::UnbillableInvoicesConfiguration::OrHash
-                    ]
-                ).void
-              end
-              attr_writer :unbillable_invoices_configuration
-
               sig do
                 params(
                   id: String,
@@ -861,11 +837,7 @@ module MetronomeSDK
                   delivery_method:
                     MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::DeliveryMethod::OrSymbol,
                   delivery_method_configuration: T::Hash[Symbol, T.anything],
-                  delivery_method_id: String,
-                  unbillable_invoices_configuration:
-                    T::Array[
-                      MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::UnbillableInvoicesConfiguration::OrHash
-                    ]
+                  delivery_method_id: String
                 ).returns(T.attached_class)
               end
               def self.new(
@@ -885,11 +857,7 @@ module MetronomeSDK
                 # to the delivery method.
                 delivery_method_configuration:,
                 # ID of the delivery method to use for this customer.
-                delivery_method_id:,
-                # Rules that stop matching invoices from being sent to the billing provider. Only
-                # supported for Stripe billing provider configurations. When omitted, every
-                # invoice is sent to the billing provider.
-                unbillable_invoices_configuration: nil
+                delivery_method_id:
               )
               end
 
@@ -905,11 +873,7 @@ module MetronomeSDK
                     delivery_method:
                       MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::DeliveryMethod::TaggedSymbol,
                     delivery_method_configuration: T::Hash[Symbol, T.anything],
-                    delivery_method_id: String,
-                    unbillable_invoices_configuration:
-                      T::Array[
-                        MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::UnbillableInvoicesConfiguration
-                      ]
+                    delivery_method_id: String
                   }
                 )
               end
@@ -1028,120 +992,6 @@ module MetronomeSDK
                   )
                 end
                 def self.values
-                end
-              end
-
-              class UnbillableInvoicesConfiguration < MetronomeSDK::Internal::Type::BaseModel
-                OrHash =
-                  T.type_alias do
-                    T.any(
-                      MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::UnbillableInvoicesConfiguration,
-                      MetronomeSDK::Internal::AnyHash
-                    )
-                  end
-
-                # The type of invoice this rule applies to.
-                sig do
-                  returns(
-                    MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::UnbillableInvoicesConfiguration::InvoiceType::TaggedSymbol
-                  )
-                end
-                attr_accessor :invoice_type
-
-                # Restricts the rule to invoices in this fiat currency. Omit for a catch-all rule
-                # that applies to every currency of the `invoice_type`. Required when `max_amount`
-                # is set.
-                sig { returns(T.nilable(String)) }
-                attr_reader :fiat_credit_type_id
-
-                sig { params(fiat_credit_type_id: String).void }
-                attr_writer :fiat_credit_type_id
-
-                # A positive decimal, in the units of `fiat_credit_type_id`. Only invoices whose
-                # total is at or below this amount are suppressed; a higher total is still sent to
-                # the billing provider. When omitted, every matching invoice is suppressed
-                # regardless of amount.
-                sig { returns(T.nilable(Float)) }
-                attr_reader :max_amount
-
-                sig { params(max_amount: Float).void }
-                attr_writer :max_amount
-
-                # An individual rule that, when evaluated to true, indicates that any invoices for
-                # this billing provider will not be sent to its associated destination for the
-                # associated contract. Rules only apply to the specified `invoice_type` (or all
-                # invoices if omitted) and `fiat_credit_type_id` (or all invoices if omitted).
-                # Rule precedence is evaluated from more specific to less specific. This method
-                # will fail with a 400 if multiple rules with the same specificity are included.
-                sig do
-                  params(
-                    invoice_type:
-                      MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::UnbillableInvoicesConfiguration::InvoiceType::OrSymbol,
-                    fiat_credit_type_id: String,
-                    max_amount: Float
-                  ).returns(T.attached_class)
-                end
-                def self.new(
-                  # The type of invoice this rule applies to.
-                  invoice_type:,
-                  # Restricts the rule to invoices in this fiat currency. Omit for a catch-all rule
-                  # that applies to every currency of the `invoice_type`. Required when `max_amount`
-                  # is set.
-                  fiat_credit_type_id: nil,
-                  # A positive decimal, in the units of `fiat_credit_type_id`. Only invoices whose
-                  # total is at or below this amount are suppressed; a higher total is still sent to
-                  # the billing provider. When omitted, every matching invoice is suppressed
-                  # regardless of amount.
-                  max_amount: nil
-                )
-                end
-
-                sig do
-                  override.returns(
-                    {
-                      invoice_type:
-                        MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::UnbillableInvoicesConfiguration::InvoiceType::TaggedSymbol,
-                      fiat_credit_type_id: String,
-                      max_amount: Float
-                    }
-                  )
-                end
-                def to_hash
-                end
-
-                # The type of invoice this rule applies to.
-                module InvoiceType
-                  extend MetronomeSDK::Internal::Type::Enum
-
-                  TaggedSymbol =
-                    T.type_alias do
-                      T.all(
-                        Symbol,
-                        MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::UnbillableInvoicesConfiguration::InvoiceType
-                      )
-                    end
-                  OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-                  USAGE =
-                    T.let(
-                      :usage,
-                      MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::UnbillableInvoicesConfiguration::InvoiceType::TaggedSymbol
-                    )
-                  SCHEDULED =
-                    T.let(
-                      :scheduled,
-                      MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::UnbillableInvoicesConfiguration::InvoiceType::TaggedSymbol
-                    )
-
-                  sig do
-                    override.returns(
-                      T::Array[
-                        MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::UnbillableInvoicesConfiguration::InvoiceType::TaggedSymbol
-                      ]
-                    )
-                  end
-                  def self.values
-                  end
                 end
               end
             end
