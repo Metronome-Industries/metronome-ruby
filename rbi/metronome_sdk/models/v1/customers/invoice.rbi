@@ -45,7 +45,8 @@ module MetronomeSDK
           sig { params(amendment_id: String).void }
           attr_writer :amendment_id
 
-          # This field's availability is dependent on your client's configuration.
+          # Indicates if the invoice has been or will be sent to the configured customer
+          # billing provider. Defaults to `billable`.
           sig { returns(T.nilable(T.anything)) }
           attr_reader :billable_status
 
@@ -339,7 +340,8 @@ module MetronomeSDK
             total:,
             type:,
             amendment_id: nil,
-            # This field's availability is dependent on your client's configuration.
+            # Indicates if the invoice has been or will be sent to the configured customer
+            # billing provider. Defaults to `billable`.
             billable_status: nil,
             # Required on invoices with type USAGE_CONSOLIDATED. List of constituent invoices
             # that were consolidated to create this invoice.
@@ -745,6 +747,14 @@ module MetronomeSDK
             sig { params(quantity: Float).void }
             attr_writer :quantity
 
+            # Present on applied commit line items for quantity-based commits. Represents the
+            # unit quantity deducted the commit.
+            sig { returns(T.nilable(Float)) }
+            attr_reader :quantity_consumed
+
+            sig { params(quantity_consumed: Float).void }
+            attr_writer :quantity_consumed
+
             sig do
               returns(
                 T.nilable(
@@ -887,6 +897,7 @@ module MetronomeSDK
                 professional_service_custom_fields: T::Hash[Symbol, String],
                 professional_service_id: String,
                 quantity: Float,
+                quantity_consumed: Float,
                 reseller_type:
                   MetronomeSDK::V1::Customers::Invoice::LineItem::ResellerType::OrSymbol,
                 scheduled_charge_custom_fields: T::Hash[Symbol, String],
@@ -999,6 +1010,9 @@ module MetronomeSDK
               professional_service_id: nil,
               # The quantity associated with the line item.
               quantity: nil,
+              # Present on applied commit line items for quantity-based commits. Represents the
+              # unit quantity deducted the commit.
+              quantity_consumed: nil,
               reseller_type: nil,
               # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
               scheduled_charge_custom_fields: nil,
@@ -1059,6 +1073,7 @@ module MetronomeSDK
                   professional_service_custom_fields: T::Hash[Symbol, String],
                   professional_service_id: String,
                   quantity: Float,
+                  quantity_consumed: Float,
                   reseller_type:
                     MetronomeSDK::V1::Customers::Invoice::LineItem::ResellerType::TaggedSymbol,
                   scheduled_charge_custom_fields: T::Hash[Symbol, String],

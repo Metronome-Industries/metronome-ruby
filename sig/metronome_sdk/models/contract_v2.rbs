@@ -2724,6 +2724,7 @@ module MetronomeSDK
         {
           id: String,
           access_amount: MetronomeSDK::ContractV2::RecurringCommit::AccessAmount,
+          anchor_date: Time,
           commit_duration: MetronomeSDK::ContractV2::RecurringCommit::CommitDuration,
           priority: Float,
           product: MetronomeSDK::ContractV2::RecurringCommit::Product,
@@ -2750,6 +2751,8 @@ module MetronomeSDK
         attr_accessor id: String
 
         attr_accessor access_amount: MetronomeSDK::ContractV2::RecurringCommit::AccessAmount
+
+        attr_accessor anchor_date: Time
 
         attr_accessor commit_duration: MetronomeSDK::ContractV2::RecurringCommit::CommitDuration
 
@@ -2836,6 +2839,7 @@ module MetronomeSDK
         def initialize: (
           id: String,
           access_amount: MetronomeSDK::ContractV2::RecurringCommit::AccessAmount,
+          anchor_date: Time,
           commit_duration: MetronomeSDK::ContractV2::RecurringCommit::CommitDuration,
           priority: Float,
           product: MetronomeSDK::ContractV2::RecurringCommit::Product,
@@ -2861,6 +2865,7 @@ module MetronomeSDK
         def to_hash: -> {
           id: String,
           access_amount: MetronomeSDK::ContractV2::RecurringCommit::AccessAmount,
+          anchor_date: Time,
           commit_duration: MetronomeSDK::ContractV2::RecurringCommit::CommitDuration,
           priority: Float,
           product: MetronomeSDK::ContractV2::RecurringCommit::Product,
@@ -3131,6 +3136,7 @@ module MetronomeSDK
         {
           id: String,
           access_amount: MetronomeSDK::ContractV2::RecurringCredit::AccessAmount,
+          anchor_date: Time,
           commit_duration: MetronomeSDK::ContractV2::RecurringCredit::CommitDuration,
           priority: Float,
           product: MetronomeSDK::ContractV2::RecurringCredit::Product,
@@ -3156,6 +3162,8 @@ module MetronomeSDK
         attr_accessor id: String
 
         attr_accessor access_amount: MetronomeSDK::ContractV2::RecurringCredit::AccessAmount
+
+        attr_accessor anchor_date: Time
 
         attr_accessor commit_duration: MetronomeSDK::ContractV2::RecurringCredit::CommitDuration
 
@@ -3236,6 +3244,7 @@ module MetronomeSDK
         def initialize: (
           id: String,
           access_amount: MetronomeSDK::ContractV2::RecurringCredit::AccessAmount,
+          anchor_date: Time,
           commit_duration: MetronomeSDK::ContractV2::RecurringCredit::CommitDuration,
           priority: Float,
           product: MetronomeSDK::ContractV2::RecurringCredit::Product,
@@ -3260,6 +3269,7 @@ module MetronomeSDK
         def to_hash: -> {
           id: String,
           access_amount: MetronomeSDK::ContractV2::RecurringCredit::AccessAmount,
+          anchor_date: Time,
           commit_duration: MetronomeSDK::ContractV2::RecurringCredit::CommitDuration,
           priority: Float,
           product: MetronomeSDK::ContractV2::RecurringCredit::Product,
@@ -3883,6 +3893,7 @@ module MetronomeSDK
           ending_before: Time,
           fiat_credit_type_id: String,
           name: String,
+          product_custom_fields: ::Hash[Symbol, String],
           seat_config: MetronomeSDK::ContractV2::Subscription::SeatConfig
         }
 
@@ -3931,6 +3942,12 @@ module MetronomeSDK
 
         def name=: (String) -> String
 
+        attr_reader product_custom_fields: ::Hash[Symbol, String]?
+
+        def product_custom_fields=: (
+          ::Hash[Symbol, String]
+        ) -> ::Hash[Symbol, String]
+
         attr_reader seat_config: MetronomeSDK::ContractV2::Subscription::SeatConfig?
 
         def seat_config=: (
@@ -3952,6 +3969,7 @@ module MetronomeSDK
           ?ending_before: Time,
           ?fiat_credit_type_id: String,
           ?name: String,
+          ?product_custom_fields: ::Hash[Symbol, String],
           ?seat_config: MetronomeSDK::ContractV2::Subscription::SeatConfig
         ) -> void
 
@@ -3970,6 +3988,7 @@ module MetronomeSDK
           ending_before: Time,
           fiat_credit_type_id: String,
           name: String,
+          product_custom_fields: ::Hash[Symbol, String],
           seat_config: MetronomeSDK::ContractV2::Subscription::SeatConfig
         }
 

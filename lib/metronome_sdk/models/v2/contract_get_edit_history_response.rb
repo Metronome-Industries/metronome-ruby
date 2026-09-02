@@ -984,6 +984,12 @@ module MetronomeSDK
             required :access_amount,
                      -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::AccessAmount }
 
+            # @!attribute anchor_date
+            #   The date this recurring commit's billing periods are anchored to.
+            #
+            #   @return [Time]
+            required :anchor_date, Time
+
             # @!attribute commit_duration
             #   The amount of time the created commits will be valid for
             #
@@ -1121,7 +1127,7 @@ module MetronomeSDK
             #   @return [MetronomeSDK::Models::RecurringCommitSubscriptionConfig, nil]
             optional :subscription_config, -> { MetronomeSDK::RecurringCommitSubscriptionConfig }
 
-            # @!method initialize(id:, access_amount:, commit_duration:, priority:, product:, rate_type:, starting_at:, applicable_product_ids: nil, applicable_product_tags: nil, contract: nil, description: nil, ending_before: nil, hierarchy_configuration: nil, invoice_amount: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, proration_rounding: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil, subscription_config: nil)
+            # @!method initialize(id:, access_amount:, anchor_date:, commit_duration:, priority:, product:, rate_type:, starting_at:, applicable_product_ids: nil, applicable_product_tags: nil, contract: nil, description: nil, ending_before: nil, hierarchy_configuration: nil, invoice_amount: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, proration_rounding: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil, subscription_config: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit}
             #   for more details.
@@ -1129,6 +1135,8 @@ module MetronomeSDK
             #   @param id [String]
             #
             #   @param access_amount [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::AccessAmount] The amount of commit to grant.
+            #
+            #   @param anchor_date [Time] The date this recurring commit's billing periods are anchored to.
             #
             #   @param commit_duration [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::CommitDuration] The amount of time the created commits will be valid for
             #
@@ -1439,6 +1447,12 @@ module MetronomeSDK
             required :access_amount,
                      -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::AccessAmount }
 
+            # @!attribute anchor_date
+            #   The date this recurring commit's billing periods are anchored to.
+            #
+            #   @return [Time]
+            required :anchor_date, Time
+
             # @!attribute commit_duration
             #   The amount of time the created commits will be valid for
             #
@@ -1569,7 +1583,7 @@ module MetronomeSDK
             #   @return [MetronomeSDK::Models::RecurringCommitSubscriptionConfig, nil]
             optional :subscription_config, -> { MetronomeSDK::RecurringCommitSubscriptionConfig }
 
-            # @!method initialize(id:, access_amount:, commit_duration:, priority:, product:, rate_type:, starting_at:, applicable_product_ids: nil, applicable_product_tags: nil, contract: nil, description: nil, ending_before: nil, hierarchy_configuration: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, proration_rounding: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil, subscription_config: nil)
+            # @!method initialize(id:, access_amount:, anchor_date:, commit_duration:, priority:, product:, rate_type:, starting_at:, applicable_product_ids: nil, applicable_product_tags: nil, contract: nil, description: nil, ending_before: nil, hierarchy_configuration: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, proration_rounding: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil, subscription_config: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit}
             #   for more details.
@@ -1577,6 +1591,8 @@ module MetronomeSDK
             #   @param id [String]
             #
             #   @param access_amount [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::AccessAmount] The amount of commit to grant.
+            #
+            #   @param anchor_date [Time] The date this recurring commit's billing periods are anchored to.
             #
             #   @param commit_duration [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::CommitDuration] The amount of time the created commits will be valid for
             #
@@ -2047,13 +2063,21 @@ module MetronomeSDK
             #   @return [String, nil]
             optional :name, String
 
+            # @!attribute product_custom_fields
+            #   Custom fields from the subscription product referenced by
+            #   `subscription_rate.product`. These are distinct from the subscription instance's
+            #   `custom_fields`.
+            #
+            #   @return [Hash{Symbol=>String}, nil]
+            optional :product_custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
+
             # @!attribute seat_config
             #
             #   @return [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::SeatConfig, nil]
             optional :seat_config,
                      -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::SeatConfig }
 
-            # @!method initialize(billing_periods:, collection_schedule:, proration:, quantity_management_mode:, quantity_schedule:, starting_at:, subscription_rate:, id: nil, billing_cycle_config: nil, custom_fields: nil, description: nil, ending_before: nil, fiat_credit_type_id: nil, name: nil, seat_config: nil)
+            # @!method initialize(billing_periods:, collection_schedule:, proration:, quantity_management_mode:, quantity_schedule:, starting_at:, subscription_rate:, id: nil, billing_cycle_config: nil, custom_fields: nil, description: nil, ending_before: nil, fiat_credit_type_id: nil, name: nil, product_custom_fields: nil, seat_config: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription}
             #   for more details.
@@ -2085,6 +2109,8 @@ module MetronomeSDK
             #   @param fiat_credit_type_id [String]
             #
             #   @param name [String]
+            #
+            #   @param product_custom_fields [Hash{Symbol=>String}] Custom fields from the subscription product referenced by `subscription_rate.pro
             #
             #   @param seat_config [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::SeatConfig]
 
@@ -3412,6 +3438,32 @@ module MetronomeSDK
               #   @return [Array<String>, nil]
               optional :applicable_product_tags, MetronomeSDK::Internal::Type::ArrayOf[String], nil?: true
 
+              # @!attribute duration
+              #   The length of time the created commit will be valid, starting from the end of
+              #   the invoice's service period. Set to null to clear a previously configured
+              #   duration.
+              #
+              #   @return [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration, nil]
+              optional :duration,
+                       -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration },
+                       nil?: true
+
+              # @!attribute rate_type
+              #   Whether the created commits will be charged at commit rate or list rate. Set to
+              #   null to clear a previously configured rate type.
+              #
+              #   @return [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::Commit::RateType, nil]
+              optional :rate_type,
+                       enum: -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::Commit::RateType },
+                       nil?: true
+
+              # @!attribute rollover_fraction
+              #   Fraction of the created commit's unused balance that will roll over. Must be
+              #   between 0 and 1. Set to null to clear a previously configured rollover fraction.
+              #
+              #   @return [Float, nil]
+              optional :rollover_fraction, Float, nil?: true
+
               # @!attribute specifiers
               #   List of filters that determine what kind of customer usage draws down a commit
               #   or credit. A customer's usage needs to meet the condition of at least one of the
@@ -3425,7 +3477,7 @@ module MetronomeSDK
                        -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::CommitSpecifierInput] },
                        nil?: true
 
-              # @!method initialize(applicable_product_ids: nil, applicable_product_tags: nil, specifiers: nil)
+              # @!method initialize(applicable_product_ids: nil, applicable_product_tags: nil, duration: nil, rate_type: nil, rollover_fraction: nil, specifiers: nil)
               #   Some parameter documentations has been truncated, see
               #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::Commit}
               #   for more details.
@@ -3434,7 +3486,59 @@ module MetronomeSDK
               #
               #   @param applicable_product_tags [Array<String>, nil] Which tags the threshold commit applies to. If both applicable_product_ids and a
               #
+              #   @param duration [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration, nil] The length of time the created commit will be valid, starting from the end of th
+              #
+              #   @param rate_type [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::Commit::RateType, nil] Whether the created commits will be charged at commit rate or list rate. Set to
+              #
+              #   @param rollover_fraction [Float, nil] Fraction of the created commit's unused balance that will roll over. Must be bet
+              #
               #   @param specifiers [Array<MetronomeSDK::Models::CommitSpecifierInput>, nil] List of filters that determine what kind of customer usage draws down a commit o
+
+              class Duration < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute unit
+                #
+                #   @return [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration::Unit]
+                required :unit,
+                         enum: -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration::Unit }
+
+                # @!attribute value
+                #
+                #   @return [Integer]
+                required :value, Integer
+
+                # @!method initialize(unit:, value:)
+                #   The length of time the created commit will be valid, starting from the end of
+                #   the invoice's service period. Set to null to clear a previously configured
+                #   duration.
+                #
+                #   @param unit [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration::Unit]
+                #   @param value [Integer]
+
+                # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration#unit
+                module Unit
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  DAYS = :DAYS
+                  WEEKS = :WEEKS
+                  MONTHS = :MONTHS
+                  YEARS = :YEARS
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
+              end
+
+              # Whether the created commits will be charged at commit rate or list rate. Set to
+              # null to clear a previously configured rate type.
+              module RateType
+                extend MetronomeSDK::Internal::Type::Enum
+
+                COMMIT_RATE = :COMMIT_RATE
+                LIST_RATE = :LIST_RATE
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
             end
 
             # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration#discount_configuration
@@ -4135,6 +4239,11 @@ module MetronomeSDK
             #   @return [Time, nil]
             optional :ending_before, Time
 
+            # @!attribute name
+            #
+            #   @return [String, nil]
+            optional :name, String
+
             # @!attribute quantity_updates
             #
             #   @return [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSubscription::QuantityUpdate>, nil]
@@ -4148,10 +4257,12 @@ module MetronomeSDK
             optional :seat_updates,
                      -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSubscription::SeatUpdates }
 
-            # @!method initialize(id:, ending_before: nil, quantity_updates: nil, seat_updates: nil)
+            # @!method initialize(id:, ending_before: nil, name: nil, quantity_updates: nil, seat_updates: nil)
             #   @param id [String]
             #
             #   @param ending_before [Time]
+            #
+            #   @param name [String]
             #
             #   @param quantity_updates [Array<MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSubscription::QuantityUpdate>]
             #

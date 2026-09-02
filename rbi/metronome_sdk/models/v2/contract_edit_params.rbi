@@ -9758,6 +9758,44 @@ module MetronomeSDK
             sig { returns(T.nilable(T::Array[String])) }
             attr_accessor :applicable_product_tags
 
+            # The length of time the created commit will be valid, starting from the end of
+            # the invoice's service period. Set to null to clear a previously configured
+            # duration.
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration
+                )
+              )
+            end
+            attr_reader :duration
+
+            sig do
+              params(
+                duration:
+                  T.nilable(
+                    MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration::OrHash
+                  )
+              ).void
+            end
+            attr_writer :duration
+
+            # Whether the created commits will be charged at commit rate or list rate. Set to
+            # null to clear a previously configured rate type.
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::RateType::OrSymbol
+                )
+              )
+            end
+            attr_accessor :rate_type
+
+            # Fraction of the created commit's unused balance that will roll over. Must be
+            # between 0 and 1. Set to null to clear a previously configured rollover fraction.
+            sig { returns(T.nilable(Float)) }
+            attr_accessor :rollover_fraction
+
             # List of filters that determine what kind of customer usage draws down a commit
             # or credit. A customer's usage needs to meet the condition of at least one of the
             # specifiers to contribute to a commit's or credit's drawdown. This field cannot
@@ -9773,6 +9811,15 @@ module MetronomeSDK
               params(
                 applicable_product_ids: T.nilable(T::Array[String]),
                 applicable_product_tags: T.nilable(T::Array[String]),
+                duration:
+                  T.nilable(
+                    MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration::OrHash
+                  ),
+                rate_type:
+                  T.nilable(
+                    MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::RateType::OrSymbol
+                  ),
+                rollover_fraction: T.nilable(Float),
                 specifiers:
                   T.nilable(
                     T::Array[MetronomeSDK::CommitSpecifierInput::OrHash]
@@ -9787,6 +9834,16 @@ module MetronomeSDK
               # Which tags the threshold commit applies to. If both applicable_product_ids and
               # applicable_product_tags are not provided, the commit applies to all products.
               applicable_product_tags: nil,
+              # The length of time the created commit will be valid, starting from the end of
+              # the invoice's service period. Set to null to clear a previously configured
+              # duration.
+              duration: nil,
+              # Whether the created commits will be charged at commit rate or list rate. Set to
+              # null to clear a previously configured rate type.
+              rate_type: nil,
+              # Fraction of the created commit's unused balance that will roll over. Must be
+              # between 0 and 1. Set to null to clear a previously configured rollover fraction.
+              rollover_fraction: nil,
               # List of filters that determine what kind of customer usage draws down a commit
               # or credit. A customer's usage needs to meet the condition of at least one of the
               # specifiers to contribute to a commit's or credit's drawdown. This field cannot
@@ -9802,12 +9859,146 @@ module MetronomeSDK
                 {
                   applicable_product_ids: T.nilable(T::Array[String]),
                   applicable_product_tags: T.nilable(T::Array[String]),
+                  duration:
+                    T.nilable(
+                      MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration
+                    ),
+                  rate_type:
+                    T.nilable(
+                      MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::RateType::OrSymbol
+                    ),
+                  rollover_fraction: T.nilable(Float),
                   specifiers:
                     T.nilable(T::Array[MetronomeSDK::CommitSpecifierInput])
                 }
               )
             end
             def to_hash
+            end
+
+            class Duration < MetronomeSDK::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(
+                    MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration,
+                    MetronomeSDK::Internal::AnyHash
+                  )
+                end
+
+              sig do
+                returns(
+                  MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration::Unit::OrSymbol
+                )
+              end
+              attr_accessor :unit
+
+              sig { returns(Integer) }
+              attr_accessor :value
+
+              # The length of time the created commit will be valid, starting from the end of
+              # the invoice's service period. Set to null to clear a previously configured
+              # duration.
+              sig do
+                params(
+                  unit:
+                    MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration::Unit::OrSymbol,
+                  value: Integer
+                ).returns(T.attached_class)
+              end
+              def self.new(unit:, value:)
+              end
+
+              sig do
+                override.returns(
+                  {
+                    unit:
+                      MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration::Unit::OrSymbol,
+                    value: Integer
+                  }
+                )
+              end
+              def to_hash
+              end
+
+              module Unit
+                extend MetronomeSDK::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration::Unit
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                DAYS =
+                  T.let(
+                    :DAYS,
+                    MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration::Unit::TaggedSymbol
+                  )
+                WEEKS =
+                  T.let(
+                    :WEEKS,
+                    MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration::Unit::TaggedSymbol
+                  )
+                MONTHS =
+                  T.let(
+                    :MONTHS,
+                    MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration::Unit::TaggedSymbol
+                  )
+                YEARS =
+                  T.let(
+                    :YEARS,
+                    MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration::Unit::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration::Unit::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+            end
+
+            # Whether the created commits will be charged at commit rate or list rate. Set to
+            # null to clear a previously configured rate type.
+            module RateType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::RateType
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              COMMIT_RATE =
+                T.let(
+                  :COMMIT_RATE,
+                  MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::RateType::TaggedSymbol
+                )
+              LIST_RATE =
+                T.let(
+                  :LIST_RATE,
+                  MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::RateType::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::V2::ContractEditParams::UpdatePrepaidBalanceThresholdConfiguration::Commit::RateType::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
             end
           end
 
@@ -11489,6 +11680,12 @@ module MetronomeSDK
           sig { returns(T.nilable(Time)) }
           attr_accessor :ending_before
 
+          sig { returns(T.nilable(String)) }
+          attr_reader :name
+
+          sig { params(name: String).void }
+          attr_writer :name
+
           sig do
             returns(
               T.nilable(
@@ -11572,6 +11769,7 @@ module MetronomeSDK
             params(
               subscription_id: String,
               ending_before: T.nilable(Time),
+              name: String,
               proration_rounding:
                 T.nilable(
                   MetronomeSDK::V2::ContractEditParams::UpdateSubscription::ProrationRounding::OrHash
@@ -11589,6 +11787,7 @@ module MetronomeSDK
           def self.new(
             subscription_id:,
             ending_before: nil,
+            name: nil,
             proration_rounding: nil,
             # Update the subscription's quantity management mode from QUANTITY_ONLY to
             # SEAT_BASED with the provided seat_group_key.
@@ -11606,6 +11805,7 @@ module MetronomeSDK
               {
                 subscription_id: String,
                 ending_before: T.nilable(Time),
+                name: String,
                 proration_rounding:
                   T.nilable(
                     MetronomeSDK::V2::ContractEditParams::UpdateSubscription::ProrationRounding

@@ -1,0 +1,15 @@
+module MetronomeSDK
+  module Models
+    module V1
+      type billable_metric_update_response = { data: MetronomeSDK::ID }
+
+      class BillableMetricUpdateResponse < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor data: MetronomeSDK::ID
+
+        def initialize: (data: MetronomeSDK::ID) -> void
+
+        def to_hash: -> { data: MetronomeSDK::ID }
+      end
+    end
+  end
+end

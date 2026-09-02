@@ -483,6 +483,7 @@ module MetronomeSDK
               {
                 id: String,
                 access_amount: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::AccessAmount,
+                anchor_date: Time,
                 commit_duration: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::CommitDuration,
                 priority: Float,
                 product: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::Product,
@@ -509,6 +510,8 @@ module MetronomeSDK
               attr_accessor id: String
 
               attr_accessor access_amount: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::AccessAmount
+
+              attr_accessor anchor_date: Time
 
               attr_accessor commit_duration: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::CommitDuration
 
@@ -595,6 +598,7 @@ module MetronomeSDK
               def initialize: (
                 id: String,
                 access_amount: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::AccessAmount,
+                anchor_date: Time,
                 commit_duration: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::CommitDuration,
                 priority: Float,
                 product: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::Product,
@@ -620,6 +624,7 @@ module MetronomeSDK
               def to_hash: -> {
                 id: String,
                 access_amount: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::AccessAmount,
+                anchor_date: Time,
                 commit_duration: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::CommitDuration,
                 priority: Float,
                 product: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCommit::Product,
@@ -890,6 +895,7 @@ module MetronomeSDK
               {
                 id: String,
                 access_amount: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::AccessAmount,
+                anchor_date: Time,
                 commit_duration: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::CommitDuration,
                 priority: Float,
                 product: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::Product,
@@ -915,6 +921,8 @@ module MetronomeSDK
               attr_accessor id: String
 
               attr_accessor access_amount: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::AccessAmount
+
+              attr_accessor anchor_date: Time
 
               attr_accessor commit_duration: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::CommitDuration
 
@@ -995,6 +1003,7 @@ module MetronomeSDK
               def initialize: (
                 id: String,
                 access_amount: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::AccessAmount,
+                anchor_date: Time,
                 commit_duration: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::CommitDuration,
                 priority: Float,
                 product: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::Product,
@@ -1019,6 +1028,7 @@ module MetronomeSDK
               def to_hash: -> {
                 id: String,
                 access_amount: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::AccessAmount,
+                anchor_date: Time,
                 commit_duration: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::CommitDuration,
                 priority: Float,
                 product: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::RecurringCredit::Product,

@@ -5609,6 +5609,10 @@ module MetronomeSDK
         end
         attr_writer :access_amount
 
+        # The date this recurring commit's billing periods are anchored to.
+        sig { returns(Time) }
+        attr_accessor :anchor_date
+
         # The amount of time the created commits will be valid for
         sig do
           returns(MetronomeSDK::ContractV2::RecurringCommit::CommitDuration)
@@ -5837,6 +5841,7 @@ module MetronomeSDK
             id: String,
             access_amount:
               MetronomeSDK::ContractV2::RecurringCommit::AccessAmount::OrHash,
+            anchor_date: Time,
             commit_duration:
               MetronomeSDK::ContractV2::RecurringCommit::CommitDuration::OrHash,
             priority: Float,
@@ -5874,6 +5879,8 @@ module MetronomeSDK
           id:,
           # The amount of commit to grant.
           access_amount:,
+          # The date this recurring commit's billing periods are anchored to.
+          anchor_date:,
           # The amount of time the created commits will be valid for
           commit_duration:,
           # Will be passed down to the individual commits
@@ -5931,6 +5938,7 @@ module MetronomeSDK
               id: String,
               access_amount:
                 MetronomeSDK::ContractV2::RecurringCommit::AccessAmount,
+              anchor_date: Time,
               commit_duration:
                 MetronomeSDK::ContractV2::RecurringCommit::CommitDuration,
               priority: Float,
@@ -6580,6 +6588,10 @@ module MetronomeSDK
         end
         attr_writer :access_amount
 
+        # The date this recurring commit's billing periods are anchored to.
+        sig { returns(Time) }
+        attr_accessor :anchor_date
+
         # The amount of time the created commits will be valid for
         sig do
           returns(MetronomeSDK::ContractV2::RecurringCredit::CommitDuration)
@@ -6792,6 +6804,7 @@ module MetronomeSDK
             id: String,
             access_amount:
               MetronomeSDK::ContractV2::RecurringCredit::AccessAmount::OrHash,
+            anchor_date: Time,
             commit_duration:
               MetronomeSDK::ContractV2::RecurringCredit::CommitDuration::OrHash,
             priority: Float,
@@ -6827,6 +6840,8 @@ module MetronomeSDK
           id:,
           # The amount of commit to grant.
           access_amount:,
+          # The date this recurring commit's billing periods are anchored to.
+          anchor_date:,
           # The amount of time the created commits will be valid for
           commit_duration:,
           # Will be passed down to the individual commits
@@ -6882,6 +6897,7 @@ module MetronomeSDK
               id: String,
               access_amount:
                 MetronomeSDK::ContractV2::RecurringCredit::AccessAmount,
+              anchor_date: Time,
               commit_duration:
                 MetronomeSDK::ContractV2::RecurringCredit::CommitDuration,
               priority: Float,
@@ -8406,6 +8422,15 @@ module MetronomeSDK
         sig { params(name: String).void }
         attr_writer :name
 
+        # Custom fields from the subscription product referenced by
+        # `subscription_rate.product`. These are distinct from the subscription instance's
+        # `custom_fields`.
+        sig { returns(T.nilable(T::Hash[Symbol, String])) }
+        attr_reader :product_custom_fields
+
+        sig { params(product_custom_fields: T::Hash[Symbol, String]).void }
+        attr_writer :product_custom_fields
+
         sig do
           returns(T.nilable(MetronomeSDK::ContractV2::Subscription::SeatConfig))
         end
@@ -8444,6 +8469,7 @@ module MetronomeSDK
             ending_before: Time,
             fiat_credit_type_id: String,
             name: String,
+            product_custom_fields: T::Hash[Symbol, String],
             seat_config:
               MetronomeSDK::ContractV2::Subscription::SeatConfig::OrHash
           ).returns(T.attached_class)
@@ -8476,6 +8502,10 @@ module MetronomeSDK
           ending_before: nil,
           fiat_credit_type_id: nil,
           name: nil,
+          # Custom fields from the subscription product referenced by
+          # `subscription_rate.product`. These are distinct from the subscription instance's
+          # `custom_fields`.
+          product_custom_fields: nil,
           seat_config: nil
         )
         end
@@ -8505,6 +8535,7 @@ module MetronomeSDK
               ending_before: Time,
               fiat_credit_type_id: String,
               name: String,
+              product_custom_fields: T::Hash[Symbol, String],
               seat_config: MetronomeSDK::ContractV2::Subscription::SeatConfig
             }
           )

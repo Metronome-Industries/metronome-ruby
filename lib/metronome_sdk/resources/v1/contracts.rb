@@ -328,7 +328,7 @@ module MetronomeSDK
         # upstream of the commit, whether that is via contract editing, rate editing, or
         # other actions that cause an invoice to be recalculated.
         #
-        # @overload add_manual_balance_entry(id:, amount:, customer_id:, reason:, segment_id:, contract_id: nil, per_group_amounts: nil, timestamp: nil, request_options: {})
+        # @overload add_manual_balance_entry(id:, amount:, customer_id:, reason:, segment_id:, contract_id: nil, per_group_amounts: nil, timestamp: nil, uniqueness_key: nil, request_options: {})
         #
         # @param id [String] ID of the balance (commit or credit) to update.
         #
@@ -345,6 +345,8 @@ module MetronomeSDK
         # @param per_group_amounts [Hash{Symbol=>Float}] If using individually configured commits/credits attached to seat managed subscr
         #
         # @param timestamp [Time] RFC 3339 timestamp indicating when the manual adjustment takes place. If not pro
+        #
+        # @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a record is made wit
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -365,8 +367,9 @@ module MetronomeSDK
         # Amendments will be replaced by Contract editing. New clients should implement
         # using the `editContract` endpoint. Read more about the migration to contract
         # editing [here](/guides/implement-metronome/migrate-amendments-to-edits/) and
-        # reach out to your Metronome representative for more details. Once contract
-        # editing is enabled, access to this endpoint will be removed.
+        # contact us via the [Metronome support portal](https://support.metronome.com/)
+        # for more details. Once contract editing is enabled, access to this endpoint will
+        # be removed.
         #
         # @overload amend(contract_id:, customer_id:, starting_at:, commits: nil, credits: nil, custom_fields: nil, discounts: nil, netsuite_sales_order_id: nil, overrides: nil, professional_services: nil, reseller_royalties: nil, salesforce_opportunity_id: nil, scheduled_charges: nil, total_contract_value: nil, request_options: {})
         #

@@ -387,6 +387,7 @@ module MetronomeSDK
             contract_id: String,
             per_group_amounts: T::Hash[Symbol, Float],
             timestamp: Time,
+            uniqueness_key: String,
             request_options: MetronomeSDK::RequestOptions::OrHash
           ).void
         end
@@ -409,6 +410,10 @@ module MetronomeSDK
           # RFC 3339 timestamp indicating when the manual adjustment takes place. If not
           # provided, it will default to the start of the segment.
           timestamp: nil,
+          # Prevents the creation of duplicates. If a request to create a record is made
+          # with a previously used uniqueness key, a new record will not be created and the
+          # request will fail with a 409 error.
+          uniqueness_key: nil,
           request_options: {}
         )
         end
@@ -416,8 +421,9 @@ module MetronomeSDK
         # Amendments will be replaced by Contract editing. New clients should implement
         # using the `editContract` endpoint. Read more about the migration to contract
         # editing [here](/guides/implement-metronome/migrate-amendments-to-edits/) and
-        # reach out to your Metronome representative for more details. Once contract
-        # editing is enabled, access to this endpoint will be removed.
+        # contact us via the [Metronome support portal](https://support.metronome.com/)
+        # for more details. Once contract editing is enabled, access to this endpoint will
+        # be removed.
         sig do
           params(
             contract_id: String,

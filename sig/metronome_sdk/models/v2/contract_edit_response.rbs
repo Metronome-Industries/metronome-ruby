@@ -1060,6 +1060,7 @@ module MetronomeSDK
               {
                 id: String,
                 access_amount: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCommit::AccessAmount,
+                anchor_date: Time,
                 commit_duration: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCommit::CommitDuration,
                 priority: Float,
                 product: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCommit::Product,
@@ -1086,6 +1087,8 @@ module MetronomeSDK
               attr_accessor id: String
 
               attr_accessor access_amount: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCommit::AccessAmount
+
+              attr_accessor anchor_date: Time
 
               attr_accessor commit_duration: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCommit::CommitDuration
 
@@ -1172,6 +1175,7 @@ module MetronomeSDK
               def initialize: (
                 id: String,
                 access_amount: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCommit::AccessAmount,
+                anchor_date: Time,
                 commit_duration: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCommit::CommitDuration,
                 priority: Float,
                 product: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCommit::Product,
@@ -1197,6 +1201,7 @@ module MetronomeSDK
               def to_hash: -> {
                 id: String,
                 access_amount: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCommit::AccessAmount,
+                anchor_date: Time,
                 commit_duration: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCommit::CommitDuration,
                 priority: Float,
                 product: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCommit::Product,
@@ -1467,6 +1472,7 @@ module MetronomeSDK
               {
                 id: String,
                 access_amount: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCredit::AccessAmount,
+                anchor_date: Time,
                 commit_duration: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCredit::CommitDuration,
                 priority: Float,
                 product: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCredit::Product,
@@ -1492,6 +1498,8 @@ module MetronomeSDK
               attr_accessor id: String
 
               attr_accessor access_amount: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCredit::AccessAmount
+
+              attr_accessor anchor_date: Time
 
               attr_accessor commit_duration: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCredit::CommitDuration
 
@@ -1572,6 +1580,7 @@ module MetronomeSDK
               def initialize: (
                 id: String,
                 access_amount: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCredit::AccessAmount,
+                anchor_date: Time,
                 commit_duration: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCredit::CommitDuration,
                 priority: Float,
                 product: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCredit::Product,
@@ -1596,6 +1605,7 @@ module MetronomeSDK
               def to_hash: -> {
                 id: String,
                 access_amount: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCredit::AccessAmount,
+                anchor_date: Time,
                 commit_duration: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCredit::CommitDuration,
                 priority: Float,
                 product: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddRecurringCredit::Product,
@@ -1977,6 +1987,7 @@ module MetronomeSDK
                 ending_before: Time,
                 fiat_credit_type_id: String,
                 name: String,
+                product_custom_fields: ::Hash[Symbol, String],
                 seat_config: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddSubscription::SeatConfig
               }
 
@@ -2027,6 +2038,12 @@ module MetronomeSDK
 
               def name=: (String) -> String
 
+              attr_reader product_custom_fields: ::Hash[Symbol, String]?
+
+              def product_custom_fields=: (
+                ::Hash[Symbol, String]
+              ) -> ::Hash[Symbol, String]
+
               attr_reader seat_config: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddSubscription::SeatConfig?
 
               def seat_config=: (
@@ -2048,6 +2065,7 @@ module MetronomeSDK
                 ?ending_before: Time,
                 ?fiat_credit_type_id: String,
                 ?name: String,
+                ?product_custom_fields: ::Hash[Symbol, String],
                 ?seat_config: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddSubscription::SeatConfig
               ) -> void
 
@@ -2066,6 +2084,7 @@ module MetronomeSDK
                 ending_before: Time,
                 fiat_credit_type_id: String,
                 name: String,
+                product_custom_fields: ::Hash[Symbol, String],
                 seat_config: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::AddSubscription::SeatConfig
               }
 
@@ -3297,6 +3316,9 @@ module MetronomeSDK
                 {
                   applicable_product_ids: ::Array[String]?,
                   applicable_product_tags: ::Array[String]?,
+                  duration: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration?,
+                  rate_type: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdatePrepaidBalanceThresholdConfiguration::Commit::rate_type?,
+                  rollover_fraction: Float?,
                   specifiers: ::Array[MetronomeSDK::CommitSpecifierInput]?
                 }
 
@@ -3313,6 +3335,22 @@ module MetronomeSDK
                   ::Array[String]? _
                 ) -> ::Array[String]?
 
+                def duration: -> MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration?
+
+                def duration=: (
+                  MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration? _
+                ) -> MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration?
+
+                def rate_type: -> MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdatePrepaidBalanceThresholdConfiguration::Commit::rate_type?
+
+                def rate_type=: (
+                  MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdatePrepaidBalanceThresholdConfiguration::Commit::rate_type? _
+                ) -> MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdatePrepaidBalanceThresholdConfiguration::Commit::rate_type?
+
+                def rollover_fraction: -> Float?
+
+                def rollover_fraction=: (Float? _) -> Float?
+
                 def specifiers: -> ::Array[MetronomeSDK::CommitSpecifierInput]?
 
                 def specifiers=: (
@@ -3322,14 +3360,66 @@ module MetronomeSDK
                 def initialize: (
                   ?applicable_product_ids: ::Array[String]?,
                   ?applicable_product_tags: ::Array[String]?,
+                  ?duration: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration?,
+                  ?rate_type: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdatePrepaidBalanceThresholdConfiguration::Commit::rate_type?,
+                  ?rollover_fraction: Float?,
                   ?specifiers: ::Array[MetronomeSDK::CommitSpecifierInput]?
                 ) -> void
 
                 def to_hash: -> {
                   applicable_product_ids: ::Array[String]?,
                   applicable_product_tags: ::Array[String]?,
+                  duration: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration?,
+                  rate_type: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdatePrepaidBalanceThresholdConfiguration::Commit::rate_type?,
+                  rollover_fraction: Float?,
                   specifiers: ::Array[MetronomeSDK::CommitSpecifierInput]?
                 }
+
+                type duration =
+                  {
+                    unit: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration::unit,
+                    value: Integer
+                  }
+
+                class Duration < MetronomeSDK::Internal::Type::BaseModel
+                  attr_accessor unit: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration::unit
+
+                  attr_accessor value: Integer
+
+                  def initialize: (
+                    unit: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration::unit,
+                    value: Integer
+                  ) -> void
+
+                  def to_hash: -> {
+                    unit: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration::unit,
+                    value: Integer
+                  }
+
+                  type unit = :DAYS | :WEEKS | :MONTHS | :YEARS
+
+                  module Unit
+                    extend MetronomeSDK::Internal::Type::Enum
+
+                    DAYS: :DAYS
+                    WEEKS: :WEEKS
+                    MONTHS: :MONTHS
+                    YEARS: :YEARS
+
+                    def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration::unit]
+                  end
+                end
+
+                type rate_type = :COMMIT_RATE | :LIST_RATE
+
+                module RateType
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  COMMIT_RATE: :COMMIT_RATE
+                  LIST_RATE: :LIST_RATE
+
+                  def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdatePrepaidBalanceThresholdConfiguration::Commit::rate_type]
+                end
               end
 
               type discount_configuration =
@@ -4042,6 +4132,7 @@ module MetronomeSDK
               {
                 id: String,
                 ending_before: Time,
+                name: String,
                 quantity_updates: ::Array[MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateSubscription::QuantityUpdate],
                 seat_updates: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateSubscription::SeatUpdates
               }
@@ -4052,6 +4143,10 @@ module MetronomeSDK
               attr_reader ending_before: Time?
 
               def ending_before=: (Time) -> Time
+
+              attr_reader name: String?
+
+              def name=: (String) -> String
 
               attr_reader quantity_updates: ::Array[MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateSubscription::QuantityUpdate]?
 
@@ -4068,6 +4163,7 @@ module MetronomeSDK
               def initialize: (
                 id: String,
                 ?ending_before: Time,
+                ?name: String,
                 ?quantity_updates: ::Array[MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateSubscription::QuantityUpdate],
                 ?seat_updates: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateSubscription::SeatUpdates
               ) -> void
@@ -4075,6 +4171,7 @@ module MetronomeSDK
               def to_hash: -> {
                 id: String,
                 ending_before: Time,
+                name: String,
                 quantity_updates: ::Array[MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateSubscription::QuantityUpdate],
                 seat_updates: MetronomeSDK::Models::V2::ContractEditResponse::Data::Edit::UpdateSubscription::SeatUpdates
               }
