@@ -46,9 +46,9 @@ module MetronomeSDK
         #
         # @overload list(ending_before:, starting_on:, window_size:, next_page: nil, billable_metrics: nil, customer_ids: nil, request_options: {})
         #
-        # @param ending_before [Time] Body param
+        # @param ending_before [Time] Body param: Must be aligned to UTC midnight and at least one day after `starting
         #
-        # @param starting_on [Time] Body param
+        # @param starting_on [Time] Body param: Must be aligned to UTC midnight, e.g. `2024-01-01T00:00:00Z`.
         #
         # @param window_size [Symbol, MetronomeSDK::Models::V1::UsageListParams::WindowSize] Body param: A window_size of "day" or "hour" will return the usage for the speci
         #
@@ -240,9 +240,11 @@ module MetronomeSDK
         # - Time windows: Set `window_size` to hour, day, or none for different
         #   granularities
         # - Group filtering: Use `group_key` and `group_filters` to specify groups and
-        #   group filters
-        # - Limits: When using compound group keys (2+ keys in `group_key`), the default
-        #   and max limit is 100
+        #   group filters. Across all arrays in `group_filters`, include at most 200
+        #   filter values total. Requests with more than 200 filter values are rejected
+        #   when this limit is enforced
+        # - Response limit: When using compound group keys (2+ keys in `group_key`), the
+        #   default and maximum page size is 100
         # - Pagination: Use limit and `next_page` for large result sets
         # - Null handling: Group values may be null for events missing the group key
         #   property
@@ -261,7 +263,7 @@ module MetronomeSDK
         #
         # @param current_period [Boolean] Body param: If true, will return the usage for the current billing period. Will
         #
-        # @param ending_before [Time] Body param
+        # @param ending_before [Time] Body param: Must be aligned to UTC midnight and at least one day after `starting
         #
         # @param group_by [MetronomeSDK::Models::V1::UsageListWithGroupsParams::GroupBy] Body param: Use group_key and group_filters instead. Use a single group key to g
         #
@@ -269,7 +271,7 @@ module MetronomeSDK
         #
         # @param group_key [Array<String>] Body param: Group key to group usage by. Supports both simple (single key) and c
         #
-        # @param starting_on [Time] Body param
+        # @param starting_on [Time] Body param: Must be aligned to UTC midnight, e.g. `2024-01-01T00:00:00Z`.
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #

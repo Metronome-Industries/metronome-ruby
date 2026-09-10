@@ -108,6 +108,13 @@ module MetronomeSDK
             #   @return [Time]
             required :start_date, Time
 
+            # @!attribute credit_type_id
+            #   The credit type for this commit. Quantity-based commits return the null credit
+            #   type UUID.
+            #
+            #   @return [String, nil]
+            optional :credit_type_id, String
+
             # @!attribute end_date
             #   The datetime when the commit expires
             #
@@ -122,7 +129,7 @@ module MetronomeSDK
             optional :ledger_entries,
                      -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Commit::LedgerEntry] }
 
-            # @!method initialize(id:, balance:, start_date:, end_date: nil, ledger_entries: nil)
+            # @!method initialize(id:, balance:, start_date:, credit_type_id: nil, end_date: nil, ledger_entries: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Commit} for
             #   more details.
@@ -132,6 +139,8 @@ module MetronomeSDK
             #   @param balance [Float] The current balance for this commit for this specific seat
             #
             #   @param start_date [Time] The datetime when the commit becomes active
+            #
+            #   @param credit_type_id [String] The credit type for this commit. Quantity-based commits return the null credit t
             #
             #   @param end_date [Time, nil] The datetime when the commit expires
             #
@@ -204,6 +213,13 @@ module MetronomeSDK
             #   @return [Time]
             required :start_date, Time
 
+            # @!attribute credit_type_id
+            #   The credit type for this credit. Quantity-based credits return the null credit
+            #   type UUID.
+            #
+            #   @return [String, nil]
+            optional :credit_type_id, String
+
             # @!attribute end_date
             #   The datetime when the credit expires
             #
@@ -218,7 +234,7 @@ module MetronomeSDK
             optional :ledger_entries,
                      -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Credit::LedgerEntry] }
 
-            # @!method initialize(id:, balance:, start_date:, end_date: nil, ledger_entries: nil)
+            # @!method initialize(id:, balance:, start_date:, credit_type_id: nil, end_date: nil, ledger_entries: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Credit} for
             #   more details.
@@ -228,6 +244,8 @@ module MetronomeSDK
             #   @param balance [Float] The current balance for this credit for this specific seat
             #
             #   @param start_date [Time] The datetime when the credit becomes active
+            #
+            #   @param credit_type_id [String] The credit type for this credit. Quantity-based credits return the null credit t
             #
             #   @param end_date [Time, nil] The datetime when the credit expires
             #

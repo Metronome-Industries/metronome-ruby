@@ -4237,11 +4237,15 @@ module MetronomeSDK
                 )
               end
 
-            sig { returns(String) }
-            attr_accessor :credit_type_id
-
             sig { returns(Float) }
             attr_accessor :unit_price
+
+            # Defaults to USD (cents) if not passed
+            sig { returns(T.nilable(String)) }
+            attr_reader :credit_type_id
+
+            sig { params(credit_type_id: String).void }
+            attr_writer :credit_type_id
 
             # This field is required unless a subscription is attached via
             # `subscription_config`.
@@ -4254,14 +4258,15 @@ module MetronomeSDK
             # The amount of commit to grant.
             sig do
               params(
-                credit_type_id: String,
                 unit_price: Float,
+                credit_type_id: String,
                 quantity: Float
               ).returns(T.attached_class)
             end
             def self.new(
-              credit_type_id:,
               unit_price:,
+              # Defaults to USD (cents) if not passed
+              credit_type_id: nil,
               # This field is required unless a subscription is attached via
               # `subscription_config`.
               quantity: nil
@@ -4270,7 +4275,7 @@ module MetronomeSDK
 
             sig do
               override.returns(
-                { credit_type_id: String, unit_price: Float, quantity: Float }
+                { unit_price: Float, credit_type_id: String, quantity: Float }
               )
             end
             def to_hash
@@ -5304,11 +5309,15 @@ module MetronomeSDK
                 )
               end
 
-            sig { returns(String) }
-            attr_accessor :credit_type_id
-
             sig { returns(Float) }
             attr_accessor :unit_price
+
+            # Defaults to USD (cents) if not passed
+            sig { returns(T.nilable(String)) }
+            attr_reader :credit_type_id
+
+            sig { params(credit_type_id: String).void }
+            attr_writer :credit_type_id
 
             # This field is required unless a subscription is attached via
             # `subscription_config`.
@@ -5321,14 +5330,15 @@ module MetronomeSDK
             # The amount of commit to grant.
             sig do
               params(
-                credit_type_id: String,
                 unit_price: Float,
+                credit_type_id: String,
                 quantity: Float
               ).returns(T.attached_class)
             end
             def self.new(
-              credit_type_id:,
               unit_price:,
+              # Defaults to USD (cents) if not passed
+              credit_type_id: nil,
               # This field is required unless a subscription is attached via
               # `subscription_config`.
               quantity: nil
@@ -5337,7 +5347,7 @@ module MetronomeSDK
 
             sig do
               override.returns(
-                { credit_type_id: String, unit_price: Float, quantity: Float }
+                { unit_price: Float, credit_type_id: String, quantity: Float }
               )
             end
             def to_hash

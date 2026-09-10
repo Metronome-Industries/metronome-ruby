@@ -1860,26 +1860,28 @@ module MetronomeSDK
           }
 
           type access_amount =
-            { credit_type_id: String, unit_price: Float, quantity: Float }
+            { unit_price: Float, credit_type_id: String, quantity: Float }
 
           class AccessAmount < MetronomeSDK::Internal::Type::BaseModel
-            attr_accessor credit_type_id: String
-
             attr_accessor unit_price: Float
+
+            attr_reader credit_type_id: String?
+
+            def credit_type_id=: (String) -> String
 
             attr_reader quantity: Float?
 
             def quantity=: (Float) -> Float
 
             def initialize: (
-              credit_type_id: String,
               unit_price: Float,
+              ?credit_type_id: String,
               ?quantity: Float
             ) -> void
 
             def to_hash: -> {
-              credit_type_id: String,
               unit_price: Float,
+              credit_type_id: String,
               quantity: Float
             }
           end
@@ -2289,26 +2291,28 @@ module MetronomeSDK
           }
 
           type access_amount =
-            { credit_type_id: String, unit_price: Float, quantity: Float }
+            { unit_price: Float, credit_type_id: String, quantity: Float }
 
           class AccessAmount < MetronomeSDK::Internal::Type::BaseModel
-            attr_accessor credit_type_id: String
-
             attr_accessor unit_price: Float
+
+            attr_reader credit_type_id: String?
+
+            def credit_type_id=: (String) -> String
 
             attr_reader quantity: Float?
 
             def quantity=: (Float) -> Float
 
             def initialize: (
-              credit_type_id: String,
               unit_price: Float,
+              ?credit_type_id: String,
               ?quantity: Float
             ) -> void
 
             def to_hash: -> {
-              credit_type_id: String,
               unit_price: Float,
+              credit_type_id: String,
               quantity: Float
             }
           end

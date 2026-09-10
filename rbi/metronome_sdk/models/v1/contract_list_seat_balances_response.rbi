@@ -248,6 +248,14 @@ module MetronomeSDK
             sig { returns(Time) }
             attr_accessor :start_date
 
+            # The credit type for this commit. Quantity-based commits return the null credit
+            # type UUID.
+            sig { returns(T.nilable(String)) }
+            attr_reader :credit_type_id
+
+            sig { params(credit_type_id: String).void }
+            attr_writer :credit_type_id
+
             # The datetime when the commit expires
             sig { returns(T.nilable(Time)) }
             attr_accessor :end_date
@@ -280,6 +288,7 @@ module MetronomeSDK
                 id: String,
                 balance: Float,
                 start_date: Time,
+                credit_type_id: String,
                 end_date: T.nilable(Time),
                 ledger_entries:
                   T::Array[
@@ -294,6 +303,9 @@ module MetronomeSDK
               balance:,
               # The datetime when the commit becomes active
               start_date:,
+              # The credit type for this commit. Quantity-based commits return the null credit
+              # type UUID.
+              credit_type_id: nil,
               # The datetime when the commit expires
               end_date: nil,
               # Transaction history for this commit for this seat (only included if
@@ -308,6 +320,7 @@ module MetronomeSDK
                   id: String,
                   balance: Float,
                   start_date: Time,
+                  credit_type_id: String,
                   end_date: T.nilable(Time),
                   ledger_entries:
                     T::Array[
@@ -463,6 +476,14 @@ module MetronomeSDK
             sig { returns(Time) }
             attr_accessor :start_date
 
+            # The credit type for this credit. Quantity-based credits return the null credit
+            # type UUID.
+            sig { returns(T.nilable(String)) }
+            attr_reader :credit_type_id
+
+            sig { params(credit_type_id: String).void }
+            attr_writer :credit_type_id
+
             # The datetime when the credit expires
             sig { returns(T.nilable(Time)) }
             attr_accessor :end_date
@@ -495,6 +516,7 @@ module MetronomeSDK
                 id: String,
                 balance: Float,
                 start_date: Time,
+                credit_type_id: String,
                 end_date: T.nilable(Time),
                 ledger_entries:
                   T::Array[
@@ -509,6 +531,9 @@ module MetronomeSDK
               balance:,
               # The datetime when the credit becomes active
               start_date:,
+              # The credit type for this credit. Quantity-based credits return the null credit
+              # type UUID.
+              credit_type_id: nil,
               # The datetime when the credit expires
               end_date: nil,
               # Transaction history for this credit for this seat (only included if
@@ -523,6 +548,7 @@ module MetronomeSDK
                   id: String,
                   balance: Float,
                   start_date: Time,
+                  credit_type_id: String,
                   end_date: T.nilable(Time),
                   ledger_entries:
                     T::Array[

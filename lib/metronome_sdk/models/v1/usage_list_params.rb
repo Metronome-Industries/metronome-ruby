@@ -9,11 +9,13 @@ module MetronomeSDK
         include MetronomeSDK::Internal::Type::RequestParameters
 
         # @!attribute ending_before
+        #   Must be aligned to UTC midnight and at least one day after `starting_on`.
         #
         #   @return [Time]
         required :ending_before, Time
 
         # @!attribute starting_on
+        #   Must be aligned to UTC midnight, e.g. `2024-01-01T00:00:00Z`.
         #
         #   @return [Time]
         required :starting_on, Time
@@ -51,9 +53,9 @@ module MetronomeSDK
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::V1::UsageListParams} for more details.
         #
-        #   @param ending_before [Time]
+        #   @param ending_before [Time] Must be aligned to UTC midnight and at least one day after `starting_on`.
         #
-        #   @param starting_on [Time]
+        #   @param starting_on [Time] Must be aligned to UTC midnight, e.g. `2024-01-01T00:00:00Z`.
         #
         #   @param window_size [Symbol, MetronomeSDK::Models::V1::UsageListParams::WindowSize] A window_size of "day" or "hour" will return the usage for the specified period
         #

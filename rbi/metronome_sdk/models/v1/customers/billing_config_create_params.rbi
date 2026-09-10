@@ -66,8 +66,7 @@ module MetronomeSDK
           end
           attr_writer :aws_region
 
-          # The collection method for the customer's invoices. NOTE:
-          # `auto_charge_payment_intent` and `manually_charge_payment_intent` are in beta.
+          # The collection method for the customer's invoices.
           sig do
             returns(
               T.nilable(
@@ -111,8 +110,7 @@ module MetronomeSDK
             aws_customer_id: nil,
             aws_product_code: nil,
             aws_region: nil,
-            # The collection method for the customer's invoices. NOTE:
-            # `auto_charge_payment_intent` and `manually_charge_payment_intent` are in beta.
+            # The collection method for the customer's invoices.
             stripe_collection_method: nil,
             request_options: {}
           )
@@ -357,8 +355,7 @@ module MetronomeSDK
             end
           end
 
-          # The collection method for the customer's invoices. NOTE:
-          # `auto_charge_payment_intent` and `manually_charge_payment_intent` are in beta.
+          # The collection method for the customer's invoices.
           module StripeCollectionMethod
             extend MetronomeSDK::Internal::Type::Enum
 
@@ -379,16 +376,6 @@ module MetronomeSDK
             SEND_INVOICE =
               T.let(
                 :send_invoice,
-                MetronomeSDK::V1::Customers::BillingConfigCreateParams::StripeCollectionMethod::TaggedSymbol
-              )
-            AUTO_CHARGE_PAYMENT_INTENT =
-              T.let(
-                :auto_charge_payment_intent,
-                MetronomeSDK::V1::Customers::BillingConfigCreateParams::StripeCollectionMethod::TaggedSymbol
-              )
-            MANUALLY_CHARGE_PAYMENT_INTENT =
-              T.let(
-                :manually_charge_payment_intent,
                 MetronomeSDK::V1::Customers::BillingConfigCreateParams::StripeCollectionMethod::TaggedSymbol
               )
 

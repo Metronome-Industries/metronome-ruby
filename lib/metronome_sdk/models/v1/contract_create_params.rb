@@ -1997,15 +1997,16 @@ module MetronomeSDK
 
           # @see MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit#access_amount
           class AccessAmount < MetronomeSDK::Internal::Type::BaseModel
-            # @!attribute credit_type_id
-            #
-            #   @return [String]
-            required :credit_type_id, String
-
             # @!attribute unit_price
             #
             #   @return [Float]
             required :unit_price, Float
+
+            # @!attribute credit_type_id
+            #   Defaults to USD (cents) if not passed
+            #
+            #   @return [String, nil]
+            optional :credit_type_id, String
 
             # @!attribute quantity
             #   This field is required unless a subscription is attached via
@@ -2014,16 +2015,16 @@ module MetronomeSDK
             #   @return [Float, nil]
             optional :quantity, Float
 
-            # @!method initialize(credit_type_id:, unit_price:, quantity: nil)
+            # @!method initialize(unit_price:, credit_type_id: nil, quantity: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::AccessAmount}
             #   for more details.
             #
             #   The amount of commit to grant.
             #
-            #   @param credit_type_id [String]
-            #
             #   @param unit_price [Float]
+            #
+            #   @param credit_type_id [String] Defaults to USD (cents) if not passed
             #
             #   @param quantity [Float] This field is required unless a subscription is attached via `subscription_confi
           end
@@ -2480,15 +2481,16 @@ module MetronomeSDK
 
           # @see MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit#access_amount
           class AccessAmount < MetronomeSDK::Internal::Type::BaseModel
-            # @!attribute credit_type_id
-            #
-            #   @return [String]
-            required :credit_type_id, String
-
             # @!attribute unit_price
             #
             #   @return [Float]
             required :unit_price, Float
+
+            # @!attribute credit_type_id
+            #   Defaults to USD (cents) if not passed
+            #
+            #   @return [String, nil]
+            optional :credit_type_id, String
 
             # @!attribute quantity
             #   This field is required unless a subscription is attached via
@@ -2497,16 +2499,16 @@ module MetronomeSDK
             #   @return [Float, nil]
             optional :quantity, Float
 
-            # @!method initialize(credit_type_id:, unit_price:, quantity: nil)
+            # @!method initialize(unit_price:, credit_type_id: nil, quantity: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::AccessAmount}
             #   for more details.
             #
             #   The amount of commit to grant.
             #
-            #   @param credit_type_id [String]
-            #
             #   @param unit_price [Float]
+            #
+            #   @param credit_type_id [String] Defaults to USD (cents) if not passed
             #
             #   @param quantity [Float] This field is required unless a subscription is attached via `subscription_confi
           end
