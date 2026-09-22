@@ -267,19 +267,26 @@ module MetronomeSDK
         # Some parameter documentations has been truncated, see
         # {MetronomeSDK::Models::V1::ContractListParams} for more details.
         #
-        # Retrieves all contracts for a specific customer, including pricing, terms,
+        # Retrieves a page of contracts for a specific customer, including pricing, terms,
         # credits, and commitments. Use this to view a customer's contract history and
         # current agreements for billing management. Returns contract details with
         # optional ledgers and balance information.
         #
+        # ### Usage guidelines:
+        #
+        # - Pagination: Results are limited to 20 contracts per page; use 'cursor' for
+        #   more
+        #
         # ⚠️ Note: This is the legacy v1 endpoint - new integrations should use the v2
         # endpoint for enhanced features.
         #
-        # @overload list(customer_id:, covering_date: nil, include_archived: nil, include_balance: nil, include_ledgers: nil, starting_at: nil, request_options: {})
+        # @overload list(customer_id:, covering_date: nil, cursor: nil, include_archived: nil, include_balance: nil, include_ledgers: nil, limit: nil, starting_at: nil, request_options: {})
         #
         # @param customer_id [String]
         #
         # @param covering_date [Time] Optional RFC 3339 timestamp. If provided, the response will include only contrac
+        #
+        # @param cursor [String] Cursor from a previous response to fetch the next page of contracts.
         #
         # @param include_archived [Boolean] Include archived contracts in the response
         #
@@ -287,11 +294,13 @@ module MetronomeSDK
         #
         # @param include_ledgers [Boolean] Include commit ledgers in the response. Setting this flag may cause the query to
         #
+        # @param limit [Integer] Max number of contracts to return per page. Range: 1-20. Default: 20.
+        #
         # @param starting_at [Time] Optional RFC 3339 timestamp. If provided, the response will include only contrac
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [MetronomeSDK::Models::V1::ContractListResponse]
+        # @return [MetronomeSDK::Internal::BodyCursorPageCursorField<MetronomeSDK::Models::Contract>]
         #
         # @see MetronomeSDK::Models::V1::ContractListParams
         def list(params)
@@ -300,7 +309,8 @@ module MetronomeSDK
             method: :post,
             path: "v1/contracts/list",
             body: parsed,
-            model: MetronomeSDK::Models::V1::ContractListResponse,
+            page: MetronomeSDK::Internal::BodyCursorPageCursorField,
+            model: MetronomeSDK::Contract,
             options: options
           )
         end

@@ -5,8 +5,8 @@ module MetronomeSDK
     class V2
       class Notifications
         class System
-          # List available system lifecycle event types for notifications. These are
-          # read-only event types that can be used when creating offset notifications.
+          # List available system notification types. You can enable these notifications
+          # directly or use supported types to create offset notifications.
           sig do
             params(
               request_options: MetronomeSDK::RequestOptions::OrHash

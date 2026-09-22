@@ -56,7 +56,7 @@ module MetronomeSDK
         # Some parameter documentations has been truncated, see
         # {MetronomeSDK::Models::V2::ContractListParams} for more details.
         #
-        # For a given customer, lists all of their contracts in chronological order.
+        # For a given customer, lists a page of their contracts in chronological order.
         #
         # ### Use this endpoint to:
         #
@@ -72,11 +72,17 @@ module MetronomeSDK
         # filter the list of returned contracts. For example, to list only currently
         # active contracts, pass `covering_date` equal to the current time.
         #
-        # @overload list(customer_id:, covering_date: nil, include_archived: nil, include_balance: nil, include_ledgers: nil, starting_at: nil, request_options: {})
+        # Results are limited to 20 contracts per page. When the response includes a
+        # non-null `cursor`, pass it back as the `cursor` parameter to fetch the next
+        # page.
+        #
+        # @overload list(customer_id:, covering_date: nil, cursor: nil, include_archived: nil, include_balance: nil, include_ledgers: nil, limit: nil, starting_at: nil, request_options: {})
         #
         # @param customer_id [String]
         #
         # @param covering_date [Time] Optional RFC 3339 timestamp. Only include contracts active on the provided date.
+        #
+        # @param cursor [String] Cursor from a previous response to fetch the next page of contracts.
         #
         # @param include_archived [Boolean] Include archived contracts in the response.
         #
@@ -84,11 +90,13 @@ module MetronomeSDK
         #
         # @param include_ledgers [Boolean] Include commit/credit ledgers in the response. Setting this flag may cause the r
         #
+        # @param limit [Float] Max number of contracts to return per page. Range: 1-20. Default: 20.
+        #
         # @param starting_at [Time] Optional RFC 3339 timestamp. Only include contracts that started on or after thi
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [MetronomeSDK::Models::V2::ContractListResponse]
+        # @return [MetronomeSDK::Internal::BodyCursorPageCursorField<MetronomeSDK::Models::ContractV2>]
         #
         # @see MetronomeSDK::Models::V2::ContractListParams
         def list(params)
@@ -97,7 +105,8 @@ module MetronomeSDK
             method: :post,
             path: "v2/contracts/list",
             body: parsed,
-            model: MetronomeSDK::Models::V2::ContractListResponse,
+            page: MetronomeSDK::Internal::BodyCursorPageCursorField,
+            model: MetronomeSDK::ContractV2,
             options: options
           )
         end

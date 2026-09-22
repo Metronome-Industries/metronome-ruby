@@ -492,8 +492,8 @@ module MetronomeSDK
             attr_accessor :type
 
             # Details about the credit or commit that was applied to this line item. Only
-            # present on line items with product of `USAGE`, `SUBSCRIPTION` or `COMPOSITE`
-            # types.
+            # present on line items with product of `USAGE`, `SUBSCRIPTION`, `COMPOSITE`, or
+            # `CPU_CONVERSION` types.
             sig do
               returns(
                 T.nilable(
@@ -518,10 +518,10 @@ module MetronomeSDK
             sig { params(commit_custom_fields: T::Hash[Symbol, String]).void }
             attr_writer :commit_custom_fields
 
-            # For line items with product of `USAGE`, `SUBSCRIPTION`, or `COMPOSITE` types,
-            # the ID of the credit or commit that was applied to this line item. For line
-            # items with product type of `FIXED`, the ID of the prepaid or postpaid commit
-            # that is being paid for.
+            # For line items with product of `USAGE`, `SUBSCRIPTION`, `COMPOSITE`, or
+            # `CPU_CONVERSION` types, the ID of the credit or commit that was applied to this
+            # line item. For line items with product type of `FIXED`, the ID of the prepaid or
+            # postpaid commit that is being paid for.
             sig { returns(T.nilable(String)) }
             attr_reader :commit_id
 
@@ -943,15 +943,15 @@ module MetronomeSDK
               #   converted to fiat currency using a cpu_conversion line item.
               type:,
               # Details about the credit or commit that was applied to this line item. Only
-              # present on line items with product of `USAGE`, `SUBSCRIPTION` or `COMPOSITE`
-              # types.
+              # present on line items with product of `USAGE`, `SUBSCRIPTION`, `COMPOSITE`, or
+              # `CPU_CONVERSION` types.
               applied_commit_or_credit: nil,
               # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
               commit_custom_fields: nil,
-              # For line items with product of `USAGE`, `SUBSCRIPTION`, or `COMPOSITE` types,
-              # the ID of the credit or commit that was applied to this line item. For line
-              # items with product type of `FIXED`, the ID of the prepaid or postpaid commit
-              # that is being paid for.
+              # For line items with product of `USAGE`, `SUBSCRIPTION`, `COMPOSITE`, or
+              # `CPU_CONVERSION` types, the ID of the credit or commit that was applied to this
+              # line item. For line items with product type of `FIXED`, the ID of the prepaid or
+              # postpaid commit that is being paid for.
               commit_id: nil,
               commit_netsuite_item_id: nil,
               commit_netsuite_sales_order_id: nil,
@@ -1113,8 +1113,8 @@ module MetronomeSDK
               attr_accessor :type
 
               # Details about the credit or commit that was applied to this line item. Only
-              # present on line items with product of `USAGE`, `SUBSCRIPTION` or `COMPOSITE`
-              # types.
+              # present on line items with product of `USAGE`, `SUBSCRIPTION`, `COMPOSITE`, or
+              # `CPU_CONVERSION` types.
               sig do
                 params(
                   id: String,

@@ -118,7 +118,7 @@ module MetronomeSDK
           # Some parameter documentations has been truncated, see
           # {MetronomeSDK::Models::V2::Notifications::OffsetEditParams} for more details.
           #
-          # Edit an existing offset lifecycle event notification configuration.
+          # Edit an existing offset notification, or enable/disable a system notification
           #
           # @overload edit(policy:, id: nil, is_enabled: nil, request_options: {})
           #

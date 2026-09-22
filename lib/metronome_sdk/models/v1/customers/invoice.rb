@@ -304,8 +304,8 @@ module MetronomeSDK
 
             # @!attribute applied_commit_or_credit
             #   Details about the credit or commit that was applied to this line item. Only
-            #   present on line items with product of `USAGE`, `SUBSCRIPTION` or `COMPOSITE`
-            #   types.
+            #   present on line items with product of `USAGE`, `SUBSCRIPTION`, `COMPOSITE`, or
+            #   `CPU_CONVERSION` types.
             #
             #   @return [MetronomeSDK::Models::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit, nil]
             optional :applied_commit_or_credit,
@@ -318,10 +318,10 @@ module MetronomeSDK
             optional :commit_custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
 
             # @!attribute commit_id
-            #   For line items with product of `USAGE`, `SUBSCRIPTION`, or `COMPOSITE` types,
-            #   the ID of the credit or commit that was applied to this line item. For line
-            #   items with product type of `FIXED`, the ID of the prepaid or postpaid commit
-            #   that is being paid for.
+            #   For line items with product of `USAGE`, `SUBSCRIPTION`, `COMPOSITE`, or
+            #   `CPU_CONVERSION` types, the ID of the credit or commit that was applied to this
+            #   line item. For line items with product type of `FIXED`, the ID of the prepaid or
+            #   postpaid commit that is being paid for.
             #
             #   @return [String, nil]
             optional :commit_id, String
@@ -568,7 +568,7 @@ module MetronomeSDK
             #
             #   @param commit_custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
             #
-            #   @param commit_id [String] For line items with product of `USAGE`, `SUBSCRIPTION`, or `COMPOSITE` types, th
+            #   @param commit_id [String] For line items with product of `USAGE`, `SUBSCRIPTION`, `COMPOSITE`, or `CPU_CON
             #
             #   @param commit_netsuite_item_id [String]
             #
@@ -658,8 +658,8 @@ module MetronomeSDK
 
               # @!method initialize(id:, type:)
               #   Details about the credit or commit that was applied to this line item. Only
-              #   present on line items with product of `USAGE`, `SUBSCRIPTION` or `COMPOSITE`
-              #   types.
+              #   present on line items with product of `USAGE`, `SUBSCRIPTION`, `COMPOSITE`, or
+              #   `CPU_CONVERSION` types.
               #
               #   @param id [String]
               #   @param type [Symbol, MetronomeSDK::Models::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::Type]

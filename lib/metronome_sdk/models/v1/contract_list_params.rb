@@ -21,6 +21,12 @@ module MetronomeSDK
         #   @return [Time, nil]
         optional :covering_date, Time
 
+        # @!attribute cursor
+        #   Cursor from a previous response to fetch the next page of contracts.
+        #
+        #   @return [String, nil]
+        optional :cursor, String
+
         # @!attribute include_archived
         #   Include archived contracts in the response
         #
@@ -41,15 +47,21 @@ module MetronomeSDK
         #   @return [Boolean, nil]
         optional :include_ledgers, MetronomeSDK::Internal::Type::Boolean
 
+        # @!attribute limit
+        #   Max number of contracts to return per page. Range: 1-20. Default: 20.
+        #
+        #   @return [Integer, nil]
+        optional :limit, Integer
+
         # @!attribute starting_at
         #   Optional RFC 3339 timestamp. If provided, the response will include only
-        #   contracts where effective_at is on or after the provided date. This cannot be
+        #   contracts where starting_at is on or after the provided date. This cannot be
         #   provided if the covering_date filter is provided.
         #
         #   @return [Time, nil]
         optional :starting_at, Time
 
-        # @!method initialize(customer_id:, covering_date: nil, include_archived: nil, include_balance: nil, include_ledgers: nil, starting_at: nil, request_options: {})
+        # @!method initialize(customer_id:, covering_date: nil, cursor: nil, include_archived: nil, include_balance: nil, include_ledgers: nil, limit: nil, starting_at: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::V1::ContractListParams} for more details.
         #
@@ -57,11 +69,15 @@ module MetronomeSDK
         #
         #   @param covering_date [Time] Optional RFC 3339 timestamp. If provided, the response will include only contrac
         #
+        #   @param cursor [String] Cursor from a previous response to fetch the next page of contracts.
+        #
         #   @param include_archived [Boolean] Include archived contracts in the response
         #
         #   @param include_balance [Boolean] Include the balance of credits and commits in the response. Setting this flag ma
         #
         #   @param include_ledgers [Boolean] Include commit ledgers in the response. Setting this flag may cause the query to
+        #
+        #   @param limit [Integer] Max number of contracts to return per page. Range: 1-20. Default: 20.
         #
         #   @param starting_at [Time] Optional RFC 3339 timestamp. If provided, the response will include only contrac
         #

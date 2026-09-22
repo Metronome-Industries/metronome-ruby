@@ -319,10 +319,15 @@ module MetronomeSDK
         )
         end
 
-        # Retrieves all contracts for a specific customer, including pricing, terms,
+        # Retrieves a page of contracts for a specific customer, including pricing, terms,
         # credits, and commitments. Use this to view a customer's contract history and
         # current agreements for billing management. Returns contract details with
         # optional ledgers and balance information.
+        #
+        # ### Usage guidelines:
+        #
+        # - Pagination: Results are limited to 20 contracts per page; use 'cursor' for
+        #   more
         #
         # ⚠️ Note: This is the legacy v1 endpoint - new integrations should use the v2
         # endpoint for enhanced features.
@@ -330,12 +335,18 @@ module MetronomeSDK
           params(
             customer_id: String,
             covering_date: Time,
+            cursor: String,
             include_archived: T::Boolean,
             include_balance: T::Boolean,
             include_ledgers: T::Boolean,
+            limit: Integer,
             starting_at: Time,
             request_options: MetronomeSDK::RequestOptions::OrHash
-          ).returns(MetronomeSDK::Models::V1::ContractListResponse)
+          ).returns(
+            MetronomeSDK::Internal::BodyCursorPageCursorField[
+              MetronomeSDK::Contract
+            ]
+          )
         end
         def list(
           customer_id:,
@@ -343,6 +354,8 @@ module MetronomeSDK
           # contracts effective on the provided date. This cannot be provided if the
           # starting_at filter is provided.
           covering_date: nil,
+          # Cursor from a previous response to fetch the next page of contracts.
+          cursor: nil,
           # Include archived contracts in the response
           include_archived: nil,
           # Include the balance of credits and commits in the response. Setting this flag
@@ -351,8 +364,10 @@ module MetronomeSDK
           # Include commit ledgers in the response. Setting this flag may cause the query to
           # be slower.
           include_ledgers: nil,
+          # Max number of contracts to return per page. Range: 1-20. Default: 20.
+          limit: nil,
           # Optional RFC 3339 timestamp. If provided, the response will include only
-          # contracts where effective_at is on or after the provided date. This cannot be
+          # contracts where starting_at is on or after the provided date. This cannot be
           # provided if the covering_date filter is provided.
           starting_at: nil,
           request_options: {}

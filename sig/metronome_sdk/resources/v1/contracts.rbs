@@ -58,12 +58,14 @@ module MetronomeSDK
         def list: (
           customer_id: String,
           ?covering_date: Time,
+          ?cursor: String,
           ?include_archived: bool,
           ?include_balance: bool,
           ?include_ledgers: bool,
+          ?limit: Integer,
           ?starting_at: Time,
           ?request_options: MetronomeSDK::request_opts
-        ) -> MetronomeSDK::Models::V1::ContractListResponse
+        ) -> MetronomeSDK::Internal::BodyCursorPageCursorField[MetronomeSDK::Contract]
 
         def add_manual_balance_entry: (
           id: String,

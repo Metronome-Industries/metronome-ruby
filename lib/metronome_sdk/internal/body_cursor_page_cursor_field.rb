@@ -10,8 +10,8 @@ module MetronomeSDK
     #   end
     #
     # @example
-    #   body_cursor_page_cursor_field.auto_paging_each do |offset|
-    #     puts(offset)
+    #   body_cursor_page_cursor_field.auto_paging_each do |contract|
+    #     puts(contract)
     #   end
     class BodyCursorPageCursorField
       include MetronomeSDK::Internal::Type::BasePage
