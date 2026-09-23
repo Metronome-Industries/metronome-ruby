@@ -11,6 +11,7 @@ module MetronomeSDK
         applicable_product_tags: ::Array[String],
         balance: Float,
         contract: MetronomeSDK::Credit::Contract,
+        created_at: Time,
         created_by: String,
         custom_fields: ::Hash[Symbol, String],
         description: String,
@@ -62,6 +63,10 @@ module MetronomeSDK
       def contract=: (
         MetronomeSDK::Credit::Contract
       ) -> MetronomeSDK::Credit::Contract
+
+      attr_reader created_at: Time?
+
+      def created_at=: (Time) -> Time
 
       attr_reader created_by: String?
 
@@ -145,6 +150,7 @@ module MetronomeSDK
         ?applicable_product_tags: ::Array[String],
         ?balance: Float,
         ?contract: MetronomeSDK::Credit::Contract,
+        ?created_at: Time,
         ?created_by: String,
         ?custom_fields: ::Hash[Symbol, String],
         ?description: String,
@@ -172,6 +178,7 @@ module MetronomeSDK
         applicable_product_tags: ::Array[String],
         balance: Float,
         contract: MetronomeSDK::Credit::Contract,
+        created_at: Time,
         created_by: String,
         custom_fields: ::Hash[Symbol, String],
         description: String,
