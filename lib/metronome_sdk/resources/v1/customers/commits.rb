@@ -177,9 +177,11 @@ module MetronomeSDK
           #   - include_balance: Adds current balance calculation (slower)
           # - Optional filtering: Use commit_id to retrieve a specific commit
           #
-          # @overload list(customer_id:, commit_id: nil, covering_date: nil, effective_before: nil, include_archived: nil, include_balance: nil, include_contract_commits: nil, include_ledgers: nil, limit: nil, next_page: nil, starting_at: nil, request_options: {})
+          # @overload list(customer_id:, access_type: nil, commit_id: nil, covering_date: nil, effective_before: nil, include_archived: nil, include_balance: nil, include_contract_commits: nil, include_ledgers: nil, limit: nil, next_page: nil, starting_at: nil, request_options: {})
           #
           # @param customer_id [String]
+          #
+          # @param access_type [Symbol, MetronomeSDK::Models::V1::Customers::CommitListParams::AccessType] Filters commits by how their balances are drawn down. `SPEND` deducts the dollar
           #
           # @param commit_id [String]
           #

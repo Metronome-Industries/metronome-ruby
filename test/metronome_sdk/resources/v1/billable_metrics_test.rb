@@ -32,6 +32,24 @@ class MetronomeSDK::Test::Resources::V1::BillableMetricsTest < MetronomeSDK::Tes
     end
   end
 
+  def test_update_required_params
+    response =
+      @metronome.v1.billable_metrics.update(
+        billable_metric_id: "13117714-3f05-48e5-a6e9-a66093f13b4d",
+        name: "CPU hours"
+      )
+
+    assert_pattern do
+      response => MetronomeSDK::Models::V1::BillableMetricUpdateResponse
+    end
+
+    assert_pattern do
+      response => {
+        data: MetronomeSDK::ID
+      }
+    end
+  end
+
   def test_list
     response = @metronome.v1.billable_metrics.list
 

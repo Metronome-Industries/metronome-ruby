@@ -386,12 +386,27 @@ module MetronomeSDK
               required :schedule_items,
                        -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::AccessSchedule::ScheduleItem] }
 
-              # @!method initialize(credit_type:, schedule_items:)
+              # @!attribute access_type
+              #   Indicates how the balance is drawn down. `SPEND` deducts the dollar cost of
+              #   usage. `QUANTITY` deducts the number of units used.
+              #
+              #   @return [Symbol, MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::AccessSchedule::AccessType, nil]
+              optional :access_type,
+                       enum: -> { MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::AccessSchedule::AccessType }
+
+              # @!method initialize(credit_type:, schedule_items:, access_type: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::AccessSchedule}
+              #   for more details.
+              #
               #   The schedule that the customer will gain access to the credits purposed with
               #   this commit.
               #
               #   @param credit_type [MetronomeSDK::Models::CreditTypeData]
+              #
               #   @param schedule_items [Array<MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::AccessSchedule::ScheduleItem>]
+              #
+              #   @param access_type [Symbol, MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::AccessSchedule::AccessType] Indicates how the balance is drawn down. `SPEND` deducts the dollar cost of usag
 
               class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
                 # @!attribute id
@@ -483,6 +498,20 @@ module MetronomeSDK
                     #   @return [Array<Symbol>]
                   end
                 end
+              end
+
+              # Indicates how the balance is drawn down. `SPEND` deducts the dollar cost of
+              # usage. `QUANTITY` deducts the number of units used.
+              #
+              # @see MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Commit::AccessSchedule#access_type
+              module AccessType
+                extend MetronomeSDK::Internal::Type::Enum
+
+                SPEND = :SPEND
+                QUANTITY = :QUANTITY
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
 
@@ -1190,9 +1219,24 @@ module MetronomeSDK
               required :schedule_items,
                        -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit::AccessSchedule::ScheduleItem] }
 
-              # @!method initialize(credit_type:, schedule_items:)
+              # @!attribute access_type
+              #   Indicates how the balance is drawn down. `SPEND` deducts the dollar cost of
+              #   usage. `QUANTITY` deducts the number of units used.
+              #
+              #   @return [Symbol, MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit::AccessSchedule::AccessType, nil]
+              optional :access_type,
+                       enum: -> { MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit::AccessSchedule::AccessType }
+
+              # @!method initialize(credit_type:, schedule_items:, access_type: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit::AccessSchedule}
+              #   for more details.
+              #
               #   @param credit_type [MetronomeSDK::Models::CreditTypeData]
+              #
               #   @param schedule_items [Array<MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit::AccessSchedule::ScheduleItem>]
+              #
+              #   @param access_type [Symbol, MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit::AccessSchedule::AccessType] Indicates how the balance is drawn down. `SPEND` deducts the dollar cost of usag
 
               class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
                 # @!attribute id
@@ -1284,6 +1328,20 @@ module MetronomeSDK
                     #   @return [Array<Symbol>]
                   end
                 end
+              end
+
+              # Indicates how the balance is drawn down. `SPEND` deducts the dollar cost of
+              # usage. `QUANTITY` deducts the number of units used.
+              #
+              # @see MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Credit::AccessSchedule#access_type
+              module AccessType
+                extend MetronomeSDK::Internal::Type::Enum
+
+                SPEND = :SPEND
+                QUANTITY = :QUANTITY
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
 
@@ -1538,6 +1596,8 @@ module MetronomeSDK
             # @see MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit#access_amount
             class AccessAmount < MetronomeSDK::Internal::Type::BaseModel
               # @!attribute credit_type_id
+              #   This ID identifies the credit type for the access amount. Quantity-based
+              #   recurring commits and credits return the null credit type UUID.
               #
               #   @return [String]
               required :credit_type_id, String
@@ -1547,17 +1607,47 @@ module MetronomeSDK
               #   @return [Float]
               required :unit_price, Float
 
+              # @!attribute access_type
+              #   Indicates how the balance of child commits is drawn down. `SPEND` deducts the
+              #   dollar cost of usage. `QUANTITY` deducts the number of units used.
+              #
+              #   @return [Symbol, MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::AccessAmount::AccessType, nil]
+              optional :access_type,
+                       enum: -> { MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::AccessAmount::AccessType }
+
               # @!attribute quantity
               #
               #   @return [Float, nil]
               optional :quantity, Float
 
-              # @!method initialize(credit_type_id:, unit_price:, quantity: nil)
+              # @!method initialize(credit_type_id:, unit_price:, access_type: nil, quantity: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::AccessAmount}
+              #   for more details.
+              #
               #   The amount of commit to grant.
               #
-              #   @param credit_type_id [String]
+              #   @param credit_type_id [String] This ID identifies the credit type for the access amount. Quantity-based recurri
+              #
               #   @param unit_price [Float]
+              #
+              #   @param access_type [Symbol, MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::AccessAmount::AccessType] Indicates how the balance of child commits is drawn down. `SPEND` deducts the do
+              #
               #   @param quantity [Float]
+
+              # Indicates how the balance of child commits is drawn down. `SPEND` deducts the
+              # dollar cost of usage. `QUANTITY` deducts the number of units used.
+              #
+              # @see MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::AccessAmount#access_type
+              module AccessType
+                extend MetronomeSDK::Internal::Type::Enum
+
+                SPEND = :SPEND
+                QUANTITY = :QUANTITY
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
             end
 
             # @see MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit#commit_duration
@@ -2071,6 +2161,8 @@ module MetronomeSDK
             # @see MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit#access_amount
             class AccessAmount < MetronomeSDK::Internal::Type::BaseModel
               # @!attribute credit_type_id
+              #   This ID identifies the credit type for the access amount. Quantity-based
+              #   recurring commits and credits return the null credit type UUID.
               #
               #   @return [String]
               required :credit_type_id, String
@@ -2080,17 +2172,47 @@ module MetronomeSDK
               #   @return [Float]
               required :unit_price, Float
 
+              # @!attribute access_type
+              #   Indicates how the balance of child commits is drawn down. `SPEND` deducts the
+              #   dollar cost of usage. `QUANTITY` deducts the number of units used.
+              #
+              #   @return [Symbol, MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::AccessAmount::AccessType, nil]
+              optional :access_type,
+                       enum: -> { MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::AccessAmount::AccessType }
+
               # @!attribute quantity
               #
               #   @return [Float, nil]
               optional :quantity, Float
 
-              # @!method initialize(credit_type_id:, unit_price:, quantity: nil)
+              # @!method initialize(credit_type_id:, unit_price:, access_type: nil, quantity: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::AccessAmount}
+              #   for more details.
+              #
               #   The amount of commit to grant.
               #
-              #   @param credit_type_id [String]
+              #   @param credit_type_id [String] This ID identifies the credit type for the access amount. Quantity-based recurri
+              #
               #   @param unit_price [Float]
+              #
+              #   @param access_type [Symbol, MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::AccessAmount::AccessType] Indicates how the balance of child commits is drawn down. `SPEND` deducts the do
+              #
               #   @param quantity [Float]
+
+              # Indicates how the balance of child commits is drawn down. `SPEND` deducts the
+              # dollar cost of usage. `QUANTITY` deducts the number of units used.
+              #
+              # @see MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::AccessAmount#access_type
+              module AccessType
+                extend MetronomeSDK::Internal::Type::Enum
+
+                SPEND = :SPEND
+                QUANTITY = :QUANTITY
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
             end
 
             # @see MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit#commit_duration

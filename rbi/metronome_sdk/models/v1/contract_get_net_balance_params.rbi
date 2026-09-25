@@ -19,6 +19,25 @@ module MetronomeSDK
         sig { returns(String) }
         attr_accessor :customer_id
 
+        # Filters balances by how they are drawn down. Defaults to `SPEND`. If set to
+        # `QUANTITY`, `credit_type_id` must not be provided.
+        sig do
+          returns(
+            T.nilable(
+              MetronomeSDK::V1::ContractGetNetBalanceParams::AccessType::OrSymbol
+            )
+          )
+        end
+        attr_reader :access_type
+
+        sig do
+          params(
+            access_type:
+              MetronomeSDK::V1::ContractGetNetBalanceParams::AccessType::OrSymbol
+          ).void
+        end
+        attr_writer :access_type
+
         # The ID of the credit type (can be fiat or a custom pricing unit) to get the
         # balance for. Defaults to USD (cents) if not specified.
         sig { returns(T.nilable(String)) }
@@ -60,6 +79,8 @@ module MetronomeSDK
         sig do
           params(
             customer_id: String,
+            access_type:
+              MetronomeSDK::V1::ContractGetNetBalanceParams::AccessType::OrSymbol,
             credit_type_id: String,
             filters: T::Array[MetronomeSDK::BalanceFilter::OrHash],
             invoice_inclusion_mode:
@@ -70,6 +91,9 @@ module MetronomeSDK
         def self.new(
           # The ID of the customer.
           customer_id:,
+          # Filters balances by how they are drawn down. Defaults to `SPEND`. If set to
+          # `QUANTITY`, `credit_type_id` must not be provided.
+          access_type: nil,
           # The ID of the credit type (can be fiat or a custom pricing unit) to get the
           # balance for. Defaults to USD (cents) if not specified.
           credit_type_id: nil,
@@ -88,6 +112,8 @@ module MetronomeSDK
           override.returns(
             {
               customer_id: String,
+              access_type:
+                MetronomeSDK::V1::ContractGetNetBalanceParams::AccessType::OrSymbol,
               credit_type_id: String,
               filters: T::Array[MetronomeSDK::BalanceFilter],
               invoice_inclusion_mode:
@@ -97,6 +123,42 @@ module MetronomeSDK
           )
         end
         def to_hash
+        end
+
+        # Filters balances by how they are drawn down. Defaults to `SPEND`. If set to
+        # `QUANTITY`, `credit_type_id` must not be provided.
+        module AccessType
+          extend MetronomeSDK::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                MetronomeSDK::V1::ContractGetNetBalanceParams::AccessType
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          SPEND =
+            T.let(
+              :SPEND,
+              MetronomeSDK::V1::ContractGetNetBalanceParams::AccessType::TaggedSymbol
+            )
+          QUANTITY =
+            T.let(
+              :QUANTITY,
+              MetronomeSDK::V1::ContractGetNetBalanceParams::AccessType::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                MetronomeSDK::V1::ContractGetNetBalanceParams::AccessType::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         # Controls which invoices are considered when calculating the remaining balance.

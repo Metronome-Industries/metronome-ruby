@@ -19,6 +19,12 @@ module MetronomeSDK
           ?request_options: MetronomeSDK::request_opts
         ) -> MetronomeSDK::Models::V1::BillableMetricRetrieveResponse
 
+        def update: (
+          billable_metric_id: String,
+          name: String,
+          ?request_options: MetronomeSDK::request_opts
+        ) -> MetronomeSDK::Models::V1::BillableMetricUpdateResponse
+
         def list: (
           ?include_archived: bool,
           ?limit: Integer,

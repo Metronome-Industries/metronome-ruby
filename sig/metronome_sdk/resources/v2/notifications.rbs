@@ -1,0 +1,13 @@
+module MetronomeSDK
+  module Resources
+    class V2
+      class Notifications
+        attr_reader offset: MetronomeSDK::Resources::V2::Notifications::Offset
+
+        attr_reader system_: MetronomeSDK::Resources::V2::Notifications::System
+
+        def initialize: (client: MetronomeSDK::Client) -> void
+      end
+    end
+  end
+end

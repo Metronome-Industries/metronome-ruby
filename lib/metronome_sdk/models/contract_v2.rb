@@ -2820,6 +2820,12 @@ module MetronomeSDK
         #   @return [MetronomeSDK::Models::ContractV2::RecurringCommit::AccessAmount]
         required :access_amount, -> { MetronomeSDK::ContractV2::RecurringCommit::AccessAmount }
 
+        # @!attribute anchor_date
+        #   The date this recurring commit's billing periods are anchored to.
+        #
+        #   @return [Time]
+        required :anchor_date, Time
+
         # @!attribute commit_duration
         #   The amount of time the created commits will be valid for
         #
@@ -2951,13 +2957,15 @@ module MetronomeSDK
         #   @return [MetronomeSDK::Models::RecurringCommitSubscriptionConfig, nil]
         optional :subscription_config, -> { MetronomeSDK::RecurringCommitSubscriptionConfig }
 
-        # @!method initialize(id:, access_amount:, commit_duration:, priority:, product:, rate_type:, starting_at:, applicable_product_ids: nil, applicable_product_tags: nil, contract: nil, description: nil, ending_before: nil, hierarchy_configuration: nil, invoice_amount: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, proration_rounding: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil, subscription_config: nil)
+        # @!method initialize(id:, access_amount:, anchor_date:, commit_duration:, priority:, product:, rate_type:, starting_at:, applicable_product_ids: nil, applicable_product_tags: nil, contract: nil, description: nil, ending_before: nil, hierarchy_configuration: nil, invoice_amount: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, proration_rounding: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil, subscription_config: nil)
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::ContractV2::RecurringCommit} for more details.
         #
         #   @param id [String]
         #
         #   @param access_amount [MetronomeSDK::Models::ContractV2::RecurringCommit::AccessAmount] The amount of commit to grant.
+        #
+        #   @param anchor_date [Time] The date this recurring commit's billing periods are anchored to.
         #
         #   @param commit_duration [MetronomeSDK::Models::ContractV2::RecurringCommit::CommitDuration] The amount of time the created commits will be valid for
         #
@@ -3002,6 +3010,8 @@ module MetronomeSDK
         # @see MetronomeSDK::Models::ContractV2::RecurringCommit#access_amount
         class AccessAmount < MetronomeSDK::Internal::Type::BaseModel
           # @!attribute credit_type_id
+          #   This ID identifies the credit type for the access amount. Quantity-based
+          #   recurring commits and credits return the null credit type UUID.
           #
           #   @return [String]
           required :credit_type_id, String
@@ -3011,17 +3021,46 @@ module MetronomeSDK
           #   @return [Float]
           required :unit_price, Float
 
+          # @!attribute access_type
+          #   Indicates how the balance of child commits is drawn down. `SPEND` deducts the
+          #   dollar cost of usage. `QUANTITY` deducts the number of units used.
+          #
+          #   @return [Symbol, MetronomeSDK::Models::ContractV2::RecurringCommit::AccessAmount::AccessType, nil]
+          optional :access_type, enum: -> { MetronomeSDK::ContractV2::RecurringCommit::AccessAmount::AccessType }
+
           # @!attribute quantity
           #
           #   @return [Float, nil]
           optional :quantity, Float
 
-          # @!method initialize(credit_type_id:, unit_price:, quantity: nil)
+          # @!method initialize(credit_type_id:, unit_price:, access_type: nil, quantity: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {MetronomeSDK::Models::ContractV2::RecurringCommit::AccessAmount} for more
+          #   details.
+          #
           #   The amount of commit to grant.
           #
-          #   @param credit_type_id [String]
+          #   @param credit_type_id [String] This ID identifies the credit type for the access amount. Quantity-based recurri
+          #
           #   @param unit_price [Float]
+          #
+          #   @param access_type [Symbol, MetronomeSDK::Models::ContractV2::RecurringCommit::AccessAmount::AccessType] Indicates how the balance of child commits is drawn down. `SPEND` deducts the do
+          #
           #   @param quantity [Float]
+
+          # Indicates how the balance of child commits is drawn down. `SPEND` deducts the
+          # dollar cost of usage. `QUANTITY` deducts the number of units used.
+          #
+          # @see MetronomeSDK::Models::ContractV2::RecurringCommit::AccessAmount#access_type
+          module AccessType
+            extend MetronomeSDK::Internal::Type::Enum
+
+            SPEND = :SPEND
+            QUANTITY = :QUANTITY
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
         end
 
         # @see MetronomeSDK::Models::ContractV2::RecurringCommit#commit_duration
@@ -3264,6 +3303,12 @@ module MetronomeSDK
         #   @return [MetronomeSDK::Models::ContractV2::RecurringCredit::AccessAmount]
         required :access_amount, -> { MetronomeSDK::ContractV2::RecurringCredit::AccessAmount }
 
+        # @!attribute anchor_date
+        #   The date this recurring commit's billing periods are anchored to.
+        #
+        #   @return [Time]
+        required :anchor_date, Time
+
         # @!attribute commit_duration
         #   The amount of time the created commits will be valid for
         #
@@ -3389,13 +3434,15 @@ module MetronomeSDK
         #   @return [MetronomeSDK::Models::RecurringCommitSubscriptionConfig, nil]
         optional :subscription_config, -> { MetronomeSDK::RecurringCommitSubscriptionConfig }
 
-        # @!method initialize(id:, access_amount:, commit_duration:, priority:, product:, rate_type:, starting_at:, applicable_product_ids: nil, applicable_product_tags: nil, contract: nil, description: nil, ending_before: nil, hierarchy_configuration: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, proration_rounding: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil, subscription_config: nil)
+        # @!method initialize(id:, access_amount:, anchor_date:, commit_duration:, priority:, product:, rate_type:, starting_at:, applicable_product_ids: nil, applicable_product_tags: nil, contract: nil, description: nil, ending_before: nil, hierarchy_configuration: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, proration_rounding: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil, subscription_config: nil)
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::ContractV2::RecurringCredit} for more details.
         #
         #   @param id [String]
         #
         #   @param access_amount [MetronomeSDK::Models::ContractV2::RecurringCredit::AccessAmount] The amount of commit to grant.
+        #
+        #   @param anchor_date [Time] The date this recurring commit's billing periods are anchored to.
         #
         #   @param commit_duration [MetronomeSDK::Models::ContractV2::RecurringCredit::CommitDuration] The amount of time the created commits will be valid for
         #
@@ -3438,6 +3485,8 @@ module MetronomeSDK
         # @see MetronomeSDK::Models::ContractV2::RecurringCredit#access_amount
         class AccessAmount < MetronomeSDK::Internal::Type::BaseModel
           # @!attribute credit_type_id
+          #   This ID identifies the credit type for the access amount. Quantity-based
+          #   recurring commits and credits return the null credit type UUID.
           #
           #   @return [String]
           required :credit_type_id, String
@@ -3447,17 +3496,46 @@ module MetronomeSDK
           #   @return [Float]
           required :unit_price, Float
 
+          # @!attribute access_type
+          #   Indicates how the balance of child commits is drawn down. `SPEND` deducts the
+          #   dollar cost of usage. `QUANTITY` deducts the number of units used.
+          #
+          #   @return [Symbol, MetronomeSDK::Models::ContractV2::RecurringCredit::AccessAmount::AccessType, nil]
+          optional :access_type, enum: -> { MetronomeSDK::ContractV2::RecurringCredit::AccessAmount::AccessType }
+
           # @!attribute quantity
           #
           #   @return [Float, nil]
           optional :quantity, Float
 
-          # @!method initialize(credit_type_id:, unit_price:, quantity: nil)
+          # @!method initialize(credit_type_id:, unit_price:, access_type: nil, quantity: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {MetronomeSDK::Models::ContractV2::RecurringCredit::AccessAmount} for more
+          #   details.
+          #
           #   The amount of commit to grant.
           #
-          #   @param credit_type_id [String]
+          #   @param credit_type_id [String] This ID identifies the credit type for the access amount. Quantity-based recurri
+          #
           #   @param unit_price [Float]
+          #
+          #   @param access_type [Symbol, MetronomeSDK::Models::ContractV2::RecurringCredit::AccessAmount::AccessType] Indicates how the balance of child commits is drawn down. `SPEND` deducts the do
+          #
           #   @param quantity [Float]
+
+          # Indicates how the balance of child commits is drawn down. `SPEND` deducts the
+          # dollar cost of usage. `QUANTITY` deducts the number of units used.
+          #
+          # @see MetronomeSDK::Models::ContractV2::RecurringCredit::AccessAmount#access_type
+          module AccessType
+            extend MetronomeSDK::Internal::Type::Enum
+
+            SPEND = :SPEND
+            QUANTITY = :QUANTITY
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
         end
 
         # @see MetronomeSDK::Models::ContractV2::RecurringCredit#commit_duration
@@ -4113,12 +4191,20 @@ module MetronomeSDK
         #   @return [String, nil]
         optional :name, String
 
+        # @!attribute product_custom_fields
+        #   Custom fields from the subscription product referenced by
+        #   `subscription_rate.product`. These are distinct from the subscription instance's
+        #   `custom_fields`.
+        #
+        #   @return [Hash{Symbol=>String}, nil]
+        optional :product_custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
+
         # @!attribute seat_config
         #
         #   @return [MetronomeSDK::Models::ContractV2::Subscription::SeatConfig, nil]
         optional :seat_config, -> { MetronomeSDK::ContractV2::Subscription::SeatConfig }
 
-        # @!method initialize(billing_periods:, collection_schedule:, proration:, quantity_management_mode:, quantity_schedule:, starting_at:, subscription_rate:, id: nil, billing_cycle_config: nil, custom_fields: nil, description: nil, ending_before: nil, fiat_credit_type_id: nil, name: nil, seat_config: nil)
+        # @!method initialize(billing_periods:, collection_schedule:, proration:, quantity_management_mode:, quantity_schedule:, starting_at:, subscription_rate:, id: nil, billing_cycle_config: nil, custom_fields: nil, description: nil, ending_before: nil, fiat_credit_type_id: nil, name: nil, product_custom_fields: nil, seat_config: nil)
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::ContractV2::Subscription} for more details.
         #
@@ -4149,6 +4235,8 @@ module MetronomeSDK
         #   @param fiat_credit_type_id [String]
         #
         #   @param name [String]
+        #
+        #   @param product_custom_fields [Hash{Symbol=>String}] Custom fields from the subscription product referenced by `subscription_rate.pro
         #
         #   @param seat_config [MetronomeSDK::Models::ContractV2::Subscription::SeatConfig]
 

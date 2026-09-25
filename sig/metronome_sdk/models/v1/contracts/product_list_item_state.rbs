@@ -11,6 +11,7 @@ module MetronomeSDK
             composite_product_ids: ::Array[String],
             composite_tags: ::Array[String],
             exclude_free_usage: bool,
+            include_composite_spend: bool,
             is_refundable: bool,
             netsuite_internal_item_id: String,
             netsuite_overage_item_id: String,
@@ -44,6 +45,10 @@ module MetronomeSDK
           attr_reader exclude_free_usage: bool?
 
           def exclude_free_usage=: (bool) -> bool
+
+          attr_reader include_composite_spend: bool?
+
+          def include_composite_spend=: (bool) -> bool
 
           attr_reader is_refundable: bool?
 
@@ -85,6 +90,7 @@ module MetronomeSDK
             ?composite_product_ids: ::Array[String],
             ?composite_tags: ::Array[String],
             ?exclude_free_usage: bool,
+            ?include_composite_spend: bool,
             ?is_refundable: bool,
             ?netsuite_internal_item_id: String,
             ?netsuite_overage_item_id: String,
@@ -104,6 +110,7 @@ module MetronomeSDK
             composite_product_ids: ::Array[String],
             composite_tags: ::Array[String],
             exclude_free_usage: bool,
+            include_composite_spend: bool,
             is_refundable: bool,
             netsuite_internal_item_id: String,
             netsuite_overage_item_id: String,

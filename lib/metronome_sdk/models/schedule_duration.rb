@@ -9,13 +9,26 @@ module MetronomeSDK
       required :schedule_items,
                -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::ScheduleDuration::ScheduleItem] }
 
+      # @!attribute access_type
+      #   Indicates how the balance is drawn down. `SPEND` deducts the dollar cost of
+      #   usage. `QUANTITY` deducts the number of units used.
+      #
+      #   @return [Symbol, MetronomeSDK::Models::ScheduleDuration::AccessType, nil]
+      optional :access_type, enum: -> { MetronomeSDK::ScheduleDuration::AccessType }
+
       # @!attribute credit_type
       #
       #   @return [MetronomeSDK::Models::CreditTypeData, nil]
       optional :credit_type, -> { MetronomeSDK::CreditTypeData }
 
-      # @!method initialize(schedule_items:, credit_type: nil)
+      # @!method initialize(schedule_items:, access_type: nil, credit_type: nil)
+      #   Some parameter documentations has been truncated, see
+      #   {MetronomeSDK::Models::ScheduleDuration} for more details.
+      #
       #   @param schedule_items [Array<MetronomeSDK::Models::ScheduleDuration::ScheduleItem>]
+      #
+      #   @param access_type [Symbol, MetronomeSDK::Models::ScheduleDuration::AccessType] Indicates how the balance is drawn down. `SPEND` deducts the dollar cost of usag
+      #
       #   @param credit_type [MetronomeSDK::Models::CreditTypeData]
 
       class ScheduleItem < MetronomeSDK::Internal::Type::BaseModel
@@ -44,6 +57,20 @@ module MetronomeSDK
         #   @param amount [Float]
         #   @param ending_before [Time]
         #   @param starting_at [Time]
+      end
+
+      # Indicates how the balance is drawn down. `SPEND` deducts the dollar cost of
+      # usage. `QUANTITY` deducts the number of units used.
+      #
+      # @see MetronomeSDK::Models::ScheduleDuration#access_type
+      module AccessType
+        extend MetronomeSDK::Internal::Type::Enum
+
+        SPEND = :SPEND
+        QUANTITY = :QUANTITY
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

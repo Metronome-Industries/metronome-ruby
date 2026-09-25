@@ -47,7 +47,7 @@ module MetronomeSDK
         )
         end
 
-        # For a given customer, lists all of their contracts in chronological order.
+        # For a given customer, lists a page of their contracts in chronological order.
         #
         # ### Use this endpoint to:
         #
@@ -62,22 +62,34 @@ module MetronomeSDK
         # Use the `starting_at`, `covering_date`, and `include_archived` parameters to
         # filter the list of returned contracts. For example, to list only currently
         # active contracts, pass `covering_date` equal to the current time.
+        #
+        # Results are limited to 20 contracts per page. When the response includes a
+        # non-null `cursor`, pass it back as the `cursor` parameter to fetch the next
+        # page.
         sig do
           params(
             customer_id: String,
             covering_date: Time,
+            cursor: String,
             include_archived: T::Boolean,
             include_balance: T::Boolean,
             include_ledgers: T::Boolean,
+            limit: Float,
             starting_at: Time,
             request_options: MetronomeSDK::RequestOptions::OrHash
-          ).returns(MetronomeSDK::Models::V2::ContractListResponse)
+          ).returns(
+            MetronomeSDK::Internal::BodyCursorPageCursorField[
+              MetronomeSDK::ContractV2
+            ]
+          )
         end
         def list(
           customer_id:,
           # Optional RFC 3339 timestamp. Only include contracts active on the provided date.
           # This cannot be provided if starting_at filter is provided.
           covering_date: nil,
+          # Cursor from a previous response to fetch the next page of contracts.
+          cursor: nil,
           # Include archived contracts in the response.
           include_archived: nil,
           # Include the balance of credits and commits in the response. Setting this flag
@@ -86,6 +98,8 @@ module MetronomeSDK
           # Include commit/credit ledgers in the response. Setting this flag may cause the
           # response to be slower.
           include_ledgers: nil,
+          # Max number of contracts to return per page. Range: 1-20. Default: 20.
+          limit: nil,
           # Optional RFC 3339 timestamp. Only include contracts that started on or after
           # this date. This cannot be provided if covering_date filter is provided.
           starting_at: nil,
@@ -113,8 +127,8 @@ module MetronomeSDK
         # - When you edit a contract, any draft invoices update immediately to reflect
         #   that edit. Finalized invoices remain unchanged - you must void and regenerate
         #   them in the UI or API to reflect the edit.
-        # - Contract editing must be enabled to use this endpoint. Reach out to your
-        #   Metronome representative to learn more.
+        # - Contract editing must be enabled to use this endpoint. Contact us via the
+        #   [Metronome support portal](https://support.metronome.com/) to learn more.
         sig do
           params(
             contract_id: String,

@@ -219,8 +219,7 @@ module MetronomeSDK
           end
           attr_writer :aws_region
 
-          # The collection method for the customer's invoices. NOTE:
-          # `auto_charge_payment_intent` and `manually_charge_payment_intent` are in beta.
+          # The collection method for the customer's invoices.
           sig do
             returns(
               T.nilable(
@@ -262,8 +261,7 @@ module MetronomeSDK
             aws_is_subscription_product: nil,
             aws_product_code: nil,
             aws_region: nil,
-            # The collection method for the customer's invoices. NOTE:
-            # `auto_charge_payment_intent` and `manually_charge_payment_intent` are in beta.
+            # The collection method for the customer's invoices.
             stripe_collection_method: nil
           )
           end
@@ -506,8 +504,7 @@ module MetronomeSDK
             end
           end
 
-          # The collection method for the customer's invoices. NOTE:
-          # `auto_charge_payment_intent` and `manually_charge_payment_intent` are in beta.
+          # The collection method for the customer's invoices.
           module StripeCollectionMethod
             extend MetronomeSDK::Internal::Type::Enum
 
@@ -528,16 +525,6 @@ module MetronomeSDK
             SEND_INVOICE =
               T.let(
                 :send_invoice,
-                MetronomeSDK::V1::CustomerCreateParams::BillingConfig::StripeCollectionMethod::TaggedSymbol
-              )
-            AUTO_CHARGE_PAYMENT_INTENT =
-              T.let(
-                :auto_charge_payment_intent,
-                MetronomeSDK::V1::CustomerCreateParams::BillingConfig::StripeCollectionMethod::TaggedSymbol
-              )
-            MANUALLY_CHARGE_PAYMENT_INTENT =
-              T.let(
-                :manually_charge_payment_intent,
                 MetronomeSDK::V1::CustomerCreateParams::BillingConfig::StripeCollectionMethod::TaggedSymbol
               )
 
@@ -609,8 +596,7 @@ module MetronomeSDK
 
           # Specifies which tax provider Metronome should use for tax calculation when
           # billing through Stripe. This is only supported for Stripe billing provider
-          # configurations with auto_charge_payment_intent or manual_charge_payment_intent
-          # collection methods.
+          # configurations.
           sig do
             returns(
               T.nilable(
@@ -656,8 +642,7 @@ module MetronomeSDK
             delivery_method_id: nil,
             # Specifies which tax provider Metronome should use for tax calculation when
             # billing through Stripe. This is only supported for Stripe billing provider
-            # configurations with auto_charge_payment_intent or manual_charge_payment_intent
-            # collection methods.
+            # configurations.
             tax_provider: nil
           )
           end
@@ -777,8 +762,7 @@ module MetronomeSDK
 
           # Specifies which tax provider Metronome should use for tax calculation when
           # billing through Stripe. This is only supported for Stripe billing provider
-          # configurations with auto_charge_payment_intent or manual_charge_payment_intent
-          # collection methods.
+          # configurations.
           module TaxProvider
             extend MetronomeSDK::Internal::Type::Enum
 

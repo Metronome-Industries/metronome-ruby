@@ -58,12 +58,14 @@ module MetronomeSDK
         def list: (
           customer_id: String,
           ?covering_date: Time,
+          ?cursor: String,
           ?include_archived: bool,
           ?include_balance: bool,
           ?include_ledgers: bool,
+          ?limit: Integer,
           ?starting_at: Time,
           ?request_options: MetronomeSDK::request_opts
-        ) -> MetronomeSDK::Models::V1::ContractListResponse
+        ) -> MetronomeSDK::Internal::BodyCursorPageCursorField[MetronomeSDK::Contract]
 
         def add_manual_balance_entry: (
           id: String,
@@ -74,6 +76,7 @@ module MetronomeSDK
           ?contract_id: String,
           ?per_group_amounts: ::Hash[Symbol, Float],
           ?timestamp: Time,
+          ?uniqueness_key: String,
           ?request_options: MetronomeSDK::request_opts
         ) -> nil
 
@@ -110,6 +113,7 @@ module MetronomeSDK
 
         def get_net_balance: (
           customer_id: String,
+          ?access_type: MetronomeSDK::Models::V1::ContractGetNetBalanceParams::access_type,
           ?credit_type_id: String,
           ?filters: ::Array[MetronomeSDK::BalanceFilter],
           ?invoice_inclusion_mode: MetronomeSDK::Models::V1::ContractGetNetBalanceParams::invoice_inclusion_mode,
@@ -131,6 +135,7 @@ module MetronomeSDK
         def list_balances: (
           customer_id: String,
           ?id: String,
+          ?access_type: MetronomeSDK::Models::V1::ContractListBalancesParams::access_type,
           ?covering_date: Time,
           ?effective_before: Time,
           ?exclude_zero_balances: bool,

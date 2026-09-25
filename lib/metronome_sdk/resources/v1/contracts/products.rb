@@ -15,7 +15,7 @@ module MetronomeSDK
           # an ERP system. Give the product a meaningful name as they will appear on
           # customer invoices.
           #
-          # @overload create(name:, type:, billable_metric_id: nil, composite_product_ids: nil, composite_tags: nil, custom_fields: nil, exclude_free_usage: nil, is_refundable: nil, netsuite_internal_item_id: nil, netsuite_overage_item_id: nil, presentation_group_key: nil, pricing_group_key: nil, quantity_conversion: nil, quantity_rounding: nil, sql_breakdown_granularity: nil, tags: nil, request_options: {})
+          # @overload create(name:, type:, billable_metric_id: nil, composite_product_ids: nil, composite_tags: nil, custom_fields: nil, exclude_free_usage: nil, include_composite_spend: nil, is_refundable: nil, netsuite_internal_item_id: nil, netsuite_overage_item_id: nil, presentation_group_key: nil, pricing_group_key: nil, quantity_conversion: nil, quantity_rounding: nil, sql_breakdown_granularity: nil, tags: nil, request_options: {})
           #
           # @param name [String] displayed on invoices
           #
@@ -30,6 +30,8 @@ module MetronomeSDK
           # @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           #
           # @param exclude_free_usage [Boolean] Beta feature only available for composite products. If true, products with $0 wi
+          #
+          # @param include_composite_spend [Boolean] Only for composite products. If true, allows a composite to incorporate spend fr
           #
           # @param is_refundable [Boolean] This field's availability is dependent on your client's configuration. Defaults
           #
@@ -101,7 +103,7 @@ module MetronomeSDK
           # - Product type cannot be changed after creation. For incorrect product types,
           #   create a new product and archive the original instead.
           #
-          # @overload update(product_id:, starting_at:, billable_metric_id: nil, composite_product_ids: nil, composite_tags: nil, exclude_free_usage: nil, is_refundable: nil, name: nil, netsuite_internal_item_id: nil, netsuite_overage_item_id: nil, presentation_group_key: nil, pricing_group_key: nil, quantity_conversion: nil, quantity_rounding: nil, sql_breakdown_granularity: nil, tags: nil, request_options: {})
+          # @overload update(product_id:, starting_at:, billable_metric_id: nil, composite_product_ids: nil, composite_tags: nil, exclude_free_usage: nil, include_composite_spend: nil, is_refundable: nil, name: nil, netsuite_internal_item_id: nil, netsuite_overage_item_id: nil, presentation_group_key: nil, pricing_group_key: nil, quantity_conversion: nil, quantity_rounding: nil, sql_breakdown_granularity: nil, tags: nil, request_options: {})
           #
           # @param product_id [String] ID of the product to update
           #
@@ -114,6 +116,8 @@ module MetronomeSDK
           # @param composite_tags [Array<String>] Available for COMPOSITE products only. If not provided, defaults to product's cu
           #
           # @param exclude_free_usage [Boolean] Beta feature only available for composite products. If true, products with $0 wi
+          #
+          # @param include_composite_spend [Boolean] Only for composite products. If true, allows a composite to incorporate spend fr
           #
           # @param is_refundable [Boolean] Defaults to product's current refundability status. This field's availability is
           #

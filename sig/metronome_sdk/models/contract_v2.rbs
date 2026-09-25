@@ -2724,6 +2724,7 @@ module MetronomeSDK
         {
           id: String,
           access_amount: MetronomeSDK::ContractV2::RecurringCommit::AccessAmount,
+          anchor_date: Time,
           commit_duration: MetronomeSDK::ContractV2::RecurringCommit::CommitDuration,
           priority: Float,
           product: MetronomeSDK::ContractV2::RecurringCommit::Product,
@@ -2750,6 +2751,8 @@ module MetronomeSDK
         attr_accessor id: String
 
         attr_accessor access_amount: MetronomeSDK::ContractV2::RecurringCommit::AccessAmount
+
+        attr_accessor anchor_date: Time
 
         attr_accessor commit_duration: MetronomeSDK::ContractV2::RecurringCommit::CommitDuration
 
@@ -2836,6 +2839,7 @@ module MetronomeSDK
         def initialize: (
           id: String,
           access_amount: MetronomeSDK::ContractV2::RecurringCommit::AccessAmount,
+          anchor_date: Time,
           commit_duration: MetronomeSDK::ContractV2::RecurringCommit::CommitDuration,
           priority: Float,
           product: MetronomeSDK::ContractV2::RecurringCommit::Product,
@@ -2861,6 +2865,7 @@ module MetronomeSDK
         def to_hash: -> {
           id: String,
           access_amount: MetronomeSDK::ContractV2::RecurringCommit::AccessAmount,
+          anchor_date: Time,
           commit_duration: MetronomeSDK::ContractV2::RecurringCommit::CommitDuration,
           priority: Float,
           product: MetronomeSDK::ContractV2::RecurringCommit::Product,
@@ -2884,12 +2889,23 @@ module MetronomeSDK
         }
 
         type access_amount =
-          { credit_type_id: String, unit_price: Float, quantity: Float }
+          {
+            credit_type_id: String,
+            unit_price: Float,
+            access_type: MetronomeSDK::Models::ContractV2::RecurringCommit::AccessAmount::access_type,
+            quantity: Float
+          }
 
         class AccessAmount < MetronomeSDK::Internal::Type::BaseModel
           attr_accessor credit_type_id: String
 
           attr_accessor unit_price: Float
+
+          attr_reader access_type: MetronomeSDK::Models::ContractV2::RecurringCommit::AccessAmount::access_type?
+
+          def access_type=: (
+            MetronomeSDK::Models::ContractV2::RecurringCommit::AccessAmount::access_type
+          ) -> MetronomeSDK::Models::ContractV2::RecurringCommit::AccessAmount::access_type
 
           attr_reader quantity: Float?
 
@@ -2898,14 +2914,27 @@ module MetronomeSDK
           def initialize: (
             credit_type_id: String,
             unit_price: Float,
+            ?access_type: MetronomeSDK::Models::ContractV2::RecurringCommit::AccessAmount::access_type,
             ?quantity: Float
           ) -> void
 
           def to_hash: -> {
             credit_type_id: String,
             unit_price: Float,
+            access_type: MetronomeSDK::Models::ContractV2::RecurringCommit::AccessAmount::access_type,
             quantity: Float
           }
+
+          type access_type = :SPEND | :QUANTITY
+
+          module AccessType
+            extend MetronomeSDK::Internal::Type::Enum
+
+            SPEND: :SPEND
+            QUANTITY: :QUANTITY
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::ContractV2::RecurringCommit::AccessAmount::access_type]
+          end
         end
 
         type commit_duration =
@@ -3131,6 +3160,7 @@ module MetronomeSDK
         {
           id: String,
           access_amount: MetronomeSDK::ContractV2::RecurringCredit::AccessAmount,
+          anchor_date: Time,
           commit_duration: MetronomeSDK::ContractV2::RecurringCredit::CommitDuration,
           priority: Float,
           product: MetronomeSDK::ContractV2::RecurringCredit::Product,
@@ -3156,6 +3186,8 @@ module MetronomeSDK
         attr_accessor id: String
 
         attr_accessor access_amount: MetronomeSDK::ContractV2::RecurringCredit::AccessAmount
+
+        attr_accessor anchor_date: Time
 
         attr_accessor commit_duration: MetronomeSDK::ContractV2::RecurringCredit::CommitDuration
 
@@ -3236,6 +3268,7 @@ module MetronomeSDK
         def initialize: (
           id: String,
           access_amount: MetronomeSDK::ContractV2::RecurringCredit::AccessAmount,
+          anchor_date: Time,
           commit_duration: MetronomeSDK::ContractV2::RecurringCredit::CommitDuration,
           priority: Float,
           product: MetronomeSDK::ContractV2::RecurringCredit::Product,
@@ -3260,6 +3293,7 @@ module MetronomeSDK
         def to_hash: -> {
           id: String,
           access_amount: MetronomeSDK::ContractV2::RecurringCredit::AccessAmount,
+          anchor_date: Time,
           commit_duration: MetronomeSDK::ContractV2::RecurringCredit::CommitDuration,
           priority: Float,
           product: MetronomeSDK::ContractV2::RecurringCredit::Product,
@@ -3282,12 +3316,23 @@ module MetronomeSDK
         }
 
         type access_amount =
-          { credit_type_id: String, unit_price: Float, quantity: Float }
+          {
+            credit_type_id: String,
+            unit_price: Float,
+            access_type: MetronomeSDK::Models::ContractV2::RecurringCredit::AccessAmount::access_type,
+            quantity: Float
+          }
 
         class AccessAmount < MetronomeSDK::Internal::Type::BaseModel
           attr_accessor credit_type_id: String
 
           attr_accessor unit_price: Float
+
+          attr_reader access_type: MetronomeSDK::Models::ContractV2::RecurringCredit::AccessAmount::access_type?
+
+          def access_type=: (
+            MetronomeSDK::Models::ContractV2::RecurringCredit::AccessAmount::access_type
+          ) -> MetronomeSDK::Models::ContractV2::RecurringCredit::AccessAmount::access_type
 
           attr_reader quantity: Float?
 
@@ -3296,14 +3341,27 @@ module MetronomeSDK
           def initialize: (
             credit_type_id: String,
             unit_price: Float,
+            ?access_type: MetronomeSDK::Models::ContractV2::RecurringCredit::AccessAmount::access_type,
             ?quantity: Float
           ) -> void
 
           def to_hash: -> {
             credit_type_id: String,
             unit_price: Float,
+            access_type: MetronomeSDK::Models::ContractV2::RecurringCredit::AccessAmount::access_type,
             quantity: Float
           }
+
+          type access_type = :SPEND | :QUANTITY
+
+          module AccessType
+            extend MetronomeSDK::Internal::Type::Enum
+
+            SPEND: :SPEND
+            QUANTITY: :QUANTITY
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::ContractV2::RecurringCredit::AccessAmount::access_type]
+          end
         end
 
         type commit_duration =
@@ -3883,6 +3941,7 @@ module MetronomeSDK
           ending_before: Time,
           fiat_credit_type_id: String,
           name: String,
+          product_custom_fields: ::Hash[Symbol, String],
           seat_config: MetronomeSDK::ContractV2::Subscription::SeatConfig
         }
 
@@ -3931,6 +3990,12 @@ module MetronomeSDK
 
         def name=: (String) -> String
 
+        attr_reader product_custom_fields: ::Hash[Symbol, String]?
+
+        def product_custom_fields=: (
+          ::Hash[Symbol, String]
+        ) -> ::Hash[Symbol, String]
+
         attr_reader seat_config: MetronomeSDK::ContractV2::Subscription::SeatConfig?
 
         def seat_config=: (
@@ -3952,6 +4017,7 @@ module MetronomeSDK
           ?ending_before: Time,
           ?fiat_credit_type_id: String,
           ?name: String,
+          ?product_custom_fields: ::Hash[Symbol, String],
           ?seat_config: MetronomeSDK::ContractV2::Subscription::SeatConfig
         ) -> void
 
@@ -3970,6 +4036,7 @@ module MetronomeSDK
           ending_before: Time,
           fiat_credit_type_id: String,
           name: String,
+          product_custom_fields: ::Hash[Symbol, String],
           seat_config: MetronomeSDK::ContractV2::Subscription::SeatConfig
         }
 

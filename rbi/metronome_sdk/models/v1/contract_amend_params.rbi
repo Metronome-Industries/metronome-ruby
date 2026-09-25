@@ -636,6 +636,26 @@ module MetronomeSDK
             end
             attr_accessor :schedule_items
 
+            # Determines how the balance is drawn down. `SPEND` deducts the dollar cost of
+            # usage. `QUANTITY` deducts the number of units used. Defaults to `SPEND` if
+            # omitted.
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::V1::ContractAmendParams::Commit::AccessSchedule::AccessType::OrSymbol
+                )
+              )
+            end
+            attr_reader :access_type
+
+            sig do
+              params(
+                access_type:
+                  MetronomeSDK::V1::ContractAmendParams::Commit::AccessSchedule::AccessType::OrSymbol
+              ).void
+            end
+            attr_writer :access_type
+
             # Defaults to USD (cents) if not passed
             sig { returns(T.nilable(String)) }
             attr_reader :credit_type_id
@@ -652,11 +672,17 @@ module MetronomeSDK
                   T::Array[
                     MetronomeSDK::V1::ContractAmendParams::Commit::AccessSchedule::ScheduleItem::OrHash
                   ],
+                access_type:
+                  MetronomeSDK::V1::ContractAmendParams::Commit::AccessSchedule::AccessType::OrSymbol,
                 credit_type_id: String
               ).returns(T.attached_class)
             end
             def self.new(
               schedule_items:,
+              # Determines how the balance is drawn down. `SPEND` deducts the dollar cost of
+              # usage. `QUANTITY` deducts the number of units used. Defaults to `SPEND` if
+              # omitted.
+              access_type: nil,
               # Defaults to USD (cents) if not passed
               credit_type_id: nil
             )
@@ -669,6 +695,8 @@ module MetronomeSDK
                     T::Array[
                       MetronomeSDK::V1::ContractAmendParams::Commit::AccessSchedule::ScheduleItem
                     ],
+                  access_type:
+                    MetronomeSDK::V1::ContractAmendParams::Commit::AccessSchedule::AccessType::OrSymbol,
                   credit_type_id: String
                 }
               )
@@ -718,6 +746,43 @@ module MetronomeSDK
                 )
               end
               def to_hash
+              end
+            end
+
+            # Determines how the balance is drawn down. `SPEND` deducts the dollar cost of
+            # usage. `QUANTITY` deducts the number of units used. Defaults to `SPEND` if
+            # omitted.
+            module AccessType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    MetronomeSDK::V1::ContractAmendParams::Commit::AccessSchedule::AccessType
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              SPEND =
+                T.let(
+                  :SPEND,
+                  MetronomeSDK::V1::ContractAmendParams::Commit::AccessSchedule::AccessType::TaggedSymbol
+                )
+              QUANTITY =
+                T.let(
+                  :QUANTITY,
+                  MetronomeSDK::V1::ContractAmendParams::Commit::AccessSchedule::AccessType::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::V1::ContractAmendParams::Commit::AccessSchedule::AccessType::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
               end
             end
           end
@@ -1409,6 +1474,26 @@ module MetronomeSDK
             end
             attr_accessor :schedule_items
 
+            # Determines how the balance is drawn down. `SPEND` deducts the dollar cost of
+            # usage. `QUANTITY` deducts the number of units used. Defaults to `SPEND` if
+            # omitted.
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::V1::ContractAmendParams::Credit::AccessSchedule::AccessType::OrSymbol
+                )
+              )
+            end
+            attr_reader :access_type
+
+            sig do
+              params(
+                access_type:
+                  MetronomeSDK::V1::ContractAmendParams::Credit::AccessSchedule::AccessType::OrSymbol
+              ).void
+            end
+            attr_writer :access_type
+
             # Defaults to USD (cents) if not passed
             sig { returns(T.nilable(String)) }
             attr_reader :credit_type_id
@@ -1423,11 +1508,17 @@ module MetronomeSDK
                   T::Array[
                     MetronomeSDK::V1::ContractAmendParams::Credit::AccessSchedule::ScheduleItem::OrHash
                   ],
+                access_type:
+                  MetronomeSDK::V1::ContractAmendParams::Credit::AccessSchedule::AccessType::OrSymbol,
                 credit_type_id: String
               ).returns(T.attached_class)
             end
             def self.new(
               schedule_items:,
+              # Determines how the balance is drawn down. `SPEND` deducts the dollar cost of
+              # usage. `QUANTITY` deducts the number of units used. Defaults to `SPEND` if
+              # omitted.
+              access_type: nil,
               # Defaults to USD (cents) if not passed
               credit_type_id: nil
             )
@@ -1440,6 +1531,8 @@ module MetronomeSDK
                     T::Array[
                       MetronomeSDK::V1::ContractAmendParams::Credit::AccessSchedule::ScheduleItem
                     ],
+                  access_type:
+                    MetronomeSDK::V1::ContractAmendParams::Credit::AccessSchedule::AccessType::OrSymbol,
                   credit_type_id: String
                 }
               )
@@ -1489,6 +1582,43 @@ module MetronomeSDK
                 )
               end
               def to_hash
+              end
+            end
+
+            # Determines how the balance is drawn down. `SPEND` deducts the dollar cost of
+            # usage. `QUANTITY` deducts the number of units used. Defaults to `SPEND` if
+            # omitted.
+            module AccessType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    MetronomeSDK::V1::ContractAmendParams::Credit::AccessSchedule::AccessType
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              SPEND =
+                T.let(
+                  :SPEND,
+                  MetronomeSDK::V1::ContractAmendParams::Credit::AccessSchedule::AccessType::TaggedSymbol
+                )
+              QUANTITY =
+                T.let(
+                  :QUANTITY,
+                  MetronomeSDK::V1::ContractAmendParams::Credit::AccessSchedule::AccessType::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::V1::ContractAmendParams::Credit::AccessSchedule::AccessType::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
               end
             end
           end

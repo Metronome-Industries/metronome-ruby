@@ -2356,6 +2356,10 @@ module MetronomeSDK
             end
             attr_writer :access_amount
 
+            # The date this recurring commit's billing periods are anchored to.
+            sig { returns(Time) }
+            attr_accessor :anchor_date
+
             # The amount of time the created commits will be valid for
             sig do
               returns(
@@ -2599,6 +2603,7 @@ module MetronomeSDK
                 id: String,
                 access_amount:
                   MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::AccessAmount::OrHash,
+                anchor_date: Time,
                 commit_duration:
                   MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::CommitDuration::OrHash,
                 priority: Float,
@@ -2637,6 +2642,8 @@ module MetronomeSDK
               id:,
               # The amount of commit to grant.
               access_amount:,
+              # The date this recurring commit's billing periods are anchored to.
+              anchor_date:,
               # The amount of time the created commits will be valid for
               commit_duration:,
               # Will be passed down to the individual commits
@@ -2694,6 +2701,7 @@ module MetronomeSDK
                   id: String,
                   access_amount:
                     MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::AccessAmount,
+                  anchor_date: Time,
                   commit_duration:
                     MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::CommitDuration,
                   priority: Float,
@@ -2741,11 +2749,32 @@ module MetronomeSDK
                   )
                 end
 
+              # This ID identifies the credit type for the access amount. Quantity-based
+              # recurring commits and credits return the null credit type UUID.
               sig { returns(String) }
               attr_accessor :credit_type_id
 
               sig { returns(Float) }
               attr_accessor :unit_price
+
+              # Indicates how the balance of child commits is drawn down. `SPEND` deducts the
+              # dollar cost of usage. `QUANTITY` deducts the number of units used.
+              sig do
+                returns(
+                  T.nilable(
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::AccessAmount::AccessType::TaggedSymbol
+                  )
+                )
+              end
+              attr_reader :access_type
+
+              sig do
+                params(
+                  access_type:
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::AccessAmount::AccessType::OrSymbol
+                ).void
+              end
+              attr_writer :access_type
 
               sig { returns(T.nilable(Float)) }
               attr_reader :quantity
@@ -2758,18 +2787,71 @@ module MetronomeSDK
                 params(
                   credit_type_id: String,
                   unit_price: Float,
+                  access_type:
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::AccessAmount::AccessType::OrSymbol,
                   quantity: Float
                 ).returns(T.attached_class)
               end
-              def self.new(credit_type_id:, unit_price:, quantity: nil)
+              def self.new(
+                # This ID identifies the credit type for the access amount. Quantity-based
+                # recurring commits and credits return the null credit type UUID.
+                credit_type_id:,
+                unit_price:,
+                # Indicates how the balance of child commits is drawn down. `SPEND` deducts the
+                # dollar cost of usage. `QUANTITY` deducts the number of units used.
+                access_type: nil,
+                quantity: nil
+              )
               end
 
               sig do
                 override.returns(
-                  { credit_type_id: String, unit_price: Float, quantity: Float }
+                  {
+                    credit_type_id: String,
+                    unit_price: Float,
+                    access_type:
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::AccessAmount::AccessType::TaggedSymbol,
+                    quantity: Float
+                  }
                 )
               end
               def to_hash
+              end
+
+              # Indicates how the balance of child commits is drawn down. `SPEND` deducts the
+              # dollar cost of usage. `QUANTITY` deducts the number of units used.
+              module AccessType
+                extend MetronomeSDK::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::AccessAmount::AccessType
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                SPEND =
+                  T.let(
+                    :SPEND,
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::AccessAmount::AccessType::TaggedSymbol
+                  )
+                QUANTITY =
+                  T.let(
+                    :QUANTITY,
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::AccessAmount::AccessType::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::AccessAmount::AccessType::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
               end
             end
 
@@ -3352,6 +3434,10 @@ module MetronomeSDK
             end
             attr_writer :access_amount
 
+            # The date this recurring commit's billing periods are anchored to.
+            sig { returns(Time) }
+            attr_accessor :anchor_date
+
             # The amount of time the created commits will be valid for
             sig do
               returns(
@@ -3577,6 +3663,7 @@ module MetronomeSDK
                 id: String,
                 access_amount:
                   MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::AccessAmount::OrHash,
+                anchor_date: Time,
                 commit_duration:
                   MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::CommitDuration::OrHash,
                 priority: Float,
@@ -3613,6 +3700,8 @@ module MetronomeSDK
               id:,
               # The amount of commit to grant.
               access_amount:,
+              # The date this recurring commit's billing periods are anchored to.
+              anchor_date:,
               # The amount of time the created commits will be valid for
               commit_duration:,
               # Will be passed down to the individual commits
@@ -3668,6 +3757,7 @@ module MetronomeSDK
                   id: String,
                   access_amount:
                     MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::AccessAmount,
+                  anchor_date: Time,
                   commit_duration:
                     MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::CommitDuration,
                   priority: Float,
@@ -3713,11 +3803,32 @@ module MetronomeSDK
                   )
                 end
 
+              # This ID identifies the credit type for the access amount. Quantity-based
+              # recurring commits and credits return the null credit type UUID.
               sig { returns(String) }
               attr_accessor :credit_type_id
 
               sig { returns(Float) }
               attr_accessor :unit_price
+
+              # Indicates how the balance of child commits is drawn down. `SPEND` deducts the
+              # dollar cost of usage. `QUANTITY` deducts the number of units used.
+              sig do
+                returns(
+                  T.nilable(
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::AccessAmount::AccessType::TaggedSymbol
+                  )
+                )
+              end
+              attr_reader :access_type
+
+              sig do
+                params(
+                  access_type:
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::AccessAmount::AccessType::OrSymbol
+                ).void
+              end
+              attr_writer :access_type
 
               sig { returns(T.nilable(Float)) }
               attr_reader :quantity
@@ -3730,18 +3841,71 @@ module MetronomeSDK
                 params(
                   credit_type_id: String,
                   unit_price: Float,
+                  access_type:
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::AccessAmount::AccessType::OrSymbol,
                   quantity: Float
                 ).returns(T.attached_class)
               end
-              def self.new(credit_type_id:, unit_price:, quantity: nil)
+              def self.new(
+                # This ID identifies the credit type for the access amount. Quantity-based
+                # recurring commits and credits return the null credit type UUID.
+                credit_type_id:,
+                unit_price:,
+                # Indicates how the balance of child commits is drawn down. `SPEND` deducts the
+                # dollar cost of usage. `QUANTITY` deducts the number of units used.
+                access_type: nil,
+                quantity: nil
+              )
               end
 
               sig do
                 override.returns(
-                  { credit_type_id: String, unit_price: Float, quantity: Float }
+                  {
+                    credit_type_id: String,
+                    unit_price: Float,
+                    access_type:
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::AccessAmount::AccessType::TaggedSymbol,
+                    quantity: Float
+                  }
                 )
               end
               def to_hash
+              end
+
+              # Indicates how the balance of child commits is drawn down. `SPEND` deducts the
+              # dollar cost of usage. `QUANTITY` deducts the number of units used.
+              module AccessType
+                extend MetronomeSDK::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::AccessAmount::AccessType
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                SPEND =
+                  T.let(
+                    :SPEND,
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::AccessAmount::AccessType::TaggedSymbol
+                  )
+                QUANTITY =
+                  T.let(
+                    :QUANTITY,
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::AccessAmount::AccessType::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::AccessAmount::AccessType::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
               end
             end
 
@@ -4591,6 +4755,15 @@ module MetronomeSDK
             sig { params(name: String).void }
             attr_writer :name
 
+            # Custom fields from the subscription product referenced by
+            # `subscription_rate.product`. These are distinct from the subscription instance's
+            # `custom_fields`.
+            sig { returns(T.nilable(T::Hash[Symbol, String])) }
+            attr_reader :product_custom_fields
+
+            sig { params(product_custom_fields: T::Hash[Symbol, String]).void }
+            attr_writer :product_custom_fields
+
             sig do
               returns(
                 T.nilable(
@@ -4633,6 +4806,7 @@ module MetronomeSDK
                 ending_before: Time,
                 fiat_credit_type_id: String,
                 name: String,
+                product_custom_fields: T::Hash[Symbol, String],
                 seat_config:
                   MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::SeatConfig::OrHash
               ).returns(T.attached_class)
@@ -4665,6 +4839,10 @@ module MetronomeSDK
               ending_before: nil,
               fiat_credit_type_id: nil,
               name: nil,
+              # Custom fields from the subscription product referenced by
+              # `subscription_rate.product`. These are distinct from the subscription instance's
+              # `custom_fields`.
+              product_custom_fields: nil,
               seat_config: nil
             )
             end
@@ -4695,6 +4873,7 @@ module MetronomeSDK
                   ending_before: Time,
                   fiat_credit_type_id: String,
                   name: String,
+                  product_custom_fields: T::Hash[Symbol, String],
                   seat_config:
                     MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::SeatConfig
                 }
@@ -7494,6 +7673,44 @@ module MetronomeSDK
               sig { returns(T.nilable(T::Array[String])) }
               attr_accessor :applicable_product_tags
 
+              # The length of time the created commit will be valid, starting from the end of
+              # the invoice's service period. Set to null to clear a previously configured
+              # duration.
+              sig do
+                returns(
+                  T.nilable(
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration
+                  )
+                )
+              end
+              attr_reader :duration
+
+              sig do
+                params(
+                  duration:
+                    T.nilable(
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration::OrHash
+                    )
+                ).void
+              end
+              attr_writer :duration
+
+              # Whether the created commits will be charged at commit rate or list rate. Set to
+              # null to clear a previously configured rate type.
+              sig do
+                returns(
+                  T.nilable(
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::Commit::RateType::TaggedSymbol
+                  )
+                )
+              end
+              attr_accessor :rate_type
+
+              # Fraction of the created commit's unused balance that will roll over. Must be
+              # between 0 and 1. Set to null to clear a previously configured rollover fraction.
+              sig { returns(T.nilable(Float)) }
+              attr_accessor :rollover_fraction
+
               # List of filters that determine what kind of customer usage draws down a commit
               # or credit. A customer's usage needs to meet the condition of at least one of the
               # specifiers to contribute to a commit's or credit's drawdown. This field cannot
@@ -7509,6 +7726,15 @@ module MetronomeSDK
                 params(
                   applicable_product_ids: T.nilable(T::Array[String]),
                   applicable_product_tags: T.nilable(T::Array[String]),
+                  duration:
+                    T.nilable(
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration::OrHash
+                    ),
+                  rate_type:
+                    T.nilable(
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::Commit::RateType::OrSymbol
+                    ),
+                  rollover_fraction: T.nilable(Float),
                   specifiers:
                     T.nilable(
                       T::Array[MetronomeSDK::CommitSpecifierInput::OrHash]
@@ -7523,6 +7749,16 @@ module MetronomeSDK
                 # Which tags the threshold commit applies to. If both applicable_product_ids and
                 # applicable_product_tags are not provided, the commit applies to all products.
                 applicable_product_tags: nil,
+                # The length of time the created commit will be valid, starting from the end of
+                # the invoice's service period. Set to null to clear a previously configured
+                # duration.
+                duration: nil,
+                # Whether the created commits will be charged at commit rate or list rate. Set to
+                # null to clear a previously configured rate type.
+                rate_type: nil,
+                # Fraction of the created commit's unused balance that will roll over. Must be
+                # between 0 and 1. Set to null to clear a previously configured rollover fraction.
+                rollover_fraction: nil,
                 # List of filters that determine what kind of customer usage draws down a commit
                 # or credit. A customer's usage needs to meet the condition of at least one of the
                 # specifiers to contribute to a commit's or credit's drawdown. This field cannot
@@ -7538,12 +7774,146 @@ module MetronomeSDK
                   {
                     applicable_product_ids: T.nilable(T::Array[String]),
                     applicable_product_tags: T.nilable(T::Array[String]),
+                    duration:
+                      T.nilable(
+                        MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration
+                      ),
+                    rate_type:
+                      T.nilable(
+                        MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::Commit::RateType::TaggedSymbol
+                      ),
+                    rollover_fraction: T.nilable(Float),
                     specifiers:
                       T.nilable(T::Array[MetronomeSDK::CommitSpecifierInput])
                   }
                 )
               end
               def to_hash
+              end
+
+              class Duration < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                sig do
+                  returns(
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration::Unit::TaggedSymbol
+                  )
+                end
+                attr_accessor :unit
+
+                sig { returns(Integer) }
+                attr_accessor :value
+
+                # The length of time the created commit will be valid, starting from the end of
+                # the invoice's service period. Set to null to clear a previously configured
+                # duration.
+                sig do
+                  params(
+                    unit:
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration::Unit::OrSymbol,
+                    value: Integer
+                  ).returns(T.attached_class)
+                end
+                def self.new(unit:, value:)
+                end
+
+                sig do
+                  override.returns(
+                    {
+                      unit:
+                        MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration::Unit::TaggedSymbol,
+                      value: Integer
+                    }
+                  )
+                end
+                def to_hash
+                end
+
+                module Unit
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  TaggedSymbol =
+                    T.type_alias do
+                      T.all(
+                        Symbol,
+                        MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration::Unit
+                      )
+                    end
+                  OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                  DAYS =
+                    T.let(
+                      :DAYS,
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration::Unit::TaggedSymbol
+                    )
+                  WEEKS =
+                    T.let(
+                      :WEEKS,
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration::Unit::TaggedSymbol
+                    )
+                  MONTHS =
+                    T.let(
+                      :MONTHS,
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration::Unit::TaggedSymbol
+                    )
+                  YEARS =
+                    T.let(
+                      :YEARS,
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration::Unit::TaggedSymbol
+                    )
+
+                  sig do
+                    override.returns(
+                      T::Array[
+                        MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::Commit::Duration::Unit::TaggedSymbol
+                      ]
+                    )
+                  end
+                  def self.values
+                  end
+                end
+              end
+
+              # Whether the created commits will be charged at commit rate or list rate. Set to
+              # null to clear a previously configured rate type.
+              module RateType
+                extend MetronomeSDK::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::Commit::RateType
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                COMMIT_RATE =
+                  T.let(
+                    :COMMIT_RATE,
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::Commit::RateType::TaggedSymbol
+                  )
+                LIST_RATE =
+                  T.let(
+                    :LIST_RATE,
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::Commit::RateType::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdatePrepaidBalanceThresholdConfiguration::Commit::RateType::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
               end
             end
 
@@ -9239,6 +9609,12 @@ module MetronomeSDK
             sig { params(ending_before: Time).void }
             attr_writer :ending_before
 
+            sig { returns(T.nilable(String)) }
+            attr_reader :name
+
+            sig { params(name: String).void }
+            attr_writer :name
+
             sig do
               returns(
                 T.nilable(
@@ -9282,6 +9658,7 @@ module MetronomeSDK
               params(
                 id: String,
                 ending_before: Time,
+                name: String,
                 quantity_updates:
                   T::Array[
                     MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSubscription::QuantityUpdate::OrHash
@@ -9293,6 +9670,7 @@ module MetronomeSDK
             def self.new(
               id:,
               ending_before: nil,
+              name: nil,
               quantity_updates: nil,
               # Manage subscription seats for subscriptions in SEAT_BASED mode.
               seat_updates: nil
@@ -9304,6 +9682,7 @@ module MetronomeSDK
                 {
                   id: String,
                   ending_before: Time,
+                  name: String,
                   quantity_updates:
                     T::Array[
                       MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::UpdateSubscription::QuantityUpdate

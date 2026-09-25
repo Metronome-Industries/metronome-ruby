@@ -3,6 +3,8 @@ module MetronomeSDK
     class V2
       attr_reader contracts: MetronomeSDK::Resources::V2::Contracts
 
+      attr_reader notifications: MetronomeSDK::Resources::V2::Notifications
+
       def initialize: (client: MetronomeSDK::Client) -> void
     end
   end

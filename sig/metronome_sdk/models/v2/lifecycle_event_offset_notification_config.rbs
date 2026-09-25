@@ -1,0 +1,69 @@
+module MetronomeSDK
+  module Models
+    module V2
+      type lifecycle_event_offset_notification_config =
+        {
+          id: String,
+          archived_at: Time?,
+          created_at: Time,
+          created_by: String,
+          environment_type: String,
+          name: String,
+          policy: MetronomeSDK::V2::LifecycleEventOffsetNotificationConfig::Policy,
+          type: String
+        }
+
+      class LifecycleEventOffsetNotificationConfig < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor archived_at: Time?
+
+        attr_accessor created_at: Time
+
+        attr_accessor created_by: String
+
+        attr_accessor environment_type: String
+
+        attr_accessor name: String
+
+        attr_accessor policy: MetronomeSDK::V2::LifecycleEventOffsetNotificationConfig::Policy
+
+        attr_accessor type: String
+
+        def initialize: (
+          id: String,
+          archived_at: Time?,
+          created_at: Time,
+          created_by: String,
+          environment_type: String,
+          name: String,
+          policy: MetronomeSDK::V2::LifecycleEventOffsetNotificationConfig::Policy,
+          type: String
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          archived_at: Time?,
+          created_at: Time,
+          created_by: String,
+          environment_type: String,
+          name: String,
+          policy: MetronomeSDK::V2::LifecycleEventOffsetNotificationConfig::Policy,
+          type: String
+        }
+
+        type policy = { offset: String, type: String }
+
+        class Policy < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor offset: String
+
+          attr_accessor type: String
+
+          def initialize: (offset: String, type: String) -> void
+
+          def to_hash: -> { offset: String, type: String }
+        end
+      end
+    end
+  end
+end

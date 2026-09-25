@@ -84,8 +84,7 @@ module MetronomeSDK
             optional :billing_provider_customer_id, String
 
             # @!attribute stripe_collection_method
-            #   The collection method for the customer's invoices. NOTE:
-            #   `auto_charge_payment_intent` and `manually_charge_payment_intent` are in beta.
+            #   The collection method for the customer's invoices.
             #
             #   @return [Symbol, MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::StripeCollectionMethod, nil]
             optional :stripe_collection_method,
@@ -167,8 +166,7 @@ module MetronomeSDK
               #   @return [Array<Symbol>]
             end
 
-            # The collection method for the customer's invoices. NOTE:
-            # `auto_charge_payment_intent` and `manually_charge_payment_intent` are in beta.
+            # The collection method for the customer's invoices.
             #
             # @see MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data#stripe_collection_method
             module StripeCollectionMethod
@@ -176,8 +174,6 @@ module MetronomeSDK
 
               CHARGE_AUTOMATICALLY = :charge_automatically
               SEND_INVOICE = :send_invoice
-              AUTO_CHARGE_PAYMENT_INTENT = :auto_charge_payment_intent
-              MANUALLY_CHARGE_PAYMENT_INTENT = :manually_charge_payment_intent
 
               # @!method self.values
               #   @return [Array<Symbol>]

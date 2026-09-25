@@ -368,11 +368,18 @@ module MetronomeSDK
           type access_schedule =
             {
               schedule_items: ::Array[MetronomeSDK::V1::PackageCreateParams::Commit::AccessSchedule::ScheduleItem],
+              access_type: MetronomeSDK::Models::V1::PackageCreateParams::Commit::AccessSchedule::access_type,
               credit_type_id: String
             }
 
           class AccessSchedule < MetronomeSDK::Internal::Type::BaseModel
             attr_accessor schedule_items: ::Array[MetronomeSDK::V1::PackageCreateParams::Commit::AccessSchedule::ScheduleItem]
+
+            attr_reader access_type: MetronomeSDK::Models::V1::PackageCreateParams::Commit::AccessSchedule::access_type?
+
+            def access_type=: (
+              MetronomeSDK::Models::V1::PackageCreateParams::Commit::AccessSchedule::access_type
+            ) -> MetronomeSDK::Models::V1::PackageCreateParams::Commit::AccessSchedule::access_type
 
             attr_reader credit_type_id: String?
 
@@ -380,11 +387,13 @@ module MetronomeSDK
 
             def initialize: (
               schedule_items: ::Array[MetronomeSDK::V1::PackageCreateParams::Commit::AccessSchedule::ScheduleItem],
+              ?access_type: MetronomeSDK::Models::V1::PackageCreateParams::Commit::AccessSchedule::access_type,
               ?credit_type_id: String
             ) -> void
 
             def to_hash: -> {
               schedule_items: ::Array[MetronomeSDK::V1::PackageCreateParams::Commit::AccessSchedule::ScheduleItem],
+              access_type: MetronomeSDK::Models::V1::PackageCreateParams::Commit::AccessSchedule::access_type,
               credit_type_id: String
             }
 
@@ -483,6 +492,17 @@ module MetronomeSDK
                   def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageCreateParams::Commit::AccessSchedule::ScheduleItem::StartingAtOffset::unit]
                 end
               end
+            end
+
+            type access_type = :SPEND | :QUANTITY
+
+            module AccessType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              SPEND: :SPEND
+              QUANTITY: :QUANTITY
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageCreateParams::Commit::AccessSchedule::access_type]
             end
           end
 
@@ -686,11 +706,18 @@ module MetronomeSDK
           type access_schedule =
             {
               schedule_items: ::Array[MetronomeSDK::V1::PackageCreateParams::Credit::AccessSchedule::ScheduleItem],
+              access_type: MetronomeSDK::Models::V1::PackageCreateParams::Credit::AccessSchedule::access_type,
               credit_type_id: String
             }
 
           class AccessSchedule < MetronomeSDK::Internal::Type::BaseModel
             attr_accessor schedule_items: ::Array[MetronomeSDK::V1::PackageCreateParams::Credit::AccessSchedule::ScheduleItem]
+
+            attr_reader access_type: MetronomeSDK::Models::V1::PackageCreateParams::Credit::AccessSchedule::access_type?
+
+            def access_type=: (
+              MetronomeSDK::Models::V1::PackageCreateParams::Credit::AccessSchedule::access_type
+            ) -> MetronomeSDK::Models::V1::PackageCreateParams::Credit::AccessSchedule::access_type
 
             attr_reader credit_type_id: String?
 
@@ -698,11 +725,13 @@ module MetronomeSDK
 
             def initialize: (
               schedule_items: ::Array[MetronomeSDK::V1::PackageCreateParams::Credit::AccessSchedule::ScheduleItem],
+              ?access_type: MetronomeSDK::Models::V1::PackageCreateParams::Credit::AccessSchedule::access_type,
               ?credit_type_id: String
             ) -> void
 
             def to_hash: -> {
               schedule_items: ::Array[MetronomeSDK::V1::PackageCreateParams::Credit::AccessSchedule::ScheduleItem],
+              access_type: MetronomeSDK::Models::V1::PackageCreateParams::Credit::AccessSchedule::access_type,
               credit_type_id: String
             }
 
@@ -801,6 +830,17 @@ module MetronomeSDK
                   def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageCreateParams::Credit::AccessSchedule::ScheduleItem::StartingAtOffset::unit]
                 end
               end
+            end
+
+            type access_type = :SPEND | :QUANTITY
+
+            module AccessType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              SPEND: :SPEND
+              QUANTITY: :QUANTITY
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageCreateParams::Credit::AccessSchedule::access_type]
             end
           end
 
@@ -1398,28 +1438,54 @@ module MetronomeSDK
           }
 
           type access_amount =
-            { credit_type_id: String, unit_price: Float, quantity: Float }
+            {
+              unit_price: Float,
+              access_type: MetronomeSDK::Models::V1::PackageCreateParams::RecurringCommit::AccessAmount::access_type,
+              credit_type_id: String,
+              quantity: Float
+            }
 
           class AccessAmount < MetronomeSDK::Internal::Type::BaseModel
-            attr_accessor credit_type_id: String
-
             attr_accessor unit_price: Float
+
+            attr_reader access_type: MetronomeSDK::Models::V1::PackageCreateParams::RecurringCommit::AccessAmount::access_type?
+
+            def access_type=: (
+              MetronomeSDK::Models::V1::PackageCreateParams::RecurringCommit::AccessAmount::access_type
+            ) -> MetronomeSDK::Models::V1::PackageCreateParams::RecurringCommit::AccessAmount::access_type
+
+            attr_reader credit_type_id: String?
+
+            def credit_type_id=: (String) -> String
 
             attr_reader quantity: Float?
 
             def quantity=: (Float) -> Float
 
             def initialize: (
-              credit_type_id: String,
               unit_price: Float,
+              ?access_type: MetronomeSDK::Models::V1::PackageCreateParams::RecurringCommit::AccessAmount::access_type,
+              ?credit_type_id: String,
               ?quantity: Float
             ) -> void
 
             def to_hash: -> {
-              credit_type_id: String,
               unit_price: Float,
+              access_type: MetronomeSDK::Models::V1::PackageCreateParams::RecurringCommit::AccessAmount::access_type,
+              credit_type_id: String,
               quantity: Float
             }
+
+            type access_type = :SPEND | :QUANTITY
+
+            module AccessType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              SPEND: :SPEND
+              QUANTITY: :QUANTITY
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageCreateParams::RecurringCommit::AccessAmount::access_type]
+            end
           end
 
           type commit_duration =
@@ -1883,28 +1949,54 @@ module MetronomeSDK
           }
 
           type access_amount =
-            { credit_type_id: String, unit_price: Float, quantity: Float }
+            {
+              unit_price: Float,
+              access_type: MetronomeSDK::Models::V1::PackageCreateParams::RecurringCredit::AccessAmount::access_type,
+              credit_type_id: String,
+              quantity: Float
+            }
 
           class AccessAmount < MetronomeSDK::Internal::Type::BaseModel
-            attr_accessor credit_type_id: String
-
             attr_accessor unit_price: Float
+
+            attr_reader access_type: MetronomeSDK::Models::V1::PackageCreateParams::RecurringCredit::AccessAmount::access_type?
+
+            def access_type=: (
+              MetronomeSDK::Models::V1::PackageCreateParams::RecurringCredit::AccessAmount::access_type
+            ) -> MetronomeSDK::Models::V1::PackageCreateParams::RecurringCredit::AccessAmount::access_type
+
+            attr_reader credit_type_id: String?
+
+            def credit_type_id=: (String) -> String
 
             attr_reader quantity: Float?
 
             def quantity=: (Float) -> Float
 
             def initialize: (
-              credit_type_id: String,
               unit_price: Float,
+              ?access_type: MetronomeSDK::Models::V1::PackageCreateParams::RecurringCredit::AccessAmount::access_type,
+              ?credit_type_id: String,
               ?quantity: Float
             ) -> void
 
             def to_hash: -> {
-              credit_type_id: String,
               unit_price: Float,
+              access_type: MetronomeSDK::Models::V1::PackageCreateParams::RecurringCredit::AccessAmount::access_type,
+              credit_type_id: String,
               quantity: Float
             }
+
+            type access_type = :SPEND | :QUANTITY
+
+            module AccessType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              SPEND: :SPEND
+              QUANTITY: :QUANTITY
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageCreateParams::RecurringCredit::AccessAmount::access_type]
+            end
           end
 
           type commit_duration =

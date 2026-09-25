@@ -136,7 +136,7 @@ module MetronomeSDK
           # - Voided invoices are included in results by default unless filtered out by
           #   status
           #
-          # @overload list(customer_id:, contract_id: nil, credit_type_id: nil, ending_before: nil, limit: nil, next_page: nil, skip_zero_qty_line_items: nil, sort: nil, starting_on: nil, status: nil, type: nil, webhook_notification_id: nil, request_options: {})
+          # @overload list(customer_id:, contract_id: nil, credit_type_id: nil, ending_before: nil, include_retired_commit_invoices: nil, limit: nil, next_page: nil, skip_zero_qty_line_items: nil, sort: nil, starting_on: nil, status: nil, type: nil, webhook_notification_id: nil, request_options: {})
           #
           # @param customer_id [String] Path param
           #
@@ -145,6 +145,8 @@ module MetronomeSDK
           # @param credit_type_id [String] Query param: Only return invoices for the specified credit type
           #
           # @param ending_before [Time] Query param: RFC 3339 timestamp (exclusive). Invoices will only be returned for
+          #
+          # @param include_retired_commit_invoices [Boolean] Query param: When true, includes retired commit invoices alongside active invoic
           #
           # @param limit [Integer] Query param: Max number of results that should be returned
           #

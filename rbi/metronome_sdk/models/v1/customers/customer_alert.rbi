@@ -116,9 +116,36 @@ module MetronomeSDK
             sig { returns(Time) }
             attr_accessor :updated_at
 
-            # Present for `low_remaining_contract_credit_and_commit_balance_reached`
-            # notifications. The filters that define the balances that are considered when
-            # evaluating the alert.
+            # Indicates the commit access type this notification is scoped to. Defaults to
+            # `SPEND` if not otherwise specified. Only present for
+            # `low_remaining_commit_balance_reached`,
+            # `low_remaining_commit_percentage_reached`,
+            # `low_remaining_contract_credit_and_commit_balance_reached`,
+            # `low_remaining_contract_credit_and_commit_percentage_reached`,
+            # `low_remaining_contract_credit_balance_reached`,
+            # `low_remaining_contract_credit_percentage_reached`, and
+            # `low_remaining_seat_balance_reached` notifications.
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::V1::Customers::CustomerAlert::Alert::AccessType::TaggedSymbol
+                )
+              )
+            end
+            attr_reader :access_type
+
+            sig do
+              params(
+                access_type:
+                  MetronomeSDK::V1::Customers::CustomerAlert::Alert::AccessType::OrSymbol
+              ).void
+            end
+            attr_writer :access_type
+
+            # Present for `low_remaining_contract_credit_and_commit_balance_reached` and
+            # `low_remaining_contract_credit_and_commit_percentage_reached` notifications. The
+            # filters that define the commits and credits used to calculate the remaining
+            # balance or percentage.
             sig do
               returns(
                 T.nilable(
@@ -271,6 +298,8 @@ module MetronomeSDK
                 type:
                   MetronomeSDK::V1::Customers::CustomerAlert::Alert::Type::OrSymbol,
                 updated_at: Time,
+                access_type:
+                  MetronomeSDK::V1::Customers::CustomerAlert::Alert::AccessType::OrSymbol,
                 alert_specifiers:
                   T::Array[
                     MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier::OrHash
@@ -306,9 +335,20 @@ module MetronomeSDK
               type:,
               # Timestamp for when the threshold notification's customer status was last updated
               updated_at:,
-              # Present for `low_remaining_contract_credit_and_commit_balance_reached`
-              # notifications. The filters that define the balances that are considered when
-              # evaluating the alert.
+              # Indicates the commit access type this notification is scoped to. Defaults to
+              # `SPEND` if not otherwise specified. Only present for
+              # `low_remaining_commit_balance_reached`,
+              # `low_remaining_commit_percentage_reached`,
+              # `low_remaining_contract_credit_and_commit_balance_reached`,
+              # `low_remaining_contract_credit_and_commit_percentage_reached`,
+              # `low_remaining_contract_credit_balance_reached`,
+              # `low_remaining_contract_credit_percentage_reached`, and
+              # `low_remaining_seat_balance_reached` notifications.
+              access_type: nil,
+              # Present for `low_remaining_contract_credit_and_commit_balance_reached` and
+              # `low_remaining_contract_credit_and_commit_percentage_reached` notifications. The
+              # filters that define the commits and credits used to calculate the remaining
+              # balance or percentage.
               alert_specifiers: nil,
               # An array of strings, representing a way to filter the credit grant this
               # threshold notification applies to, by looking at the credit_grant_type field on
@@ -349,6 +389,8 @@ module MetronomeSDK
                   type:
                     MetronomeSDK::V1::Customers::CustomerAlert::Alert::Type::TaggedSymbol,
                   updated_at: Time,
+                  access_type:
+                    MetronomeSDK::V1::Customers::CustomerAlert::Alert::AccessType::TaggedSymbol,
                   alert_specifiers:
                     T::Array[
                       MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier
@@ -493,6 +535,11 @@ module MetronomeSDK
                   :low_remaining_contract_credit_and_commit_balance_reached,
                   MetronomeSDK::V1::Customers::CustomerAlert::Alert::Type::TaggedSymbol
                 )
+              LOW_REMAINING_CONTRACT_CREDIT_AND_COMMIT_PERCENTAGE_REACHED =
+                T.let(
+                  :low_remaining_contract_credit_and_commit_percentage_reached,
+                  MetronomeSDK::V1::Customers::CustomerAlert::Alert::Type::TaggedSymbol
+                )
               LOW_REMAINING_SEAT_BALANCE_REACHED =
                 T.let(
                   :low_remaining_seat_balance_reached,
@@ -508,6 +555,49 @@ module MetronomeSDK
                 override.returns(
                   T::Array[
                     MetronomeSDK::V1::Customers::CustomerAlert::Alert::Type::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
+            end
+
+            # Indicates the commit access type this notification is scoped to. Defaults to
+            # `SPEND` if not otherwise specified. Only present for
+            # `low_remaining_commit_balance_reached`,
+            # `low_remaining_commit_percentage_reached`,
+            # `low_remaining_contract_credit_and_commit_balance_reached`,
+            # `low_remaining_contract_credit_and_commit_percentage_reached`,
+            # `low_remaining_contract_credit_balance_reached`,
+            # `low_remaining_contract_credit_percentage_reached`, and
+            # `low_remaining_seat_balance_reached` notifications.
+            module AccessType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    MetronomeSDK::V1::Customers::CustomerAlert::Alert::AccessType
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              SPEND =
+                T.let(
+                  :SPEND,
+                  MetronomeSDK::V1::Customers::CustomerAlert::Alert::AccessType::TaggedSymbol
+                )
+              QUANTITY =
+                T.let(
+                  :QUANTITY,
+                  MetronomeSDK::V1::Customers::CustomerAlert::Alert::AccessType::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::V1::Customers::CustomerAlert::Alert::AccessType::TaggedSymbol
                   ]
                 )
               end

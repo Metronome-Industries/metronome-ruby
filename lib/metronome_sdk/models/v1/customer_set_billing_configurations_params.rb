@@ -61,8 +61,7 @@ module MetronomeSDK
           # @!attribute tax_provider
           #   Specifies which tax provider Metronome should use for tax calculation when
           #   billing through Stripe. This is only supported for Stripe billing provider
-          #   configurations with auto_charge_payment_intent or manual_charge_payment_intent
-          #   collection methods.
+          #   configurations.
           #
           #   @return [Symbol, MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data::TaxProvider, nil]
           optional :tax_provider,
@@ -123,8 +122,7 @@ module MetronomeSDK
 
           # Specifies which tax provider Metronome should use for tax calculation when
           # billing through Stripe. This is only supported for Stripe billing provider
-          # configurations with auto_charge_payment_intent or manual_charge_payment_intent
-          # collection methods.
+          # configurations.
           #
           # @see MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data#tax_provider
           module TaxProvider

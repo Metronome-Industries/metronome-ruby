@@ -24,6 +24,25 @@ module MetronomeSDK
         sig { params(id: String).void }
         attr_writer :id
 
+        # Filters balances by how they are drawn down. `SPEND` deducts the dollar cost of
+        # usage. `QUANTITY` deducts the number of units used.
+        sig do
+          returns(
+            T.nilable(
+              MetronomeSDK::V1::ContractListBalancesParams::AccessType::OrSymbol
+            )
+          )
+        end
+        attr_reader :access_type
+
+        sig do
+          params(
+            access_type:
+              MetronomeSDK::V1::ContractListBalancesParams::AccessType::OrSymbol
+          ).void
+        end
+        attr_writer :access_type
+
         # Return only balances that have access schedules that "cover" the provided date
         sig { returns(T.nilable(Time)) }
         attr_reader :covering_date
@@ -100,6 +119,8 @@ module MetronomeSDK
           params(
             customer_id: String,
             id: String,
+            access_type:
+              MetronomeSDK::V1::ContractListBalancesParams::AccessType::OrSymbol,
             covering_date: Time,
             effective_before: Time,
             exclude_zero_balances: T::Boolean,
@@ -116,6 +137,9 @@ module MetronomeSDK
         def self.new(
           customer_id:,
           id: nil,
+          # Filters balances by how they are drawn down. `SPEND` deducts the dollar cost of
+          # usage. `QUANTITY` deducts the number of units used.
+          access_type: nil,
           # Return only balances that have access schedules that "cover" the provided date
           covering_date: nil,
           # Include only balances that have any access before the provided date (exclusive)
@@ -147,6 +171,8 @@ module MetronomeSDK
             {
               customer_id: String,
               id: String,
+              access_type:
+                MetronomeSDK::V1::ContractListBalancesParams::AccessType::OrSymbol,
               covering_date: Time,
               effective_before: Time,
               exclude_zero_balances: T::Boolean,
@@ -162,6 +188,42 @@ module MetronomeSDK
           )
         end
         def to_hash
+        end
+
+        # Filters balances by how they are drawn down. `SPEND` deducts the dollar cost of
+        # usage. `QUANTITY` deducts the number of units used.
+        module AccessType
+          extend MetronomeSDK::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                MetronomeSDK::V1::ContractListBalancesParams::AccessType
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          SPEND =
+            T.let(
+              :SPEND,
+              MetronomeSDK::V1::ContractListBalancesParams::AccessType::TaggedSymbol
+            )
+          QUANTITY =
+            T.let(
+              :QUANTITY,
+              MetronomeSDK::V1::ContractListBalancesParams::AccessType::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                MetronomeSDK::V1::ContractListBalancesParams::AccessType::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
       end
     end

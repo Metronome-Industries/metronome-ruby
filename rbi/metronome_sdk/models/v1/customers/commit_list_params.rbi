@@ -19,6 +19,25 @@ module MetronomeSDK
           sig { returns(String) }
           attr_accessor :customer_id
 
+          # Filters commits by how their balances are drawn down. `SPEND` deducts the dollar
+          # cost of usage. `QUANTITY` deducts the number of units used.
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::V1::Customers::CommitListParams::AccessType::OrSymbol
+              )
+            )
+          end
+          attr_reader :access_type
+
+          sig do
+            params(
+              access_type:
+                MetronomeSDK::V1::Customers::CommitListParams::AccessType::OrSymbol
+            ).void
+          end
+          attr_writer :access_type
+
           sig { returns(T.nilable(String)) }
           attr_reader :commit_id
 
@@ -93,6 +112,8 @@ module MetronomeSDK
           sig do
             params(
               customer_id: String,
+              access_type:
+                MetronomeSDK::V1::Customers::CommitListParams::AccessType::OrSymbol,
               commit_id: String,
               covering_date: Time,
               effective_before: Time,
@@ -108,6 +129,9 @@ module MetronomeSDK
           end
           def self.new(
             customer_id:,
+            # Filters commits by how their balances are drawn down. `SPEND` deducts the dollar
+            # cost of usage. `QUANTITY` deducts the number of units used.
+            access_type: nil,
             commit_id: nil,
             # Include only commits that have access schedules that "cover" the provided date
             covering_date: nil,
@@ -137,6 +161,8 @@ module MetronomeSDK
             override.returns(
               {
                 customer_id: String,
+                access_type:
+                  MetronomeSDK::V1::Customers::CommitListParams::AccessType::OrSymbol,
                 commit_id: String,
                 covering_date: Time,
                 effective_before: Time,
@@ -152,6 +178,42 @@ module MetronomeSDK
             )
           end
           def to_hash
+          end
+
+          # Filters commits by how their balances are drawn down. `SPEND` deducts the dollar
+          # cost of usage. `QUANTITY` deducts the number of units used.
+          module AccessType
+            extend MetronomeSDK::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  MetronomeSDK::V1::Customers::CommitListParams::AccessType
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            SPEND =
+              T.let(
+                :SPEND,
+                MetronomeSDK::V1::Customers::CommitListParams::AccessType::TaggedSymbol
+              )
+            QUANTITY =
+              T.let(
+                :QUANTITY,
+                MetronomeSDK::V1::Customers::CommitListParams::AccessType::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  MetronomeSDK::V1::Customers::CommitListParams::AccessType::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
         end
       end
