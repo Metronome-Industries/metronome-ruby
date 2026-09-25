@@ -31,9 +31,34 @@ module MetronomeSDK
         sig { returns(Float) }
         attr_accessor :threshold
 
-        # Can be used with only `low_remaining_contract_credit_and_commit_balance_reached`
-        # notifications. Defines the balances that are considered when evaluating the
-        # alert.
+        # Filters the notification to commits/credits with this access type. Only
+        # supported for `low_remaining_commit_balance_reached`,
+        # `low_remaining_commit_percentage_reached`,
+        # `low_remaining_contract_credit_and_commit_balance_reached`,
+        # `low_remaining_contract_credit_and_commit_percentage_reached`,
+        # `low_remaining_contract_credit_balance_reached`,
+        # `low_remaining_contract_credit_percentage_reached`, and
+        # `low_remaining_seat_balance_reached` notifications. Credit type cannot be
+        # specified if using QUANTITY access type.
+        sig do
+          returns(
+            T.nilable(MetronomeSDK::V1::AlertCreateParams::AccessType::OrSymbol)
+          )
+        end
+        attr_reader :access_type
+
+        sig do
+          params(
+            access_type:
+              MetronomeSDK::V1::AlertCreateParams::AccessType::OrSymbol
+          ).void
+        end
+        attr_writer :access_type
+
+        # Can be used only with `low_remaining_contract_credit_and_commit_balance_reached`
+        # and `low_remaining_contract_credit_and_commit_percentage_reached` notifications.
+        # Defines the commits and credits used to calculate the remaining balance or
+        # percentage.
         sig do
           returns(
             T.nilable(
@@ -180,6 +205,8 @@ module MetronomeSDK
               MetronomeSDK::V1::AlertCreateParams::AlertType::OrSymbol,
             name: String,
             threshold: Float,
+            access_type:
+              MetronomeSDK::V1::AlertCreateParams::AccessType::OrSymbol,
             alert_specifiers:
               T::Array[
                 MetronomeSDK::V1::AlertCreateParams::AlertSpecifier::OrHash
@@ -212,9 +239,20 @@ module MetronomeSDK
           # type, this number may represent a financial amount, the days remaining, or a
           # percentage reached.
           threshold:,
-          # Can be used with only `low_remaining_contract_credit_and_commit_balance_reached`
-          # notifications. Defines the balances that are considered when evaluating the
-          # alert.
+          # Filters the notification to commits/credits with this access type. Only
+          # supported for `low_remaining_commit_balance_reached`,
+          # `low_remaining_commit_percentage_reached`,
+          # `low_remaining_contract_credit_and_commit_balance_reached`,
+          # `low_remaining_contract_credit_and_commit_percentage_reached`,
+          # `low_remaining_contract_credit_balance_reached`,
+          # `low_remaining_contract_credit_percentage_reached`, and
+          # `low_remaining_seat_balance_reached` notifications. Credit type cannot be
+          # specified if using QUANTITY access type.
+          access_type: nil,
+          # Can be used only with `low_remaining_contract_credit_and_commit_balance_reached`
+          # and `low_remaining_contract_credit_and_commit_percentage_reached` notifications.
+          # Defines the commits and credits used to calculate the remaining balance or
+          # percentage.
           alert_specifiers: nil,
           # For threshold notifications of type `usage_threshold_reached`, specifies which
           # billable metric to track the usage for.
@@ -265,6 +303,8 @@ module MetronomeSDK
                 MetronomeSDK::V1::AlertCreateParams::AlertType::OrSymbol,
               name: String,
               threshold: Float,
+              access_type:
+                MetronomeSDK::V1::AlertCreateParams::AccessType::OrSymbol,
               alert_specifiers:
                 T::Array[MetronomeSDK::V1::AlertCreateParams::AlertSpecifier],
               billable_metric_id: String,
@@ -364,6 +404,11 @@ module MetronomeSDK
               :low_remaining_contract_credit_and_commit_balance_reached,
               MetronomeSDK::V1::AlertCreateParams::AlertType::TaggedSymbol
             )
+          LOW_REMAINING_CONTRACT_CREDIT_AND_COMMIT_PERCENTAGE_REACHED =
+            T.let(
+              :low_remaining_contract_credit_and_commit_percentage_reached,
+              MetronomeSDK::V1::AlertCreateParams::AlertType::TaggedSymbol
+            )
           INVOICE_TOTAL_REACHED =
             T.let(
               :invoice_total_reached,
@@ -379,6 +424,46 @@ module MetronomeSDK
             override.returns(
               T::Array[
                 MetronomeSDK::V1::AlertCreateParams::AlertType::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+
+        # Filters the notification to commits/credits with this access type. Only
+        # supported for `low_remaining_commit_balance_reached`,
+        # `low_remaining_commit_percentage_reached`,
+        # `low_remaining_contract_credit_and_commit_balance_reached`,
+        # `low_remaining_contract_credit_and_commit_percentage_reached`,
+        # `low_remaining_contract_credit_balance_reached`,
+        # `low_remaining_contract_credit_percentage_reached`, and
+        # `low_remaining_seat_balance_reached` notifications. Credit type cannot be
+        # specified if using QUANTITY access type.
+        module AccessType
+          extend MetronomeSDK::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, MetronomeSDK::V1::AlertCreateParams::AccessType)
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          SPEND =
+            T.let(
+              :SPEND,
+              MetronomeSDK::V1::AlertCreateParams::AccessType::TaggedSymbol
+            )
+          QUANTITY =
+            T.let(
+              :QUANTITY,
+              MetronomeSDK::V1::AlertCreateParams::AccessType::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                MetronomeSDK::V1::AlertCreateParams::AccessType::TaggedSymbol
               ]
             )
           end

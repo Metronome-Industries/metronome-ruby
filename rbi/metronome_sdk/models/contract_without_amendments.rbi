@@ -1005,11 +1005,32 @@ module MetronomeSDK
               )
             end
 
+          # This ID identifies the credit type for the access amount. Quantity-based
+          # recurring commits and credits return the null credit type UUID.
           sig { returns(String) }
           attr_accessor :credit_type_id
 
           sig { returns(Float) }
           attr_accessor :unit_price
+
+          # Indicates how the balance of child commits is drawn down. `SPEND` deducts the
+          # dollar cost of usage. `QUANTITY` deducts the number of units used.
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::ContractWithoutAmendments::RecurringCommit::AccessAmount::AccessType::TaggedSymbol
+              )
+            )
+          end
+          attr_reader :access_type
+
+          sig do
+            params(
+              access_type:
+                MetronomeSDK::ContractWithoutAmendments::RecurringCommit::AccessAmount::AccessType::OrSymbol
+            ).void
+          end
+          attr_writer :access_type
 
           sig { returns(T.nilable(Float)) }
           attr_reader :quantity
@@ -1022,18 +1043,71 @@ module MetronomeSDK
             params(
               credit_type_id: String,
               unit_price: Float,
+              access_type:
+                MetronomeSDK::ContractWithoutAmendments::RecurringCommit::AccessAmount::AccessType::OrSymbol,
               quantity: Float
             ).returns(T.attached_class)
           end
-          def self.new(credit_type_id:, unit_price:, quantity: nil)
+          def self.new(
+            # This ID identifies the credit type for the access amount. Quantity-based
+            # recurring commits and credits return the null credit type UUID.
+            credit_type_id:,
+            unit_price:,
+            # Indicates how the balance of child commits is drawn down. `SPEND` deducts the
+            # dollar cost of usage. `QUANTITY` deducts the number of units used.
+            access_type: nil,
+            quantity: nil
+          )
           end
 
           sig do
             override.returns(
-              { credit_type_id: String, unit_price: Float, quantity: Float }
+              {
+                credit_type_id: String,
+                unit_price: Float,
+                access_type:
+                  MetronomeSDK::ContractWithoutAmendments::RecurringCommit::AccessAmount::AccessType::TaggedSymbol,
+                quantity: Float
+              }
             )
           end
           def to_hash
+          end
+
+          # Indicates how the balance of child commits is drawn down. `SPEND` deducts the
+          # dollar cost of usage. `QUANTITY` deducts the number of units used.
+          module AccessType
+            extend MetronomeSDK::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  MetronomeSDK::ContractWithoutAmendments::RecurringCommit::AccessAmount::AccessType
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            SPEND =
+              T.let(
+                :SPEND,
+                MetronomeSDK::ContractWithoutAmendments::RecurringCommit::AccessAmount::AccessType::TaggedSymbol
+              )
+            QUANTITY =
+              T.let(
+                :QUANTITY,
+                MetronomeSDK::ContractWithoutAmendments::RecurringCommit::AccessAmount::AccessType::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  MetronomeSDK::ContractWithoutAmendments::RecurringCommit::AccessAmount::AccessType::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
         end
 
@@ -1985,11 +2059,32 @@ module MetronomeSDK
               )
             end
 
+          # This ID identifies the credit type for the access amount. Quantity-based
+          # recurring commits and credits return the null credit type UUID.
           sig { returns(String) }
           attr_accessor :credit_type_id
 
           sig { returns(Float) }
           attr_accessor :unit_price
+
+          # Indicates how the balance of child commits is drawn down. `SPEND` deducts the
+          # dollar cost of usage. `QUANTITY` deducts the number of units used.
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::ContractWithoutAmendments::RecurringCredit::AccessAmount::AccessType::TaggedSymbol
+              )
+            )
+          end
+          attr_reader :access_type
+
+          sig do
+            params(
+              access_type:
+                MetronomeSDK::ContractWithoutAmendments::RecurringCredit::AccessAmount::AccessType::OrSymbol
+            ).void
+          end
+          attr_writer :access_type
 
           sig { returns(T.nilable(Float)) }
           attr_reader :quantity
@@ -2002,18 +2097,71 @@ module MetronomeSDK
             params(
               credit_type_id: String,
               unit_price: Float,
+              access_type:
+                MetronomeSDK::ContractWithoutAmendments::RecurringCredit::AccessAmount::AccessType::OrSymbol,
               quantity: Float
             ).returns(T.attached_class)
           end
-          def self.new(credit_type_id:, unit_price:, quantity: nil)
+          def self.new(
+            # This ID identifies the credit type for the access amount. Quantity-based
+            # recurring commits and credits return the null credit type UUID.
+            credit_type_id:,
+            unit_price:,
+            # Indicates how the balance of child commits is drawn down. `SPEND` deducts the
+            # dollar cost of usage. `QUANTITY` deducts the number of units used.
+            access_type: nil,
+            quantity: nil
+          )
           end
 
           sig do
             override.returns(
-              { credit_type_id: String, unit_price: Float, quantity: Float }
+              {
+                credit_type_id: String,
+                unit_price: Float,
+                access_type:
+                  MetronomeSDK::ContractWithoutAmendments::RecurringCredit::AccessAmount::AccessType::TaggedSymbol,
+                quantity: Float
+              }
             )
           end
           def to_hash
+          end
+
+          # Indicates how the balance of child commits is drawn down. `SPEND` deducts the
+          # dollar cost of usage. `QUANTITY` deducts the number of units used.
+          module AccessType
+            extend MetronomeSDK::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  MetronomeSDK::ContractWithoutAmendments::RecurringCredit::AccessAmount::AccessType
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            SPEND =
+              T.let(
+                :SPEND,
+                MetronomeSDK::ContractWithoutAmendments::RecurringCredit::AccessAmount::AccessType::TaggedSymbol
+              )
+            QUANTITY =
+              T.let(
+                :QUANTITY,
+                MetronomeSDK::ContractWithoutAmendments::RecurringCredit::AccessAmount::AccessType::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  MetronomeSDK::ContractWithoutAmendments::RecurringCredit::AccessAmount::AccessType::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
         end
 

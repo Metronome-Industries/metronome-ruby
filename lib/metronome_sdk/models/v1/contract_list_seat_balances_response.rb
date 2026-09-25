@@ -66,6 +66,8 @@ module MetronomeSDK
             required :balance, Float
 
             # @!attribute credit_type_id
+            #   This ID identifies the credit type for the balance. Quantity-based balances
+            #   return the null credit type UUID.
             #
             #   @return [String]
             required :credit_type_id, String
@@ -77,16 +79,40 @@ module MetronomeSDK
             #   @return [Float]
             required :starting_balance, Float
 
-            # @!method initialize(balance:, credit_type_id:, starting_balance:)
+            # @!attribute access_type
+            #   Indicates how the balance is drawn down. `SPEND` deducts the dollar cost of
+            #   usage. `QUANTITY` deducts the number of units used.
+            #
+            #   @return [Symbol, MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Balance::AccessType, nil]
+            optional :access_type,
+                     enum: -> { MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Balance::AccessType }
+
+            # @!method initialize(balance:, credit_type_id:, starting_balance:, access_type: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Balance} for
             #   more details.
             #
             #   @param balance [Float] The total balance across all commits and credits for this seat, of this credit t
             #
-            #   @param credit_type_id [String]
+            #   @param credit_type_id [String] This ID identifies the credit type for the balance. Quantity-based balances retu
             #
             #   @param starting_balance [Float] The total initial balances of all commits and credits for this seat, of this cre
+            #
+            #   @param access_type [Symbol, MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Balance::AccessType] Indicates how the balance is drawn down. `SPEND` deducts the dollar cost of usag
+
+            # Indicates how the balance is drawn down. `SPEND` deducts the dollar cost of
+            # usage. `QUANTITY` deducts the number of units used.
+            #
+            # @see MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Balance#access_type
+            module AccessType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              SPEND = :SPEND
+              QUANTITY = :QUANTITY
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
           end
 
           class Commit < MetronomeSDK::Internal::Type::BaseModel
@@ -107,6 +133,14 @@ module MetronomeSDK
             #
             #   @return [Time]
             required :start_date, Time
+
+            # @!attribute access_type
+            #   Indicates how the balance is drawn down. `SPEND` deducts the dollar cost of
+            #   usage. `QUANTITY` deducts the number of units used.
+            #
+            #   @return [Symbol, MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Commit::AccessType, nil]
+            optional :access_type,
+                     enum: -> { MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Commit::AccessType }
 
             # @!attribute credit_type_id
             #   The credit type for this commit. Quantity-based commits return the null credit
@@ -129,7 +163,7 @@ module MetronomeSDK
             optional :ledger_entries,
                      -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Commit::LedgerEntry] }
 
-            # @!method initialize(id:, balance:, start_date:, credit_type_id: nil, end_date: nil, ledger_entries: nil)
+            # @!method initialize(id:, balance:, start_date:, access_type: nil, credit_type_id: nil, end_date: nil, ledger_entries: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Commit} for
             #   more details.
@@ -140,11 +174,27 @@ module MetronomeSDK
             #
             #   @param start_date [Time] The datetime when the commit becomes active
             #
+            #   @param access_type [Symbol, MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Commit::AccessType] Indicates how the balance is drawn down. `SPEND` deducts the dollar cost of usag
+            #
             #   @param credit_type_id [String] The credit type for this commit. Quantity-based commits return the null credit t
             #
             #   @param end_date [Time, nil] The datetime when the commit expires
             #
             #   @param ledger_entries [Array<MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Commit::LedgerEntry>] Transaction history for this commit for this seat (only included if include_ledg
+
+            # Indicates how the balance is drawn down. `SPEND` deducts the dollar cost of
+            # usage. `QUANTITY` deducts the number of units used.
+            #
+            # @see MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Commit#access_type
+            module AccessType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              SPEND = :SPEND
+              QUANTITY = :QUANTITY
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
 
             class LedgerEntry < MetronomeSDK::Internal::Type::BaseModel
               # @!attribute amount
@@ -213,6 +263,14 @@ module MetronomeSDK
             #   @return [Time]
             required :start_date, Time
 
+            # @!attribute access_type
+            #   Indicates how the balance is drawn down. `SPEND` deducts the dollar cost of
+            #   usage. `QUANTITY` deducts the number of units used.
+            #
+            #   @return [Symbol, MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Credit::AccessType, nil]
+            optional :access_type,
+                     enum: -> { MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Credit::AccessType }
+
             # @!attribute credit_type_id
             #   The credit type for this credit. Quantity-based credits return the null credit
             #   type UUID.
@@ -234,7 +292,7 @@ module MetronomeSDK
             optional :ledger_entries,
                      -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Credit::LedgerEntry] }
 
-            # @!method initialize(id:, balance:, start_date:, credit_type_id: nil, end_date: nil, ledger_entries: nil)
+            # @!method initialize(id:, balance:, start_date:, access_type: nil, credit_type_id: nil, end_date: nil, ledger_entries: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Credit} for
             #   more details.
@@ -245,11 +303,27 @@ module MetronomeSDK
             #
             #   @param start_date [Time] The datetime when the credit becomes active
             #
+            #   @param access_type [Symbol, MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Credit::AccessType] Indicates how the balance is drawn down. `SPEND` deducts the dollar cost of usag
+            #
             #   @param credit_type_id [String] The credit type for this credit. Quantity-based credits return the null credit t
             #
             #   @param end_date [Time, nil] The datetime when the credit expires
             #
             #   @param ledger_entries [Array<MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Credit::LedgerEntry>] Transaction history for this credit for this seat (only included if include_ledg
+
+            # Indicates how the balance is drawn down. `SPEND` deducts the dollar cost of
+            # usage. `QUANTITY` deducts the number of units used.
+            #
+            # @see MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Credit#access_type
+            module AccessType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              SPEND = :SPEND
+              QUANTITY = :QUANTITY
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
 
             class LedgerEntry < MetronomeSDK::Internal::Type::BaseModel
               # @!attribute amount

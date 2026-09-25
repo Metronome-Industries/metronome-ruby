@@ -1181,6 +1181,8 @@ module MetronomeSDK
             # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit#access_amount
             class AccessAmount < MetronomeSDK::Internal::Type::BaseModel
               # @!attribute credit_type_id
+              #   This ID identifies the credit type for the access amount. Quantity-based
+              #   recurring commits and credits return the null credit type UUID.
               #
               #   @return [String]
               required :credit_type_id, String
@@ -1190,17 +1192,47 @@ module MetronomeSDK
               #   @return [Float]
               required :unit_price, Float
 
+              # @!attribute access_type
+              #   Indicates how the balance of child commits is drawn down. `SPEND` deducts the
+              #   dollar cost of usage. `QUANTITY` deducts the number of units used.
+              #
+              #   @return [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::AccessAmount::AccessType, nil]
+              optional :access_type,
+                       enum: -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::AccessAmount::AccessType }
+
               # @!attribute quantity
               #
               #   @return [Float, nil]
               optional :quantity, Float
 
-              # @!method initialize(credit_type_id:, unit_price:, quantity: nil)
+              # @!method initialize(credit_type_id:, unit_price:, access_type: nil, quantity: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::AccessAmount}
+              #   for more details.
+              #
               #   The amount of commit to grant.
               #
-              #   @param credit_type_id [String]
+              #   @param credit_type_id [String] This ID identifies the credit type for the access amount. Quantity-based recurri
+              #
               #   @param unit_price [Float]
+              #
+              #   @param access_type [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::AccessAmount::AccessType] Indicates how the balance of child commits is drawn down. `SPEND` deducts the do
+              #
               #   @param quantity [Float]
+
+              # Indicates how the balance of child commits is drawn down. `SPEND` deducts the
+              # dollar cost of usage. `QUANTITY` deducts the number of units used.
+              #
+              # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::AccessAmount#access_type
+              module AccessType
+                extend MetronomeSDK::Internal::Type::Enum
+
+                SPEND = :SPEND
+                QUANTITY = :QUANTITY
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
             end
 
             # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit#commit_duration
@@ -1635,6 +1667,8 @@ module MetronomeSDK
             # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit#access_amount
             class AccessAmount < MetronomeSDK::Internal::Type::BaseModel
               # @!attribute credit_type_id
+              #   This ID identifies the credit type for the access amount. Quantity-based
+              #   recurring commits and credits return the null credit type UUID.
               #
               #   @return [String]
               required :credit_type_id, String
@@ -1644,17 +1678,47 @@ module MetronomeSDK
               #   @return [Float]
               required :unit_price, Float
 
+              # @!attribute access_type
+              #   Indicates how the balance of child commits is drawn down. `SPEND` deducts the
+              #   dollar cost of usage. `QUANTITY` deducts the number of units used.
+              #
+              #   @return [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::AccessAmount::AccessType, nil]
+              optional :access_type,
+                       enum: -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::AccessAmount::AccessType }
+
               # @!attribute quantity
               #
               #   @return [Float, nil]
               optional :quantity, Float
 
-              # @!method initialize(credit_type_id:, unit_price:, quantity: nil)
+              # @!method initialize(credit_type_id:, unit_price:, access_type: nil, quantity: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::AccessAmount}
+              #   for more details.
+              #
               #   The amount of commit to grant.
               #
-              #   @param credit_type_id [String]
+              #   @param credit_type_id [String] This ID identifies the credit type for the access amount. Quantity-based recurri
+              #
               #   @param unit_price [Float]
+              #
+              #   @param access_type [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::AccessAmount::AccessType] Indicates how the balance of child commits is drawn down. `SPEND` deducts the do
+              #
               #   @param quantity [Float]
+
+              # Indicates how the balance of child commits is drawn down. `SPEND` deducts the
+              # dollar cost of usage. `QUANTITY` deducts the number of units used.
+              #
+              # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::AccessAmount#access_type
+              module AccessType
+                extend MetronomeSDK::Internal::Type::Enum
+
+                SPEND = :SPEND
+                QUANTITY = :QUANTITY
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
             end
 
             # @see MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit#commit_duration

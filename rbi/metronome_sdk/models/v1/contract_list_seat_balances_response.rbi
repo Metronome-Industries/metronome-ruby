@@ -188,6 +188,8 @@ module MetronomeSDK
             sig { returns(Float) }
             attr_accessor :balance
 
+            # This ID identifies the credit type for the balance. Quantity-based balances
+            # return the null credit type UUID.
             sig { returns(String) }
             attr_accessor :credit_type_id
 
@@ -196,21 +198,47 @@ module MetronomeSDK
             sig { returns(Float) }
             attr_accessor :starting_balance
 
+            # Indicates how the balance is drawn down. `SPEND` deducts the dollar cost of
+            # usage. `QUANTITY` deducts the number of units used.
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Balance::AccessType::TaggedSymbol
+                )
+              )
+            end
+            attr_reader :access_type
+
+            sig do
+              params(
+                access_type:
+                  MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Balance::AccessType::OrSymbol
+              ).void
+            end
+            attr_writer :access_type
+
             sig do
               params(
                 balance: Float,
                 credit_type_id: String,
-                starting_balance: Float
+                starting_balance: Float,
+                access_type:
+                  MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Balance::AccessType::OrSymbol
               ).returns(T.attached_class)
             end
             def self.new(
               # The total balance across all commits and credits for this seat, of this credit
               # type.
               balance:,
+              # This ID identifies the credit type for the balance. Quantity-based balances
+              # return the null credit type UUID.
               credit_type_id:,
               # The total initial balances of all commits and credits for this seat, of this
               # credit type.
-              starting_balance:
+              starting_balance:,
+              # Indicates how the balance is drawn down. `SPEND` deducts the dollar cost of
+              # usage. `QUANTITY` deducts the number of units used.
+              access_type: nil
             )
             end
 
@@ -219,11 +247,49 @@ module MetronomeSDK
                 {
                   balance: Float,
                   credit_type_id: String,
-                  starting_balance: Float
+                  starting_balance: Float,
+                  access_type:
+                    MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Balance::AccessType::TaggedSymbol
                 }
               )
             end
             def to_hash
+            end
+
+            # Indicates how the balance is drawn down. `SPEND` deducts the dollar cost of
+            # usage. `QUANTITY` deducts the number of units used.
+            module AccessType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Balance::AccessType
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              SPEND =
+                T.let(
+                  :SPEND,
+                  MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Balance::AccessType::TaggedSymbol
+                )
+              QUANTITY =
+                T.let(
+                  :QUANTITY,
+                  MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Balance::AccessType::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Balance::AccessType::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
             end
           end
 
@@ -247,6 +313,25 @@ module MetronomeSDK
             # The datetime when the commit becomes active
             sig { returns(Time) }
             attr_accessor :start_date
+
+            # Indicates how the balance is drawn down. `SPEND` deducts the dollar cost of
+            # usage. `QUANTITY` deducts the number of units used.
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Commit::AccessType::TaggedSymbol
+                )
+              )
+            end
+            attr_reader :access_type
+
+            sig do
+              params(
+                access_type:
+                  MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Commit::AccessType::OrSymbol
+              ).void
+            end
+            attr_writer :access_type
 
             # The credit type for this commit. Quantity-based commits return the null credit
             # type UUID.
@@ -288,6 +373,8 @@ module MetronomeSDK
                 id: String,
                 balance: Float,
                 start_date: Time,
+                access_type:
+                  MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Commit::AccessType::OrSymbol,
                 credit_type_id: String,
                 end_date: T.nilable(Time),
                 ledger_entries:
@@ -303,6 +390,9 @@ module MetronomeSDK
               balance:,
               # The datetime when the commit becomes active
               start_date:,
+              # Indicates how the balance is drawn down. `SPEND` deducts the dollar cost of
+              # usage. `QUANTITY` deducts the number of units used.
+              access_type: nil,
               # The credit type for this commit. Quantity-based commits return the null credit
               # type UUID.
               credit_type_id: nil,
@@ -320,6 +410,8 @@ module MetronomeSDK
                   id: String,
                   balance: Float,
                   start_date: Time,
+                  access_type:
+                    MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Commit::AccessType::TaggedSymbol,
                   credit_type_id: String,
                   end_date: T.nilable(Time),
                   ledger_entries:
@@ -330,6 +422,42 @@ module MetronomeSDK
               )
             end
             def to_hash
+            end
+
+            # Indicates how the balance is drawn down. `SPEND` deducts the dollar cost of
+            # usage. `QUANTITY` deducts the number of units used.
+            module AccessType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Commit::AccessType
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              SPEND =
+                T.let(
+                  :SPEND,
+                  MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Commit::AccessType::TaggedSymbol
+                )
+              QUANTITY =
+                T.let(
+                  :QUANTITY,
+                  MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Commit::AccessType::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Commit::AccessType::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
             end
 
             class LedgerEntry < MetronomeSDK::Internal::Type::BaseModel
@@ -476,6 +604,25 @@ module MetronomeSDK
             sig { returns(Time) }
             attr_accessor :start_date
 
+            # Indicates how the balance is drawn down. `SPEND` deducts the dollar cost of
+            # usage. `QUANTITY` deducts the number of units used.
+            sig do
+              returns(
+                T.nilable(
+                  MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Credit::AccessType::TaggedSymbol
+                )
+              )
+            end
+            attr_reader :access_type
+
+            sig do
+              params(
+                access_type:
+                  MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Credit::AccessType::OrSymbol
+              ).void
+            end
+            attr_writer :access_type
+
             # The credit type for this credit. Quantity-based credits return the null credit
             # type UUID.
             sig { returns(T.nilable(String)) }
@@ -516,6 +663,8 @@ module MetronomeSDK
                 id: String,
                 balance: Float,
                 start_date: Time,
+                access_type:
+                  MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Credit::AccessType::OrSymbol,
                 credit_type_id: String,
                 end_date: T.nilable(Time),
                 ledger_entries:
@@ -531,6 +680,9 @@ module MetronomeSDK
               balance:,
               # The datetime when the credit becomes active
               start_date:,
+              # Indicates how the balance is drawn down. `SPEND` deducts the dollar cost of
+              # usage. `QUANTITY` deducts the number of units used.
+              access_type: nil,
               # The credit type for this credit. Quantity-based credits return the null credit
               # type UUID.
               credit_type_id: nil,
@@ -548,6 +700,8 @@ module MetronomeSDK
                   id: String,
                   balance: Float,
                   start_date: Time,
+                  access_type:
+                    MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Credit::AccessType::TaggedSymbol,
                   credit_type_id: String,
                   end_date: T.nilable(Time),
                   ledger_entries:
@@ -558,6 +712,42 @@ module MetronomeSDK
               )
             end
             def to_hash
+            end
+
+            # Indicates how the balance is drawn down. `SPEND` deducts the dollar cost of
+            # usage. `QUANTITY` deducts the number of units used.
+            module AccessType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Credit::AccessType
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              SPEND =
+                T.let(
+                  :SPEND,
+                  MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Credit::AccessType::TaggedSymbol
+                )
+              QUANTITY =
+                T.let(
+                  :QUANTITY,
+                  MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Credit::AccessType::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Credit::AccessType::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
             end
 
             class LedgerEntry < MetronomeSDK::Internal::Type::BaseModel

@@ -656,13 +656,28 @@ module MetronomeSDK
               #   @return [Symbol, MetronomeSDK::Models::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::Type]
               required :type, enum: -> { MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::Type }
 
-              # @!method initialize(id:, type:)
+              # @!attribute access_type
+              #   Indicates how the balance is drawn down. `SPEND` deducts the dollar cost of
+              #   usage. `QUANTITY` deducts the number of units used.
+              #
+              #   @return [Symbol, MetronomeSDK::Models::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::AccessType, nil]
+              optional :access_type,
+                       enum: -> { MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::AccessType }
+
+              # @!method initialize(id:, type:, access_type: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {MetronomeSDK::Models::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit}
+              #   for more details.
+              #
               #   Details about the credit or commit that was applied to this line item. Only
               #   present on line items with product of `USAGE`, `SUBSCRIPTION`, `COMPOSITE`, or
               #   `CPU_CONVERSION` types.
               #
               #   @param id [String]
+              #
               #   @param type [Symbol, MetronomeSDK::Models::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::Type]
+              #
+              #   @param access_type [Symbol, MetronomeSDK::Models::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::AccessType] Indicates how the balance is drawn down. `SPEND` deducts the dollar cost of usag
 
               # @see MetronomeSDK::Models::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit#type
               module Type
@@ -671,6 +686,20 @@ module MetronomeSDK
                 PREPAID = :PREPAID
                 POSTPAID = :POSTPAID
                 CREDIT = :CREDIT
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
+
+              # Indicates how the balance is drawn down. `SPEND` deducts the dollar cost of
+              # usage. `QUANTITY` deducts the number of units used.
+              #
+              # @see MetronomeSDK::Models::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit#access_type
+              module AccessType
+                extend MetronomeSDK::Internal::Type::Enum
+
+                SPEND = :SPEND
+                QUANTITY = :QUANTITY
 
                 # @!method self.values
                 #   @return [Array<Symbol>]

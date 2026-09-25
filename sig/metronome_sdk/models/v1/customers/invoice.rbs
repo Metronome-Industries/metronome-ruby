@@ -577,7 +577,8 @@ module MetronomeSDK
             type applied_commit_or_credit =
               {
                 id: String,
-                type: MetronomeSDK::Models::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::type_
+                type: MetronomeSDK::Models::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::type_,
+                access_type: MetronomeSDK::Models::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::access_type
               }
 
             class AppliedCommitOrCredit < MetronomeSDK::Internal::Type::BaseModel
@@ -585,14 +586,22 @@ module MetronomeSDK
 
               attr_accessor type: MetronomeSDK::Models::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::type_
 
+              attr_reader access_type: MetronomeSDK::Models::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::access_type?
+
+              def access_type=: (
+                MetronomeSDK::Models::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::access_type
+              ) -> MetronomeSDK::Models::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::access_type
+
               def initialize: (
                 id: String,
-                type: MetronomeSDK::Models::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::type_
+                type: MetronomeSDK::Models::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::type_,
+                ?access_type: MetronomeSDK::Models::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::access_type
               ) -> void
 
               def to_hash: -> {
                 id: String,
-                type: MetronomeSDK::Models::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::type_
+                type: MetronomeSDK::Models::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::type_,
+                access_type: MetronomeSDK::Models::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::access_type
               }
 
               type type_ = :PREPAID | :POSTPAID | :CREDIT
@@ -605,6 +614,17 @@ module MetronomeSDK
                 CREDIT: :CREDIT
 
                 def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::type_]
+              end
+
+              type access_type = :SPEND | :QUANTITY
+
+              module AccessType
+                extend MetronomeSDK::Internal::Type::Enum
+
+                SPEND: :SPEND
+                QUANTITY: :QUANTITY
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::access_type]
               end
             end
 

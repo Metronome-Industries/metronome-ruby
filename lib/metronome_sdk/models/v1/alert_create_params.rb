@@ -28,10 +28,25 @@ module MetronomeSDK
         #   @return [Float]
         required :threshold, Float
 
+        # @!attribute access_type
+        #   Filters the notification to commits/credits with this access type. Only
+        #   supported for `low_remaining_commit_balance_reached`,
+        #   `low_remaining_commit_percentage_reached`,
+        #   `low_remaining_contract_credit_and_commit_balance_reached`,
+        #   `low_remaining_contract_credit_and_commit_percentage_reached`,
+        #   `low_remaining_contract_credit_balance_reached`,
+        #   `low_remaining_contract_credit_percentage_reached`, and
+        #   `low_remaining_seat_balance_reached` notifications. Credit type cannot be
+        #   specified if using QUANTITY access type.
+        #
+        #   @return [Symbol, MetronomeSDK::Models::V1::AlertCreateParams::AccessType, nil]
+        optional :access_type, enum: -> { MetronomeSDK::V1::AlertCreateParams::AccessType }
+
         # @!attribute alert_specifiers
-        #   Can be used with only `low_remaining_contract_credit_and_commit_balance_reached`
-        #   notifications. Defines the balances that are considered when evaluating the
-        #   alert.
+        #   Can be used only with `low_remaining_contract_credit_and_commit_balance_reached`
+        #   and `low_remaining_contract_credit_and_commit_percentage_reached` notifications.
+        #   Defines the commits and credits used to calculate the remaining balance or
+        #   percentage.
         #
         #   @return [Array<MetronomeSDK::Models::V1::AlertCreateParams::AlertSpecifier>, nil]
         optional :alert_specifiers,
@@ -121,7 +136,7 @@ module MetronomeSDK
         #   @return [String, nil]
         optional :uniqueness_key, String
 
-        # @!method initialize(alert_type:, name:, threshold:, alert_specifiers: nil, billable_metric_id: nil, credit_grant_type_filters: nil, credit_type_id: nil, custom_field_filters: nil, customer_id: nil, evaluate_on_create: nil, group_values: nil, invoice_types_filter: nil, plan_id: nil, seat_filter: nil, uniqueness_key: nil, request_options: {})
+        # @!method initialize(alert_type:, name:, threshold:, access_type: nil, alert_specifiers: nil, billable_metric_id: nil, credit_grant_type_filters: nil, credit_type_id: nil, custom_field_filters: nil, customer_id: nil, evaluate_on_create: nil, group_values: nil, invoice_types_filter: nil, plan_id: nil, seat_filter: nil, uniqueness_key: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::V1::AlertCreateParams} for more details.
         #
@@ -131,7 +146,9 @@ module MetronomeSDK
         #
         #   @param threshold [Float] Threshold value of the notification policy. Depending upon the notification typ
         #
-        #   @param alert_specifiers [Array<MetronomeSDK::Models::V1::AlertCreateParams::AlertSpecifier>] Can be used with only `low_remaining_contract_credit_and_commit_balance_reached`
+        #   @param access_type [Symbol, MetronomeSDK::Models::V1::AlertCreateParams::AccessType] Filters the notification to commits/credits with this access type. Only supporte
+        #
+        #   @param alert_specifiers [Array<MetronomeSDK::Models::V1::AlertCreateParams::AlertSpecifier>] Can be used only with `low_remaining_contract_credit_and_commit_balance_reached`
         #
         #   @param billable_metric_id [String] For threshold notifications of type `usage_threshold_reached`, specifies which b
         #
@@ -176,8 +193,29 @@ module MetronomeSDK
           LOW_REMAINING_CONTRACT_CREDIT_PERCENTAGE_REACHED = :low_remaining_contract_credit_percentage_reached
           LOW_REMAINING_CONTRACT_CREDIT_AND_COMMIT_BALANCE_REACHED =
             :low_remaining_contract_credit_and_commit_balance_reached
+          LOW_REMAINING_CONTRACT_CREDIT_AND_COMMIT_PERCENTAGE_REACHED =
+            :low_remaining_contract_credit_and_commit_percentage_reached
           INVOICE_TOTAL_REACHED = :invoice_total_reached
           LOW_REMAINING_SEAT_BALANCE_REACHED = :low_remaining_seat_balance_reached
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
+        # Filters the notification to commits/credits with this access type. Only
+        # supported for `low_remaining_commit_balance_reached`,
+        # `low_remaining_commit_percentage_reached`,
+        # `low_remaining_contract_credit_and_commit_balance_reached`,
+        # `low_remaining_contract_credit_and_commit_percentage_reached`,
+        # `low_remaining_contract_credit_balance_reached`,
+        # `low_remaining_contract_credit_percentage_reached`, and
+        # `low_remaining_seat_balance_reached` notifications. Credit type cannot be
+        # specified if using QUANTITY access type.
+        module AccessType
+          extend MetronomeSDK::Internal::Type::Enum
+
+          SPEND = :SPEND
+          QUANTITY = :QUANTITY
 
           # @!method self.values
           #   @return [Array<Symbol>]

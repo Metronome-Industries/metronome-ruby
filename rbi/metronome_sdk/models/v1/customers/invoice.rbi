@@ -1112,6 +1112,25 @@ module MetronomeSDK
               end
               attr_accessor :type
 
+              # Indicates how the balance is drawn down. `SPEND` deducts the dollar cost of
+              # usage. `QUANTITY` deducts the number of units used.
+              sig do
+                returns(
+                  T.nilable(
+                    MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::AccessType::TaggedSymbol
+                  )
+                )
+              end
+              attr_reader :access_type
+
+              sig do
+                params(
+                  access_type:
+                    MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::AccessType::OrSymbol
+                ).void
+              end
+              attr_writer :access_type
+
               # Details about the credit or commit that was applied to this line item. Only
               # present on line items with product of `USAGE`, `SUBSCRIPTION`, `COMPOSITE`, or
               # `CPU_CONVERSION` types.
@@ -1119,10 +1138,18 @@ module MetronomeSDK
                 params(
                   id: String,
                   type:
-                    MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::Type::OrSymbol
+                    MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::Type::OrSymbol,
+                  access_type:
+                    MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::AccessType::OrSymbol
                 ).returns(T.attached_class)
               end
-              def self.new(id:, type:)
+              def self.new(
+                id:,
+                type:,
+                # Indicates how the balance is drawn down. `SPEND` deducts the dollar cost of
+                # usage. `QUANTITY` deducts the number of units used.
+                access_type: nil
+              )
               end
 
               sig do
@@ -1130,7 +1157,9 @@ module MetronomeSDK
                   {
                     id: String,
                     type:
-                      MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::Type::TaggedSymbol
+                      MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::Type::TaggedSymbol,
+                    access_type:
+                      MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::AccessType::TaggedSymbol
                   }
                 )
               end
@@ -1169,6 +1198,42 @@ module MetronomeSDK
                   override.returns(
                     T::Array[
                       MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::Type::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+
+              # Indicates how the balance is drawn down. `SPEND` deducts the dollar cost of
+              # usage. `QUANTITY` deducts the number of units used.
+              module AccessType
+                extend MetronomeSDK::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::AccessType
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                SPEND =
+                  T.let(
+                    :SPEND,
+                    MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::AccessType::TaggedSymbol
+                  )
+                QUANTITY =
+                  T.let(
+                    :QUANTITY,
+                    MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::AccessType::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::AccessType::TaggedSymbol
                     ]
                   )
                 end

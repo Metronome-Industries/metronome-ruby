@@ -561,18 +561,33 @@ module MetronomeSDK
             required :schedule_items,
                      -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractCreateParams::Commit::AccessSchedule::ScheduleItem] }
 
+            # @!attribute access_type
+            #   Determines how the balance is drawn down. `SPEND` deducts the dollar cost of
+            #   usage. `QUANTITY` deducts the number of units used. Defaults to `SPEND` if
+            #   omitted.
+            #
+            #   @return [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::Commit::AccessSchedule::AccessType, nil]
+            optional :access_type,
+                     enum: -> { MetronomeSDK::V1::ContractCreateParams::Commit::AccessSchedule::AccessType }
+
             # @!attribute credit_type_id
             #   Defaults to USD (cents) if not passed
             #
             #   @return [String, nil]
             optional :credit_type_id, String
 
-            # @!method initialize(schedule_items:, credit_type_id: nil)
+            # @!method initialize(schedule_items:, access_type: nil, credit_type_id: nil)
+            #   Some parameter documentations has been truncated, see
+            #   {MetronomeSDK::Models::V1::ContractCreateParams::Commit::AccessSchedule} for
+            #   more details.
+            #
             #   Required: Schedule for distributing the commit to the customer. For "POSTPAID"
             #   commits only one schedule item is allowed and amount must match invoice_schedule
             #   total.
             #
             #   @param schedule_items [Array<MetronomeSDK::Models::V1::ContractCreateParams::Commit::AccessSchedule::ScheduleItem>]
+            #
+            #   @param access_type [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::Commit::AccessSchedule::AccessType] Determines how the balance is drawn down. `SPEND` deducts the dollar cost of usa
             #
             #   @param credit_type_id [String] Defaults to USD (cents) if not passed
 
@@ -600,6 +615,21 @@ module MetronomeSDK
               #   @param ending_before [Time] RFC 3339 timestamp (exclusive)
               #
               #   @param starting_at [Time] RFC 3339 timestamp (inclusive)
+            end
+
+            # Determines how the balance is drawn down. `SPEND` deducts the dollar cost of
+            # usage. `QUANTITY` deducts the number of units used. Defaults to `SPEND` if
+            # omitted.
+            #
+            # @see MetronomeSDK::Models::V1::ContractCreateParams::Commit::AccessSchedule#access_type
+            module AccessType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              SPEND = :SPEND
+              QUANTITY = :QUANTITY
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
           end
 
@@ -949,16 +979,31 @@ module MetronomeSDK
             required :schedule_items,
                      -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::ContractCreateParams::Credit::AccessSchedule::ScheduleItem] }
 
+            # @!attribute access_type
+            #   Determines how the balance is drawn down. `SPEND` deducts the dollar cost of
+            #   usage. `QUANTITY` deducts the number of units used. Defaults to `SPEND` if
+            #   omitted.
+            #
+            #   @return [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::Credit::AccessSchedule::AccessType, nil]
+            optional :access_type,
+                     enum: -> { MetronomeSDK::V1::ContractCreateParams::Credit::AccessSchedule::AccessType }
+
             # @!attribute credit_type_id
             #   Defaults to USD (cents) if not passed
             #
             #   @return [String, nil]
             optional :credit_type_id, String
 
-            # @!method initialize(schedule_items:, credit_type_id: nil)
+            # @!method initialize(schedule_items:, access_type: nil, credit_type_id: nil)
+            #   Some parameter documentations has been truncated, see
+            #   {MetronomeSDK::Models::V1::ContractCreateParams::Credit::AccessSchedule} for
+            #   more details.
+            #
             #   Schedule for distributing the credit to the customer.
             #
             #   @param schedule_items [Array<MetronomeSDK::Models::V1::ContractCreateParams::Credit::AccessSchedule::ScheduleItem>]
+            #
+            #   @param access_type [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::Credit::AccessSchedule::AccessType] Determines how the balance is drawn down. `SPEND` deducts the dollar cost of usa
             #
             #   @param credit_type_id [String] Defaults to USD (cents) if not passed
 
@@ -986,6 +1031,21 @@ module MetronomeSDK
               #   @param ending_before [Time] RFC 3339 timestamp (exclusive)
               #
               #   @param starting_at [Time] RFC 3339 timestamp (inclusive)
+            end
+
+            # Determines how the balance is drawn down. `SPEND` deducts the dollar cost of
+            # usage. `QUANTITY` deducts the number of units used. Defaults to `SPEND` if
+            # omitted.
+            #
+            # @see MetronomeSDK::Models::V1::ContractCreateParams::Credit::AccessSchedule#access_type
+            module AccessType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              SPEND = :SPEND
+              QUANTITY = :QUANTITY
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
           end
 
@@ -2002,6 +2062,14 @@ module MetronomeSDK
             #   @return [Float]
             required :unit_price, Float
 
+            # @!attribute access_type
+            #   Indicates how the balance of child commits is drawn down. `SPEND` deducts the
+            #   dollar cost of usage. `QUANTITY` deducts the number of units used.
+            #
+            #   @return [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::AccessAmount::AccessType, nil]
+            optional :access_type,
+                     enum: -> { MetronomeSDK::V1::ContractCreateParams::RecurringCommit::AccessAmount::AccessType }
+
             # @!attribute credit_type_id
             #   Defaults to USD (cents) if not passed
             #
@@ -2015,7 +2083,7 @@ module MetronomeSDK
             #   @return [Float, nil]
             optional :quantity, Float
 
-            # @!method initialize(unit_price:, credit_type_id: nil, quantity: nil)
+            # @!method initialize(unit_price:, access_type: nil, credit_type_id: nil, quantity: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::AccessAmount}
             #   for more details.
@@ -2024,9 +2092,25 @@ module MetronomeSDK
             #
             #   @param unit_price [Float]
             #
+            #   @param access_type [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::AccessAmount::AccessType] Indicates how the balance of child commits is drawn down. `SPEND` deducts the do
+            #
             #   @param credit_type_id [String] Defaults to USD (cents) if not passed
             #
             #   @param quantity [Float] This field is required unless a subscription is attached via `subscription_confi
+
+            # Indicates how the balance of child commits is drawn down. `SPEND` deducts the
+            # dollar cost of usage. `QUANTITY` deducts the number of units used.
+            #
+            # @see MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit::AccessAmount#access_type
+            module AccessType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              SPEND = :SPEND
+              QUANTITY = :QUANTITY
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
           end
 
           # @see MetronomeSDK::Models::V1::ContractCreateParams::RecurringCommit#commit_duration
@@ -2486,6 +2570,14 @@ module MetronomeSDK
             #   @return [Float]
             required :unit_price, Float
 
+            # @!attribute access_type
+            #   Indicates how the balance of child commits is drawn down. `SPEND` deducts the
+            #   dollar cost of usage. `QUANTITY` deducts the number of units used.
+            #
+            #   @return [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::AccessAmount::AccessType, nil]
+            optional :access_type,
+                     enum: -> { MetronomeSDK::V1::ContractCreateParams::RecurringCredit::AccessAmount::AccessType }
+
             # @!attribute credit_type_id
             #   Defaults to USD (cents) if not passed
             #
@@ -2499,7 +2591,7 @@ module MetronomeSDK
             #   @return [Float, nil]
             optional :quantity, Float
 
-            # @!method initialize(unit_price:, credit_type_id: nil, quantity: nil)
+            # @!method initialize(unit_price:, access_type: nil, credit_type_id: nil, quantity: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::AccessAmount}
             #   for more details.
@@ -2508,9 +2600,25 @@ module MetronomeSDK
             #
             #   @param unit_price [Float]
             #
+            #   @param access_type [Symbol, MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::AccessAmount::AccessType] Indicates how the balance of child commits is drawn down. `SPEND` deducts the do
+            #
             #   @param credit_type_id [String] Defaults to USD (cents) if not passed
             #
             #   @param quantity [Float] This field is required unless a subscription is attached via `subscription_confi
+
+            # Indicates how the balance of child commits is drawn down. `SPEND` deducts the
+            # dollar cost of usage. `QUANTITY` deducts the number of units used.
+            #
+            # @see MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit::AccessAmount#access_type
+            module AccessType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              SPEND = :SPEND
+              QUANTITY = :QUANTITY
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
           end
 
           # @see MetronomeSDK::Models::V1::ContractCreateParams::RecurringCredit#commit_duration

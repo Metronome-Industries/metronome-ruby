@@ -613,6 +613,8 @@ module MetronomeSDK
         sig do
           params(
             customer_id: String,
+            access_type:
+              MetronomeSDK::V1::ContractGetNetBalanceParams::AccessType::OrSymbol,
             credit_type_id: String,
             filters: T::Array[MetronomeSDK::BalanceFilter::OrHash],
             invoice_inclusion_mode:
@@ -623,6 +625,9 @@ module MetronomeSDK
         def get_net_balance(
           # The ID of the customer.
           customer_id:,
+          # Filters balances by how they are drawn down. Defaults to `SPEND`. If set to
+          # `QUANTITY`, `credit_type_id` must not be provided.
+          access_type: nil,
           # The ID of the credit type (can be fiat or a custom pricing unit) to get the
           # balance for. Defaults to USD (cents) if not specified.
           credit_type_id: nil,
@@ -744,6 +749,8 @@ module MetronomeSDK
           params(
             customer_id: String,
             id: String,
+            access_type:
+              MetronomeSDK::V1::ContractListBalancesParams::AccessType::OrSymbol,
             covering_date: Time,
             effective_before: Time,
             exclude_zero_balances: T::Boolean,
@@ -764,6 +771,9 @@ module MetronomeSDK
         def list_balances(
           customer_id:,
           id: nil,
+          # Filters balances by how they are drawn down. `SPEND` deducts the dollar cost of
+          # usage. `QUANTITY` deducts the number of units used.
+          access_type: nil,
           # Return only balances that have access schedules that "cover" the provided date
           covering_date: nil,
           # Include only balances that have any access before the provided date (exclusive)

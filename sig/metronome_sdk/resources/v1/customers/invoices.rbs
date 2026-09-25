@@ -15,6 +15,7 @@ module MetronomeSDK
             ?contract_id: String,
             ?credit_type_id: String,
             ?ending_before: Time,
+            ?include_retired_commit_invoices: bool,
             ?limit: Integer,
             ?next_page: String,
             ?skip_zero_qty_line_items: bool,

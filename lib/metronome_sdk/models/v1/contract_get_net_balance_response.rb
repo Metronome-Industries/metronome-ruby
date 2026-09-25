@@ -23,8 +23,9 @@ module MetronomeSDK
           required :balance, Float
 
           # @!attribute credit_type_id
-          #   The ID of the credit type (can be fiat or a custom pricing unit) that the
-          #   balance is for.
+          #   This ID identifies the credit type for the balance. The credit type can be fiat
+          #   or a custom pricing unit. Quantity-based balances return the null credit type
+          #   UUID.
           #
           #   @return [String]
           required :credit_type_id, String
@@ -36,7 +37,7 @@ module MetronomeSDK
           #
           #   @param balance [Float] The combined net balance that the customer has access to use at this moment acro
           #
-          #   @param credit_type_id [String] The ID of the credit type (can be fiat or a custom pricing unit) that the balanc
+          #   @param credit_type_id [String] This ID identifies the credit type for the balance. The credit type can be fiat
         end
       end
     end

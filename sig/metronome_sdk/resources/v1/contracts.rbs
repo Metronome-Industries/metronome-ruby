@@ -113,6 +113,7 @@ module MetronomeSDK
 
         def get_net_balance: (
           customer_id: String,
+          ?access_type: MetronomeSDK::Models::V1::ContractGetNetBalanceParams::access_type,
           ?credit_type_id: String,
           ?filters: ::Array[MetronomeSDK::BalanceFilter],
           ?invoice_inclusion_mode: MetronomeSDK::Models::V1::ContractGetNetBalanceParams::invoice_inclusion_mode,
@@ -134,6 +135,7 @@ module MetronomeSDK
         def list_balances: (
           customer_id: String,
           ?id: String,
+          ?access_type: MetronomeSDK::Models::V1::ContractListBalancesParams::access_type,
           ?covering_date: Time,
           ?effective_before: Time,
           ?exclude_zero_balances: bool,

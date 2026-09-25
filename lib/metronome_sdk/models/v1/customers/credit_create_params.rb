@@ -149,16 +149,31 @@ module MetronomeSDK
             required :schedule_items,
                      -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::V1::Customers::CreditCreateParams::AccessSchedule::ScheduleItem] }
 
+            # @!attribute access_type
+            #   Determines how the balance is drawn down. `SPEND` deducts the dollar cost of
+            #   usage. `QUANTITY` deducts the number of units used. Defaults to `SPEND` if
+            #   omitted.
+            #
+            #   @return [Symbol, MetronomeSDK::Models::V1::Customers::CreditCreateParams::AccessSchedule::AccessType, nil]
+            optional :access_type,
+                     enum: -> { MetronomeSDK::V1::Customers::CreditCreateParams::AccessSchedule::AccessType }
+
             # @!attribute credit_type_id
             #   Defaults to USD (cents) if not passed
             #
             #   @return [String, nil]
             optional :credit_type_id, String
 
-            # @!method initialize(schedule_items:, credit_type_id: nil)
+            # @!method initialize(schedule_items:, access_type: nil, credit_type_id: nil)
+            #   Some parameter documentations has been truncated, see
+            #   {MetronomeSDK::Models::V1::Customers::CreditCreateParams::AccessSchedule} for
+            #   more details.
+            #
             #   Schedule for distributing the credit to the customer.
             #
             #   @param schedule_items [Array<MetronomeSDK::Models::V1::Customers::CreditCreateParams::AccessSchedule::ScheduleItem>]
+            #
+            #   @param access_type [Symbol, MetronomeSDK::Models::V1::Customers::CreditCreateParams::AccessSchedule::AccessType] Determines how the balance is drawn down. `SPEND` deducts the dollar cost of usa
             #
             #   @param credit_type_id [String] Defaults to USD (cents) if not passed
 
@@ -186,6 +201,21 @@ module MetronomeSDK
               #   @param ending_before [Time] RFC 3339 timestamp (exclusive)
               #
               #   @param starting_at [Time] RFC 3339 timestamp (inclusive)
+            end
+
+            # Determines how the balance is drawn down. `SPEND` deducts the dollar cost of
+            # usage. `QUANTITY` deducts the number of units used. Defaults to `SPEND` if
+            # omitted.
+            #
+            # @see MetronomeSDK::Models::V1::Customers::CreditCreateParams::AccessSchedule#access_type
+            module AccessType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              SPEND = :SPEND
+              QUANTITY = :QUANTITY
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
           end
 

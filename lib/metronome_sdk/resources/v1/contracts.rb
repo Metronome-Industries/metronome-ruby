@@ -555,9 +555,11 @@ module MetronomeSDK
         # - **Credit types**: If `credit_type_id` is not specified, the balance defaults
         #   to USD (cents)
         #
-        # @overload get_net_balance(customer_id:, credit_type_id: nil, filters: nil, invoice_inclusion_mode: nil, request_options: {})
+        # @overload get_net_balance(customer_id:, access_type: nil, credit_type_id: nil, filters: nil, invoice_inclusion_mode: nil, request_options: {})
         #
         # @param customer_id [String] The ID of the customer.
+        #
+        # @param access_type [Symbol, MetronomeSDK::Models::V1::ContractGetNetBalanceParams::AccessType] Filters balances by how they are drawn down. Defaults to `SPEND`. If set to `QUA
         #
         # @param credit_type_id [String] The ID of the credit type (can be fiat or a custom pricing unit) to get the bala
         #
@@ -687,11 +689,13 @@ module MetronomeSDK
         #   segments
         # - Manual adjustments: Includes all manual ledger entries, even future-dated ones
         #
-        # @overload list_balances(customer_id:, id: nil, covering_date: nil, effective_before: nil, exclude_zero_balances: nil, include_archived: nil, include_balance: nil, include_contract_balances: nil, include_ledgers: nil, limit: nil, next_page: nil, starting_at: nil, request_options: {})
+        # @overload list_balances(customer_id:, id: nil, access_type: nil, covering_date: nil, effective_before: nil, exclude_zero_balances: nil, include_archived: nil, include_balance: nil, include_contract_balances: nil, include_ledgers: nil, limit: nil, next_page: nil, starting_at: nil, request_options: {})
         #
         # @param customer_id [String]
         #
         # @param id [String]
+        #
+        # @param access_type [Symbol, MetronomeSDK::Models::V1::ContractListBalancesParams::AccessType] Filters balances by how they are drawn down. `SPEND` deducts the dollar cost of
         #
         # @param covering_date [Time] Return only balances that have access schedules that "cover" the provided date
         #
