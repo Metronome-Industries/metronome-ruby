@@ -75,7 +75,7 @@ module MetronomeSDK
           #
           # @param customer_id [String] The Metronome ID of the customer
           #
-          # @param alert_specifiers [Array<MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::AlertSpecifier>] Can be used with only `low_remaining_contract_credit_and_commit_balance_reached`
+          # @param alert_specifiers [Array<MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::AlertSpecifier>] Can be used only with `low_remaining_contract_credit_and_commit_balance_reached`
           #
           # @param group_values [Array<MetronomeSDK::Models::V1::Customers::AlertRetrieveParams::GroupValue>] Only present for `spend_threshold_reached` notifications. Retrieve the notificat
           #

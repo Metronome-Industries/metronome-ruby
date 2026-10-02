@@ -109,18 +109,13 @@ module MetronomeSDK
           optional :aws_region, enum: -> { MetronomeSDK::V1::CustomerCreateParams::BillingConfig::AwsRegion }
 
           # @!attribute stripe_collection_method
-          #   The collection method for the customer's invoices. NOTE:
-          #   `auto_charge_payment_intent` and `manually_charge_payment_intent` are in beta.
+          #   The collection method for the customer's invoices.
           #
           #   @return [Symbol, MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig::StripeCollectionMethod, nil]
           optional :stripe_collection_method,
                    enum: -> { MetronomeSDK::V1::CustomerCreateParams::BillingConfig::StripeCollectionMethod }
 
           # @!method initialize(billing_provider_customer_id:, billing_provider_type:, aws_customer_account_id: nil, aws_customer_id: nil, aws_is_subscription_product: nil, aws_product_code: nil, aws_region: nil, stripe_collection_method: nil)
-          #   Some parameter documentations has been truncated, see
-          #   {MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig} for more
-          #   details.
-          #
           #   @param billing_provider_customer_id [String]
           #
           #   @param billing_provider_type [Symbol, MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig::BillingProviderType]
@@ -189,8 +184,7 @@ module MetronomeSDK
             #   @return [Array<Symbol>]
           end
 
-          # The collection method for the customer's invoices. NOTE:
-          # `auto_charge_payment_intent` and `manually_charge_payment_intent` are in beta.
+          # The collection method for the customer's invoices.
           #
           # @see MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig#stripe_collection_method
           module StripeCollectionMethod
@@ -198,8 +192,6 @@ module MetronomeSDK
 
             CHARGE_AUTOMATICALLY = :charge_automatically
             SEND_INVOICE = :send_invoice
-            AUTO_CHARGE_PAYMENT_INTENT = :auto_charge_payment_intent
-            MANUALLY_CHARGE_PAYMENT_INTENT = :manually_charge_payment_intent
 
             # @!method self.values
             #   @return [Array<Symbol>]
@@ -241,8 +233,7 @@ module MetronomeSDK
           # @!attribute tax_provider
           #   Specifies which tax provider Metronome should use for tax calculation when
           #   billing through Stripe. This is only supported for Stripe billing provider
-          #   configurations with auto_charge_payment_intent or manual_charge_payment_intent
-          #   collection methods.
+          #   configurations.
           #
           #   @return [Symbol, MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::TaxProvider, nil]
           optional :tax_provider,
@@ -297,8 +288,7 @@ module MetronomeSDK
 
           # Specifies which tax provider Metronome should use for tax calculation when
           # billing through Stripe. This is only supported for Stripe billing provider
-          # configurations with auto_charge_payment_intent or manual_charge_payment_intent
-          # collection methods.
+          # configurations.
           #
           # @see MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration#tax_provider
           module TaxProvider

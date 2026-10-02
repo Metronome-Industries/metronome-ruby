@@ -202,6 +202,8 @@ module MetronomeSDK
           sig do
             params(
               customer_id: String,
+              access_type:
+                MetronomeSDK::V1::Customers::CommitListParams::AccessType::OrSymbol,
               commit_id: String,
               covering_date: Time,
               effective_before: Time,
@@ -219,6 +221,9 @@ module MetronomeSDK
           end
           def list(
             customer_id:,
+            # Filters commits by how their balances are drawn down. `SPEND` deducts the dollar
+            # cost of usage. `QUANTITY` deducts the number of units used.
+            access_type: nil,
             commit_id: nil,
             # Include only commits that have access schedules that "cover" the provided date
             covering_date: nil,

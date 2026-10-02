@@ -6,6 +6,29 @@ module MetronomeSDK
       # Use these endpoints to configure a billing API key, a webhook secret, or invoice
       # finalization behavior.
       class PricingUnits
+        # Create a custom pricing unit. Custom pricing units can be used to charge for
+        # usage in a non-fiat pricing unit, for example AI credits.
+        #
+        # @overload create(name:, request_options: {})
+        #
+        # @param name [String] The name of the custom pricing unit. This will appear on invoices.
+        #
+        # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [MetronomeSDK::Models::V1::PricingUnitCreateResponse]
+        #
+        # @see MetronomeSDK::Models::V1::PricingUnitCreateParams
+        def create(params)
+          parsed, options = MetronomeSDK::V1::PricingUnitCreateParams.dump_request(params)
+          @client.request(
+            method: :post,
+            path: "v1/credit-types/create",
+            body: parsed,
+            model: MetronomeSDK::Models::V1::PricingUnitCreateResponse,
+            options: options
+          )
+        end
+
         # List all pricing units. All fiat currency types (for example, USD or GBP) will
         # be included, as well as any custom pricing units that were configured. Custom
         # pricing units can be used to charge for usage in a non-fiat pricing unit, for
@@ -33,6 +56,28 @@ module MetronomeSDK
             query: query,
             page: MetronomeSDK::Internal::CursorPage,
             model: MetronomeSDK::Models::V1::PricingUnitListResponse,
+            options: options
+          )
+        end
+
+        # Archive a custom pricing unit. Once archived, it will no longer appear in
+        # pricing unit selectors by default.
+        #
+        # @overload archive(id:, request_options: {})
+        #
+        # @param id [String]
+        # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [MetronomeSDK::Models::V1::PricingUnitArchiveResponse]
+        #
+        # @see MetronomeSDK::Models::V1::PricingUnitArchiveParams
+        def archive(params)
+          parsed, options = MetronomeSDK::V1::PricingUnitArchiveParams.dump_request(params)
+          @client.request(
+            method: :post,
+            path: "v1/credit-types/archive",
+            body: parsed,
+            model: MetronomeSDK::Models::V1::PricingUnitArchiveResponse,
             options: options
           )
         end

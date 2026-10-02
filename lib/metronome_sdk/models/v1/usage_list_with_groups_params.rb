@@ -40,13 +40,14 @@ module MetronomeSDK
 
         # @!attribute current_period
         #   If true, will return the usage for the current billing period. Will return an
-        #   error if the customer is currently uncontracted or starting_on and ending_before
-        #   are specified when this is true.
+        #   error if the customer does not have an active plan, or if starting_on and
+        #   ending_before are specified when this is true.
         #
         #   @return [Boolean, nil]
         optional :current_period, MetronomeSDK::Internal::Type::Boolean
 
         # @!attribute ending_before
+        #   Must be aligned to UTC midnight and at least one day after `starting_on`.
         #
         #   @return [Time, nil]
         optional :ending_before, Time
@@ -63,7 +64,8 @@ module MetronomeSDK
         # @!attribute group_filters
         #   Object mapping group keys to arrays of values to filter on. Only usage matching
         #   these filter values will be returned. Keys must be present in group_key. Omit a
-        #   key or use an empty array to include all values for that dimension.
+        #   key or use an empty array to include all values for that dimension. The combined
+        #   number of entries across all value arrays may not exceed 200.
         #
         #   @return [Hash{Symbol=>Array<String>}, nil]
         optional :group_filters,
@@ -86,6 +88,7 @@ module MetronomeSDK
         optional :group_key, MetronomeSDK::Internal::Type::ArrayOf[String]
 
         # @!attribute starting_on
+        #   Must be aligned to UTC midnight, e.g. `2024-01-01T00:00:00Z`.
         #
         #   @return [Time, nil]
         optional :starting_on, Time
@@ -106,7 +109,7 @@ module MetronomeSDK
         #
         #   @param current_period [Boolean] If true, will return the usage for the current billing period. Will return an er
         #
-        #   @param ending_before [Time]
+        #   @param ending_before [Time] Must be aligned to UTC midnight and at least one day after `starting_on`.
         #
         #   @param group_by [MetronomeSDK::Models::V1::UsageListWithGroupsParams::GroupBy] Use group_key and group_filters instead. Use a single group key to group by. Com
         #
@@ -114,7 +117,7 @@ module MetronomeSDK
         #
         #   @param group_key [Array<String>] Group key to group usage by. Supports both simple (single key) and compound (mul
         #
-        #   @param starting_on [Time]
+        #   @param starting_on [Time] Must be aligned to UTC midnight, e.g. `2024-01-01T00:00:00Z`.
         #
         #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
 
@@ -141,8 +144,8 @@ module MetronomeSDK
           required :key, String
 
           # @!attribute values
-          #   Values of the group_by key to return in the query. Omit this if you'd like all
-          #   values for the key returned.
+          #   Values of the group_by key to return in the query. Accepts at most 200 values.
+          #   Omit this if you'd like all values for the key returned.
           #
           #   @return [Array<String>, nil]
           optional :values, MetronomeSDK::Internal::Type::ArrayOf[String]
@@ -156,7 +159,7 @@ module MetronomeSDK
           #
           #   @param key [String] The name of the group_by key to use
           #
-          #   @param values [Array<String>] Values of the group_by key to return in the query. Omit this if you'd like all v
+          #   @param values [Array<String>] Values of the group_by key to return in the query. Accepts at most 200 values. O
         end
       end
     end

@@ -15,9 +15,11 @@ module MetronomeSDK
             )
           end
 
+        # Must be aligned to UTC midnight and at least one day after `starting_on`.
         sig { returns(Time) }
         attr_accessor :ending_before
 
+        # Must be aligned to UTC midnight, e.g. `2024-01-01T00:00:00Z`.
         sig { returns(Time) }
         attr_accessor :starting_on
 
@@ -79,7 +81,9 @@ module MetronomeSDK
           ).returns(T.attached_class)
         end
         def self.new(
+          # Must be aligned to UTC midnight and at least one day after `starting_on`.
           ending_before:,
+          # Must be aligned to UTC midnight, e.g. `2024-01-01T00:00:00Z`.
           starting_on:,
           # A window_size of "day" or "hour" will return the usage for the specified period
           # segmented into daily or hourly aggregates. A window_size of "none" will return a

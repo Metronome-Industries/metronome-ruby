@@ -67,6 +67,17 @@ module MetronomeSDK
       sig { params(contract: MetronomeSDK::Credit::Contract::OrHash).void }
       attr_writer :contract
 
+      # Timestamp of when the credit was created.
+      #
+      # - Recurring credit: latter of credit service period date and parent credit start
+      #   date
+      # - Rollover credit: when the new contract started
+      sig { returns(T.nilable(Time)) }
+      attr_reader :created_at
+
+      sig { params(created_at: Time).void }
+      attr_writer :created_at
+
       # The actor who created this credit. Omitted for system-generated credits such as
       # recurring credits.
       sig { returns(T.nilable(String)) }
@@ -222,6 +233,7 @@ module MetronomeSDK
           applicable_product_tags: T::Array[String],
           balance: Float,
           contract: MetronomeSDK::Credit::Contract::OrHash,
+          created_at: Time,
           created_by: String,
           custom_fields: T::Hash[Symbol, String],
           description: String,
@@ -271,6 +283,12 @@ module MetronomeSDK
         # included in the balance, including future-dated manual ledger entries.
         balance: nil,
         contract: nil,
+        # Timestamp of when the credit was created.
+        #
+        # - Recurring credit: latter of credit service period date and parent credit start
+        #   date
+        # - Rollover credit: when the new contract started
+        created_at: nil,
         # The actor who created this credit. Omitted for system-generated credits such as
         # recurring credits.
         created_by: nil,
@@ -322,6 +340,7 @@ module MetronomeSDK
             applicable_product_tags: T::Array[String],
             balance: Float,
             contract: MetronomeSDK::Credit::Contract,
+            created_at: Time,
             created_by: String,
             custom_fields: T::Hash[Symbol, String],
             description: String,

@@ -267,19 +267,26 @@ module MetronomeSDK
         # Some parameter documentations has been truncated, see
         # {MetronomeSDK::Models::V1::ContractListParams} for more details.
         #
-        # Retrieves all contracts for a specific customer, including pricing, terms,
+        # Retrieves a page of contracts for a specific customer, including pricing, terms,
         # credits, and commitments. Use this to view a customer's contract history and
         # current agreements for billing management. Returns contract details with
         # optional ledgers and balance information.
         #
+        # ### Usage guidelines:
+        #
+        # - Pagination: Results are limited to 20 contracts per page; use 'cursor' for
+        #   more
+        #
         # ⚠️ Note: This is the legacy v1 endpoint - new integrations should use the v2
         # endpoint for enhanced features.
         #
-        # @overload list(customer_id:, covering_date: nil, include_archived: nil, include_balance: nil, include_ledgers: nil, starting_at: nil, request_options: {})
+        # @overload list(customer_id:, covering_date: nil, cursor: nil, include_archived: nil, include_balance: nil, include_ledgers: nil, limit: nil, starting_at: nil, request_options: {})
         #
         # @param customer_id [String]
         #
         # @param covering_date [Time] Optional RFC 3339 timestamp. If provided, the response will include only contrac
+        #
+        # @param cursor [String] Cursor from a previous response to fetch the next page of contracts.
         #
         # @param include_archived [Boolean] Include archived contracts in the response
         #
@@ -287,11 +294,13 @@ module MetronomeSDK
         #
         # @param include_ledgers [Boolean] Include commit ledgers in the response. Setting this flag may cause the query to
         #
+        # @param limit [Integer] Max number of contracts to return per page. Range: 1-20. Default: 20.
+        #
         # @param starting_at [Time] Optional RFC 3339 timestamp. If provided, the response will include only contrac
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [MetronomeSDK::Models::V1::ContractListResponse]
+        # @return [MetronomeSDK::Internal::BodyCursorPageCursorField<MetronomeSDK::Models::Contract>]
         #
         # @see MetronomeSDK::Models::V1::ContractListParams
         def list(params)
@@ -300,7 +309,8 @@ module MetronomeSDK
             method: :post,
             path: "v1/contracts/list",
             body: parsed,
-            model: MetronomeSDK::Models::V1::ContractListResponse,
+            page: MetronomeSDK::Internal::BodyCursorPageCursorField,
+            model: MetronomeSDK::Contract,
             options: options
           )
         end
@@ -328,7 +338,7 @@ module MetronomeSDK
         # upstream of the commit, whether that is via contract editing, rate editing, or
         # other actions that cause an invoice to be recalculated.
         #
-        # @overload add_manual_balance_entry(id:, amount:, customer_id:, reason:, segment_id:, contract_id: nil, per_group_amounts: nil, timestamp: nil, request_options: {})
+        # @overload add_manual_balance_entry(id:, amount:, customer_id:, reason:, segment_id:, contract_id: nil, per_group_amounts: nil, timestamp: nil, uniqueness_key: nil, request_options: {})
         #
         # @param id [String] ID of the balance (commit or credit) to update.
         #
@@ -345,6 +355,8 @@ module MetronomeSDK
         # @param per_group_amounts [Hash{Symbol=>Float}] If using individually configured commits/credits attached to seat managed subscr
         #
         # @param timestamp [Time] RFC 3339 timestamp indicating when the manual adjustment takes place. If not pro
+        #
+        # @param uniqueness_key [String] Prevents the creation of duplicates. If a request to create a record is made wit
         #
         # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
         #
@@ -365,8 +377,9 @@ module MetronomeSDK
         # Amendments will be replaced by Contract editing. New clients should implement
         # using the `editContract` endpoint. Read more about the migration to contract
         # editing [here](/guides/implement-metronome/migrate-amendments-to-edits/) and
-        # reach out to your Metronome representative for more details. Once contract
-        # editing is enabled, access to this endpoint will be removed.
+        # contact us via the [Metronome support portal](https://support.metronome.com/)
+        # for more details. Once contract editing is enabled, access to this endpoint will
+        # be removed.
         #
         # @overload amend(contract_id:, customer_id:, starting_at:, commits: nil, credits: nil, custom_fields: nil, discounts: nil, netsuite_sales_order_id: nil, overrides: nil, professional_services: nil, reseller_royalties: nil, salesforce_opportunity_id: nil, scheduled_charges: nil, total_contract_value: nil, request_options: {})
         #
@@ -542,9 +555,11 @@ module MetronomeSDK
         # - **Credit types**: If `credit_type_id` is not specified, the balance defaults
         #   to USD (cents)
         #
-        # @overload get_net_balance(customer_id:, credit_type_id: nil, filters: nil, invoice_inclusion_mode: nil, request_options: {})
+        # @overload get_net_balance(customer_id:, access_type: nil, credit_type_id: nil, filters: nil, invoice_inclusion_mode: nil, request_options: {})
         #
         # @param customer_id [String] The ID of the customer.
+        #
+        # @param access_type [Symbol, MetronomeSDK::Models::V1::ContractGetNetBalanceParams::AccessType] Filters balances by how they are drawn down. Defaults to `SPEND`. If set to `QUA
         #
         # @param credit_type_id [String] The ID of the credit type (can be fiat or a custom pricing unit) to get the bala
         #
@@ -674,11 +689,13 @@ module MetronomeSDK
         #   segments
         # - Manual adjustments: Includes all manual ledger entries, even future-dated ones
         #
-        # @overload list_balances(customer_id:, id: nil, covering_date: nil, effective_before: nil, exclude_zero_balances: nil, include_archived: nil, include_balance: nil, include_contract_balances: nil, include_ledgers: nil, limit: nil, next_page: nil, starting_at: nil, request_options: {})
+        # @overload list_balances(customer_id:, id: nil, access_type: nil, covering_date: nil, effective_before: nil, exclude_zero_balances: nil, include_archived: nil, include_balance: nil, include_contract_balances: nil, include_ledgers: nil, limit: nil, next_page: nil, starting_at: nil, request_options: {})
         #
         # @param customer_id [String]
         #
         # @param id [String]
+        #
+        # @param access_type [Symbol, MetronomeSDK::Models::V1::ContractListBalancesParams::AccessType] Filters balances by how they are drawn down. `SPEND` deducts the dollar cost of
         #
         # @param covering_date [Time] Return only balances that have access schedules that "cover" the provided date
         #
