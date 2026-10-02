@@ -7419,6 +7419,11 @@ module MetronomeSDK
                 :CONTRACT_START,
                 MetronomeSDK::V1::PackageCreateParams::UsageStatementSchedule::Day::TaggedSymbol
               )
+            CUSTOM_DATE =
+              T.let(
+                :CUSTOM_DATE,
+                MetronomeSDK::V1::PackageCreateParams::UsageStatementSchedule::Day::TaggedSymbol
+              )
 
             sig do
               override.returns(

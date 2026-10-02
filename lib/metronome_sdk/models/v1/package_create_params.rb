@@ -3118,6 +3118,7 @@ module MetronomeSDK
 
             FIRST_OF_MONTH = :FIRST_OF_MONTH
             CONTRACT_START = :CONTRACT_START
+            CUSTOM_DATE = :CUSTOM_DATE
 
             # @!method self.values
             #   @return [Array<Symbol>]

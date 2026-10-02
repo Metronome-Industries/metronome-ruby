@@ -1089,13 +1089,14 @@ module MetronomeSDK
             def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageListResponse::UsageStatementSchedule::frequency]
           end
 
-          type day = :FIRST_OF_MONTH | :CONTRACT_START
+          type day = :FIRST_OF_MONTH | :CONTRACT_START | :CUSTOM_DATE
 
           module Day
             extend MetronomeSDK::Internal::Type::Enum
 
             FIRST_OF_MONTH: :FIRST_OF_MONTH
             CONTRACT_START: :CONTRACT_START
+            CUSTOM_DATE: :CUSTOM_DATE
 
             def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageListResponse::UsageStatementSchedule::day]
           end
