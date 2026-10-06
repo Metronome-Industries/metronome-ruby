@@ -59,8 +59,9 @@ module MetronomeSDK
           sig { returns(Float) }
           attr_accessor :balance
 
-          # The ID of the credit type (can be fiat or a custom pricing unit) that the
-          # balance is for.
+          # This ID identifies the credit type for the balance. The credit type can be fiat
+          # or a custom pricing unit. Quantity-based balances return the null credit type
+          # UUID.
           sig { returns(String) }
           attr_accessor :credit_type_id
 
@@ -73,8 +74,9 @@ module MetronomeSDK
             # The combined net balance that the customer has access to use at this moment
             # across all pertinent commits and credits.
             balance:,
-            # The ID of the credit type (can be fiat or a custom pricing unit) that the
-            # balance is for.
+            # This ID identifies the credit type for the balance. The credit type can be fiat
+            # or a custom pricing unit. Quantity-based balances return the null credit type
+            # UUID.
             credit_type_id:
           )
           end

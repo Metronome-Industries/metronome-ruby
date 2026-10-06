@@ -60,6 +60,8 @@ module MetronomeSDK
               MetronomeSDK::V1::AlertCreateParams::AlertType::OrSymbol,
             name: String,
             threshold: Float,
+            access_type:
+              MetronomeSDK::V1::AlertCreateParams::AccessType::OrSymbol,
             alert_specifiers:
               T::Array[
                 MetronomeSDK::V1::AlertCreateParams::AlertSpecifier::OrHash
@@ -92,9 +94,20 @@ module MetronomeSDK
           # type, this number may represent a financial amount, the days remaining, or a
           # percentage reached.
           threshold:,
-          # Can be used with only `low_remaining_contract_credit_and_commit_balance_reached`
-          # notifications. Defines the balances that are considered when evaluating the
-          # alert.
+          # Filters the notification to commits/credits with this access type. Only
+          # supported for `low_remaining_commit_balance_reached`,
+          # `low_remaining_commit_percentage_reached`,
+          # `low_remaining_contract_credit_and_commit_balance_reached`,
+          # `low_remaining_contract_credit_and_commit_percentage_reached`,
+          # `low_remaining_contract_credit_balance_reached`,
+          # `low_remaining_contract_credit_percentage_reached`, and
+          # `low_remaining_seat_balance_reached` notifications. Credit type cannot be
+          # specified if using QUANTITY access type.
+          access_type: nil,
+          # Can be used only with `low_remaining_contract_credit_and_commit_balance_reached`
+          # and `low_remaining_contract_credit_and_commit_percentage_reached` notifications.
+          # Defines the commits and credits used to calculate the remaining balance or
+          # percentage.
           alert_specifiers: nil,
           # For threshold notifications of type `usage_threshold_reached`, specifies which
           # billable metric to track the usage for.

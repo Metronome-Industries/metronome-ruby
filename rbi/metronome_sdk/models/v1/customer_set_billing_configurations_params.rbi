@@ -112,8 +112,7 @@ module MetronomeSDK
 
           # Specifies which tax provider Metronome should use for tax calculation when
           # billing through Stripe. This is only supported for Stripe billing provider
-          # configurations with auto_charge_payment_intent or manual_charge_payment_intent
-          # collection methods.
+          # configurations.
           sig do
             returns(
               T.nilable(
@@ -164,8 +163,7 @@ module MetronomeSDK
             delivery_method_id: nil,
             # Specifies which tax provider Metronome should use for tax calculation when
             # billing through Stripe. This is only supported for Stripe billing provider
-            # configurations with auto_charge_payment_intent or manual_charge_payment_intent
-            # collection methods.
+            # configurations.
             tax_provider: nil
           )
           end
@@ -306,8 +304,7 @@ module MetronomeSDK
 
           # Specifies which tax provider Metronome should use for tax calculation when
           # billing through Stripe. This is only supported for Stripe billing provider
-          # configurations with auto_charge_payment_intent or manual_charge_payment_intent
-          # collection methods.
+          # configurations.
           module TaxProvider
             extend MetronomeSDK::Internal::Type::Enum
 

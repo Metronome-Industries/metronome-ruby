@@ -33,6 +33,13 @@ module MetronomeSDK
           #   @return [Time, nil]
           optional :ending_before, Time
 
+          # @!attribute include_retired_commit_invoices
+          #   When true, includes retired commit invoices alongside active invoices. Defaults
+          #   to false.
+          #
+          #   @return [Boolean, nil]
+          optional :include_retired_commit_invoices, MetronomeSDK::Internal::Type::Boolean
+
           # @!attribute limit
           #   Max number of results that should be returned
           #
@@ -84,7 +91,7 @@ module MetronomeSDK
           #   @return [String, nil]
           optional :webhook_notification_id, String
 
-          # @!method initialize(customer_id:, contract_id: nil, credit_type_id: nil, ending_before: nil, limit: nil, next_page: nil, skip_zero_qty_line_items: nil, sort: nil, starting_on: nil, status: nil, type: nil, webhook_notification_id: nil, request_options: {})
+          # @!method initialize(customer_id:, contract_id: nil, credit_type_id: nil, ending_before: nil, include_retired_commit_invoices: nil, limit: nil, next_page: nil, skip_zero_qty_line_items: nil, sort: nil, starting_on: nil, status: nil, type: nil, webhook_notification_id: nil, request_options: {})
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V1::Customers::InvoiceListParams} for more details.
           #
@@ -95,6 +102,8 @@ module MetronomeSDK
           #   @param credit_type_id [String] Only return invoices for the specified credit type
           #
           #   @param ending_before [Time] RFC 3339 timestamp (exclusive). Invoices will only be returned for billing perio
+          #
+          #   @param include_retired_commit_invoices [Boolean] When true, includes retired commit invoices alongside active invoices. Defaults
           #
           #   @param limit [Integer] Max number of results that should be returned
           #

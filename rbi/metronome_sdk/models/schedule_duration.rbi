@@ -11,6 +11,22 @@ module MetronomeSDK
       sig { returns(T::Array[MetronomeSDK::ScheduleDuration::ScheduleItem]) }
       attr_accessor :schedule_items
 
+      # Indicates how the balance is drawn down. `SPEND` deducts the dollar cost of
+      # usage. `QUANTITY` deducts the number of units used.
+      sig do
+        returns(
+          T.nilable(MetronomeSDK::ScheduleDuration::AccessType::TaggedSymbol)
+        )
+      end
+      attr_reader :access_type
+
+      sig do
+        params(
+          access_type: MetronomeSDK::ScheduleDuration::AccessType::OrSymbol
+        ).void
+      end
+      attr_writer :access_type
+
       sig { returns(T.nilable(MetronomeSDK::CreditTypeData)) }
       attr_reader :credit_type
 
@@ -21,10 +37,17 @@ module MetronomeSDK
         params(
           schedule_items:
             T::Array[MetronomeSDK::ScheduleDuration::ScheduleItem::OrHash],
+          access_type: MetronomeSDK::ScheduleDuration::AccessType::OrSymbol,
           credit_type: MetronomeSDK::CreditTypeData::OrHash
         ).returns(T.attached_class)
       end
-      def self.new(schedule_items:, credit_type: nil)
+      def self.new(
+        schedule_items:,
+        # Indicates how the balance is drawn down. `SPEND` deducts the dollar cost of
+        # usage. `QUANTITY` deducts the number of units used.
+        access_type: nil,
+        credit_type: nil
+      )
       end
 
       sig do
@@ -32,6 +55,8 @@ module MetronomeSDK
           {
             schedule_items:
               T::Array[MetronomeSDK::ScheduleDuration::ScheduleItem],
+            access_type:
+              MetronomeSDK::ScheduleDuration::AccessType::TaggedSymbol,
             credit_type: MetronomeSDK::CreditTypeData
           }
         )
@@ -82,6 +107,37 @@ module MetronomeSDK
           )
         end
         def to_hash
+        end
+      end
+
+      # Indicates how the balance is drawn down. `SPEND` deducts the dollar cost of
+      # usage. `QUANTITY` deducts the number of units used.
+      module AccessType
+        extend MetronomeSDK::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, MetronomeSDK::ScheduleDuration::AccessType)
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        SPEND =
+          T.let(
+            :SPEND,
+            MetronomeSDK::ScheduleDuration::AccessType::TaggedSymbol
+          )
+        QUANTITY =
+          T.let(
+            :QUANTITY,
+            MetronomeSDK::ScheduleDuration::AccessType::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[MetronomeSDK::ScheduleDuration::AccessType::TaggedSymbol]
+          )
+        end
+        def self.values
         end
       end
     end

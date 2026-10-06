@@ -61,6 +61,13 @@ module MetronomeSDK
       #   @return [MetronomeSDK::Models::Subscription::BillingCycleConfig, nil]
       optional :billing_cycle_config, -> { MetronomeSDK::Subscription::BillingCycleConfig }
 
+      # @!attribute custom_credit_type_id
+      #   If provided, the subscription's price will be in terms of this custom pricing
+      #   unit instead of the fiat currency.
+      #
+      #   @return [String, nil]
+      optional :custom_credit_type_id, String
+
       # @!attribute custom_fields
       #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
       #
@@ -87,12 +94,20 @@ module MetronomeSDK
       #   @return [String, nil]
       optional :name, String
 
+      # @!attribute product_custom_fields
+      #   Custom fields from the subscription product referenced by
+      #   `subscription_rate.product`. These are distinct from the subscription instance's
+      #   `custom_fields`.
+      #
+      #   @return [Hash{Symbol=>String}, nil]
+      optional :product_custom_fields, MetronomeSDK::Internal::Type::HashOf[String]
+
       # @!attribute seat_config
       #
       #   @return [MetronomeSDK::Models::Subscription::SeatConfig, nil]
       optional :seat_config, -> { MetronomeSDK::Subscription::SeatConfig }
 
-      # @!method initialize(billing_periods:, collection_schedule:, proration:, quantity_management_mode:, quantity_schedule:, starting_at:, subscription_rate:, id: nil, billing_cycle_config: nil, custom_fields: nil, description: nil, ending_before: nil, fiat_credit_type_id: nil, name: nil, seat_config: nil)
+      # @!method initialize(billing_periods:, collection_schedule:, proration:, quantity_management_mode:, quantity_schedule:, starting_at:, subscription_rate:, id: nil, billing_cycle_config: nil, custom_credit_type_id: nil, custom_fields: nil, description: nil, ending_before: nil, fiat_credit_type_id: nil, name: nil, product_custom_fields: nil, seat_config: nil)
       #   Some parameter documentations has been truncated, see
       #   {MetronomeSDK::Models::Subscription} for more details.
       #
@@ -114,6 +129,8 @@ module MetronomeSDK
       #
       #   @param billing_cycle_config [MetronomeSDK::Models::Subscription::BillingCycleConfig]
       #
+      #   @param custom_credit_type_id [String] If provided, the subscription's price will be in terms of this custom pricing un
+      #
       #   @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
       #
       #   @param description [String]
@@ -123,6 +140,8 @@ module MetronomeSDK
       #   @param fiat_credit_type_id [String]
       #
       #   @param name [String]
+      #
+      #   @param product_custom_fields [Hash{Symbol=>String}] Custom fields from the subscription product referenced by `subscription_rate.pro
       #
       #   @param seat_config [MetronomeSDK::Models::Subscription::SeatConfig]
 

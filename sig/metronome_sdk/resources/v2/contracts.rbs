@@ -14,12 +14,14 @@ module MetronomeSDK
         def list: (
           customer_id: String,
           ?covering_date: Time,
+          ?cursor: String,
           ?include_archived: bool,
           ?include_balance: bool,
           ?include_ledgers: bool,
+          ?limit: Float,
           ?starting_at: Time,
           ?request_options: MetronomeSDK::request_opts
-        ) -> MetronomeSDK::Models::V2::ContractListResponse
+        ) -> MetronomeSDK::Internal::BodyCursorPageCursorField[MetronomeSDK::ContractV2]
 
         def edit: (
           contract_id: String,

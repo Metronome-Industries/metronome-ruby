@@ -14,6 +14,13 @@ module MetronomeSDK
           #   @return [String]
           required :customer_id, String
 
+          # @!attribute access_type
+          #   Filters commits by how their balances are drawn down. `SPEND` deducts the dollar
+          #   cost of usage. `QUANTITY` deducts the number of units used.
+          #
+          #   @return [Symbol, MetronomeSDK::Models::V1::Customers::CommitListParams::AccessType, nil]
+          optional :access_type, enum: -> { MetronomeSDK::V1::Customers::CommitListParams::AccessType }
+
           # @!attribute commit_id
           #
           #   @return [String, nil]
@@ -75,11 +82,13 @@ module MetronomeSDK
           #   @return [Time, nil]
           optional :starting_at, Time
 
-          # @!method initialize(customer_id:, commit_id: nil, covering_date: nil, effective_before: nil, include_archived: nil, include_balance: nil, include_contract_commits: nil, include_ledgers: nil, limit: nil, next_page: nil, starting_at: nil, request_options: {})
+          # @!method initialize(customer_id:, access_type: nil, commit_id: nil, covering_date: nil, effective_before: nil, include_archived: nil, include_balance: nil, include_contract_commits: nil, include_ledgers: nil, limit: nil, next_page: nil, starting_at: nil, request_options: {})
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V1::Customers::CommitListParams} for more details.
           #
           #   @param customer_id [String]
+          #
+          #   @param access_type [Symbol, MetronomeSDK::Models::V1::Customers::CommitListParams::AccessType] Filters commits by how their balances are drawn down. `SPEND` deducts the dollar
           #
           #   @param commit_id [String]
           #
@@ -102,6 +111,18 @@ module MetronomeSDK
           #   @param starting_at [Time] Include only commits that have any access on or after the provided date
           #
           #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
+
+          # Filters commits by how their balances are drawn down. `SPEND` deducts the dollar
+          # cost of usage. `QUANTITY` deducts the number of units used.
+          module AccessType
+            extend MetronomeSDK::Internal::Type::Enum
+
+            SPEND = :SPEND
+            QUANTITY = :QUANTITY
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
         end
       end
     end

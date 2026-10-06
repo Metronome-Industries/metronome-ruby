@@ -84,6 +84,14 @@ module MetronomeSDK
       end
       attr_writer :billing_cycle_config
 
+      # If provided, the subscription's price will be in terms of this custom pricing
+      # unit instead of the fiat currency.
+      sig { returns(T.nilable(String)) }
+      attr_reader :custom_credit_type_id
+
+      sig { params(custom_credit_type_id: String).void }
+      attr_writer :custom_credit_type_id
+
       # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
       sig { returns(T.nilable(T::Hash[Symbol, String])) }
       attr_reader :custom_fields
@@ -115,6 +123,15 @@ module MetronomeSDK
       sig { params(name: String).void }
       attr_writer :name
 
+      # Custom fields from the subscription product referenced by
+      # `subscription_rate.product`. These are distinct from the subscription instance's
+      # `custom_fields`.
+      sig { returns(T.nilable(T::Hash[Symbol, String])) }
+      attr_reader :product_custom_fields
+
+      sig { params(product_custom_fields: T::Hash[Symbol, String]).void }
+      attr_writer :product_custom_fields
+
       sig { returns(T.nilable(MetronomeSDK::Subscription::SeatConfig)) }
       attr_reader :seat_config
 
@@ -139,11 +156,13 @@ module MetronomeSDK
           id: String,
           billing_cycle_config:
             MetronomeSDK::Subscription::BillingCycleConfig::OrHash,
+          custom_credit_type_id: String,
           custom_fields: T::Hash[Symbol, String],
           description: String,
           ending_before: Time,
           fiat_credit_type_id: String,
           name: String,
+          product_custom_fields: T::Hash[Symbol, String],
           seat_config: MetronomeSDK::Subscription::SeatConfig::OrHash
         ).returns(T.attached_class)
       end
@@ -169,12 +188,19 @@ module MetronomeSDK
         subscription_rate:,
         id: nil,
         billing_cycle_config: nil,
+        # If provided, the subscription's price will be in terms of this custom pricing
+        # unit instead of the fiat currency.
+        custom_credit_type_id: nil,
         # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         custom_fields: nil,
         description: nil,
         ending_before: nil,
         fiat_credit_type_id: nil,
         name: nil,
+        # Custom fields from the subscription product referenced by
+        # `subscription_rate.product`. These are distinct from the subscription instance's
+        # `custom_fields`.
+        product_custom_fields: nil,
         seat_config: nil
       )
       end
@@ -195,11 +221,13 @@ module MetronomeSDK
             id: String,
             billing_cycle_config:
               MetronomeSDK::Subscription::BillingCycleConfig,
+            custom_credit_type_id: String,
             custom_fields: T::Hash[Symbol, String],
             description: String,
             ending_before: Time,
             fiat_credit_type_id: String,
             name: String,
+            product_custom_fields: T::Hash[Symbol, String],
             seat_config: MetronomeSDK::Subscription::SeatConfig
           }
         )

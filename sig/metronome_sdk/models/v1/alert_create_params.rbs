@@ -6,6 +6,7 @@ module MetronomeSDK
           alert_type: MetronomeSDK::Models::V1::AlertCreateParams::alert_type,
           name: String,
           threshold: Float,
+          access_type: MetronomeSDK::Models::V1::AlertCreateParams::access_type,
           alert_specifiers: ::Array[MetronomeSDK::V1::AlertCreateParams::AlertSpecifier],
           billable_metric_id: String,
           credit_grant_type_filters: ::Array[String],
@@ -30,6 +31,12 @@ module MetronomeSDK
         attr_accessor name: String
 
         attr_accessor threshold: Float
+
+        attr_reader access_type: MetronomeSDK::Models::V1::AlertCreateParams::access_type?
+
+        def access_type=: (
+          MetronomeSDK::Models::V1::AlertCreateParams::access_type
+        ) -> MetronomeSDK::Models::V1::AlertCreateParams::access_type
 
         attr_reader alert_specifiers: ::Array[MetronomeSDK::V1::AlertCreateParams::AlertSpecifier]?
 
@@ -91,6 +98,7 @@ module MetronomeSDK
           alert_type: MetronomeSDK::Models::V1::AlertCreateParams::alert_type,
           name: String,
           threshold: Float,
+          ?access_type: MetronomeSDK::Models::V1::AlertCreateParams::access_type,
           ?alert_specifiers: ::Array[MetronomeSDK::V1::AlertCreateParams::AlertSpecifier],
           ?billable_metric_id: String,
           ?credit_grant_type_filters: ::Array[String],
@@ -110,6 +118,7 @@ module MetronomeSDK
           alert_type: MetronomeSDK::Models::V1::AlertCreateParams::alert_type,
           name: String,
           threshold: Float,
+          access_type: MetronomeSDK::Models::V1::AlertCreateParams::access_type,
           alert_specifiers: ::Array[MetronomeSDK::V1::AlertCreateParams::AlertSpecifier],
           billable_metric_id: String,
           credit_grant_type_filters: ::Array[String],
@@ -139,6 +148,7 @@ module MetronomeSDK
           | :low_remaining_contract_credit_balance_reached
           | :low_remaining_contract_credit_percentage_reached
           | :low_remaining_contract_credit_and_commit_balance_reached
+          | :low_remaining_contract_credit_and_commit_percentage_reached
           | :invoice_total_reached
           | :low_remaining_seat_balance_reached
 
@@ -158,10 +168,22 @@ module MetronomeSDK
           LOW_REMAINING_CONTRACT_CREDIT_BALANCE_REACHED: :low_remaining_contract_credit_balance_reached
           LOW_REMAINING_CONTRACT_CREDIT_PERCENTAGE_REACHED: :low_remaining_contract_credit_percentage_reached
           LOW_REMAINING_CONTRACT_CREDIT_AND_COMMIT_BALANCE_REACHED: :low_remaining_contract_credit_and_commit_balance_reached
+          LOW_REMAINING_CONTRACT_CREDIT_AND_COMMIT_PERCENTAGE_REACHED: :low_remaining_contract_credit_and_commit_percentage_reached
           INVOICE_TOTAL_REACHED: :invoice_total_reached
           LOW_REMAINING_SEAT_BALANCE_REACHED: :low_remaining_seat_balance_reached
 
           def self?.values: -> ::Array[MetronomeSDK::Models::V1::AlertCreateParams::alert_type]
+        end
+
+        type access_type = :SPEND | :QUANTITY
+
+        module AccessType
+          extend MetronomeSDK::Internal::Type::Enum
+
+          SPEND: :SPEND
+          QUANTITY: :QUANTITY
+
+          def self?.values: -> ::Array[MetronomeSDK::Models::V1::AlertCreateParams::access_type]
         end
 
         type alert_specifier =

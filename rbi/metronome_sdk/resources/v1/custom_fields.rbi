@@ -109,6 +109,9 @@ module MetronomeSDK
         # existing values for matching keys while preserving other fields. All updates are
         # transactional—either all values are set or none are. Custom field values are
         # limited to 200 characters each.
+        #
+        # Adding or updating custom fields on credits, commits, or contracts does not emit
+        # `credit.edit`, `commit.edit`, or `contract.edit` events.
         sig do
           params(
             custom_fields: T::Hash[Symbol, String],

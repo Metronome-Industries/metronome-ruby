@@ -5,9 +5,11 @@ module MetronomeSDK
         {
           customer_id: String,
           covering_date: Time,
+          cursor: String,
           include_archived: bool,
           include_balance: bool,
           include_ledgers: bool,
+          limit: Float,
           starting_at: Time
         }
         & MetronomeSDK::Internal::Type::request_parameters
@@ -22,6 +24,10 @@ module MetronomeSDK
 
         def covering_date=: (Time) -> Time
 
+        attr_reader cursor: String?
+
+        def cursor=: (String) -> String
+
         attr_reader include_archived: bool?
 
         def include_archived=: (bool) -> bool
@@ -34,6 +40,10 @@ module MetronomeSDK
 
         def include_ledgers=: (bool) -> bool
 
+        attr_reader limit: Float?
+
+        def limit=: (Float) -> Float
+
         attr_reader starting_at: Time?
 
         def starting_at=: (Time) -> Time
@@ -41,9 +51,11 @@ module MetronomeSDK
         def initialize: (
           customer_id: String,
           ?covering_date: Time,
+          ?cursor: String,
           ?include_archived: bool,
           ?include_balance: bool,
           ?include_ledgers: bool,
+          ?limit: Float,
           ?starting_at: Time,
           ?request_options: MetronomeSDK::request_opts
         ) -> void
@@ -51,9 +63,11 @@ module MetronomeSDK
         def to_hash: -> {
           customer_id: String,
           covering_date: Time,
+          cursor: String,
           include_archived: bool,
           include_balance: bool,
           include_ledgers: bool,
+          limit: Float,
           starting_at: Time,
           request_options: MetronomeSDK::RequestOptions
         }

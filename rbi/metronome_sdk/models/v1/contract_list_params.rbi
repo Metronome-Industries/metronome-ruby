@@ -27,6 +27,13 @@ module MetronomeSDK
         sig { params(covering_date: Time).void }
         attr_writer :covering_date
 
+        # Cursor from a previous response to fetch the next page of contracts.
+        sig { returns(T.nilable(String)) }
+        attr_reader :cursor
+
+        sig { params(cursor: String).void }
+        attr_writer :cursor
+
         # Include archived contracts in the response
         sig { returns(T.nilable(T::Boolean)) }
         attr_reader :include_archived
@@ -50,8 +57,15 @@ module MetronomeSDK
         sig { params(include_ledgers: T::Boolean).void }
         attr_writer :include_ledgers
 
+        # Max number of contracts to return per page. Range: 1-20. Default: 20.
+        sig { returns(T.nilable(Integer)) }
+        attr_reader :limit
+
+        sig { params(limit: Integer).void }
+        attr_writer :limit
+
         # Optional RFC 3339 timestamp. If provided, the response will include only
-        # contracts where effective_at is on or after the provided date. This cannot be
+        # contracts where starting_at is on or after the provided date. This cannot be
         # provided if the covering_date filter is provided.
         sig { returns(T.nilable(Time)) }
         attr_reader :starting_at
@@ -63,9 +77,11 @@ module MetronomeSDK
           params(
             customer_id: String,
             covering_date: Time,
+            cursor: String,
             include_archived: T::Boolean,
             include_balance: T::Boolean,
             include_ledgers: T::Boolean,
+            limit: Integer,
             starting_at: Time,
             request_options: MetronomeSDK::RequestOptions::OrHash
           ).returns(T.attached_class)
@@ -76,6 +92,8 @@ module MetronomeSDK
           # contracts effective on the provided date. This cannot be provided if the
           # starting_at filter is provided.
           covering_date: nil,
+          # Cursor from a previous response to fetch the next page of contracts.
+          cursor: nil,
           # Include archived contracts in the response
           include_archived: nil,
           # Include the balance of credits and commits in the response. Setting this flag
@@ -84,8 +102,10 @@ module MetronomeSDK
           # Include commit ledgers in the response. Setting this flag may cause the query to
           # be slower.
           include_ledgers: nil,
+          # Max number of contracts to return per page. Range: 1-20. Default: 20.
+          limit: nil,
           # Optional RFC 3339 timestamp. If provided, the response will include only
-          # contracts where effective_at is on or after the provided date. This cannot be
+          # contracts where starting_at is on or after the provided date. This cannot be
           # provided if the covering_date filter is provided.
           starting_at: nil,
           request_options: {}
@@ -97,9 +117,11 @@ module MetronomeSDK
             {
               customer_id: String,
               covering_date: Time,
+              cursor: String,
               include_archived: T::Boolean,
               include_balance: T::Boolean,
               include_ledgers: T::Boolean,
+              limit: Integer,
               starting_at: Time,
               request_options: MetronomeSDK::RequestOptions
             }

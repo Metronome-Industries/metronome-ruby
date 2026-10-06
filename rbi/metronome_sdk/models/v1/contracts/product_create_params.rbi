@@ -63,6 +63,14 @@ module MetronomeSDK
           sig { params(exclude_free_usage: T::Boolean).void }
           attr_writer :exclude_free_usage
 
+          # Only for composite products. If true, allows a composite to incorporate spend
+          # from other composite products. Defaults to false
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :include_composite_spend
+
+          sig { params(include_composite_spend: T::Boolean).void }
+          attr_writer :include_composite_spend
+
           # This field's availability is dependent on your client's configuration. Defaults
           # to true.
           sig { returns(T.nilable(T::Boolean)) }
@@ -182,6 +190,7 @@ module MetronomeSDK
               composite_tags: T::Array[String],
               custom_fields: T::Hash[Symbol, String],
               exclude_free_usage: T::Boolean,
+              include_composite_spend: T::Boolean,
               is_refundable: T::Boolean,
               netsuite_internal_item_id: String,
               netsuite_overage_item_id: String,
@@ -216,6 +225,9 @@ module MetronomeSDK
             # Beta feature only available for composite products. If true, products with $0
             # will not be included when computing composite usage. Defaults to false
             exclude_free_usage: nil,
+            # Only for composite products. If true, allows a composite to incorporate spend
+            # from other composite products. Defaults to false
+            include_composite_spend: nil,
             # This field's availability is dependent on your client's configuration. Defaults
             # to true.
             is_refundable: nil,
@@ -268,6 +280,7 @@ module MetronomeSDK
                 composite_tags: T::Array[String],
                 custom_fields: T::Hash[Symbol, String],
                 exclude_free_usage: T::Boolean,
+                include_composite_spend: T::Boolean,
                 is_refundable: T::Boolean,
                 netsuite_internal_item_id: String,
                 netsuite_overage_item_id: String,

@@ -43,8 +43,7 @@ module MetronomeSDK
             aws_product_code: nil,
             # Body param
             aws_region: nil,
-            # Body param: The collection method for the customer's invoices. NOTE:
-            # `auto_charge_payment_intent` and `manually_charge_payment_intent` are in beta.
+            # Body param: The collection method for the customer's invoices.
             stripe_collection_method: nil,
             request_options: {}
           )

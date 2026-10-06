@@ -11,11 +11,13 @@ module MetronomeSDK
         subscription_rate: MetronomeSDK::Subscription::SubscriptionRate,
         id: String,
         billing_cycle_config: MetronomeSDK::Subscription::BillingCycleConfig,
+        custom_credit_type_id: String,
         custom_fields: ::Hash[Symbol, String],
         description: String,
         ending_before: Time,
         fiat_credit_type_id: String,
         name: String,
+        product_custom_fields: ::Hash[Symbol, String],
         seat_config: MetronomeSDK::Subscription::SeatConfig
       }
 
@@ -44,6 +46,10 @@ module MetronomeSDK
         MetronomeSDK::Subscription::BillingCycleConfig
       ) -> MetronomeSDK::Subscription::BillingCycleConfig
 
+      attr_reader custom_credit_type_id: String?
+
+      def custom_credit_type_id=: (String) -> String
+
       attr_reader custom_fields: ::Hash[Symbol, String]?
 
       def custom_fields=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
@@ -64,6 +70,12 @@ module MetronomeSDK
 
       def name=: (String) -> String
 
+      attr_reader product_custom_fields: ::Hash[Symbol, String]?
+
+      def product_custom_fields=: (
+        ::Hash[Symbol, String]
+      ) -> ::Hash[Symbol, String]
+
       attr_reader seat_config: MetronomeSDK::Subscription::SeatConfig?
 
       def seat_config=: (
@@ -80,11 +92,13 @@ module MetronomeSDK
         subscription_rate: MetronomeSDK::Subscription::SubscriptionRate,
         ?id: String,
         ?billing_cycle_config: MetronomeSDK::Subscription::BillingCycleConfig,
+        ?custom_credit_type_id: String,
         ?custom_fields: ::Hash[Symbol, String],
         ?description: String,
         ?ending_before: Time,
         ?fiat_credit_type_id: String,
         ?name: String,
+        ?product_custom_fields: ::Hash[Symbol, String],
         ?seat_config: MetronomeSDK::Subscription::SeatConfig
       ) -> void
 
@@ -98,11 +112,13 @@ module MetronomeSDK
         subscription_rate: MetronomeSDK::Subscription::SubscriptionRate,
         id: String,
         billing_cycle_config: MetronomeSDK::Subscription::BillingCycleConfig,
+        custom_credit_type_id: String,
         custom_fields: ::Hash[Symbol, String],
         description: String,
         ending_before: Time,
         fiat_credit_type_id: String,
         name: String,
+        product_custom_fields: ::Hash[Symbol, String],
         seat_config: MetronomeSDK::Subscription::SeatConfig
       }
 

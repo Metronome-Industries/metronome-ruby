@@ -41,6 +41,14 @@ module MetronomeSDK
           sig { params(ending_before: Time).void }
           attr_writer :ending_before
 
+          # When true, includes retired commit invoices alongside active invoices. Defaults
+          # to false.
+          sig { returns(T.nilable(T::Boolean)) }
+          attr_reader :include_retired_commit_invoices
+
+          sig { params(include_retired_commit_invoices: T::Boolean).void }
+          attr_writer :include_retired_commit_invoices
+
           # Max number of results that should be returned
           sig { returns(T.nilable(Integer)) }
           attr_reader :limit
@@ -128,6 +136,7 @@ module MetronomeSDK
               contract_id: String,
               credit_type_id: String,
               ending_before: Time,
+              include_retired_commit_invoices: T::Boolean,
               limit: Integer,
               next_page: String,
               skip_zero_qty_line_items: T::Boolean,
@@ -150,6 +159,9 @@ module MetronomeSDK
             # RFC 3339 timestamp (exclusive). Invoices will only be returned for billing
             # periods that end before this time.
             ending_before: nil,
+            # When true, includes retired commit invoices alongside active invoices. Defaults
+            # to false.
+            include_retired_commit_invoices: nil,
             # Max number of results that should be returned
             limit: nil,
             # Cursor that indicates where the next page of results should start.
@@ -180,6 +192,7 @@ module MetronomeSDK
                 contract_id: String,
                 credit_type_id: String,
                 ending_before: Time,
+                include_retired_commit_invoices: T::Boolean,
                 limit: Integer,
                 next_page: String,
                 skip_zero_qty_line_items: T::Boolean,

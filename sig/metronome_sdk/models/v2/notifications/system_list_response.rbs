@@ -1,0 +1,29 @@
+module MetronomeSDK
+  module Models
+    module V2
+      module Notifications
+        type system_list_response =
+          {
+            data: ::Array[MetronomeSDK::V2::LifecycleEventSystemNotificationConfig],
+            cursor: String?
+          }
+
+        class SystemListResponse < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor data: ::Array[MetronomeSDK::V2::LifecycleEventSystemNotificationConfig]
+
+          attr_accessor cursor: String?
+
+          def initialize: (
+            data: ::Array[MetronomeSDK::V2::LifecycleEventSystemNotificationConfig],
+            ?cursor: String?
+          ) -> void
+
+          def to_hash: -> {
+            data: ::Array[MetronomeSDK::V2::LifecycleEventSystemNotificationConfig],
+            cursor: String?
+          }
+        end
+      end
+    end
+  end
+end

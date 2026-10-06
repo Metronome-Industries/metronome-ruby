@@ -58,7 +58,12 @@ module MetronomeSDK
           }
 
           type balance =
-            { balance: Float, credit_type_id: String, starting_balance: Float }
+            {
+              balance: Float,
+              credit_type_id: String,
+              starting_balance: Float,
+              access_type: MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Balance::access_type
+            }
 
           class Balance < MetronomeSDK::Internal::Type::BaseModel
             attr_accessor balance: Float
@@ -67,17 +72,36 @@ module MetronomeSDK
 
             attr_accessor starting_balance: Float
 
+            attr_reader access_type: MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Balance::access_type?
+
+            def access_type=: (
+              MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Balance::access_type
+            ) -> MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Balance::access_type
+
             def initialize: (
               balance: Float,
               credit_type_id: String,
-              starting_balance: Float
+              starting_balance: Float,
+              ?access_type: MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Balance::access_type
             ) -> void
 
             def to_hash: -> {
               balance: Float,
               credit_type_id: String,
-              starting_balance: Float
+              starting_balance: Float,
+              access_type: MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Balance::access_type
             }
+
+            type access_type = :SPEND | :QUANTITY
+
+            module AccessType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              SPEND: :SPEND
+              QUANTITY: :QUANTITY
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Balance::access_type]
+            end
           end
 
           type commit =
@@ -85,6 +109,8 @@ module MetronomeSDK
               id: String,
               balance: Float,
               start_date: Time,
+              access_type: MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Commit::access_type,
+              credit_type_id: String,
               end_date: Time?,
               ledger_entries: ::Array[MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Commit::LedgerEntry]
             }
@@ -95,6 +121,16 @@ module MetronomeSDK
             attr_accessor balance: Float
 
             attr_accessor start_date: Time
+
+            attr_reader access_type: MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Commit::access_type?
+
+            def access_type=: (
+              MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Commit::access_type
+            ) -> MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Commit::access_type
+
+            attr_reader credit_type_id: String?
+
+            def credit_type_id=: (String) -> String
 
             attr_accessor end_date: Time?
 
@@ -108,6 +144,8 @@ module MetronomeSDK
               id: String,
               balance: Float,
               start_date: Time,
+              ?access_type: MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Commit::access_type,
+              ?credit_type_id: String,
               ?end_date: Time?,
               ?ledger_entries: ::Array[MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Commit::LedgerEntry]
             ) -> void
@@ -116,9 +154,22 @@ module MetronomeSDK
               id: String,
               balance: Float,
               start_date: Time,
+              access_type: MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Commit::access_type,
+              credit_type_id: String,
               end_date: Time?,
               ledger_entries: ::Array[MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Commit::LedgerEntry]
             }
+
+            type access_type = :SPEND | :QUANTITY
+
+            module AccessType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              SPEND: :SPEND
+              QUANTITY: :QUANTITY
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Commit::access_type]
+            end
 
             type ledger_entry =
               {
@@ -178,6 +229,8 @@ module MetronomeSDK
               id: String,
               balance: Float,
               start_date: Time,
+              access_type: MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Credit::access_type,
+              credit_type_id: String,
               end_date: Time?,
               ledger_entries: ::Array[MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Credit::LedgerEntry]
             }
@@ -188,6 +241,16 @@ module MetronomeSDK
             attr_accessor balance: Float
 
             attr_accessor start_date: Time
+
+            attr_reader access_type: MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Credit::access_type?
+
+            def access_type=: (
+              MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Credit::access_type
+            ) -> MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Credit::access_type
+
+            attr_reader credit_type_id: String?
+
+            def credit_type_id=: (String) -> String
 
             attr_accessor end_date: Time?
 
@@ -201,6 +264,8 @@ module MetronomeSDK
               id: String,
               balance: Float,
               start_date: Time,
+              ?access_type: MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Credit::access_type,
+              ?credit_type_id: String,
               ?end_date: Time?,
               ?ledger_entries: ::Array[MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Credit::LedgerEntry]
             ) -> void
@@ -209,9 +274,22 @@ module MetronomeSDK
               id: String,
               balance: Float,
               start_date: Time,
+              access_type: MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Credit::access_type,
+              credit_type_id: String,
               end_date: Time?,
               ledger_entries: ::Array[MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Credit::LedgerEntry]
             }
+
+            type access_type = :SPEND | :QUANTITY
+
+            module AccessType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              SPEND: :SPEND
+              QUANTITY: :QUANTITY
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractListSeatBalancesResponse::Data::Credit::access_type]
+            end
 
             type ledger_entry =
               {
