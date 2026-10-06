@@ -2602,6 +2602,13 @@ module MetronomeSDK
           optional :billing_cycle_config,
                    -> { MetronomeSDK::Models::V1::PackageListResponse::Subscription::BillingCycleConfig }
 
+          # @!attribute custom_credit_type_id
+          #   If provided, the subscription's price will be in terms of this custom pricing
+          #   unit instead of the fiat currency.
+          #
+          #   @return [String, nil]
+          optional :custom_credit_type_id, String
+
           # @!attribute custom_fields
           #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           #
@@ -2659,7 +2666,7 @@ module MetronomeSDK
           optional :starting_at_offset,
                    -> { MetronomeSDK::Models::V1::PackageListResponse::Subscription::StartingAtOffset }
 
-          # @!method initialize(collection_schedule:, proration:, subscription_rate:, id: nil, billing_cycle_config: nil, custom_fields: nil, description: nil, duration: nil, fiat_credit_type_id: nil, initial_quantity: nil, name: nil, quantity_management_mode: nil, seat_config: nil, starting_at_offset: nil)
+          # @!method initialize(collection_schedule:, proration:, subscription_rate:, id: nil, billing_cycle_config: nil, custom_credit_type_id: nil, custom_fields: nil, description: nil, duration: nil, fiat_credit_type_id: nil, initial_quantity: nil, name: nil, quantity_management_mode: nil, seat_config: nil, starting_at_offset: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V1::PackageListResponse::Subscription} for more details.
           #
@@ -2672,6 +2679,8 @@ module MetronomeSDK
           #   @param id [String]
           #
           #   @param billing_cycle_config [MetronomeSDK::Models::V1::PackageListResponse::Subscription::BillingCycleConfig]
+          #
+          #   @param custom_credit_type_id [String] If provided, the subscription's price will be in terms of this custom pricing un
           #
           #   @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
           #

@@ -4165,6 +4165,13 @@ module MetronomeSDK
         #   @return [MetronomeSDK::Models::ContractV2::Subscription::BillingCycleConfig, nil]
         optional :billing_cycle_config, -> { MetronomeSDK::ContractV2::Subscription::BillingCycleConfig }
 
+        # @!attribute custom_credit_type_id
+        #   If provided, the subscription's price will be in terms of this custom pricing
+        #   unit instead of the fiat currency.
+        #
+        #   @return [String, nil]
+        optional :custom_credit_type_id, String
+
         # @!attribute custom_fields
         #   Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         #
@@ -4204,7 +4211,7 @@ module MetronomeSDK
         #   @return [MetronomeSDK::Models::ContractV2::Subscription::SeatConfig, nil]
         optional :seat_config, -> { MetronomeSDK::ContractV2::Subscription::SeatConfig }
 
-        # @!method initialize(billing_periods:, collection_schedule:, proration:, quantity_management_mode:, quantity_schedule:, starting_at:, subscription_rate:, id: nil, billing_cycle_config: nil, custom_fields: nil, description: nil, ending_before: nil, fiat_credit_type_id: nil, name: nil, product_custom_fields: nil, seat_config: nil)
+        # @!method initialize(billing_periods:, collection_schedule:, proration:, quantity_management_mode:, quantity_schedule:, starting_at:, subscription_rate:, id: nil, billing_cycle_config: nil, custom_credit_type_id: nil, custom_fields: nil, description: nil, ending_before: nil, fiat_credit_type_id: nil, name: nil, product_custom_fields: nil, seat_config: nil)
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::ContractV2::Subscription} for more details.
         #
@@ -4225,6 +4232,8 @@ module MetronomeSDK
         #   @param id [String]
         #
         #   @param billing_cycle_config [MetronomeSDK::Models::ContractV2::Subscription::BillingCycleConfig]
+        #
+        #   @param custom_credit_type_id [String] If provided, the subscription's price will be in terms of this custom pricing un
         #
         #   @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         #

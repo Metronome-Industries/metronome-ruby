@@ -56,6 +56,14 @@ module MetronomeSDK
               )
             end
 
+          # The pricing unit for history prices when present. Otherwise prices use
+          # fiat_credit_type_id.
+          sig { returns(T.nilable(String)) }
+          attr_reader :custom_credit_type_id
+
+          sig { params(custom_credit_type_id: String).void }
+          attr_writer :custom_credit_type_id
+
           sig { returns(T.nilable(String)) }
           attr_reader :fiat_credit_type_id
 
@@ -91,6 +99,7 @@ module MetronomeSDK
 
           sig do
             params(
+              custom_credit_type_id: String,
               fiat_credit_type_id: String,
               history:
                 T::Array[
@@ -100,6 +109,9 @@ module MetronomeSDK
             ).returns(T.attached_class)
           end
           def self.new(
+            # The pricing unit for history prices when present. Otherwise prices use
+            # fiat_credit_type_id.
+            custom_credit_type_id: nil,
             fiat_credit_type_id: nil,
             history: nil,
             subscription_id: nil
@@ -109,6 +121,7 @@ module MetronomeSDK
           sig do
             override.returns(
               {
+                custom_credit_type_id: String,
                 fiat_credit_type_id: String,
                 history:
                   T::Array[

@@ -84,6 +84,14 @@ module MetronomeSDK
       end
       attr_writer :billing_cycle_config
 
+      # If provided, the subscription's price will be in terms of this custom pricing
+      # unit instead of the fiat currency.
+      sig { returns(T.nilable(String)) }
+      attr_reader :custom_credit_type_id
+
+      sig { params(custom_credit_type_id: String).void }
+      attr_writer :custom_credit_type_id
+
       # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
       sig { returns(T.nilable(T::Hash[Symbol, String])) }
       attr_reader :custom_fields
@@ -148,6 +156,7 @@ module MetronomeSDK
           id: String,
           billing_cycle_config:
             MetronomeSDK::Subscription::BillingCycleConfig::OrHash,
+          custom_credit_type_id: String,
           custom_fields: T::Hash[Symbol, String],
           description: String,
           ending_before: Time,
@@ -179,6 +188,9 @@ module MetronomeSDK
         subscription_rate:,
         id: nil,
         billing_cycle_config: nil,
+        # If provided, the subscription's price will be in terms of this custom pricing
+        # unit instead of the fiat currency.
+        custom_credit_type_id: nil,
         # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
         custom_fields: nil,
         description: nil,
@@ -209,6 +221,7 @@ module MetronomeSDK
             id: String,
             billing_cycle_config:
               MetronomeSDK::Subscription::BillingCycleConfig,
+            custom_credit_type_id: String,
             custom_fields: T::Hash[Symbol, String],
             description: String,
             ending_before: Time,

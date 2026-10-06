@@ -19,12 +19,17 @@ module MetronomeSDK
 
         type data =
           {
+            custom_credit_type_id: String,
             fiat_credit_type_id: String,
             history: ::Array[MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse::Data::History],
             subscription_id: String
           }
 
         class Data < MetronomeSDK::Internal::Type::BaseModel
+          attr_reader custom_credit_type_id: String?
+
+          def custom_credit_type_id=: (String) -> String
+
           attr_reader fiat_credit_type_id: String?
 
           def fiat_credit_type_id=: (String) -> String
@@ -40,12 +45,14 @@ module MetronomeSDK
           def subscription_id=: (String) -> String
 
           def initialize: (
+            ?custom_credit_type_id: String,
             ?fiat_credit_type_id: String,
             ?history: ::Array[MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse::Data::History],
             ?subscription_id: String
           ) -> void
 
           def to_hash: -> {
+            custom_credit_type_id: String,
             fiat_credit_type_id: String,
             history: ::Array[MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse::Data::History],
             subscription_id: String

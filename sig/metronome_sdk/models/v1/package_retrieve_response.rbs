@@ -2574,6 +2574,7 @@ module MetronomeSDK
               subscription_rate: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::SubscriptionRate,
               id: String,
               billing_cycle_config: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::BillingCycleConfig,
+              custom_credit_type_id: String,
               custom_fields: ::Hash[Symbol, String],
               description: String,
               duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Duration,
@@ -2601,6 +2602,10 @@ module MetronomeSDK
             def billing_cycle_config=: (
               MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::BillingCycleConfig
             ) -> MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::BillingCycleConfig
+
+            attr_reader custom_credit_type_id: String?
+
+            def custom_credit_type_id=: (String) -> String
 
             attr_reader custom_fields: ::Hash[Symbol, String]?
 
@@ -2654,6 +2659,7 @@ module MetronomeSDK
               subscription_rate: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::SubscriptionRate,
               ?id: String,
               ?billing_cycle_config: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::BillingCycleConfig,
+              ?custom_credit_type_id: String,
               ?custom_fields: ::Hash[Symbol, String],
               ?description: String,
               ?duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Duration,
@@ -2671,6 +2677,7 @@ module MetronomeSDK
               subscription_rate: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::SubscriptionRate,
               id: String,
               billing_cycle_config: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::BillingCycleConfig,
+              custom_credit_type_id: String,
               custom_fields: ::Hash[Symbol, String],
               description: String,
               duration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Duration,
