@@ -16,8 +16,9 @@ on:
 
 jobs:
   back-sync:
+    environment: stlc-automation
     runs-on: ubuntu-latest
-    if: github.repository == 'Metronome-Industries/metronome-ruby-staging'
+    if: github.repository == 'Metronome-Industries/metronome-ruby-staging' && github.ref == 'refs/heads/main'
     permissions:
       contents: write
     concurrency:
@@ -28,11 +29,14 @@ jobs:
     steps:
       - name: Generate stlc bot token
         id: app-token
-        uses: actions/create-github-app-token@v1
+        uses: actions/create-github-app-token@v2
         with:
           app-id: ${{ secrets.STLC_BOT_APP_ID }}
           private-key: ${{ secrets.STLC_BOT_APP_PRIVATE_KEY }}
           owner: Metronome-Industries
+          repositories: metronome-ruby-staging
+          permission-contents: write
+          permission-workflows: write
 
       - name: Check out staging
         uses: actions/checkout@v4
@@ -71,19 +75,30 @@ jobs:
           echo "Fast-forwarded staging/main to production/main."
 
   seal-dispatch:
+    environment: stlc-automation
     # Notify the API config repo when out-of-band custom code lands on staging main.
     runs-on: ubuntu-latest
     if: >-
       github.repository == 'Metronome-Industries/metronome-ruby-staging' &&
-      github.event_name == 'push'
+      github.event_name == 'push' && github.ref == 'refs/heads/main'
     permissions:
       contents: read
     env:
       CONFIG_REPO: Metronome-Industries/api
     steps:
+      - name: Mint API dispatch App token
+        id: config-token
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ secrets.STLC_BOT_APP_ID }}
+          private-key: ${{ secrets.STLC_BOT_APP_PRIVATE_KEY }}
+          owner: Metronome-Industries
+          repositories: api
+          permission-contents: write
+
       - name: Loop-guard and send re-seal dispatch
         env:
-          DISPATCH_TOKEN: ${{ secrets.CONFIG_DISPATCH_TOKEN }}
+          DISPATCH_TOKEN: ${{ steps.config-token.outputs.token }}
           HEAD_MSG: ${{ github.event.head_commit.message }}
           HEAD_AUTHOR_NAME: ${{ github.event.head_commit.author.name }}
           SHA: ${{ github.sha }}
@@ -98,11 +113,6 @@ jobs:
 
           if [ "$HEAD_AUTHOR_NAME" = "stlc-bot" ]; then
             echo "stlc-bot commit — skipping re-seal dispatch."
-            exit 0
-          fi
-
-          if [ -z "${DISPATCH_TOKEN:-}" ]; then
-            echo "::notice::CONFIG_DISPATCH_TOKEN not configured — scheduled API sync is the backstop."
             exit 0
           fi
 

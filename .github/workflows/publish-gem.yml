@@ -8,14 +8,22 @@ on:
   release:
     types: [published]
 
+permissions:
+  contents: read
+
 jobs:
   publish:
+    if: >-
+      github.repository == 'Metronome-Industries/metronome-ruby' &&
+      startsWith(github.ref, 'refs/tags/v') && (github.event_name == 'release' || github.event_name == 'workflow_dispatch')
+    environment: package-release
     name: publish
-    if: github.repository == 'Metronome-Industries/metronome-ruby'
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
       - name: Set up Ruby
         uses: ruby/setup-ruby@c4e5b1316158f92e3d49443a9d58b31d25ac0f8f # v1.306.0
         with:
