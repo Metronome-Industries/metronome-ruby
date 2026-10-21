@@ -3929,6 +3929,7 @@ module MetronomeSDK
         {
           billing_periods: MetronomeSDK::ContractV2::Subscription::BillingPeriods,
           collection_schedule: MetronomeSDK::Models::ContractV2::Subscription::collection_schedule,
+          created_at: Time,
           proration: MetronomeSDK::ContractV2::Subscription::Proration,
           quantity_management_mode: MetronomeSDK::Models::ContractV2::Subscription::quantity_management_mode,
           quantity_schedule: ::Array[MetronomeSDK::ContractV2::Subscription::QuantitySchedule],
@@ -3950,6 +3951,8 @@ module MetronomeSDK
         attr_accessor billing_periods: MetronomeSDK::ContractV2::Subscription::BillingPeriods
 
         attr_accessor collection_schedule: MetronomeSDK::Models::ContractV2::Subscription::collection_schedule
+
+        attr_accessor created_at: Time
 
         attr_accessor proration: MetronomeSDK::ContractV2::Subscription::Proration
 
@@ -4010,6 +4013,7 @@ module MetronomeSDK
         def initialize: (
           billing_periods: MetronomeSDK::ContractV2::Subscription::BillingPeriods,
           collection_schedule: MetronomeSDK::Models::ContractV2::Subscription::collection_schedule,
+          created_at: Time,
           proration: MetronomeSDK::ContractV2::Subscription::Proration,
           quantity_management_mode: MetronomeSDK::Models::ContractV2::Subscription::quantity_management_mode,
           quantity_schedule: ::Array[MetronomeSDK::ContractV2::Subscription::QuantitySchedule],
@@ -4030,6 +4034,7 @@ module MetronomeSDK
         def to_hash: -> {
           billing_periods: MetronomeSDK::ContractV2::Subscription::BillingPeriods,
           collection_schedule: MetronomeSDK::Models::ContractV2::Subscription::collection_schedule,
+          created_at: Time,
           proration: MetronomeSDK::ContractV2::Subscription::Proration,
           quantity_management_mode: MetronomeSDK::Models::ContractV2::Subscription::quantity_management_mode,
           quantity_schedule: ::Array[MetronomeSDK::ContractV2::Subscription::QuantitySchedule],

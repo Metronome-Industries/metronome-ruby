@@ -35,7 +35,14 @@ module MetronomeSDK
             #   @return [Time, nil]
             optional :covering_date, Time
 
-            # @!method initialize(contract_id:, customer_id:, schedule_name:, covering_date: nil, request_options: {})
+            # @!attribute properties
+            #   A set of key-value pairs that qualifies which schedule should be applied when
+            #   looking up a schedule by name.
+            #
+            #   @return [Hash{Symbol=>String}, nil]
+            optional :properties, MetronomeSDK::Internal::Type::HashOf[String]
+
+            # @!method initialize(contract_id:, customer_id:, schedule_name:, covering_date: nil, properties: nil, request_options: {})
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V1::Contracts::RateCards::NamedScheduleRetrieveParams}
             #   for more details.
@@ -47,6 +54,8 @@ module MetronomeSDK
             #   @param schedule_name [String] The identifier for the schedule to be retrieved
             #
             #   @param covering_date [Time] If provided, at most one schedule segment will be returned (the one that covers
+            #
+            #   @param properties [Hash{Symbol=>String}] A set of key-value pairs that qualifies which schedule should be applied when lo
             #
             #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
           end

@@ -9,6 +9,7 @@ module MetronomeSDK
               customer_id: String,
               schedule_name: String,
               ?covering_date: Time,
+              ?properties: ::Hash[Symbol, String],
               ?request_options: MetronomeSDK::request_opts
             ) -> MetronomeSDK::Models::V1::Contracts::RateCards::NamedScheduleRetrieveResponse
 
@@ -19,8 +20,20 @@ module MetronomeSDK
               starting_at: Time,
               value: top,
               ?ending_before: Time,
+              ?properties: ::Hash[Symbol, String],
               ?request_options: MetronomeSDK::request_opts
             ) -> nil
+
+            def list: (
+              customer_id: String,
+              ?contract_id: String,
+              ?covering_date: Time,
+              ?limit: Integer,
+              ?next_page: String,
+              ?properties: ::Hash[Symbol, String],
+              ?schedule_name: String,
+              ?request_options: MetronomeSDK::request_opts
+            ) -> MetronomeSDK::Internal::BodyCursorPage[MetronomeSDK::Models::V1::Contracts::RateCards::NamedScheduleListResponse]
 
             def initialize: (client: MetronomeSDK::Client) -> void
           end

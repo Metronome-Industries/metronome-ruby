@@ -8,7 +8,8 @@ module MetronomeSDK
               contract_id: String,
               customer_id: String,
               schedule_name: String,
-              covering_date: Time
+              covering_date: Time,
+              properties: ::Hash[Symbol, String]
             }
             & MetronomeSDK::Internal::Type::request_parameters
 
@@ -26,11 +27,16 @@ module MetronomeSDK
 
             def covering_date=: (Time) -> Time
 
+            attr_reader properties: ::Hash[Symbol, String]?
+
+            def properties=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
+
             def initialize: (
               contract_id: String,
               customer_id: String,
               schedule_name: String,
               ?covering_date: Time,
+              ?properties: ::Hash[Symbol, String],
               ?request_options: MetronomeSDK::request_opts
             ) -> void
 
@@ -39,6 +45,7 @@ module MetronomeSDK
               customer_id: String,
               schedule_name: String,
               covering_date: Time,
+              properties: ::Hash[Symbol, String],
               request_options: MetronomeSDK::RequestOptions
             }
           end

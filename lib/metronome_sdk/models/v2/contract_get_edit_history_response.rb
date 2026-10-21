@@ -2050,6 +2050,11 @@ module MetronomeSDK
             required :collection_schedule,
                      enum: -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::CollectionSchedule }
 
+            # @!attribute created_at
+            #
+            #   @return [Time]
+            required :created_at, Time
+
             # @!attribute proration
             #
             #   @return [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::Proration]
@@ -2148,7 +2153,7 @@ module MetronomeSDK
             optional :seat_config,
                      -> { MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::SeatConfig }
 
-            # @!method initialize(billing_periods:, collection_schedule:, proration:, quantity_management_mode:, quantity_schedule:, starting_at:, subscription_rate:, id: nil, billing_cycle_config: nil, custom_credit_type_id: nil, custom_fields: nil, description: nil, ending_before: nil, fiat_credit_type_id: nil, name: nil, product_custom_fields: nil, seat_config: nil)
+            # @!method initialize(billing_periods:, collection_schedule:, created_at:, proration:, quantity_management_mode:, quantity_schedule:, starting_at:, subscription_rate:, id: nil, billing_cycle_config: nil, custom_credit_type_id: nil, custom_fields: nil, description: nil, ending_before: nil, fiat_credit_type_id: nil, name: nil, product_custom_fields: nil, seat_config: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription}
             #   for more details.
@@ -2156,6 +2161,8 @@ module MetronomeSDK
             #   @param billing_periods [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::BillingPeriods] Previous, current, and next billing periods for the subscription.
             #
             #   @param collection_schedule [Symbol, MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::CollectionSchedule]
+            #
+            #   @param created_at [Time]
             #
             #   @param proration [MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::Proration]
             #

@@ -8,7 +8,7 @@ module MetronomeSDK
             contract_id: String,
             credit_type_id: String,
             ending_before: Time,
-            include_retired_commit_invoices: bool,
+            include_historical_commit_invoices: bool,
             limit: Integer,
             next_page: String,
             skip_zero_qty_line_items: bool,
@@ -38,9 +38,9 @@ module MetronomeSDK
 
           def ending_before=: (Time) -> Time
 
-          attr_reader include_retired_commit_invoices: bool?
+          attr_reader include_historical_commit_invoices: bool?
 
-          def include_retired_commit_invoices=: (bool) -> bool
+          def include_historical_commit_invoices=: (bool) -> bool
 
           attr_reader limit: Integer?
 
@@ -83,7 +83,7 @@ module MetronomeSDK
             ?contract_id: String,
             ?credit_type_id: String,
             ?ending_before: Time,
-            ?include_retired_commit_invoices: bool,
+            ?include_historical_commit_invoices: bool,
             ?limit: Integer,
             ?next_page: String,
             ?skip_zero_qty_line_items: bool,
@@ -100,7 +100,7 @@ module MetronomeSDK
             contract_id: String,
             credit_type_id: String,
             ending_before: Time,
-            include_retired_commit_invoices: bool,
+            include_historical_commit_invoices: bool,
             limit: Integer,
             next_page: String,
             skip_zero_qty_line_items: bool,

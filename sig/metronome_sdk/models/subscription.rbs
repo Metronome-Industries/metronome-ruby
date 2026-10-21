@@ -4,6 +4,7 @@ module MetronomeSDK
       {
         billing_periods: MetronomeSDK::Subscription::BillingPeriods,
         collection_schedule: MetronomeSDK::Models::Subscription::collection_schedule,
+        created_at: Time,
         proration: MetronomeSDK::Subscription::Proration,
         quantity_management_mode: MetronomeSDK::Models::Subscription::quantity_management_mode,
         quantity_schedule: ::Array[MetronomeSDK::Subscription::QuantitySchedule],
@@ -25,6 +26,8 @@ module MetronomeSDK
       attr_accessor billing_periods: MetronomeSDK::Subscription::BillingPeriods
 
       attr_accessor collection_schedule: MetronomeSDK::Models::Subscription::collection_schedule
+
+      attr_accessor created_at: Time
 
       attr_accessor proration: MetronomeSDK::Subscription::Proration
 
@@ -85,6 +88,7 @@ module MetronomeSDK
       def initialize: (
         billing_periods: MetronomeSDK::Subscription::BillingPeriods,
         collection_schedule: MetronomeSDK::Models::Subscription::collection_schedule,
+        created_at: Time,
         proration: MetronomeSDK::Subscription::Proration,
         quantity_management_mode: MetronomeSDK::Models::Subscription::quantity_management_mode,
         quantity_schedule: ::Array[MetronomeSDK::Subscription::QuantitySchedule],
@@ -105,6 +109,7 @@ module MetronomeSDK
       def to_hash: -> {
         billing_periods: MetronomeSDK::Subscription::BillingPeriods,
         collection_schedule: MetronomeSDK::Models::Subscription::collection_schedule,
+        created_at: Time,
         proration: MetronomeSDK::Subscription::Proration,
         quantity_management_mode: MetronomeSDK::Models::Subscription::quantity_management_mode,
         quantity_schedule: ::Array[MetronomeSDK::Subscription::QuantitySchedule],

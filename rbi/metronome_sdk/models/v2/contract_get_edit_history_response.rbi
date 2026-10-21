@@ -4641,6 +4641,9 @@ module MetronomeSDK
             end
             attr_accessor :collection_schedule
 
+            sig { returns(Time) }
+            attr_accessor :created_at
+
             sig do
               returns(
                 MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::Proration
@@ -4795,6 +4798,7 @@ module MetronomeSDK
                   MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::BillingPeriods::OrHash,
                 collection_schedule:
                   MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::CollectionSchedule::OrSymbol,
+                created_at: Time,
                 proration:
                   MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::Proration::OrHash,
                 quantity_management_mode:
@@ -4824,6 +4828,7 @@ module MetronomeSDK
               # Previous, current, and next billing periods for the subscription.
               billing_periods:,
               collection_schedule:,
+              created_at:,
               proration:,
               # Determines how the subscription's quantity is controlled. Defaults to
               # QUANTITY_ONLY. **QUANTITY_ONLY**: The subscription quantity is specified
@@ -4866,6 +4871,7 @@ module MetronomeSDK
                     MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::BillingPeriods,
                   collection_schedule:
                     MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::CollectionSchedule::TaggedSymbol,
+                  created_at: Time,
                   proration:
                     MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::Proration,
                   quantity_management_mode:

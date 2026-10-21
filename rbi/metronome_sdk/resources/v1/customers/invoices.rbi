@@ -123,7 +123,7 @@ module MetronomeSDK
               contract_id: String,
               credit_type_id: String,
               ending_before: Time,
-              include_retired_commit_invoices: T::Boolean,
+              include_historical_commit_invoices: T::Boolean,
               limit: Integer,
               next_page: String,
               skip_zero_qty_line_items: T::Boolean,
@@ -151,9 +151,9 @@ module MetronomeSDK
             # Query param: RFC 3339 timestamp (exclusive). Invoices will only be returned for
             # billing periods that end before this time.
             ending_before: nil,
-            # Query param: When true, includes retired commit invoices alongside active
+            # Query param: When true, includes historical commit invoices alongside active
             # invoices. Defaults to false.
-            include_retired_commit_invoices: nil,
+            include_historical_commit_invoices: nil,
             # Query param: Max number of results that should be returned
             limit: nil,
             # Query param: Cursor that indicates where the next page of results should start.

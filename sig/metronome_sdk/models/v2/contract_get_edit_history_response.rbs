@@ -1999,6 +1999,7 @@ module MetronomeSDK
             {
               billing_periods: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::BillingPeriods,
               collection_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::collection_schedule,
+              created_at: Time,
               proration: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::Proration,
               quantity_management_mode: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::quantity_management_mode,
               quantity_schedule: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::QuantitySchedule],
@@ -2020,6 +2021,8 @@ module MetronomeSDK
             attr_accessor billing_periods: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::BillingPeriods
 
             attr_accessor collection_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::collection_schedule
+
+            attr_accessor created_at: Time
 
             attr_accessor proration: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::Proration
 
@@ -2082,6 +2085,7 @@ module MetronomeSDK
             def initialize: (
               billing_periods: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::BillingPeriods,
               collection_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::collection_schedule,
+              created_at: Time,
               proration: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::Proration,
               quantity_management_mode: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::quantity_management_mode,
               quantity_schedule: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::QuantitySchedule],
@@ -2102,6 +2106,7 @@ module MetronomeSDK
             def to_hash: -> {
               billing_periods: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::BillingPeriods,
               collection_schedule: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::collection_schedule,
+              created_at: Time,
               proration: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::Proration,
               quantity_management_mode: MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::quantity_management_mode,
               quantity_schedule: ::Array[MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::QuantitySchedule],

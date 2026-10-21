@@ -45,7 +45,14 @@ module MetronomeSDK
             #   @return [Time, nil]
             optional :ending_before, Time
 
-            # @!method initialize(contract_id:, customer_id:, schedule_name:, starting_at:, value:, ending_before: nil, request_options: {})
+            # @!attribute properties
+            #   A set of key-value pairs that qualifies which schedule should be applied when
+            #   looking up a schedule by name.
+            #
+            #   @return [Hash{Symbol=>String}, nil]
+            optional :properties, MetronomeSDK::Internal::Type::HashOf[String]
+
+            # @!method initialize(contract_id:, customer_id:, schedule_name:, starting_at:, value:, ending_before: nil, properties: nil, request_options: {})
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V1::Contracts::RateCards::NamedScheduleUpdateParams} for
             #   more details.
@@ -61,6 +68,8 @@ module MetronomeSDK
             #   @param value [Object] The value to set for the named schedule. The structure of this object is specifi
             #
             #   @param ending_before [Time]
+            #
+            #   @param properties [Hash{Symbol=>String}] A set of key-value pairs that qualifies which schedule should be applied when lo
             #
             #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
           end

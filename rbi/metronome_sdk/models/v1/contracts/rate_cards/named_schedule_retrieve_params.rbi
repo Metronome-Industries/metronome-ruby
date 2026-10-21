@@ -37,12 +37,21 @@ module MetronomeSDK
             sig { params(covering_date: Time).void }
             attr_writer :covering_date
 
+            # A set of key-value pairs that qualifies which schedule should be applied when
+            # looking up a schedule by name.
+            sig { returns(T.nilable(T::Hash[Symbol, String])) }
+            attr_reader :properties
+
+            sig { params(properties: T::Hash[Symbol, String]).void }
+            attr_writer :properties
+
             sig do
               params(
                 contract_id: String,
                 customer_id: String,
                 schedule_name: String,
                 covering_date: Time,
+                properties: T::Hash[Symbol, String],
                 request_options: MetronomeSDK::RequestOptions::OrHash
               ).returns(T.attached_class)
             end
@@ -56,6 +65,9 @@ module MetronomeSDK
               # If provided, at most one schedule segment will be returned (the one that covers
               # this date). If not provided, all segments will be returned.
               covering_date: nil,
+              # A set of key-value pairs that qualifies which schedule should be applied when
+              # looking up a schedule by name.
+              properties: nil,
               request_options: {}
             )
             end
@@ -67,6 +79,7 @@ module MetronomeSDK
                   customer_id: String,
                   schedule_name: String,
                   covering_date: Time,
+                  properties: T::Hash[Symbol, String],
                   request_options: MetronomeSDK::RequestOptions
                 }
               )

@@ -24,6 +24,9 @@ module MetronomeSDK
       end
       attr_accessor :collection_schedule
 
+      sig { returns(Time) }
+      attr_accessor :created_at
+
       sig { returns(MetronomeSDK::Subscription::Proration) }
       attr_reader :proration
 
@@ -145,6 +148,7 @@ module MetronomeSDK
           billing_periods: MetronomeSDK::Subscription::BillingPeriods::OrHash,
           collection_schedule:
             MetronomeSDK::Subscription::CollectionSchedule::OrSymbol,
+          created_at: Time,
           proration: MetronomeSDK::Subscription::Proration::OrHash,
           quantity_management_mode:
             MetronomeSDK::Subscription::QuantityManagementMode::OrSymbol,
@@ -170,6 +174,7 @@ module MetronomeSDK
         # Previous, current, and next billing periods for the subscription.
         billing_periods:,
         collection_schedule:,
+        created_at:,
         proration:,
         # Determines how the subscription's quantity is controlled. Defaults to
         # QUANTITY_ONLY. **QUANTITY_ONLY**: The subscription quantity is specified
@@ -211,6 +216,7 @@ module MetronomeSDK
             billing_periods: MetronomeSDK::Subscription::BillingPeriods,
             collection_schedule:
               MetronomeSDK::Subscription::CollectionSchedule::TaggedSymbol,
+            created_at: Time,
             proration: MetronomeSDK::Subscription::Proration,
             quantity_management_mode:
               MetronomeSDK::Subscription::QuantityManagementMode::TaggedSymbol,

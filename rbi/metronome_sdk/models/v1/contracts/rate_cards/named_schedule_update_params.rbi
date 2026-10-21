@@ -43,6 +43,14 @@ module MetronomeSDK
             sig { params(ending_before: Time).void }
             attr_writer :ending_before
 
+            # A set of key-value pairs that qualifies which schedule should be applied when
+            # looking up a schedule by name.
+            sig { returns(T.nilable(T::Hash[Symbol, String])) }
+            attr_reader :properties
+
+            sig { params(properties: T::Hash[Symbol, String]).void }
+            attr_writer :properties
+
             sig do
               params(
                 contract_id: String,
@@ -51,6 +59,7 @@ module MetronomeSDK
                 starting_at: Time,
                 value: T.anything,
                 ending_before: Time,
+                properties: T::Hash[Symbol, String],
                 request_options: MetronomeSDK::RequestOptions::OrHash
               ).returns(T.attached_class)
             end
@@ -66,6 +75,9 @@ module MetronomeSDK
               # specific to the named schedule.
               value:,
               ending_before: nil,
+              # A set of key-value pairs that qualifies which schedule should be applied when
+              # looking up a schedule by name.
+              properties: nil,
               request_options: {}
             )
             end
@@ -79,6 +91,7 @@ module MetronomeSDK
                   starting_at: Time,
                   value: T.anything,
                   ending_before: Time,
+                  properties: T::Hash[Symbol, String],
                   request_options: MetronomeSDK::RequestOptions
                 }
               )

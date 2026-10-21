@@ -14,6 +14,11 @@ module MetronomeSDK
       #   @return [Symbol, MetronomeSDK::Models::Subscription::CollectionSchedule]
       required :collection_schedule, enum: -> { MetronomeSDK::Subscription::CollectionSchedule }
 
+      # @!attribute created_at
+      #
+      #   @return [Time]
+      required :created_at, Time
+
       # @!attribute proration
       #
       #   @return [MetronomeSDK::Models::Subscription::Proration]
@@ -107,13 +112,15 @@ module MetronomeSDK
       #   @return [MetronomeSDK::Models::Subscription::SeatConfig, nil]
       optional :seat_config, -> { MetronomeSDK::Subscription::SeatConfig }
 
-      # @!method initialize(billing_periods:, collection_schedule:, proration:, quantity_management_mode:, quantity_schedule:, starting_at:, subscription_rate:, id: nil, billing_cycle_config: nil, custom_credit_type_id: nil, custom_fields: nil, description: nil, ending_before: nil, fiat_credit_type_id: nil, name: nil, product_custom_fields: nil, seat_config: nil)
+      # @!method initialize(billing_periods:, collection_schedule:, created_at:, proration:, quantity_management_mode:, quantity_schedule:, starting_at:, subscription_rate:, id: nil, billing_cycle_config: nil, custom_credit_type_id: nil, custom_fields: nil, description: nil, ending_before: nil, fiat_credit_type_id: nil, name: nil, product_custom_fields: nil, seat_config: nil)
       #   Some parameter documentations has been truncated, see
       #   {MetronomeSDK::Models::Subscription} for more details.
       #
       #   @param billing_periods [MetronomeSDK::Models::Subscription::BillingPeriods] Previous, current, and next billing periods for the subscription.
       #
       #   @param collection_schedule [Symbol, MetronomeSDK::Models::Subscription::CollectionSchedule]
+      #
+      #   @param created_at [Time]
       #
       #   @param proration [MetronomeSDK::Models::Subscription::Proration]
       #
