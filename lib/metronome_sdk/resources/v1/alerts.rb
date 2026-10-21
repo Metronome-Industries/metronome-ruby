@@ -139,6 +139,8 @@ module MetronomeSDK
         #   customers
         # - Historical preservation: Archive operation maintains threshold notification
         #   history and configuration for compliance and auditing
+        # - Idempotent: Archiving an already-archived threshold notification returns the
+        #   same successful response
         #
         # @overload archive(id:, release_uniqueness_key: nil, request_options: {})
         #
