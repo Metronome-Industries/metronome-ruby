@@ -18,6 +18,13 @@ module MetronomeSDK
         #   @return [String, nil]
         optional :id, String
 
+        # @!attribute access_type
+        #   Filters balances by how they are drawn down. `SPEND` deducts the dollar cost of
+        #   usage. `QUANTITY` deducts the number of units used.
+        #
+        #   @return [Symbol, MetronomeSDK::Models::V1::ContractListBalancesParams::AccessType, nil]
+        optional :access_type, enum: -> { MetronomeSDK::V1::ContractListBalancesParams::AccessType }
+
         # @!attribute covering_date
         #   Return only balances that have access schedules that "cover" the provided date
         #
@@ -80,13 +87,15 @@ module MetronomeSDK
         #   @return [Time, nil]
         optional :starting_at, Time
 
-        # @!method initialize(customer_id:, id: nil, covering_date: nil, effective_before: nil, exclude_zero_balances: nil, include_archived: nil, include_balance: nil, include_contract_balances: nil, include_ledgers: nil, limit: nil, next_page: nil, starting_at: nil, request_options: {})
+        # @!method initialize(customer_id:, id: nil, access_type: nil, covering_date: nil, effective_before: nil, exclude_zero_balances: nil, include_archived: nil, include_balance: nil, include_contract_balances: nil, include_ledgers: nil, limit: nil, next_page: nil, starting_at: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::V1::ContractListBalancesParams} for more details.
         #
         #   @param customer_id [String]
         #
         #   @param id [String]
+        #
+        #   @param access_type [Symbol, MetronomeSDK::Models::V1::ContractListBalancesParams::AccessType] Filters balances by how they are drawn down. `SPEND` deducts the dollar cost of
         #
         #   @param covering_date [Time] Return only balances that have access schedules that "cover" the provided date
         #
@@ -109,6 +118,18 @@ module MetronomeSDK
         #   @param starting_at [Time] Include only balances that have any access on or after the provided date
         #
         #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
+
+        # Filters balances by how they are drawn down. `SPEND` deducts the dollar cost of
+        # usage. `QUANTITY` deducts the number of units used.
+        module AccessType
+          extend MetronomeSDK::Internal::Type::Enum
+
+          SPEND = :SPEND
+          QUANTITY = :QUANTITY
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
       end
     end
   end

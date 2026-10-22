@@ -11,11 +11,14 @@ on:
   workflow_dispatch: {}
   repository_dispatch:
     types: [prod-released]
+  push:
+    branches: [main]
 
 jobs:
   back-sync:
+    environment: stlc-automation
     runs-on: ubuntu-latest
-    if: github.repository == 'Metronome-Industries/metronome-ruby-staging'
+    if: github.repository == 'Metronome-Industries/metronome-ruby-staging' && github.ref == 'refs/heads/main'
     permissions:
       contents: write
     concurrency:
@@ -26,11 +29,14 @@ jobs:
     steps:
       - name: Generate stlc bot token
         id: app-token
-        uses: actions/create-github-app-token@v1
+        uses: actions/create-github-app-token@v2
         with:
           app-id: ${{ secrets.STLC_BOT_APP_ID }}
           private-key: ${{ secrets.STLC_BOT_APP_PRIVATE_KEY }}
           owner: Metronome-Industries
+          repositories: metronome-ruby-staging
+          permission-contents: write
+          permission-workflows: write
 
       - name: Check out staging
         uses: actions/checkout@v4
@@ -44,20 +50,22 @@ jobs:
           git remote add production "https://github.com/${PRODUCTION_REPO}.git"
           git -c "http.https://github.com/.extraheader=" fetch production main
 
-      - name: Check whether production has content staging lacks
-        id: diff
+      - name: Check production/staging ancestry
+        id: sync
         run: |
-          MERGED=$(git merge-tree --write-tree origin/main production/main) || MERGED=conflict
-          STAGING_TREE=$(git rev-parse 'origin/main^{tree}')
-          if [ "$MERGED" = "$STAGING_TREE" ]; then
-            echo "Staging already has production's content. Nothing to pull back."
+          if git merge-base --is-ancestor production/main origin/main; then
+            echo "Staging already contains production history."
             echo "behind=false" >> "$GITHUB_OUTPUT"
-          else
+          elif git merge-base --is-ancestor origin/main production/main; then
+            echo "Production is ahead of staging; fast-forward required."
             echo "behind=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::error title=Back-sync blocked::staging and production histories have diverged."
+            exit 1
           fi
 
       - name: Sync production to staging (fast-forward)
-        if: steps.diff.outputs.behind == 'true'
+        if: steps.sync.outputs.behind == 'true'
         run: |
           if ! git merge-base --is-ancestor origin/main production/main; then
             echo "::error title=Back-sync blocked::staging main is not an ancestor of production/main. Trunks have diverged."
@@ -67,19 +75,30 @@ jobs:
           echo "Fast-forwarded staging/main to production/main."
 
   seal-dispatch:
+    environment: stlc-automation
     # Notify the API config repo when out-of-band custom code lands on staging main.
     runs-on: ubuntu-latest
     if: >-
       github.repository == 'Metronome-Industries/metronome-ruby-staging' &&
-      github.event_name == 'push'
+      github.event_name == 'push' && github.ref == 'refs/heads/main'
     permissions:
       contents: read
     env:
       CONFIG_REPO: Metronome-Industries/api
     steps:
+      - name: Mint API dispatch App token
+        id: config-token
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ secrets.STLC_BOT_APP_ID }}
+          private-key: ${{ secrets.STLC_BOT_APP_PRIVATE_KEY }}
+          owner: Metronome-Industries
+          repositories: api
+          permission-contents: write
+
       - name: Loop-guard and send re-seal dispatch
         env:
-          DISPATCH_TOKEN: ${{ secrets.CONFIG_DISPATCH_TOKEN }}
+          DISPATCH_TOKEN: ${{ steps.config-token.outputs.token }}
           HEAD_MSG: ${{ github.event.head_commit.message }}
           HEAD_AUTHOR_NAME: ${{ github.event.head_commit.author.name }}
           SHA: ${{ github.sha }}
@@ -94,11 +113,6 @@ jobs:
 
           if [ "$HEAD_AUTHOR_NAME" = "stlc-bot" ]; then
             echo "stlc-bot commit — skipping re-seal dispatch."
-            exit 0
-          fi
-
-          if [ -z "${DISPATCH_TOKEN:-}" ]; then
-            echo "::notice::CONFIG_DISPATCH_TOKEN not configured — scheduled API sync is the backstop."
             exit 0
           fi
 

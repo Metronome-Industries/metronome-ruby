@@ -15,7 +15,7 @@ module MetronomeSDK
             # Get a named schedule for the given contract. This endpoint's availability is
             # dependent on your client's configuration.
             #
-            # @overload retrieve(contract_id:, customer_id:, schedule_name:, covering_date: nil, request_options: {})
+            # @overload retrieve(contract_id:, customer_id:, schedule_name:, covering_date: nil, properties: nil, request_options: {})
             #
             # @param contract_id [String] ID of the contract whose named schedule is to be retrieved
             #
@@ -24,6 +24,8 @@ module MetronomeSDK
             # @param schedule_name [String] The identifier for the schedule to be retrieved
             #
             # @param covering_date [Time] If provided, at most one schedule segment will be returned (the one that covers
+            #
+            # @param properties [Hash{Symbol=>String}] A set of key-value pairs that qualifies which schedule should be applied when lo
             #
             # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
             #
@@ -49,7 +51,7 @@ module MetronomeSDK
             # Update a named schedule for the given contract. This endpoint's availability is
             # dependent on your client's configuration.
             #
-            # @overload update(contract_id:, customer_id:, schedule_name:, starting_at:, value:, ending_before: nil, request_options: {})
+            # @overload update(contract_id:, customer_id:, schedule_name:, starting_at:, value:, ending_before: nil, properties: nil, request_options: {})
             #
             # @param contract_id [String] ID of the contract whose named schedule is to be updated
             #
@@ -63,6 +65,8 @@ module MetronomeSDK
             #
             # @param ending_before [Time]
             #
+            # @param properties [Hash{Symbol=>String}] A set of key-value pairs that qualifies which schedule should be applied when lo
+            #
             # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
             #
             # @return [nil]
@@ -75,6 +79,46 @@ module MetronomeSDK
                 path: "v1/contracts/updateNamedSchedule",
                 body: parsed,
                 model: NilClass,
+                options: options
+              )
+            end
+
+            # Some parameter documentations has been truncated, see
+            # {MetronomeSDK::Models::V1::Contracts::RateCards::NamedScheduleListParams} for
+            # more details.
+            #
+            # List contract-level named schedules for a customer, optionally scoped to a
+            # single contract.
+            #
+            # @overload list(customer_id:, contract_id: nil, covering_date: nil, limit: nil, next_page: nil, properties: nil, schedule_name: nil, request_options: {})
+            #
+            # @param customer_id [String] ID of the customer to list contract named schedules for
+            #
+            # @param contract_id [String] Optional ID of a contract to scope the results to a single contract
+            #
+            # @param covering_date [Time] If provided, result contains at most one segment covering this date for each sch
+            #
+            # @param limit [Integer] Maximum number of named schedules to return.
+            #
+            # @param next_page [String] Cursor for pagination. Use the value from a previous response's next_page.
+            #
+            # @param properties [Hash{Symbol=>String}] Optional key-value filters. A schedule matches when it contains at least this su
+            #
+            # @param schedule_name [String] Optional filter to scope the results to a single schedule name
+            #
+            # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
+            #
+            # @return [MetronomeSDK::Internal::BodyCursorPage<MetronomeSDK::Models::V1::Contracts::RateCards::NamedScheduleListResponse>]
+            #
+            # @see MetronomeSDK::Models::V1::Contracts::RateCards::NamedScheduleListParams
+            def list(params)
+              parsed, options = MetronomeSDK::V1::Contracts::RateCards::NamedScheduleListParams.dump_request(params)
+              @client.request(
+                method: :post,
+                path: "v1/contracts/listNamedSchedules",
+                body: parsed,
+                page: MetronomeSDK::Internal::BodyCursorPage,
+                model: MetronomeSDK::Models::V1::Contracts::RateCards::NamedScheduleListResponse,
                 options: options
               )
             end

@@ -16,6 +16,7 @@ module MetronomeSDK
                 customer_id: String,
                 schedule_name: String,
                 covering_date: Time,
+                properties: T::Hash[Symbol, String],
                 request_options: MetronomeSDK::RequestOptions::OrHash
               ).returns(
                 MetronomeSDK::Models::V1::Contracts::RateCards::NamedScheduleRetrieveResponse
@@ -31,6 +32,9 @@ module MetronomeSDK
               # If provided, at most one schedule segment will be returned (the one that covers
               # this date). If not provided, all segments will be returned.
               covering_date: nil,
+              # A set of key-value pairs that qualifies which schedule should be applied when
+              # looking up a schedule by name.
+              properties: nil,
               request_options: {}
             )
             end
@@ -45,6 +49,7 @@ module MetronomeSDK
                 starting_at: Time,
                 value: T.anything,
                 ending_before: Time,
+                properties: T::Hash[Symbol, String],
                 request_options: MetronomeSDK::RequestOptions::OrHash
               ).void
             end
@@ -60,6 +65,48 @@ module MetronomeSDK
               # specific to the named schedule.
               value:,
               ending_before: nil,
+              # A set of key-value pairs that qualifies which schedule should be applied when
+              # looking up a schedule by name.
+              properties: nil,
+              request_options: {}
+            )
+            end
+
+            # List contract-level named schedules for a customer, optionally scoped to a
+            # single contract.
+            sig do
+              params(
+                customer_id: String,
+                contract_id: String,
+                covering_date: Time,
+                limit: Integer,
+                next_page: String,
+                properties: T::Hash[Symbol, String],
+                schedule_name: String,
+                request_options: MetronomeSDK::RequestOptions::OrHash
+              ).returns(
+                MetronomeSDK::Internal::BodyCursorPage[
+                  MetronomeSDK::Models::V1::Contracts::RateCards::NamedScheduleListResponse
+                ]
+              )
+            end
+            def list(
+              # ID of the customer to list contract named schedules for
+              customer_id:,
+              # Optional ID of a contract to scope the results to a single contract
+              contract_id: nil,
+              # If provided, result contains at most one segment covering this date for each
+              # schedule.
+              covering_date: nil,
+              # Maximum number of named schedules to return.
+              limit: nil,
+              # Cursor for pagination. Use the value from a previous response's next_page.
+              next_page: nil,
+              # Optional key-value filters. A schedule matches when it contains at least this
+              # subset of properties.
+              properties: nil,
+              # Optional filter to scope the results to a single schedule name
+              schedule_name: nil,
               request_options: {}
             )
             end

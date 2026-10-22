@@ -1,0 +1,68 @@
+module MetronomeSDK
+  module Models
+    module V1
+      module Contracts
+        module RateCards
+          type named_schedule_list_response =
+            {
+              contract_id: String,
+              schedule_name: String,
+              segments: ::Array[MetronomeSDK::Models::V1::Contracts::RateCards::NamedScheduleListResponse::Segment],
+              properties: ::Hash[Symbol, String]
+            }
+
+          class NamedScheduleListResponse < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor contract_id: String
+
+            attr_accessor schedule_name: String
+
+            attr_accessor segments: ::Array[MetronomeSDK::Models::V1::Contracts::RateCards::NamedScheduleListResponse::Segment]
+
+            attr_reader properties: ::Hash[Symbol, String]?
+
+            def properties=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
+
+            def initialize: (
+              contract_id: String,
+              schedule_name: String,
+              segments: ::Array[MetronomeSDK::Models::V1::Contracts::RateCards::NamedScheduleListResponse::Segment],
+              ?properties: ::Hash[Symbol, String]
+            ) -> void
+
+            def to_hash: -> {
+              contract_id: String,
+              schedule_name: String,
+              segments: ::Array[MetronomeSDK::Models::V1::Contracts::RateCards::NamedScheduleListResponse::Segment],
+              properties: ::Hash[Symbol, String]
+            }
+
+            type segment =
+              { starting_at: Time, value: top, ending_before: Time }
+
+            class Segment < MetronomeSDK::Internal::Type::BaseModel
+              attr_accessor starting_at: Time
+
+              attr_accessor value: top
+
+              attr_reader ending_before: Time?
+
+              def ending_before=: (Time) -> Time
+
+              def initialize: (
+                starting_at: Time,
+                value: top,
+                ?ending_before: Time
+              ) -> void
+
+              def to_hash: -> {
+                starting_at: Time,
+                value: top,
+                ending_before: Time
+              }
+            end
+          end
+        end
+      end
+    end
+  end
+end

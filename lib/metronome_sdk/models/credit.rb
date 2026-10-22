@@ -57,6 +57,16 @@ module MetronomeSDK
       #   @return [MetronomeSDK::Models::Credit::Contract, nil]
       optional :contract, -> { MetronomeSDK::Credit::Contract }
 
+      # @!attribute created_at
+      #   Timestamp of when the credit was created.
+      #
+      #   - Recurring credit: latter of credit service period date and parent credit start
+      #     date
+      #   - Rollover credit: when the new contract started
+      #
+      #   @return [Time, nil]
+      optional :created_at, Time
+
       # @!attribute created_by
       #   The actor who created this credit. Omitted for system-generated credits such as
       #   recurring credits.
@@ -153,7 +163,7 @@ module MetronomeSDK
       #   @return [String, nil]
       optional :uniqueness_key, String
 
-      # @!method initialize(id:, product:, type:, access_schedule: nil, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, balance: nil, contract: nil, created_by: nil, custom_fields: nil, description: nil, hierarchy_configuration: nil, ledger: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil, recurring_credit_id: nil, rolled_over_from: nil, salesforce_opportunity_id: nil, specifiers: nil, subscription_config: nil, uniqueness_key: nil)
+      # @!method initialize(id:, product:, type:, access_schedule: nil, applicable_contract_ids: nil, applicable_product_ids: nil, applicable_product_tags: nil, balance: nil, contract: nil, created_at: nil, created_by: nil, custom_fields: nil, description: nil, hierarchy_configuration: nil, ledger: nil, name: nil, netsuite_sales_order_id: nil, priority: nil, rate_type: nil, recurring_credit_id: nil, rolled_over_from: nil, salesforce_opportunity_id: nil, specifiers: nil, subscription_config: nil, uniqueness_key: nil)
       #   Some parameter documentations has been truncated, see
       #   {MetronomeSDK::Models::Credit} for more details.
       #
@@ -174,6 +184,8 @@ module MetronomeSDK
       #   @param balance [Float] The current balance of the credit or commit. This balance reflects the amount of
       #
       #   @param contract [MetronomeSDK::Models::Credit::Contract]
+      #
+      #   @param created_at [Time] Timestamp of when the credit was created.
       #
       #   @param created_by [String] The actor who created this credit. Omitted for system-generated credits such as
       #

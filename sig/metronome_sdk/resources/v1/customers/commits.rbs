@@ -27,6 +27,7 @@ module MetronomeSDK
 
           def list: (
             customer_id: String,
+            ?access_type: MetronomeSDK::Models::V1::Customers::CommitListParams::access_type,
             ?commit_id: String,
             ?covering_date: Time,
             ?effective_before: Time,

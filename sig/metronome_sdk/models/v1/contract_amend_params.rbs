@@ -283,11 +283,18 @@ module MetronomeSDK
           type access_schedule =
             {
               schedule_items: ::Array[MetronomeSDK::V1::ContractAmendParams::Commit::AccessSchedule::ScheduleItem],
+              access_type: MetronomeSDK::Models::V1::ContractAmendParams::Commit::AccessSchedule::access_type,
               credit_type_id: String
             }
 
           class AccessSchedule < MetronomeSDK::Internal::Type::BaseModel
             attr_accessor schedule_items: ::Array[MetronomeSDK::V1::ContractAmendParams::Commit::AccessSchedule::ScheduleItem]
+
+            attr_reader access_type: MetronomeSDK::Models::V1::ContractAmendParams::Commit::AccessSchedule::access_type?
+
+            def access_type=: (
+              MetronomeSDK::Models::V1::ContractAmendParams::Commit::AccessSchedule::access_type
+            ) -> MetronomeSDK::Models::V1::ContractAmendParams::Commit::AccessSchedule::access_type
 
             attr_reader credit_type_id: String?
 
@@ -295,11 +302,13 @@ module MetronomeSDK
 
             def initialize: (
               schedule_items: ::Array[MetronomeSDK::V1::ContractAmendParams::Commit::AccessSchedule::ScheduleItem],
+              ?access_type: MetronomeSDK::Models::V1::ContractAmendParams::Commit::AccessSchedule::access_type,
               ?credit_type_id: String
             ) -> void
 
             def to_hash: -> {
               schedule_items: ::Array[MetronomeSDK::V1::ContractAmendParams::Commit::AccessSchedule::ScheduleItem],
+              access_type: MetronomeSDK::Models::V1::ContractAmendParams::Commit::AccessSchedule::access_type,
               credit_type_id: String
             }
 
@@ -324,6 +333,17 @@ module MetronomeSDK
                 ending_before: Time,
                 starting_at: Time
               }
+            end
+
+            type access_type = :SPEND | :QUANTITY
+
+            module AccessType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              SPEND: :SPEND
+              QUANTITY: :QUANTITY
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractAmendParams::Commit::AccessSchedule::access_type]
             end
           end
 
@@ -616,11 +636,18 @@ module MetronomeSDK
           type access_schedule =
             {
               schedule_items: ::Array[MetronomeSDK::V1::ContractAmendParams::Credit::AccessSchedule::ScheduleItem],
+              access_type: MetronomeSDK::Models::V1::ContractAmendParams::Credit::AccessSchedule::access_type,
               credit_type_id: String
             }
 
           class AccessSchedule < MetronomeSDK::Internal::Type::BaseModel
             attr_accessor schedule_items: ::Array[MetronomeSDK::V1::ContractAmendParams::Credit::AccessSchedule::ScheduleItem]
+
+            attr_reader access_type: MetronomeSDK::Models::V1::ContractAmendParams::Credit::AccessSchedule::access_type?
+
+            def access_type=: (
+              MetronomeSDK::Models::V1::ContractAmendParams::Credit::AccessSchedule::access_type
+            ) -> MetronomeSDK::Models::V1::ContractAmendParams::Credit::AccessSchedule::access_type
 
             attr_reader credit_type_id: String?
 
@@ -628,11 +655,13 @@ module MetronomeSDK
 
             def initialize: (
               schedule_items: ::Array[MetronomeSDK::V1::ContractAmendParams::Credit::AccessSchedule::ScheduleItem],
+              ?access_type: MetronomeSDK::Models::V1::ContractAmendParams::Credit::AccessSchedule::access_type,
               ?credit_type_id: String
             ) -> void
 
             def to_hash: -> {
               schedule_items: ::Array[MetronomeSDK::V1::ContractAmendParams::Credit::AccessSchedule::ScheduleItem],
+              access_type: MetronomeSDK::Models::V1::ContractAmendParams::Credit::AccessSchedule::access_type,
               credit_type_id: String
             }
 
@@ -657,6 +686,17 @@ module MetronomeSDK
                 ending_before: Time,
                 starting_at: Time
               }
+            end
+
+            type access_type = :SPEND | :QUANTITY
+
+            module AccessType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              SPEND: :SPEND
+              QUANTITY: :QUANTITY
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractAmendParams::Credit::AccessSchedule::access_type]
             end
           end
 

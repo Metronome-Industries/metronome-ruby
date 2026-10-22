@@ -5,6 +5,7 @@ module MetronomeSDK
         type commit_list_params =
           {
             customer_id: String,
+            access_type: MetronomeSDK::Models::V1::Customers::CommitListParams::access_type,
             commit_id: String,
             covering_date: Time,
             effective_before: Time,
@@ -23,6 +24,12 @@ module MetronomeSDK
           include MetronomeSDK::Internal::Type::RequestParameters
 
           attr_accessor customer_id: String
+
+          attr_reader access_type: MetronomeSDK::Models::V1::Customers::CommitListParams::access_type?
+
+          def access_type=: (
+            MetronomeSDK::Models::V1::Customers::CommitListParams::access_type
+          ) -> MetronomeSDK::Models::V1::Customers::CommitListParams::access_type
 
           attr_reader commit_id: String?
 
@@ -66,6 +73,7 @@ module MetronomeSDK
 
           def initialize: (
             customer_id: String,
+            ?access_type: MetronomeSDK::Models::V1::Customers::CommitListParams::access_type,
             ?commit_id: String,
             ?covering_date: Time,
             ?effective_before: Time,
@@ -81,6 +89,7 @@ module MetronomeSDK
 
           def to_hash: -> {
             customer_id: String,
+            access_type: MetronomeSDK::Models::V1::Customers::CommitListParams::access_type,
             commit_id: String,
             covering_date: Time,
             effective_before: Time,
@@ -93,6 +102,17 @@ module MetronomeSDK
             starting_at: Time,
             request_options: MetronomeSDK::RequestOptions
           }
+
+          type access_type = :SPEND | :QUANTITY
+
+          module AccessType
+            extend MetronomeSDK::Internal::Type::Enum
+
+            SPEND: :SPEND
+            QUANTITY: :QUANTITY
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::CommitListParams::access_type]
+          end
         end
       end
     end

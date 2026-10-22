@@ -15,6 +15,13 @@ module MetronomeSDK
 
         # @see MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse#data
         class Data < MetronomeSDK::Internal::Type::BaseModel
+          # @!attribute custom_credit_type_id
+          #   The pricing unit for history prices when present. Otherwise prices use
+          #   fiat_credit_type_id.
+          #
+          #   @return [String, nil]
+          optional :custom_credit_type_id, String
+
           # @!attribute fiat_credit_type_id
           #
           #   @return [String, nil]
@@ -31,9 +38,17 @@ module MetronomeSDK
           #   @return [String, nil]
           optional :subscription_id, String
 
-          # @!method initialize(fiat_credit_type_id: nil, history: nil, subscription_id: nil)
+          # @!method initialize(custom_credit_type_id: nil, fiat_credit_type_id: nil, history: nil, subscription_id: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse::Data}
+          #   for more details.
+          #
+          #   @param custom_credit_type_id [String] The pricing unit for history prices when present. Otherwise prices use fiat_cred
+          #
           #   @param fiat_credit_type_id [String]
+          #
           #   @param history [Array<MetronomeSDK::Models::V1::ContractRetrieveSubscriptionQuantityHistoryResponse::Data::History>]
+          #
           #   @param subscription_id [String]
 
           class History < MetronomeSDK::Internal::Type::BaseModel

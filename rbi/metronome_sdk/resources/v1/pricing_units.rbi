@@ -6,6 +6,21 @@ module MetronomeSDK
       # Use these endpoints to configure a billing API key, a webhook secret, or invoice
       # finalization behavior.
       class PricingUnits
+        # Create a custom pricing unit. Custom pricing units can be used to charge for
+        # usage in a non-fiat pricing unit, for example AI credits.
+        sig do
+          params(
+            name: String,
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(MetronomeSDK::Models::V1::PricingUnitCreateResponse)
+        end
+        def create(
+          # The name of the custom pricing unit. This will appear on invoices.
+          name:,
+          request_options: {}
+        )
+        end
+
         # List all pricing units. All fiat currency types (for example, USD or GBP) will
         # be included, as well as any custom pricing units that were configured. Custom
         # pricing units can be used to charge for usage in a non-fiat pricing unit, for
@@ -30,6 +45,17 @@ module MetronomeSDK
           next_page: nil,
           request_options: {}
         )
+        end
+
+        # Archive a custom pricing unit. Once archived, it will no longer appear in
+        # pricing unit selectors by default.
+        sig do
+          params(
+            id: String,
+            request_options: MetronomeSDK::RequestOptions::OrHash
+          ).returns(MetronomeSDK::Models::V1::PricingUnitArchiveResponse)
+        end
+        def archive(id:, request_options: {})
         end
 
         # @api private

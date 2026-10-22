@@ -10,7 +10,8 @@ module MetronomeSDK
               schedule_name: String,
               starting_at: Time,
               value: top,
-              ending_before: Time
+              ending_before: Time,
+              properties: ::Hash[Symbol, String]
             }
             & MetronomeSDK::Internal::Type::request_parameters
 
@@ -32,6 +33,10 @@ module MetronomeSDK
 
             def ending_before=: (Time) -> Time
 
+            attr_reader properties: ::Hash[Symbol, String]?
+
+            def properties=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
+
             def initialize: (
               contract_id: String,
               customer_id: String,
@@ -39,6 +44,7 @@ module MetronomeSDK
               starting_at: Time,
               value: top,
               ?ending_before: Time,
+              ?properties: ::Hash[Symbol, String],
               ?request_options: MetronomeSDK::request_opts
             ) -> void
 
@@ -49,6 +55,7 @@ module MetronomeSDK
               starting_at: Time,
               value: top,
               ending_before: Time,
+              properties: ::Hash[Symbol, String],
               request_options: MetronomeSDK::RequestOptions
             }
           end

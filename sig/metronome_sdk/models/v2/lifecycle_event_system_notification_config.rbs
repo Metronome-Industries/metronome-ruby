@@ -1,0 +1,44 @@
+module MetronomeSDK
+  module Models
+    module V2
+      type lifecycle_event_system_notification_config =
+        {
+          policy: MetronomeSDK::V2::LifecycleEventSystemNotificationConfig::Policy,
+          type: String,
+          is_enabled: bool
+        }
+
+      class LifecycleEventSystemNotificationConfig < MetronomeSDK::Internal::Type::BaseModel
+        attr_accessor policy: MetronomeSDK::V2::LifecycleEventSystemNotificationConfig::Policy
+
+        attr_accessor type: String
+
+        attr_reader is_enabled: bool?
+
+        def is_enabled=: (bool) -> bool
+
+        def initialize: (
+          policy: MetronomeSDK::V2::LifecycleEventSystemNotificationConfig::Policy,
+          type: String,
+          ?is_enabled: bool
+        ) -> void
+
+        def to_hash: -> {
+          policy: MetronomeSDK::V2::LifecycleEventSystemNotificationConfig::Policy,
+          type: String,
+          is_enabled: bool
+        }
+
+        type policy = { type: String }
+
+        class Policy < MetronomeSDK::Internal::Type::BaseModel
+          attr_accessor type: String
+
+          def initialize: (type: String) -> void
+
+          def to_hash: -> { type: String }
+        end
+      end
+    end
+  end
+end

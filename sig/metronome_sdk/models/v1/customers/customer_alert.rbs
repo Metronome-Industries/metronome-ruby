@@ -38,6 +38,7 @@ module MetronomeSDK
               threshold: Float,
               type: MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::type_,
               updated_at: Time,
+              access_type: MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::access_type,
               alert_specifiers: ::Array[MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier],
               credit_grant_type_filters: ::Array[String],
               credit_type: MetronomeSDK::CreditTypeData?,
@@ -61,6 +62,12 @@ module MetronomeSDK
             attr_accessor type: MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::type_
 
             attr_accessor updated_at: Time
+
+            attr_reader access_type: MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::access_type?
+
+            def access_type=: (
+              MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::access_type
+            ) -> MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::access_type
 
             attr_reader alert_specifiers: ::Array[MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier]?
 
@@ -113,6 +120,7 @@ module MetronomeSDK
               threshold: Float,
               type: MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::type_,
               updated_at: Time,
+              ?access_type: MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::access_type,
               ?alert_specifiers: ::Array[MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier],
               ?credit_grant_type_filters: ::Array[String],
               ?credit_type: MetronomeSDK::CreditTypeData?,
@@ -131,6 +139,7 @@ module MetronomeSDK
               threshold: Float,
               type: MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::type_,
               updated_at: Time,
+              access_type: MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::access_type,
               alert_specifiers: ::Array[MetronomeSDK::V1::Customers::CustomerAlert::Alert::AlertSpecifier],
               credit_grant_type_filters: ::Array[String],
               credit_type: MetronomeSDK::CreditTypeData?,
@@ -168,6 +177,7 @@ module MetronomeSDK
               | :low_remaining_contract_credit_balance_reached
               | :low_remaining_contract_credit_percentage_reached
               | :low_remaining_contract_credit_and_commit_balance_reached
+              | :low_remaining_contract_credit_and_commit_percentage_reached
               | :low_remaining_seat_balance_reached
               | :invoice_total_reached
 
@@ -187,10 +197,22 @@ module MetronomeSDK
               LOW_REMAINING_CONTRACT_CREDIT_BALANCE_REACHED: :low_remaining_contract_credit_balance_reached
               LOW_REMAINING_CONTRACT_CREDIT_PERCENTAGE_REACHED: :low_remaining_contract_credit_percentage_reached
               LOW_REMAINING_CONTRACT_CREDIT_AND_COMMIT_BALANCE_REACHED: :low_remaining_contract_credit_and_commit_balance_reached
+              LOW_REMAINING_CONTRACT_CREDIT_AND_COMMIT_PERCENTAGE_REACHED: :low_remaining_contract_credit_and_commit_percentage_reached
               LOW_REMAINING_SEAT_BALANCE_REACHED: :low_remaining_seat_balance_reached
               INVOICE_TOTAL_REACHED: :invoice_total_reached
 
               def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::type_]
+            end
+
+            type access_type = :SPEND | :QUANTITY
+
+            module AccessType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              SPEND: :SPEND
+              QUANTITY: :QUANTITY
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::Customers::CustomerAlert::Alert::access_type]
             end
 
             type alert_specifier =

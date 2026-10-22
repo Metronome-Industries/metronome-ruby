@@ -43,12 +43,33 @@ class MetronomeSDK::Test::Resources::V1::ContractsTest < MetronomeSDK::Test::Res
     response = @metronome.v1.contracts.list(customer_id: "9b85c1c1-5238-4f2a-a409-61412905e1e1")
 
     assert_pattern do
-      response => MetronomeSDK::Models::V1::ContractListResponse
+      response => MetronomeSDK::Internal::BodyCursorPageCursorField
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => MetronomeSDK::Contract
     end
 
     assert_pattern do
-      response => {
-        data: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Contract])
+      row => {
+        id: String,
+        amendments: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Contract::Amendment]),
+        current: MetronomeSDK::ContractWithoutAmendments,
+        customer_id: String,
+        initial: MetronomeSDK::ContractWithoutAmendments,
+        archived_at: Time | nil,
+        custom_fields: ^(MetronomeSDK::Internal::Type::HashOf[String]) | nil,
+        customer_billing_provider_configuration: MetronomeSDK::Contract::CustomerBillingProviderConfiguration | nil,
+        package_id: String | nil,
+        prepaid_balance_threshold_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration | nil,
+        scheduled_charges_on_usage_invoices: MetronomeSDK::Contract::ScheduledChargesOnUsageInvoices | nil,
+        spend_threshold_configuration: MetronomeSDK::SpendThresholdConfiguration | nil,
+        spend_trackers: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Contract::SpendTracker]) | nil,
+        subscriptions: ^(MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::Subscription]) | nil,
+        uniqueness_key: String | nil
       }
     end
   end

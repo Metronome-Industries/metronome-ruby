@@ -4,6 +4,7 @@ module MetronomeSDK
       type contract_get_net_balance_params =
         {
           customer_id: String,
+          access_type: MetronomeSDK::Models::V1::ContractGetNetBalanceParams::access_type,
           credit_type_id: String,
           filters: ::Array[MetronomeSDK::BalanceFilter],
           invoice_inclusion_mode: MetronomeSDK::Models::V1::ContractGetNetBalanceParams::invoice_inclusion_mode
@@ -15,6 +16,12 @@ module MetronomeSDK
         include MetronomeSDK::Internal::Type::RequestParameters
 
         attr_accessor customer_id: String
+
+        attr_reader access_type: MetronomeSDK::Models::V1::ContractGetNetBalanceParams::access_type?
+
+        def access_type=: (
+          MetronomeSDK::Models::V1::ContractGetNetBalanceParams::access_type
+        ) -> MetronomeSDK::Models::V1::ContractGetNetBalanceParams::access_type
 
         attr_reader credit_type_id: String?
 
@@ -34,6 +41,7 @@ module MetronomeSDK
 
         def initialize: (
           customer_id: String,
+          ?access_type: MetronomeSDK::Models::V1::ContractGetNetBalanceParams::access_type,
           ?credit_type_id: String,
           ?filters: ::Array[MetronomeSDK::BalanceFilter],
           ?invoice_inclusion_mode: MetronomeSDK::Models::V1::ContractGetNetBalanceParams::invoice_inclusion_mode,
@@ -42,11 +50,23 @@ module MetronomeSDK
 
         def to_hash: -> {
           customer_id: String,
+          access_type: MetronomeSDK::Models::V1::ContractGetNetBalanceParams::access_type,
           credit_type_id: String,
           filters: ::Array[MetronomeSDK::BalanceFilter],
           invoice_inclusion_mode: MetronomeSDK::Models::V1::ContractGetNetBalanceParams::invoice_inclusion_mode,
           request_options: MetronomeSDK::RequestOptions
         }
+
+        type access_type = :SPEND | :QUANTITY
+
+        module AccessType
+          extend MetronomeSDK::Internal::Type::Enum
+
+          SPEND: :SPEND
+          QUANTITY: :QUANTITY
+
+          def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractGetNetBalanceParams::access_type]
+        end
 
         type invoice_inclusion_mode = :FINALIZED | :FINALIZED_AND_DRAFT
 

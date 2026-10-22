@@ -45,7 +45,8 @@ module MetronomeSDK
           sig { params(amendment_id: String).void }
           attr_writer :amendment_id
 
-          # This field's availability is dependent on your client's configuration.
+          # Indicates if the invoice has been or will be sent to the configured customer
+          # billing provider. Defaults to `billable`.
           sig { returns(T.nilable(T.anything)) }
           attr_reader :billable_status
 
@@ -339,7 +340,8 @@ module MetronomeSDK
             total:,
             type:,
             amendment_id: nil,
-            # This field's availability is dependent on your client's configuration.
+            # Indicates if the invoice has been or will be sent to the configured customer
+            # billing provider. Defaults to `billable`.
             billable_status: nil,
             # Required on invoices with type USAGE_CONSOLIDATED. List of constituent invoices
             # that were consolidated to create this invoice.
@@ -490,8 +492,8 @@ module MetronomeSDK
             attr_accessor :type
 
             # Details about the credit or commit that was applied to this line item. Only
-            # present on line items with product of `USAGE`, `SUBSCRIPTION` or `COMPOSITE`
-            # types.
+            # present on line items with product of `USAGE`, `SUBSCRIPTION`, `COMPOSITE`, or
+            # `CPU_CONVERSION` types.
             sig do
               returns(
                 T.nilable(
@@ -516,10 +518,10 @@ module MetronomeSDK
             sig { params(commit_custom_fields: T::Hash[Symbol, String]).void }
             attr_writer :commit_custom_fields
 
-            # For line items with product of `USAGE`, `SUBSCRIPTION`, or `COMPOSITE` types,
-            # the ID of the credit or commit that was applied to this line item. For line
-            # items with product type of `FIXED`, the ID of the prepaid or postpaid commit
-            # that is being paid for.
+            # For line items with product of `USAGE`, `SUBSCRIPTION`, `COMPOSITE`, or
+            # `CPU_CONVERSION` types, the ID of the credit or commit that was applied to this
+            # line item. For line items with product type of `FIXED`, the ID of the prepaid or
+            # postpaid commit that is being paid for.
             sig { returns(T.nilable(String)) }
             attr_reader :commit_id
 
@@ -745,6 +747,14 @@ module MetronomeSDK
             sig { params(quantity: Float).void }
             attr_writer :quantity
 
+            # Present on applied commit line items for quantity-based commits. Represents the
+            # unit quantity deducted the commit.
+            sig { returns(T.nilable(Float)) }
+            attr_reader :quantity_consumed
+
+            sig { params(quantity_consumed: Float).void }
+            attr_writer :quantity_consumed
+
             sig do
               returns(
                 T.nilable(
@@ -887,6 +897,7 @@ module MetronomeSDK
                 professional_service_custom_fields: T::Hash[Symbol, String],
                 professional_service_id: String,
                 quantity: Float,
+                quantity_consumed: Float,
                 reseller_type:
                   MetronomeSDK::V1::Customers::Invoice::LineItem::ResellerType::OrSymbol,
                 scheduled_charge_custom_fields: T::Hash[Symbol, String],
@@ -932,15 +943,15 @@ module MetronomeSDK
               #   converted to fiat currency using a cpu_conversion line item.
               type:,
               # Details about the credit or commit that was applied to this line item. Only
-              # present on line items with product of `USAGE`, `SUBSCRIPTION` or `COMPOSITE`
-              # types.
+              # present on line items with product of `USAGE`, `SUBSCRIPTION`, `COMPOSITE`, or
+              # `CPU_CONVERSION` types.
               applied_commit_or_credit: nil,
               # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
               commit_custom_fields: nil,
-              # For line items with product of `USAGE`, `SUBSCRIPTION`, or `COMPOSITE` types,
-              # the ID of the credit or commit that was applied to this line item. For line
-              # items with product type of `FIXED`, the ID of the prepaid or postpaid commit
-              # that is being paid for.
+              # For line items with product of `USAGE`, `SUBSCRIPTION`, `COMPOSITE`, or
+              # `CPU_CONVERSION` types, the ID of the credit or commit that was applied to this
+              # line item. For line items with product type of `FIXED`, the ID of the prepaid or
+              # postpaid commit that is being paid for.
               commit_id: nil,
               commit_netsuite_item_id: nil,
               commit_netsuite_sales_order_id: nil,
@@ -999,6 +1010,9 @@ module MetronomeSDK
               professional_service_id: nil,
               # The quantity associated with the line item.
               quantity: nil,
+              # Present on applied commit line items for quantity-based commits. Represents the
+              # unit quantity deducted the commit.
+              quantity_consumed: nil,
               reseller_type: nil,
               # Custom fields to be added eg. { "key1": "value1", "key2": "value2" }
               scheduled_charge_custom_fields: nil,
@@ -1059,6 +1073,7 @@ module MetronomeSDK
                   professional_service_custom_fields: T::Hash[Symbol, String],
                   professional_service_id: String,
                   quantity: Float,
+                  quantity_consumed: Float,
                   reseller_type:
                     MetronomeSDK::V1::Customers::Invoice::LineItem::ResellerType::TaggedSymbol,
                   scheduled_charge_custom_fields: T::Hash[Symbol, String],
@@ -1097,17 +1112,44 @@ module MetronomeSDK
               end
               attr_accessor :type
 
+              # Indicates how the balance is drawn down. `SPEND` deducts the dollar cost of
+              # usage. `QUANTITY` deducts the number of units used.
+              sig do
+                returns(
+                  T.nilable(
+                    MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::AccessType::TaggedSymbol
+                  )
+                )
+              end
+              attr_reader :access_type
+
+              sig do
+                params(
+                  access_type:
+                    MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::AccessType::OrSymbol
+                ).void
+              end
+              attr_writer :access_type
+
               # Details about the credit or commit that was applied to this line item. Only
-              # present on line items with product of `USAGE`, `SUBSCRIPTION` or `COMPOSITE`
-              # types.
+              # present on line items with product of `USAGE`, `SUBSCRIPTION`, `COMPOSITE`, or
+              # `CPU_CONVERSION` types.
               sig do
                 params(
                   id: String,
                   type:
-                    MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::Type::OrSymbol
+                    MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::Type::OrSymbol,
+                  access_type:
+                    MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::AccessType::OrSymbol
                 ).returns(T.attached_class)
               end
-              def self.new(id:, type:)
+              def self.new(
+                id:,
+                type:,
+                # Indicates how the balance is drawn down. `SPEND` deducts the dollar cost of
+                # usage. `QUANTITY` deducts the number of units used.
+                access_type: nil
+              )
               end
 
               sig do
@@ -1115,7 +1157,9 @@ module MetronomeSDK
                   {
                     id: String,
                     type:
-                      MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::Type::TaggedSymbol
+                      MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::Type::TaggedSymbol,
+                    access_type:
+                      MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::AccessType::TaggedSymbol
                   }
                 )
               end
@@ -1154,6 +1198,42 @@ module MetronomeSDK
                   override.returns(
                     T::Array[
                       MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::Type::TaggedSymbol
+                    ]
+                  )
+                end
+                def self.values
+                end
+              end
+
+              # Indicates how the balance is drawn down. `SPEND` deducts the dollar cost of
+              # usage. `QUANTITY` deducts the number of units used.
+              module AccessType
+                extend MetronomeSDK::Internal::Type::Enum
+
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::AccessType
+                    )
+                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+                SPEND =
+                  T.let(
+                    :SPEND,
+                    MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::AccessType::TaggedSymbol
+                  )
+                QUANTITY =
+                  T.let(
+                    :QUANTITY,
+                    MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::AccessType::TaggedSymbol
+                  )
+
+                sig do
+                  override.returns(
+                    T::Array[
+                      MetronomeSDK::V1::Customers::Invoice::LineItem::AppliedCommitOrCredit::AccessType::TaggedSymbol
                     ]
                   )
                 end

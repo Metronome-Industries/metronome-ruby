@@ -50,6 +50,13 @@ module MetronomeSDK
           #   @return [Boolean, nil]
           optional :exclude_free_usage, MetronomeSDK::Internal::Type::Boolean
 
+          # @!attribute include_composite_spend
+          #   Only for composite products. If true, allows a composite to incorporate spend
+          #   from other composite products. Defaults to false
+          #
+          #   @return [Boolean, nil]
+          optional :include_composite_spend, MetronomeSDK::Internal::Type::Boolean
+
           # @!attribute is_refundable
           #   Defaults to product's current refundability status. This field's availability is
           #   dependent on your client's configuration.
@@ -134,7 +141,7 @@ module MetronomeSDK
           #   @return [Array<String>, nil]
           optional :tags, MetronomeSDK::Internal::Type::ArrayOf[String]
 
-          # @!method initialize(product_id:, starting_at:, billable_metric_id: nil, composite_product_ids: nil, composite_tags: nil, exclude_free_usage: nil, is_refundable: nil, name: nil, netsuite_internal_item_id: nil, netsuite_overage_item_id: nil, presentation_group_key: nil, pricing_group_key: nil, quantity_conversion: nil, quantity_rounding: nil, sql_breakdown_granularity: nil, tags: nil, request_options: {})
+          # @!method initialize(product_id:, starting_at:, billable_metric_id: nil, composite_product_ids: nil, composite_tags: nil, exclude_free_usage: nil, include_composite_spend: nil, is_refundable: nil, name: nil, netsuite_internal_item_id: nil, netsuite_overage_item_id: nil, presentation_group_key: nil, pricing_group_key: nil, quantity_conversion: nil, quantity_rounding: nil, sql_breakdown_granularity: nil, tags: nil, request_options: {})
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V1::Contracts::ProductUpdateParams} for more details.
           #
@@ -149,6 +156,8 @@ module MetronomeSDK
           #   @param composite_tags [Array<String>] Available for COMPOSITE products only. If not provided, defaults to product's cu
           #
           #   @param exclude_free_usage [Boolean] Beta feature only available for composite products. If true, products with $0 wi
+          #
+          #   @param include_composite_spend [Boolean] Only for composite products. If true, allows a composite to incorporate spend fr
           #
           #   @param is_refundable [Boolean] Defaults to product's current refundability status. This field's availability is
           #

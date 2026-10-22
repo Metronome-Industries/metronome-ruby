@@ -14,6 +14,13 @@ module MetronomeSDK
         #   @return [String]
         required :customer_id, String
 
+        # @!attribute access_type
+        #   Filters balances by how they are drawn down. Defaults to `SPEND`. If set to
+        #   `QUANTITY`, `credit_type_id` must not be provided.
+        #
+        #   @return [Symbol, MetronomeSDK::Models::V1::ContractGetNetBalanceParams::AccessType, nil]
+        optional :access_type, enum: -> { MetronomeSDK::V1::ContractGetNetBalanceParams::AccessType }
+
         # @!attribute credit_type_id
         #   The ID of the credit type (can be fiat or a custom pricing unit) to get the
         #   balance for. Defaults to USD (cents) if not specified.
@@ -37,11 +44,13 @@ module MetronomeSDK
         optional :invoice_inclusion_mode,
                  enum: -> { MetronomeSDK::V1::ContractGetNetBalanceParams::InvoiceInclusionMode }
 
-        # @!method initialize(customer_id:, credit_type_id: nil, filters: nil, invoice_inclusion_mode: nil, request_options: {})
+        # @!method initialize(customer_id:, access_type: nil, credit_type_id: nil, filters: nil, invoice_inclusion_mode: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::V1::ContractGetNetBalanceParams} for more details.
         #
         #   @param customer_id [String] The ID of the customer.
+        #
+        #   @param access_type [Symbol, MetronomeSDK::Models::V1::ContractGetNetBalanceParams::AccessType] Filters balances by how they are drawn down. Defaults to `SPEND`. If set to `QUA
         #
         #   @param credit_type_id [String] The ID of the credit type (can be fiat or a custom pricing unit) to get the bala
         #
@@ -50,6 +59,18 @@ module MetronomeSDK
         #   @param invoice_inclusion_mode [Symbol, MetronomeSDK::Models::V1::ContractGetNetBalanceParams::InvoiceInclusionMode] Controls which invoices are considered when calculating the remaining balance. `
         #
         #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
+
+        # Filters balances by how they are drawn down. Defaults to `SPEND`. If set to
+        # `QUANTITY`, `credit_type_id` must not be provided.
+        module AccessType
+          extend MetronomeSDK::Internal::Type::Enum
+
+          SPEND = :SPEND
+          QUANTITY = :QUANTITY
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
 
         # Controls which invoices are considered when calculating the remaining balance.
         # `FINALIZED` considers only deductions from finalized invoices.

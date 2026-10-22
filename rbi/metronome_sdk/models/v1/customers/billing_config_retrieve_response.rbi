@@ -155,8 +155,7 @@ module MetronomeSDK
             sig { params(billing_provider_customer_id: String).void }
             attr_writer :billing_provider_customer_id
 
-            # The collection method for the customer's invoices. NOTE:
-            # `auto_charge_payment_intent` and `manually_charge_payment_intent` are in beta.
+            # The collection method for the customer's invoices.
             sig do
               returns(
                 T.nilable(
@@ -215,8 +214,7 @@ module MetronomeSDK
               azure_start_date: nil,
               azure_subscription_status: nil,
               billing_provider_customer_id: nil,
-              # The collection method for the customer's invoices. NOTE:
-              # `auto_charge_payment_intent` and `manually_charge_payment_intent` are in beta.
+              # The collection method for the customer's invoices.
               stripe_collection_method: nil
             )
             end
@@ -438,8 +436,7 @@ module MetronomeSDK
               end
             end
 
-            # The collection method for the customer's invoices. NOTE:
-            # `auto_charge_payment_intent` and `manually_charge_payment_intent` are in beta.
+            # The collection method for the customer's invoices.
             module StripeCollectionMethod
               extend MetronomeSDK::Internal::Type::Enum
 
@@ -460,16 +457,6 @@ module MetronomeSDK
               SEND_INVOICE =
                 T.let(
                   :send_invoice,
-                  MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::StripeCollectionMethod::TaggedSymbol
-                )
-              AUTO_CHARGE_PAYMENT_INTENT =
-                T.let(
-                  :auto_charge_payment_intent,
-                  MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::StripeCollectionMethod::TaggedSymbol
-                )
-              MANUALLY_CHARGE_PAYMENT_INTENT =
-                T.let(
-                  :manually_charge_payment_intent,
                   MetronomeSDK::Models::V1::Customers::BillingConfigRetrieveResponse::Data::StripeCollectionMethod::TaggedSymbol
                 )
 

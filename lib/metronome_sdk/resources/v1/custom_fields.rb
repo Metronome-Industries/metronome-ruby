@@ -145,6 +145,9 @@ module MetronomeSDK
         # transactional—either all values are set or none are. Custom field values are
         # limited to 200 characters each.
         #
+        # Adding or updating custom fields on credits, commits, or contracts does not emit
+        # `credit.edit`, `commit.edit`, or `contract.edit` events.
+        #
         # @overload set_values(custom_fields:, entity:, entity_id:, request_options: {})
         #
         # @param custom_fields [Hash{Symbol=>String}] Custom fields to be added eg. { "key1": "value1", "key2": "value2" }

@@ -46,14 +46,15 @@ module MetronomeSDK
         attr_writer :next_page
 
         # If true, will return the usage for the current billing period. Will return an
-        # error if the customer is currently uncontracted or starting_on and ending_before
-        # are specified when this is true.
+        # error if the customer does not have an active plan, or if starting_on and
+        # ending_before are specified when this is true.
         sig { returns(T.nilable(T::Boolean)) }
         attr_reader :current_period
 
         sig { params(current_period: T::Boolean).void }
         attr_writer :current_period
 
+        # Must be aligned to UTC midnight and at least one day after `starting_on`.
         sig { returns(T.nilable(Time)) }
         attr_reader :ending_before
 
@@ -79,7 +80,8 @@ module MetronomeSDK
 
         # Object mapping group keys to arrays of values to filter on. Only usage matching
         # these filter values will be returned. Keys must be present in group_key. Omit a
-        # key or use an empty array to include all values for that dimension.
+        # key or use an empty array to include all values for that dimension. The combined
+        # number of entries across all value arrays may not exceed 200.
         sig { returns(T.nilable(T::Hash[Symbol, T::Array[String]])) }
         attr_reader :group_filters
 
@@ -103,6 +105,7 @@ module MetronomeSDK
         sig { params(group_key: T::Array[String]).void }
         attr_writer :group_key
 
+        # Must be aligned to UTC midnight, e.g. `2024-01-01T00:00:00Z`.
         sig { returns(T.nilable(Time)) }
         attr_reader :starting_on
 
@@ -139,16 +142,18 @@ module MetronomeSDK
           # Cursor that indicates where the next page of results should start.
           next_page: nil,
           # If true, will return the usage for the current billing period. Will return an
-          # error if the customer is currently uncontracted or starting_on and ending_before
-          # are specified when this is true.
+          # error if the customer does not have an active plan, or if starting_on and
+          # ending_before are specified when this is true.
           current_period: nil,
+          # Must be aligned to UTC midnight and at least one day after `starting_on`.
           ending_before: nil,
           # Use group_key and group_filters instead. Use a single group key to group by.
           # Compound group keys are not supported.
           group_by: nil,
           # Object mapping group keys to arrays of values to filter on. Only usage matching
           # these filter values will be returned. Keys must be present in group_key. Omit a
-          # key or use an empty array to include all values for that dimension.
+          # key or use an empty array to include all values for that dimension. The combined
+          # number of entries across all value arrays may not exceed 200.
           group_filters: nil,
           # Group key to group usage by. Supports both simple (single key) and compound
           # (multiple keys) group keys.
@@ -162,6 +167,7 @@ module MetronomeSDK
           #
           # Cannot be used together with `group_by`.
           group_key: nil,
+          # Must be aligned to UTC midnight, e.g. `2024-01-01T00:00:00Z`.
           starting_on: nil,
           request_options: {}
         )
@@ -244,8 +250,8 @@ module MetronomeSDK
           sig { returns(String) }
           attr_accessor :key
 
-          # Values of the group_by key to return in the query. Omit this if you'd like all
-          # values for the key returned.
+          # Values of the group_by key to return in the query. Accepts at most 200 values.
+          # Omit this if you'd like all values for the key returned.
           sig { returns(T.nilable(T::Array[String])) }
           attr_reader :values
 
@@ -262,8 +268,8 @@ module MetronomeSDK
           def self.new(
             # The name of the group_by key to use
             key:,
-            # Values of the group_by key to return in the query. Omit this if you'd like all
-            # values for the key returned.
+            # Values of the group_by key to return in the query. Accepts at most 200 values.
+            # Omit this if you'd like all values for the key returned.
             values: nil
           )
           end

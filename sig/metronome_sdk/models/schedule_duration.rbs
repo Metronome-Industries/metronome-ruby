@@ -3,11 +3,18 @@ module MetronomeSDK
     type schedule_duration =
       {
         schedule_items: ::Array[MetronomeSDK::ScheduleDuration::ScheduleItem],
+        access_type: MetronomeSDK::Models::ScheduleDuration::access_type,
         credit_type: MetronomeSDK::CreditTypeData
       }
 
     class ScheduleDuration < MetronomeSDK::Internal::Type::BaseModel
       attr_accessor schedule_items: ::Array[MetronomeSDK::ScheduleDuration::ScheduleItem]
+
+      attr_reader access_type: MetronomeSDK::Models::ScheduleDuration::access_type?
+
+      def access_type=: (
+        MetronomeSDK::Models::ScheduleDuration::access_type
+      ) -> MetronomeSDK::Models::ScheduleDuration::access_type
 
       attr_reader credit_type: MetronomeSDK::CreditTypeData?
 
@@ -17,11 +24,13 @@ module MetronomeSDK
 
       def initialize: (
         schedule_items: ::Array[MetronomeSDK::ScheduleDuration::ScheduleItem],
+        ?access_type: MetronomeSDK::Models::ScheduleDuration::access_type,
         ?credit_type: MetronomeSDK::CreditTypeData
       ) -> void
 
       def to_hash: -> {
         schedule_items: ::Array[MetronomeSDK::ScheduleDuration::ScheduleItem],
+        access_type: MetronomeSDK::Models::ScheduleDuration::access_type,
         credit_type: MetronomeSDK::CreditTypeData
       }
 
@@ -50,6 +59,17 @@ module MetronomeSDK
           ending_before: Time,
           starting_at: Time
         }
+      end
+
+      type access_type = :SPEND | :QUANTITY
+
+      module AccessType
+        extend MetronomeSDK::Internal::Type::Enum
+
+        SPEND: :SPEND
+        QUANTITY: :QUANTITY
+
+        def self?.values: -> ::Array[MetronomeSDK::Models::ScheduleDuration::access_type]
       end
     end
   end

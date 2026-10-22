@@ -108,6 +108,51 @@ module MetronomeSDK
           )
         end
 
+        # Updates only the display name of an existing billable metric. Use this to
+        # correct mistakes or apply standardized naming conventions across all billable
+        # metrics. Returns the billable metric ID to confirm the update.
+        #
+        # Important: Only the name can be modified via this endpoint; configurations
+        # cannot be changed after creation.
+        #
+        # #### Example workflow:
+        #
+        # If you need to make changes to a streaming billable metric, for example,
+        # Metronome supports easily rolling out these changes using a simple workflow:
+        #
+        # 1. Duplicate the billable metric
+        # 2. Make required changes
+        # 3. Save the metric
+        # 4. Navigate to the product you have associated with the incorrect metric
+        # 5. Schedule the product to reference the newly created metric on the appropriate
+        #    date
+        #
+        # @overload update(billable_metric_id:, name:, request_options: {})
+        #
+        # @param billable_metric_id [String] Path param
+        #
+        # @param name [String] Body param: The new name of the metric
+        #
+        # @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
+        #
+        # @return [MetronomeSDK::Models::V1::BillableMetricUpdateResponse]
+        #
+        # @see MetronomeSDK::Models::V1::BillableMetricUpdateParams
+        def update(params)
+          parsed, options = MetronomeSDK::V1::BillableMetricUpdateParams.dump_request(params)
+          billable_metric_id =
+            parsed.delete(:billable_metric_id) do
+              raise ArgumentError.new("missing required path argument #{_1}")
+            end
+          @client.request(
+            method: :put,
+            path: ["v1/billable-metrics/%1$s", billable_metric_id],
+            body: parsed,
+            model: MetronomeSDK::Models::V1::BillableMetricUpdateResponse,
+            options: options
+          )
+        end
+
         # Retrieves all billable metrics with their complete configurations. Use this for
         # programmatic discovery and management of billable metrics, such as associating
         # metrics to products and auditing for orphaned or archived metrics. Important:
