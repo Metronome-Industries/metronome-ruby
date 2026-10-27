@@ -1,6 +1,6 @@
 # Changelog
 
-## [3.11.0-alpha.2](https://github.com/Metronome-Industries/metronome-ruby/compare/v3.11.0-alpha.1...v3.11.0-alpha.2) (2026-10-27)
+## [3.12.0](https://github.com/Metronome-Industries/metronome-ruby/compare/v3.11.0-alpha.1...v3.12.0) (2026-10-27)
 
 Adds public API support for quantity-based balances, pricing-unit management, and subscription updates. Contract listing now supports pagination; see the migration guidance below.
 
