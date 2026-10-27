@@ -1,5 +1,47 @@
 # Changelog
 
+## [3.11.0-alpha.2](https://github.com/Metronome-Industries/metronome-ruby/compare/v3.11.0-alpha.1...v3.11.0-alpha.2) (2026-10-27)
+
+
+### Features
+
+* Add access type filters to balance lists ([b5b2f43](https://github.com/Metronome-Industries/metronome-ruby/commit/b5b2f439910f0960600fe782ce88d3731b0dea1d))
+* Add access type to commit responses ([5abcbb6](https://github.com/Metronome-Industries/metronome-ruby/commit/5abcbb68b6669d429eff5304de851dece17d1537))
+* add access_type to commit and credit endpoints ([3f11961](https://github.com/Metronome-Industries/metronome-ruby/commit/3f119613eb1ca9bfdbe2d16ffc50d0110f159cce))
+* Add access_type to commit creation requests ([eb6af67](https://github.com/Metronome-Industries/metronome-ruby/commit/eb6af678ac4d75b84ca87f11d0b3d0662268aad1))
+* add Billable Metric Update method ([bb67f19](https://github.com/Metronome-Industries/metronome-ruby/commit/bb67f193de2d7dfab3ee5162a5577c571674b37c))
+* Add custom_credit_type_id to subscriptions ([f2d32e0](https://github.com/Metronome-Industries/metronome-ruby/commit/f2d32e06442c1c6d239ca5b9fcd7de4b4fb7ea7c))
+* allow edit subscription name via editContract ([8441689](https://github.com/Metronome-Industries/metronome-ruby/commit/8441689bbd631599d97c0808447eebcd1d1a165b))
+* Create package with CUSTOM_DATE option. Provision package contract with custom billing_anchor_date. ([ae3f975](https://github.com/Metronome-Industries/metronome-ruby/commit/ae3f97579b8cc787427c62152344c3143b9f1a60))
+* expose product custom fields on contract subscription terms ([6fe8489](https://github.com/Metronome-Industries/metronome-ruby/commit/6fe84892ecc6330a41fec0329b2aa6183df8d224))
+* internal only ([2199632](https://github.com/Metronome-Industries/metronome-ruby/commit/2199632a210334c304867fae62b30d0d8368fac4))
+* internal only ([a690aa4](https://github.com/Metronome-Industries/metronome-ruby/commit/a690aa46e7b22571c97a7594cec12ebbf6d7a2fd))
+* internal only ([1da3c41](https://github.com/Metronome-Industries/metronome-ruby/commit/1da3c41b1a9efb110d27f50954b8114b634fd9d9))
+* Retire the MCP node package. ([7ba251b](https://github.com/Metronome-Industries/metronome-ruby/commit/7ba251b0e83d09557ec55c6e116818a88eff9796))
+
+
+### Bug Fixes
+
+* prevent SDK generation from restoring release-doctor ([91338bc](https://github.com/Metronome-Industries/metronome-ruby/commit/91338bca0569f5423eba58d095f77fe94cef3887))
+* **stlc:** reject collapsed custom-code tracking ([823e073](https://github.com/Metronome-Industries/metronome-ruby/commit/823e0733be21154063fe5d3298472788247def35))
+* **workflows:** harden SDK release and promotion ([#10](https://github.com/Metronome-Industries/metronome-ruby/issues/10)) ([9f22784](https://github.com/Metronome-Industries/metronome-ruby/commit/9f2278434d53457eb08cb53945f7ebc2021c40a5))
+
+
+### Chores
+
+* **api:** add feature-gated webhook delivery observability endpoint ([d7a1eea](https://github.com/Metronome-Industries/metronome-ruby/commit/d7a1eea0dde6c52b7c85349fc80daed8446db749))
+* promote SDK changes from staging ([#35](https://github.com/Metronome-Industries/metronome-ruby/issues/35)) ([b165a97](https://github.com/Metronome-Industries/metronome-ruby/commit/b165a97e92dd47c8605697b61fe4c9b4d53d5f9e))
+* **stlc:** reconcile Ruby release into staging ([4e67cae](https://github.com/Metronome-Industries/metronome-ruby/commit/4e67cae0a8fcd1a34790fce42a1cbbf84070e9a9))
+* **stlc:** reconcile Ruby release into staging ([9214632](https://github.com/Metronome-Industries/metronome-ruby/commit/9214632522636fbcb8ff27516942f980af1d6486))
+* wire package customizations field. ([027eda9](https://github.com/Metronome-Industries/metronome-ruby/commit/027eda95345f1af34871b3bc5e579b123f5be977))
+
+
+### Documentation
+
+* clarifying the edit notification API manages both system and offset notifications ([02a2ebe](https://github.com/Metronome-Industries/metronome-ruby/commit/02a2ebe01f4d29718377dd75c080db6f1bd71752))
+* make /alerts/archive idempotent ([3f8d931](https://github.com/Metronome-Industries/metronome-ruby/commit/3f8d93141c9489a3eb3a896846491dcf8d823c22))
+* point existing support portal link to new portal link ([f545900](https://github.com/Metronome-Industries/metronome-ruby/commit/f5459008f431108d9e86c2cea41b385de3d14a81))
+
 ## [3.11.0-alpha.1](https://github.com/Metronome-Industries/metronome-ruby/compare/v3.10.0...v3.11.0-alpha.1) (2026-07-29)
 
 
