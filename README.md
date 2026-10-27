@@ -17,7 +17,7 @@ To use this gem, install via Bundler by adding the following to your application
 <!-- x-release-please-start-version -->
 
 ```ruby
-gem "metronome-sdk", "~> 3.11.0.pre.alpha.1"
+gem "metronome-sdk", "~> 3.12.0"
 ```
 
 <!-- x-release-please-end -->
