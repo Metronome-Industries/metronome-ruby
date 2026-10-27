@@ -2,45 +2,29 @@
 
 ## [3.11.0-alpha.2](https://github.com/Metronome-Industries/metronome-ruby/compare/v3.11.0-alpha.1...v3.11.0-alpha.2) (2026-10-27)
 
+Adds public API support for quantity-based balances, pricing-unit management, and subscription updates. Contract listing now supports pagination; see the migration guidance below.
 
 ### Features
 
-* Add access type filters to balance lists ([b5b2f43](https://github.com/Metronome-Industries/metronome-ruby/commit/b5b2f439910f0960600fe782ce88d3731b0dea1d))
-* Add access type to commit responses ([5abcbb6](https://github.com/Metronome-Industries/metronome-ruby/commit/5abcbb68b6669d429eff5304de851dece17d1537))
-* add access_type to commit and credit endpoints ([3f11961](https://github.com/Metronome-Industries/metronome-ruby/commit/3f119613eb1ca9bfdbe2d16ffc50d0110f159cce))
-* Add access_type to commit creation requests ([eb6af67](https://github.com/Metronome-Industries/metronome-ruby/commit/eb6af678ac4d75b84ca87f11d0b3d0662268aad1))
-* add Billable Metric Update method ([bb67f19](https://github.com/Metronome-Industries/metronome-ruby/commit/bb67f193de2d7dfab3ee5162a5577c571674b37c))
-* Add custom_credit_type_id to subscriptions ([f2d32e0](https://github.com/Metronome-Industries/metronome-ruby/commit/f2d32e06442c1c6d239ca5b9fcd7de4b4fb7ea7c))
-* allow edit subscription name via editContract ([8441689](https://github.com/Metronome-Industries/metronome-ruby/commit/8441689bbd631599d97c0808447eebcd1d1a165b))
-* Create package with CUSTOM_DATE option. Provision package contract with custom billing_anchor_date. ([ae3f975](https://github.com/Metronome-Industries/metronome-ruby/commit/ae3f97579b8cc787427c62152344c3143b9f1a60))
-* expose product custom fields on contract subscription terms ([6fe8489](https://github.com/Metronome-Industries/metronome-ruby/commit/6fe84892ecc6330a41fec0329b2aa6183df8d224))
-* internal only ([2199632](https://github.com/Metronome-Industries/metronome-ruby/commit/2199632a210334c304867fae62b30d0d8368fac4))
-* internal only ([a690aa4](https://github.com/Metronome-Industries/metronome-ruby/commit/a690aa46e7b22571c97a7594cec12ebbf6d7a2fd))
-* internal only ([1da3c41](https://github.com/Metronome-Industries/metronome-ruby/commit/1da3c41b1a9efb110d27f50954b8114b634fd9d9))
-* Retire the MCP node package. ([7ba251b](https://github.com/Metronome-Industries/metronome-ruby/commit/7ba251b0e83d09557ec55c6e116818a88eff9796))
-
-
-### Bug Fixes
-
-* prevent SDK generation from restoring release-doctor ([91338bc](https://github.com/Metronome-Industries/metronome-ruby/commit/91338bca0569f5423eba58d095f77fe94cef3887))
-* **stlc:** reject collapsed custom-code tracking ([823e073](https://github.com/Metronome-Industries/metronome-ruby/commit/823e0733be21154063fe5d3298472788247def35))
-* **workflows:** harden SDK release and promotion ([#10](https://github.com/Metronome-Industries/metronome-ruby/issues/10)) ([9f22784](https://github.com/Metronome-Industries/metronome-ruby/commit/9f2278434d53457eb08cb53945f7ebc2021c40a5))
-
-
-### Chores
-
-* **api:** add feature-gated webhook delivery observability endpoint ([d7a1eea](https://github.com/Metronome-Industries/metronome-ruby/commit/d7a1eea0dde6c52b7c85349fc80daed8446db749))
-* promote SDK changes from staging ([#35](https://github.com/Metronome-Industries/metronome-ruby/issues/35)) ([b165a97](https://github.com/Metronome-Industries/metronome-ruby/commit/b165a97e92dd47c8605697b61fe4c9b4d53d5f9e))
-* **stlc:** reconcile Ruby release into staging ([4e67cae](https://github.com/Metronome-Industries/metronome-ruby/commit/4e67cae0a8fcd1a34790fce42a1cbbf84070e9a9))
-* **stlc:** reconcile Ruby release into staging ([9214632](https://github.com/Metronome-Industries/metronome-ruby/commit/9214632522636fbcb8ff27516942f980af1d6486))
-* wire package customizations field. ([027eda9](https://github.com/Metronome-Industries/metronome-ruby/commit/027eda95345f1af34871b3bc5e579b123f5be977))
-
+- Set `access_type` to `SPEND` or `QUANTITY` for commit and credit access schedules, and filter commits, balances, and net balances by access type. ([3f11961](https://github.com/Metronome-Industries/metronome-ruby/commit/3f119613eb1ca9bfdbe2d16ffc50d0110f159cce))
+- Read the units deducted from quantity-based commits through invoice line-item `quantity_consumed`. ([62d2fac](https://github.com/Metronome-Industries/metronome-ruby/commit/62d2fac3d0d0f45b3c3de70d65e641395a8daa53))
+- Update a billable metric's display name. ([bb67f19](https://github.com/Metronome-Industries/metronome-ruby/commit/bb67f193de2d7dfab3ee5162a5577c571674b37c))
+- Create and archive custom pricing units. ([1da3c41](https://github.com/Metronome-Industries/metronome-ruby/commit/1da3c41b1a9efb110d27f50954b8114b634fd9d9))
+- Read subscription product custom fields in contract responses, and rename subscriptions through contract edits. ([6fe8489](https://github.com/Metronome-Industries/metronome-ruby/commit/6fe84892ecc6330a41fec0329b2aa6183df8d224)) ([8441689](https://github.com/Metronome-Industries/metronome-ruby/commit/8441689bbd631599d97c0808447eebcd1d1a165b))
+- Use `CUSTOM_DATE` as the billing-cycle anchor when creating a package. ([ae3f975](https://github.com/Metronome-Industries/metronome-ruby/commit/ae3f97579b8cc787427c62152344c3143b9f1a60))
+- Configure the duration, rate type, and rollover fraction of commits created by prepaid-balance threshold billing. ([c0211f6](https://github.com/Metronome-Industries/metronome-ruby/commit/c0211f6daaa730d698ba053a95ec36b50c7be4e9))
+- Set `include_composite_spend` to include spend from other composite products. ([8844080](https://github.com/Metronome-Industries/metronome-ruby/commit/884408098023336d329d4b644e7dc406ed25a333))
+- Supply a `uniqueness_key` when adding a manual balance entry to prevent duplicate adjustments. ([95213a9](https://github.com/Metronome-Industries/metronome-ruby/commit/95213a9aa6e99539af27b48671f2f41c58726e04))
+- Manage offset lifecycle notifications and list system notification types through `v2.notifications`. ([99e0bb8](https://github.com/Metronome-Industries/metronome-ruby/commit/99e0bb8631dc9aeb36e1111d064647dbf8cbe3eb))
+- Include historical commit invoices when listing invoices with `include_historical_commit_invoices`. ([91338bc](https://github.com/Metronome-Industries/metronome-ruby/commit/91338bca0569f5423eba58d095f77fe94cef3887))
 
 ### Documentation
 
-* clarifying the edit notification API manages both system and offset notifications ([02a2ebe](https://github.com/Metronome-Industries/metronome-ruby/commit/02a2ebe01f4d29718377dd75c080db6f1bd71752))
-* make /alerts/archive idempotent ([3f8d931](https://github.com/Metronome-Industries/metronome-ruby/commit/3f8d93141c9489a3eb3a896846491dcf8d823c22))
-* point existing support portal link to new portal link ([f545900](https://github.com/Metronome-Industries/metronome-ruby/commit/f5459008f431108d9e86c2cea41b385de3d14a81))
+- Clarify that archiving an already archived threshold notification succeeds, and update links to the support portal. ([3f8d931](https://github.com/Metronome-Industries/metronome-ruby/commit/3f8d93141c9489a3eb3a896846491dcf8d823c22)) ([f545900](https://github.com/Metronome-Industries/metronome-ruby/commit/f5459008f431108d9e86c2cea41b385de3d14a81))
+
+### Breaking changes
+
+- V1 and V2 contract `list` methods now return a pagination object instead of `V1::ContractListResponse` or `V2::ContractListResponse`; those response classes are removed. Update explicit class references and type assertions. Use `page.data` for one page, `page.auto_paging_each` to process every contract, or `page.next_page?` / `page.next_page` for manual pagination. Requests accept `cursor` and `limit` (1–20); a single page contains at most 20 contracts. ([02a2ebe](https://github.com/Metronome-Industries/metronome-ruby/commit/02a2ebe01f4d29718377dd75c080db6f1bd71752))
 
 ## [3.11.0-alpha.1](https://github.com/Metronome-Industries/metronome-ruby/compare/v3.10.0...v3.11.0-alpha.1) (2026-07-29)
 
