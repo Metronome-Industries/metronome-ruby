@@ -68,7 +68,7 @@ module MetronomeSDK
 
           # A list of price adjustments can be applied on top of the pricing in the plans.
           # See the
-          # [price adjustments documentation](https://plans-docs.metronome.com/pricing/managing-plans/#price-adjustments)
+          # [price adjustments documentation](https://docs.metronome.com/plans-guides/price-adjustments)
           # for details.
           sig do
             returns(
@@ -146,7 +146,7 @@ module MetronomeSDK
             overage_rate_adjustments: nil,
             # A list of price adjustments can be applied on top of the pricing in the plans.
             # See the
-            # [price adjustments documentation](https://plans-docs.metronome.com/pricing/managing-plans/#price-adjustments)
+            # [price adjustments documentation](https://docs.metronome.com/plans-guides/price-adjustments)
             # for details.
             price_adjustments: nil,
             # A custom trial can be set for the customer's plan. See the

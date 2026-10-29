@@ -2042,6 +2042,11 @@ module MetronomeSDK
                     :QUARTERLY,
                     MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverrideSpecifier::BillingFrequency::TaggedSymbol
                   )
+                SEMI_ANNUAL =
+                  T.let(
+                    :SEMI_ANNUAL,
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddOverride::OverrideSpecifier::BillingFrequency::TaggedSymbol
+                  )
                 ANNUAL =
                   T.let(
                     :ANNUAL,
@@ -3378,6 +3383,11 @@ module MetronomeSDK
                   :QUARTERLY,
                   MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::RecurrenceFrequency::TaggedSymbol
                 )
+              SEMI_ANNUAL =
+                T.let(
+                  :SEMI_ANNUAL,
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCommit::RecurrenceFrequency::TaggedSymbol
+                )
               ANNUAL =
                 T.let(
                   :ANNUAL,
@@ -4281,6 +4291,11 @@ module MetronomeSDK
               QUARTERLY =
                 T.let(
                   :QUARTERLY,
+                  MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::RecurrenceFrequency::TaggedSymbol
+                )
+              SEMI_ANNUAL =
+                T.let(
+                  :SEMI_ANNUAL,
                   MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddRecurringCredit::RecurrenceFrequency::TaggedSymbol
                 )
               ANNUAL =
@@ -5460,6 +5475,11 @@ module MetronomeSDK
                 QUARTERLY =
                   T.let(
                     :QUARTERLY,
+                    MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::SubscriptionRate::BillingFrequency::TaggedSymbol
+                  )
+                SEMI_ANNUAL =
+                  T.let(
+                    :SEMI_ANNUAL,
                     MetronomeSDK::Models::V2::ContractGetEditHistoryResponse::Data::AddSubscription::SubscriptionRate::BillingFrequency::TaggedSymbol
                   )
                 ANNUAL =

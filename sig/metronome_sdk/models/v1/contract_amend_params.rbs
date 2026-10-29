@@ -1098,13 +1098,15 @@ module MetronomeSDK
               recurring_commit_ids: ::Array[String]
             }
 
-            type billing_frequency = :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY
+            type billing_frequency =
+              :MONTHLY | :QUARTERLY | :SEMI_ANNUAL | :ANNUAL | :WEEKLY
 
             module BillingFrequency
               extend MetronomeSDK::Internal::Type::Enum
 
               MONTHLY: :MONTHLY
               QUARTERLY: :QUARTERLY
+              SEMI_ANNUAL: :SEMI_ANNUAL
               ANNUAL: :ANNUAL
               WEEKLY: :WEEKLY
 
