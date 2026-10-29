@@ -248,6 +248,11 @@ module MetronomeSDK
                 :QUARTERLY,
                 MetronomeSDK::V1::ContractRetrieveRateScheduleParams::Selector::BillingFrequency::TaggedSymbol
               )
+            SEMI_ANNUAL =
+              T.let(
+                :SEMI_ANNUAL,
+                MetronomeSDK::V1::ContractRetrieveRateScheduleParams::Selector::BillingFrequency::TaggedSymbol
+              )
             ANNUAL =
               T.let(
                 :ANNUAL,

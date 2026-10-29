@@ -1736,6 +1736,7 @@ module MetronomeSDK
 
               MONTHLY = :MONTHLY
               QUARTERLY = :QUARTERLY
+              SEMI_ANNUAL = :SEMI_ANNUAL
               ANNUAL = :ANNUAL
               WEEKLY = :WEEKLY
 
@@ -2382,6 +2383,7 @@ module MetronomeSDK
 
             MONTHLY = :MONTHLY
             QUARTERLY = :QUARTERLY
+            SEMI_ANNUAL = :SEMI_ANNUAL
             ANNUAL = :ANNUAL
             WEEKLY = :WEEKLY
             DAILY = :DAILY
@@ -2821,6 +2823,7 @@ module MetronomeSDK
 
             MONTHLY = :MONTHLY
             QUARTERLY = :QUARTERLY
+            SEMI_ANNUAL = :SEMI_ANNUAL
             ANNUAL = :ANNUAL
             WEEKLY = :WEEKLY
             DAILY = :DAILY
@@ -3718,6 +3721,7 @@ module MetronomeSDK
 
               MONTHLY = :MONTHLY
               QUARTERLY = :QUARTERLY
+              SEMI_ANNUAL = :SEMI_ANNUAL
               ANNUAL = :ANNUAL
               WEEKLY = :WEEKLY
 

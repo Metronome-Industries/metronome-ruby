@@ -168,6 +168,8 @@ module MetronomeSDK
                 MetronomeSDK::V1::ContractCreateParams::Override::OrHash
               ],
             package_alias: String,
+            package_customizations:
+              MetronomeSDK::V1::ContractCreateParams::PackageCustomizations::OrHash,
             package_id: String,
             prepaid_balance_threshold_configuration:
               MetronomeSDK::PrepaidBalanceThresholdConfiguration::OrHash,
@@ -247,6 +249,9 @@ module MetronomeSDK
           # Selects the package linked to the specified alias as of the contract's start
           # date. Mutually exclusive with package_id.
           package_alias: nil,
+          # Adjustments applied on top of the package's baseline configuration when
+          # provisioning the contract.
+          package_customizations: nil,
           # If provided, provisions a customer on a package instead of creating a
           # traditional contract. When specified, only customer_id, starting_at, package_id,
           # uniqueness_key, transition, and custom_fields are allowed.
