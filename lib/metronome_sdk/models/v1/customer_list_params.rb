@@ -46,7 +46,17 @@ module MetronomeSDK
         #   @return [Array<String>, nil]
         optional :salesforce_account_ids, MetronomeSDK::Internal::Type::ArrayOf[String]
 
-        # @!method initialize(customer_ids: nil, ingest_alias: nil, limit: nil, next_page: nil, only_archived: nil, salesforce_account_ids: nil, request_options: {})
+        # @!attribute stripe_customer_id
+        #   Filter the customer list by the stripe_customer_id of active Stripe billing
+        #   provider configurations. A Stripe customer ID can be linked to multiple
+        #   customers, so it may match more than one customer. Archiving a customer also
+        #   archives its billing provider configurations, so archived customers generally
+        #   won't match.
+        #
+        #   @return [String, nil]
+        optional :stripe_customer_id, String
+
+        # @!method initialize(customer_ids: nil, ingest_alias: nil, limit: nil, next_page: nil, only_archived: nil, salesforce_account_ids: nil, stripe_customer_id: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {MetronomeSDK::Models::V1::CustomerListParams} for more details.
         #
@@ -61,6 +71,8 @@ module MetronomeSDK
         #   @param only_archived [Boolean] Filter the customer list to only return archived customers. By default, only act
         #
         #   @param salesforce_account_ids [Array<String>] Filter the customer list by salesforce_account_id. Up to 100 ids can be provide
+        #
+        #   @param stripe_customer_id [String] Filter the customer list by the stripe_customer_id of active Stripe billing prov
         #
         #   @param request_options [MetronomeSDK::RequestOptions, Hash{Symbol=>Object}]
       end

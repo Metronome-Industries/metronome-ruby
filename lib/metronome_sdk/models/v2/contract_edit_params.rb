@@ -21,9 +21,7 @@ module MetronomeSDK
         required :customer_id, String
 
         # @!attribute add_billing_provider_configuration_update
-        #   Update the billing provider configuration on the contract. Currently only
-        #   supports adding a billing provider configuration to a contract that does not
-        #   already have one.
+        #   Update the billing provider configuration on the contract.
         #
         #   @return [MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate, nil]
         optional :add_billing_provider_configuration_update,
@@ -253,7 +251,7 @@ module MetronomeSDK
         #
         #   @param customer_id [String] ID of the customer whose contract is being edited
         #
-        #   @param add_billing_provider_configuration_update [MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate] Update the billing provider configuration on the contract. Currently only suppor
+        #   @param add_billing_provider_configuration_update [MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate] Update the billing provider configuration on the contract.
         #
         #   @param add_commits [Array<MetronomeSDK::Models::V2::ContractEditParams::AddCommit>]
         #
@@ -341,9 +339,7 @@ module MetronomeSDK
           #   {MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate}
           #   for more details.
           #
-          #   Update the billing provider configuration on the contract. Currently only
-          #   supports adding a billing provider configuration to a contract that does not
-          #   already have one.
+          #   Update the billing provider configuration on the contract.
           #
           #   @param billing_provider_configuration [MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration]
           #
@@ -428,6 +424,7 @@ module MetronomeSDK
 
               START_OF_CURRENT_PERIOD = :START_OF_CURRENT_PERIOD
               START_OF_NEXT_PERIOD = :START_OF_NEXT_PERIOD
+              TODAY = :TODAY
 
               # @!method self.values
               #   @return [Array<Symbol>]
