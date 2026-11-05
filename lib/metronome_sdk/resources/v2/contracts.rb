@@ -143,7 +143,7 @@ module MetronomeSDK
         #
         # @param customer_id [String] ID of the customer whose contract is being edited
         #
-        # @param add_billing_provider_configuration_update [MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate] Update the billing provider configuration on the contract. Currently only suppor
+        # @param add_billing_provider_configuration_update [MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate] Update the billing provider configuration on the contract.
         #
         # @param add_commits [Array<MetronomeSDK::Models::V2::ContractEditParams::AddCommit>]
         #

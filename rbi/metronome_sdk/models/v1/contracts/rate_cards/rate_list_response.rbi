@@ -153,6 +153,11 @@ module MetronomeSDK
                   :QUARTERLY,
                   MetronomeSDK::Models::V1::Contracts::RateCards::RateListResponse::BillingFrequency::TaggedSymbol
                 )
+              SEMI_ANNUAL =
+                T.let(
+                  :SEMI_ANNUAL,
+                  MetronomeSDK::Models::V1::Contracts::RateCards::RateListResponse::BillingFrequency::TaggedSymbol
+                )
               ANNUAL =
                 T.let(
                   :ANNUAL,

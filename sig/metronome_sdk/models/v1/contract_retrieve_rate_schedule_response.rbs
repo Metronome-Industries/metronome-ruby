@@ -114,13 +114,15 @@ module MetronomeSDK
             pricing_group_values: ::Hash[Symbol, String]
           }
 
-          type billing_frequency = :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY
+          type billing_frequency =
+            :MONTHLY | :QUARTERLY | :SEMI_ANNUAL | :ANNUAL | :WEEKLY
 
           module BillingFrequency
             extend MetronomeSDK::Internal::Type::Enum
 
             MONTHLY: :MONTHLY
             QUARTERLY: :QUARTERLY
+            SEMI_ANNUAL: :SEMI_ANNUAL
             ANNUAL: :ANNUAL
             WEEKLY: :WEEKLY
 

@@ -59,6 +59,17 @@ module MetronomeSDK
         sig { params(salesforce_account_ids: T::Array[String]).void }
         attr_writer :salesforce_account_ids
 
+        # Filter the customer list by the stripe_customer_id of active Stripe billing
+        # provider configurations. A Stripe customer ID can be linked to multiple
+        # customers, so it may match more than one customer. Archiving a customer also
+        # archives its billing provider configurations, so archived customers generally
+        # won't match.
+        sig { returns(T.nilable(String)) }
+        attr_reader :stripe_customer_id
+
+        sig { params(stripe_customer_id: String).void }
+        attr_writer :stripe_customer_id
+
         sig do
           params(
             customer_ids: T::Array[String],
@@ -67,6 +78,7 @@ module MetronomeSDK
             next_page: String,
             only_archived: T::Boolean,
             salesforce_account_ids: T::Array[String],
+            stripe_customer_id: String,
             request_options: MetronomeSDK::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
@@ -85,6 +97,12 @@ module MetronomeSDK
           # Filter the customer list by salesforce_account_id. Up to 100 ids can be
           # provided.
           salesforce_account_ids: nil,
+          # Filter the customer list by the stripe_customer_id of active Stripe billing
+          # provider configurations. A Stripe customer ID can be linked to multiple
+          # customers, so it may match more than one customer. Archiving a customer also
+          # archives its billing provider configurations, so archived customers generally
+          # won't match.
+          stripe_customer_id: nil,
           request_options: {}
         )
         end
@@ -98,6 +116,7 @@ module MetronomeSDK
               next_page: String,
               only_archived: T::Boolean,
               salesforce_account_ids: T::Array[String],
+              stripe_customer_id: String,
               request_options: MetronomeSDK::RequestOptions
             }
           )

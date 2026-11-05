@@ -239,9 +239,7 @@ module MetronomeSDK
           contract_id:,
           # ID of the customer whose contract is being edited
           customer_id:,
-          # Update the billing provider configuration on the contract. Currently only
-          # supports adding a billing provider configuration to a contract that does not
-          # already have one.
+          # Update the billing provider configuration on the contract.
           add_billing_provider_configuration_update: nil,
           add_commits: nil,
           add_credits: nil,

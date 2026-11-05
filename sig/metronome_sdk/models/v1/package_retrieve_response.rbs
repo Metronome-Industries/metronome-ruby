@@ -798,13 +798,15 @@ module MetronomeSDK
                 recurring_commit_template_ids: ::Array[String]
               }
 
-              type billing_frequency = :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY
+              type billing_frequency =
+                :MONTHLY | :QUARTERLY | :SEMI_ANNUAL | :ANNUAL | :WEEKLY
 
               module BillingFrequency
                 extend MetronomeSDK::Internal::Type::Enum
 
                 MONTHLY: :MONTHLY
                 QUARTERLY: :QUARTERLY
+                SEMI_ANNUAL: :SEMI_ANNUAL
                 ANNUAL: :ANNUAL
                 WEEKLY: :WEEKLY
 
@@ -1094,13 +1096,15 @@ module MetronomeSDK
               day: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::UsageStatementSchedule::day
             }
 
-            type frequency = :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY
+            type frequency =
+              :MONTHLY | :QUARTERLY | :SEMI_ANNUAL | :ANNUAL | :WEEKLY
 
             module Frequency
               extend MetronomeSDK::Internal::Type::Enum
 
               MONTHLY: :MONTHLY
               QUARTERLY: :QUARTERLY
+              SEMI_ANNUAL: :SEMI_ANNUAL
               ANNUAL: :ANNUAL
               WEEKLY: :WEEKLY
 
@@ -1947,13 +1951,14 @@ module MetronomeSDK
             end
 
             type recurrence_frequency =
-              :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY | :DAILY
+              :MONTHLY | :QUARTERLY | :SEMI_ANNUAL | :ANNUAL | :WEEKLY | :DAILY
 
             module RecurrenceFrequency
               extend MetronomeSDK::Internal::Type::Enum
 
               MONTHLY: :MONTHLY
               QUARTERLY: :QUARTERLY
+              SEMI_ANNUAL: :SEMI_ANNUAL
               ANNUAL: :ANNUAL
               WEEKLY: :WEEKLY
               DAILY: :DAILY
@@ -2388,13 +2393,14 @@ module MetronomeSDK
             end
 
             type recurrence_frequency =
-              :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY | :DAILY
+              :MONTHLY | :QUARTERLY | :SEMI_ANNUAL | :ANNUAL | :WEEKLY | :DAILY
 
             module RecurrenceFrequency
               extend MetronomeSDK::Internal::Type::Enum
 
               MONTHLY: :MONTHLY
               QUARTERLY: :QUARTERLY
+              SEMI_ANNUAL: :SEMI_ANNUAL
               ANNUAL: :ANNUAL
               WEEKLY: :WEEKLY
               DAILY: :DAILY
@@ -2583,7 +2589,8 @@ module MetronomeSDK
               name: String,
               quantity_management_mode: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::quantity_management_mode,
               seat_config: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::SeatConfig,
-              starting_at_offset: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::StartingAtOffset
+              starting_at_offset: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::StartingAtOffset,
+              subscription_alias: String
             }
 
           class Subscription < MetronomeSDK::Internal::Type::BaseModel
@@ -2653,6 +2660,10 @@ module MetronomeSDK
               MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::StartingAtOffset
             ) -> MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::StartingAtOffset
 
+            attr_reader subscription_alias: String?
+
+            def subscription_alias=: (String) -> String
+
             def initialize: (
               collection_schedule: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::collection_schedule,
               proration: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::Proration,
@@ -2668,7 +2679,8 @@ module MetronomeSDK
               ?name: String,
               ?quantity_management_mode: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::quantity_management_mode,
               ?seat_config: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::SeatConfig,
-              ?starting_at_offset: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::StartingAtOffset
+              ?starting_at_offset: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::StartingAtOffset,
+              ?subscription_alias: String
             ) -> void
 
             def to_hash: -> {
@@ -2686,7 +2698,8 @@ module MetronomeSDK
               name: String,
               quantity_management_mode: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::quantity_management_mode,
               seat_config: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::SeatConfig,
-              starting_at_offset: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::StartingAtOffset
+              starting_at_offset: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::StartingAtOffset,
+              subscription_alias: String
             }
 
             type collection_schedule = :ADVANCE | :ARREARS
@@ -2798,13 +2811,15 @@ module MetronomeSDK
                 product: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::SubscriptionRate::Product
               }
 
-              type billing_frequency = :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY
+              type billing_frequency =
+                :MONTHLY | :QUARTERLY | :SEMI_ANNUAL | :ANNUAL | :WEEKLY
 
               module BillingFrequency
                 extend MetronomeSDK::Internal::Type::Enum
 
                 MONTHLY: :MONTHLY
                 QUARTERLY: :QUARTERLY
+                SEMI_ANNUAL: :SEMI_ANNUAL
                 ANNUAL: :ANNUAL
                 WEEKLY: :WEEKLY
 
@@ -2826,10 +2841,17 @@ module MetronomeSDK
 
             type billing_cycle_config =
               {
+                billing_cycle_anchor: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::BillingCycleConfig::billing_cycle_anchor,
                 invoice_placement: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::BillingCycleConfig::invoice_placement
               }
 
             class BillingCycleConfig < MetronomeSDK::Internal::Type::BaseModel
+              attr_reader billing_cycle_anchor: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::BillingCycleConfig::billing_cycle_anchor?
+
+              def billing_cycle_anchor=: (
+                MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::BillingCycleConfig::billing_cycle_anchor
+              ) -> MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::BillingCycleConfig::billing_cycle_anchor
+
               attr_reader invoice_placement: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::BillingCycleConfig::invoice_placement?
 
               def invoice_placement=: (
@@ -2837,12 +2859,31 @@ module MetronomeSDK
               ) -> MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::BillingCycleConfig::invoice_placement
 
               def initialize: (
+                ?billing_cycle_anchor: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::BillingCycleConfig::billing_cycle_anchor,
                 ?invoice_placement: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::BillingCycleConfig::invoice_placement
               ) -> void
 
               def to_hash: -> {
+                billing_cycle_anchor: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::BillingCycleConfig::billing_cycle_anchor,
                 invoice_placement: MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::BillingCycleConfig::invoice_placement
               }
+
+              type billing_cycle_anchor =
+                :SUBSCRIPTION_START
+                | :FIRST_OF_MONTH
+                | :CUSTOM_DATE
+                | :USAGE_STATEMENT_ANCHOR
+
+              module BillingCycleAnchor
+                extend MetronomeSDK::Internal::Type::Enum
+
+                SUBSCRIPTION_START: :SUBSCRIPTION_START
+                FIRST_OF_MONTH: :FIRST_OF_MONTH
+                CUSTOM_DATE: :CUSTOM_DATE
+                USAGE_STATEMENT_ANCHOR: :USAGE_STATEMENT_ANCHOR
+
+                def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::BillingCycleConfig::billing_cycle_anchor]
+              end
 
               type invoice_placement = :ON_SCHEDULED_INVOICE | :ON_USAGE_INVOICE
 

@@ -23,9 +23,7 @@ module MetronomeSDK
         sig { returns(String) }
         attr_accessor :customer_id
 
-        # Update the billing provider configuration on the contract. Currently only
-        # supports adding a billing provider configuration to a contract that does not
-        # already have one.
+        # Update the billing provider configuration on the contract.
         sig do
           returns(
             T.nilable(
@@ -693,9 +691,7 @@ module MetronomeSDK
           contract_id:,
           # ID of the customer whose contract is being edited
           customer_id:,
-          # Update the billing provider configuration on the contract. Currently only
-          # supports adding a billing provider configuration to a contract that does not
-          # already have one.
+          # Update the billing provider configuration on the contract.
           add_billing_provider_configuration_update: nil,
           add_commits: nil,
           add_credits: nil,
@@ -897,9 +893,7 @@ module MetronomeSDK
           end
           attr_writer :schedule
 
-          # Update the billing provider configuration on the contract. Currently only
-          # supports adding a billing provider configuration to a contract that does not
-          # already have one.
+          # Update the billing provider configuration on the contract.
           sig do
             params(
               billing_provider_configuration:
@@ -1182,6 +1176,11 @@ module MetronomeSDK
               START_OF_NEXT_PERIOD =
                 T.let(
                   :START_OF_NEXT_PERIOD,
+                  MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::Schedule::EffectiveAt::TaggedSymbol
+                )
+              TODAY =
+                T.let(
+                  :TODAY,
                   MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::Schedule::EffectiveAt::TaggedSymbol
                 )
 
@@ -3905,6 +3904,11 @@ module MetronomeSDK
                   :QUARTERLY,
                   MetronomeSDK::V2::ContractEditParams::AddOverride::OverrideSpecifier::BillingFrequency::TaggedSymbol
                 )
+              SEMI_ANNUAL =
+                T.let(
+                  :SEMI_ANNUAL,
+                  MetronomeSDK::V2::ContractEditParams::AddOverride::OverrideSpecifier::BillingFrequency::TaggedSymbol
+                )
               ANNUAL =
                 T.let(
                   :ANNUAL,
@@ -5282,6 +5286,11 @@ module MetronomeSDK
                 :QUARTERLY,
                 MetronomeSDK::V2::ContractEditParams::AddRecurringCommit::RecurrenceFrequency::TaggedSymbol
               )
+            SEMI_ANNUAL =
+              T.let(
+                :SEMI_ANNUAL,
+                MetronomeSDK::V2::ContractEditParams::AddRecurringCommit::RecurrenceFrequency::TaggedSymbol
+              )
             ANNUAL =
               T.let(
                 :ANNUAL,
@@ -6269,6 +6278,11 @@ module MetronomeSDK
             QUARTERLY =
               T.let(
                 :QUARTERLY,
+                MetronomeSDK::V2::ContractEditParams::AddRecurringCredit::RecurrenceFrequency::TaggedSymbol
+              )
+            SEMI_ANNUAL =
+              T.let(
+                :SEMI_ANNUAL,
                 MetronomeSDK::V2::ContractEditParams::AddRecurringCredit::RecurrenceFrequency::TaggedSymbol
               )
             ANNUAL =
@@ -8358,6 +8372,11 @@ module MetronomeSDK
               QUARTERLY =
                 T.let(
                   :QUARTERLY,
+                  MetronomeSDK::V2::ContractEditParams::AddSubscription::SubscriptionRate::BillingFrequency::TaggedSymbol
+                )
+              SEMI_ANNUAL =
+                T.let(
+                  :SEMI_ANNUAL,
                   MetronomeSDK::V2::ContractEditParams::AddSubscription::SubscriptionRate::BillingFrequency::TaggedSymbol
                 )
               ANNUAL =

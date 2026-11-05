@@ -51,7 +51,7 @@ module MetronomeSDK
           # @!attribute price_adjustments
           #   A list of price adjustments can be applied on top of the pricing in the plans.
           #   See the
-          #   [price adjustments documentation](https://plans-docs.metronome.com/pricing/managing-plans/#price-adjustments)
+          #   [price adjustments documentation](https://docs.metronome.com/plans-guides/price-adjustments)
           #   for details.
           #
           #   @return [Array<MetronomeSDK::Models::V1::Customers::PlanAddParams::PriceAdjustment>, nil]

@@ -266,13 +266,15 @@ module MetronomeSDK
           frequency: MetronomeSDK::Models::ContractWithoutAmendments::UsageStatementSchedule::frequency
         }
 
-        type frequency = :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY
+        type frequency =
+          :MONTHLY | :QUARTERLY | :SEMI_ANNUAL | :ANNUAL | :WEEKLY
 
         module Frequency
           extend MetronomeSDK::Internal::Type::Enum
 
           MONTHLY: :MONTHLY
           QUARTERLY: :QUARTERLY
+          SEMI_ANNUAL: :SEMI_ANNUAL
           ANNUAL: :ANNUAL
           WEEKLY: :WEEKLY
 
@@ -701,13 +703,14 @@ module MetronomeSDK
         end
 
         type recurrence_frequency =
-          :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY | :DAILY
+          :MONTHLY | :QUARTERLY | :SEMI_ANNUAL | :ANNUAL | :WEEKLY | :DAILY
 
         module RecurrenceFrequency
           extend MetronomeSDK::Internal::Type::Enum
 
           MONTHLY: :MONTHLY
           QUARTERLY: :QUARTERLY
+          SEMI_ANNUAL: :SEMI_ANNUAL
           ANNUAL: :ANNUAL
           WEEKLY: :WEEKLY
           DAILY: :DAILY
@@ -1062,13 +1065,14 @@ module MetronomeSDK
         end
 
         type recurrence_frequency =
-          :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY | :DAILY
+          :MONTHLY | :QUARTERLY | :SEMI_ANNUAL | :ANNUAL | :WEEKLY | :DAILY
 
         module RecurrenceFrequency
           extend MetronomeSDK::Internal::Type::Enum
 
           MONTHLY: :MONTHLY
           QUARTERLY: :QUARTERLY
+          SEMI_ANNUAL: :SEMI_ANNUAL
           ANNUAL: :ANNUAL
           WEEKLY: :WEEKLY
           DAILY: :DAILY

@@ -420,13 +420,15 @@ module MetronomeSDK
               effective_at: MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::Schedule::effective_at
             }
 
-            type effective_at = :START_OF_CURRENT_PERIOD | :START_OF_NEXT_PERIOD
+            type effective_at =
+              :START_OF_CURRENT_PERIOD | :START_OF_NEXT_PERIOD | :TODAY
 
             module EffectiveAt
               extend MetronomeSDK::Internal::Type::Enum
 
               START_OF_CURRENT_PERIOD: :START_OF_CURRENT_PERIOD
               START_OF_NEXT_PERIOD: :START_OF_NEXT_PERIOD
+              TODAY: :TODAY
 
               def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::Schedule::effective_at]
             end
@@ -1548,13 +1550,15 @@ module MetronomeSDK
               recurring_commit_ids: ::Array[String]
             }
 
-            type billing_frequency = :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY
+            type billing_frequency =
+              :MONTHLY | :QUARTERLY | :SEMI_ANNUAL | :ANNUAL | :WEEKLY
 
             module BillingFrequency
               extend MetronomeSDK::Internal::Type::Enum
 
               MONTHLY: :MONTHLY
               QUARTERLY: :QUARTERLY
+              SEMI_ANNUAL: :SEMI_ANNUAL
               ANNUAL: :ANNUAL
               WEEKLY: :WEEKLY
 
@@ -2132,13 +2136,14 @@ module MetronomeSDK
           end
 
           type recurrence_frequency =
-            :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY | :DAILY
+            :MONTHLY | :QUARTERLY | :SEMI_ANNUAL | :ANNUAL | :WEEKLY | :DAILY
 
           module RecurrenceFrequency
             extend MetronomeSDK::Internal::Type::Enum
 
             MONTHLY: :MONTHLY
             QUARTERLY: :QUARTERLY
+            SEMI_ANNUAL: :SEMI_ANNUAL
             ANNUAL: :ANNUAL
             WEEKLY: :WEEKLY
             DAILY: :DAILY
@@ -2521,13 +2526,14 @@ module MetronomeSDK
           end
 
           type recurrence_frequency =
-            :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY | :DAILY
+            :MONTHLY | :QUARTERLY | :SEMI_ANNUAL | :ANNUAL | :WEEKLY | :DAILY
 
           module RecurrenceFrequency
             extend MetronomeSDK::Internal::Type::Enum
 
             MONTHLY: :MONTHLY
             QUARTERLY: :QUARTERLY
+            SEMI_ANNUAL: :SEMI_ANNUAL
             ANNUAL: :ANNUAL
             WEEKLY: :WEEKLY
             DAILY: :DAILY
@@ -3372,13 +3378,15 @@ module MetronomeSDK
               product_id: String
             }
 
-            type billing_frequency = :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY
+            type billing_frequency =
+              :MONTHLY | :QUARTERLY | :SEMI_ANNUAL | :ANNUAL | :WEEKLY
 
             module BillingFrequency
               extend MetronomeSDK::Internal::Type::Enum
 
               MONTHLY: :MONTHLY
               QUARTERLY: :QUARTERLY
+              SEMI_ANNUAL: :SEMI_ANNUAL
               ANNUAL: :ANNUAL
               WEEKLY: :WEEKLY
 
