@@ -1440,6 +1440,14 @@ module MetronomeSDK
           required :starting_at_offset,
                    -> { MetronomeSDK::Models::V1::PackageListResponse::RecurringCommit::StartingAtOffset }
 
+          # @!attribute anchor_date
+          #   Recurring cycle anchor for recurring commits or credits created from this
+          #   template. `USAGE_STATEMENT_ANCHOR` tracks the contract's usage statement anchor.
+          #
+          #   @return [Symbol, MetronomeSDK::Models::V1::PackageListResponse::RecurringCommit::AnchorDate, nil]
+          optional :anchor_date,
+                   enum: -> { MetronomeSDK::Models::V1::PackageListResponse::RecurringCommit::AnchorDate }
+
           # @!attribute applicable_product_ids
           #   Will be passed down to the individual commits
           #
@@ -1527,7 +1535,7 @@ module MetronomeSDK
           optional :subscription_config,
                    -> { MetronomeSDK::Models::V1::PackageListResponse::RecurringCommit::SubscriptionConfig }
 
-          # @!method initialize(id:, access_amount:, commit_duration:, priority:, product:, rate_type:, starting_at_offset:, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, duration: nil, invoice_amount: nil, name: nil, proration: nil, proration_rounding: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil, subscription_config: nil)
+          # @!method initialize(id:, access_amount:, commit_duration:, priority:, product:, rate_type:, starting_at_offset:, anchor_date: nil, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, duration: nil, invoice_amount: nil, name: nil, proration: nil, proration_rounding: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil, subscription_config: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V1::PackageListResponse::RecurringCommit} for more
           #   details.
@@ -1545,6 +1553,8 @@ module MetronomeSDK
           #   @param rate_type [Symbol, MetronomeSDK::Models::V1::PackageListResponse::RecurringCommit::RateType] Whether the created commits will use the commit rate or list rate
           #
           #   @param starting_at_offset [MetronomeSDK::Models::V1::PackageListResponse::RecurringCommit::StartingAtOffset] Offset relative to the contract start date that determines the start time for th
+          #
+          #   @param anchor_date [Symbol, MetronomeSDK::Models::V1::PackageListResponse::RecurringCommit::AnchorDate] Recurring cycle anchor for recurring commits or credits created from this templa
           #
           #   @param applicable_product_ids [Array<String>] Will be passed down to the individual commits
           #
@@ -1719,6 +1729,22 @@ module MetronomeSDK
               # @!method self.values
               #   @return [Array<Symbol>]
             end
+          end
+
+          # Recurring cycle anchor for recurring commits or credits created from this
+          # template. `USAGE_STATEMENT_ANCHOR` tracks the contract's usage statement anchor.
+          #
+          # @see MetronomeSDK::Models::V1::PackageListResponse::RecurringCommit#anchor_date
+          module AnchorDate
+            extend MetronomeSDK::Internal::Type::Enum
+
+            SUBSCRIPTION_START = :SUBSCRIPTION_START
+            FIRST_OF_MONTH = :FIRST_OF_MONTH
+            USAGE_STATEMENT_ANCHOR = :USAGE_STATEMENT_ANCHOR
+            CUSTOM_DATE = :CUSTOM_DATE
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
 
           # @see MetronomeSDK::Models::V1::PackageListResponse::RecurringCommit#duration
@@ -2012,6 +2038,14 @@ module MetronomeSDK
           required :starting_at_offset,
                    -> { MetronomeSDK::Models::V1::PackageListResponse::RecurringCredit::StartingAtOffset }
 
+          # @!attribute anchor_date
+          #   Recurring cycle anchor for recurring commits or credits created from this
+          #   template. `USAGE_STATEMENT_ANCHOR` tracks the contract's usage statement anchor.
+          #
+          #   @return [Symbol, MetronomeSDK::Models::V1::PackageListResponse::RecurringCredit::AnchorDate, nil]
+          optional :anchor_date,
+                   enum: -> { MetronomeSDK::Models::V1::PackageListResponse::RecurringCredit::AnchorDate }
+
           # @!attribute applicable_product_ids
           #   Will be passed down to the individual commits
           #
@@ -2092,7 +2126,7 @@ module MetronomeSDK
           optional :subscription_config,
                    -> { MetronomeSDK::Models::V1::PackageListResponse::RecurringCredit::SubscriptionConfig }
 
-          # @!method initialize(id:, access_amount:, commit_duration:, priority:, product:, rate_type:, starting_at_offset:, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, duration: nil, name: nil, proration: nil, proration_rounding: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil, subscription_config: nil)
+          # @!method initialize(id:, access_amount:, commit_duration:, priority:, product:, rate_type:, starting_at_offset:, anchor_date: nil, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, duration: nil, name: nil, proration: nil, proration_rounding: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil, subscription_config: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V1::PackageListResponse::RecurringCredit} for more
           #   details.
@@ -2110,6 +2144,8 @@ module MetronomeSDK
           #   @param rate_type [Symbol, MetronomeSDK::Models::V1::PackageListResponse::RecurringCredit::RateType] Whether the created commits will use the commit rate or list rate
           #
           #   @param starting_at_offset [MetronomeSDK::Models::V1::PackageListResponse::RecurringCredit::StartingAtOffset] Offset relative to the contract start date that determines the start time for th
+          #
+          #   @param anchor_date [Symbol, MetronomeSDK::Models::V1::PackageListResponse::RecurringCredit::AnchorDate] Recurring cycle anchor for recurring commits or credits created from this templa
           #
           #   @param applicable_product_ids [Array<String>] Will be passed down to the individual commits
           #
@@ -2282,6 +2318,22 @@ module MetronomeSDK
               # @!method self.values
               #   @return [Array<Symbol>]
             end
+          end
+
+          # Recurring cycle anchor for recurring commits or credits created from this
+          # template. `USAGE_STATEMENT_ANCHOR` tracks the contract's usage statement anchor.
+          #
+          # @see MetronomeSDK::Models::V1::PackageListResponse::RecurringCredit#anchor_date
+          module AnchorDate
+            extend MetronomeSDK::Internal::Type::Enum
+
+            SUBSCRIPTION_START = :SUBSCRIPTION_START
+            FIRST_OF_MONTH = :FIRST_OF_MONTH
+            USAGE_STATEMENT_ANCHOR = :USAGE_STATEMENT_ANCHOR
+            CUSTOM_DATE = :CUSTOM_DATE
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
 
           # @see MetronomeSDK::Models::V1::PackageListResponse::RecurringCredit#duration

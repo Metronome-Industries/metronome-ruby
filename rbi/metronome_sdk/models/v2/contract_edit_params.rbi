@@ -4349,6 +4349,16 @@ module MetronomeSDK
           sig { returns(Time) }
           attr_accessor :starting_at
 
+          # The date this recurring commit's or credit's periods are anchored to. Must be on
+          # or before `starting_at`. If omitted, periods are anchored to `starting_at` when
+          # `recurrence_frequency` is set, and to the contract's usage statement billing
+          # anchor otherwise.
+          sig { returns(T.nilable(Time)) }
+          attr_reader :anchor_date
+
+          sig { params(anchor_date: Time).void }
+          attr_writer :anchor_date
+
           # Will be passed down to the individual commits
           sig { returns(T.nilable(T::Array[String])) }
           attr_reader :applicable_product_ids
@@ -4561,6 +4571,7 @@ module MetronomeSDK
               priority: Float,
               product_id: String,
               starting_at: Time,
+              anchor_date: Time,
               applicable_product_ids: T::Array[String],
               applicable_product_tags: T::Array[String],
               description: String,
@@ -4598,6 +4609,11 @@ module MetronomeSDK
             product_id:,
             # determines the start time for the first commit
             starting_at:,
+            # The date this recurring commit's or credit's periods are anchored to. Must be on
+            # or before `starting_at`. If omitted, periods are anchored to `starting_at` when
+            # `recurrence_frequency` is set, and to the contract's usage statement billing
+            # anchor otherwise.
+            anchor_date: nil,
             # Will be passed down to the individual commits
             applicable_product_ids: nil,
             # Will be passed down to the individual commits
@@ -4657,6 +4673,7 @@ module MetronomeSDK
                 priority: Float,
                 product_id: String,
                 starting_at: Time,
+                anchor_date: Time,
                 applicable_product_ids: T::Array[String],
                 applicable_product_tags: T::Array[String],
                 description: String,
@@ -5516,6 +5533,16 @@ module MetronomeSDK
           sig { returns(Time) }
           attr_accessor :starting_at
 
+          # The date this recurring commit's or credit's periods are anchored to. Must be on
+          # or before `starting_at`. If omitted, periods are anchored to `starting_at` when
+          # `recurrence_frequency` is set, and to the contract's usage statement billing
+          # anchor otherwise.
+          sig { returns(T.nilable(Time)) }
+          attr_reader :anchor_date
+
+          sig { params(anchor_date: Time).void }
+          attr_writer :anchor_date
+
           # Will be passed down to the individual commits
           sig { returns(T.nilable(T::Array[String])) }
           attr_reader :applicable_product_ids
@@ -5710,6 +5737,7 @@ module MetronomeSDK
               priority: Float,
               product_id: String,
               starting_at: Time,
+              anchor_date: Time,
               applicable_product_ids: T::Array[String],
               applicable_product_tags: T::Array[String],
               description: String,
@@ -5745,6 +5773,11 @@ module MetronomeSDK
             product_id:,
             # determines the start time for the first commit
             starting_at:,
+            # The date this recurring commit's or credit's periods are anchored to. Must be on
+            # or before `starting_at`. If omitted, periods are anchored to `starting_at` when
+            # `recurrence_frequency` is set, and to the contract's usage statement billing
+            # anchor otherwise.
+            anchor_date: nil,
             # Will be passed down to the individual commits
             applicable_product_ids: nil,
             # Will be passed down to the individual commits
@@ -5802,6 +5835,7 @@ module MetronomeSDK
                 priority: Float,
                 product_id: String,
                 starting_at: Time,
+                anchor_date: Time,
                 applicable_product_ids: T::Array[String],
                 applicable_product_tags: T::Array[String],
                 description: String,

@@ -1296,6 +1296,7 @@ module MetronomeSDK
             priority: Float,
             product_id: String,
             starting_at_offset: MetronomeSDK::V1::PackageCreateParams::RecurringCommit::StartingAtOffset,
+            anchor_date: MetronomeSDK::Models::V1::PackageCreateParams::RecurringCommit::anchor_date,
             applicable_product_ids: ::Array[String],
             applicable_product_tags: ::Array[String],
             description: String,
@@ -1322,6 +1323,12 @@ module MetronomeSDK
           attr_accessor product_id: String
 
           attr_accessor starting_at_offset: MetronomeSDK::V1::PackageCreateParams::RecurringCommit::StartingAtOffset
+
+          attr_reader anchor_date: MetronomeSDK::Models::V1::PackageCreateParams::RecurringCommit::anchor_date?
+
+          def anchor_date=: (
+            MetronomeSDK::Models::V1::PackageCreateParams::RecurringCommit::anchor_date
+          ) -> MetronomeSDK::Models::V1::PackageCreateParams::RecurringCommit::anchor_date
 
           attr_reader applicable_product_ids: ::Array[String]?
 
@@ -1401,6 +1408,7 @@ module MetronomeSDK
             priority: Float,
             product_id: String,
             starting_at_offset: MetronomeSDK::V1::PackageCreateParams::RecurringCommit::StartingAtOffset,
+            ?anchor_date: MetronomeSDK::Models::V1::PackageCreateParams::RecurringCommit::anchor_date,
             ?applicable_product_ids: ::Array[String],
             ?applicable_product_tags: ::Array[String],
             ?description: String,
@@ -1423,6 +1431,7 @@ module MetronomeSDK
             priority: Float,
             product_id: String,
             starting_at_offset: MetronomeSDK::V1::PackageCreateParams::RecurringCommit::StartingAtOffset,
+            anchor_date: MetronomeSDK::Models::V1::PackageCreateParams::RecurringCommit::anchor_date,
             applicable_product_ids: ::Array[String],
             applicable_product_tags: ::Array[String],
             description: String,
@@ -1559,6 +1568,23 @@ module MetronomeSDK
 
               def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageCreateParams::RecurringCommit::StartingAtOffset::unit]
             end
+          end
+
+          type anchor_date =
+            :SUBSCRIPTION_START
+            | :FIRST_OF_MONTH
+            | :USAGE_STATEMENT_ANCHOR
+            | :CUSTOM_DATE
+
+          module AnchorDate
+            extend MetronomeSDK::Internal::Type::Enum
+
+            SUBSCRIPTION_START: :SUBSCRIPTION_START
+            FIRST_OF_MONTH: :FIRST_OF_MONTH
+            USAGE_STATEMENT_ANCHOR: :USAGE_STATEMENT_ANCHOR
+            CUSTOM_DATE: :CUSTOM_DATE
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageCreateParams::RecurringCommit::anchor_date]
           end
 
           type duration =
@@ -1817,6 +1843,7 @@ module MetronomeSDK
             priority: Float,
             product_id: String,
             starting_at_offset: MetronomeSDK::V1::PackageCreateParams::RecurringCredit::StartingAtOffset,
+            anchor_date: MetronomeSDK::Models::V1::PackageCreateParams::RecurringCredit::anchor_date,
             applicable_product_ids: ::Array[String],
             applicable_product_tags: ::Array[String],
             description: String,
@@ -1842,6 +1869,12 @@ module MetronomeSDK
           attr_accessor product_id: String
 
           attr_accessor starting_at_offset: MetronomeSDK::V1::PackageCreateParams::RecurringCredit::StartingAtOffset
+
+          attr_reader anchor_date: MetronomeSDK::Models::V1::PackageCreateParams::RecurringCredit::anchor_date?
+
+          def anchor_date=: (
+            MetronomeSDK::Models::V1::PackageCreateParams::RecurringCredit::anchor_date
+          ) -> MetronomeSDK::Models::V1::PackageCreateParams::RecurringCredit::anchor_date
 
           attr_reader applicable_product_ids: ::Array[String]?
 
@@ -1915,6 +1948,7 @@ module MetronomeSDK
             priority: Float,
             product_id: String,
             starting_at_offset: MetronomeSDK::V1::PackageCreateParams::RecurringCredit::StartingAtOffset,
+            ?anchor_date: MetronomeSDK::Models::V1::PackageCreateParams::RecurringCredit::anchor_date,
             ?applicable_product_ids: ::Array[String],
             ?applicable_product_tags: ::Array[String],
             ?description: String,
@@ -1936,6 +1970,7 @@ module MetronomeSDK
             priority: Float,
             product_id: String,
             starting_at_offset: MetronomeSDK::V1::PackageCreateParams::RecurringCredit::StartingAtOffset,
+            anchor_date: MetronomeSDK::Models::V1::PackageCreateParams::RecurringCredit::anchor_date,
             applicable_product_ids: ::Array[String],
             applicable_product_tags: ::Array[String],
             description: String,
@@ -2071,6 +2106,23 @@ module MetronomeSDK
 
               def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageCreateParams::RecurringCredit::StartingAtOffset::unit]
             end
+          end
+
+          type anchor_date =
+            :SUBSCRIPTION_START
+            | :FIRST_OF_MONTH
+            | :USAGE_STATEMENT_ANCHOR
+            | :CUSTOM_DATE
+
+          module AnchorDate
+            extend MetronomeSDK::Internal::Type::Enum
+
+            SUBSCRIPTION_START: :SUBSCRIPTION_START
+            FIRST_OF_MONTH: :FIRST_OF_MONTH
+            USAGE_STATEMENT_ANCHOR: :USAGE_STATEMENT_ANCHOR
+            CUSTOM_DATE: :CUSTOM_DATE
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageCreateParams::RecurringCredit::anchor_date]
           end
 
           type duration =

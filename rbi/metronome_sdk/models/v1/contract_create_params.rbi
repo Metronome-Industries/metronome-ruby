@@ -4110,6 +4110,52 @@ module MetronomeSDK
           end
           attr_writer :add_subscriptions
 
+          # Per-contract values for recurring commits defined on the package. Every template
+          # recurring commit whose `anchor_date` is `CUSTOM_DATE` needs exactly one entry.
+          sig do
+            returns(
+              T.nilable(
+                T::Array[
+                  MetronomeSDK::V1::ContractCreateParams::PackageCustomizations::ModifyRecurringCommit
+                ]
+              )
+            )
+          end
+          attr_reader :modify_recurring_commits
+
+          sig do
+            params(
+              modify_recurring_commits:
+                T::Array[
+                  MetronomeSDK::V1::ContractCreateParams::PackageCustomizations::ModifyRecurringCommit::OrHash
+                ]
+            ).void
+          end
+          attr_writer :modify_recurring_commits
+
+          # Per-contract values for recurring credits defined on the package. Every template
+          # recurring credit whose `anchor_date` is `CUSTOM_DATE` needs exactly one entry.
+          sig do
+            returns(
+              T.nilable(
+                T::Array[
+                  MetronomeSDK::V1::ContractCreateParams::PackageCustomizations::ModifyRecurringCredit
+                ]
+              )
+            )
+          end
+          attr_reader :modify_recurring_credits
+
+          sig do
+            params(
+              modify_recurring_credits:
+                T::Array[
+                  MetronomeSDK::V1::ContractCreateParams::PackageCustomizations::ModifyRecurringCredit::OrHash
+                ]
+            ).void
+          end
+          attr_writer :modify_recurring_credits
+
           # Per-subscription overrides for the subscriptions defined on the package
           # template. Each entry targets one template subscription and sets its starting
           # quantity or seats.
@@ -4221,6 +4267,14 @@ module MetronomeSDK
                 T::Array[
                   MetronomeSDK::V1::ContractCreateParams::PackageCustomizations::AddSubscription::OrHash
                 ],
+              modify_recurring_commits:
+                T::Array[
+                  MetronomeSDK::V1::ContractCreateParams::PackageCustomizations::ModifyRecurringCommit::OrHash
+                ],
+              modify_recurring_credits:
+                T::Array[
+                  MetronomeSDK::V1::ContractCreateParams::PackageCustomizations::ModifyRecurringCredit::OrHash
+                ],
               modify_subscriptions:
                 T::Array[
                   MetronomeSDK::V1::ContractCreateParams::PackageCustomizations::ModifySubscription::OrHash
@@ -4265,6 +4319,12 @@ module MetronomeSDK
             # configuration. Distinct from modify_subscriptions, which adjusts subscriptions
             # defined on the package template. Same shape as create_contract's subscriptions.
             add_subscriptions: nil,
+            # Per-contract values for recurring commits defined on the package. Every template
+            # recurring commit whose `anchor_date` is `CUSTOM_DATE` needs exactly one entry.
+            modify_recurring_commits: nil,
+            # Per-contract values for recurring credits defined on the package. Every template
+            # recurring credit whose `anchor_date` is `CUSTOM_DATE` needs exactly one entry.
+            modify_recurring_credits: nil,
             # Per-subscription overrides for the subscriptions defined on the package
             # template. Each entry targets one template subscription and sets its starting
             # quantity or seats.
@@ -4317,6 +4377,14 @@ module MetronomeSDK
                 add_subscriptions:
                   T::Array[
                     MetronomeSDK::V1::ContractCreateParams::PackageCustomizations::AddSubscription
+                  ],
+                modify_recurring_commits:
+                  T::Array[
+                    MetronomeSDK::V1::ContractCreateParams::PackageCustomizations::ModifyRecurringCommit
+                  ],
+                modify_recurring_credits:
+                  T::Array[
+                    MetronomeSDK::V1::ContractCreateParams::PackageCustomizations::ModifyRecurringCredit
                   ],
                 modify_subscriptions:
                   T::Array[
@@ -6584,6 +6652,16 @@ module MetronomeSDK
             sig { returns(Time) }
             attr_accessor :starting_at
 
+            # The date this recurring commit's or credit's periods are anchored to. Must be on
+            # or before `starting_at`. If omitted, periods are anchored to `starting_at` when
+            # `recurrence_frequency` is set, and to the contract's usage statement billing
+            # anchor otherwise.
+            sig { returns(T.nilable(Time)) }
+            attr_reader :anchor_date
+
+            sig { params(anchor_date: Time).void }
+            attr_writer :anchor_date
+
             # Will be passed down to the individual commits
             sig { returns(T.nilable(T::Array[String])) }
             attr_reader :applicable_product_ids
@@ -6798,6 +6876,7 @@ module MetronomeSDK
                 priority: Float,
                 product_id: String,
                 starting_at: Time,
+                anchor_date: Time,
                 applicable_product_ids: T::Array[String],
                 applicable_product_tags: T::Array[String],
                 description: String,
@@ -6836,6 +6915,11 @@ module MetronomeSDK
               product_id:,
               # determines the start time for the first commit
               starting_at:,
+              # The date this recurring commit's or credit's periods are anchored to. Must be on
+              # or before `starting_at`. If omitted, periods are anchored to `starting_at` when
+              # `recurrence_frequency` is set, and to the contract's usage statement billing
+              # anchor otherwise.
+              anchor_date: nil,
               # Will be passed down to the individual commits
               applicable_product_ids: nil,
               # Will be passed down to the individual commits
@@ -6895,6 +6979,7 @@ module MetronomeSDK
                   priority: Float,
                   product_id: String,
                   starting_at: Time,
+                  anchor_date: Time,
                   applicable_product_ids: T::Array[String],
                   applicable_product_tags: T::Array[String],
                   description: String,
@@ -7793,6 +7878,16 @@ module MetronomeSDK
             sig { returns(Time) }
             attr_accessor :starting_at
 
+            # The date this recurring commit's or credit's periods are anchored to. Must be on
+            # or before `starting_at`. If omitted, periods are anchored to `starting_at` when
+            # `recurrence_frequency` is set, and to the contract's usage statement billing
+            # anchor otherwise.
+            sig { returns(T.nilable(Time)) }
+            attr_reader :anchor_date
+
+            sig { params(anchor_date: Time).void }
+            attr_writer :anchor_date
+
             # Will be passed down to the individual commits
             sig { returns(T.nilable(T::Array[String])) }
             attr_reader :applicable_product_ids
@@ -7989,6 +8084,7 @@ module MetronomeSDK
                 priority: Float,
                 product_id: String,
                 starting_at: Time,
+                anchor_date: Time,
                 applicable_product_ids: T::Array[String],
                 applicable_product_tags: T::Array[String],
                 description: String,
@@ -8025,6 +8121,11 @@ module MetronomeSDK
               product_id:,
               # determines the start time for the first commit
               starting_at:,
+              # The date this recurring commit's or credit's periods are anchored to. Must be on
+              # or before `starting_at`. If omitted, periods are anchored to `starting_at` when
+              # `recurrence_frequency` is set, and to the contract's usage statement billing
+              # anchor otherwise.
+              anchor_date: nil,
               # Will be passed down to the individual commits
               applicable_product_ids: nil,
               # Will be passed down to the individual commits
@@ -8082,6 +8183,7 @@ module MetronomeSDK
                   priority: Float,
                   product_id: String,
                   starting_at: Time,
+                  anchor_date: Time,
                   applicable_product_ids: T::Array[String],
                   applicable_product_tags: T::Array[String],
                   description: String,
@@ -10347,6 +10449,94 @@ module MetronomeSDK
             end
           end
 
+          class ModifyRecurringCommit < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V1::ContractCreateParams::PackageCustomizations::ModifyRecurringCommit,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            # Recurring cycle anchor date for this recurring commit or credit, required when
+            # the template's `anchor_date` is `CUSTOM_DATE` and disallowed otherwise. Must be
+            # on or before the recurring commit's or credit's `starting_at`.
+            sig { returns(Time) }
+            attr_accessor :anchor_date
+
+            # ID of the template recurring commit on the package to customize.
+            sig { returns(String) }
+            attr_accessor :template_recurring_commit_id
+
+            sig do
+              params(
+                anchor_date: Time,
+                template_recurring_commit_id: String
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # Recurring cycle anchor date for this recurring commit or credit, required when
+              # the template's `anchor_date` is `CUSTOM_DATE` and disallowed otherwise. Must be
+              # on or before the recurring commit's or credit's `starting_at`.
+              anchor_date:,
+              # ID of the template recurring commit on the package to customize.
+              template_recurring_commit_id:
+            )
+            end
+
+            sig do
+              override.returns(
+                { anchor_date: Time, template_recurring_commit_id: String }
+              )
+            end
+            def to_hash
+            end
+          end
+
+          class ModifyRecurringCredit < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V1::ContractCreateParams::PackageCustomizations::ModifyRecurringCredit,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            # Recurring cycle anchor date for this recurring commit or credit, required when
+            # the template's `anchor_date` is `CUSTOM_DATE` and disallowed otherwise. Must be
+            # on or before the recurring commit's or credit's `starting_at`.
+            sig { returns(Time) }
+            attr_accessor :anchor_date
+
+            # ID of the template recurring credit on the package to customize.
+            sig { returns(String) }
+            attr_accessor :template_recurring_credit_id
+
+            sig do
+              params(
+                anchor_date: Time,
+                template_recurring_credit_id: String
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # Recurring cycle anchor date for this recurring commit or credit, required when
+              # the template's `anchor_date` is `CUSTOM_DATE` and disallowed otherwise. Must be
+              # on or before the recurring commit's or credit's `starting_at`.
+              anchor_date:,
+              # ID of the template recurring credit on the package to customize.
+              template_recurring_credit_id:
+            )
+            end
+
+            sig do
+              override.returns(
+                { anchor_date: Time, template_recurring_credit_id: String }
+              )
+            end
+            def to_hash
+            end
+          end
+
           class ModifySubscription < MetronomeSDK::Internal::Type::BaseModel
             OrHash =
               T.type_alias do
@@ -10632,6 +10822,16 @@ module MetronomeSDK
           sig { returns(Time) }
           attr_accessor :starting_at
 
+          # The date this recurring commit's or credit's periods are anchored to. Must be on
+          # or before `starting_at`. If omitted, periods are anchored to `starting_at` when
+          # `recurrence_frequency` is set, and to the contract's usage statement billing
+          # anchor otherwise.
+          sig { returns(T.nilable(Time)) }
+          attr_reader :anchor_date
+
+          sig { params(anchor_date: Time).void }
+          attr_writer :anchor_date
+
           # Will be passed down to the individual commits
           sig { returns(T.nilable(T::Array[String])) }
           attr_reader :applicable_product_ids
@@ -10842,6 +11042,7 @@ module MetronomeSDK
               priority: Float,
               product_id: String,
               starting_at: Time,
+              anchor_date: Time,
               applicable_product_ids: T::Array[String],
               applicable_product_tags: T::Array[String],
               description: String,
@@ -10879,6 +11080,11 @@ module MetronomeSDK
             product_id:,
             # determines the start time for the first commit
             starting_at:,
+            # The date this recurring commit's or credit's periods are anchored to. Must be on
+            # or before `starting_at`. If omitted, periods are anchored to `starting_at` when
+            # `recurrence_frequency` is set, and to the contract's usage statement billing
+            # anchor otherwise.
+            anchor_date: nil,
             # Will be passed down to the individual commits
             applicable_product_ids: nil,
             # Will be passed down to the individual commits
@@ -10936,6 +11142,7 @@ module MetronomeSDK
                 priority: Float,
                 product_id: String,
                 starting_at: Time,
+                anchor_date: Time,
                 applicable_product_ids: T::Array[String],
                 applicable_product_tags: T::Array[String],
                 description: String,
@@ -11799,6 +12006,16 @@ module MetronomeSDK
           sig { returns(Time) }
           attr_accessor :starting_at
 
+          # The date this recurring commit's or credit's periods are anchored to. Must be on
+          # or before `starting_at`. If omitted, periods are anchored to `starting_at` when
+          # `recurrence_frequency` is set, and to the contract's usage statement billing
+          # anchor otherwise.
+          sig { returns(T.nilable(Time)) }
+          attr_reader :anchor_date
+
+          sig { params(anchor_date: Time).void }
+          attr_writer :anchor_date
+
           # Will be passed down to the individual commits
           sig { returns(T.nilable(T::Array[String])) }
           attr_reader :applicable_product_ids
@@ -11991,6 +12208,7 @@ module MetronomeSDK
               priority: Float,
               product_id: String,
               starting_at: Time,
+              anchor_date: Time,
               applicable_product_ids: T::Array[String],
               applicable_product_tags: T::Array[String],
               description: String,
@@ -12026,6 +12244,11 @@ module MetronomeSDK
             product_id:,
             # determines the start time for the first commit
             starting_at:,
+            # The date this recurring commit's or credit's periods are anchored to. Must be on
+            # or before `starting_at`. If omitted, periods are anchored to `starting_at` when
+            # `recurrence_frequency` is set, and to the contract's usage statement billing
+            # anchor otherwise.
+            anchor_date: nil,
             # Will be passed down to the individual commits
             applicable_product_ids: nil,
             # Will be passed down to the individual commits
@@ -12081,6 +12304,7 @@ module MetronomeSDK
                 priority: Float,
                 product_id: String,
                 starting_at: Time,
+                anchor_date: Time,
                 applicable_product_ids: T::Array[String],
                 applicable_product_tags: T::Array[String],
                 description: String,

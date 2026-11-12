@@ -1625,6 +1625,8 @@ module MetronomeSDK
             add_scheduled_charges: ::Array[MetronomeSDK::V1::ContractCreateParams::PackageCustomizations::AddScheduledCharge],
             add_spend_trackers: ::Array[MetronomeSDK::V1::ContractCreateParams::PackageCustomizations::AddSpendTracker],
             add_subscriptions: ::Array[MetronomeSDK::V1::ContractCreateParams::PackageCustomizations::AddSubscription],
+            modify_recurring_commits: ::Array[MetronomeSDK::V1::ContractCreateParams::PackageCustomizations::ModifyRecurringCommit],
+            modify_recurring_credits: ::Array[MetronomeSDK::V1::ContractCreateParams::PackageCustomizations::ModifyRecurringCredit],
             modify_subscriptions: ::Array[MetronomeSDK::V1::ContractCreateParams::PackageCustomizations::ModifySubscription],
             modify_usage_statement_schedule: MetronomeSDK::V1::ContractCreateParams::PackageCustomizations::ModifyUsageStatementSchedule,
             set_prepaid_balance_threshold_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration,
@@ -1680,6 +1682,18 @@ module MetronomeSDK
             ::Array[MetronomeSDK::V1::ContractCreateParams::PackageCustomizations::AddSubscription]
           ) -> ::Array[MetronomeSDK::V1::ContractCreateParams::PackageCustomizations::AddSubscription]
 
+          attr_reader modify_recurring_commits: ::Array[MetronomeSDK::V1::ContractCreateParams::PackageCustomizations::ModifyRecurringCommit]?
+
+          def modify_recurring_commits=: (
+            ::Array[MetronomeSDK::V1::ContractCreateParams::PackageCustomizations::ModifyRecurringCommit]
+          ) -> ::Array[MetronomeSDK::V1::ContractCreateParams::PackageCustomizations::ModifyRecurringCommit]
+
+          attr_reader modify_recurring_credits: ::Array[MetronomeSDK::V1::ContractCreateParams::PackageCustomizations::ModifyRecurringCredit]?
+
+          def modify_recurring_credits=: (
+            ::Array[MetronomeSDK::V1::ContractCreateParams::PackageCustomizations::ModifyRecurringCredit]
+          ) -> ::Array[MetronomeSDK::V1::ContractCreateParams::PackageCustomizations::ModifyRecurringCredit]
+
           attr_reader modify_subscriptions: ::Array[MetronomeSDK::V1::ContractCreateParams::PackageCustomizations::ModifySubscription]?
 
           def modify_subscriptions=: (
@@ -1713,6 +1727,8 @@ module MetronomeSDK
             ?add_scheduled_charges: ::Array[MetronomeSDK::V1::ContractCreateParams::PackageCustomizations::AddScheduledCharge],
             ?add_spend_trackers: ::Array[MetronomeSDK::V1::ContractCreateParams::PackageCustomizations::AddSpendTracker],
             ?add_subscriptions: ::Array[MetronomeSDK::V1::ContractCreateParams::PackageCustomizations::AddSubscription],
+            ?modify_recurring_commits: ::Array[MetronomeSDK::V1::ContractCreateParams::PackageCustomizations::ModifyRecurringCommit],
+            ?modify_recurring_credits: ::Array[MetronomeSDK::V1::ContractCreateParams::PackageCustomizations::ModifyRecurringCredit],
             ?modify_subscriptions: ::Array[MetronomeSDK::V1::ContractCreateParams::PackageCustomizations::ModifySubscription],
             ?modify_usage_statement_schedule: MetronomeSDK::V1::ContractCreateParams::PackageCustomizations::ModifyUsageStatementSchedule,
             ?set_prepaid_balance_threshold_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration,
@@ -1728,6 +1744,8 @@ module MetronomeSDK
             add_scheduled_charges: ::Array[MetronomeSDK::V1::ContractCreateParams::PackageCustomizations::AddScheduledCharge],
             add_spend_trackers: ::Array[MetronomeSDK::V1::ContractCreateParams::PackageCustomizations::AddSpendTracker],
             add_subscriptions: ::Array[MetronomeSDK::V1::ContractCreateParams::PackageCustomizations::AddSubscription],
+            modify_recurring_commits: ::Array[MetronomeSDK::V1::ContractCreateParams::PackageCustomizations::ModifyRecurringCommit],
+            modify_recurring_credits: ::Array[MetronomeSDK::V1::ContractCreateParams::PackageCustomizations::ModifyRecurringCredit],
             modify_subscriptions: ::Array[MetronomeSDK::V1::ContractCreateParams::PackageCustomizations::ModifySubscription],
             modify_usage_statement_schedule: MetronomeSDK::V1::ContractCreateParams::PackageCustomizations::ModifyUsageStatementSchedule,
             set_prepaid_balance_threshold_configuration: MetronomeSDK::PrepaidBalanceThresholdConfiguration,
@@ -2679,6 +2697,7 @@ module MetronomeSDK
               priority: Float,
               product_id: String,
               starting_at: Time,
+              anchor_date: Time,
               applicable_product_ids: ::Array[String],
               applicable_product_tags: ::Array[String],
               description: String,
@@ -2707,6 +2726,10 @@ module MetronomeSDK
             attr_accessor product_id: String
 
             attr_accessor starting_at: Time
+
+            attr_reader anchor_date: Time?
+
+            def anchor_date=: (Time) -> Time
 
             attr_reader applicable_product_ids: ::Array[String]?
 
@@ -2794,6 +2817,7 @@ module MetronomeSDK
               priority: Float,
               product_id: String,
               starting_at: Time,
+              ?anchor_date: Time,
               ?applicable_product_ids: ::Array[String],
               ?applicable_product_tags: ::Array[String],
               ?description: String,
@@ -2818,6 +2842,7 @@ module MetronomeSDK
               priority: Float,
               product_id: String,
               starting_at: Time,
+              anchor_date: Time,
               applicable_product_ids: ::Array[String],
               applicable_product_tags: ::Array[String],
               description: String,
@@ -3160,6 +3185,7 @@ module MetronomeSDK
               priority: Float,
               product_id: String,
               starting_at: Time,
+              anchor_date: Time,
               applicable_product_ids: ::Array[String],
               applicable_product_tags: ::Array[String],
               description: String,
@@ -3187,6 +3213,10 @@ module MetronomeSDK
             attr_accessor product_id: String
 
             attr_accessor starting_at: Time
+
+            attr_reader anchor_date: Time?
+
+            def anchor_date=: (Time) -> Time
 
             attr_reader applicable_product_ids: ::Array[String]?
 
@@ -3268,6 +3298,7 @@ module MetronomeSDK
               priority: Float,
               product_id: String,
               starting_at: Time,
+              ?anchor_date: Time,
               ?applicable_product_ids: ::Array[String],
               ?applicable_product_tags: ::Array[String],
               ?description: String,
@@ -3291,6 +3322,7 @@ module MetronomeSDK
               priority: Float,
               product_id: String,
               starting_at: Time,
+              anchor_date: Time,
               applicable_product_ids: ::Array[String],
               applicable_product_tags: ::Array[String],
               description: String,
@@ -4185,6 +4217,44 @@ module MetronomeSDK
             end
           end
 
+          type modify_recurring_commit =
+            { anchor_date: Time, template_recurring_commit_id: String }
+
+          class ModifyRecurringCommit < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor anchor_date: Time
+
+            attr_accessor template_recurring_commit_id: String
+
+            def initialize: (
+              anchor_date: Time,
+              template_recurring_commit_id: String
+            ) -> void
+
+            def to_hash: -> {
+              anchor_date: Time,
+              template_recurring_commit_id: String
+            }
+          end
+
+          type modify_recurring_credit =
+            { anchor_date: Time, template_recurring_credit_id: String }
+
+          class ModifyRecurringCredit < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor anchor_date: Time
+
+            attr_accessor template_recurring_credit_id: String
+
+            def initialize: (
+              anchor_date: Time,
+              template_recurring_credit_id: String
+            ) -> void
+
+            def to_hash: -> {
+              anchor_date: Time,
+              template_recurring_credit_id: String
+            }
+          end
+
           type modify_subscription =
             {
               initial_quantity: Float,
@@ -4312,6 +4382,7 @@ module MetronomeSDK
             priority: Float,
             product_id: String,
             starting_at: Time,
+            anchor_date: Time,
             applicable_product_ids: ::Array[String],
             applicable_product_tags: ::Array[String],
             description: String,
@@ -4340,6 +4411,10 @@ module MetronomeSDK
           attr_accessor product_id: String
 
           attr_accessor starting_at: Time
+
+          attr_reader anchor_date: Time?
+
+          def anchor_date=: (Time) -> Time
 
           attr_reader applicable_product_ids: ::Array[String]?
 
@@ -4427,6 +4502,7 @@ module MetronomeSDK
             priority: Float,
             product_id: String,
             starting_at: Time,
+            ?anchor_date: Time,
             ?applicable_product_ids: ::Array[String],
             ?applicable_product_tags: ::Array[String],
             ?description: String,
@@ -4451,6 +4527,7 @@ module MetronomeSDK
             priority: Float,
             product_id: String,
             starting_at: Time,
+            anchor_date: Time,
             applicable_product_ids: ::Array[String],
             applicable_product_tags: ::Array[String],
             description: String,
@@ -4777,6 +4854,7 @@ module MetronomeSDK
             priority: Float,
             product_id: String,
             starting_at: Time,
+            anchor_date: Time,
             applicable_product_ids: ::Array[String],
             applicable_product_tags: ::Array[String],
             description: String,
@@ -4804,6 +4882,10 @@ module MetronomeSDK
           attr_accessor product_id: String
 
           attr_accessor starting_at: Time
+
+          attr_reader anchor_date: Time?
+
+          def anchor_date=: (Time) -> Time
 
           attr_reader applicable_product_ids: ::Array[String]?
 
@@ -4885,6 +4967,7 @@ module MetronomeSDK
             priority: Float,
             product_id: String,
             starting_at: Time,
+            ?anchor_date: Time,
             ?applicable_product_ids: ::Array[String],
             ?applicable_product_tags: ::Array[String],
             ?description: String,
@@ -4908,6 +4991,7 @@ module MetronomeSDK
             priority: Float,
             product_id: String,
             starting_at: Time,
+            anchor_date: Time,
             applicable_product_ids: ::Array[String],
             applicable_product_tags: ::Array[String],
             description: String,

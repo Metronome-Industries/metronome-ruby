@@ -3498,6 +3498,25 @@ module MetronomeSDK
           end
           attr_writer :starting_at_offset
 
+          # Recurring cycle anchor for recurring commits or credits created from this
+          # template. `USAGE_STATEMENT_ANCHOR` tracks the contract's usage statement anchor.
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::Models::V1::PackageListResponse::RecurringCommit::AnchorDate::TaggedSymbol
+              )
+            )
+          end
+          attr_reader :anchor_date
+
+          sig do
+            params(
+              anchor_date:
+                MetronomeSDK::Models::V1::PackageListResponse::RecurringCommit::AnchorDate::OrSymbol
+            ).void
+          end
+          attr_writer :anchor_date
+
           # Will be passed down to the individual commits
           sig { returns(T.nilable(T::Array[String])) }
           attr_reader :applicable_product_ids
@@ -3677,6 +3696,8 @@ module MetronomeSDK
                 MetronomeSDK::Models::V1::PackageListResponse::RecurringCommit::RateType::OrSymbol,
               starting_at_offset:
                 MetronomeSDK::Models::V1::PackageListResponse::RecurringCommit::StartingAtOffset::OrHash,
+              anchor_date:
+                MetronomeSDK::Models::V1::PackageListResponse::RecurringCommit::AnchorDate::OrSymbol,
               applicable_product_ids: T::Array[String],
               applicable_product_tags: T::Array[String],
               description: String,
@@ -3712,6 +3733,9 @@ module MetronomeSDK
             # Offset relative to the contract start date that determines the start time for
             # the first commit
             starting_at_offset:,
+            # Recurring cycle anchor for recurring commits or credits created from this
+            # template. `USAGE_STATEMENT_ANCHOR` tracks the contract's usage statement anchor.
+            anchor_date: nil,
             # Will be passed down to the individual commits
             applicable_product_ids: nil,
             # Will be passed down to the individual commits
@@ -3763,6 +3787,8 @@ module MetronomeSDK
                   MetronomeSDK::Models::V1::PackageListResponse::RecurringCommit::RateType::TaggedSymbol,
                 starting_at_offset:
                   MetronomeSDK::Models::V1::PackageListResponse::RecurringCommit::StartingAtOffset,
+                anchor_date:
+                  MetronomeSDK::Models::V1::PackageListResponse::RecurringCommit::AnchorDate::TaggedSymbol,
                 applicable_product_ids: T::Array[String],
                 applicable_product_tags: T::Array[String],
                 description: String,
@@ -4130,6 +4156,52 @@ module MetronomeSDK
               end
               def self.values
               end
+            end
+          end
+
+          # Recurring cycle anchor for recurring commits or credits created from this
+          # template. `USAGE_STATEMENT_ANCHOR` tracks the contract's usage statement anchor.
+          module AnchorDate
+            extend MetronomeSDK::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  MetronomeSDK::Models::V1::PackageListResponse::RecurringCommit::AnchorDate
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            SUBSCRIPTION_START =
+              T.let(
+                :SUBSCRIPTION_START,
+                MetronomeSDK::Models::V1::PackageListResponse::RecurringCommit::AnchorDate::TaggedSymbol
+              )
+            FIRST_OF_MONTH =
+              T.let(
+                :FIRST_OF_MONTH,
+                MetronomeSDK::Models::V1::PackageListResponse::RecurringCommit::AnchorDate::TaggedSymbol
+              )
+            USAGE_STATEMENT_ANCHOR =
+              T.let(
+                :USAGE_STATEMENT_ANCHOR,
+                MetronomeSDK::Models::V1::PackageListResponse::RecurringCommit::AnchorDate::TaggedSymbol
+              )
+            CUSTOM_DATE =
+              T.let(
+                :CUSTOM_DATE,
+                MetronomeSDK::Models::V1::PackageListResponse::RecurringCommit::AnchorDate::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  MetronomeSDK::Models::V1::PackageListResponse::RecurringCommit::AnchorDate::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
             end
           end
 
@@ -4831,6 +4903,25 @@ module MetronomeSDK
           end
           attr_writer :starting_at_offset
 
+          # Recurring cycle anchor for recurring commits or credits created from this
+          # template. `USAGE_STATEMENT_ANCHOR` tracks the contract's usage statement anchor.
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::Models::V1::PackageListResponse::RecurringCredit::AnchorDate::TaggedSymbol
+              )
+            )
+          end
+          attr_reader :anchor_date
+
+          sig do
+            params(
+              anchor_date:
+                MetronomeSDK::Models::V1::PackageListResponse::RecurringCredit::AnchorDate::OrSymbol
+            ).void
+          end
+          attr_writer :anchor_date
+
           # Will be passed down to the individual commits
           sig { returns(T.nilable(T::Array[String])) }
           attr_reader :applicable_product_ids
@@ -4992,6 +5083,8 @@ module MetronomeSDK
                 MetronomeSDK::Models::V1::PackageListResponse::RecurringCredit::RateType::OrSymbol,
               starting_at_offset:
                 MetronomeSDK::Models::V1::PackageListResponse::RecurringCredit::StartingAtOffset::OrHash,
+              anchor_date:
+                MetronomeSDK::Models::V1::PackageListResponse::RecurringCredit::AnchorDate::OrSymbol,
               applicable_product_ids: T::Array[String],
               applicable_product_tags: T::Array[String],
               description: String,
@@ -5025,6 +5118,9 @@ module MetronomeSDK
             # Offset relative to the contract start date that determines the start time for
             # the first commit
             starting_at_offset:,
+            # Recurring cycle anchor for recurring commits or credits created from this
+            # template. `USAGE_STATEMENT_ANCHOR` tracks the contract's usage statement anchor.
+            anchor_date: nil,
             # Will be passed down to the individual commits
             applicable_product_ids: nil,
             # Will be passed down to the individual commits
@@ -5074,6 +5170,8 @@ module MetronomeSDK
                   MetronomeSDK::Models::V1::PackageListResponse::RecurringCredit::RateType::TaggedSymbol,
                 starting_at_offset:
                   MetronomeSDK::Models::V1::PackageListResponse::RecurringCredit::StartingAtOffset,
+                anchor_date:
+                  MetronomeSDK::Models::V1::PackageListResponse::RecurringCredit::AnchorDate::TaggedSymbol,
                 applicable_product_ids: T::Array[String],
                 applicable_product_tags: T::Array[String],
                 description: String,
@@ -5439,6 +5537,52 @@ module MetronomeSDK
               end
               def self.values
               end
+            end
+          end
+
+          # Recurring cycle anchor for recurring commits or credits created from this
+          # template. `USAGE_STATEMENT_ANCHOR` tracks the contract's usage statement anchor.
+          module AnchorDate
+            extend MetronomeSDK::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  MetronomeSDK::Models::V1::PackageListResponse::RecurringCredit::AnchorDate
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            SUBSCRIPTION_START =
+              T.let(
+                :SUBSCRIPTION_START,
+                MetronomeSDK::Models::V1::PackageListResponse::RecurringCredit::AnchorDate::TaggedSymbol
+              )
+            FIRST_OF_MONTH =
+              T.let(
+                :FIRST_OF_MONTH,
+                MetronomeSDK::Models::V1::PackageListResponse::RecurringCredit::AnchorDate::TaggedSymbol
+              )
+            USAGE_STATEMENT_ANCHOR =
+              T.let(
+                :USAGE_STATEMENT_ANCHOR,
+                MetronomeSDK::Models::V1::PackageListResponse::RecurringCredit::AnchorDate::TaggedSymbol
+              )
+            CUSTOM_DATE =
+              T.let(
+                :CUSTOM_DATE,
+                MetronomeSDK::Models::V1::PackageListResponse::RecurringCredit::AnchorDate::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  MetronomeSDK::Models::V1::PackageListResponse::RecurringCredit::AnchorDate::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
             end
           end
 

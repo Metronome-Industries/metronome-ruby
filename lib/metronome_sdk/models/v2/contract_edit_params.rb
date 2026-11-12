@@ -1966,6 +1966,15 @@ module MetronomeSDK
           #   @return [Time]
           required :starting_at, Time
 
+          # @!attribute anchor_date
+          #   The date this recurring commit's or credit's periods are anchored to. Must be on
+          #   or before `starting_at`. If omitted, periods are anchored to `starting_at` when
+          #   `recurrence_frequency` is set, and to the contract's usage statement billing
+          #   anchor otherwise.
+          #
+          #   @return [Time, nil]
+          optional :anchor_date, Time
+
           # @!attribute applicable_product_ids
           #   Will be passed down to the individual commits
           #
@@ -2079,7 +2088,7 @@ module MetronomeSDK
           #   @return [String, nil]
           optional :temporary_id, String
 
-          # @!method initialize(access_amount:, commit_duration:, priority:, product_id:, starting_at:, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, ending_before: nil, hierarchy_configuration: nil, invoice_amount: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, proration_rounding: nil, rate_type: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil, subscription_config: nil, temporary_id: nil)
+          # @!method initialize(access_amount:, commit_duration:, priority:, product_id:, starting_at:, anchor_date: nil, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, ending_before: nil, hierarchy_configuration: nil, invoice_amount: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, proration_rounding: nil, rate_type: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil, subscription_config: nil, temporary_id: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V2::ContractEditParams::AddRecurringCommit} for more
           #   details.
@@ -2093,6 +2102,8 @@ module MetronomeSDK
           #   @param product_id [String]
           #
           #   @param starting_at [Time] determines the start time for the first commit
+          #
+          #   @param anchor_date [Time] The date this recurring commit's or credit's periods are anchored to. Must be on
           #
           #   @param applicable_product_ids [Array<String>] Will be passed down to the individual commits
           #
@@ -2484,6 +2495,15 @@ module MetronomeSDK
           #   @return [Time]
           required :starting_at, Time
 
+          # @!attribute anchor_date
+          #   The date this recurring commit's or credit's periods are anchored to. Must be on
+          #   or before `starting_at`. If omitted, periods are anchored to `starting_at` when
+          #   `recurrence_frequency` is set, and to the contract's usage statement billing
+          #   anchor otherwise.
+          #
+          #   @return [Time, nil]
+          optional :anchor_date, Time
+
           # @!attribute applicable_product_ids
           #   Will be passed down to the individual commits
           #
@@ -2591,7 +2611,7 @@ module MetronomeSDK
           #   @return [String, nil]
           optional :temporary_id, String
 
-          # @!method initialize(access_amount:, commit_duration:, priority:, product_id:, starting_at:, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, ending_before: nil, hierarchy_configuration: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, proration_rounding: nil, rate_type: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil, subscription_config: nil, temporary_id: nil)
+          # @!method initialize(access_amount:, commit_duration:, priority:, product_id:, starting_at:, anchor_date: nil, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, ending_before: nil, hierarchy_configuration: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, proration_rounding: nil, rate_type: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil, subscription_config: nil, temporary_id: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V2::ContractEditParams::AddRecurringCredit} for more
           #   details.
@@ -2605,6 +2625,8 @@ module MetronomeSDK
           #   @param product_id [String]
           #
           #   @param starting_at [Time] determines the start time for the first commit
+          #
+          #   @param anchor_date [Time] The date this recurring commit's or credit's periods are anchored to. Must be on
           #
           #   @param applicable_product_ids [Array<String>] Will be passed down to the individual commits
           #
