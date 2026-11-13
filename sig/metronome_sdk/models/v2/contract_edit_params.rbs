@@ -420,13 +420,15 @@ module MetronomeSDK
               effective_at: MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::Schedule::effective_at
             }
 
-            type effective_at = :START_OF_CURRENT_PERIOD | :START_OF_NEXT_PERIOD
+            type effective_at =
+              :START_OF_CURRENT_PERIOD | :START_OF_NEXT_PERIOD | :TODAY
 
             module EffectiveAt
               extend MetronomeSDK::Internal::Type::Enum
 
               START_OF_CURRENT_PERIOD: :START_OF_CURRENT_PERIOD
               START_OF_NEXT_PERIOD: :START_OF_NEXT_PERIOD
+              TODAY: :TODAY
 
               def self?.values: -> ::Array[MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::Schedule::effective_at]
             end
@@ -1548,13 +1550,15 @@ module MetronomeSDK
               recurring_commit_ids: ::Array[String]
             }
 
-            type billing_frequency = :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY
+            type billing_frequency =
+              :MONTHLY | :QUARTERLY | :SEMI_ANNUAL | :ANNUAL | :WEEKLY
 
             module BillingFrequency
               extend MetronomeSDK::Internal::Type::Enum
 
               MONTHLY: :MONTHLY
               QUARTERLY: :QUARTERLY
+              SEMI_ANNUAL: :SEMI_ANNUAL
               ANNUAL: :ANNUAL
               WEEKLY: :WEEKLY
 
@@ -1742,6 +1746,7 @@ module MetronomeSDK
             priority: Float,
             product_id: String,
             starting_at: Time,
+            anchor_date: Time,
             applicable_product_ids: ::Array[String],
             applicable_product_tags: ::Array[String],
             description: String,
@@ -1770,6 +1775,10 @@ module MetronomeSDK
           attr_accessor product_id: String
 
           attr_accessor starting_at: Time
+
+          attr_reader anchor_date: Time?
+
+          def anchor_date=: (Time) -> Time
 
           attr_reader applicable_product_ids: ::Array[String]?
 
@@ -1857,6 +1866,7 @@ module MetronomeSDK
             priority: Float,
             product_id: String,
             starting_at: Time,
+            ?anchor_date: Time,
             ?applicable_product_ids: ::Array[String],
             ?applicable_product_tags: ::Array[String],
             ?description: String,
@@ -1881,6 +1891,7 @@ module MetronomeSDK
             priority: Float,
             product_id: String,
             starting_at: Time,
+            anchor_date: Time,
             applicable_product_ids: ::Array[String],
             applicable_product_tags: ::Array[String],
             description: String,
@@ -2132,13 +2143,14 @@ module MetronomeSDK
           end
 
           type recurrence_frequency =
-            :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY | :DAILY
+            :MONTHLY | :QUARTERLY | :SEMI_ANNUAL | :ANNUAL | :WEEKLY | :DAILY
 
           module RecurrenceFrequency
             extend MetronomeSDK::Internal::Type::Enum
 
             MONTHLY: :MONTHLY
             QUARTERLY: :QUARTERLY
+            SEMI_ANNUAL: :SEMI_ANNUAL
             ANNUAL: :ANNUAL
             WEEKLY: :WEEKLY
             DAILY: :DAILY
@@ -2206,6 +2218,7 @@ module MetronomeSDK
             priority: Float,
             product_id: String,
             starting_at: Time,
+            anchor_date: Time,
             applicable_product_ids: ::Array[String],
             applicable_product_tags: ::Array[String],
             description: String,
@@ -2233,6 +2246,10 @@ module MetronomeSDK
           attr_accessor product_id: String
 
           attr_accessor starting_at: Time
+
+          attr_reader anchor_date: Time?
+
+          def anchor_date=: (Time) -> Time
 
           attr_reader applicable_product_ids: ::Array[String]?
 
@@ -2314,6 +2331,7 @@ module MetronomeSDK
             priority: Float,
             product_id: String,
             starting_at: Time,
+            ?anchor_date: Time,
             ?applicable_product_ids: ::Array[String],
             ?applicable_product_tags: ::Array[String],
             ?description: String,
@@ -2337,6 +2355,7 @@ module MetronomeSDK
             priority: Float,
             product_id: String,
             starting_at: Time,
+            anchor_date: Time,
             applicable_product_ids: ::Array[String],
             applicable_product_tags: ::Array[String],
             description: String,
@@ -2521,13 +2540,14 @@ module MetronomeSDK
           end
 
           type recurrence_frequency =
-            :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY | :DAILY
+            :MONTHLY | :QUARTERLY | :SEMI_ANNUAL | :ANNUAL | :WEEKLY | :DAILY
 
           module RecurrenceFrequency
             extend MetronomeSDK::Internal::Type::Enum
 
             MONTHLY: :MONTHLY
             QUARTERLY: :QUARTERLY
+            SEMI_ANNUAL: :SEMI_ANNUAL
             ANNUAL: :ANNUAL
             WEEKLY: :WEEKLY
             DAILY: :DAILY
@@ -3372,13 +3392,15 @@ module MetronomeSDK
               product_id: String
             }
 
-            type billing_frequency = :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY
+            type billing_frequency =
+              :MONTHLY | :QUARTERLY | :SEMI_ANNUAL | :ANNUAL | :WEEKLY
 
             module BillingFrequency
               extend MetronomeSDK::Internal::Type::Enum
 
               MONTHLY: :MONTHLY
               QUARTERLY: :QUARTERLY
+              SEMI_ANNUAL: :SEMI_ANNUAL
               ANNUAL: :ANNUAL
               WEEKLY: :WEEKLY
 

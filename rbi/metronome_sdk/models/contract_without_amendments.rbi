@@ -565,6 +565,11 @@ module MetronomeSDK
               :QUARTERLY,
               MetronomeSDK::ContractWithoutAmendments::UsageStatementSchedule::Frequency::TaggedSymbol
             )
+          SEMI_ANNUAL =
+            T.let(
+              :SEMI_ANNUAL,
+              MetronomeSDK::ContractWithoutAmendments::UsageStatementSchedule::Frequency::TaggedSymbol
+            )
           ANNUAL =
             T.let(
               :ANNUAL,
@@ -1638,6 +1643,11 @@ module MetronomeSDK
               :QUARTERLY,
               MetronomeSDK::ContractWithoutAmendments::RecurringCommit::RecurrenceFrequency::TaggedSymbol
             )
+          SEMI_ANNUAL =
+            T.let(
+              :SEMI_ANNUAL,
+              MetronomeSDK::ContractWithoutAmendments::RecurringCommit::RecurrenceFrequency::TaggedSymbol
+            )
           ANNUAL =
             T.let(
               :ANNUAL,
@@ -2539,6 +2549,11 @@ module MetronomeSDK
           QUARTERLY =
             T.let(
               :QUARTERLY,
+              MetronomeSDK::ContractWithoutAmendments::RecurringCredit::RecurrenceFrequency::TaggedSymbol
+            )
+          SEMI_ANNUAL =
+            T.let(
+              :SEMI_ANNUAL,
               MetronomeSDK::ContractWithoutAmendments::RecurringCredit::RecurrenceFrequency::TaggedSymbol
             )
           ANNUAL =

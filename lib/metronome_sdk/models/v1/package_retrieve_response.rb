@@ -763,6 +763,7 @@ module MetronomeSDK
 
                 MONTHLY = :MONTHLY
                 QUARTERLY = :QUARTERLY
+                SEMI_ANNUAL = :SEMI_ANNUAL
                 ANNUAL = :ANNUAL
                 WEEKLY = :WEEKLY
 
@@ -1041,6 +1042,7 @@ module MetronomeSDK
 
               MONTHLY = :MONTHLY
               QUARTERLY = :QUARTERLY
+              SEMI_ANNUAL = :SEMI_ANNUAL
               ANNUAL = :ANNUAL
               WEEKLY = :WEEKLY
 
@@ -1463,6 +1465,14 @@ module MetronomeSDK
             required :starting_at_offset,
                      -> { MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::StartingAtOffset }
 
+            # @!attribute anchor_date
+            #   Recurring cycle anchor for recurring commits or credits created from this
+            #   template. `USAGE_STATEMENT_ANCHOR` tracks the contract's usage statement anchor.
+            #
+            #   @return [Symbol, MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::AnchorDate, nil]
+            optional :anchor_date,
+                     enum: -> { MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::AnchorDate }
+
             # @!attribute applicable_product_ids
             #   Will be passed down to the individual commits
             #
@@ -1551,7 +1561,7 @@ module MetronomeSDK
             optional :subscription_config,
                      -> { MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::SubscriptionConfig }
 
-            # @!method initialize(id:, access_amount:, commit_duration:, priority:, product:, rate_type:, starting_at_offset:, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, duration: nil, invoice_amount: nil, name: nil, proration: nil, proration_rounding: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil, subscription_config: nil)
+            # @!method initialize(id:, access_amount:, commit_duration:, priority:, product:, rate_type:, starting_at_offset:, anchor_date: nil, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, duration: nil, invoice_amount: nil, name: nil, proration: nil, proration_rounding: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil, subscription_config: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit} for
             #   more details.
@@ -1569,6 +1579,8 @@ module MetronomeSDK
             #   @param rate_type [Symbol, MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::RateType] Whether the created commits will use the commit rate or list rate
             #
             #   @param starting_at_offset [MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::StartingAtOffset] Offset relative to the contract start date that determines the start time for th
+            #
+            #   @param anchor_date [Symbol, MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit::AnchorDate] Recurring cycle anchor for recurring commits or credits created from this templa
             #
             #   @param applicable_product_ids [Array<String>] Will be passed down to the individual commits
             #
@@ -1743,6 +1755,22 @@ module MetronomeSDK
                 # @!method self.values
                 #   @return [Array<Symbol>]
               end
+            end
+
+            # Recurring cycle anchor for recurring commits or credits created from this
+            # template. `USAGE_STATEMENT_ANCHOR` tracks the contract's usage statement anchor.
+            #
+            # @see MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit#anchor_date
+            module AnchorDate
+              extend MetronomeSDK::Internal::Type::Enum
+
+              SUBSCRIPTION_START = :SUBSCRIPTION_START
+              FIRST_OF_MONTH = :FIRST_OF_MONTH
+              USAGE_STATEMENT_ANCHOR = :USAGE_STATEMENT_ANCHOR
+              CUSTOM_DATE = :CUSTOM_DATE
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
 
             # @see MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCommit#duration
@@ -1932,6 +1960,7 @@ module MetronomeSDK
 
               MONTHLY = :MONTHLY
               QUARTERLY = :QUARTERLY
+              SEMI_ANNUAL = :SEMI_ANNUAL
               ANNUAL = :ANNUAL
               WEEKLY = :WEEKLY
               DAILY = :DAILY
@@ -2037,6 +2066,14 @@ module MetronomeSDK
             required :starting_at_offset,
                      -> { MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::StartingAtOffset }
 
+            # @!attribute anchor_date
+            #   Recurring cycle anchor for recurring commits or credits created from this
+            #   template. `USAGE_STATEMENT_ANCHOR` tracks the contract's usage statement anchor.
+            #
+            #   @return [Symbol, MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::AnchorDate, nil]
+            optional :anchor_date,
+                     enum: -> { MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::AnchorDate }
+
             # @!attribute applicable_product_ids
             #   Will be passed down to the individual commits
             #
@@ -2118,7 +2155,7 @@ module MetronomeSDK
             optional :subscription_config,
                      -> { MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::SubscriptionConfig }
 
-            # @!method initialize(id:, access_amount:, commit_duration:, priority:, product:, rate_type:, starting_at_offset:, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, duration: nil, name: nil, proration: nil, proration_rounding: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil, subscription_config: nil)
+            # @!method initialize(id:, access_amount:, commit_duration:, priority:, product:, rate_type:, starting_at_offset:, anchor_date: nil, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, duration: nil, name: nil, proration: nil, proration_rounding: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil, subscription_config: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit} for
             #   more details.
@@ -2136,6 +2173,8 @@ module MetronomeSDK
             #   @param rate_type [Symbol, MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::RateType] Whether the created commits will use the commit rate or list rate
             #
             #   @param starting_at_offset [MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::StartingAtOffset] Offset relative to the contract start date that determines the start time for th
+            #
+            #   @param anchor_date [Symbol, MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit::AnchorDate] Recurring cycle anchor for recurring commits or credits created from this templa
             #
             #   @param applicable_product_ids [Array<String>] Will be passed down to the individual commits
             #
@@ -2310,6 +2349,22 @@ module MetronomeSDK
               end
             end
 
+            # Recurring cycle anchor for recurring commits or credits created from this
+            # template. `USAGE_STATEMENT_ANCHOR` tracks the contract's usage statement anchor.
+            #
+            # @see MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit#anchor_date
+            module AnchorDate
+              extend MetronomeSDK::Internal::Type::Enum
+
+              SUBSCRIPTION_START = :SUBSCRIPTION_START
+              FIRST_OF_MONTH = :FIRST_OF_MONTH
+              USAGE_STATEMENT_ANCHOR = :USAGE_STATEMENT_ANCHOR
+              CUSTOM_DATE = :CUSTOM_DATE
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+
             # @see MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::RecurringCredit#duration
             class Duration < MetronomeSDK::Internal::Type::BaseModel
               # @!attribute unit
@@ -2426,6 +2481,7 @@ module MetronomeSDK
 
               MONTHLY = :MONTHLY
               QUARTERLY = :QUARTERLY
+              SEMI_ANNUAL = :SEMI_ANNUAL
               ANNUAL = :ANNUAL
               WEEKLY = :WEEKLY
               DAILY = :DAILY
@@ -2701,7 +2757,15 @@ module MetronomeSDK
             optional :starting_at_offset,
                      -> { MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::StartingAtOffset }
 
-            # @!method initialize(collection_schedule:, proration:, subscription_rate:, id: nil, billing_cycle_config: nil, custom_credit_type_id: nil, custom_fields: nil, description: nil, duration: nil, fiat_credit_type_id: nil, initial_quantity: nil, name: nil, quantity_management_mode: nil, seat_config: nil, starting_at_offset: nil)
+            # @!attribute subscription_alias
+            #   Human-readable, per-package-unique alias for this subscription template, if one
+            #   was set at package creation. Can be used to reference the subscription in
+            #   contract customizations.
+            #
+            #   @return [String, nil]
+            optional :subscription_alias, String
+
+            # @!method initialize(collection_schedule:, proration:, subscription_rate:, id: nil, billing_cycle_config: nil, custom_credit_type_id: nil, custom_fields: nil, description: nil, duration: nil, fiat_credit_type_id: nil, initial_quantity: nil, name: nil, quantity_management_mode: nil, seat_config: nil, starting_at_offset: nil, subscription_alias: nil)
             #   Some parameter documentations has been truncated, see
             #   {MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription} for more
             #   details.
@@ -2735,6 +2799,8 @@ module MetronomeSDK
             #   @param seat_config [MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::SeatConfig]
             #
             #   @param starting_at_offset [MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::StartingAtOffset]
+            #
+            #   @param subscription_alias [String] Human-readable, per-package-unique alias for this subscription template, if one
 
             # @see MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription#collection_schedule
             module CollectionSchedule
@@ -2846,6 +2912,7 @@ module MetronomeSDK
 
                 MONTHLY = :MONTHLY
                 QUARTERLY = :QUARTERLY
+                SEMI_ANNUAL = :SEMI_ANNUAL
                 ANNUAL = :ANNUAL
                 WEEKLY = :WEEKLY
 
@@ -2873,14 +2940,46 @@ module MetronomeSDK
 
             # @see MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription#billing_cycle_config
             class BillingCycleConfig < MetronomeSDK::Internal::Type::BaseModel
+              # @!attribute billing_cycle_anchor
+              #   Which date each subscription materialized from this template anchors its billing
+              #   cycle to. USAGE_STATEMENT_ANCHOR (the default) tracks the contract's usage
+              #   statement anchor.
+              #
+              #   @return [Symbol, MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::BillingCycleConfig::BillingCycleAnchor, nil]
+              optional :billing_cycle_anchor,
+                       enum: -> { MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::BillingCycleConfig::BillingCycleAnchor }
+
               # @!attribute invoice_placement
               #
               #   @return [Symbol, MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::BillingCycleConfig::InvoicePlacement, nil]
               optional :invoice_placement,
                        enum: -> { MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::BillingCycleConfig::InvoicePlacement }
 
-              # @!method initialize(invoice_placement: nil)
+              # @!method initialize(billing_cycle_anchor: nil, invoice_placement: nil)
+              #   Some parameter documentations has been truncated, see
+              #   {MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::BillingCycleConfig}
+              #   for more details.
+              #
+              #   @param billing_cycle_anchor [Symbol, MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::BillingCycleConfig::BillingCycleAnchor] Which date each subscription materialized from this template anchors its billing
+              #
               #   @param invoice_placement [Symbol, MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::BillingCycleConfig::InvoicePlacement]
+
+              # Which date each subscription materialized from this template anchors its billing
+              # cycle to. USAGE_STATEMENT_ANCHOR (the default) tracks the contract's usage
+              # statement anchor.
+              #
+              # @see MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::BillingCycleConfig#billing_cycle_anchor
+              module BillingCycleAnchor
+                extend MetronomeSDK::Internal::Type::Enum
+
+                SUBSCRIPTION_START = :SUBSCRIPTION_START
+                FIRST_OF_MONTH = :FIRST_OF_MONTH
+                CUSTOM_DATE = :CUSTOM_DATE
+                USAGE_STATEMENT_ANCHOR = :USAGE_STATEMENT_ANCHOR
+
+                # @!method self.values
+                #   @return [Array<Symbol>]
+              end
 
               # @see MetronomeSDK::Models::V1::PackageRetrieveResponse::Data::Subscription::BillingCycleConfig#invoice_placement
               module InvoicePlacement

@@ -355,6 +355,7 @@ module MetronomeSDK
 
                 MONTHLY = :MONTHLY
                 QUARTERLY = :QUARTERLY
+                SEMI_ANNUAL = :SEMI_ANNUAL
                 ANNUAL = :ANNUAL
                 WEEKLY = :WEEKLY
 
@@ -388,8 +389,9 @@ module MetronomeSDK
               #   Configuration for the billing provider. The structure of this object is specific
               #   to the billing provider.
               #
-              #   @return [Hash{Symbol=>Object}]
-              required :configuration, MetronomeSDK::Internal::Type::HashOf[MetronomeSDK::Internal::Type::Unknown]
+              #   @return [MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::Configuration]
+              required :configuration,
+                       -> { MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::Configuration }
 
               # @!attribute customer_id
               #
@@ -417,7 +419,21 @@ module MetronomeSDK
               #   @return [String]
               required :delivery_method_id, String
 
-              # @!method initialize(id:, archived_at:, billing_provider:, configuration:, customer_id:, delivery_method:, delivery_method_configuration:, delivery_method_id:)
+              # @!attribute unbillable_invoices_configuration
+              #   Rules that stop matching invoices from being sent to the billing provider.
+              #   Supported for Stripe, NetSuite, AWS Marketplace, Azure, and GCP billing provider
+              #   configurations. When omitted, every invoice is sent to the billing provider.
+              #   Stripe invoices can be force-sent after a rule suppresses them.
+              #
+              #   @return [Array<MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::UnbillableInvoicesConfiguration>, nil]
+              optional :unbillable_invoices_configuration,
+                       -> do
+                         MetronomeSDK::Internal::Type::ArrayOf[
+                           MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::UnbillableInvoicesConfiguration
+                         ]
+                       end
+
+              # @!method initialize(id:, archived_at:, billing_provider:, configuration:, customer_id:, delivery_method:, delivery_method_configuration:, delivery_method_id:, unbillable_invoices_configuration: nil)
               #   Some parameter documentations has been truncated, see
               #   {MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration}
               #   for more details.
@@ -428,7 +444,7 @@ module MetronomeSDK
               #
               #   @param billing_provider [Symbol, MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::BillingProvider] The billing provider set for this configuration.
               #
-              #   @param configuration [Hash{Symbol=>Object}] Configuration for the billing provider. The structure of this object is specific
+              #   @param configuration [MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::Configuration] Configuration for the billing provider. The structure of this object is specific
               #
               #   @param customer_id [String]
               #
@@ -437,6 +453,8 @@ module MetronomeSDK
               #   @param delivery_method_configuration [Hash{Symbol=>Object}] Configuration for the delivery method. The structure of this object is specific
               #
               #   @param delivery_method_id [String] ID of the delivery method to use for this customer.
+              #
+              #   @param unbillable_invoices_configuration [Array<MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::UnbillableInvoicesConfiguration>] Rules that stop matching invoices from being sent to the billing provider. Suppo
 
               # The billing provider set for this configuration.
               #
@@ -458,6 +476,35 @@ module MetronomeSDK
                 #   @return [Array<Symbol>]
               end
 
+              # @see MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration#configuration
+              class Configuration < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute aws_customer_account_id
+                #   AWS Marketplace only. The buyer's 12 digit AWS account ID. Must be sent together
+                #   with `aws_license_arn`.
+                #
+                #   @return [String, nil]
+                optional :aws_customer_account_id, String
+
+                # @!attribute aws_license_arn
+                #   AWS Marketplace only. The ARN of the buyer's AWS License Manager license for
+                #   this purchase. Must be sent together with `aws_customer_account_id`.
+                #
+                #   @return [String, nil]
+                optional :aws_license_arn, String
+
+                # @!method initialize(aws_customer_account_id: nil, aws_license_arn: nil)
+                #   Some parameter documentations has been truncated, see
+                #   {MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::Configuration}
+                #   for more details.
+                #
+                #   Configuration for the billing provider. The structure of this object is specific
+                #   to the billing provider.
+                #
+                #   @param aws_customer_account_id [String] AWS Marketplace only. The buyer's 12 digit AWS account ID. Must be sent together
+                #
+                #   @param aws_license_arn [String] AWS Marketplace only. The ARN of the buyer's AWS License Manager license for thi
+              end
+
               # The method to use for delivering invoices to this customer.
               #
               # @see MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration#delivery_method
@@ -471,6 +518,63 @@ module MetronomeSDK
 
                 # @!method self.values
                 #   @return [Array<Symbol>]
+              end
+
+              class UnbillableInvoicesConfiguration < MetronomeSDK::Internal::Type::BaseModel
+                # @!attribute invoice_type
+                #   The type of invoice this rule applies to.
+                #
+                #   @return [Symbol, MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::UnbillableInvoicesConfiguration::InvoiceType]
+                required :invoice_type,
+                         enum: -> { MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::UnbillableInvoicesConfiguration::InvoiceType }
+
+                # @!attribute fiat_credit_type_id
+                #   Restricts the rule to invoices in this fiat currency. Omit for a catch-all rule
+                #   that applies to every currency of the `invoice_type`. Required when `max_amount`
+                #   is set.
+                #
+                #   @return [String, nil]
+                optional :fiat_credit_type_id, String
+
+                # @!attribute max_amount
+                #   A positive decimal, in the units of `fiat_credit_type_id`. Only invoices whose
+                #   total is at or below this amount are suppressed; a higher total is still sent to
+                #   the billing provider. When omitted, every matching invoice is suppressed
+                #   regardless of amount.
+                #
+                #   @return [Float, nil]
+                optional :max_amount, Float
+
+                # @!method initialize(invoice_type:, fiat_credit_type_id: nil, max_amount: nil)
+                #   Some parameter documentations has been truncated, see
+                #   {MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::UnbillableInvoicesConfiguration}
+                #   for more details.
+                #
+                #   An individual rule that, when evaluated to true, indicates that any invoices for
+                #   this billing provider will not be sent to its associated destination for the
+                #   associated contract. Rules only apply to the specified `invoice_type` (or all
+                #   invoices if omitted) and `fiat_credit_type_id` (or all invoices if omitted).
+                #   Rule precedence is evaluated from more specific to less specific. This method
+                #   will fail with a 400 if multiple rules with the same specificity are included.
+                #
+                #   @param invoice_type [Symbol, MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::UnbillableInvoicesConfiguration::InvoiceType] The type of invoice this rule applies to.
+                #
+                #   @param fiat_credit_type_id [String] Restricts the rule to invoices in this fiat currency. Omit for a catch-all rule
+                #
+                #   @param max_amount [Float] A positive decimal, in the units of `fiat_credit_type_id`. Only invoices whose t
+
+                # The type of invoice this rule applies to.
+                #
+                # @see MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::UnbillableInvoicesConfiguration#invoice_type
+                module InvoiceType
+                  extend MetronomeSDK::Internal::Type::Enum
+
+                  USAGE = :USAGE
+                  SCHEDULED = :SCHEDULED
+
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
+                end
               end
             end
 
@@ -1009,6 +1113,7 @@ module MetronomeSDK
 
                 MONTHLY = :MONTHLY
                 QUARTERLY = :QUARTERLY
+                SEMI_ANNUAL = :SEMI_ANNUAL
                 ANNUAL = :ANNUAL
                 WEEKLY = :WEEKLY
                 DAILY = :DAILY
@@ -1426,6 +1531,7 @@ module MetronomeSDK
 
                 MONTHLY = :MONTHLY
                 QUARTERLY = :QUARTERLY
+                SEMI_ANNUAL = :SEMI_ANNUAL
                 ANNUAL = :ANNUAL
                 WEEKLY = :WEEKLY
                 DAILY = :DAILY

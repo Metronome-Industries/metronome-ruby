@@ -1083,13 +1083,15 @@ module MetronomeSDK
               recurring_commit_ids: ::Array[String]
             }
 
-            type billing_frequency = :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY
+            type billing_frequency =
+              :MONTHLY | :QUARTERLY | :SEMI_ANNUAL | :ANNUAL | :WEEKLY
 
             module BillingFrequency
               extend MetronomeSDK::Internal::Type::Enum
 
               MONTHLY: :MONTHLY
               QUARTERLY: :QUARTERLY
+              SEMI_ANNUAL: :SEMI_ANNUAL
               ANNUAL: :ANNUAL
               WEEKLY: :WEEKLY
 
@@ -1294,6 +1296,7 @@ module MetronomeSDK
             priority: Float,
             product_id: String,
             starting_at_offset: MetronomeSDK::V1::PackageCreateParams::RecurringCommit::StartingAtOffset,
+            anchor_date: MetronomeSDK::Models::V1::PackageCreateParams::RecurringCommit::anchor_date,
             applicable_product_ids: ::Array[String],
             applicable_product_tags: ::Array[String],
             description: String,
@@ -1320,6 +1323,12 @@ module MetronomeSDK
           attr_accessor product_id: String
 
           attr_accessor starting_at_offset: MetronomeSDK::V1::PackageCreateParams::RecurringCommit::StartingAtOffset
+
+          attr_reader anchor_date: MetronomeSDK::Models::V1::PackageCreateParams::RecurringCommit::anchor_date?
+
+          def anchor_date=: (
+            MetronomeSDK::Models::V1::PackageCreateParams::RecurringCommit::anchor_date
+          ) -> MetronomeSDK::Models::V1::PackageCreateParams::RecurringCommit::anchor_date
 
           attr_reader applicable_product_ids: ::Array[String]?
 
@@ -1399,6 +1408,7 @@ module MetronomeSDK
             priority: Float,
             product_id: String,
             starting_at_offset: MetronomeSDK::V1::PackageCreateParams::RecurringCommit::StartingAtOffset,
+            ?anchor_date: MetronomeSDK::Models::V1::PackageCreateParams::RecurringCommit::anchor_date,
             ?applicable_product_ids: ::Array[String],
             ?applicable_product_tags: ::Array[String],
             ?description: String,
@@ -1421,6 +1431,7 @@ module MetronomeSDK
             priority: Float,
             product_id: String,
             starting_at_offset: MetronomeSDK::V1::PackageCreateParams::RecurringCommit::StartingAtOffset,
+            anchor_date: MetronomeSDK::Models::V1::PackageCreateParams::RecurringCommit::anchor_date,
             applicable_product_ids: ::Array[String],
             applicable_product_tags: ::Array[String],
             description: String,
@@ -1557,6 +1568,23 @@ module MetronomeSDK
 
               def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageCreateParams::RecurringCommit::StartingAtOffset::unit]
             end
+          end
+
+          type anchor_date =
+            :SUBSCRIPTION_START
+            | :FIRST_OF_MONTH
+            | :USAGE_STATEMENT_ANCHOR
+            | :CUSTOM_DATE
+
+          module AnchorDate
+            extend MetronomeSDK::Internal::Type::Enum
+
+            SUBSCRIPTION_START: :SUBSCRIPTION_START
+            FIRST_OF_MONTH: :FIRST_OF_MONTH
+            USAGE_STATEMENT_ANCHOR: :USAGE_STATEMENT_ANCHOR
+            CUSTOM_DATE: :CUSTOM_DATE
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageCreateParams::RecurringCommit::anchor_date]
           end
 
           type duration =
@@ -1740,13 +1768,14 @@ module MetronomeSDK
           end
 
           type recurrence_frequency =
-            :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY | :DAILY
+            :MONTHLY | :QUARTERLY | :SEMI_ANNUAL | :ANNUAL | :WEEKLY | :DAILY
 
           module RecurrenceFrequency
             extend MetronomeSDK::Internal::Type::Enum
 
             MONTHLY: :MONTHLY
             QUARTERLY: :QUARTERLY
+            SEMI_ANNUAL: :SEMI_ANNUAL
             ANNUAL: :ANNUAL
             WEEKLY: :WEEKLY
             DAILY: :DAILY
@@ -1814,6 +1843,7 @@ module MetronomeSDK
             priority: Float,
             product_id: String,
             starting_at_offset: MetronomeSDK::V1::PackageCreateParams::RecurringCredit::StartingAtOffset,
+            anchor_date: MetronomeSDK::Models::V1::PackageCreateParams::RecurringCredit::anchor_date,
             applicable_product_ids: ::Array[String],
             applicable_product_tags: ::Array[String],
             description: String,
@@ -1839,6 +1869,12 @@ module MetronomeSDK
           attr_accessor product_id: String
 
           attr_accessor starting_at_offset: MetronomeSDK::V1::PackageCreateParams::RecurringCredit::StartingAtOffset
+
+          attr_reader anchor_date: MetronomeSDK::Models::V1::PackageCreateParams::RecurringCredit::anchor_date?
+
+          def anchor_date=: (
+            MetronomeSDK::Models::V1::PackageCreateParams::RecurringCredit::anchor_date
+          ) -> MetronomeSDK::Models::V1::PackageCreateParams::RecurringCredit::anchor_date
 
           attr_reader applicable_product_ids: ::Array[String]?
 
@@ -1912,6 +1948,7 @@ module MetronomeSDK
             priority: Float,
             product_id: String,
             starting_at_offset: MetronomeSDK::V1::PackageCreateParams::RecurringCredit::StartingAtOffset,
+            ?anchor_date: MetronomeSDK::Models::V1::PackageCreateParams::RecurringCredit::anchor_date,
             ?applicable_product_ids: ::Array[String],
             ?applicable_product_tags: ::Array[String],
             ?description: String,
@@ -1933,6 +1970,7 @@ module MetronomeSDK
             priority: Float,
             product_id: String,
             starting_at_offset: MetronomeSDK::V1::PackageCreateParams::RecurringCredit::StartingAtOffset,
+            anchor_date: MetronomeSDK::Models::V1::PackageCreateParams::RecurringCredit::anchor_date,
             applicable_product_ids: ::Array[String],
             applicable_product_tags: ::Array[String],
             description: String,
@@ -2070,6 +2108,23 @@ module MetronomeSDK
             end
           end
 
+          type anchor_date =
+            :SUBSCRIPTION_START
+            | :FIRST_OF_MONTH
+            | :USAGE_STATEMENT_ANCHOR
+            | :CUSTOM_DATE
+
+          module AnchorDate
+            extend MetronomeSDK::Internal::Type::Enum
+
+            SUBSCRIPTION_START: :SUBSCRIPTION_START
+            FIRST_OF_MONTH: :FIRST_OF_MONTH
+            USAGE_STATEMENT_ANCHOR: :USAGE_STATEMENT_ANCHOR
+            CUSTOM_DATE: :CUSTOM_DATE
+
+            def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageCreateParams::RecurringCredit::anchor_date]
+          end
+
           type duration =
             {
               unit: MetronomeSDK::Models::V1::PackageCreateParams::RecurringCredit::Duration::unit,
@@ -2185,13 +2240,14 @@ module MetronomeSDK
           end
 
           type recurrence_frequency =
-            :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY | :DAILY
+            :MONTHLY | :QUARTERLY | :SEMI_ANNUAL | :ANNUAL | :WEEKLY | :DAILY
 
           module RecurrenceFrequency
             extend MetronomeSDK::Internal::Type::Enum
 
             MONTHLY: :MONTHLY
             QUARTERLY: :QUARTERLY
+            SEMI_ANNUAL: :SEMI_ANNUAL
             ANNUAL: :ANNUAL
             WEEKLY: :WEEKLY
             DAILY: :DAILY
@@ -2504,6 +2560,7 @@ module MetronomeSDK
             quantity_management_mode: MetronomeSDK::Models::V1::PackageCreateParams::Subscription::quantity_management_mode,
             seat_config: MetronomeSDK::V1::PackageCreateParams::Subscription::SeatConfig,
             starting_at_offset: MetronomeSDK::V1::PackageCreateParams::Subscription::StartingAtOffset,
+            subscription_alias: String,
             temporary_id: String
           }
 
@@ -2560,6 +2617,10 @@ module MetronomeSDK
             MetronomeSDK::V1::PackageCreateParams::Subscription::StartingAtOffset
           ) -> MetronomeSDK::V1::PackageCreateParams::Subscription::StartingAtOffset
 
+          attr_reader subscription_alias: String?
+
+          def subscription_alias=: (String) -> String
+
           attr_reader temporary_id: String?
 
           def temporary_id=: (String) -> String
@@ -2577,6 +2638,7 @@ module MetronomeSDK
             ?quantity_management_mode: MetronomeSDK::Models::V1::PackageCreateParams::Subscription::quantity_management_mode,
             ?seat_config: MetronomeSDK::V1::PackageCreateParams::Subscription::SeatConfig,
             ?starting_at_offset: MetronomeSDK::V1::PackageCreateParams::Subscription::StartingAtOffset,
+            ?subscription_alias: String,
             ?temporary_id: String
           ) -> void
 
@@ -2593,6 +2655,7 @@ module MetronomeSDK
             quantity_management_mode: MetronomeSDK::Models::V1::PackageCreateParams::Subscription::quantity_management_mode,
             seat_config: MetronomeSDK::V1::PackageCreateParams::Subscription::SeatConfig,
             starting_at_offset: MetronomeSDK::V1::PackageCreateParams::Subscription::StartingAtOffset,
+            subscription_alias: String,
             temporary_id: String
           }
 
@@ -2711,13 +2774,15 @@ module MetronomeSDK
               product_id: String
             }
 
-            type billing_frequency = :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY
+            type billing_frequency =
+              :MONTHLY | :QUARTERLY | :SEMI_ANNUAL | :ANNUAL | :WEEKLY
 
             module BillingFrequency
               extend MetronomeSDK::Internal::Type::Enum
 
               MONTHLY: :MONTHLY
               QUARTERLY: :QUARTERLY
+              SEMI_ANNUAL: :SEMI_ANNUAL
               ANNUAL: :ANNUAL
               WEEKLY: :WEEKLY
 
@@ -2727,10 +2792,17 @@ module MetronomeSDK
 
           type billing_cycle_config =
             {
+              billing_cycle_anchor: MetronomeSDK::Models::V1::PackageCreateParams::Subscription::BillingCycleConfig::billing_cycle_anchor,
               invoice_placement: MetronomeSDK::Models::V1::PackageCreateParams::Subscription::BillingCycleConfig::invoice_placement
             }
 
           class BillingCycleConfig < MetronomeSDK::Internal::Type::BaseModel
+            attr_reader billing_cycle_anchor: MetronomeSDK::Models::V1::PackageCreateParams::Subscription::BillingCycleConfig::billing_cycle_anchor?
+
+            def billing_cycle_anchor=: (
+              MetronomeSDK::Models::V1::PackageCreateParams::Subscription::BillingCycleConfig::billing_cycle_anchor
+            ) -> MetronomeSDK::Models::V1::PackageCreateParams::Subscription::BillingCycleConfig::billing_cycle_anchor
+
             attr_reader invoice_placement: MetronomeSDK::Models::V1::PackageCreateParams::Subscription::BillingCycleConfig::invoice_placement?
 
             def invoice_placement=: (
@@ -2738,12 +2810,31 @@ module MetronomeSDK
             ) -> MetronomeSDK::Models::V1::PackageCreateParams::Subscription::BillingCycleConfig::invoice_placement
 
             def initialize: (
+              ?billing_cycle_anchor: MetronomeSDK::Models::V1::PackageCreateParams::Subscription::BillingCycleConfig::billing_cycle_anchor,
               ?invoice_placement: MetronomeSDK::Models::V1::PackageCreateParams::Subscription::BillingCycleConfig::invoice_placement
             ) -> void
 
             def to_hash: -> {
+              billing_cycle_anchor: MetronomeSDK::Models::V1::PackageCreateParams::Subscription::BillingCycleConfig::billing_cycle_anchor,
               invoice_placement: MetronomeSDK::Models::V1::PackageCreateParams::Subscription::BillingCycleConfig::invoice_placement
             }
+
+            type billing_cycle_anchor =
+              :SUBSCRIPTION_START
+              | :FIRST_OF_MONTH
+              | :CUSTOM_DATE
+              | :USAGE_STATEMENT_ANCHOR
+
+            module BillingCycleAnchor
+              extend MetronomeSDK::Internal::Type::Enum
+
+              SUBSCRIPTION_START: :SUBSCRIPTION_START
+              FIRST_OF_MONTH: :FIRST_OF_MONTH
+              CUSTOM_DATE: :CUSTOM_DATE
+              USAGE_STATEMENT_ANCHOR: :USAGE_STATEMENT_ANCHOR
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageCreateParams::Subscription::BillingCycleConfig::billing_cycle_anchor]
+            end
 
             type invoice_placement = :ON_SCHEDULED_INVOICE | :ON_USAGE_INVOICE
 
@@ -2894,13 +2985,15 @@ module MetronomeSDK
             invoice_generation_starting_at_offset: MetronomeSDK::V1::PackageCreateParams::UsageStatementSchedule::InvoiceGenerationStartingAtOffset
           }
 
-          type frequency = :MONTHLY | :QUARTERLY | :ANNUAL | :WEEKLY
+          type frequency =
+            :MONTHLY | :QUARTERLY | :SEMI_ANNUAL | :ANNUAL | :WEEKLY
 
           module Frequency
             extend MetronomeSDK::Internal::Type::Enum
 
             MONTHLY: :MONTHLY
             QUARTERLY: :QUARTERLY
+            SEMI_ANNUAL: :SEMI_ANNUAL
             ANNUAL: :ANNUAL
             WEEKLY: :WEEKLY
 
