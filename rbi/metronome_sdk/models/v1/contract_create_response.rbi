@@ -808,8 +808,20 @@ module MetronomeSDK
 
               # Configuration for the billing provider. The structure of this object is specific
               # to the billing provider.
-              sig { returns(T::Hash[Symbol, T.anything]) }
-              attr_accessor :configuration
+              sig do
+                returns(
+                  MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::Configuration
+                )
+              end
+              attr_reader :configuration
+
+              sig do
+                params(
+                  configuration:
+                    MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::Configuration::OrHash
+                ).void
+              end
+              attr_writer :configuration
 
               sig { returns(String) }
               attr_accessor :customer_id
@@ -862,7 +874,8 @@ module MetronomeSDK
                   archived_at: T.nilable(Time),
                   billing_provider:
                     MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::BillingProvider::OrSymbol,
-                  configuration: T::Hash[Symbol, T.anything],
+                  configuration:
+                    MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::Configuration::OrHash,
                   customer_id: String,
                   delivery_method:
                     MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::DeliveryMethod::OrSymbol,
@@ -907,7 +920,8 @@ module MetronomeSDK
                     archived_at: T.nilable(Time),
                     billing_provider:
                       MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::BillingProvider::TaggedSymbol,
-                    configuration: T::Hash[Symbol, T.anything],
+                    configuration:
+                      MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::Configuration,
                     customer_id: String,
                     delivery_method:
                       MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::DeliveryMethod::TaggedSymbol,
@@ -990,6 +1004,58 @@ module MetronomeSDK
                   )
                 end
                 def self.values
+                end
+              end
+
+              class Configuration < MetronomeSDK::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(
+                      MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::Configuration,
+                      MetronomeSDK::Internal::AnyHash
+                    )
+                  end
+
+                # AWS Marketplace only. The buyer's 12 digit AWS account ID. Must be sent together
+                # with `aws_license_arn`.
+                sig { returns(T.nilable(String)) }
+                attr_reader :aws_customer_account_id
+
+                sig { params(aws_customer_account_id: String).void }
+                attr_writer :aws_customer_account_id
+
+                # AWS Marketplace only. The ARN of the buyer's AWS License Manager license for
+                # this purchase. Must be sent together with `aws_customer_account_id`.
+                sig { returns(T.nilable(String)) }
+                attr_reader :aws_license_arn
+
+                sig { params(aws_license_arn: String).void }
+                attr_writer :aws_license_arn
+
+                # Configuration for the billing provider. The structure of this object is specific
+                # to the billing provider.
+                sig do
+                  params(
+                    aws_customer_account_id: String,
+                    aws_license_arn: String
+                  ).returns(T.attached_class)
+                end
+                def self.new(
+                  # AWS Marketplace only. The buyer's 12 digit AWS account ID. Must be sent together
+                  # with `aws_license_arn`.
+                  aws_customer_account_id: nil,
+                  # AWS Marketplace only. The ARN of the buyer's AWS License Manager license for
+                  # this purchase. Must be sent together with `aws_customer_account_id`.
+                  aws_license_arn: nil
+                )
+                end
+
+                sig do
+                  override.returns(
+                    { aws_customer_account_id: String, aws_license_arn: String }
+                  )
+                end
+                def to_hash
                 end
               end
 

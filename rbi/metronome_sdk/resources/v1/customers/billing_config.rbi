@@ -35,9 +35,11 @@ module MetronomeSDK
             # Body param: The customer ID in the billing provider's system. For Azure, this is
             # the subscription ID.
             billing_provider_customer_id:,
-            # Body param
+            # Body param: Deprecated and ignored by the server. The customer ID comes from
+            # `billing_provider_customer_id`.
             aws_customer_account_id: nil,
-            # Body param
+            # Body param: Deprecated and ignored by the server. The customer ID comes from
+            # `billing_provider_customer_id`.
             aws_customer_id: nil,
             # Body param
             aws_product_code: nil,

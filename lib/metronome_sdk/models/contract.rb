@@ -338,8 +338,9 @@ module MetronomeSDK
         #   Configuration for the billing provider. The structure of this object is specific
         #   to the billing provider.
         #
-        #   @return [Hash{Symbol=>Object}]
-        required :configuration, MetronomeSDK::Internal::Type::HashOf[MetronomeSDK::Internal::Type::Unknown]
+        #   @return [MetronomeSDK::Models::Contract::CustomerBillingProviderConfiguration::Configuration]
+        required :configuration,
+                 -> { MetronomeSDK::Contract::CustomerBillingProviderConfiguration::Configuration }
 
         # @!attribute customer_id
         #
@@ -388,7 +389,7 @@ module MetronomeSDK
         #
         #   @param billing_provider [Symbol, MetronomeSDK::Models::Contract::CustomerBillingProviderConfiguration::BillingProvider] The billing provider set for this configuration.
         #
-        #   @param configuration [Hash{Symbol=>Object}] Configuration for the billing provider. The structure of this object is specific
+        #   @param configuration [MetronomeSDK::Models::Contract::CustomerBillingProviderConfiguration::Configuration] Configuration for the billing provider. The structure of this object is specific
         #
         #   @param customer_id [String]
         #
@@ -418,6 +419,35 @@ module MetronomeSDK
 
           # @!method self.values
           #   @return [Array<Symbol>]
+        end
+
+        # @see MetronomeSDK::Models::Contract::CustomerBillingProviderConfiguration#configuration
+        class Configuration < MetronomeSDK::Internal::Type::BaseModel
+          # @!attribute aws_customer_account_id
+          #   AWS Marketplace only. The buyer's 12 digit AWS account ID. Must be sent together
+          #   with `aws_license_arn`.
+          #
+          #   @return [String, nil]
+          optional :aws_customer_account_id, String
+
+          # @!attribute aws_license_arn
+          #   AWS Marketplace only. The ARN of the buyer's AWS License Manager license for
+          #   this purchase. Must be sent together with `aws_customer_account_id`.
+          #
+          #   @return [String, nil]
+          optional :aws_license_arn, String
+
+          # @!method initialize(aws_customer_account_id: nil, aws_license_arn: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {MetronomeSDK::Models::Contract::CustomerBillingProviderConfiguration::Configuration}
+          #   for more details.
+          #
+          #   Configuration for the billing provider. The structure of this object is specific
+          #   to the billing provider.
+          #
+          #   @param aws_customer_account_id [String] AWS Marketplace only. The buyer's 12 digit AWS account ID. Must be sent together
+          #
+          #   @param aws_license_arn [String] AWS Marketplace only. The ARN of the buyer's AWS License Manager license for thi
         end
 
         # The method to use for delivering invoices to this customer.

@@ -40,8 +40,9 @@ module MetronomeSDK
           #   usage-based pricing. More information can be found
           #   [here](https://docs.metronome.com/invoice-customers/solutions/marketplaces/invoice-aws/#provision-aws-marketplace-customers-in-metronome).
           #
-          #   @return [Hash{Symbol=>Object}, nil]
-          optional :configuration, MetronomeSDK::Internal::Type::HashOf[MetronomeSDK::Internal::Type::Unknown]
+          #   @return [MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data::Configuration, nil]
+          optional :configuration,
+                   -> { MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::Configuration }
 
           # @!attribute delivery_method
           #   The method to use for delivering invoices to this customer. If not provided, the
@@ -86,7 +87,7 @@ module MetronomeSDK
           #
           #   @param customer_id [String]
           #
-          #   @param configuration [Hash{Symbol=>Object}] Configuration for the billing provider. The structure of this object is specific
+          #   @param configuration [MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data::Configuration] Configuration for the billing provider. The structure of this object is specific
           #
           #   @param delivery_method [Symbol, MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data::DeliveryMethod] The method to use for delivering invoices to this customer. If not provided, the
           #
@@ -114,6 +115,40 @@ module MetronomeSDK
 
             # @!method self.values
             #   @return [Array<Symbol>]
+          end
+
+          # @see MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data#configuration
+          class Configuration < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute aws_customer_account_id
+            #   AWS Marketplace only. The buyer's 12 digit AWS account ID. Must be sent together
+            #   with `aws_license_arn`.
+            #
+            #   @return [String, nil]
+            optional :aws_customer_account_id, String
+
+            # @!attribute aws_license_arn
+            #   AWS Marketplace only. The ARN of the buyer's AWS License Manager license for
+            #   this purchase. Must be sent together with `aws_customer_account_id`.
+            #
+            #   @return [String, nil]
+            optional :aws_license_arn, String
+
+            # @!method initialize(aws_customer_account_id: nil, aws_license_arn: nil)
+            #   Some parameter documentations has been truncated, see
+            #   {MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data::Configuration}
+            #   for more details.
+            #
+            #   Configuration for the billing provider. The structure of this object is specific
+            #   to the billing provider and delivery method combination. Defaults to an empty
+            #   object, however, for most billing provider + delivery method combinations, it
+            #   will not be a valid configuration. For AWS marketplace configurations, the
+            #   aws_is_subscription_product flag can be used to indicate a product with
+            #   usage-based pricing. More information can be found
+            #   [here](https://docs.metronome.com/invoice-customers/solutions/marketplaces/invoice-aws/#provision-aws-marketplace-customers-in-metronome).
+            #
+            #   @param aws_customer_account_id [String] AWS Marketplace only. The buyer's 12 digit AWS account ID. Must be sent together
+            #
+            #   @param aws_license_arn [String] AWS Marketplace only. The ARN of the buyer's AWS License Manager license for thi
           end
 
           # The method to use for delivering invoices to this customer. If not provided, the

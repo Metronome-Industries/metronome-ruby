@@ -24,9 +24,9 @@ module MetronomeSDK
           #
           # @param billing_provider_customer_id [String] Body param: The customer ID in the billing provider's system. For Azure, this is
           #
-          # @param aws_customer_account_id [String] Body param
+          # @param aws_customer_account_id [String] Body param: Deprecated and ignored by the server. The customer ID comes from `bi
           #
-          # @param aws_customer_id [String] Body param
+          # @param aws_customer_id [String] Body param: Deprecated and ignored by the server. The customer ID comes from `bi
           #
           # @param aws_product_code [String] Body param
           #

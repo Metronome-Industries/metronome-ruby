@@ -369,7 +369,7 @@ module MetronomeSDK
                 id: String,
                 archived_at: Time?,
                 billing_provider: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::billing_provider,
-                configuration: ::Hash[Symbol, top],
+                configuration: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::Configuration,
                 customer_id: String,
                 delivery_method: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::delivery_method,
                 delivery_method_configuration: ::Hash[Symbol, top],
@@ -384,7 +384,7 @@ module MetronomeSDK
 
               attr_accessor billing_provider: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::billing_provider
 
-              attr_accessor configuration: ::Hash[Symbol, top]
+              attr_accessor configuration: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::Configuration
 
               attr_accessor customer_id: String
 
@@ -404,7 +404,7 @@ module MetronomeSDK
                 id: String,
                 archived_at: Time?,
                 billing_provider: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::billing_provider,
-                configuration: ::Hash[Symbol, top],
+                configuration: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::Configuration,
                 customer_id: String,
                 delivery_method: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::delivery_method,
                 delivery_method_configuration: ::Hash[Symbol, top],
@@ -416,7 +416,7 @@ module MetronomeSDK
                 id: String,
                 archived_at: Time?,
                 billing_provider: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::billing_provider,
-                configuration: ::Hash[Symbol, top],
+                configuration: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::Configuration,
                 customer_id: String,
                 delivery_method: MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::delivery_method,
                 delivery_method_configuration: ::Hash[Symbol, top],
@@ -449,6 +449,29 @@ module MetronomeSDK
                 METRONOME: :metronome
 
                 def self?.values: -> ::Array[MetronomeSDK::Models::V1::ContractCreateResponse::Data::Contract::CustomerBillingProviderConfiguration::billing_provider]
+              end
+
+              type configuration =
+                { aws_customer_account_id: String, aws_license_arn: String }
+
+              class Configuration < MetronomeSDK::Internal::Type::BaseModel
+                attr_reader aws_customer_account_id: String?
+
+                def aws_customer_account_id=: (String) -> String
+
+                attr_reader aws_license_arn: String?
+
+                def aws_license_arn=: (String) -> String
+
+                def initialize: (
+                  ?aws_customer_account_id: String,
+                  ?aws_license_arn: String
+                ) -> void
+
+                def to_hash: -> {
+                  aws_customer_account_id: String,
+                  aws_license_arn: String
+                }
               end
 
               type delivery_method =

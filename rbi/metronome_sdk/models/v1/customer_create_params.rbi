@@ -177,12 +177,16 @@ module MetronomeSDK
           end
           attr_accessor :billing_provider_type
 
+          # Deprecated and ignored by the server. The customer ID comes from
+          # `billing_provider_customer_id`.
           sig { returns(T.nilable(String)) }
           attr_reader :aws_customer_account_id
 
           sig { params(aws_customer_account_id: String).void }
           attr_writer :aws_customer_account_id
 
+          # Deprecated and ignored by the server. The customer ID comes from
+          # `billing_provider_customer_id`.
           sig { returns(T.nilable(String)) }
           attr_reader :aws_customer_id
 
@@ -255,7 +259,11 @@ module MetronomeSDK
           def self.new(
             billing_provider_customer_id:,
             billing_provider_type:,
+            # Deprecated and ignored by the server. The customer ID comes from
+            # `billing_provider_customer_id`.
             aws_customer_account_id: nil,
+            # Deprecated and ignored by the server. The customer ID comes from
+            # `billing_provider_customer_id`.
             aws_customer_id: nil,
             # True if the aws_product_code is a SAAS subscription product, false otherwise.
             aws_is_subscription_product: nil,
@@ -561,10 +569,21 @@ module MetronomeSDK
           # to the billing provider and delivery provider combination. Defaults to an empty
           # object, however, for most billing provider + delivery method combinations, it
           # will not be a valid configuration.
-          sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::Configuration
+              )
+            )
+          end
           attr_reader :configuration
 
-          sig { params(configuration: T::Hash[Symbol, T.anything]).void }
+          sig do
+            params(
+              configuration:
+                MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::Configuration::OrHash
+            ).void
+          end
           attr_writer :configuration
 
           # The method to use for delivering invoices to this customer. If not provided, the
@@ -643,7 +662,8 @@ module MetronomeSDK
             params(
               billing_provider:
                 MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::BillingProvider::OrSymbol,
-              configuration: T::Hash[Symbol, T.anything],
+              configuration:
+                MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::Configuration::OrHash,
               delivery_method:
                 MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::DeliveryMethod::OrSymbol,
               delivery_method_id: String,
@@ -686,7 +706,8 @@ module MetronomeSDK
               {
                 billing_provider:
                   MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::BillingProvider::OrSymbol,
-                configuration: T::Hash[Symbol, T.anything],
+                configuration:
+                  MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::Configuration,
                 delivery_method:
                   MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::DeliveryMethod::OrSymbol,
                 delivery_method_id: String,
@@ -749,6 +770,60 @@ module MetronomeSDK
               )
             end
             def self.values
+            end
+          end
+
+          class Configuration < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::Configuration,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            # AWS Marketplace only. The buyer's 12 digit AWS account ID. Must be sent together
+            # with `aws_license_arn`.
+            sig { returns(T.nilable(String)) }
+            attr_reader :aws_customer_account_id
+
+            sig { params(aws_customer_account_id: String).void }
+            attr_writer :aws_customer_account_id
+
+            # AWS Marketplace only. The ARN of the buyer's AWS License Manager license for
+            # this purchase. Must be sent together with `aws_customer_account_id`.
+            sig { returns(T.nilable(String)) }
+            attr_reader :aws_license_arn
+
+            sig { params(aws_license_arn: String).void }
+            attr_writer :aws_license_arn
+
+            # Configuration for the billing provider. The structure of this object is specific
+            # to the billing provider and delivery provider combination. Defaults to an empty
+            # object, however, for most billing provider + delivery method combinations, it
+            # will not be a valid configuration.
+            sig do
+              params(
+                aws_customer_account_id: String,
+                aws_license_arn: String
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # AWS Marketplace only. The buyer's 12 digit AWS account ID. Must be sent together
+              # with `aws_license_arn`.
+              aws_customer_account_id: nil,
+              # AWS Marketplace only. The ARN of the buyer's AWS License Manager license for
+              # this purchase. Must be sent together with `aws_customer_account_id`.
+              aws_license_arn: nil
+            )
+            end
+
+            sig do
+              override.returns(
+                { aws_customer_account_id: String, aws_license_arn: String }
+              )
+            end
+            def to_hash
             end
           end
 

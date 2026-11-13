@@ -83,11 +83,19 @@ module MetronomeSDK
                    enum: -> { MetronomeSDK::V1::CustomerCreateParams::BillingConfig::BillingProviderType }
 
           # @!attribute aws_customer_account_id
+          #   @deprecated
+          #
+          #   Deprecated and ignored by the server. The customer ID comes from
+          #   `billing_provider_customer_id`.
           #
           #   @return [String, nil]
           optional :aws_customer_account_id, String
 
           # @!attribute aws_customer_id
+          #   @deprecated
+          #
+          #   Deprecated and ignored by the server. The customer ID comes from
+          #   `billing_provider_customer_id`.
           #
           #   @return [String, nil]
           optional :aws_customer_id, String
@@ -116,13 +124,17 @@ module MetronomeSDK
                    enum: -> { MetronomeSDK::V1::CustomerCreateParams::BillingConfig::StripeCollectionMethod }
 
           # @!method initialize(billing_provider_customer_id:, billing_provider_type:, aws_customer_account_id: nil, aws_customer_id: nil, aws_is_subscription_product: nil, aws_product_code: nil, aws_region: nil, stripe_collection_method: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig} for more
+          #   details.
+          #
           #   @param billing_provider_customer_id [String]
           #
           #   @param billing_provider_type [Symbol, MetronomeSDK::Models::V1::CustomerCreateParams::BillingConfig::BillingProviderType]
           #
-          #   @param aws_customer_account_id [String]
+          #   @param aws_customer_account_id [String] Deprecated and ignored by the server. The customer ID comes from `billing_provid
           #
-          #   @param aws_customer_id [String]
+          #   @param aws_customer_id [String] Deprecated and ignored by the server. The customer ID comes from `billing_provid
           #
           #   @param aws_is_subscription_product [Boolean] True if the aws_product_code is a SAAS subscription product, false otherwise.
           #
@@ -212,8 +224,9 @@ module MetronomeSDK
           #   object, however, for most billing provider + delivery method combinations, it
           #   will not be a valid configuration.
           #
-          #   @return [Hash{Symbol=>Object}, nil]
-          optional :configuration, MetronomeSDK::Internal::Type::HashOf[MetronomeSDK::Internal::Type::Unknown]
+          #   @return [MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::Configuration, nil]
+          optional :configuration,
+                   -> { MetronomeSDK::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::Configuration }
 
           # @!attribute delivery_method
           #   The method to use for delivering invoices to this customer. If not provided, the
@@ -260,7 +273,7 @@ module MetronomeSDK
           #
           #   @param billing_provider [Symbol, MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::BillingProvider] The billing provider set for this configuration.
           #
-          #   @param configuration [Hash{Symbol=>Object}] Configuration for the billing provider. The structure of this object is specific
+          #   @param configuration [MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::Configuration] Configuration for the billing provider. The structure of this object is specific
           #
           #   @param delivery_method [Symbol, MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::DeliveryMethod] The method to use for delivering invoices to this customer. If not provided, the
           #
@@ -284,6 +297,37 @@ module MetronomeSDK
 
             # @!method self.values
             #   @return [Array<Symbol>]
+          end
+
+          # @see MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration#configuration
+          class Configuration < MetronomeSDK::Internal::Type::BaseModel
+            # @!attribute aws_customer_account_id
+            #   AWS Marketplace only. The buyer's 12 digit AWS account ID. Must be sent together
+            #   with `aws_license_arn`.
+            #
+            #   @return [String, nil]
+            optional :aws_customer_account_id, String
+
+            # @!attribute aws_license_arn
+            #   AWS Marketplace only. The ARN of the buyer's AWS License Manager license for
+            #   this purchase. Must be sent together with `aws_customer_account_id`.
+            #
+            #   @return [String, nil]
+            optional :aws_license_arn, String
+
+            # @!method initialize(aws_customer_account_id: nil, aws_license_arn: nil)
+            #   Some parameter documentations has been truncated, see
+            #   {MetronomeSDK::Models::V1::CustomerCreateParams::CustomerBillingProviderConfiguration::Configuration}
+            #   for more details.
+            #
+            #   Configuration for the billing provider. The structure of this object is specific
+            #   to the billing provider and delivery provider combination. Defaults to an empty
+            #   object, however, for most billing provider + delivery method combinations, it
+            #   will not be a valid configuration.
+            #
+            #   @param aws_customer_account_id [String] AWS Marketplace only. The buyer's 12 digit AWS account ID. Must be sent together
+            #
+            #   @param aws_license_arn [String] AWS Marketplace only. The ARN of the buyer's AWS License Manager license for thi
           end
 
           # The method to use for delivering invoices to this customer. If not provided, the
