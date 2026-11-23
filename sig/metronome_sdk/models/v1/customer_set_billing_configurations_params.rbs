@@ -27,10 +27,11 @@ module MetronomeSDK
           {
             billing_provider: MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data::billing_provider,
             customer_id: String,
-            configuration: ::Hash[Symbol, top],
+            configuration: MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::Configuration,
             delivery_method: MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data::delivery_method,
             delivery_method_id: String,
-            tax_provider: MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data::tax_provider
+            tax_provider: MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data::tax_provider,
+            unbillable_invoices_configuration: ::Array[MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::UnbillableInvoicesConfiguration]
           }
 
         class Data < MetronomeSDK::Internal::Type::BaseModel
@@ -38,9 +39,11 @@ module MetronomeSDK
 
           attr_accessor customer_id: String
 
-          attr_reader configuration: ::Hash[Symbol, top]?
+          attr_reader configuration: MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::Configuration?
 
-          def configuration=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+          def configuration=: (
+            MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::Configuration
+          ) -> MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::Configuration
 
           attr_reader delivery_method: MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data::delivery_method?
 
@@ -58,22 +61,30 @@ module MetronomeSDK
             MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data::tax_provider
           ) -> MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data::tax_provider
 
+          attr_reader unbillable_invoices_configuration: ::Array[MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::UnbillableInvoicesConfiguration]?
+
+          def unbillable_invoices_configuration=: (
+            ::Array[MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::UnbillableInvoicesConfiguration]
+          ) -> ::Array[MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::UnbillableInvoicesConfiguration]
+
           def initialize: (
             billing_provider: MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data::billing_provider,
             customer_id: String,
-            ?configuration: ::Hash[Symbol, top],
+            ?configuration: MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::Configuration,
             ?delivery_method: MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data::delivery_method,
             ?delivery_method_id: String,
-            ?tax_provider: MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data::tax_provider
+            ?tax_provider: MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data::tax_provider,
+            ?unbillable_invoices_configuration: ::Array[MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::UnbillableInvoicesConfiguration]
           ) -> void
 
           def to_hash: -> {
             billing_provider: MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data::billing_provider,
             customer_id: String,
-            configuration: ::Hash[Symbol, top],
+            configuration: MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::Configuration,
             delivery_method: MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data::delivery_method,
             delivery_method_id: String,
-            tax_provider: MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data::tax_provider
+            tax_provider: MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data::tax_provider,
+            unbillable_invoices_configuration: ::Array[MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::UnbillableInvoicesConfiguration]
           }
 
           type billing_provider =
@@ -103,15 +114,37 @@ module MetronomeSDK
             def self?.values: -> ::Array[MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data::billing_provider]
           end
 
+          type configuration =
+            { aws_customer_account_id: String, aws_license_arn: String }
+
+          class Configuration < MetronomeSDK::Internal::Type::BaseModel
+            attr_reader aws_customer_account_id: String?
+
+            def aws_customer_account_id=: (String) -> String
+
+            attr_reader aws_license_arn: String?
+
+            def aws_license_arn=: (String) -> String
+
+            def initialize: (
+              ?aws_customer_account_id: String,
+              ?aws_license_arn: String
+            ) -> void
+
+            def to_hash: -> {
+              aws_customer_account_id: String,
+              aws_license_arn: String
+            }
+          end
+
           type delivery_method =
-            :direct_to_billing_provider | :aws_sqs | :tackle | :aws_sns
+            :direct_to_billing_provider | :aws_sqs | :aws_sns
 
           module DeliveryMethod
             extend MetronomeSDK::Internal::Type::Enum
 
             DIRECT_TO_BILLING_PROVIDER: :direct_to_billing_provider
             AWS_SQS: :aws_sqs
-            TACKLE: :tackle
             AWS_SNS: :aws_sns
 
             def self?.values: -> ::Array[MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data::delivery_method]
@@ -127,6 +160,48 @@ module MetronomeSDK
             STRIPE: :stripe
 
             def self?.values: -> ::Array[MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data::tax_provider]
+          end
+
+          type unbillable_invoices_configuration =
+            {
+              invoice_type: MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data::UnbillableInvoicesConfiguration::invoice_type,
+              fiat_credit_type_id: String,
+              max_amount: Float
+            }
+
+          class UnbillableInvoicesConfiguration < MetronomeSDK::Internal::Type::BaseModel
+            attr_accessor invoice_type: MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data::UnbillableInvoicesConfiguration::invoice_type
+
+            attr_reader fiat_credit_type_id: String?
+
+            def fiat_credit_type_id=: (String) -> String
+
+            attr_reader max_amount: Float?
+
+            def max_amount=: (Float) -> Float
+
+            def initialize: (
+              invoice_type: MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data::UnbillableInvoicesConfiguration::invoice_type,
+              ?fiat_credit_type_id: String,
+              ?max_amount: Float
+            ) -> void
+
+            def to_hash: -> {
+              invoice_type: MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data::UnbillableInvoicesConfiguration::invoice_type,
+              fiat_credit_type_id: String,
+              max_amount: Float
+            }
+
+            type invoice_type = :USAGE | :SCHEDULED
+
+            module InvoiceType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              USAGE: :USAGE
+              SCHEDULED: :SCHEDULED
+
+              def self?.values: -> ::Array[MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsParams::Data::UnbillableInvoicesConfiguration::invoice_type]
+            end
           end
         end
       end

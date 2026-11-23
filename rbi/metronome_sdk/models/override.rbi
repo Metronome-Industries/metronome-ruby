@@ -380,6 +380,11 @@ module MetronomeSDK
               :QUARTERLY,
               MetronomeSDK::Override::OverrideSpecifier::BillingFrequency::TaggedSymbol
             )
+          SEMI_ANNUAL =
+            T.let(
+              :SEMI_ANNUAL,
+              MetronomeSDK::Override::OverrideSpecifier::BillingFrequency::TaggedSymbol
+            )
           ANNUAL =
             T.let(
               :ANNUAL,

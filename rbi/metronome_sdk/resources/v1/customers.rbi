@@ -145,6 +145,7 @@ module MetronomeSDK
             next_page: String,
             only_archived: T::Boolean,
             salesforce_account_ids: T::Array[String],
+            stripe_customer_id: String,
             request_options: MetronomeSDK::RequestOptions::OrHash
           ).returns(
             MetronomeSDK::Internal::CursorPage[MetronomeSDK::V1::CustomerDetail]
@@ -165,6 +166,12 @@ module MetronomeSDK
           # Filter the customer list by salesforce_account_id. Up to 100 ids can be
           # provided.
           salesforce_account_ids: nil,
+          # Filter the customer list by the stripe_customer_id of active Stripe billing
+          # provider configurations. A Stripe customer ID can be linked to multiple
+          # customers, so it may match more than one customer. Archiving a customer also
+          # archives its billing provider configurations, so archived customers generally
+          # won't match.
+          stripe_customer_id: nil,
           request_options: {}
         )
         end
@@ -386,8 +393,6 @@ module MetronomeSDK
         # - `direct_to_billing_provider`: Use when Metronome should send invoices directly
         #   to the billing provider's API (e.g., Stripe, NetSuite). This is the most
         #   common method for automated billing workflows.
-        # - `tackle`: Use specifically for AWS Marketplace transactions that require
-        #   Tackle's co-selling platform for partner attribution and commission tracking.
         # - `aws_sqs`: Use when you want invoice data delivered to an AWS SQS queue for
         #   custom processing before sending to your billing system.
         # - `aws_sns`: Use when you want invoice notifications published to an AWS SNS

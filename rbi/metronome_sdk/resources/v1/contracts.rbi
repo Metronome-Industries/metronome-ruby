@@ -168,6 +168,8 @@ module MetronomeSDK
                 MetronomeSDK::V1::ContractCreateParams::Override::OrHash
               ],
             package_alias: String,
+            package_customizations:
+              MetronomeSDK::V1::ContractCreateParams::PackageCustomizations::OrHash,
             package_id: String,
             prepaid_balance_threshold_configuration:
               MetronomeSDK::PrepaidBalanceThresholdConfiguration::OrHash,
@@ -247,6 +249,9 @@ module MetronomeSDK
           # Selects the package linked to the specified alias as of the contract's start
           # date. Mutually exclusive with package_id.
           package_alias: nil,
+          # Adjustments applied on top of the package's baseline configuration when
+          # provisioning the contract.
+          package_customizations: nil,
           # If provided, provisions a customer on a package instead of creating a
           # traditional contract. When specified, only customer_id, starting_at, package_id,
           # uniqueness_key, transition, and custom_fields are allowed.
@@ -273,6 +278,16 @@ module MetronomeSDK
           # `ending_before` date for consolidation to occur. This field cannot be modified
           # after a Contract has been created. If this field is omitted, charges will appear
           # on a separate invoice from usage charges.
+          #
+          # For recurring fixed fees, such as a monthly platform fee, use a
+          # [subscription](/guides/pricing-packaging/subscription/provision-your-customer)
+          # with `billing_cycle_config.invoice_placement` set to `ON_USAGE_INVOICE` instead
+          # of recurring scheduled charges with this field set to `ALL`. Metronome
+          # recalculates a subscription's usage invoice line items from the current contract
+          # each time it invoices, so the charges stay on the correct usage invoice after
+          # contract edits such as end date changes or transitions. Use this field for
+          # one-time scheduled charges and commit purchases, which subscriptions can't
+          # represent.
           scheduled_charges_on_usage_invoices: nil,
           spend_threshold_configuration: nil,
           # Spend trackers to attach to this contract. Aliases must be unique within a

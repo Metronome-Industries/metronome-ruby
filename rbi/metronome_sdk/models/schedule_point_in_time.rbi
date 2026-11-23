@@ -25,6 +25,14 @@ module MetronomeSDK
       sig { params(do_not_invoice: T::Boolean).void }
       attr_writer :do_not_invoice
 
+      # Conversion rate from unused quantity units to the invoice currency for a
+      # quantity-based postpaid commit.
+      sig { returns(T.nilable(Float)) }
+      attr_reader :quantity_to_fiat_conversion_rate
+
+      sig { params(quantity_to_fiat_conversion_rate: Float).void }
+      attr_writer :quantity_to_fiat_conversion_rate
+
       sig do
         returns(
           T.nilable(T::Array[MetronomeSDK::SchedulePointInTime::ScheduleItem])
@@ -44,6 +52,7 @@ module MetronomeSDK
         params(
           credit_type: MetronomeSDK::CreditTypeData::OrHash,
           do_not_invoice: T::Boolean,
+          quantity_to_fiat_conversion_rate: Float,
           schedule_items:
             T::Array[MetronomeSDK::SchedulePointInTime::ScheduleItem::OrHash]
         ).returns(T.attached_class)
@@ -53,6 +62,9 @@ module MetronomeSDK
         # This field is only applicable to commit invoice schedules. If true, this
         # schedule will not generate an invoice.
         do_not_invoice: nil,
+        # Conversion rate from unused quantity units to the invoice currency for a
+        # quantity-based postpaid commit.
+        quantity_to_fiat_conversion_rate: nil,
         schedule_items: nil
       )
       end
@@ -62,6 +74,7 @@ module MetronomeSDK
           {
             credit_type: MetronomeSDK::CreditTypeData,
             do_not_invoice: T::Boolean,
+            quantity_to_fiat_conversion_rate: Float,
             schedule_items:
               T::Array[MetronomeSDK::SchedulePointInTime::ScheduleItem]
           }

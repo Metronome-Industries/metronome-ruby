@@ -21,7 +21,7 @@ module MetronomeSDK
           {
             id: String,
             billing_provider: MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsResponse::Data::billing_provider,
-            configuration: ::Hash[Symbol, top],
+            configuration: MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsResponse::Data::Configuration,
             customer_id: String,
             delivery_method_id: String,
             tax_provider: MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsResponse::Data::tax_provider
@@ -38,9 +38,11 @@ module MetronomeSDK
             MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsResponse::Data::billing_provider
           ) -> MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsResponse::Data::billing_provider
 
-          attr_reader configuration: ::Hash[Symbol, top]?
+          attr_reader configuration: MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsResponse::Data::Configuration?
 
-          def configuration=: (::Hash[Symbol, top]) -> ::Hash[Symbol, top]
+          def configuration=: (
+            MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsResponse::Data::Configuration
+          ) -> MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsResponse::Data::Configuration
 
           attr_reader customer_id: String?
 
@@ -59,7 +61,7 @@ module MetronomeSDK
           def initialize: (
             ?id: String,
             ?billing_provider: MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsResponse::Data::billing_provider,
-            ?configuration: ::Hash[Symbol, top],
+            ?configuration: MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsResponse::Data::Configuration,
             ?customer_id: String,
             ?delivery_method_id: String,
             ?tax_provider: MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsResponse::Data::tax_provider
@@ -68,7 +70,7 @@ module MetronomeSDK
           def to_hash: -> {
             id: String,
             billing_provider: MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsResponse::Data::billing_provider,
-            configuration: ::Hash[Symbol, top],
+            configuration: MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsResponse::Data::Configuration,
             customer_id: String,
             delivery_method_id: String,
             tax_provider: MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsResponse::Data::tax_provider
@@ -99,6 +101,29 @@ module MetronomeSDK
             METRONOME: :metronome
 
             def self?.values: -> ::Array[MetronomeSDK::Models::V1::CustomerSetBillingConfigurationsResponse::Data::billing_provider]
+          end
+
+          type configuration =
+            { aws_customer_account_id: String, aws_license_arn: String }
+
+          class Configuration < MetronomeSDK::Internal::Type::BaseModel
+            attr_reader aws_customer_account_id: String?
+
+            def aws_customer_account_id=: (String) -> String
+
+            attr_reader aws_license_arn: String?
+
+            def aws_license_arn=: (String) -> String
+
+            def initialize: (
+              ?aws_customer_account_id: String,
+              ?aws_license_arn: String
+            ) -> void
+
+            def to_hash: -> {
+              aws_customer_account_id: String,
+              aws_license_arn: String
+            }
           end
 
           type tax_provider = :anrok | :avalara | :stripe

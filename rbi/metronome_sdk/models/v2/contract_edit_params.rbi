@@ -23,9 +23,7 @@ module MetronomeSDK
         sig { returns(String) }
         attr_accessor :customer_id
 
-        # Update the billing provider configuration on the contract. Currently only
-        # supports adding a billing provider configuration to a contract that does not
-        # already have one.
+        # Update the billing provider configuration on the contract.
         sig do
           returns(
             T.nilable(
@@ -693,9 +691,7 @@ module MetronomeSDK
           contract_id:,
           # ID of the customer whose contract is being edited
           customer_id:,
-          # Update the billing provider configuration on the contract. Currently only
-          # supports adding a billing provider configuration to a contract that does not
-          # already have one.
+          # Update the billing provider configuration on the contract.
           add_billing_provider_configuration_update: nil,
           add_commits: nil,
           add_credits: nil,
@@ -897,9 +893,7 @@ module MetronomeSDK
           end
           attr_writer :schedule
 
-          # Update the billing provider configuration on the contract. Currently only
-          # supports adding a billing provider configuration to a contract that does not
-          # already have one.
+          # Update the billing provider configuration on the contract.
           sig do
             params(
               billing_provider_configuration:
@@ -1096,11 +1090,6 @@ module MetronomeSDK
                   :aws_sqs,
                   MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::DeliveryMethod::TaggedSymbol
                 )
-              TACKLE =
-                T.let(
-                  :tackle,
-                  MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::DeliveryMethod::TaggedSymbol
-                )
               AWS_SNS =
                 T.let(
                   :aws_sns,
@@ -1182,6 +1171,11 @@ module MetronomeSDK
               START_OF_NEXT_PERIOD =
                 T.let(
                   :START_OF_NEXT_PERIOD,
+                  MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::Schedule::EffectiveAt::TaggedSymbol
+                )
+              TODAY =
+                T.let(
+                  :TODAY,
                   MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::Schedule::EffectiveAt::TaggedSymbol
                 )
 
@@ -3905,6 +3899,11 @@ module MetronomeSDK
                   :QUARTERLY,
                   MetronomeSDK::V2::ContractEditParams::AddOverride::OverrideSpecifier::BillingFrequency::TaggedSymbol
                 )
+              SEMI_ANNUAL =
+                T.let(
+                  :SEMI_ANNUAL,
+                  MetronomeSDK::V2::ContractEditParams::AddOverride::OverrideSpecifier::BillingFrequency::TaggedSymbol
+                )
               ANNUAL =
                 T.let(
                   :ANNUAL,
@@ -4345,6 +4344,16 @@ module MetronomeSDK
           sig { returns(Time) }
           attr_accessor :starting_at
 
+          # The date this recurring commit's or credit's periods are anchored to. Must be on
+          # or before `starting_at`. If omitted, periods are anchored to `starting_at` when
+          # `recurrence_frequency` is set, and to the contract's usage statement billing
+          # anchor otherwise.
+          sig { returns(T.nilable(Time)) }
+          attr_reader :anchor_date
+
+          sig { params(anchor_date: Time).void }
+          attr_writer :anchor_date
+
           # Will be passed down to the individual commits
           sig { returns(T.nilable(T::Array[String])) }
           attr_reader :applicable_product_ids
@@ -4557,6 +4566,7 @@ module MetronomeSDK
               priority: Float,
               product_id: String,
               starting_at: Time,
+              anchor_date: Time,
               applicable_product_ids: T::Array[String],
               applicable_product_tags: T::Array[String],
               description: String,
@@ -4594,6 +4604,11 @@ module MetronomeSDK
             product_id:,
             # determines the start time for the first commit
             starting_at:,
+            # The date this recurring commit's or credit's periods are anchored to. Must be on
+            # or before `starting_at`. If omitted, periods are anchored to `starting_at` when
+            # `recurrence_frequency` is set, and to the contract's usage statement billing
+            # anchor otherwise.
+            anchor_date: nil,
             # Will be passed down to the individual commits
             applicable_product_ids: nil,
             # Will be passed down to the individual commits
@@ -4653,6 +4668,7 @@ module MetronomeSDK
                 priority: Float,
                 product_id: String,
                 starting_at: Time,
+                anchor_date: Time,
                 applicable_product_ids: T::Array[String],
                 applicable_product_tags: T::Array[String],
                 description: String,
@@ -5282,6 +5298,11 @@ module MetronomeSDK
                 :QUARTERLY,
                 MetronomeSDK::V2::ContractEditParams::AddRecurringCommit::RecurrenceFrequency::TaggedSymbol
               )
+            SEMI_ANNUAL =
+              T.let(
+                :SEMI_ANNUAL,
+                MetronomeSDK::V2::ContractEditParams::AddRecurringCommit::RecurrenceFrequency::TaggedSymbol
+              )
             ANNUAL =
               T.let(
                 :ANNUAL,
@@ -5507,6 +5528,16 @@ module MetronomeSDK
           sig { returns(Time) }
           attr_accessor :starting_at
 
+          # The date this recurring commit's or credit's periods are anchored to. Must be on
+          # or before `starting_at`. If omitted, periods are anchored to `starting_at` when
+          # `recurrence_frequency` is set, and to the contract's usage statement billing
+          # anchor otherwise.
+          sig { returns(T.nilable(Time)) }
+          attr_reader :anchor_date
+
+          sig { params(anchor_date: Time).void }
+          attr_writer :anchor_date
+
           # Will be passed down to the individual commits
           sig { returns(T.nilable(T::Array[String])) }
           attr_reader :applicable_product_ids
@@ -5701,6 +5732,7 @@ module MetronomeSDK
               priority: Float,
               product_id: String,
               starting_at: Time,
+              anchor_date: Time,
               applicable_product_ids: T::Array[String],
               applicable_product_tags: T::Array[String],
               description: String,
@@ -5736,6 +5768,11 @@ module MetronomeSDK
             product_id:,
             # determines the start time for the first commit
             starting_at:,
+            # The date this recurring commit's or credit's periods are anchored to. Must be on
+            # or before `starting_at`. If omitted, periods are anchored to `starting_at` when
+            # `recurrence_frequency` is set, and to the contract's usage statement billing
+            # anchor otherwise.
+            anchor_date: nil,
             # Will be passed down to the individual commits
             applicable_product_ids: nil,
             # Will be passed down to the individual commits
@@ -5793,6 +5830,7 @@ module MetronomeSDK
                 priority: Float,
                 product_id: String,
                 starting_at: Time,
+                anchor_date: Time,
                 applicable_product_ids: T::Array[String],
                 applicable_product_tags: T::Array[String],
                 description: String,
@@ -6269,6 +6307,11 @@ module MetronomeSDK
             QUARTERLY =
               T.let(
                 :QUARTERLY,
+                MetronomeSDK::V2::ContractEditParams::AddRecurringCredit::RecurrenceFrequency::TaggedSymbol
+              )
+            SEMI_ANNUAL =
+              T.let(
+                :SEMI_ANNUAL,
                 MetronomeSDK::V2::ContractEditParams::AddRecurringCredit::RecurrenceFrequency::TaggedSymbol
               )
             ANNUAL =
@@ -6889,11 +6932,6 @@ module MetronomeSDK
               AWS_SQS =
                 T.let(
                   :aws_sqs,
-                  MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::DeliveryMethod::TaggedSymbol
-                )
-              TACKLE =
-                T.let(
-                  :tackle,
                   MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::DeliveryMethod::TaggedSymbol
                 )
               AWS_SNS =
@@ -8358,6 +8396,11 @@ module MetronomeSDK
               QUARTERLY =
                 T.let(
                   :QUARTERLY,
+                  MetronomeSDK::V2::ContractEditParams::AddSubscription::SubscriptionRate::BillingFrequency::TaggedSymbol
+                )
+              SEMI_ANNUAL =
+                T.let(
+                  :SEMI_ANNUAL,
                   MetronomeSDK::V2::ContractEditParams::AddSubscription::SubscriptionRate::BillingFrequency::TaggedSymbol
                 )
               ANNUAL =

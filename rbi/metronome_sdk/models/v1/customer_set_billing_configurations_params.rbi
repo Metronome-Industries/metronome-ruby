@@ -77,10 +77,21 @@ module MetronomeSDK
           # aws_is_subscription_product flag can be used to indicate a product with
           # usage-based pricing. More information can be found
           # [here](https://docs.metronome.com/invoice-customers/solutions/marketplaces/invoice-aws/#provision-aws-marketplace-customers-in-metronome).
-          sig { returns(T.nilable(T::Hash[Symbol, T.anything])) }
+          sig do
+            returns(
+              T.nilable(
+                MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::Configuration
+              )
+            )
+          end
           attr_reader :configuration
 
-          sig { params(configuration: T::Hash[Symbol, T.anything]).void }
+          sig do
+            params(
+              configuration:
+                MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::Configuration::OrHash
+            ).void
+          end
           attr_writer :configuration
 
           # The method to use for delivering invoices to this customer. If not provided, the
@@ -130,17 +141,47 @@ module MetronomeSDK
           end
           attr_writer :tax_provider
 
+          # Rules that stop matching invoices from being sent to the billing provider.
+          # Supported for Stripe, NetSuite, AWS Marketplace, Azure, and GCP billing provider
+          # configurations. When omitted, every invoice is sent to the billing provider.
+          # Stripe invoices can be force-sent after a rule suppresses them.
+          sig do
+            returns(
+              T.nilable(
+                T::Array[
+                  MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::UnbillableInvoicesConfiguration
+                ]
+              )
+            )
+          end
+          attr_reader :unbillable_invoices_configuration
+
+          sig do
+            params(
+              unbillable_invoices_configuration:
+                T::Array[
+                  MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::UnbillableInvoicesConfiguration::OrHash
+                ]
+            ).void
+          end
+          attr_writer :unbillable_invoices_configuration
+
           sig do
             params(
               billing_provider:
                 MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::BillingProvider::OrSymbol,
               customer_id: String,
-              configuration: T::Hash[Symbol, T.anything],
+              configuration:
+                MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::Configuration::OrHash,
               delivery_method:
                 MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::DeliveryMethod::OrSymbol,
               delivery_method_id: String,
               tax_provider:
-                MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::TaxProvider::OrSymbol
+                MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::TaxProvider::OrSymbol,
+              unbillable_invoices_configuration:
+                T::Array[
+                  MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::UnbillableInvoicesConfiguration::OrHash
+                ]
             ).returns(T.attached_class)
           end
           def self.new(
@@ -164,7 +205,12 @@ module MetronomeSDK
             # Specifies which tax provider Metronome should use for tax calculation when
             # billing through Stripe. This is only supported for Stripe billing provider
             # configurations.
-            tax_provider: nil
+            tax_provider: nil,
+            # Rules that stop matching invoices from being sent to the billing provider.
+            # Supported for Stripe, NetSuite, AWS Marketplace, Azure, and GCP billing provider
+            # configurations. When omitted, every invoice is sent to the billing provider.
+            # Stripe invoices can be force-sent after a rule suppresses them.
+            unbillable_invoices_configuration: nil
           )
           end
 
@@ -174,12 +220,17 @@ module MetronomeSDK
                 billing_provider:
                   MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::BillingProvider::OrSymbol,
                 customer_id: String,
-                configuration: T::Hash[Symbol, T.anything],
+                configuration:
+                  MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::Configuration,
                 delivery_method:
                   MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::DeliveryMethod::OrSymbol,
                 delivery_method_id: String,
                 tax_provider:
-                  MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::TaxProvider::OrSymbol
+                  MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::TaxProvider::OrSymbol,
+                unbillable_invoices_configuration:
+                  T::Array[
+                    MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::UnbillableInvoicesConfiguration
+                  ]
               }
             )
           end
@@ -256,6 +307,63 @@ module MetronomeSDK
             end
           end
 
+          class Configuration < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::Configuration,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            # AWS Marketplace only. The buyer's 12 digit AWS account ID. Must be sent together
+            # with `aws_license_arn`.
+            sig { returns(T.nilable(String)) }
+            attr_reader :aws_customer_account_id
+
+            sig { params(aws_customer_account_id: String).void }
+            attr_writer :aws_customer_account_id
+
+            # AWS Marketplace only. The ARN of the buyer's AWS License Manager license for
+            # this purchase. Must be sent together with `aws_customer_account_id`.
+            sig { returns(T.nilable(String)) }
+            attr_reader :aws_license_arn
+
+            sig { params(aws_license_arn: String).void }
+            attr_writer :aws_license_arn
+
+            # Configuration for the billing provider. The structure of this object is specific
+            # to the billing provider and delivery method combination. Defaults to an empty
+            # object, however, for most billing provider + delivery method combinations, it
+            # will not be a valid configuration. For AWS marketplace configurations, the
+            # aws_is_subscription_product flag can be used to indicate a product with
+            # usage-based pricing. More information can be found
+            # [here](https://docs.metronome.com/invoice-customers/solutions/marketplaces/invoice-aws/#provision-aws-marketplace-customers-in-metronome).
+            sig do
+              params(
+                aws_customer_account_id: String,
+                aws_license_arn: String
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # AWS Marketplace only. The buyer's 12 digit AWS account ID. Must be sent together
+              # with `aws_license_arn`.
+              aws_customer_account_id: nil,
+              # AWS Marketplace only. The ARN of the buyer's AWS License Manager license for
+              # this purchase. Must be sent together with `aws_customer_account_id`.
+              aws_license_arn: nil
+            )
+            end
+
+            sig do
+              override.returns(
+                { aws_customer_account_id: String, aws_license_arn: String }
+              )
+            end
+            def to_hash
+            end
+          end
+
           # The method to use for delivering invoices to this customer. If not provided, the
           # `delivery_method_id` must be provided.
           module DeliveryMethod
@@ -278,11 +386,6 @@ module MetronomeSDK
             AWS_SQS =
               T.let(
                 :aws_sqs,
-                MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::DeliveryMethod::TaggedSymbol
-              )
-            TACKLE =
-              T.let(
-                :tackle,
                 MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::DeliveryMethod::TaggedSymbol
               )
             AWS_SNS =
@@ -341,6 +444,120 @@ module MetronomeSDK
               )
             end
             def self.values
+            end
+          end
+
+          class UnbillableInvoicesConfiguration < MetronomeSDK::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias do
+                T.any(
+                  MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::UnbillableInvoicesConfiguration,
+                  MetronomeSDK::Internal::AnyHash
+                )
+              end
+
+            # The type of invoice this rule applies to.
+            sig do
+              returns(
+                MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::UnbillableInvoicesConfiguration::InvoiceType::OrSymbol
+              )
+            end
+            attr_accessor :invoice_type
+
+            # Restricts the rule to invoices in this fiat currency. Omit for a catch-all rule
+            # that applies to every currency of the `invoice_type`. Required when `max_amount`
+            # is set.
+            sig { returns(T.nilable(String)) }
+            attr_reader :fiat_credit_type_id
+
+            sig { params(fiat_credit_type_id: String).void }
+            attr_writer :fiat_credit_type_id
+
+            # A positive decimal, in the units of `fiat_credit_type_id`. Only invoices whose
+            # total is at or below this amount are suppressed; a higher total is still sent to
+            # the billing provider. When omitted, every matching invoice is suppressed
+            # regardless of amount.
+            sig { returns(T.nilable(Float)) }
+            attr_reader :max_amount
+
+            sig { params(max_amount: Float).void }
+            attr_writer :max_amount
+
+            # An individual rule that, when evaluated to true, indicates that any invoices for
+            # this billing provider will not be sent to its associated destination for the
+            # associated contract. Rules only apply to the specified `invoice_type` (or all
+            # invoices if omitted) and `fiat_credit_type_id` (or all invoices if omitted).
+            # Rule precedence is evaluated from more specific to less specific. This method
+            # will fail with a 400 if multiple rules with the same specificity are included.
+            sig do
+              params(
+                invoice_type:
+                  MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::UnbillableInvoicesConfiguration::InvoiceType::OrSymbol,
+                fiat_credit_type_id: String,
+                max_amount: Float
+              ).returns(T.attached_class)
+            end
+            def self.new(
+              # The type of invoice this rule applies to.
+              invoice_type:,
+              # Restricts the rule to invoices in this fiat currency. Omit for a catch-all rule
+              # that applies to every currency of the `invoice_type`. Required when `max_amount`
+              # is set.
+              fiat_credit_type_id: nil,
+              # A positive decimal, in the units of `fiat_credit_type_id`. Only invoices whose
+              # total is at or below this amount are suppressed; a higher total is still sent to
+              # the billing provider. When omitted, every matching invoice is suppressed
+              # regardless of amount.
+              max_amount: nil
+            )
+            end
+
+            sig do
+              override.returns(
+                {
+                  invoice_type:
+                    MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::UnbillableInvoicesConfiguration::InvoiceType::OrSymbol,
+                  fiat_credit_type_id: String,
+                  max_amount: Float
+                }
+              )
+            end
+            def to_hash
+            end
+
+            # The type of invoice this rule applies to.
+            module InvoiceType
+              extend MetronomeSDK::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::UnbillableInvoicesConfiguration::InvoiceType
+                  )
+                end
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              USAGE =
+                T.let(
+                  :USAGE,
+                  MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::UnbillableInvoicesConfiguration::InvoiceType::TaggedSymbol
+                )
+              SCHEDULED =
+                T.let(
+                  :SCHEDULED,
+                  MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::UnbillableInvoicesConfiguration::InvoiceType::TaggedSymbol
+                )
+
+              sig do
+                override.returns(
+                  T::Array[
+                    MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::UnbillableInvoicesConfiguration::InvoiceType::TaggedSymbol
+                  ]
+                )
+              end
+              def self.values
+              end
             end
           end
         end

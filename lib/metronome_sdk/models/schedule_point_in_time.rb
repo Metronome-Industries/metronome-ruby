@@ -15,19 +15,28 @@ module MetronomeSDK
       #   @return [Boolean, nil]
       optional :do_not_invoice, MetronomeSDK::Internal::Type::Boolean
 
+      # @!attribute quantity_to_fiat_conversion_rate
+      #   Conversion rate from unused quantity units to the invoice currency for a
+      #   quantity-based postpaid commit.
+      #
+      #   @return [Float, nil]
+      optional :quantity_to_fiat_conversion_rate, Float
+
       # @!attribute schedule_items
       #
       #   @return [Array<MetronomeSDK::Models::SchedulePointInTime::ScheduleItem>, nil]
       optional :schedule_items,
                -> { MetronomeSDK::Internal::Type::ArrayOf[MetronomeSDK::SchedulePointInTime::ScheduleItem] }
 
-      # @!method initialize(credit_type: nil, do_not_invoice: nil, schedule_items: nil)
+      # @!method initialize(credit_type: nil, do_not_invoice: nil, quantity_to_fiat_conversion_rate: nil, schedule_items: nil)
       #   Some parameter documentations has been truncated, see
       #   {MetronomeSDK::Models::SchedulePointInTime} for more details.
       #
       #   @param credit_type [MetronomeSDK::Models::CreditTypeData]
       #
       #   @param do_not_invoice [Boolean] This field is only applicable to commit invoice schedules. If true, this schedul
+      #
+      #   @param quantity_to_fiat_conversion_rate [Float] Conversion rate from unused quantity units to the invoice currency for a quantit
       #
       #   @param schedule_items [Array<MetronomeSDK::Models::SchedulePointInTime::ScheduleItem>]
 

@@ -21,9 +21,7 @@ module MetronomeSDK
         required :customer_id, String
 
         # @!attribute add_billing_provider_configuration_update
-        #   Update the billing provider configuration on the contract. Currently only
-        #   supports adding a billing provider configuration to a contract that does not
-        #   already have one.
+        #   Update the billing provider configuration on the contract.
         #
         #   @return [MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate, nil]
         optional :add_billing_provider_configuration_update,
@@ -253,7 +251,7 @@ module MetronomeSDK
         #
         #   @param customer_id [String] ID of the customer whose contract is being edited
         #
-        #   @param add_billing_provider_configuration_update [MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate] Update the billing provider configuration on the contract. Currently only suppor
+        #   @param add_billing_provider_configuration_update [MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate] Update the billing provider configuration on the contract.
         #
         #   @param add_commits [Array<MetronomeSDK::Models::V2::ContractEditParams::AddCommit>]
         #
@@ -341,9 +339,7 @@ module MetronomeSDK
           #   {MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate}
           #   for more details.
           #
-          #   Update the billing provider configuration on the contract. Currently only
-          #   supports adding a billing provider configuration to a contract that does not
-          #   already have one.
+          #   Update the billing provider configuration on the contract.
           #
           #   @param billing_provider_configuration [MetronomeSDK::Models::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration]
           #
@@ -397,7 +393,6 @@ module MetronomeSDK
 
               DIRECT_TO_BILLING_PROVIDER = :direct_to_billing_provider
               AWS_SQS = :aws_sqs
-              TACKLE = :tackle
               AWS_SNS = :aws_sns
 
               # @!method self.values
@@ -428,6 +423,7 @@ module MetronomeSDK
 
               START_OF_CURRENT_PERIOD = :START_OF_CURRENT_PERIOD
               START_OF_NEXT_PERIOD = :START_OF_NEXT_PERIOD
+              TODAY = :TODAY
 
               # @!method self.values
               #   @return [Array<Symbol>]
@@ -1736,6 +1732,7 @@ module MetronomeSDK
 
               MONTHLY = :MONTHLY
               QUARTERLY = :QUARTERLY
+              SEMI_ANNUAL = :SEMI_ANNUAL
               ANNUAL = :ANNUAL
               WEEKLY = :WEEKLY
 
@@ -1968,6 +1965,15 @@ module MetronomeSDK
           #   @return [Time]
           required :starting_at, Time
 
+          # @!attribute anchor_date
+          #   The date this recurring commit's or credit's periods are anchored to. Must be on
+          #   or before `starting_at`. If omitted, periods are anchored to `starting_at` when
+          #   `recurrence_frequency` is set, and to the contract's usage statement billing
+          #   anchor otherwise.
+          #
+          #   @return [Time, nil]
+          optional :anchor_date, Time
+
           # @!attribute applicable_product_ids
           #   Will be passed down to the individual commits
           #
@@ -2081,7 +2087,7 @@ module MetronomeSDK
           #   @return [String, nil]
           optional :temporary_id, String
 
-          # @!method initialize(access_amount:, commit_duration:, priority:, product_id:, starting_at:, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, ending_before: nil, hierarchy_configuration: nil, invoice_amount: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, proration_rounding: nil, rate_type: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil, subscription_config: nil, temporary_id: nil)
+          # @!method initialize(access_amount:, commit_duration:, priority:, product_id:, starting_at:, anchor_date: nil, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, ending_before: nil, hierarchy_configuration: nil, invoice_amount: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, proration_rounding: nil, rate_type: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil, subscription_config: nil, temporary_id: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V2::ContractEditParams::AddRecurringCommit} for more
           #   details.
@@ -2095,6 +2101,8 @@ module MetronomeSDK
           #   @param product_id [String]
           #
           #   @param starting_at [Time] determines the start time for the first commit
+          #
+          #   @param anchor_date [Time] The date this recurring commit's or credit's periods are anchored to. Must be on
           #
           #   @param applicable_product_ids [Array<String>] Will be passed down to the individual commits
           #
@@ -2382,6 +2390,7 @@ module MetronomeSDK
 
             MONTHLY = :MONTHLY
             QUARTERLY = :QUARTERLY
+            SEMI_ANNUAL = :SEMI_ANNUAL
             ANNUAL = :ANNUAL
             WEEKLY = :WEEKLY
             DAILY = :DAILY
@@ -2484,6 +2493,15 @@ module MetronomeSDK
           #
           #   @return [Time]
           required :starting_at, Time
+
+          # @!attribute anchor_date
+          #   The date this recurring commit's or credit's periods are anchored to. Must be on
+          #   or before `starting_at`. If omitted, periods are anchored to `starting_at` when
+          #   `recurrence_frequency` is set, and to the contract's usage statement billing
+          #   anchor otherwise.
+          #
+          #   @return [Time, nil]
+          optional :anchor_date, Time
 
           # @!attribute applicable_product_ids
           #   Will be passed down to the individual commits
@@ -2592,7 +2610,7 @@ module MetronomeSDK
           #   @return [String, nil]
           optional :temporary_id, String
 
-          # @!method initialize(access_amount:, commit_duration:, priority:, product_id:, starting_at:, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, ending_before: nil, hierarchy_configuration: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, proration_rounding: nil, rate_type: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil, subscription_config: nil, temporary_id: nil)
+          # @!method initialize(access_amount:, commit_duration:, priority:, product_id:, starting_at:, anchor_date: nil, applicable_product_ids: nil, applicable_product_tags: nil, description: nil, ending_before: nil, hierarchy_configuration: nil, name: nil, netsuite_sales_order_id: nil, proration: nil, proration_rounding: nil, rate_type: nil, recurrence_frequency: nil, rollover_fraction: nil, specifiers: nil, subscription_config: nil, temporary_id: nil)
           #   Some parameter documentations has been truncated, see
           #   {MetronomeSDK::Models::V2::ContractEditParams::AddRecurringCredit} for more
           #   details.
@@ -2606,6 +2624,8 @@ module MetronomeSDK
           #   @param product_id [String]
           #
           #   @param starting_at [Time] determines the start time for the first commit
+          #
+          #   @param anchor_date [Time] The date this recurring commit's or credit's periods are anchored to. Must be on
           #
           #   @param applicable_product_ids [Array<String>] Will be passed down to the individual commits
           #
@@ -2821,6 +2841,7 @@ module MetronomeSDK
 
             MONTHLY = :MONTHLY
             QUARTERLY = :QUARTERLY
+            SEMI_ANNUAL = :SEMI_ANNUAL
             ANNUAL = :ANNUAL
             WEEKLY = :WEEKLY
             DAILY = :DAILY
@@ -3076,7 +3097,6 @@ module MetronomeSDK
 
               DIRECT_TO_BILLING_PROVIDER = :direct_to_billing_provider
               AWS_SQS = :aws_sqs
-              TACKLE = :tackle
               AWS_SNS = :aws_sns
 
               # @!method self.values
@@ -3718,6 +3738,7 @@ module MetronomeSDK
 
               MONTHLY = :MONTHLY
               QUARTERLY = :QUARTERLY
+              SEMI_ANNUAL = :SEMI_ANNUAL
               ANNUAL = :ANNUAL
               WEEKLY = :WEEKLY
 

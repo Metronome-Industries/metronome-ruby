@@ -28,11 +28,19 @@ module MetronomeSDK
           required :billing_provider_customer_id, String
 
           # @!attribute aws_customer_account_id
+          #   @deprecated
+          #
+          #   Deprecated and ignored by the server. The customer ID comes from
+          #   `billing_provider_customer_id`.
           #
           #   @return [String, nil]
           optional :aws_customer_account_id, String
 
           # @!attribute aws_customer_id
+          #   @deprecated
+          #
+          #   Deprecated and ignored by the server. The customer ID comes from
+          #   `billing_provider_customer_id`.
           #
           #   @return [String, nil]
           optional :aws_customer_id, String
@@ -65,9 +73,9 @@ module MetronomeSDK
           #
           #   @param billing_provider_customer_id [String] The customer ID in the billing provider's system. For Azure, this is the subscri
           #
-          #   @param aws_customer_account_id [String]
+          #   @param aws_customer_account_id [String] Deprecated and ignored by the server. The customer ID comes from `billing_provid
           #
-          #   @param aws_customer_id [String]
+          #   @param aws_customer_id [String] Deprecated and ignored by the server. The customer ID comes from `billing_provid
           #
           #   @param aws_product_code [String]
           #
