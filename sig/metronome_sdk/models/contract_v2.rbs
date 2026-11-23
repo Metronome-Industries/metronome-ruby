@@ -1851,14 +1851,13 @@ module MetronomeSDK
           end
 
           type delivery_method =
-            :direct_to_billing_provider | :aws_sqs | :tackle | :aws_sns
+            :direct_to_billing_provider | :aws_sqs | :aws_sns
 
           module DeliveryMethod
             extend MetronomeSDK::Internal::Type::Enum
 
             DIRECT_TO_BILLING_PROVIDER: :direct_to_billing_provider
             AWS_SQS: :aws_sqs
-            TACKLE: :tackle
             AWS_SNS: :aws_sns
 
             def self?.values: -> ::Array[MetronomeSDK::Models::ContractV2::BillingProviderConfigurationSchedule::BillingProviderConfiguration::delivery_method]
@@ -2643,15 +2642,13 @@ module MetronomeSDK
           }
         end
 
-        type delivery_method =
-          :direct_to_billing_provider | :aws_sqs | :tackle | :aws_sns
+        type delivery_method = :direct_to_billing_provider | :aws_sqs | :aws_sns
 
         module DeliveryMethod
           extend MetronomeSDK::Internal::Type::Enum
 
           DIRECT_TO_BILLING_PROVIDER: :direct_to_billing_provider
           AWS_SQS: :aws_sqs
-          TACKLE: :tackle
           AWS_SNS: :aws_sns
 
           def self?.values: -> ::Array[MetronomeSDK::Models::ContractV2::CustomerBillingProviderConfiguration::delivery_method]
@@ -3912,14 +3909,13 @@ module MetronomeSDK
           end
 
           type delivery_method =
-            :direct_to_billing_provider | :aws_sqs | :tackle | :aws_sns
+            :direct_to_billing_provider | :aws_sqs | :aws_sns
 
           module DeliveryMethod
             extend MetronomeSDK::Internal::Type::Enum
 
             DIRECT_TO_BILLING_PROVIDER: :direct_to_billing_provider
             AWS_SQS: :aws_sqs
-            TACKLE: :tackle
             AWS_SNS: :aws_sns
 
             def self?.values: -> ::Array[MetronomeSDK::Models::ContractV2::RevenueSystemConfigurationSchedule::RevenueSystemConfiguration::delivery_method]

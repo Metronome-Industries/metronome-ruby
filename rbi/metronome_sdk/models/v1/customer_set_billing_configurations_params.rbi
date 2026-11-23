@@ -388,11 +388,6 @@ module MetronomeSDK
                 :aws_sqs,
                 MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::DeliveryMethod::TaggedSymbol
               )
-            TACKLE =
-              T.let(
-                :tackle,
-                MetronomeSDK::V1::CustomerSetBillingConfigurationsParams::Data::DeliveryMethod::TaggedSymbol
-              )
             AWS_SNS =
               T.let(
                 :aws_sns,

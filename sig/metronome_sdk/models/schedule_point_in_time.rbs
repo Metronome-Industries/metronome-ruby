@@ -4,6 +4,7 @@ module MetronomeSDK
       {
         credit_type: MetronomeSDK::CreditTypeData,
         do_not_invoice: bool,
+        quantity_to_fiat_conversion_rate: Float,
         schedule_items: ::Array[MetronomeSDK::SchedulePointInTime::ScheduleItem]
       }
 
@@ -18,6 +19,10 @@ module MetronomeSDK
 
       def do_not_invoice=: (bool) -> bool
 
+      attr_reader quantity_to_fiat_conversion_rate: Float?
+
+      def quantity_to_fiat_conversion_rate=: (Float) -> Float
+
       attr_reader schedule_items: ::Array[MetronomeSDK::SchedulePointInTime::ScheduleItem]?
 
       def schedule_items=: (
@@ -27,12 +32,14 @@ module MetronomeSDK
       def initialize: (
         ?credit_type: MetronomeSDK::CreditTypeData,
         ?do_not_invoice: bool,
+        ?quantity_to_fiat_conversion_rate: Float,
         ?schedule_items: ::Array[MetronomeSDK::SchedulePointInTime::ScheduleItem]
       ) -> void
 
       def to_hash: -> {
         credit_type: MetronomeSDK::CreditTypeData,
         do_not_invoice: bool,
+        quantity_to_fiat_conversion_rate: Float,
         schedule_items: ::Array[MetronomeSDK::SchedulePointInTime::ScheduleItem]
       }
 

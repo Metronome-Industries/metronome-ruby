@@ -856,15 +856,13 @@ module MetronomeSDK
           end
         end
 
-        type delivery_method =
-          :direct_to_billing_provider | :aws_sqs | :tackle | :aws_sns
+        type delivery_method = :direct_to_billing_provider | :aws_sqs | :aws_sns
 
         module DeliveryMethod
           extend MetronomeSDK::Internal::Type::Enum
 
           DIRECT_TO_BILLING_PROVIDER: :direct_to_billing_provider
           AWS_SQS: :aws_sqs
-          TACKLE: :tackle
           AWS_SNS: :aws_sns
 
           def self?.values: -> ::Array[MetronomeSDK::Models::V1::PackageCreateParams::delivery_method]

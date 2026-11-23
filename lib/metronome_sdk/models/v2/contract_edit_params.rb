@@ -393,7 +393,6 @@ module MetronomeSDK
 
               DIRECT_TO_BILLING_PROVIDER = :direct_to_billing_provider
               AWS_SQS = :aws_sqs
-              TACKLE = :tackle
               AWS_SNS = :aws_sns
 
               # @!method self.values
@@ -3098,7 +3097,6 @@ module MetronomeSDK
 
               DIRECT_TO_BILLING_PROVIDER = :direct_to_billing_provider
               AWS_SQS = :aws_sqs
-              TACKLE = :tackle
               AWS_SNS = :aws_sns
 
               # @!method self.values

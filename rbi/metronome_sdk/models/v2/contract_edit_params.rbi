@@ -1090,11 +1090,6 @@ module MetronomeSDK
                   :aws_sqs,
                   MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::DeliveryMethod::TaggedSymbol
                 )
-              TACKLE =
-                T.let(
-                  :tackle,
-                  MetronomeSDK::V2::ContractEditParams::AddBillingProviderConfigurationUpdate::BillingProviderConfiguration::DeliveryMethod::TaggedSymbol
-                )
               AWS_SNS =
                 T.let(
                   :aws_sns,
@@ -6937,11 +6932,6 @@ module MetronomeSDK
               AWS_SQS =
                 T.let(
                   :aws_sqs,
-                  MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::DeliveryMethod::TaggedSymbol
-                )
-              TACKLE =
-                T.let(
-                  :tackle,
                   MetronomeSDK::V2::ContractEditParams::AddRevenueSystemConfigurationUpdate::RevenueSystemConfiguration::DeliveryMethod::TaggedSymbol
                 )
               AWS_SNS =

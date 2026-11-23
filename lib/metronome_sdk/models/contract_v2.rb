@@ -203,6 +203,16 @@ module MetronomeSDK
       #   after a Contract has been created. If this field is omitted, charges will appear
       #   on a separate invoice from usage charges.
       #
+      #   For recurring fixed fees, such as a monthly platform fee, use a
+      #   [subscription](/guides/pricing-packaging/subscription/provision-your-customer)
+      #   with `billing_cycle_config.invoice_placement` set to `ON_USAGE_INVOICE` instead
+      #   of recurring scheduled charges with this field set to `ALL`. Metronome
+      #   recalculates a subscription's usage invoice line items from the current contract
+      #   each time it invoices, so the charges stay on the correct usage invoice after
+      #   contract edits such as end date changes or transitions. Use this field for
+      #   one-time scheduled charges and commit purchases, which subscriptions can't
+      #   represent.
+      #
       #   @return [Symbol, MetronomeSDK::Models::ContractV2::ScheduledChargesOnUsageInvoices, nil]
       optional :scheduled_charges_on_usage_invoices,
                enum: -> { MetronomeSDK::ContractV2::ScheduledChargesOnUsageInvoices }
@@ -1871,7 +1881,6 @@ module MetronomeSDK
 
             DIRECT_TO_BILLING_PROVIDER = :direct_to_billing_provider
             AWS_SQS = :aws_sqs
-            TACKLE = :tackle
             AWS_SNS = :aws_sns
 
             # @!method self.values
@@ -2711,7 +2720,6 @@ module MetronomeSDK
 
           DIRECT_TO_BILLING_PROVIDER = :direct_to_billing_provider
           AWS_SQS = :aws_sqs
-          TACKLE = :tackle
           AWS_SNS = :aws_sns
 
           # @!method self.values
@@ -4156,7 +4164,6 @@ module MetronomeSDK
 
             DIRECT_TO_BILLING_PROVIDER = :direct_to_billing_provider
             AWS_SQS = :aws_sqs
-            TACKLE = :tackle
             AWS_SNS = :aws_sns
 
             # @!method self.values
@@ -4170,6 +4177,16 @@ module MetronomeSDK
       # `ending_before` date for consolidation to occur. This field cannot be modified
       # after a Contract has been created. If this field is omitted, charges will appear
       # on a separate invoice from usage charges.
+      #
+      # For recurring fixed fees, such as a monthly platform fee, use a
+      # [subscription](/guides/pricing-packaging/subscription/provision-your-customer)
+      # with `billing_cycle_config.invoice_placement` set to `ON_USAGE_INVOICE` instead
+      # of recurring scheduled charges with this field set to `ALL`. Metronome
+      # recalculates a subscription's usage invoice line items from the current contract
+      # each time it invoices, so the charges stay on the correct usage invoice after
+      # contract edits such as end date changes or transitions. Use this field for
+      # one-time scheduled charges and commit purchases, which subscriptions can't
+      # represent.
       #
       # @see MetronomeSDK::Models::ContractV2#scheduled_charges_on_usage_invoices
       module ScheduledChargesOnUsageInvoices
